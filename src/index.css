@@ -78,4 +78,4 @@
   .scroll-container::-webkit-scrollbar {
     display: none;
   }
-}
+}`n/* Smart TV Focus */`n:focus { outline: 5px solid #ffcc00 !important; outline-offset: 4px; transform: scale(1.08); transition: transform 0.2s; z-index: 50; position: relative; }
