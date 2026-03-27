@@ -1,0 +1,125 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// Importación de Páginas
+import Home from './pages/Home';
+import Radio from './pages/Radio';
+import Movies from './pages/Movies';
+import Channels from './pages/Channels'; // <--- Nueva página de canales
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* Ruta Principal: Pantalla de inicio con las cards */}
+        <Route path="/" element={<Home />} />
+
+        {/* Ruta de Radio: Reproductor de emisoras */}
+        <Route path="/radio" element={<Radio />} />
+
+        {/* Ruta de Cine Play: Películas por categorías */}
+        <Route path="/movies" element={<Movies />} />
+
+        {/* Ruta de Canales Play: TV en vivo con Shaka Player potente */}
+        <Route path="/channels" element={<Channels />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+/* =========================================
+   ESTILOS CINEMATOGRÁFICOS PREMIUM (4K HDR)
+   ========================================= */
+
+/* Contenedor principal con efecto de iluminación global */
+.app-container-4k {
+  background: radial-gradient(circle at 50% 0%, rgba(40, 40, 60, 0.8) 0%, rgba(0, 0, 0, 1) 80%);
+  box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
+}
+
+/* Fondo con micro-textura de grano de película */
+.bg-film-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 5;
+}
+
+/* Efecto Glassmorphism Premium para Cards */
+.glass-card-4k {
+  /* Fondo translúcido y blur profundo */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  
+  /* Bordes brillantes y finos (Light Edge Glow) */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    /* Borde interior suave */
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    /* Brillo superior */
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.15),
+    /* Sombra profunda flotante */
+    0 20px 40px -10px rgba(0, 0, 0, 0.6),
+    /* Sombra ambiental amplia */
+    0 40px 80px -20px rgba(0, 0, 0, 0.8);
+
+  /* Transiciones ultra suaves */
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Efecto Hover Premium */
+.glass-card-4k:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 0.25),
+    0 30px 60px -12px rgba(0, 0, 0, 0.7),
+    0 50px 100px -20px rgba(0, 0, 0, 0.9);
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Reflejo de lente cinematográfico */
+.lens-flare-effect::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 55%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.7s ease-out;
+}
+
+.glass-card-4k:hover .lens-flare-effect::after {
+  opacity: 1;
+  animation: flare-animation 1.5s forwards;
+}
+
+@keyframes flare-animation {
+  0% { transform: translate(-20%, -20%) rotate(25deg); opacity: 0; }
+  50% { opacity: 0.4; }
+  100% { transform: translate(20%, 20%) rotate(25deg); opacity: 0; }
+}
+
+/* Tipografía HDR de alto contraste */
+.text-hdr-4k {
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}

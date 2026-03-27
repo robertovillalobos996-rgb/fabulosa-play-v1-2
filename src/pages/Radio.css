@@ -1,0 +1,126 @@
+/* src/pages/Radio.css */
+
+.radio-page-container {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    overflow: hidden; font-family: 'Inter', sans-serif;
+    background-color: #050505; background-size: cover;
+    background-position: center; background-repeat: no-repeat;
+    z-index: 50;
+
+    /* NUEVO: Usamos flex para empujar el reproductor abajo de forma limpia */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Empuja todo al borde inferior */
+    align-items: center;
+    padding-bottom: 15px; /* Pequeño margen de seguridad con el borde físico */
+}
+
+.radio-overlay {
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+}
+
+.back-btn { 
+    position: absolute; top: 20px; left: 20px; 
+    text-decoration: none; color: rgba(255,255,255,0.7); 
+    font-size: 11px; font-weight: bold; z-index: 100; 
+    border: 1px solid rgba(255,255,255,0.15); 
+    padding: 8px 16px; border-radius: 30px; letter-spacing: 1px;
+    backdrop-filter: blur(10px); display: flex; align-items: center; gap: 5px;
+    transition: all 0.3s ease;
+}
+.back-btn:hover { background: rgba(255, 0, 50, 0.5); color: #fff; border-color: #ff0033; }
+
+/* ============================
+   EFECTO CORAZONES FLOTANTES
+   ============================ */
+.rain-container {
+    position: absolute; inset: 0; pointer-events: none; z-index: 5; overflow: hidden;
+}
+
+.heart-gem {
+    position: absolute; top: -50px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff0033"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center;
+    background-size: contain;
+    animation: fall linear forwards;
+    opacity: 0.5; filter: drop-shadow(0 0 8px rgba(255,0,0,0.6));
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* ============================
+   REPRODUCTOR Y ECUALIZADOR (COMPACTO)
+   ============================ */
+.glass-player {
+    /* ELIMINADO: position absolute y bottom 8% para que flex lo maneje */
+    position: relative; 
+
+    /* MEDIDAS REDUCIDAS */
+    width: 95%; max-width: 420px; /* Un poco más angosto */
+    padding: 20px 15px; /* Padding reducido (era 40x30) */
+    
+    background: rgba(10, 0, 0, 0.4); backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 50, 50, 0.15); border-radius: 30px; /* Bordes menos redondeados */
+    z-index: 10; display: flex; flex-direction: column; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 15px rgba(255,0,0,0.05);
+}
+
+.eq-container {
+    display: flex; justify-content: center; align-items: flex-end;
+    height: 50px; /* Altura reducida (era 80px) */
+    gap: 4px; /* Espacio reducido */
+    margin-bottom: 10px; /* Margen reducido (era 40px) */
+}
+
+.eq-bar {
+    width: 8px; /* Ancho reducido (era 12px) */
+    height: 10%; 
+    background: linear-gradient(to top, #ff0033, #ff8888);
+    border-radius: 4px; transition: height 0.05s ease;
+    box-shadow: 0 0 8px rgba(255,0,50,0.4);
+}
+
+/* Controles */
+.play-container {
+    position: relative; height: 0;
+    display: flex; align-items: center; justify-content: center; 
+    margin-top: -15px; /* Margen negativo reducido (era -30px) */
+}
+
+.btn-main {
+    /* BOTÓN MÁS PEQUEÑO */
+    width: 70px; height: 70px; /* Era 90x90 */
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff0033, #8b0000);
+    border: 3px solid rgba(255,255,255,0.7);
+    color: #fff; font-size: 26px; /* Letra más pequeña */
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255, 0, 50, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    display: flex; align-items: center; justify-content: center; outline: none;
+    z-index: 20;
+}
+.btn-main:hover { transform: scale(1.05); box-shadow: 0 0 40px #ff0000; border-color: #fff; }
+
+.vol-container { 
+    display: flex; align-items: center; justify-content: space-between; 
+    margin-top: 25px; /* Margen reducido (era 40px) */
+    padding: 0 10px;
+}
+
+.live-badge {
+    background: rgba(255,0,0,0.8); color: white; padding: 4px 10px;
+    border-radius: 6px; font-size: 10px; /* Letra más pequeña */
+    font-weight: 900; letter-spacing: 1.5px;
+    animation: pulse 2s infinite; box-shadow: 0 0 10px rgba(255,0,0,0.4);
+}
+
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+input[type=range] { 
+    flex: 1; margin-left: 15px; accent-color: #ff0033; 
+    height: 3px; background: rgba(255,255,255,0.15); border-radius: 2px;
+}

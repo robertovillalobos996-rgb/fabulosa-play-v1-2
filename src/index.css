@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* FONDO CINEMATOGRÁFICO ATMOSFÉRICO */
+  .cinematic-bg {
+    position: absolute;
+    inset: -2%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px) brightness(0.3) saturate(1.2);
+    z-index: 0;
+  }
+
+  .cinematic-overlay {
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.85) 100%);
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  /* VIDRIO PREMIUM REAL (GLASSMORPHISM) */
+  .glass-tv {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* HALO NEÓN TRASERO */
+  .neon-halo {
+    position: relative;
+    z-index: 50; /* Delante de cajas base */
+  }
+
+  .neon-halo::before {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 75%);
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s ease;
+    filter: blur(35px);
+    border-radius: 4rem;
+  }
+
+  .group:hover .neon-halo::before {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  /* ANIMACIÓN LIFT CON PRIORIDAD Z-INDEX */
+  .tv-card-lift {
+    will-change: transform;
+    position: relative;
+    z-index: 60;
+  }
+  
+  .group:hover .tv-card-lift {
+    transform: translateY(-25px) scale(1.06);
+    z-index: 100; /* Se pone delante de las cards vecinas */
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* SCROLL HORIZONTAL PRO */
+  .scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    position: relative;
+    z-index: 50; /* Asegura que la tira de cards esté al frente */
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+}

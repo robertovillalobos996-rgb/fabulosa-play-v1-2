@@ -1,0 +1,12 @@
+node_modules/
+mariadb-10.6.11-winx64/
+radio-backend/
+dist/
+build/
+.env
+*.mp3
+*.mp4
+*.pdb
+*.exe
+ib_logfile*
+serviceAccountKey.json
