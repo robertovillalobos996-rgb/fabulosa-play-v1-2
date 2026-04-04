@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Send, Volume2, VolumeX, Maximize, Minimize, Cast, Dices, Search } from 'lucide-react';
+import { ArrowLeft, Send, Volume2, VolumeX, Maximize, Minimize } from 'lucide-react';
 
 import LOGO_CANAL from "../assets/logo-fabulosa.png";
-import imgReproductor from '../assets/fabulosatvreproductor.png';
 
 const INTRO_SRC = "/assets/intro.mp4";
 const FONDO_TV_VIDEO = "/assets/fondotv.mp4";
@@ -20,57 +19,42 @@ const YOUTUBE_API_KEYS = [
 ];
 
 const FabulosaTV = () => {
-    // --- 🎙️ TUS ACTIVOS ORIGINALES ---
     const playlist = {
-        ids: ["/media/ids/id-1.mp4", "/media/ids/id-2.mp4", "/media/ids/id-3.mp4", "/media/ids/id-4.mp4"],
-        comerciales: ["/media/comerciales/piña express.mp4", "/media/comerciales/comercial chinito express 1.mp4"],
-        voces: ["/media/voces/Miguel.biembenidos .mp3", "/media/voces/sello-fabulosa.mp3", "/media/voces/Tony Garcia - dale volumen.mp3"]
+        ids: ["/media/ids/id-1.mp4", "/media/ids/id-2.mp4", "/media/ids/id-3.mp4", "/media/ids/id-4.mp4", "/media/ids/id-5.mp4"],
+        comerciales: ["/media/comerciales/piña express.mp4", "/media/comerciales/comercial chinito express 1.mp4", "/media/comerciales/comercial fabulosa play 1.mp4"],
+        voces: ["/media/voces/Miguel.biembenidos .mp3", "/media/voces/sello-fabulosa.mp3", "/media/voces/Tony Garcia - dale volumen.mp3", "/media/voces/rosalia 1.mp3"]
     };
 
     const [currentSrc, setCurrentSrc] = useState(INTRO_SRC);
     const [modo, setModo] = useState("INTRO"); 
     const [volume, setVolume] = useState(1);
     const [mute, setMute] = useState(false);
-    const [isFullscreen, setIsFullscreen] = useState(false);
     const [quienHabla, setQuienHabla] = useState("SISTEMA"); 
     const [currentYtId, setCurrentYtId] = useState(null);
-    const [ytPlaylist, setYtPlaylist] = useState([]); 
+    const [chatMensaje, setChatMensaje] = useState("");
+    const [chatHistory, setChatHistory] = useState([{ type: 'bot', text: "¡Fabulosito al aire! ¿Qué escuchamos?" }]);
 
-    const commercialQueue = useRef([]); 
-    const lastMarcaTime = useRef(Date.now());
     const lastLocucionTime = useRef(Date.now());
     const modoRef = useRef(modo);
     const keyIndexRef = useRef(0); 
-    
-    const playerContainerRef = useRef(null);
     const videoRef = useRef(null);
     const ytPlayerRef = useRef(null);
     const audioExtraRef = useRef(new Audio());
 
     useEffect(() => { modoRef.current = modo; }, [modo]);
 
-    useEffect(() => {
-        if (videoRef.current) videoRef.current.volume = mute ? 0 : volume;
-        if (ytPlayerRef.current && typeof ytPlayerRef.current.setVolume === 'function') {
-            ytPlayerRef.current.setVolume(mute ? 0 : volume * 100);
-        }
-    }, [volume, mute]);
-
-    // 🤖 LÓGICA DE YOUTUBE ORIGINAL
-    const buscarMusicaEnYouTube = async (query = "exitos latinos mas sonados") => {
+    const buscarMusicaEnYouTube = async (query = "exitos latinos 2024") => {
         try {
             let exito = false;
             let data = null;
             while (keyIndexRef.current < YOUTUBE_API_KEYS.length && !exito) {
-                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&q=${encodeURIComponent(query)}&type=video&videoEmbeddable=true&key=${YOUTUBE_API_KEYS[keyIndexRef.current]}`;
+                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${encodeURIComponent(query)}&type=video&videoEmbeddable=true&key=${YOUTUBE_API_KEYS[keyIndexRef.current]}`;
                 const res = await fetch(url);
                 if (res.status === 403) keyIndexRef.current++;
                 else { data = await res.json(); exito = true; }
             }
             if (exito && data.items.length > 0) {
-                const primerId = data.items[0].id.videoId;
-                setYtPlaylist(data.items.slice(1).map(i => i.id.videoId));
-                setCurrentYtId(primerId);
+                setCurrentYtId(data.items[0].id.videoId);
                 setModo("MUSICA");
             }
         } catch (e) { console.error(e); }
@@ -80,8 +64,7 @@ const FabulosaTV = () => {
         if (modoRef.current === "INTRO" || modoRef.current === "ID") {
             buscarMusicaEnYouTube();
         } else {
-            const randomID = playlist.ids[Math.floor(Math.random() * playlist.ids.length)];
-            setCurrentSrc(randomID);
+            setCurrentSrc(playlist.ids[Math.floor(Math.random() * playlist.ids.length)]);
             setModo("ID");
         }
     };
@@ -105,62 +88,34 @@ const FabulosaTV = () => {
         }
     }, [currentYtId, modo]);
 
-    // 🎙️ LÓGICA DE LOCUCIONES CADA 5 MINUTOS
-    useEffect(() => {
-        const timer = setInterval(() => {
-            const ahora = Date.now();
-            if (modo === "MUSICA" && ahora - lastLocucionTime.current > 300000) {
-                const voz = playlist.voces[Math.floor(Math.random() * playlist.voces.length)];
-                audioExtraRef.current.src = voz;
-                setQuienHabla("LOCUTOR");
-                if (ytPlayerRef.current) ytPlayerRef.current.setVolume(20);
-                audioExtraRef.current.play();
-                audioExtraRef.current.onended = () => {
-                    setQuienHabla("SISTEMA");
-                    if (ytPlayerRef.current) ytPlayerRef.current.setVolume(volume * 100);
-                };
-                lastLocucionTime.current = ahora;
-            }
-        }, 10000);
-        return () => clearInterval(timer);
-    }, [modo, volume]);
-
-    const toggleFullscreen = () => {
-        if (!document.fullscreenElement) playerContainerRef.current.requestFullscreen();
-        else document.exitFullscreen();
-    };
-
     return (
-        <div className="relative min-h-screen w-full bg-black text-white flex flex-col">
-            <video src={FONDO_TV_VIDEO} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-40 z-0"/>
+        <div className="relative min-h-screen w-full bg-black text-white flex flex-col overflow-hidden">
+            <video src={FONDO_TV_VIDEO} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-30 z-0"/>
             <div className="relative z-10 flex flex-col h-full p-4 md:p-6 flex-1">
                 <div className="flex justify-between items-center mb-4 bg-black/60 p-4 rounded-3xl border border-white/10">
                     <Link to="/" className="text-white/70 hover:text-white uppercase text-xs font-black tracking-widest">← Volver</Link>
                     <div className="bg-red-600 px-4 py-1 rounded-full animate-pulse text-[10px] font-black uppercase">En Vivo</div>
                 </div>
                 <div className="flex-1 grid grid-cols-1 lg:grid-cols-4 gap-6">
-                    <div ref={playerContainerRef} className="lg:col-span-3 relative bg-black rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl group aspect-video">
-                        <video ref={videoRef} src={currentSrc} className={`absolute inset-0 w-full h-full object-contain ${modo !== "MUSICA" ? "opacity-100 z-20" : "opacity-0"}`} autoPlay playsInline muted={mute} onEnded={handleVideoEnd}/>
+                    <div className="lg:col-span-3 relative bg-black rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl aspect-video">
+                        <video ref={videoRef} src={currentSrc} className={`absolute inset-0 w-full h-full object-contain ${modo !== "MUSICA" ? "opacity-100 z-20" : "opacity-0"}`} autoPlay playsInline onEnded={handleVideoEnd}/>
                         <div className={`absolute inset-0 w-full h-full ${modo === "MUSICA" ? "opacity-100 z-10" : "opacity-0"}`}>
                             <div id="youtube-tv-player" className="w-full h-full scale-[1.3] pointer-events-none"></div>
                         </div>
-                        <div className="absolute top-8 right-8 w-40 z-50"><img src={LOGO_CANAL} alt="Logo" /></div>
-                        <div className="absolute bottom-8 left-8 right-8 flex justify-between opacity-0 group-hover:opacity-100 transition-all z-50">
-                            <button onClick={() => setMute(!mute)} className="bg-black/60 p-4 rounded-full border border-white/20">{mute ? <VolumeX /> : <Volume2 />}</button>
-                            <button onClick={toggleFullscreen} className="bg-black/60 p-4 rounded-full border border-white/20"><Maximize /></button>
-                        </div>
+                        <div className="absolute top-8 right-8 w-32 z-50"><img src={LOGO_CANAL} alt="Logo" /></div>
                     </div>
-                    {/* 🤖 EL ROBOT ESTÁ DE VUELTA AQUÍ */}
-                    <div className="lg:col-span-1 flex flex-col bg-black rounded-[2.5rem] border border-white/20 overflow-hidden shadow-2xl">
-                        <div className="h-48 flex justify-center items-center bg-black relative">
-                            <video src={FABULOSITO_VIDEO} autoPlay loop muted playsInline className="h-full object-contain scale-125 z-10"/>
+                    <div className="lg:col-span-1 flex flex-col bg-zinc-900/80 rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl">
+                        <div className="h-48 flex justify-center items-center p-4 relative">
+                            <video src={FABULOSITO_VIDEO} autoPlay loop muted playsInline className="h-full object-contain scale-150 z-10"/>
                         </div>
-                        <div className="p-4 border-b border-white/10 text-center"><h2 className="font-black italic tracking-tighter uppercase">DJ FABULOSITO</h2></div>
-                        <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-zinc-950/50">
-                            <div className="bg-zinc-900 p-3 rounded-xl text-[10px] text-gray-400 italic">
-                                {quienHabla === "LOCUTOR" ? "🎙️ LOCUTOR AL AIRE..." : "🤖 FABULOSITO EN ESPERA..."}
-                            </div>
+                        <div className="p-4 border-b border-white/10 text-center"><h2 className="font-black italic text-sm tracking-tighter uppercase">DJ FABULOSITO</h2></div>
+                        <div className="flex-1 overflow-y-auto p-4 space-y-3">
+                            {chatHistory.map((m, i) => (<div key={i} className={`text-[10px] p-2 rounded-lg ${m.type === 'bot' ? 'bg-zinc-800' : 'bg-red-950 ml-4'}`}>{m.text}</div>))}
                         </div>
+                        <form onSubmit={(e) => { e.preventDefault(); buscarMusicaEnYouTube(chatMensaje); setChatMensaje(""); }} className="p-3 flex gap-2">
+                            <input value={chatMensaje} onChange={(e) => setChatMensaje(e.target.value)} className="flex-1 bg-black/40 border border-white/10 rounded-xl p-2 text-[10px]" placeholder="Pide tu canción..."/>
+                            <button type="submit" className="bg-red-600 p-2 rounded-xl text-xs font-bold uppercase italic">Enviar</button>
+                        </form>
                     </div>
                 </div>
             </div>
