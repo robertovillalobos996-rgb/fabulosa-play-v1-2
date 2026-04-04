@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import logoFabulosa from '../assets/logo-fabulosa-play.png';
-// Assets de imágenes originales
 import cardRadio from '../assets/card-radio.png';
 import cardRadiosCR from '../assets/card-radios.jpg';
 import cardMovies from '../assets/card-movies.png';
@@ -13,8 +12,6 @@ import cardAlabanza from '../assets/card.fabulosa-alabanza.jpg';
 import cardCamaras from '../assets/card de camaras.png'; 
 import cardVerano from '../assets/verano-fabulosa.png'; 
 import cardCentroMercadeo from '../assets/mercadeo.png'; 
-
-// ✅ IMPORTAMOS EL LOGO QUE EL BUILD SÍ ENCONTRÓ
 import logoPSC from '../assets/logo-psc.png'; 
 
 const Home = () => {
@@ -25,25 +22,10 @@ const Home = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const playCardSound = (id) => {
-    const soundFiles = {
-      radio: '/sounds/radio.mp3',
-      camaras: '/sounds/camaras.mp3',
-      cantina: '/sounds/cantina.mp3',
-      movies: '/sounds/movies.mp3'
-    };
-    if (soundFiles[id]) {
-      const audio = new Audio(soundFiles[id]);
-      audio.volume = 0.4;
-      audio.play().catch(() => console.log("Esperando interacción..."));
-    }
-  };
-
-  // ✅ CARDS ORGANIZADAS (NOTICIAS EN POSICIÓN ESTRELLA)
   const cards = [
+    { id: 'noticias', path: '/noticias', img: logoPSC }, // 👈 ESTA ES LA QUE FALTA
     { id: 'radio', path: '/radio', img: cardRadio },
     { id: 'camaras', path: '/camaras', img: cardCamaras }, 
-    { id: 'noticias', path: '/noticias', img: logoPSC }, // 👈 AQUÍ ESTÁ EL NOTICIERO AHORA
     { id: 'cantina', path: '/cantina', img: '/borrachos_play.png' }, 
     { id: 'tv', path: '/channels', img: cardTv },
     { id: 'movies', path: '/movies', img: cardMovies },
@@ -72,20 +54,9 @@ const Home = () => {
             <Link 
               key={card.id} 
               to={card.path} 
-              onMouseEnter={() => playCardSound(card.id)}
-              className="group relative flex-shrink-0 w-[85vw] md:w-[420px] aspect-[9/16] rounded-[3.5rem] overflow-hidden snap-center shadow-2xl transition-all duration-300 hover:scale-105 border border-white/5 bg-slate-900/50"
+              className="group relative flex-shrink-0 w-[85vw] md:w-[420px] aspect-[9/16] rounded-[3.5rem] overflow-hidden snap-center shadow-2xl transition-all duration-300 hover:scale-105 border border-white/5"
             >
-              {/* Contenedor para que el logo no se estire si es pequeño */}
-              <div className="absolute inset-0 flex items-center justify-center p-12 bg-gradient-to-b from-transparent to-black/60">
-                <img src={card.img} alt={card.id} className="max-w-full max-h-full object-contain group-hover:scale-110 transition-all duration-500" />
-              </div>
-              
-              {/* Etiqueta para que la gente sepa qué es cada card */}
-              <div className="absolute bottom-12 w-full text-center">
-                 <span className="text-xs font-black tracking-[0.3em] uppercase text-white/40 group-hover:text-amber-500 transition-colors">
-                   {card.id === 'noticias' ? 'PSC INFORMA' : ''}
-                 </span>
-              </div>
+              <img src={card.img} alt={card.id} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-500" />
             </Link>
           ))}
           <div className="w-40 flex-shrink-0"></div>
