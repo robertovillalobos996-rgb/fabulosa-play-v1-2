@@ -12,7 +12,6 @@ import cardAlabanza from '../assets/card.fabulosa-alabanza.jpg';
 import cardCamaras from '../assets/card de camaras.png'; 
 import cardVerano from '../assets/verano-fabulosa.png'; 
 import cardCentroMercadeo from '../assets/mercadeo.png'; 
-import logoPSC from '../assets/logo-psc.png'; 
 
 const Home = () => {
   const [fecha, setFecha] = useState(new Date());
@@ -23,7 +22,7 @@ const Home = () => {
   }, []);
 
   const cards = [
-    { id: 'noticias', path: '/noticias', img: logoPSC }, // 👈 ESTA ES LA QUE FALTA
+    { id: 'noticias', path: '/noticias', img: '/psc_imforma.png' }, // ✅ RUTA CORREGIDA A PUBLIC
     { id: 'radio', path: '/radio', img: cardRadio },
     { id: 'camaras', path: '/camaras', img: cardCamaras }, 
     { id: 'cantina', path: '/cantina', img: '/borrachos_play.png' }, 
