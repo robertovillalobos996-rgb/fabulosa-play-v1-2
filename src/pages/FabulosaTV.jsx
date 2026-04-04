@@ -2,12 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Send, Volume2, VolumeX, Maximize, Minimize, Cast, Dices, Search } from 'lucide-react';
 
-// === 🚀 VIDEOS E IMÁGENES PRINCIPALES ===
-import INTRO_SRC from "../assets/intro.mp4";
-import FONDO_TV_VIDEO from "../assets/fondotv.mp4";
-import FABULOSITO_VIDEO from "../assets/fabulosito-video.mp4";
+// === 🚀 ASSETS DE IMAGEN (Se mantienen como import) ===
 import LOGO_CANAL from "../assets/logo-fabulosa.png";
 import imgReproductor from '../assets/fabulosatvreproductor.png';
+
+// === 🎬 VIDEOS (Cambiados a ruta directa para evitar errores en Vercel) ===
+const INTRO_SRC = "/assets/intro.mp4";
+const FONDO_TV_VIDEO = "/assets/fondotv.mp4";
+const FABULOSITO_VIDEO = "/assets/fabulosito-video.mp4";
 
 // 🔑 TUS 14 LLAVES MAESTRAS DE YOUTUBE
 const YOUTUBE_API_KEYS = [
@@ -128,7 +130,7 @@ const FabulosaTV = () => {
 
             while (keyIndexRef.current < YOUTUBE_API_KEYS.length && !exito) {
                 const currentKey = YOUTUBE_API_KEYS[keyIndexRef.current];
-                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&q=${encodeURIComponent(terminoBusqueda + " video oficial -karaoke -live")}&type=video&videoCategoryId=10&videoEmbeddable=true&key=${currentKey}`;
+                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&q=${encodeURIComponent(terminoBusqueda + " video oficial -karaoke -live")}&type=video&videoEmbeddable=true&key=${currentKey}`;
                 
                 const response = await fetch(url);
                 if (response.status === 403 || response.status === 429) {
@@ -375,7 +377,7 @@ const FabulosaTV = () => {
                 {/* CONTENEDOR PRINCIPAL */}
                 <div className="flex-1 grid grid-cols-1 lg:grid-cols-4 gap-6 overflow-hidden h-full">
                     
-                    {/* 📺 REPRODUCTOR DE VIDEO (ADAPTADO A MÓVIL Y PC) */}
+                    {/* 📺 REPRODUCTOR DE VIDEO */}
                     <div ref={playerContainerRef} className="lg:col-span-3 relative bg-black rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl group flex justify-center items-center aspect-video md:aspect-auto md:h-full">
                         
                         <video ref={videoRef} src={currentSrc} className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${modo !== "MUSICA" ? "opacity-100 z-20 pointer-events-auto" : "opacity-0 -z-10 pointer-events-none"}`} autoPlay playsInline muted={mute} onEnded={() => { if(handleVideoEndRef.current) handleVideoEndRef.current() }} onError={() => { if(handleVideoEndRef.current) handleVideoEndRef.current() }}/>
