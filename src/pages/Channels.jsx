@@ -1,269 +1,288 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
-import { db } from "../firebase";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { ArrowLeft, Tv, AlertTriangle, RefreshCw, Loader2, Signal, Play, Search, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Play, Pause, Search, Tv, Volume2, VolumeX, Maximize, Settings, ShieldCheck, Loader2, Plus } from "lucide-react";
 import Hls from "hls.js";
 
-// ✅ Tu Logo Gigante
-import logoFabulosa from "../assets/logo_fabulosa.png";
+// IMPORTACIÓN DE TU BASE DE DATOS LIMPIA
+import { canalesTV } from "../data/canales_finales";
 
 const Channels = () => {
-  const [channels, setChannels] = useState([]);
-  const [current, setCurrent] = useState(null);
-  const [activeCat, setActiveCat] = useState("TODOS");
-  const [searchQuery, setSearchQuery] = useState(""); // Agregué el buscador
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(50); // Para que 1400 canales no den lag
+  // === 💰 LOGICA DE PUBLICIDAD (ADSENSE) ===
+  const ADSENSE_SLOT = "7869741603";
+  const AD_INTERVAL = 30 * 60 * 1000; 
+  const LONG_AD_DURATION = 12; 
+  const [longAdActive, setLongAdActive] = useState(false);
+  const [longAdTimer, setLongAdTimer] = useState(LONG_AD_DURATION);
 
+  // === ⚡ ESTADOS DE RENDIMIENTO (PARA QUE LA PAGINA VUELE) ===
+  const [displayLimit, setDisplayLimit] = useState(30); 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeCategory, setActiveCategory] = useState("Costa Rica");
+
+  // Estados principales
+  const [channels] = useState(canalesTV || []);
+  const [currentChannel, setCurrentChannel] = useState(
+    canalesTV.find(c => c.genre === "Costa Rica") || canalesTV[0]
+  );
+  
+  // Estados del reproductor
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [volume, setVolume] = useState(100);
+  const [isMuted, setIsMuted] = useState(false);
+  const [showControls, setShowControls] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const controlsTimeout = useRef(null);
   const videoRef = useRef(null);
   const hlsRef = useRef(null);
 
-  const PROXY_URL = "http://localhost:3001/video-proxy?url=";
-
-  // 1. CARGAR CANALES DE FIREBASE (Intacto)
   useEffect(() => {
-    const q = query(collection(db, "peliculas"), where("category", "==", "TV En Vivo"));
-    const unsub = onSnapshot(q, (snap) => {
-      const list = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setChannels(list);
-    });
-    return () => unsub();
-  }, []);
+    setDisplayLimit(30);
+  }, [activeCategory, searchTerm]);
 
-  // 2. FILTRO INTELIGENTE + BUSCADOR (Combinado para máxima velocidad)
-  const displayedChannels = useMemo(() => {
-    const palabrasEspanol = /latino|español|es|ar|mx|cr|cl|pe|co|tv|canal|deportes|noticias|cine|mexico|argentina|colombia|chile|peru|costa rica/i;
+  // 1. 🕒 TEMPORIZADOR DE PUBLICIDAD
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentChannel) {
+        setLongAdActive(true);
+        setLongAdTimer(LONG_AD_DURATION);
+      }
+    }, AD_INTERVAL);
+    return () => clearInterval(interval);
+  }, [currentChannel]);
 
-    let filtrados = channels;
-
-    // Filtro por idioma
-    if (activeCat === "ESPAÑOL") {
-      filtrados = filtrados.filter(ch => palabrasEspanol.test(ch.title));
-    } else if (activeCat === "INTERNACIONAL") {
-      filtrados = filtrados.filter(ch => !palabrasEspanol.test(ch.title));
+  useEffect(() => {
+    let timer;
+    if (longAdActive && longAdTimer > 0) {
+      timer = setInterval(() => setLongAdTimer(prev => prev - 1), 1000);
     }
+    return () => clearInterval(timer);
+  }, [longAdActive, longAdTimer]);
 
-    // Filtro por el buscador
-    if (searchQuery) {
-      filtrados = filtrados.filter(ch => ch.title?.toLowerCase().includes(searchQuery.toLowerCase()));
-    }
-
-    return filtrados;
-  }, [channels, activeCat, searchQuery]);
-
-  // Cortamos para mostrar de 50 en 50
-  const visibleChannelsList = displayedChannels.slice(0, visibleCount);
-
-  // 3. REPRODUCTOR HLS DE ALTA FIDELIDAD (Intacto)
-  const selectChannel = (channel) => {
-    setCurrent(channel);
-    setError(false);
-    setLoading(true);
-
-    if (hlsRef.current) {
-      hlsRef.current.destroy();
-    }
-
+  // 2. 🚀 MOTOR NASA (HLS Ultra-Potente)
+  useEffect(() => {
+    if (!currentChannel || !videoRef.current) return;
     const video = videoRef.current;
-    if (!video) return;
+    setIsLoading(true);
 
-    const finalUrl = `${PROXY_URL}${encodeURIComponent(channel.url)}`;
+    if (hlsRef.current) hlsRef.current.destroy();
+
+    const configNASA = {
+      enableWorker: true,
+      lowLatencyMode: false,
+      backBufferLength: 90,
+      manifestLoadingMaxRetry: 25, 
+      manifestLoadingRetryDelay: 500,
+      levelLoadingMaxRetry: 20,
+      fragLoadingMaxRetry: 20,
+      maxBufferLength: 60,
+      maxMaxBufferLength: 120,
+      maxBufferSize: 80 * 1000 * 1000, 
+      xhrSetup: (xhr) => { xhr.withCredentials = false; }
+    };
 
     if (Hls.isSupported()) {
-      const hls = new Hls({ debug: false, enableWorker: true, lowLatencyMode: true });
+      const hls = new Hls(configNASA);
       hlsRef.current = hls;
-      hls.loadSource(finalUrl);
+      hls.loadSource(currentChannel.url);
       hls.attachMedia(video);
-      
+
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        setLoading(false);
-        video.play().catch(e => console.log("Auto-play prevented", e));
+        setIsLoading(false);
+        if (isPlaying) video.play().catch(() => setIsPlaying(false));
       });
 
       hls.on(Hls.Events.ERROR, (event, data) => {
         if (data.fatal) {
-          setError(true);
-          setLoading(false);
-          hls.destroy();
+          switch (data.type) {
+            case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
+            case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
+            default: 
+                hls.destroy();
+                setTimeout(() => setCurrentChannel({...currentChannel}), 2000);
+                break;
+          }
         }
       });
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = finalUrl;
-      video.addEventListener("loadedmetadata", () => {
-        setLoading(false);
-        video.play().catch(e => console.log("Auto-play prevented", e));
+      video.src = currentChannel.url;
+      video.addEventListener('loadedmetadata', () => {
+        setIsLoading(false);
+        video.play();
       });
-      video.addEventListener("error", () => { setError(true); setLoading(false); });
     }
+  }, [currentChannel]);
+
+  // 3. ⌨️ LÓGICA DE CONTROLES
+  useEffect(() => {
+    if(!videoRef.current) return;
+    if (isPlaying) videoRef.current.play().catch(() => setIsPlaying(false));
+    else videoRef.current.pause();
+    videoRef.current.volume = isMuted ? 0 : volume / 100;
+  }, [isPlaying, volume, isMuted]);
+
+  const handleMouseMove = () => {
+    setShowControls(true);
+    if (controlsTimeout.current) clearTimeout(controlsTimeout.current);
+    controlsTimeout.current = setTimeout(() => setShowControls(false), 3000);
   };
 
+  const filteredChannels = useMemo(() => {
+    return channels.filter(c => 
+      (activeCategory === "Todos" || c.genre === activeCategory) &&
+      c.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [channels, activeCategory, searchTerm]);
+
+  const visibleChannels = useMemo(() => {
+    return filteredChannels.slice(0, displayLimit);
+  }, [filteredChannels, displayLimit]);
+
+  const categories = useMemo(() => ["Todos", ...new Set(channels.map(c => c.genre))].sort(), [channels]);
+
   return (
-    // ESTRUCTURA MAESTRA: h-screen y overflow-hidden para parecer una App nativa
-    <div className="flex flex-col h-screen bg-black text-white font-sans overflow-hidden selection:bg-rose-700">
+    <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden">
       
-      {/* 🍷 1. HEADER FIJO (Estilo Netflix/Vino Vidrio) */}
-      <div className="flex-none flex items-center justify-between px-6 py-4 bg-gradient-to-b from-[#0a0202] to-black border-b border-rose-900/30 shadow-lg shadow-rose-950/20 z-20">
+      {/* NAVBAR */}
+      <nav className={`fixed top-0 w-full z-[100] bg-black/80 backdrop-blur-xl px-4 md:px-8 py-3 flex items-center justify-between border-b border-white/5 transition-opacity duration-500 ${showControls ? 'opacity-100' : 'opacity-0 md:opacity-100'}`}>
         <div className="flex items-center gap-4">
-          <Link to="/" className="p-2 bg-white/5 rounded-full hover:bg-rose-900/50 hover:text-rose-400 transition-colors border border-white/5">
-            <ArrowLeft size={20} />
-          </Link>
-          <img src={logoFabulosa} alt="Fabulosa Play" className="h-14 md:h-16 w-auto object-contain drop-shadow-[0_0_15px_rgba(159,18,57,0.6)]" />
-        </div>
-
-        {/* Buscador Integrado */}
-        <div className="relative w-full max-w-sm hidden md:block">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 w-4 h-4" />
-          <input
-            type="text"
-            placeholder="Buscar canal..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-white/5 border border-rose-900/40 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-rose-700/50 transition-all placeholder:text-white/20"
-          />
-        </div>
-      </div>
-
-      {/* ÁREA DE CONTENIDO (Se divide entre Reproductor Fijo y Lista Scrolleable) */}
-      <div className="flex-1 flex flex-col overflow-hidden bg-[#050505]">
-        
-        {/* 📺 2. REPRODUCTOR FIJO */}
-        <div className="flex-none w-full max-w-5xl mx-auto px-4 pt-4 pb-2 z-10">
-          <div className="relative aspect-video bg-[#0a0202] rounded-2xl overflow-hidden border border-rose-950/60 shadow-[0_15px_50px_rgba(159,18,57,0.15)] group">
-            {current ? (
-              <>
-                <video ref={videoRef} className="w-full h-full object-contain bg-black" controls autoPlay crossOrigin="anonymous" />
-                
-                {/* Info Overlay Premium */}
-                <div className="absolute top-4 right-4 bg-rose-700/90 backdrop-blur-sm text-white text-[10px] font-black tracking-widest px-3 py-1.5 rounded-full flex items-center gap-2 shadow-[0_0_15px_rgba(225,29,72,0.5)]">
-                  <Signal size={12} className="animate-pulse" /> SEÑAL MASTER
-                </div>
-
-                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                   <h1 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter drop-shadow-lg">{current.title}</h1>
-                </div>
-
-                {loading && (
-                  <div className="absolute inset-0 bg-black/90 flex flex-col items-center justify-center z-10 backdrop-blur-sm">
-                    <Loader2 className="animate-spin text-rose-600 mb-4" size={40} />
-                    <p className="text-white font-black tracking-[0.4em] uppercase text-xs animate-pulse">Desencriptando...</p>
-                  </div>
-                )}
-                {error && (
-                  <div className="absolute inset-0 bg-black/95 flex flex-col items-center justify-center z-10">
-                    <AlertTriangle className="text-yellow-500 mb-4 drop-shadow-lg" size={48} />
-                    <p className="text-white font-black text-lg tracking-widest uppercase mb-6">Señal Interrumpida</p>
-                    <button onClick={() => selectChannel(current)} className="flex items-center gap-2 bg-rose-700 hover:bg-rose-600 px-6 py-3 rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(159,18,57,0.4)]">
-                      <RefreshCw size={16} /> Forzar Conexión
-                    </button>
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0a0202]">
-                <div className="w-24 h-24 rounded-full bg-rose-950/30 flex items-center justify-center mb-6 border border-rose-900/50 shadow-inner">
-                  <Tv size={40} className="text-rose-700/50" />
-                </div>
-                <p className="text-rose-700/50 font-black tracking-[0.5em] uppercase text-sm">Sistema en Espera</p>
-              </div>
-            )}
+          <Link to="/" className="p-2 hover:bg-red-600 rounded-full transition-all text-white"><ArrowLeft size={22} /></Link>
+          <div className="flex items-center gap-1 font-black text-2xl tracking-tighter italic">
+             <Tv className="text-red-600" size={30} fill="currentColor"/>
+             <span className="text-white">CANALES<span className="text-red-600 font-light">PLAY</span></span>
           </div>
         </div>
+        <div className="relative flex-1 max-w-xl mx-10 hidden md:block">
+            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+            <input type="text" placeholder="¿Qué canal quieres ver?" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} 
+            className="w-full bg-white/5 border border-white/10 rounded-full py-2.5 pl-12 pr-6 focus:border-red-600 focus:bg-black transition-all outline-none text-sm" />
+        </div>
+      </nav>
 
-        {/* 🏷️ 3. CATEGORÍAS FIJAS */}
-        <div className="flex-none px-4 py-2 z-10 max-w-5xl mx-auto w-full">
-          <div className="flex gap-3 overflow-x-auto pb-2 custom-scrollbar">
-            {["TODOS", "ESPAÑOL", "INTERNACIONAL"].map(cat => (
-              <button 
-                key={cat}
-                onClick={() => { setActiveCat(cat); setVisibleCount(50); }}
-                className={`px-8 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap border ${
-                  activeCat === cat 
-                  ? 'bg-rose-700 text-white border-rose-500 shadow-[0_0_20px_rgba(159,18,57,0.5)] scale-105' 
-                  : 'bg-white/5 border-white/5 text-white/40 hover:text-white hover:bg-white/10 hover:border-white/20'
-                }`}
-              >
-                {cat}
+      {/* REPRODUCTOR NASA */}
+      <div 
+        className="relative group w-full aspect-video md:h-[82vh] bg-black mt-[68px] overflow-hidden flex items-center justify-center border-b border-white/5"
+        onMouseMove={handleMouseMove}
+        style={{ cursor: showControls ? 'default' : 'none' }}
+      >
+        {isLoading && !longAdActive && (
+            <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black">
+                <Loader2 className="text-red-600 animate-spin mb-4" size={50} />
+                <p className="text-[10px] font-black tracking-[0.5em] uppercase text-white/50 animate-pulse">Sintonizando Satélite NASA...</p>
+            </div>
+        )}
+
+        <video ref={videoRef} className="w-full h-full object-contain" playsInline autoPlay />
+
+        {longAdActive && (
+            <div className="absolute inset-0 z-[110] bg-black/98 flex items-center justify-center p-4">
+                <div className="w-full max-w-2xl bg-zinc-900 rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+                    <div className="bg-red-600 py-1.5 text-center text-[10px] font-black uppercase tracking-widest">Publicidad de mantenimiento</div>
+                    <div className="aspect-video bg-black flex items-center justify-center">
+                        <ins className="adsbygoogle" 
+                             style={{ display: 'block', width: '100%', height: '100%' }} 
+                             data-ad-client="ca-pub-9326186822962530" 
+                             data-ad-slot={ADSENSE_SLOT} 
+                             data-ad-format="rectangle"></ins>
+                    </div>
+                    <div className="p-4 flex justify-between items-center bg-zinc-950">
+                        <span className="text-[10px] font-bold text-gray-500 uppercase">La señal vuelve en breve...</span>
+                        {longAdTimer > 0 ? (
+                            <div className="text-white font-black px-5 py-1 bg-zinc-800 rounded-full border border-white/5">{longAdTimer}s</div>
+                        ) : (
+                            <button onClick={() => setLongAdActive(false)} className="bg-white text-black px-6 py-2 rounded-full font-black text-[10px] uppercase hover:bg-red-600 hover:text-white transition-all">Omitir Anuncio ⏭️</button>
+                        )}
+                    </div>
+                </div>
+            </div>
+        )}
+
+        {/* CONTROLES TRASPARENTES (Corregido: ahora cierra con div) */}
+        <div className={`absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/90 to-transparent transition-all duration-500 z-30 ${showControls ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="flex items-center justify-between max-w-[1800px] mx-auto">
+            <div className="flex items-center gap-6">
+              <button onClick={() => setIsPlaying(!isPlaying)} className="hover:text-red-600 transition-transform active:scale-90 text-white">
+                {isPlaying ? <Pause fill="currentColor" size={28}/> : <Play fill="currentColor" size={28}/>}
               </button>
-            ))}
-          </div>
-        </div>
-
-        {/* 📜 4. LISTA DE CANALES MAGIS/NETFLIX STYLE */}
-        <div className="flex-1 overflow-y-auto px-4 pb-10 custom-scrollbar max-w-5xl mx-auto w-full mt-2">
-          
-          {/* Formato de LISTA (1 a 3 columnas anchas según la pantalla) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            {visibleChannelsList.map((ch, index) => (
-              <div 
-                key={ch.id} 
-                onClick={() => selectChannel(ch)} 
-                className={`flex items-center gap-4 p-3 rounded-2xl cursor-pointer transition-all duration-300 border group ${
-                  current?.id === ch.id 
-                  ? 'bg-rose-950/40 border-rose-600 shadow-[0_0_15px_rgba(159,18,57,0.3)]' 
-                  : 'bg-[#0a0a0a] border-white/5 hover:bg-[#111] hover:border-white/20'
-                }`}
-              >
-                {/* Logo Pequeño Estilo Guía */}
-                <div className="w-16 h-12 flex-shrink-0 bg-black rounded-xl overflow-hidden flex items-center justify-center border border-white/5 group-hover:border-rose-900/50 transition-colors relative">
-                  {ch.img ? (
-                    <img src={ch.img} className="w-full h-full object-contain p-1 filter brightness-90 group-hover:brightness-110" alt={ch.title} />
-                  ) : (
-                    <Tv className="opacity-20 w-5 h-5 text-white" />
-                  )}
-                  {/* Icono de Play Oculto que aparece en Hover */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                    <Play className="w-5 h-5 text-white fill-current drop-shadow-lg" />
-                  </div>
-                </div>
-                
-                {/* Nombre del Canal */}
-                <div className="flex-1 min-w-0">
-                  <h3 className={`text-sm font-black uppercase truncate tracking-tighter transition-colors ${
-                    current?.id === ch.id ? 'text-rose-400' : 'text-white/90 group-hover:text-white'
-                  }`}>
-                    {ch.title}
-                  </h3>
-                  <p className="text-[9px] text-white/30 font-bold uppercase tracking-widest mt-0.5">CH {index + 1}</p>
-                </div>
-
-                {/* Status Activo */}
-                {current?.id === ch.id && (
-                  <div className="pr-2 text-rose-500 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 bg-rose-500 rounded-full animate-pulse"></span>
-                    <span className="text-[8px] font-black uppercase tracking-widest">ON</span>
-                  </div>
-                )}
+              
+              <div className="flex items-center gap-3 group/vol bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/5 transition-all">
+                <button onClick={() => setIsMuted(!isMuted)}>
+                    {isMuted || volume === 0 ? <VolumeX size={18}/> : <Volume2 size={18}/>}
+                </button>
+                <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(e.target.value)} 
+                className="w-0 group-hover/vol:w-20 transition-all accent-red-600 h-1 cursor-pointer" />
               </div>
-            ))}
-          </div>
-          
-          {/* Botón Cargar Más (Previene el lag de los 1400 canales) */}
-          {displayedChannels.length > visibleCount && (
-            <button 
-              onClick={() => setVisibleCount(prev => prev + 50)}
-              className="w-full mt-8 py-4 bg-gradient-to-r from-transparent via-white/5 to-transparent border-y border-white/10 text-rose-700/70 font-black tracking-widest text-[10px] uppercase hover:text-rose-500 hover:border-rose-900/50 transition-all"
-            >
-              ⏬ Revelar más canales ⏬
-            </button>
-          )}
 
-          {displayedChannels.length === 0 && (
-             <div className="text-center mt-20 p-10 border border-white/5 bg-white/5 rounded-3xl">
-               <Tv className="w-16 h-16 text-white/10 mx-auto mb-4" />
-               <p className="text-white/40 text-xs font-black tracking-widest uppercase">Sin resultados</p>
-             </div>
-          )}
+              <div className="px-3 py-1 bg-red-600/10 border border-red-600/20 rounded text-[9px] font-black text-red-500 uppercase tracking-widest flex items-center gap-2">
+                 <div className="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse"></div> En Vivo
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-4 text-white/30">
+              <span className="text-[9px] font-bold tracking-tighter hidden sm:block">ENGINE: NASA 2.0_STABLE</span>
+              <Maximize size={20} className="hover:scale-110 cursor-pointer hover:text-white" onClick={() => videoRef.current.requestFullscreen()} />
+            </div>
+          </div>
         </div>
+      </div> {/* <--- Aquí estaba el error, ahora es un div correctamente cerrado */}
+
+      {/* CATEGORIAS */}
+      <div className="px-6 md:px-16 pt-10 pb-6 overflow-x-auto no-scrollbar flex gap-2">
+          {categories.map(cat => (
+            <button key={cat} onClick={() => { setActiveCategory(cat); setSearchTerm(""); }}
+              className={`px-6 py-2 rounded-full text-[10px] font-black tracking-widest uppercase transition-all whitespace-nowrap border ${activeCategory === cat && !searchTerm ? 'bg-red-600 border-red-600 text-white shadow-lg' : 'bg-zinc-900 border-white/5 text-gray-500 hover:text-white'}`}>
+              {cat}
+            </button>
+          ))}
       </div>
 
-      {/* ESTILOS DEL SCROLLBAR (Modificados a Vino) */}
+      {/* GRILLA DE CANALES OPTIMIZADA */}
+      <div className="px-6 md:px-16 py-6 max-w-[2200px] mx-auto min-h-screen">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
+          {visibleChannels.map(channel => (
+            <div key={channel.id} onClick={() => { setCurrentChannel(channel); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+                 className="cursor-pointer group">
+              <div className={`aspect-video rounded-2xl overflow-hidden mb-3 relative border-2 transition-all duration-300 ${currentChannel?.id === channel.id ? 'border-red-600 bg-black scale-[1.02]' : 'border-white/5 bg-zinc-900/50 group-hover:border-red-600/30'}`}>
+                <img 
+                  src={channel.logo || `https://ui-avatars.com/api/?name=${encodeURIComponent(channel.title)}&background=111&color=fff&size=512&bold=true`} 
+                  loading="lazy"
+                  className="w-full h-full object-contain p-6 opacity-60 group-hover:opacity-100 transition-all duration-500" 
+                  alt={channel.title} 
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <Play fill="white" size={20} className="text-white" />
+                </div>
+              </div>
+              <h3 className="font-black text-xs truncate group-hover:text-red-500 transition-colors uppercase italic px-1">{channel.title}</h3>
+              <div className="flex justify-between items-center px-1 mt-0.5">
+                  <span className="text-[9px] text-gray-600 font-bold uppercase tracking-widest">{channel.genre}</span>
+                  <span className="text-[8px] font-black text-red-600/20">CH-{channel.id.replace('tv-', '')}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {filteredChannels.length > displayLimit && (
+            <div className="flex justify-center py-16">
+                <button 
+                    onClick={() => setDisplayLimit(prev => prev + 40)}
+                    className="flex items-center gap-3 bg-red-600 hover:bg-red-700 px-12 py-4 rounded-full font-black uppercase text-xs tracking-[0.2em] shadow-2xl transition-all hover:scale-110 active:scale-95"
+                >
+                    <Plus size={18} /> Cargar más canales ({filteredChannels.length - displayLimit} restantes)
+                </button>
+            </div>
+        )}
+      </div>
+
+      <footer className="py-10 border-t border-white/5 text-center">
+         <p className="text-[10px] text-gray-600 font-black uppercase tracking-[0.5em]">Fabulosa Play Premium • 2026</p>
+      </footer>
+
       <style>{`
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(159, 18, 57, 0.3); border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(159, 18, 57, 0.8); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        video { outline: none; background: #000; }
+        input[type=range] { -webkit-appearance: none; background: rgba(255,255,255,0.05); border-radius: 10px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 12px; width: 12px; border-radius: 50%; background: #dc2626; cursor: pointer; border: 1px solid white; }
       `}</style>
     </div>
   );

@@ -10,3 +10,5 @@ build/
 *.exe
 ib_logfile*
 serviceAccountKey.json
+.vercel
+.env*.local

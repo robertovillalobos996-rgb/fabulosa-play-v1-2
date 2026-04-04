@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Play, Star, Clock, Search, Film, LayoutGrid, Loader2, Megaphone } from "lucide-react";
+import { ArrowLeft, Play, Star, Clock, Search, Film, LayoutGrid, Loader2 } from "lucide-react";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -9,10 +9,14 @@ const Movies = () => {
   const [activeCategory, setActiveCategory] = useState("Acción");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  
-  // === ESTADOS PARA EL COMERCIAL DE 3 SEGUNDOS ===
-  const [adPlaying, setAdPlaying] = useState(false);
-  const [adTime, setAdTime] = useState(3);
+
+  // === 💰 ESTADOS PARA EL COMERCIAL DE 30 MINUTOS (ADSENSE) ===
+  const ADSENSE_SLOT = "7869741603";
+  const AD_INTERVAL = 30 * 60 * 1000; // 30 minutos
+  const LONG_AD_DURATION = 12; // 12 segundos
+
+  const [longAdActive, setLongAdActive] = useState(false);
+  const [longAdTimer, setLongAdTimer] = useState(LONG_AD_DURATION);
 
   // 🔑 LAS 14 LLAVES MAESTRAS DE YOUTUBE (ROTACIÓN AUTOMÁTICA)
   const YOUTUBE_API_KEYS = [
@@ -35,7 +39,7 @@ const Movies = () => {
   // 🔄 REFERENCIA PARA SABER QUÉ LLAVE ESTAMOS USANDO
   const keyIndexRef = useRef(0);
 
-  // === LISTA DE CATEGORÍAS EXTENDIDA (Incluye Narcos) ===
+  // === LISTA DE CATEGORÍAS EXTENDIDA ===
   const categories = [
     "Acción", "Narcos", "Terror", "Comedia", "Documentales", 
     "Ciencia Ficción", "Infantil", "Animación", "Suspenso", "Romance",
@@ -68,7 +72,6 @@ const Movies = () => {
         }
       }
 
-      // Si nos gastamos las 14 llaves (casi imposible, pero por si acaso)
       if (!exito) {
         setErrorMsg("Los servidores de películas están súper saturados en este momento. Intenta de nuevo más tarde.");
         setMovies([]);
@@ -99,16 +102,40 @@ const Movies = () => {
     fetchMoviesFromYouTube(activeCategory);
   }, [activeCategory]);
 
-  // CONTADOR DEL COMERCIAL
+  // 💰 LÓGICA DEL COMERCIAL DE 30 MINUTOS (ADSENSE)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (currentMovie) {
+        setLongAdActive(true);
+        setLongAdTimer(LONG_AD_DURATION);
+      }
+    }, AD_INTERVAL);
+    return () => clearInterval(interval);
+  }, [currentMovie]);
+
   useEffect(() => {
     let timer;
-    if (adPlaying && adTime > 0) {
-      timer = setTimeout(() => setAdTime(adTime - 1), 1000);
-    } else if (adPlaying && adTime === 0) {
-      setAdPlaying(false);
+    if (longAdActive && longAdTimer > 0) {
+      timer = setInterval(() => setLongAdTimer(prev => prev - 1), 1000);
     }
-    return () => clearTimeout(timer);
-  }, [adPlaying, adTime]);
+    return () => clearInterval(timer);
+  }, [longAdActive, longAdTimer]);
+
+  useEffect(() => {
+    if (longAdActive) {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error("AdSense Error:", e);
+      }
+    }
+  }, [longAdActive]);
+
+  const handleSkipLongAd = () => {
+    if (longAdTimer <= 0) {
+      setLongAdActive(false);
+    }
+  };
 
   // EL BUSCADOR
   const handleSearch = (e) => {
@@ -118,12 +145,11 @@ const Movies = () => {
     }
   };
 
-  // CUANDO EL USUARIO TOCA UNA PELÍCULA (Dispara el anuncio)
+  // CUANDO EL USUARIO TOCA UNA PELÍCULA
   const selectMovie = (movie) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setCurrentMovie(movie);
-    setAdTime(3); // Tiempo del anuncio en segundos
-    setAdPlaying(true);
+    setLongAdActive(false); // Resetea el comercial de 30 mins
   };
 
   return (
@@ -186,33 +212,46 @@ const Movies = () => {
           <div className="mb-12 animate-fade-in-down">
             <div className="relative w-full aspect-video bg-black rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(220,38,38,0.3)]">
               
-              {adPlaying ? (
-                // 💰 PANTALLA DEL COMERCIAL (3 SEGUNDOS)
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-zinc-900 to-black z-50">
-                  <Megaphone size={48} className="text-yellow-500 mb-4 animate-bounce" />
-                  <h2 className="text-3xl font-black text-white tracking-widest uppercase mb-2">Publicidad Fabulosa</h2>
-                  <p className="text-gray-400 font-bold tracking-widest uppercase text-sm mb-6">Tu película comenzará en breve...</p>
-                  <div className="w-24 h-24 rounded-full border-4 border-red-600 flex items-center justify-center bg-black/50 shadow-[0_0_30px_rgba(220,38,38,0.6)]">
-                    <span className="text-5xl font-black text-white">{adTime}</span>
+              {/* === 💰 COMERCIAL DE 30 MINUTOS FLOTANTE === */}
+              {longAdActive && (
+                <div className="absolute inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center p-6 backdrop-blur-sm">
+                  <div className="w-full max-w-4xl bg-[#181818] rounded-xl border border-red-600 shadow-2xl overflow-hidden">
+                    <div className="bg-red-700 py-2 text-center text-xs font-bold uppercase tracking-widest text-white/90">
+                      Espacio Publicitario
+                    </div>
+                    <div className="bg-black py-8 flex justify-center items-center min-h-[300px]">
+                      <ins className="adsbygoogle"
+                           style={{ display: 'block', width: '100%', height: '280px' }}
+                           data-ad-client="ca-pub-9326186822962530"
+                           data-ad-slot={ADSENSE_SLOT}
+                           data-ad-format="rectangle"></ins>
+                    </div>
+                    <div className="p-6 flex justify-between items-center bg-zinc-900 border-t border-white/10">
+                      <span className="text-white/40 text-xs font-bold">La película continuará pronto...</span>
+                      {longAdTimer > 0 ? (
+                        <div className="text-white font-black text-xl animate-pulse bg-zinc-800 px-6 py-2 rounded-full">{longAdTimer}s</div>
+                      ) : (
+                        <button onClick={handleSkipLongAd} className="bg-white text-black px-10 py-3 rounded-full font-black uppercase text-sm hover:bg-red-600 hover:text-white transition-all">
+                          Omitir Anuncio ⏭️
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
-              ) : (
-                // 🎬 LA PELÍCULA (CON CANDADO SANDBOX)
-                <>
-                  <iframe 
-                    className="w-full h-full relative z-0" 
-                    src={`https://www.youtube.com/embed/${currentMovie.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1&fs=1`} 
-                    title={currentMovie.title} 
-                    frameBorder="0" 
-                    sandbox="allow-scripts allow-same-origin allow-presentation"
-                    allowFullScreen>
-                  </iframe>
-                  <div className="absolute top-4 left-4 flex gap-2 pointer-events-none z-20">
-                    <span className="bg-red-600/90 backdrop-blur text-white text-[10px] font-black tracking-widest px-3 py-1.5 rounded-md shadow-lg">NOW PLAYING</span>
-                    <span className="bg-black/80 backdrop-blur text-gray-300 text-[10px] font-bold tracking-widest px-3 py-1.5 rounded-md border border-white/10 uppercase">{activeCategory}</span>
-                  </div>
-                </>
               )}
+
+              <iframe 
+                className="w-full h-full relative z-0" 
+                src={`https://www.youtube.com/embed/${currentMovie.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1&fs=1`} 
+                title={currentMovie.title} 
+                frameBorder="0" 
+                sandbox="allow-scripts allow-same-origin allow-presentation"
+                allowFullScreen>
+              </iframe>
+              <div className="absolute top-4 left-4 flex gap-2 pointer-events-none z-20">
+                <span className="bg-red-600/90 backdrop-blur text-white text-[10px] font-black tracking-widest px-3 py-1.5 rounded-md shadow-lg">NOW PLAYING</span>
+                <span className="bg-black/80 backdrop-blur text-gray-300 text-[10px] font-bold tracking-widest px-3 py-1.5 rounded-md border border-white/10 uppercase">{activeCategory}</span>
+              </div>
             </div>
             
             <div className="mt-4 flex flex-col md:flex-row md:items-center justify-between bg-zinc-900/40 p-6 rounded-2xl border border-white/5 gap-4">

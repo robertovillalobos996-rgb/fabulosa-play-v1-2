@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "fabulosa-play-app"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }
