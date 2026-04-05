@@ -6,7 +6,8 @@ import { ArrowLeft, Volume2, VolumeX, Maximize, Minimize, Sparkles, Play, Monito
 import backgroundImage from '../assets/5d9d5b49-4a20-4648-ad07-873961815913.png';
 import logoImage from '../assets/logo_fabulosa.png'; 
 
-const AUDIO_STREAM_URL = "https://solo-cooling-zen-spot.trycloudflare.com/;"; 
+// 📡 ENLACE DE RADIO ACTUALIZADO (¡NO CERRAR EL CMD DEL TÚNEL!)
+const AUDIO_STREAM_URL = "https://impressed-distribute-commercial-browsing.trycloudflare.com/;"; 
 
 // 🔑 TUS 14 API KEYS (ROTACIÓN ACTIVA)
 const YOUTUBE_API_KEYS = [
@@ -133,17 +134,9 @@ const Camaras = () => {
             </Link>
 
             <div className="flex-1 flex flex-col items-center p-4 lg:p-6 mt-16 relative z-40 overflow-y-auto">
-                
-                {/* 📦 CONTENEDOR INTELIGENTE: Column en celular, Row en 2XL */}
                 <div className="flex flex-col 2xl:flex-row items-center justify-center gap-6 w-full max-w-[1750px]">
-                    
-                    {/* 📺 VIDEO PRINCIPAL (3 Minutos) */}
-                    <div 
-                        ref={playerContainerRef} 
-                        className={`relative group bg-black overflow-hidden transition-all duration-700 shadow-[0_0_100px_rgba(0,0,0,0.8)] border border-white/10 ${isFullscreen ? 'w-screen h-screen rounded-0' : 'w-full 2xl:flex-1 aspect-video rounded-[2.5rem]'}`}
-                    >
+                    <div ref={playerContainerRef} className={`relative group bg-black overflow-hidden transition-all duration-700 shadow-[0_0_100px_rgba(0,0,0,0.8)] border border-white/10 ${isFullscreen ? 'w-screen h-screen rounded-0' : 'w-full 2xl:flex-1 aspect-video rounded-[2.5rem]'}`}>
                         <audio ref={audioRef} />
-
                         {!isPlaying ? (
                             <div className="absolute inset-0 z-[60] flex flex-col items-center justify-center bg-black/95 cursor-pointer" onClick={handleStartLive}>
                                 <div className="p-12 rounded-full bg-cyan-500/10 border-2 border-cyan-500 text-cyan-500 animate-pulse shadow-[0_0_80px_rgba(6,182,212,0.3)]">
@@ -153,23 +146,15 @@ const Camaras = () => {
                         ) : (
                             <>
                                 <div className="absolute inset-0 z-30 bg-transparent"></div>
-                                <iframe 
-                                    className="w-full h-full pointer-events-none" 
-                                    src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&key=${YOUTUBE_API_KEYS[keyIndex]}`} 
-                                    frameBorder="0" 
-                                    allow="autoplay; encrypted-media"
-                                    sandbox="allow-scripts allow-same-origin"
-                                ></iframe>
+                                <iframe className="w-full h-full pointer-events-none" src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&key=${YOUTUBE_API_KEYS[keyIndex]}`} frameBorder="0" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin"></iframe>
                             </>
                         )}
-
                         <div className="absolute top-6 right-6 z-50 flex flex-col items-end gap-2">
                             <img src={logoImage} alt="Logo" className="w-28 md:w-56 drop-shadow-2xl" />
                             <div className="px-3 py-1 bg-black/60 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl">
                                 <span className="text-white font-black text-sm md:text-3xl tabular-nums drop-shadow-md">{currentTime}</span>
                             </div>
                         </div>
-
                         {isPlaying && (
                             <div className="absolute bottom-0 left-0 w-full p-8 flex items-center justify-between z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 to-transparent">
                                 <div className="flex items-center gap-4 bg-black/60 backdrop-blur-xl px-4 py-2 rounded-full border border-white/10 shadow-2xl">
@@ -184,30 +169,20 @@ const Camaras = () => {
                             </div>
                         )}
                     </div>
-
-                    {/* 🚀 BANNER VERTICAL (Visible en todo dispositivo, se apila en celular) */}
                     {!isFullscreen && (
                         <div className="flex w-full 2xl:w-[400px] h-[300px] md:h-[550px] flex-col animate-fade-in-long">
                             <div className="flex-1 bg-black/40 backdrop-blur-3xl rounded-[2rem] border border-white/10 overflow-hidden shadow-2xl relative">
-                                <img 
-                                    src={VERTICAL_ADS[vAdIndex]} 
-                                    className="w-full h-full object-contain opacity-100 transition-all duration-700" 
-                                    alt="Publicidad Vertical" 
-                                    onError={(e) => e.target.src = 'https://via.placeholder.com/400x800?text=Espacio+Disponible'}
-                                />
+                                <img src={VERTICAL_ADS[vAdIndex]} className="w-full h-full object-contain opacity-100 transition-all duration-700" alt="Publicidad Vertical" onError={(e) => e.target.src = 'https://via.placeholder.com/400x800?text=Espacio+Disponible'} />
                             </div>
                         </div>
                     )}
                 </div>
-
-                {/* 📣 PUBLICIDAD HORIZONTAL (Responsive: Stack en celular) */}
                 <div className="w-full max-w-6xl flex flex-col md:flex-row gap-6 mt-8 animate-fade-in-long">
                     <div className="flex-1 bg-black/50 backdrop-blur-2xl rounded-[2rem] p-5 border border-white/10 flex flex-col justify-center shadow-xl overflow-hidden min-h-[120px]">
                       <span className="text-cyan-400 font-bold text-[8px] uppercase tracking-[0.3em] mb-1 text-center md:text-left">ESPACIO PUBLICITARIO</span>
                       <h3 className="text-white font-black text-lg md:text-2xl uppercase tracking-tighter leading-tight text-center md:text-left">ANUNCIA CON NOSOTROS</h3>
                       <a href="tel:64035313" className="text-cyan-400 font-black text-xl md:text-3xl mt-1 block text-center md:text-left">6403-5313</a>
                     </div>
-
                     <div className="w-full md:w-2/5 h-[150px] md:h-[160px] rounded-[2rem] overflow-hidden border border-white/10 bg-black flex items-center justify-center relative shadow-xl">
                         {ADS[adIndex].type === 'image' ? (
                             <img src={ADS[adIndex].url} className="w-full h-full object-contain" alt="Anuncio" />
@@ -217,15 +192,12 @@ const Camaras = () => {
                     </div>
                 </div>
             </div>
-
-            {/* MARQUESINA (Pie de página) */}
             <div className="w-full bg-black/95 border-t border-white/10 py-4 z-50">
                 <div className="whitespace-nowrap flex gap-12 text-white/70 font-bold uppercase text-[10px] tracking-[0.3em] animate-marquee">
                     <span className="flex items-center gap-2"><Sparkles size={14} className="text-cyan-400" /> Fabulosa Play: Cámaras en Vivo</span>
                     <span className="flex items-center gap-2 text-cyan-400"><Sparkles size={14} /> Transmisión Oficial de Fabulosa Play</span>
                 </div>
             </div>
-
             <style>{`
                 .animate-marquee { animation: marquee 40s linear infinite; }
                 @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
