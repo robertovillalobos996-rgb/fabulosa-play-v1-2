@@ -7,12 +7,6 @@ const Radio = () => {
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef(null);
   const rainContainerRef = useRef(null);
-  const barsRef = useRef([]);
-
-  const contextRef = useRef(null);
-  const analyserRef = useRef(null);
-  const sourceRef = useRef(null);
-  const animationIdRef = useRef(null);
 
   useEffect(() => {
     const createHeart = () => {
@@ -28,49 +22,21 @@ const Radio = () => {
     };
     const interval = setInterval(createHeart, 500);
     return () => clearInterval(interval);
-  },);
+  }, []);
 
-  const animateEq = () => {
-    if (!analyserRef.current) return;
-    const bufferLength = analyserRef.current.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-    analyserRef.current.getByteFrequencyData(dataArray);
-    barsRef.current.forEach((bar, i) => {
-        if (!bar) return;
-        const value = dataArray[i + 2] || 0;
-        const percent = (value / 255) * 100;
-        bar.style.height = Math.max(percent, 5) + '%';
-    });
-    animationIdRef.current = requestAnimationFrame(animateEq);
-  };
-
-  const toggleRadio = async () => {
+  const toggleRadio = () => {
     const audio = audioRef.current;
     if (playing) {
         audio.pause();
         setPlaying(false);
-        if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current);
-        barsRef.current.forEach(bar => { if(bar) bar.style.height = '5%'; });
     } else {
-        try {
-            if (!contextRef.current) {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                contextRef.current = new AudioContext();
-                analyserRef.current = contextRef.current.createAnalyser();
-                analyserRef.current.fftSize = 64;
-                sourceRef.current = contextRef.current.createMediaElementSource(audio);
-                sourceRef.current.connect(analyserRef.current);
-                analyserRef.current.connect(contextRef.current.destination);
-            }
-            if (contextRef.current.state === 'suspended') await contextRef.current.resume();
-            await audio.play();
+        // Reproducción directa sin bloqueos de ecualizador
+        audio.play().then(() => {
             setPlaying(true);
-            animateEq();
-        } catch (error) {
-            console.error("Error:", error);
-            audio.play();
-            setPlaying(true);
-        }
+        }).catch(error => {
+            console.error("Error al reproducir:", error);
+            alert("El navegador bloqueó el audio o el servidor de radio está apagado.");
+        });
     }
   };
 
@@ -78,17 +44,19 @@ const Radio = () => {
     <div className="radio-page-container" style={{ backgroundImage: `url(${radioBg})` }}>
         <Link to="/" className="back-btn">← VOLVER AL INICIO</Link>
         <div className="heart-rain-container" ref={rainContainerRef}></div>
-        {/* Enlace corregido para mayor compatibilidad con HTTPS */}
+        
+        {/* ENLACE CORREGIDO: sapircast y sin crossOrigin */}
         <audio 
             ref={audioRef} 
-            src="https://shoutcast.caster.fm:19294/listen.mp3" 
-            crossOrigin="anonymous" 
+            src="https://sapircast.caster.fm:19294/listen.mp3" 
             preload="none"
         ></audio>
+
         <div className="glass-player">
             <div className="eq-container">
+                {/* Barras estáticas temporalmente para asegurar que el audio pase */}
                 {[...Array(16)].map((_, i) => (
-                    <div key={i} className="eq-bar" ref={el => barsRef.current[i] = el}></div>
+                    <div key={i} className="eq-bar" style={{ height: playing ? `${Math.random() * 80 + 20}%` : '5%' }}></div>
                 ))}
             </div>
             <div className="play-container">
