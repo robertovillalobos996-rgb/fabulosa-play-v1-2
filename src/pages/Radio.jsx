@@ -30,12 +30,12 @@ const Radio = () => {
         audio.pause();
         setPlaying(false);
     } else {
-        // Reproducción directa sin bloqueos de ecualizador
+        // Usamos el proxy /stream-radio para evitar bloqueos de seguridad
         audio.play().then(() => {
             setPlaying(true);
         }).catch(error => {
             console.error("Error al reproducir:", error);
-            alert("El navegador bloqueó el audio o el servidor de radio está apagado.");
+            alert("Asegúrate de que la radio esté encendida en tu computadora.");
         });
     }
   };
@@ -45,16 +45,15 @@ const Radio = () => {
         <Link to="/" className="back-btn">← VOLVER AL INICIO</Link>
         <div className="heart-rain-container" ref={rainContainerRef}></div>
         
-        {/* ENLACE CORREGIDO: sapircast y sin crossOrigin */}
+        {/* El src ahora apunta al proxy de Vercel */}
         <audio 
             ref={audioRef} 
-            src="https://sapircast.caster.fm:19294/listen.mp3" 
+            src="/stream-radio" 
             preload="none"
         ></audio>
 
         <div className="glass-player">
             <div className="eq-container">
-                {/* Barras estáticas temporalmente para asegurar que el audio pase */}
                 {[...Array(16)].map((_, i) => (
                     <div key={i} className="eq-bar" style={{ height: playing ? `${Math.random() * 80 + 20}%` : '5%' }}></div>
                 ))}

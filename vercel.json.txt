@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/stream-radio",
+      "destination": "http://sapircast.caster.fm:19294/listen.mp3"
+    }
+  ]
+}
