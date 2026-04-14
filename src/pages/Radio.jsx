@@ -30,12 +30,12 @@ const Radio = () => {
         audio.pause();
         setPlaying(false);
     } else {
-        // Reproducción usando el proxy configurado en vercel.json
+        // Reproducción usando el túnel de Vercel para evitar errores de seguridad
         audio.play().then(() => {
             setPlaying(true);
         }).catch(error => {
             console.error("Error al reproducir:", error);
-            alert("Asegúrate de que la radio esté encendida en tu computadora.");
+            alert("Asegúrate de que RadioBOSS esté transmitiendo en vivo.");
         });
     }
   };
@@ -45,7 +45,7 @@ const Radio = () => {
         <Link to="/" className="back-btn">← VOLVER AL INICIO</Link>
         <div className="heart-rain-container" ref={rainContainerRef}></div>
         
-        {/* Usamos /stream-radio para que Vercel sirva el audio de forma segura */}
+        {/* IMPORTANTE: El src apunta a la ruta definida en vercel.json */}
         <audio 
             ref={audioRef} 
             src="/stream-radio" 
@@ -54,13 +54,21 @@ const Radio = () => {
 
         <div className="glass-player">
             <div className="eq-container">
+                {/* Animación de barras reactiva al estado 'playing' */}
                 {[...Array(16)].map((_, i) => (
-                    <div key={i} className="eq-bar" style={{ height: playing ? `${Math.random() * 80 + 20}%` : '5%' }}></div>
+                    <div 
+                        key={i} 
+                        className="eq-bar" 
+                        style={{ height: playing ? `${Math.random() * 80 + 20}%` : '5%' }}
+                    ></div>
                 ))}
             </div>
             <div className="play-container">
-                <button className="btn-main" onClick={toggleRadio}
-                    style={{ boxShadow: playing ? "0 0 80px rgba(255, 0, 50, 0.8)" : "0 10px 30px rgba(255, 0, 50, 0.5)" }}>
+                <button 
+                    className="btn-main" 
+                    onClick={toggleRadio}
+                    style={{ boxShadow: playing ? "0 0 80px rgba(255, 0, 50, 0.8)" : "0 10px 30px rgba(255, 0, 50, 0.5)" }}
+                >
                     {playing ? "❚❚" : "▶"}
                 </button>
             </div>
