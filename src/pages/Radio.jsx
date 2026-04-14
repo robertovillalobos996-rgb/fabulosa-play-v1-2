@@ -4,8 +4,6 @@ import './Radio.css';
 import radioBg from '../assets/radio-bg.png';
 
 const Radio = () => {
-  const [playing, setPlaying] = useState(false);
-  const audioRef = useRef(null);
   const rainContainerRef = useRef(null);
 
   useEffect(() => {
@@ -24,50 +22,29 @@ const Radio = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const toggleRadio = () => {
-    const audio = audioRef.current;
-    if (playing) {
-        audio.pause();
-        setPlaying(false);
-    } else {
-        // Usamos el proxy /stream-radio para evitar bloqueos de seguridad
-        audio.play().then(() => {
-            setPlaying(true);
-        }).catch(error => {
-            console.error("Error al reproducir:", error);
-            alert("Asegúrate de que la radio esté encendida en tu computadora.");
-        });
-    }
-  };
-
   return (
     <div className="radio-page-container" style={{ backgroundImage: `url(${radioBg})` }}>
         <Link to="/" className="back-btn">← VOLVER AL INICIO</Link>
         <div className="heart-rain-container" ref={rainContainerRef}></div>
         
-        {/* El src ahora apunta al proxy de Vercel */}
-        <audio 
-            ref={audioRef} 
-            src="/stream-radio" 
-            preload="none"
-        ></audio>
-
         <div className="glass-player">
-            <div className="eq-container">
-                {[...Array(16)].map((_, i) => (
-                    <div key={i} className="eq-bar" style={{ height: playing ? `${Math.random() * 80 + 20}%` : '5%' }}></div>
-                ))}
+            <div className="live-badge" style={{ marginBottom: '20px' }}>EN VIVO</div>
+            
+            {/* Reproductor Oficial de Caster.fm (Solución Directa) */}
+            <div style={{ width: '100%', overflow: 'hidden', borderRadius: '15px' }}>
+                <iframe 
+                    src="https://www.caster.fm/widgets/tplayer.php?js=0&login=sapircast&t=1&c=FF0000&u=1" 
+                    width="100%" 
+                    height="100" 
+                    frameBorder="0" 
+                    scrolling="no"
+                    title="Radio Player"
+                ></iframe>
             </div>
-            <div className="play-container">
-                <button className="btn-main" onClick={toggleRadio}
-                    style={{ boxShadow: playing ? "0 0 80px rgba(255, 0, 50, 0.8)" : "0 10px 30px rgba(255, 0, 50, 0.5)" }}>
-                    {playing ? "❚❚" : "▶"}
-                </button>
-            </div>
-            <div className="vol-container">
-                <div className="live-badge">EN VIVO</div>
-                <input type="range" min="0" max="1" step="0.1" defaultValue="1" onInput={(e) => audioRef.current.volume = e.target.value} />
-            </div>
+
+            <p style={{ color: 'white', marginTop: '15px', fontSize: '12px', opacity: 0.8 }}>
+                Si no escuchas nada, verifica que RadioBOSS esté transmitiendo.
+            </p>
         </div>
     </div>
   );
