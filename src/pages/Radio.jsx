@@ -28,7 +28,7 @@ const Radio = () => {
     };
     const interval = setInterval(createHeart, 500);
     return () => clearInterval(interval);
-  }, []);
+  },);
 
   const animateEq = () => {
     if (!analyserRef.current) return;
@@ -78,9 +78,10 @@ const Radio = () => {
     <div className="radio-page-container" style={{ backgroundImage: `url(${radioBg})` }}>
         <Link to="/" className="back-btn">← VOLVER AL INICIO</Link>
         <div className="heart-rain-container" ref={rainContainerRef}></div>
+        {/* Enlace corregido para mayor compatibilidad con HTTPS */}
         <audio 
             ref={audioRef} 
-            src="https://shicecast.caster.fm:19294/mount2" 
+            src="https://shoutcast.caster.fm:19294/listen.mp3" 
             crossOrigin="anonymous" 
             preload="none"
         ></audio>
