@@ -121,7 +121,7 @@ const Radio = () => {
         {/* Audio (IMPORTANTE: crossOrigin para que el ecualizador pueda leer los datos) */}
         <audio 
             ref={audioRef} 
-            src="https://dattavolt.com/8030/stream" 
+            src="https://shicecast.caster.fm:19294/mount2" 
             crossOrigin="anonymous" 
             preload="none"
         ></audio>
