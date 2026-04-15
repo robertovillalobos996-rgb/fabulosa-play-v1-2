@@ -26,86 +26,107 @@ const VERTICAL_ADS = [
 const Camaras = () => {
     const audioRef = useRef(null);
     const videoContainerRef = useRef(null);
+    const controlsTimer = useRef(null);
+    
     const [isPlaying, setIsPlaying] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [camIndex, setCamIndex] = useState(0);
     const [adIndex, setAdIndex] = useState(0);
     const [isMuted, setIsMuted] = useState(false);
+    const [volume, setVolume] = useState(1);
     const [keyIndex, setKeyIndex] = useState(0);
+    const [showControls, setShowControls] = useState(true);
 
-    // Rotación de Cámaras (Cada 2 minutos)
+    // Auto-ocultar controles
+    const resetControlsTimer = () => {
+        setShowControls(true);
+        if (controlsTimer.current) clearTimeout(controlsTimer.current);
+        controlsTimer.current = setTimeout(() => {
+            if (isPlaying && !isPaused) setShowControls(false);
+        }, 3000);
+    };
+
+    // Rotación de Cámaras (2 min) y Publicidad (15 seg)
     useEffect(() => {
         if (!isPlaying || isPaused) return;
         const camInterval = setInterval(() => {
             setCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
             setKeyIndex((prev) => (prev + 1) % YOUTUBE_API_KEYS.length);
-        }, 120000); 
-        return () => clearInterval(camInterval);
-    }, [isPlaying, isPaused]);
-
-    // Rotación de Publicidad (Cada 15 segundos)
-    useEffect(() => {
+        }, 120000);
         const adInterval = setInterval(() => {
             setAdIndex((prev) => (prev + 1) % VERTICAL_ADS.length);
         }, 15000);
-        return () => clearInterval(adInterval);
-    }, []);
+        return () => { clearInterval(camInterval); clearInterval(adInterval); };
+    }, [isPlaying, isPaused]);
 
     const handleStart = () => {
         setIsPlaying(true);
-        setIsPaused(false);
         if (audioRef.current) audioRef.current.play();
+        resetControlsTimer();
     };
 
-    const toggleMute = () => {
+    const handleVolumeChange = (e) => {
+        const val = parseFloat(e.target.value);
+        setVolume(val);
         if (audioRef.current) {
-            audioRef.current.muted = !isMuted;
-            setIsMuted(!isMuted);
+            audioRef.current.volume = val;
+            setIsMuted(val === 0);
         }
     };
 
-    const handleFullscreen = () => {
-        if (videoContainerRef.current.requestFullscreen) {
+    const toggleFullscreen = () => {
+        if (!document.fullscreenElement) {
             videoContainerRef.current.requestFullscreen();
+        } else {
+            document.exitFullscreen();
         }
     };
 
     return (
-        <div className="cam-screen">
+        <div className="cam-screen" onMouseMove={resetControlsTimer} onClick={resetControlsTimer}>
             <audio ref={audioRef} src={AUDIO_URL} loop />
             
-            <header className="cam-header">
-                <Link to="/" className="back-btn-cam"><ArrowLeft size={24} /></Link>
-                <img src={logoImage} alt="Logo" className="tv-logo" />
-            </header>
+            <Link to="/" className={`back-btn-float ${!showControls && isPlaying ? 'hidden' : ''}`}>
+                <ArrowLeft size={24} />
+            </Link>
 
             <div className="main-layout">
                 <div className="video-section" ref={videoContainerRef}>
                     {!isPlaying ? (
                         <div className="play-overlay" onClick={handleStart}>
-                            <div className="play-circle"><Play size={50} fill="#00f2ff" color="#00f2ff" /></div>
-                            <p>INICIAR TRANSMISIÓN PROFESIONAL</p>
+                            <div className="play-circle"><Play size={50} fill="#00f2ff" /></div>
+                            <p>TRANSMISIÓN EN VIVO</p>
                         </div>
                     ) : (
                         <div className="video-container">
                             <div className="yt-shield"></div>
+                            
+                            {/* LOGO DENTRO DEL REPRODUCTOR (Arriba Izquierda) */}
+                            <img src={logoImage} alt="Logo TV" className={`tv-bug ${!showControls ? 'low-opacity' : ''}`} />
+
                             {!isPaused && (
                                 <iframe 
                                     src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&key=${YOUTUBE_API_KEYS[keyIndex]}`} 
                                     frameBorder="0" allow="autoplay; encrypted-media"
                                 />
                             )}
-                            
-                            <div className="custom-controls">
-                                <button className="control-btn" onClick={() => setIsPaused(!isPaused)}>
-                                    {isPaused ? <Play size={24} fill="white" /> : <Pause size={24} fill="white" />}
-                                </button>
-                                <button className="control-btn" onClick={toggleMute}>
-                                    {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
-                                </button>
-                                <button className="control-btn" onClick={handleFullscreen}>
-                                    <Maximize size={24} />
-                                </button>
+
+                            {/* CONTROLES ESTILO YOUTUBE */}
+                            <div className={`yt-controls-bar ${!showControls ? 'fade-out' : ''}`}>
+                                <div className="controls-left">
+                                    <button onClick={() => setIsPaused(!isPaused)}>
+                                        {isPaused ? <Play size={22} fill="white" /> : <Pause size={22} fill="white" />}
+                                    </button>
+                                    <div className="volume-group">
+                                        <button onClick={() => { setIsMuted(!isMuted); if (audioRef.current) audioRef.current.muted = !isMuted; }}>
+                                            {isMuted || volume === 0 ? <VolumeX size={22} /> : <Volume2 size={22} />}
+                                        </button>
+                                        <input type="range" min="0" max="1" step="0.1" value={isMuted ? 0 : volume} onChange={handleVolumeChange} className="vol-slider" />
+                                    </div>
+                                </div>
+                                <div className="controls-right">
+                                    <button onClick={toggleFullscreen}><Maximize size={22} /></button>
+                                </div>
                             </div>
                         </div>
                     )}
