@@ -37,13 +37,9 @@ const Radio = () => {
         v.src = STREAM_URL; 
       } else if (window.Hls && window.Hls.isSupported()) {
         hls = new window.Hls({
-          // CONFIGURACIÓN DE FLUIDEZ EXTREMA
           enableWorker: true,
-          maxBufferLength: 45,      // Guarda 45 segundos de colchón
-          maxMaxBufferLength: 90,   // Permite hasta minuto y medio si internet es lento
-          maxBufferSize: 80 * 1000 * 1000, // 80MB de memoria para video
-          liveSyncDurationCount: 5,  // Evita que el video salte al "ahora" si hay lag
-          nudgeMaxRetry: 10
+          maxBufferLength: 45, // Buffer de 45 segundos para que no se pegue
+          liveSyncDurationCount: 5,
         });
         hls.loadSource(STREAM_URL);
         hls.attachMedia(v);
@@ -60,30 +56,30 @@ const Radio = () => {
   }, []);
 
   return (
-    <div className="radio-app-container">
+    <div className="radio-smart-container">
       <div className="heart-layer" ref={rainRef}></div>
       
-      <div className="smart-layout">
-        <nav className="nav-header">
-          <Link to="/" className="btn-exit">✕</Link>
-          <div className="badge-live">
-            <span className="red-dot"></span> {oyentes} CONECTADOS
+      <div className="content-wrapper">
+        <div className="top-nav">
+          <Link to="/" className="btn-close">✕</Link>
+          <div className="status-pill">
+            <span className="live-dot"></span> {oyentes} CONECTADOS
           </div>
-        </nav>
+        </div>
 
-        <section className="player-section">
-          <div className="video-card">
-            <div className="ratio-keeper">
+        <main className="player-grid">
+          <div className="video-card-premium">
+            <div className="aspect-ratio-box">
               <video ref={videoRef} autoPlay controls playsInline />
             </div>
           </div>
           
-          <div className="info-card">
-            <span className="live-tag">RADIO EN VIVO</span>
-            <h1 className="main-title">Fabulosa Stereo</h1>
-            <p className="sub-title">El Encuentro con el Amor</p>
+          <div className="station-info">
+            <span className="streaming-label">ESTÁS ESCUCHANDO</span>
+            <h1 className="main-name">Fabulosa Stereo</h1>
+            <p className="main-slogan">El Encuentro con el Amor</p>
           </div>
-        </section>
+        </main>
       </div>
     </div>
   );
