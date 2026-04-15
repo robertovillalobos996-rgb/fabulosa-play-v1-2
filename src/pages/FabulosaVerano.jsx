@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react';
 import fondoVerano from '../assets/verano-fondo.png';
+import logoImage from '../assets/logo_fabulosa.png'; 
 
 const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
@@ -23,11 +24,8 @@ const LOCUTORES = [
 ];
 
 const VERTICAL_ADS = [
-  "/publicidad_vertical/anunciete_1.png", 
-  "/publicidad_vertical/chinito_express.png",
-  "/publicidad_vertical/mexicana_1.png", 
-  "/publicidad_vertical/mexicana_2.png", 
-  "/publicidad_vertical/unas_yendry.png"
+  "/publicidad_vertical/anunciete_1.png", "/publicidad_vertical/chinito_express.png",
+  "/publicidad_vertical/mexicana_1.png", "/publicidad_vertical/mexicana_2.png", "/publicidad_vertical/unas_yendry.png"
 ];
 
 const FabulosaVerano = () => {
@@ -43,22 +41,31 @@ const FabulosaVerano = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [vAdIndex, setVAdIndex] = useState(0);
 
-  // Lógica para esconder controles estilo YouTube
-  const handleUserActivity = () => {
+  const resetControlsTimer = () => {
     setShowControls(true);
     if (hideTimeout.current) clearTimeout(hideTimeout.current);
-    if (hasStarted && !videoRef.current?.paused) {
+    if (hasStarted && isPlaying) {
       hideTimeout.current = setTimeout(() => setShowControls(false), 3000);
     }
   };
 
+  // 🔊 MIXER FORZADO (Baja música, precarga voz, dispara audio)
   const playOverlayAudio = (path, duckingLevel) => {
     if (!videoRef.current || !hasStarted) return;
+    
     const currentVol = volume;
     videoRef.current.volume = currentVol * duckingLevel;
     
     effectAudioRef.current.src = path;
-    effectAudioRef.current.play().catch(e => console.error("Error audio:", path));
+    effectAudioRef.current.load(); // Forzamos la carga del archivo
+    
+    const playPromise = effectAudioRef.current.play();
+    
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        videoRef.current.volume = currentVol; // Restaurar si falla
+      });
+    }
     
     effectAudioRef.current.onended = () => {
       if (videoRef.current) videoRef.current.volume = currentVol;
@@ -72,8 +79,8 @@ const FabulosaVerano = () => {
     const subeleInterval = setInterval(() => playOverlayAudio(SUBELE_VOLUMEN, 0.8), 240000); // 4m
     const locutorInterval = setInterval(() => {
       const randomLocutor = LOCUTORES[Math.floor(Math.random() * LOCUTORES.length)];
-      playOverlayAudio(randomLocutor, 0.5); // Baja música al 50% para que se escuche bien
-    }, 900000); // 15m
+      playOverlayAudio(randomLocutor, 0.5); // 15m - Música al 50%
+    }, 900000); 
 
     return () => {
       clearInterval(selloInterval); clearInterval(subeleInterval); clearInterval(locutorInterval);
@@ -85,15 +92,14 @@ const FabulosaVerano = () => {
     return () => clearInterval(adInterval);
   }, []);
 
-  useEffect(() => {
-    if (videoRef.current) videoRef.current.src = STREAM_URL;
-  }, []);
-
   const handleStart = () => {
     setHasStarted(true);
     setIsPlaying(true);
-    if (videoRef.current) videoRef.current.play();
-    handleUserActivity();
+    if (videoRef.current) {
+        videoRef.current.src = STREAM_URL;
+        videoRef.current.play();
+    }
+    resetControlsTimer();
   };
 
   const togglePlay = (e) => {
@@ -104,59 +110,52 @@ const FabulosaVerano = () => {
     } else {
       videoRef.current.pause();
       setIsPlaying(false);
-      setShowControls(true); // Se quedan visibles si está en pausa
-    }
-  };
-
-  const toggleFullScreen = (e) => {
-    e.stopPropagation();
-    if (!document.fullscreenElement) {
-        playerContainerRef.current.requestFullscreen();
-    } else {
-        document.exitFullscreen();
+      setShowControls(true);
     }
   };
 
   return (
     <div className="relative min-h-screen w-full bg-black flex flex-col overflow-hidden font-sans" 
          style={{ backgroundImage: `url(${fondoVerano})`, backgroundSize: 'cover' }}
-         onMouseMove={handleUserActivity}
-         onClick={handleUserActivity}
-         onTouchStart={handleUserActivity}>
+         onMouseMove={resetControlsTimer}>
       
       <div className="fixed inset-0 bg-black/60 backdrop-blur-md"></div>
       
+      {/* HEADER AUTO-OCULTABLE */}
       <div className={`relative z-50 flex justify-between items-center p-6 transition-opacity duration-500 ${!showControls && hasStarted ? 'opacity-0' : 'opacity-100'}`}>
-        <Link to="/" className="px-6 py-2 bg-white/10 hover:bg-pink-500 rounded-full text-white font-bold border border-white/10">SALIR</Link>
-        <h1 className="text-3xl md:text-5xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-cyan-400 uppercase">Fabulosa Verano</h1>
+        <Link to="/" className="px-8 py-3 bg-white/10 hover:bg-pink-600 rounded-full text-white font-black border border-white/20 transition-all uppercase tracking-widest">Salir</Link>
+        <h1 className="text-4xl md:text-6xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-cyan-400 uppercase">Fabulosa Verano</h1>
       </div>
 
       <div className="flex-1 flex flex-col items-center justify-center p-4 relative z-40">
-        <div className="flex flex-col 2xl:flex-row items-center justify-center gap-10 w-full max-w-[1850px]">
+        <div className="flex flex-col 2xl:flex-row items-center justify-center gap-10 w-full max-w-[1900px]">
             
-            <div ref={playerContainerRef} className="relative group bg-black shadow-2xl border border-pink-500/20 w-full 2xl:flex-1 aspect-video rounded-[3.5rem] overflow-hidden">
+            <div ref={playerContainerRef} className="relative group bg-black shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-white/10 w-full 2xl:flex-1 aspect-video rounded-[4rem] overflow-hidden">
                 
+                {/* LOGO TV PREMIUM (ARRIBA IZQUIERDA) */}
+                <img src={logoImage} alt="Logo" className={`absolute top-10 left-10 h-20 z-50 transition-opacity duration-700 pointer-events-none ${!showControls && hasStarted ? 'opacity-40' : 'opacity-100'}`} style={{ filter: 'drop-shadow(0 0 15px rgba(0,242,255,0.6))' }} />
+
                 {!hasStarted && (
-                    <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/90 cursor-pointer" onClick={handleStart}>
-                        <div className="w-24 h-24 bg-pink-500 rounded-full flex items-center justify-center mb-6 animate-pulse">
-                            <Play size={50} className="text-white ml-2" fill="white" />
+                    <div className="absolute inset-0 z-[60] flex flex-col items-center justify-center bg-black/95 cursor-pointer" onClick={handleStart}>
+                        <div className="w-32 h-32 bg-pink-500 rounded-full flex items-center justify-center mb-8 shadow-[0_0_50px_rgba(236,72,153,0.6)] animate-pulse">
+                            <Play size={60} className="text-white ml-2" fill="white" />
                         </div>
-                        <p className="text-white font-black tracking-widest text-2xl uppercase">Iniciar Fabulosa Verano</p>
+                        <p className="text-white font-black tracking-[0.3em] text-3xl uppercase">Sintonizar en Vivo</p>
                     </div>
                 )}
 
                 <video ref={videoRef} className="w-full h-full object-cover" playsInline />
                 
                 {/* CONTROLES ESTILO YOUTUBE */}
-                <div className={`absolute bottom-0 left-0 w-full p-8 flex items-center justify-between transition-opacity duration-500 z-40 bg-gradient-to-t from-black/90 to-transparent ${!showControls ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                    <div className="flex items-center gap-6">
-                        <button onClick={togglePlay} className="text-white hover:text-pink-500 transition-colors">
-                            {isPlaying ? <Pause size={35} fill="white" /> : <Play size={35} fill="white" />}
+                <div className={`absolute bottom-0 left-0 w-full p-10 flex items-center justify-between transition-opacity duration-500 z-40 bg-gradient-to-t from-black/95 via-black/40 to-transparent ${!showControls ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                    <div className="flex items-center gap-8">
+                        <button onClick={togglePlay} className="text-white hover:text-pink-500 transition-transform hover:scale-110">
+                            {isPlaying ? <Pause size={45} fill="white" /> : <Play size={45} fill="white" />}
                         </button>
                         
                         <div className="flex items-center gap-4 group/vol">
                             <button onClick={() => { setIsMuted(!isMuted); videoRef.current.muted = !isMuted; }} className="text-white">
-                                {isMuted || volume === 0 ? <VolumeX size={28} /> : <Volume2 size={28} />}
+                                {isMuted || volume === 0 ? <VolumeX size={35} /> : <Volume2 size={35} />}
                             </button>
                             <input type="range" min="0" max="1" step="0.05" value={isMuted ? 0 : volume} 
                                    onChange={(e) => { 
@@ -165,17 +164,18 @@ const FabulosaVerano = () => {
                                        videoRef.current.volume = v;
                                        setIsMuted(v === 0);
                                    }} 
-                                   className="w-0 group-hover/vol:w-32 transition-all duration-300 accent-cyan-400 h-1.5 rounded-lg appearance-none bg-white/20 cursor-pointer"/>
+                                   className="w-0 group-hover/vol:w-40 transition-all duration-500 accent-cyan-400 h-2 rounded-lg appearance-none bg-white/20 cursor-pointer"/>
                         </div>
                     </div>
 
-                    <button onClick={toggleFullScreen} className="text-white hover:text-cyan-400 transition-colors">
-                        <Maximize size={28} />
+                    <button onClick={() => document.fullscreenElement ? document.exitFullscreen() : playerContainerRef.current.requestFullscreen()} className="text-white hover:text-cyan-400 transition-transform hover:scale-110">
+                        <Maximize size={35} />
                     </button>
                 </div>
             </div>
 
-            <div className="w-full 2xl:w-[480px] h-[450px] md:h-[700px] bg-black/30 backdrop-blur-3xl rounded-[3.5rem] border border-white/10 overflow-hidden shadow-2xl">
+            {/* BANNER VERTICAL */}
+            <div className="w-full 2xl:w-[500px] h-[500px] md:h-[750px] bg-black/40 backdrop-blur-3xl rounded-[4rem] border border-white/10 overflow-hidden shadow-2xl">
                 <img src={VERTICAL_ADS[vAdIndex]} className="w-full h-full object-contain" alt="Publicidad" />
             </div>
         </div>
