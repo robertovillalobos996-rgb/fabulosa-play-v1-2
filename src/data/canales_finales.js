@@ -1382,7 +1382,7 @@ export const canalesTV = [
     {
         "id": "tv-198",
         "title": "88 Stereo",
-        "url": "http://k3.usastreams.com/CableLatino/88stereo/playlist.m3u8",
+        "url": "https://s1.tvdatta.com:3972/live/88stereolive.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/88 Stereo.png"
     },
@@ -1426,19 +1426,12 @@ export const canalesTV = [
         "title": "Canal opa",
         "url": "https://5fc584f3f19c9.streamlock.net/genteopa/videogenteopa/chunklist_w215971633.m3u8",
         "genre": "Costa Rica",
-        "logo": null
+        "logo": "/logos_canales/opa.png"
     },
-    {
-        "id": "tv-205",
-        "title": "Canal 6",
-        "url": "https://d2qsan2ut81n2k.cloudfront.net/live/02f0dc35-8fd4-4021-8fa0-96c277f62653/ts:abr.m3u8",
-        "genre": "Costa Rica",
-        "logo": null
-    },
-    {
+        {
         "id": "tv-206",
         "title": "Colosal TV",
-        "url": "https://5d16127744872.streamlock.net/COLOSAL/COLOSAL/chunklist_w1023493580.m3u8",
+        "url": "https://5eac7b031d945.streamlock.net/COLOSAL/COLOSAL/chunklist_w1415709305.m3u8",
         "genre": "Costa Rica",
         "logo": null
     },
@@ -1461,7 +1454,7 @@ export const canalesTV = [
         "title": "Enlace TV",
         "url": "https://livecdn.enlace.plus/enlace/smil:enlace-hd.smil/playlist.m3u8",
         "genre": "Costa Rica",
-        "logo": "enlace.jpg"
+        "logo": "/logos_canales/enlace.png""
     },
     {
         "id": "tv-210",
@@ -1470,26 +1463,19 @@ export const canalesTV = [
         "genre": "Variedades",
         "logo": "estrella-tv.png"
     },
-    {
-        "id": "tv-211",
-        "title": "ExtremaTv",
-        "url": "http://livestreamcdn.net:1935/ExtremaTV/ExtremaTV/playlist.m3u8",
-        "genre": "Costa Rica",
-        "logo": null
-    },
-    {
+        {
         "id": "tv-212",
         "title": "GEX TV",
         "url": "https://live20.bozztv.com/akamaissh101/ssh101/gextvaccess/playlist.m3u8",
         "genre": "Costa Rica",
-        "logo": "gex-tv.jpg"
+        "logo": "/logos_canales/gex_tv.png"
     },
     {
         "id": "tv-213",
         "title": "Garabito TV",
         "url": "https://59ef525c24caa.streamlock.net/garabitoTV/garabitotv/playlist.m3u8",
         "genre": "Costa Rica",
-        "logo": "garabito.jpg"
+        "logo": "/logos_canales/garavito.png"
     },
     {
         "id": "tv-214",
@@ -1503,14 +1489,14 @@ export const canalesTV = [
         "title": "LSTV",
         "url": "https://lstv.duckdns.org:449/hls/lstv.m3u8",
         "genre": "Costa Rica",
-        "logo": "lstv.webp"
+        "logo": "/logos_canales/lstv.jpg"
     },
     {
         "id": "tv-216",
         "title": "Limón TV",
-        "url": "http://k4.usastreams.com/limontv1/limontv1/playlist.m3u8",
+        "url": "https://5cf4a2c2512a2.streamlock.net/8164/8164/chunklist_w1278582418.m3u8",
         "genre": "Costa Rica",
-        "logo": "limon-tv.jpg"
+        "logo": "/logos_canales/limon-tv.png"
     },
     {
         "id": "tv-217",
@@ -1526,14 +1512,7 @@ export const canalesTV = [
         "genre": "Variedades",
         "logo": "mexiquense-tv.jpg"
     },
-    {
-        "id": "tv-219",
-        "title": "Multimedios",
-        "url": "http://mdstrm.com/live-stream-playlist/5a7b1e63a8da282c34d65445.m3u8",
-        "genre": "Costa Rica",
-        "logo": "https://static.epg.best/cr/Multimedios.cr.png"
-    },
-    {
+        {
         "id": "tv-220",
         "title": "NC TV",
         "url": "https://unlimited1-us.dps.live/nctv/nctv.smil/nctv/livestream1/chunks.m3u8",
@@ -1545,7 +1524,7 @@ export const canalesTV = [
         "title": "Nicoya TV",
         "url": "https://59ef525c24caa.streamlock.net/nicoyatv/nicoyatv/chunklist_w1674958038.m3u8",
         "genre": "Costa Rica",
-        "logo": null
+        "logo": "/logos_canales/nicoya_tv.png"
     },
     {
         "id": "tv-222",
@@ -1561,35 +1540,8 @@ export const canalesTV = [
         "genre": "Variedades",
         "logo": "rtve.jpg"
     },
-    {
-        "id": "tv-224",
-        "title": "Repretel 11 (test)",
-        "url": "https://d2n1dt6uwqq83r.cloudfront.net/index.m3u8",
-        "genre": "Costa Rica",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Repretel_11_logo.png/120px-Repretel_11_logo.png"
-    },
-    {
-        "id": "tv-225",
-        "title": "Repretel 4 (test)",
-        "url": "https://d35xpyc30huab3.cloudfront.net/index.m3u8",
-        "genre": "Costa Rica",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Repretel_4_logo.png/120px-Repretel_4_logo.png"
-    },
-    {
-        "id": "tv-226",
-        "title": "Repretel 6 (test)",
-        "url": "https://d2qsan2ut81n2k.cloudfront.net/live/02f0dc35-8fd4-4021-8fa0-96c277f62653/ts:abr.m3u8",
-        "genre": "Costa Rica",
-        "logo": "https://i.ibb.co/FzPKgYq/repretel-6-logo-120.png"
-    },
-    {
-        "id": "tv-227",
-        "title": "STV",
-        "url": "http://tiquiciatv.com:1935/stv/envivo/playlist.m3u8",
-        "genre": "Costa Rica",
-        "logo": null
-    },
-    {
+           
+        {
         "id": "tv-228",
         "title": "Supreme Master TV",
         "url": "https://cf-lbs.suprememastertv.com/origin/720p/playlist.m3u8",
@@ -1603,19 +1555,13 @@ export const canalesTV = [
         "genre": "Variedades",
         "logo": null
     },
-    {
-        "id": "tv-230",
-        "title": "TV UNO",
-        "url": "http://tv.teleunotv.cr:1935/TVUNO/TVUNO/chunklist_w685058481.m3u8",
-        "genre": "Costa Rica",
-        "logo": null
-    },
+   
     {
         "id": "tv-231",
         "title": "TVN Canal 14",
-        "url": "http://tvn.obix.tv:1935/TVN/CH14.stream_720p/playlist.m3u8",
+        "url": "https://tvn14-21fa4.kxcdn.com/TVN/CH14.stream_720p/chunklist_w1082437588.m3u8",
         "genre": "Costa Rica",
-        "logo": null
+        "logo": "/logos_canales/canal_14.png"
     },
     {
         "id": "tv-232",
@@ -8343,5 +8289,13 @@ export const canalesTV = [
         "url": "https://s.emisoras.tv:8081/atv/index.m3u8",
         "genre": "Costa Rica",
         "logo": null
-    }
-];
+   },
+
+    {
+        "id": "tv-1193",
+        "title": "canal 3 colosal ",
+        "url": "https://5eac7b031d945.streamlock.net/canal3/canal3/chunklist_w1141438584.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/colosal_canal_3.png"
+}
+ ];
