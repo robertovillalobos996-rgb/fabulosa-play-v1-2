@@ -32,8 +32,6 @@ const FabulosaVerano = () => {
   const playerContainerRef = useRef(null);
   const effectAudioRef = useRef(new Audio());
   const hideTimeout = useRef(null);
-  
-  // REFERENCIA CRÍTICA: Mantiene el volumen sin reiniciar los relojes
   const volumeRef = useRef(1); 
   
   const [hasStarted, setHasStarted] = useState(false); 
@@ -50,21 +48,23 @@ const FabulosaVerano = () => {
     }
   };
 
-  const playOverlayAudio = (path, duckingLevel) => {
+  // 🎚️ MIXER MEJORADO: Controla volumen de música y de la voz por separado
+  const playOverlayAudio = (path, musicDuckLevel, voiceVolume = 1.0) => {
     if (!videoRef.current || !hasStarted) return;
     
     const currentVol = volumeRef.current;
-    // Bajamos el volumen del video usando la referencia actual
-    videoRef.current.volume = currentVol * duckingLevel;
+    
+    // Bajamos la música al nivel solicitado (40%, 50% u 80%)
+    videoRef.current.volume = currentVol * musicDuckLevel;
     
     effectAudioRef.current.src = path;
+    effectAudioRef.current.volume = voiceVolume; // Forzamos la voz al máximo (1.0)
     effectAudioRef.current.load();
     
     const playPromise = effectAudioRef.current.play();
-    
     if (playPromise !== undefined) {
       playPromise.catch(e => {
-        console.error("Fallo al forzar voz:", path);
+        console.error("Error en mixer:", path);
         videoRef.current.volume = currentVol;
       });
     }
@@ -74,17 +74,23 @@ const FabulosaVerano = () => {
     };
   };
 
-  // RELOJES INDEPENDIENTES: Solo dependen de hasStarted, nunca se reinician por el volumen
   useEffect(() => {
     if (!hasStarted) return;
 
-    console.log("Sistema de Locución Automatizada Iniciado");
+    // 1. Sello cada 3 min -> Música al 80%
+    const selloInterval = setInterval(() => {
+      playOverlayAudio(SELLO_FABULOSA, 0.8, 1.0);
+    }, 180000); 
 
-    const selloInterval = setInterval(() => playOverlayAudio(SELLO_FABULOSA, 0.8), 180000); // 3m
-    const subeleInterval = setInterval(() => playOverlayAudio(SUBELE_VOLUMEN, 0.8), 240000); // 4m
+    // 2. Súbele el volumen cada 4 min -> Música al 50%
+    const subeleInterval = setInterval(() => {
+      playOverlayAudio(SUBELE_VOLUMEN, 0.5, 1.0);
+    }, 240000); 
+
+    // 3. Locutores cada 15 min -> Música al 40% (Voz con máxima presencia)
     const locutorInterval = setInterval(() => {
       const randomLocutor = LOCUTORES[Math.floor(Math.random() * LOCUTORES.length)];
-      playOverlayAudio(randomLocutor, 0.5); // 15m
+      playOverlayAudio(randomLocutor, 0.4, 1.0);
     }, 900000); 
 
     return () => {
@@ -149,7 +155,6 @@ const FabulosaVerano = () => {
 
                 <video ref={videoRef} className="w-full h-full object-cover" playsInline />
                 
-                {/* CONTROLES TIPO YOUTUBE RESPONSIVOS */}
                 <div className={`absolute bottom-0 left-0 w-full p-4 md:p-10 flex items-center justify-between transition-opacity duration-500 z-40 bg-gradient-to-t from-black via-black/20 to-transparent ${!showControls ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                     <div className="flex items-center gap-4 md:gap-8">
                         <button onClick={togglePlay} className="text-white">
@@ -164,7 +169,7 @@ const FabulosaVerano = () => {
                                    defaultValue="1"
                                    onChange={(e) => { 
                                        const v = parseFloat(e.target.value);
-                                       volumeRef.current = v; // Actualiza la referencia sin disparar re-renders del efecto
+                                       volumeRef.current = v;
                                        videoRef.current.volume = v;
                                    }} 
                                    className="w-24 md:w-40 accent-cyan-400 h-1.5 rounded-lg appearance-none bg-white/20 cursor-pointer"/>
@@ -177,7 +182,6 @@ const FabulosaVerano = () => {
                 </div>
             </div>
 
-            {/* BANNER VERTICAL DERECHA */}
             <div className="w-full 2xl:w-[500px] h-[300px] md:h-[750px] bg-black/40 backdrop-blur-3xl rounded-[2rem] md:rounded-[4rem] border border-white/10 overflow-hidden shadow-2xl">
                 <img src={VERTICAL_ADS[vAdIndex]} className="w-full h-full object-contain" alt="Publicidad" />
             </div>

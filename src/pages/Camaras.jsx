@@ -20,7 +20,7 @@ const YOUTUBE_CAMS = ["rnXIjl_Rzy4", "EO_1LWqsCNE", "gFRtAAmiFbE", "loHbMM9JfCs"
 
 const VERTICAL_ADS = [
   "/publicidad_vertical/anunciete_1.png", "/publicidad_vertical/chinito_express.png",
-  "/publicidad_vertical/mexicana_1.png", "/publicidad_vertical/mexicana_2.png", "/publicidad_vertical/uñas_yendry.png"
+  "/publicidad_vertical/mexicana_1.png", "/publicidad_vertical/mexicana_2.png", "/publicidad_vertical/unas_yendry.png"
 ];
 
 const Camaras = () => {
