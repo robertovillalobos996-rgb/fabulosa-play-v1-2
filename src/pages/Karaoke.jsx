@@ -183,11 +183,11 @@ const KaraokePlay = () => {
 
             {/* PANTALLA ESPERA: Imagen Adaptada Full Screen */}
             {!currentVideoId && !isLoading && !showCelebration && (
-               <div className="absolute inset-0 z-10 bg-black">
+               <div className="absolute inset-0 z-10 bg-black flex items-center justify-center">
                  <img
                    src={IMAGEN_ESPERA_URL}
                    alt="Karaoke Play Portada"
-                   className="w-full h-full object-cover" // Ocupa todo el espacio adaptándose
+                   className="w-full h-full object-contain" // Cambiado a object-contain para no estirar
                  />
                </div>
             )}
