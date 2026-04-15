@@ -7,7 +7,7 @@ const Radio = () => {
   const [playing, setPlaying] = useState(false);
   const rainContainerRef = useRef(null);
 
-  // Tus corazones originales (gemas) fluyendo al fondo
+  // Lógica de tus corazones originales (heart-gem)
   useEffect(() => {
     const createHeart = () => {
       if (!rainContainerRef.current) return;
@@ -25,37 +25,38 @@ const Radio = () => {
   }, []);
 
   return (
-    <div className="radio-universe">
-        {/* CAPA 1: Corazones (Z-Index: 1) */}
-        <div className="heart-rain-container background-hearts" ref={rainContainerRef}></div>
-        
-        {/* CAPA 2: Contenido (Z-Index: 10) */}
-        <div className="multimedia-container">
-            <Link to="/" className="back-home">← INICIO</Link>
-            
-            <div className="video-player-frame">
-                {!playing ? (
-                    <div className="overlay-start" onClick={() => setPlaying(true)}>
-                        <div className="heart-pulse-main">❤️</div>
-                        <h2>TOCA PARA CONECTAR CON EL AMOR</h2>
-                    </div>
-                ) : (
-                    <ReactPlayer 
-                        url="https://live20.bozztv.com/akamaissh101/ssh101/fabulosaplay/playlist.m3u8"
-                        playing={playing}
-                        controls={true}
-                        width="100%"
-                        height="100%"
-                        config={{ file: { forceHLS: true } }}
-                    />
-                )}
-            </div>
+    <div className="love-main-screen">
+      {/* CAPA 1: Corazones por toda la pantalla al fondo */}
+      <div className="heart-rain-container background-layer" ref={rainContainerRef}></div>
 
-            <div className="text-branding">
-                <h1 className="main-name">Fabulosa Stereo</h1>
-                <p className="slogan">LA RADIO QUE ENAMORA TU VIDA</p>
+      {/* CAPA 2: Contenido Central Profesional */}
+      <div className="center-content">
+        <Link to="/" className="nav-back">← VOLVER AL INICIO</Link>
+        
+        <div className="player-professional-frame">
+          {!playing ? (
+            <div className="start-experience" onClick={() => setPlaying(true)}>
+              <div className="main-heart-beat">❤️</div>
+              <h2>CONECTAR CON EL AMOR</h2>
+              <p>Haz clic para abrir la señal en vivo</p>
             </div>
+          ) : (
+            <ReactPlayer 
+              url="https://live20.bozztv.com/akamaissh101/ssh101/fabulosaplay/playlist.m3u8"
+              playing={playing}
+              controls={true}
+              width="100%"
+              height="100%"
+              config={{ file: { forceHLS: true } }}
+            />
+          )}
         </div>
+
+        <div className="branding-footer">
+          <h1 className="title-fabulosa">Fabulosa Stereo</h1>
+          <p className="subtitle-fabulosa">EL ENCUENTRO CON EL AMOR</p>
+        </div>
+      </div>
     </div>
   );
 };
