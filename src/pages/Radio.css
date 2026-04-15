@@ -1,52 +1,35 @@
-.love-universe {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle, #220000 0%, #000000 100%);
-    display: flex;
-    justify-content: center;
+.live-counter {
+    margin-top: 15px;
+    background: rgba(255, 0, 0, 0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    display: inline-flex;
     align-items: center;
-    overflow: hidden;
+    gap: 8px;
+    border: 1px solid #ff0044;
+    font-size: 0.9rem;
 }
 
-.bg-hearts { position: absolute; z-index: 1; width: 100%; height: 100%; opacity: 0.5; }
-
-.multimedia-card {
-    position: relative;
-    z-index: 10;
-    width: 90%;
-    max-width: 1000px;
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff0000;
+    animation: blink 1s infinite;
 }
 
-.video-container-prof {
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+.video-canvas {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    border: 3px solid #ff0044;
-    border-radius: 12px;
-    box-shadow: 0 0 50px rgba(255, 0, 68, 0.4);
-    overflow: hidden;
-}
-
-.player-wrapper { height: 100%; width: 100%; }
-
-.tap-to-start {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    cursor: pointer;
+    background: #000;
+    border-radius: 10px;
 }
-
-.pulse-heart-icon { font-size: 80px; animation: heartbeat 1.5s infinite; }
-
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-.radio-title { color: white; font-size: 3rem; margin-top: 20px; text-align: center; }
-.radio-slogan { color: #ff8888; letter-spacing: 5px; text-align: center; font-weight: bold; }
-.back-link { color: white; text-decoration: none; position: absolute; top: -40px; left: 0; font-weight: bold; }
