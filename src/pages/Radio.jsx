@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ReactPlayer from 'react-player'; // Necesitas instalarlo: npm install react-player
 import './Radio.css';
 import radioBg from '../assets/radio-bg.png';
 
 const Radio = () => {
   const [playing, setPlaying] = useState(false);
-  const audioRef = useRef(null);
+  const [volume, setVolume] = useState(1);
   const rainContainerRef = useRef(null);
 
+  // Efecto de lluvia de corazones (Fuera del reproductor)
   useEffect(() => {
     const createHeart = () => {
       if (!rainContainerRef.current) return;
@@ -24,64 +26,60 @@ const Radio = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const toggleRadio = () => {
-    const audio = audioRef.current;
-    if (playing) {
-        audio.pause();
-        setPlaying(false);
-    } else {
-        // Reproducción usando el túnel de Vercel para evitar errores de seguridad
-        audio.play().then(() => {
-            setPlaying(true);
-        }).catch(error => {
-            console.error("Error al reproducir:", error);
-            alert("Asegúrate de que RadioBOSS esté transmitiendo en vivo.");
-        });
-    }
-  };
-
   return (
     <div className="radio-page-container" style={{ backgroundImage: `url(${radioBg})` }}>
-        <Link to="/" className="back-btn">← VOLVER AL INICIO</Link>
+        {/* Lluvia de corazones romántica en toda la página */}
         <div className="heart-rain-container" ref={rainContainerRef}></div>
         
-        {/* IMPORTANTE: El src apunta a la ruta definida en vercel.json */}
-        <audio 
-            ref={audioRef} 
-            src="/stream-radio" 
-            preload="none"
-        ></audio>
+        <Link to="/" className="back-btn">← VOLVER AL INICIO</Link>
 
-        <div className="glass-player">
-            <div className="eq-container">
-                {/* Animación de barras reactiva al estado 'playing' */}
-                {[...Array(16)].map((_, i) => (
-                    <div 
-                        key={i} 
-                        className="eq-bar" 
-                        style={{ height: playing ? `${Math.random() * 80 + 20}%` : '5%' }}
-                    ></div>
-                ))}
-            </div>
-            <div className="play-container">
-                <button 
-                    className="btn-main" 
-                    onClick={toggleRadio}
-                    style={{ boxShadow: playing ? "0 0 80px rgba(255, 0, 50, 0.8)" : "0 10px 30px rgba(255, 0, 50, 0.5)" }}
-                >
-                    {playing ? "❚❚" : "▶"}
-                </button>
-            </div>
-            <div className="vol-container">
-                <div className="live-badge">EN VIVO</div>
-                <input 
-                    type="range" 
-                    min="0" 
-                    max="1" 
-                    step="0.1" 
-                    defaultValue="1" 
-                    onInput={(e) => audioRef.current.volume = e.target.value} 
+        <div className="glass-player multimedia-player">
+            <div className="video-screen">
+                {/* REPRODUCTOR MULTIMEDIA PROFESIONAL */}
+                <ReactPlayer 
+                    url="https://live20.bozztv.com/akamaissh101/ssh101/fabulosaplay/playlist.m3u8"
+                    playing={playing}
+                    volume={volume}
+                    width="100%"
+                    height="100%"
+                    controls={true} // Activa volumen, pantalla completa y Cast (Bluetooth/AirPlay)
+                    config={{
+                        file: {
+                            forceHLS: true,
+                            attributes: {
+                                controlsList: 'nodownload' // Seguridad
+                            }
+                        }
+                    }}
                 />
+                {!playing && <div className="overlay-live">RADIO FABULOSA EN VIVO</div>}
+            </div>
+
+            <div className="info-radio">
+                <h2 className="title-live">Fabulosa Stereo - La Romántica</h2>
+                <div className="status-badge">● TRANSMITIENDO MULTIMEDIA</div>
+            </div>
+
+            <div className="custom-controls">
+                <button 
+                    className="btn-play-pause" 
+                    onClick={() => setPlaying(!playing)}
+                >
+                    {playing ? "❚❚ PAUSAR" : "▶ REPRODUCIR VIVO"}
+                </button>
+                
+                <div className="volume-group">
+                    <span>🔈</span>
+                    <input 
+                        type="range" 
+                        min="0" 
+                        max="1" 
+                        step="0.1" 
+                        value={volume}
+                        onChange={(e) => setVolume(parseFloat(e.target.value))} 
+                    />
+                    <span>🔊</span>
+                </div>
             </div>
         </div>
     </div>
