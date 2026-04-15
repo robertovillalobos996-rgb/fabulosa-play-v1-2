@@ -1,76 +1,63 @@
-.love-universe {
+.radio-universe {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle, #2a0000 0%, #000000 100%);
-    overflow: hidden;
+    background: radial-gradient(circle, #330000 0%, #000000 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Tus corazones originales al fondo */
-.background-hearts {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.6;
-    pointer-events: none;
-}
-
-.heart-gem {
-    position: absolute;
-    bottom: -50px;
-    background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center/contain;
-    filter: drop-shadow(0 0 5px red);
-    animation: floatUp linear forwards;
-}
-
-@keyframes floatUp {
-    to { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
-}
-
-.multimedia-center {
-    position: relative;
-    z-index: 10;
-    width: 90%;
-    max-width: 1100px;
-}
-
-.main-video-frame {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    border: 3px solid #ff0044;
-    border-radius: 12px;
-    box-shadow: 0 0 60px rgba(255, 0, 68, 0.5);
     overflow: hidden;
 }
 
-.start-prompt {
+/* Corazones al fondo */
+.background-hearts {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Reproductor al frente */
+.multimedia-container {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 1050px;
+    text-align: center;
+}
+
+.video-player-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border: 3px solid #ff0033;
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(255, 0, 51, 0.4);
+    overflow: hidden;
+}
+
+.overlay-start {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
     cursor: pointer;
+    color: white;
 }
 
-.heart-icon-pulse {
+.heart-pulse-main {
     font-size: 80px;
-    animation: beat 1.5s infinite;
+    animation: pulse 1.5s infinite;
 }
 
-@keyframes beat {
+@keyframes pulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.15); }
 }
 
-.main-title { color: white; font-size: 3.5rem; margin-top: 20px; text-shadow: 0 0 20px red; }
-.sub-title { color: #ff9999; font-size: 1.2rem; letter-spacing: 5px; font-weight: bold; text-transform: uppercase; }
-.back-btn-top { color: white; text-decoration: none; position: absolute; top: -50px; left: 0; opacity: 0.7; }
+.main-name { color: white; font-size: 3rem; margin-top: 20px; text-shadow: 0 0 10px red; }
+.slogan { color: #ff9999; letter-spacing: 4px; font-weight: bold; }
+.back-home { color: white; text-decoration: none; position: absolute; top: -50px; left: 0; opacity: 0.8; }
