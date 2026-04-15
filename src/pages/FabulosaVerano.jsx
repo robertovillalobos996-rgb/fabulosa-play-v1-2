@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react';
 import fondoVerano from '../assets/verano-fondo.png';
-import logoImage from '../assets/logo_fabulosa.png'; 
 
 const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
@@ -49,7 +48,6 @@ const FabulosaVerano = () => {
     }
   };
 
-  // 🔊 MIXER FORZADO (Baja música, precarga voz, dispara audio)
   const playOverlayAudio = (path, duckingLevel) => {
     if (!videoRef.current || !hasStarted) return;
     
@@ -57,13 +55,13 @@ const FabulosaVerano = () => {
     videoRef.current.volume = currentVol * duckingLevel;
     
     effectAudioRef.current.src = path;
-    effectAudioRef.current.load(); // Forzamos la carga del archivo
+    effectAudioRef.current.load();
     
     const playPromise = effectAudioRef.current.play();
     
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        videoRef.current.volume = currentVol; // Restaurar si falla
+        videoRef.current.volume = currentVol;
       });
     }
     
@@ -79,7 +77,7 @@ const FabulosaVerano = () => {
     const subeleInterval = setInterval(() => playOverlayAudio(SUBELE_VOLUMEN, 0.8), 240000); // 4m
     const locutorInterval = setInterval(() => {
       const randomLocutor = LOCUTORES[Math.floor(Math.random() * LOCUTORES.length)];
-      playOverlayAudio(randomLocutor, 0.5); // 15m - Música al 50%
+      playOverlayAudio(randomLocutor, 0.5); // 15m
     }, 900000); 
 
     return () => {
@@ -121,7 +119,6 @@ const FabulosaVerano = () => {
       
       <div className="fixed inset-0 bg-black/60 backdrop-blur-md"></div>
       
-      {/* HEADER AUTO-OCULTABLE */}
       <div className={`relative z-50 flex justify-between items-center p-6 transition-opacity duration-500 ${!showControls && hasStarted ? 'opacity-0' : 'opacity-100'}`}>
         <Link to="/" className="px-8 py-3 bg-white/10 hover:bg-pink-600 rounded-full text-white font-black border border-white/20 transition-all uppercase tracking-widest">Salir</Link>
         <h1 className="text-4xl md:text-6xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-cyan-400 uppercase">Fabulosa Verano</h1>
@@ -132,9 +129,6 @@ const FabulosaVerano = () => {
             
             <div ref={playerContainerRef} className="relative group bg-black shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-white/10 w-full 2xl:flex-1 aspect-video rounded-[4rem] overflow-hidden">
                 
-                {/* LOGO TV PREMIUM (ARRIBA IZQUIERDA) */}
-                <img src={logoImage} alt="Logo" className={`absolute top-10 left-10 h-20 z-50 transition-opacity duration-700 pointer-events-none ${!showControls && hasStarted ? 'opacity-40' : 'opacity-100'}`} style={{ filter: 'drop-shadow(0 0 15px rgba(0,242,255,0.6))' }} />
-
                 {!hasStarted && (
                     <div className="absolute inset-0 z-[60] flex flex-col items-center justify-center bg-black/95 cursor-pointer" onClick={handleStart}>
                         <div className="w-32 h-32 bg-pink-500 rounded-full flex items-center justify-center mb-8 shadow-[0_0_50px_rgba(236,72,153,0.6)] animate-pulse">
@@ -146,7 +140,6 @@ const FabulosaVerano = () => {
 
                 <video ref={videoRef} className="w-full h-full object-cover" playsInline />
                 
-                {/* CONTROLES ESTILO YOUTUBE */}
                 <div className={`absolute bottom-0 left-0 w-full p-10 flex items-center justify-between transition-opacity duration-500 z-40 bg-gradient-to-t from-black/95 via-black/40 to-transparent ${!showControls ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                     <div className="flex items-center gap-8">
                         <button onClick={togglePlay} className="text-white hover:text-pink-500 transition-transform hover:scale-110">
@@ -174,7 +167,6 @@ const FabulosaVerano = () => {
                 </div>
             </div>
 
-            {/* BANNER VERTICAL */}
             <div className="w-full 2xl:w-[500px] h-[500px] md:h-[750px] bg-black/40 backdrop-blur-3xl rounded-[4rem] border border-white/10 overflow-hidden shadow-2xl">
                 <img src={VERTICAL_ADS[vAdIndex]} className="w-full h-full object-contain" alt="Publicidad" />
             </div>
