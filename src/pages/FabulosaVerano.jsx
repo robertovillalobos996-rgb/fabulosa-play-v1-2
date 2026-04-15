@@ -33,10 +33,12 @@ const FabulosaVerano = () => {
   const effectAudioRef = useRef(new Audio());
   const hideTimeout = useRef(null);
   
+  // REFERENCIA CRÍTICA: Mantiene el volumen sin reiniciar los relojes
+  const volumeRef = useRef(1); 
+  
   const [hasStarted, setHasStarted] = useState(false); 
   const [isPlaying, setIsPlaying] = useState(false);
   const [showControls, setShowControls] = useState(true);
-  const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
   const [vAdIndex, setVAdIndex] = useState(0);
 
@@ -51,7 +53,8 @@ const FabulosaVerano = () => {
   const playOverlayAudio = (path, duckingLevel) => {
     if (!videoRef.current || !hasStarted) return;
     
-    const currentVol = volume;
+    const currentVol = volumeRef.current;
+    // Bajamos el volumen del video usando la referencia actual
     videoRef.current.volume = currentVol * duckingLevel;
     
     effectAudioRef.current.src = path;
@@ -60,18 +63,22 @@ const FabulosaVerano = () => {
     const playPromise = effectAudioRef.current.play();
     
     if (playPromise !== undefined) {
-      playPromise.catch(() => {
+      playPromise.catch(e => {
+        console.error("Fallo al forzar voz:", path);
         videoRef.current.volume = currentVol;
       });
     }
     
     effectAudioRef.current.onended = () => {
-      if (videoRef.current) videoRef.current.volume = currentVol;
+      if (videoRef.current) videoRef.current.volume = volumeRef.current;
     };
   };
 
+  // RELOJES INDEPENDIENTES: Solo dependen de hasStarted, nunca se reinician por el volumen
   useEffect(() => {
     if (!hasStarted) return;
+
+    console.log("Sistema de Locución Automatizada Iniciado");
 
     const selloInterval = setInterval(() => playOverlayAudio(SELLO_FABULOSA, 0.8), 180000); // 3m
     const subeleInterval = setInterval(() => playOverlayAudio(SUBELE_VOLUMEN, 0.8), 240000); // 4m
@@ -81,9 +88,11 @@ const FabulosaVerano = () => {
     }, 900000); 
 
     return () => {
-      clearInterval(selloInterval); clearInterval(subeleInterval); clearInterval(locutorInterval);
+      clearInterval(selloInterval); 
+      clearInterval(subeleInterval); 
+      clearInterval(locutorInterval);
     };
-  }, [hasStarted, volume]);
+  }, [hasStarted]);
 
   useEffect(() => {
     const adInterval = setInterval(() => setVAdIndex((prev) => (prev + 1) % VERTICAL_ADS.length), 15000);
@@ -119,55 +128,57 @@ const FabulosaVerano = () => {
       
       <div className="fixed inset-0 bg-black/60 backdrop-blur-md"></div>
       
-      <div className={`relative z-50 flex justify-between items-center p-6 transition-opacity duration-500 ${!showControls && hasStarted ? 'opacity-0' : 'opacity-100'}`}>
-        <Link to="/" className="px-8 py-3 bg-white/10 hover:bg-pink-600 rounded-full text-white font-black border border-white/20 transition-all uppercase tracking-widest">Salir</Link>
-        <h1 className="text-4xl md:text-6xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-cyan-400 uppercase">Fabulosa Verano</h1>
+      <div className={`relative z-50 flex justify-between items-center p-4 md:p-6 transition-opacity duration-500 ${!showControls && hasStarted ? 'opacity-0' : 'opacity-100'}`}>
+        <Link to="/" className="px-4 py-2 md:px-8 md:py-3 bg-white/10 hover:bg-pink-600 rounded-full text-white font-black border border-white/20 transition-all uppercase text-xs md:text-base">Salir</Link>
+        <h1 className="text-xl md:text-5xl font-black italic text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-cyan-400 uppercase">Fabulosa Verano</h1>
       </div>
 
-      <div className="flex-1 flex flex-col items-center justify-center p-4 relative z-40">
-        <div className="flex flex-col 2xl:flex-row items-center justify-center gap-10 w-full max-w-[1900px]">
+      <div className="flex-1 flex flex-col items-center justify-center p-2 md:p-4 relative z-40">
+        <div className="flex flex-col 2xl:flex-row items-center justify-center gap-4 md:gap-10 w-full max-w-[1900px]">
             
-            <div ref={playerContainerRef} className="relative group bg-black shadow-[0_0_80px_rgba(0,0,0,0.8)] border border-white/10 w-full 2xl:flex-1 aspect-video rounded-[4rem] overflow-hidden">
+            <div ref={playerContainerRef} className="relative group bg-black shadow-2xl border border-white/10 w-full 2xl:flex-1 aspect-video rounded-[2rem] md:rounded-[4rem] overflow-hidden">
                 
                 {!hasStarted && (
                     <div className="absolute inset-0 z-[60] flex flex-col items-center justify-center bg-black/95 cursor-pointer" onClick={handleStart}>
-                        <div className="w-32 h-32 bg-pink-500 rounded-full flex items-center justify-center mb-8 shadow-[0_0_50px_rgba(236,72,153,0.6)] animate-pulse">
-                            <Play size={60} className="text-white ml-2" fill="white" />
+                        <div className="w-20 h-20 md:w-32 md:h-32 bg-pink-500 rounded-full flex items-center justify-center mb-4 md:mb-8 shadow-lg animate-pulse">
+                            <Play size={40} className="text-white ml-1 md:ml-2" fill="white" />
                         </div>
-                        <p className="text-white font-black tracking-[0.3em] text-3xl uppercase">Sintonizar en Vivo</p>
+                        <p className="text-white font-black tracking-widest text-lg md:text-3xl uppercase">Sintonizar en Vivo</p>
                     </div>
                 )}
 
                 <video ref={videoRef} className="w-full h-full object-cover" playsInline />
                 
-                <div className={`absolute bottom-0 left-0 w-full p-10 flex items-center justify-between transition-opacity duration-500 z-40 bg-gradient-to-t from-black/95 via-black/40 to-transparent ${!showControls ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                    <div className="flex items-center gap-8">
-                        <button onClick={togglePlay} className="text-white hover:text-pink-500 transition-transform hover:scale-110">
-                            {isPlaying ? <Pause size={45} fill="white" /> : <Play size={45} fill="white" />}
+                {/* CONTROLES TIPO YOUTUBE RESPONSIVOS */}
+                <div className={`absolute bottom-0 left-0 w-full p-4 md:p-10 flex items-center justify-between transition-opacity duration-500 z-40 bg-gradient-to-t from-black via-black/20 to-transparent ${!showControls ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                    <div className="flex items-center gap-4 md:gap-8">
+                        <button onClick={togglePlay} className="text-white">
+                            {isPlaying ? <Pause size={30} fill="white" /> : <Play size={30} fill="white" />}
                         </button>
                         
-                        <div className="flex items-center gap-4 group/vol">
+                        <div className="hidden md:flex items-center gap-4 group/vol">
                             <button onClick={() => { setIsMuted(!isMuted); videoRef.current.muted = !isMuted; }} className="text-white">
-                                {isMuted || volume === 0 ? <VolumeX size={35} /> : <Volume2 size={35} />}
+                                {isMuted ? <VolumeX size={30} /> : <Volume2 size={30} />}
                             </button>
-                            <input type="range" min="0" max="1" step="0.05" value={isMuted ? 0 : volume} 
+                            <input type="range" min="0" max="1" step="0.05" 
+                                   defaultValue="1"
                                    onChange={(e) => { 
                                        const v = parseFloat(e.target.value);
-                                       setVolume(v); 
+                                       volumeRef.current = v; // Actualiza la referencia sin disparar re-renders del efecto
                                        videoRef.current.volume = v;
-                                       setIsMuted(v === 0);
                                    }} 
-                                   className="w-0 group-hover/vol:w-40 transition-all duration-500 accent-cyan-400 h-2 rounded-lg appearance-none bg-white/20 cursor-pointer"/>
+                                   className="w-24 md:w-40 accent-cyan-400 h-1.5 rounded-lg appearance-none bg-white/20 cursor-pointer"/>
                         </div>
                     </div>
 
-                    <button onClick={() => document.fullscreenElement ? document.exitFullscreen() : playerContainerRef.current.requestFullscreen()} className="text-white hover:text-cyan-400 transition-transform hover:scale-110">
-                        <Maximize size={35} />
+                    <button onClick={() => document.fullscreenElement ? document.exitFullscreen() : playerContainerRef.current.requestFullscreen()} className="text-white">
+                        <Maximize size={28} />
                     </button>
                 </div>
             </div>
 
-            <div className="w-full 2xl:w-[500px] h-[500px] md:h-[750px] bg-black/40 backdrop-blur-3xl rounded-[4rem] border border-white/10 overflow-hidden shadow-2xl">
+            {/* BANNER VERTICAL DERECHA */}
+            <div className="w-full 2xl:w-[500px] h-[300px] md:h-[750px] bg-black/40 backdrop-blur-3xl rounded-[2rem] md:rounded-[4rem] border border-white/10 overflow-hidden shadow-2xl">
                 <img src={VERTICAL_ADS[vAdIndex]} className="w-full h-full object-contain" alt="Publicidad" />
             </div>
         </div>
