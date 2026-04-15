@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Volume2, VolumeX, Play, Pause, Maximize, RotateCw } from 'lucide-react';
+import { ArrowLeft, Volume2, VolumeX, Play, Pause, Maximize } from 'lucide-react';
 import logoImage from '../assets/logo_fabulosa.png';
 import './Camaras.css';
 
@@ -36,8 +36,9 @@ const Camaras = () => {
     const [volume, setVolume] = useState(1);
     const [keyIndex, setKeyIndex] = useState(0);
     const [showControls, setShowControls] = useState(true);
+    // Estado para controlar la animación de transición
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
-    // Auto-ocultar controles
     const resetControlsTimer = () => {
         setShowControls(true);
         if (controlsTimer.current) clearTimeout(controlsTimer.current);
@@ -46,16 +47,34 @@ const Camaras = () => {
         }, 3000);
     };
 
-    // Rotación de Cámaras (2 min) y Publicidad (15 seg)
+    // Lógica combinada de rotación con transiciones cinemáticas
     useEffect(() => {
         if (!isPlaying || isPaused) return;
-        const camInterval = setInterval(() => {
-            setCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
-            setKeyIndex((prev) => (prev + 1) % YOUTUBE_API_KEYS.length);
-        }, 120000);
+
+        // Función para ejecutar el cambio de cámara con efecto
+        const performCamSwap = () => {
+            setIsTransitioning(true); // Inicia fundido a negro
+            
+            // Esperamos a que la pantalla esté negra (0.5s) para cambiar la fuente
+            setTimeout(() => {
+                setCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
+                setKeyIndex((prev) => (prev + 1) % YOUTUBE_API_KEYS.length);
+                
+                // Esperamos un momento corto y volvemos a mostrar (fade in)
+                setTimeout(() => {
+                    setIsTransitioning(false);
+                }, 100); 
+            }, 500);
+        };
+
+        // Intervalo de Cámaras (Cada 2 minutos ejecuta la transición)
+        const camInterval = setInterval(performCamSwap, 120000);
+
+        // Intervalo de Publicidad (Cada 15 segundos sin transición)
         const adInterval = setInterval(() => {
             setAdIndex((prev) => (prev + 1) % VERTICAL_ADS.length);
         }, 15000);
+
         return () => { clearInterval(camInterval); clearInterval(adInterval); };
     }, [isPlaying, isPaused]);
 
@@ -95,18 +114,19 @@ const Camaras = () => {
                     {!isPlaying ? (
                         <div className="play-overlay" onClick={handleStart}>
                             <div className="play-circle"><Play size={50} fill="#00f2ff" /></div>
-                            <p>TRANSMISIÓN EN VIVO</p>
+                            <p>TRANSMISIÓN PROFESIONAL EN VIVO</p>
                         </div>
                     ) : (
-                        <div className="video-container">
+                        // Añadimos la clase 'switching' cuando hay transición
+                        <div className={`video-container ${isTransitioning ? 'switching' : ''}`}>
                             <div className="yt-shield"></div>
                             
-                            {/* LOGO DENTRO DEL REPRODUCTOR (Arriba Izquierda) */}
-                            <img src={logoImage} alt="Logo TV" className={`tv-bug ${!showControls ? 'low-opacity' : ''}`} />
+                            {/* LOGO TV GRANDE CON PRESENCIA */}
+                            <img src={logoImage} alt="Logo TV" className={`tv-bug-premium ${!showControls ? 'low-opacity' : ''}`} />
 
                             {!isPaused && (
                                 <iframe 
-                                    src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&key=${YOUTUBE_API_KEYS[keyIndex]}`} 
+                                    src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&key=${YOUTUBE_API_KEYS[keyIndex]}`} 
                                     frameBorder="0" allow="autoplay; encrypted-media"
                                 />
                             )}
