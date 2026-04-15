@@ -2,73 +2,31 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle, #4a0000 0%, #000000 100%);
+  background: radial-gradient(circle, #3a0000 0%, #000000 100%);
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Corazones por detrás */
 .hearts-layer {
   position: absolute;
-  top: 0;
-  left: 0;
+  z-index: 1; /* Al fondo */
   width: 100%;
   height: 100%;
-  z-index: 1;
 }
 
-.romantic-heart {
-  position: absolute;
-  bottom: -50px;
-  opacity: 0.5;
-  animation: floatUp linear forwards;
-}
-
-@keyframes floatUp {
-  to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-}
-
-/* Escenario Central */
 .main-stage {
   position: relative;
-  z-index: 5; /* Frente a los corazones */
-  width: 95%;
+  z-index: 10; /* Al frente */
+  width: 90%;
   max-width: 1000px;
-  text-align: center;
 }
 
 .multimedia-frame {
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #000;
   border: 4px solid #ff0033;
-  border-radius: 15px;
   box-shadow: 0 0 50px rgba(255, 0, 51, 0.6);
-  overflow: hidden;
+  background: #000;
 }
-
-.click-to-love {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: white;
-}
-
-.big-heart-pulse {
-  font-size: 80px;
-  animation: beat 1.2s infinite;
-}
-
-@keyframes beat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-.station-title { color: white; font-size: 3rem; margin-top: 20px; text-shadow: 0 0 10px red; }
-.station-tagline { color: #ff9999; font-size: 1.2rem; letter-spacing: 4px; }
-.back-link { color: white; text-decoration: none; position: absolute; top: -50px; left: 0; font-weight: bold; }

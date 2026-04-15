@@ -7,7 +7,7 @@ const Radio = () => {
   const [playing, setPlaying] = useState(false);
   const heartsContainer = useRef(null);
 
-  // Generador de corazones para TODO el fondo
+  // Corazones por toda la pantalla (detrás del video)
   useEffect(() => {
     const addHeart = () => {
       if (!heartsContainer.current) return;
@@ -15,10 +15,9 @@ const Radio = () => {
       h.className = 'romantic-heart';
       h.innerHTML = '❤️';
       h.style.left = Math.random() * 100 + 'vw';
-      h.style.animationDuration = Math.random() * 3 + 4 + 's';
-      h.style.fontSize = Math.random() * 20 + 20 + 'px';
+      h.style.animationDuration = Math.random() * 3 + 5 + 's';
       heartsContainer.current.appendChild(h);
-      setTimeout(() => h.remove(), 7000);
+      setTimeout(() => h.remove(), 8000);
     };
     const timer = setInterval(addHeart, 300);
     return () => clearInterval(timer);
@@ -26,10 +25,10 @@ const Radio = () => {
 
   return (
     <div className="love-center-container">
-      {/* CAPA DE FONDO: Corazones por todos lados */}
+      {/* CAPA DE FONDO: Corazones */}
       <div className="hearts-layer" ref={heartsContainer}></div>
 
-      {/* CAPA FRONTAL: Tu Canal Multimedia */}
+      {/* ESCENARIO PRINCIPAL */}
       <div className="main-stage">
         <Link to="/" className="back-link">← INICIO</Link>
         
