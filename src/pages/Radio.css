@@ -1,141 +1,122 @@
-.radio-premium-page {
-    width: 100vw;
-    height: 100vh;
-    background: radial-gradient(circle at center, #2e0000 0%, #000000 100%);
+.radio-app-container {
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #220000 0%, #000 100%);
+    position: relative;
+    overflow-x: hidden;
+    color: #fff;
     display: flex;
-    overflow: hidden;
-    color: white;
-    font-family: 'Inter', sans-serif;
+    flex-direction: column;
 }
 
-.heart-rain {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-}
+/* Capa de corazones sin interrupciones */
+.heart-layer { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
 
 .heart-gem {
     position: absolute;
-    bottom: -50px;
-    width: 25px;
-    height: 25px;
+    bottom: -10%;
+    width: 30px;
+    height: 30px;
     background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center/contain;
     filter: drop-shadow(0 0 10px #ff0044);
-    opacity: 0.6;
-    animation: smoothFloatUp linear forwards;
+    opacity: 0.5;
+    animation: floatUp linear forwards;
 }
 
-@keyframes smoothFloatUp {
-    to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-}
+@keyframes floatUp { to { transform: translateY(-120vh) rotate(360deg); opacity: 0; } }
 
-.main-interface {
+/* Layout Inteligente */
+.smart-layout {
     position: relative;
-    z-index: 10;
+    z-index: 5;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 30px;
 }
 
-.top-bar {
+.nav-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
-.exit-button {
+.btn-exit {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    color: #ffffff;
+    color: white;
+    font-size: 1.2rem;
+    backdrop-filter: blur(5px);
+}
+
+.badge-live {
+    background: rgba(0,0,0,0.6);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #ff0044;
+    font-size: 0.8rem;
     font-weight: bold;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px 20px;
-    border-radius: 50px;
-    transition: 0.3s;
 }
 
-.exit-button:hover { background: #ff0044; }
-
-.live-status {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 10px 20px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 0, 68, 0.5);
-    font-size: 0.85rem;
-    font-weight: 700;
-}
-
-.pulse-dot {
+.red-dot {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     background: #ff0044;
     border-radius: 50%;
-    margin-right: 10px;
-    box-shadow: 0 0 10px #ff0044;
-    animation: blink 1.5s infinite;
+    margin-right: 8px;
+    animation: pulse 1s infinite;
 }
 
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-.player-showcase {
-    flex: 1;
+/* Sección del Reproductor - Responsiva */
+.player-section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
     align-items: center;
+    justify-content: center;
+    flex: 1;
 }
 
-.glass-card {
+.video-card {
     width: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
-    padding: 25px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-}
-
-.video-viewport {
-    width: 100%;
-    aspect-ratio: 16 / 9;
+    max-width: 850px;
     background: #000;
-    border-radius: 20px;
+    border-radius: 25px;
     overflow: hidden;
-    border: 2px solid rgba(255, 0, 68, 0.3);
+    border: 2px solid rgba(255, 0, 68, 0.4);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
 }
 
-.video-viewport video {
+.ratio-keeper {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    aspect-ratio: 16 / 9; /* Esto mantiene la forma en cualquier pantalla */
 }
 
-.station-meta {
-    margin-top: 30px;
-    text-align: center;
-}
+video { width: 100%; height: 100%; object-fit: contain; }
 
-.label {
-    font-size: 0.7rem;
-    letter-spacing: 4px;
-    color: #ff0044;
-    font-weight: 800;
-    text-transform: uppercase;
-}
+.info-card { text-align: center; }
 
-.station-name {
-    font-size: 3rem;
-    margin: 10px 0;
-    font-weight: 900;
-    text-shadow: 0 0 30px rgba(255,0,0,0.5);
-}
+.live-tag { color: #ff0044; font-weight: 800; letter-spacing: 3px; font-size: 0.7rem; }
 
-.slogan {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 2px;
+.main-title { font-size: clamp(2rem, 5vw, 3.5rem); margin: 10px 0; font-weight: 900; }
+
+.sub-title { color: rgba(255,255,255,0.6); font-size: clamp(1rem, 2vw, 1.3rem); }
+
+/* Ajustes para Móvil */
+@media (max-width: 768px) {
+    .smart-layout { padding: 15px; }
+    .video-card { border-radius: 15px; }
 }
