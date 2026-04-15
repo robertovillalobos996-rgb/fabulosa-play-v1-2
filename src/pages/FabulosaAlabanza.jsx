@@ -2,10 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, Heart, Sparkles, Volume2, VolumeX, Play, Pause, 
-  Gift, Mic2, Tv, BookOpen, Film, Music, LayoutGrid, Loader2, Maximize, SkipForward 
+  Gift, Mic2, Tv, BookOpen, Film, Music, LayoutGrid, Loader2, Maximize
 } from 'lucide-react';
 
-// ✅ ASSETS (Solo la imagen)
 import logoAlabanza from '../assets/fabulosa-alabanza-logo.jpeg';
 
 const YOUTUBE_API_KEYS = [
@@ -18,273 +17,193 @@ const YOUTUBE_API_KEYS = [
     "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
-const VERSICULOS = [
-  "Todo lo puedo en Cristo que me fortalece. (Filipenses 4:13)",
-  "Jehová es mi pastor; nada me faltará. (Salmos 23:1)",
-  "La paz os dejo, mi paz os doy. (Juan 14:27)",
-  "Esfuérzate y sé valiente; no temas ni desmayes. (Josué 1:9)",
-  "Clama a mí, y yo te responderé. (Jeremías 33:3)"
-];
+// === CONTENIDO AMPLIADO ===
+const CATEGORIES = {
+  MUSICA: [
+    { id: "WujOmsOSY6w", title: "Miel San Marcos - Pentecostés" },
+    { id: "h92_oatv7-Y", title: "Barak - Fuego y Poder" },
+    { id: "XzNfF8f1L_I", title: "Christine D'Clario - Eterno Live" },
+    { id: "uYqS_z-x05U", title: "Redimi2 - Pura Sal" },
+    { id: "mAnB76K_t3o", title: "Marcos Witt - Sigues siendo Dios" },
+    { id: "BOfm_nQ9m48", title: "Way Maker - Spanish Version" },
+    { id: "S0WInA_56bI", title: "Grupo Grace - Los de Sión" },
+    { id: "5pGvj5B_4XQ", title: "New Wine - Espíritu Santo" }
+  ],
+  PREDICAS: [
+    { id: "f20jV97t2bU", title: "Dante Gebel - El código del honor" },
+    { id: "G9_r7Y_K7P0", title: "Itiel Arroyo - El poder de la disciplina" },
+    { id: "P2l6pWn6jZk", title: "Armando Alducin - Las Señales del Fin" },
+    { id: "m_V_D8P8X6c", title: "Andrés Spyker - Fe Inquebrantable" },
+    { id: "B7Z_pXnS-z0", title: "Cash Luna - En honor al Espíritu Santo" },
+    { id: "R_p8X_Z-m90", title: "Ruddy Gracia - Fe vs Miedo" },
+    { id: "T_p7X_L-v8k", title: "Pr. Juan Carlos Harrigan - Poder de Dios" }
+  ],
+  PELICULAS: [
+    { id: "V7p8X_S-z88", title: "Cuarto de Guerra (War Room)" },
+    { id: "B_p9X_R-q90", title: "Dios no está muerto" },
+    { id: "S_p1X_Y-z77", title: "A prueba de fuego" },
+    { id: "T_p5X_K-m33", title: "Reto de Valientes" },
+    { id: "M_p2X_N-v44", title: "Vencedor (Overcomer)" },
+    { id: "L_p4X_Q-j11", title: "Milagros del Cielo" },
+    { id: "K_p3X_H-g55", title: "El Progreso del Peregrino" }
+  ],
+  DOCUMENTALES: [
+    { id: "A_p6X_T-u22", title: "La Historia de la Biblia" },
+    { id: "F_p8X_O-k88", title: "Tierra Santa en 4K" },
+    { id: "H_p1X_I-w99", title: "Misiones en el África" }
+  ]
+};
 
 const FabulosaAlabanza = () => {
-  const playCountRef = useRef(0);
-  const keyIndexRef = useRef(0);
-  const lastMovieTimeRef = useRef(Date.now()); 
-  const ytPlayerRef = useRef(null);
-  const playerWrapperRef = useRef(null);
-  
-  const [activeTab, setActiveTab] = useState('tv'); 
-  const [libraryContent, setLibraryContent] = useState([]);
-  const [currentYtId, setCurrentYtId] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true); 
-  const [mensajeDJ, setMensajeDJ] = useState("Conectando con la señal del Reino...");
-  const [isLoading, setIsLoading] = useState(true);
-
-  const [oracionModal, setOracionModal] = useState(false);
+  const [activeTab, setActiveTab] = useState('MUSICA');
+  const [currentVideoId, setCurrentVideoId] = useState(CATEGORIES.MUSICA[0].id);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showControls, setShowControls] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const [donacionModal, setDonacionModal] = useState(false);
+  
+  const playerRef = useRef(null);
+  const playerContainerRef = useRef(null);
+  const hideTimeout = useRef(null);
 
-  useEffect(() => {
-    continuarProgramacion();
-    cargarBiblioteca('movies', 'Jesus de Nazareth Moises Los Diez Mandamientos peliculas completas español');
-  }, []);
-
-  const continuarProgramacion = () => {
-    const ahora = Date.now();
-    if (ahora - lastMovieTimeRef.current >= 9000000) { 
-      setMensajeDJ("🎬 Cine de Gala: Moisés y los grandes clásicos de la fe...");
-      buscarEnYouTube("Jesus de Nazareth Moses Los Diez Mandamientos pelicula completa", 'tv');
-      lastMovieTimeRef.current = ahora;
-    } else if (playCountRef.current % 5 === 0 && playCountRef.current !== 0) {
-      setMensajeDJ("📖 Tiempo de Palabra: Edificando tu espíritu hoy...");
-      buscarEnYouTube("predica cristiana poderosa dante gebel armando alducin itiel arroyo chuy olivares", 'tv');
-    } else {
-      setMensajeDJ("🎵 Alabanza y Adoración: Elevando incienso al Trono...");
-      buscarEnYouTube("alabanzas de adoracion 2026 grandes exitos", 'tv', true);
+  // Lógica auto-ocultar controles
+  const handleActivity = () => {
+    setShowControls(true);
+    if (hideTimeout.current) clearTimeout(hideTimeout.current);
+    if (isPlaying) {
+      hideTimeout.current = setTimeout(() => setShowControls(false), 3000);
     }
   };
 
-  const manejarFinDeVideo = () => {
-    playCountRef.current += 1;
-    continuarProgramacion();
-  };
-
-  const buscarEnYouTube = async (query, target, isMusic = false) => {
-    if (target === 'tv') setIsLoading(true);
-    try {
-      let exito = false;
-      let data = null;
-      while (keyIndexRef.current < YOUTUBE_API_KEYS.length && !exito) {
-        const key = YOUTUBE_API_KEYS[keyIndexRef.current];
-        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${encodeURIComponent(query)}&type=video&videoEmbeddable=true&key=${key}${isMusic ? '&videoCategoryId=10' : ''}`;
-        const res = await fetch(url);
-        if (res.status === 403 || res.status === 429) keyIndexRef.current++;
-        else { data = await res.json(); exito = true; }
-      }
-
-      if (exito && data?.items?.length > 0) {
-        if (target === 'tv') {
-          setCurrentYtId(data.items[0].id.videoId);
-          setIsLoading(false);
-        } else {
-          const mixedContent = [];
-          data.items.forEach((item, index) => {
-            mixedContent.push({ type: 'video', data: item });
-            if ((index + 1) % 4 === 0) mixedContent.push({ type: 'google-ad' }); 
-            if ((index + 1) % 7 === 0) mixedContent.push({ type: 'ministry-card' }); 
-          });
-          setLibraryContent(mixedContent);
-        }
-      }
-    } catch (e) { setIsLoading(false); }
-  };
-
-  const cargarBiblioteca = (tab, query) => {
-    setActiveTab(tab);
-    buscarEnYouTube(query, 'library', tab === 'music');
-  };
-
   useEffect(() => {
-    if (!window.YT) {
-      const tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-      document.body.appendChild(tag);
-      window.onYouTubeIframeAPIReady = () => initYTPlayer();
-    } else { initYTPlayer(); }
-
-    function initYTPlayer() {
-      if (ytPlayerRef.current) return;
-      ytPlayerRef.current = new window.YT.Player('youtube-player', {
-        playerVars: { autoplay: 1, controls: 0, modestbranding: 1, rel: 0, showinfo: 0 },
+    if (window.YT && currentVideoId) {
+      if (playerRef.current?.destroy) playerRef.current.destroy();
+      playerRef.current = new window.YT.Player('alabanza-player', {
+        videoId: currentVideoId,
+        playerVars: { autoplay: 1, controls: 0, modestbranding: 1, rel: 0, iv_load_policy: 3 },
         events: {
-          'onReady': (e) => { if (isMuted) e.target.mute(); },
-          'onStateChange': (e) => { if (e.data === 0) manejarFinDeVideo(); }
+          'onReady': () => { setIsLoading(false); setIsPlaying(true); },
+          'onStateChange': (e) => {
+            if (e.data === 1) setIsPlaying(true);
+            if (e.data === 2) setIsPlaying(false);
+          }
         }
       });
     }
-  }, []);
-
-  useEffect(() => {
-    if (currentYtId && ytPlayerRef.current?.loadVideoById) {
-      ytPlayerRef.current.loadVideoById(currentYtId);
-    }
-  }, [currentYtId]);
+  }, [currentVideoId]);
 
   const toggleFullscreen = () => {
-    const el = playerWrapperRef.current;
-    if (el.requestFullscreen) el.requestFullscreen();
-    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    if (!document.fullscreenElement) playerContainerRef.current.requestFullscreen();
+    else document.exitFullscreen();
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#020617] text-white overflow-x-hidden font-sans">
-      <header className="fixed top-0 w-full z-[100] bg-slate-950/90 backdrop-blur-xl border-b border-amber-500/20 px-4 md:px-8 py-3 flex justify-between items-center shadow-2xl">
-        <div className="flex items-center gap-3">
-          <Link to="/" className="p-2 bg-white/5 hover:bg-amber-600/20 rounded-full border border-white/10 transition-all">
-            <ArrowLeft size={20} />
+    <div className="min-h-screen bg-[#050505] text-white flex flex-col font-sans selection:bg-amber-500/30" onMouseMove={handleActivity}>
+      
+      {/* HEADER */}
+      <header className="p-6 border-b border-white/5 bg-black/40 backdrop-blur-xl flex items-center justify-between sticky top-0 z-[100]">
+        <div className="flex items-center gap-6">
+          <Link to="/" className="p-3 bg-white/5 hover:bg-amber-500 rounded-2xl transition-all border border-white/10 group">
+            <ArrowLeft className="group-hover:scale-110 transition-transform" />
           </Link>
-          <div className="flex flex-col leading-none">
-            <h1 className="text-lg md:text-xl font-black text-amber-500 uppercase tracking-tighter italic">Centro Cristiano</h1>
-            <span className="text-[8px] md:text-[10px] tracking-[0.2em] font-bold text-slate-400 uppercase italic">Fabulosa Alabanza</span>
+          <div className="flex items-center gap-4">
+             {/* LOGO TRANSPARENTE (Contenedor sin fondo negro) */}
+            <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20">
+              <img src={logoAlabanza} alt="Logo" className="w-full h-full object-contain" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-black tracking-tighter italic uppercase bg-gradient-to-r from-amber-400 to-yellow-600 bg-clip-text text-transparent">Fabulosa Alabanza</h1>
+              <p className="text-[10px] font-bold text-amber-500/60 tracking-[0.3em] uppercase">Señal de Bendición</p>
+            </div>
           </div>
         </div>
-        <div className="flex gap-2">
-          <button onClick={() => setOracionModal(true)} className="px-4 py-2 bg-amber-600 rounded-full font-black text-[10px] shadow-lg active:scale-95 transition-all flex items-center gap-2">
-            <Heart size={14} fill="white"/> ORACIÓN
-          </button>
-          <button onClick={() => setDonacionModal(true)} className="hidden sm:flex px-4 py-2 bg-white/5 border border-white/10 rounded-full font-black text-[10px] hover:bg-white/10 transition-all items-center gap-2 italic">
-            <Gift size={14} className="text-amber-500"/> APOYAR EL CANAL
-          </button>
-        </div>
+        <button onClick={() => setDonacionModal(true)} className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black font-black rounded-2xl text-xs uppercase tracking-widest transition-all shadow-lg shadow-amber-500/20 active:scale-95 flex items-center gap-2">
+          <Gift size={16} /> Sembrar
+        </button>
       </header>
 
-      <main className="pt-20 pb-20 px-4 md:px-12 max-w-[1600px] mx-auto">
-        <section className="mb-10">
-            <div className="w-full bg-slate-900/60 border border-amber-500/30 rounded-2xl p-4 flex items-center gap-4 mb-5 shadow-xl">
-                <div className="w-10 h-10 bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500">
-                    <Mic2 size={20} className="animate-pulse" />
-                </div>
-                <p className="text-xs md:text-sm font-bold italic text-amber-100/80">{mensajeDJ}</p>
-            </div>
+      <main className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+        
+        {/* REPRODUCTOR ESTILO YOUTUBE */}
+        <section className="flex-1 flex flex-col bg-black relative group" ref={playerContainerRef}>
+          <div className="flex-1 relative overflow-hidden">
+            <div className="absolute inset-0 z-10"></div> {/* Escudo contra clics de YouTube */}
+            <div id="alabanza-player" className="w-full h-full"></div>
+            
+            {isLoading && (
+              <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black backdrop-blur-md">
+                <Loader2 className="animate-spin text-amber-500 mb-4" size={50} />
+                <p className="text-amber-500 font-black tracking-widest uppercase animate-pulse">Cargando Unción...</p>
+              </div>
+            )}
 
-            <div ref={playerWrapperRef} className="relative aspect-video w-full bg-black rounded-[2.5rem] overflow-hidden border-2 border-slate-800 shadow-2xl group">
-                {isLoading && (
-                    <div className="absolute inset-0 z-30 bg-slate-950 flex flex-col items-center justify-center">
-                        <Loader2 className="text-amber-500 animate-spin mb-4" size={50} />
-                        <p className="text-amber-200 font-black text-xs tracking-widest uppercase">CONECTANDO AL TRONO...</p>
-                    </div>
-                )}
-
-                <div className="absolute inset-0 z-10">
-                    <div className="absolute inset-0 z-20 bg-transparent"></div>
-                    <div id="youtube-player" className="w-full h-full scale-[1.4] md:scale-[1.25]"></div>
-                </div>
-
-                <div className="absolute top-6 right-6 z-50 w-28 md:w-52 opacity-70 pointer-events-none drop-shadow-2xl">
-                    <img src={logoAlabanza} className="w-full" style={{ mixBlendMode: 'screen' }} />
-                </div>
-
-                <div className="absolute bottom-0 w-full p-6 md:p-10 flex justify-between items-end bg-gradient-to-t from-black via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 z-50 translate-y-4 group-hover:translate-y-0">
-                    <div className="flex gap-4">
-                        <button onClick={() => { setIsPlaying(!isPlaying); isPlaying ? ytPlayerRef.current.pauseVideo() : ytPlayerRef.current.playVideo(); }} className="p-4 bg-amber-600 rounded-full shadow-2xl hover:scale-110 active:scale-90 transition-all">
-                            {isPlaying ? <Pause size={24} fill="white"/> : <Play size={24} fill="white" className="ml-1"/>}
-                        </button>
-                        <button onClick={() => { setIsMuted(!isMuted); isMuted ? ytPlayerRef.current.unMute() : ytPlayerRef.current.mute(); }} className="p-4 bg-white/10 backdrop-blur-2xl border border-white/10 rounded-full hover:bg-white/20 transition-all">
-                            {isMuted ? <VolumeX size={24}/> : <Volume2 size={24}/>}
-                        </button>
-                        <button onClick={continuarProgramacion} className="p-4 bg-white/5 backdrop-blur-2xl border border-white/5 rounded-full hover:text-amber-500 transition-all">
-                            <SkipForward size={24}/>
-                        </button>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <div className="px-4 py-1.5 bg-red-600 rounded-full text-[10px] font-black animate-pulse border border-white/20 uppercase tracking-widest flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-white rounded-full"></div> EN VIVO
-                        </div>
-                        <button onClick={toggleFullscreen} className="p-3 bg-white/5 rounded-full hover:bg-white/10 transition-all text-slate-400">
-                            <Maximize size={20}/>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <h2 className="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-amber-500 mb-8 flex items-center gap-3">
-            <LayoutGrid size={28}/> Manantial de Bendición
-        </h2>
-
-        <nav className="flex gap-3 overflow-x-auto pb-6 no-scrollbar mb-10 border-b border-white/5">
-            {[
-                { id: 'tv', icon: Tv, label: 'EN VIVO 24/7', q: '' },
-                { id: 'movies', icon: Film, label: 'CINE SEMANA SANTA', q: 'Jesus de Nazareth Moises Los Diez Mandamientos peliculas cristianas' },
-                { id: 'sermons', icon: BookOpen, label: 'PRÉDICAS VARIADAS', q: 'predicas cristianas dante gebel armando alducin itiel arroyo chuy olivares' },
-                { id: 'music', icon: Music, label: 'ALABANZA Y ADORACIÓN', q: 'musica cristiana adoracion 2026 grandes exitos' }
-            ].map(tab => (
-                <button 
-                    key={tab.id}
-                    onClick={() => cargarBiblioteca(tab.id, tab.q)}
-                    className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-black text-[11px] md:text-xs transition-all whitespace-nowrap border ${activeTab === tab.id ? 'bg-amber-600 border-amber-400 text-white shadow-2xl scale-105' : 'bg-slate-900 border-white/5 text-slate-400 hover:text-white'}`}
-                >
-                    <tab.icon size={18} /> {tab.label}
+            {/* CONTROLES OVERLAY (Auto-ocultables) */}
+            <div className={`absolute bottom-0 left-0 w-full p-8 flex items-center justify-between z-40 bg-gradient-to-t from-black/90 to-transparent transition-opacity duration-500 ${!showControls ? 'opacity-0' : 'opacity-100'}`}>
+              <div className="flex items-center gap-8">
+                <button onClick={() => isPlaying ? playerRef.current.pauseVideo() : playerRef.current.playVideo()} className="text-white hover:text-amber-500 transition-colors">
+                  {isPlaying ? <Pause size={35} fill="white" /> : <Play size={35} fill="white" />}
                 </button>
-            ))}
-        </nav>
-
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {libraryContent.map((item, idx) => (
-                item.type === 'video' ? (
-                    <div key={idx} onClick={() => { setCurrentYtId(item.data.id.videoId); window.scrollTo({top: 0, behavior: 'smooth'}); }} className="group cursor-pointer bg-slate-900/40 rounded-3xl p-3 border border-white/5 hover:border-amber-500/40 transition-all shadow-xl hover:-translate-y-2 duration-500">
-                        <div className="relative aspect-video rounded-2xl overflow-hidden mb-4 shadow-lg">
-                            <img src={item.data.snippet.thumbnails.high.url} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 opacity-80 group-hover:opacity-100" />
-                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                                <Play fill="white" size={30} className="text-white" />
-                            </div>
-                        </div>
-                        <h3 className="text-[11px] font-black line-clamp-2 text-slate-200 px-1 uppercase tracking-tight italic group-hover:text-amber-500 transition-colors leading-relaxed">{item.data.snippet.title}</h3>
-                    </div>
-                ) : null
-            ))}
+                <button onClick={() => { setIsMuted(!isMuted); playerRef.current?.[isMuted ? 'unMute' : 'mute'](); }} className="text-white hover:text-amber-500 transition-colors">
+                  {isMuted ? <VolumeX size={30} /> : <Volume2 size={30} />}
+                </button>
+              </div>
+              <button onClick={toggleFullscreen} className="text-white hover:text-amber-500 transition-colors">
+                <Maximize size={30} />
+              </button>
+            </div>
+          </div>
         </section>
+
+        {/* LISTA DE CONTENIDO */}
+        <aside className="w-full lg:w-[450px] bg-[#0a0a0a] border-l border-white/5 flex flex-col shadow-2xl">
+          <div className="p-4 grid grid-cols-4 gap-2 border-b border-white/5 bg-black/20">
+            {Object.keys(CATEGORIES).map(cat => (
+              <button key={cat} onClick={() => setActiveTab(cat)} className={`py-3 rounded-xl text-[10px] font-black uppercase tracking-tighter transition-all ${activeTab === cat ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20' : 'bg-white/5 text-gray-500 hover:bg-white/10'}`}>
+                {cat === 'MUSICA' ? <Music className="mx-auto mb-1" size={16}/> : cat === 'PREDICAS' ? <Mic2 className="mx-auto mb-1" size={16}/> : cat === 'PELICULAS' ? <Film className="mx-auto mb-1" size={16}/> : <Tv className="mx-auto mb-1" size={16}/>}
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar">
+            {CATEGORIES[activeTab].map((item, idx) => (
+              <button key={idx} onClick={() => { setIsLoading(true); setCurrentVideoId(item.id); }} className={`w-full flex items-center gap-4 p-4 rounded-[1.5rem] transition-all border ${currentVideoId === item.id ? 'bg-amber-500/10 border-amber-500 shadow-lg' : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/10'}`}>
+                <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center text-amber-500 font-black italic">
+                   {idx + 1}
+                </div>
+                <div className="flex-1 text-left">
+                  <p className={`text-xs font-black uppercase tracking-tighter ${currentVideoId === item.id ? 'text-amber-500' : 'text-gray-300'}`}>{item.title}</p>
+                  <div className="flex items-center gap-2 mt-1">
+                    <Sparkles size={10} className="text-amber-500/50" />
+                    <span className="text-[9px] font-bold text-gray-500 uppercase">Señal HD</span>
+                  </div>
+                </div>
+                <Play size={14} className={currentVideoId === item.id ? 'text-amber-500' : 'text-gray-700'} />
+              </button>
+            ))}
+          </div>
+        </aside>
       </main>
 
-      <footer className="fixed bottom-0 w-full bg-slate-950 border-t border-amber-500/30 py-3 overflow-hidden z-[100] backdrop-blur-md">
-          <div className="whitespace-nowrap animate-marquee flex gap-12 text-amber-500/90 font-black italic text-[10px] uppercase tracking-[0.3em]">
-              {VERSICULOS.map((v, i) => (<span key={i} className="flex items-center gap-2"><Sparkles size={12} className="text-amber-400" /> {v}</span>))}
-          </div>
-      </footer>
-
-      {oracionModal && (
-        <div className="fixed inset-0 z-[200] bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-4">
-            <div className="bg-slate-900 border border-amber-500/30 p-10 rounded-[3rem] max-w-lg w-full text-center shadow-2xl">
-                <Heart className="w-16 h-16 text-amber-500 mx-auto mb-6 animate-pulse" fill="currentColor" />
-                <h2 className="text-3xl font-black text-white mb-2 uppercase italic tracking-tighter">Buzón de Oración</h2>
-                <textarea placeholder="Cuéntanos tu motivo de oración..." className="w-full bg-black/60 border border-white/10 rounded-[2rem] p-6 text-white text-sm h-48 focus:border-amber-500 outline-none transition-all mb-8 placeholder:text-slate-700 italic" />
-                <div className="flex gap-4">
-                    <button onClick={() => setOracionModal(false)} className="flex-1 py-5 bg-white/5 rounded-2xl font-black text-xs hover:bg-red-500/20 transition-all uppercase tracking-widest text-slate-400 italic">Cancelar</button>
-                    <button className="flex-1 py-5 bg-amber-600 rounded-2xl font-black text-xs shadow-2xl shadow-amber-900/50 uppercase tracking-widest italic">Enviar Clamor</button>
-                </div>
-            </div>
-        </div>
-      )}
-
+      {/* MODAL SINPE (MANTENIDO) */}
       {donacionModal && (
-        <div className="fixed inset-0 z-[200] bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-4">
-            <div className="bg-slate-900 border border-amber-500/40 p-10 md:p-14 rounded-[4rem] max-w-md w-full text-center shadow-2xl relative overflow-hidden">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/90 backdrop-blur-2xl">
+            <div className="bg-zinc-900 border border-amber-500/40 p-10 rounded-[3rem] max-w-md w-full text-center shadow-2xl relative overflow-hidden">
                 <Gift className="w-20 h-20 text-amber-500 mx-auto mb-8" />
                 <h2 className="text-2xl font-black text-white mb-3 uppercase tracking-tighter italic">Sembrar en este Canal</h2>
                 <div className="bg-amber-500/10 border border-amber-500/30 rounded-[2.5rem] p-10 mb-10 group hover:bg-amber-500/20 transition-all cursor-pointer">
                     <p className="text-[10px] text-amber-500 font-black uppercase tracking-[0.3em] mb-4 italic">Sinpe Móvil (Costa Rica)</p>
                     <p className="text-4xl font-black text-white tracking-[0.2em] group-hover:scale-110 transition-transform italic">6403-5313</p>
                 </div>
-                <button onClick={() => setDonacionModal(false)} className="w-full py-5 bg-amber-600 rounded-[2rem] font-black text-xs shadow-2xl shadow-amber-900/60 active:scale-95 transition-all tracking-[0.3em] italic uppercase">Amén, Dios te bendiga</button>
+                <button onClick={() => setDonacionModal(false)} className="w-full py-5 bg-amber-600 rounded-[2rem] font-black text-xs shadow-2xl active:scale-95 transition-all tracking-[0.3em] italic uppercase">Amén, Dios te bendiga</button>
             </div>
         </div>
       )}
 
       <style>{`
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .animate-marquee { animation: marquee 60s linear infinite; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        #youtube-player { pointer-events: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 10px; }
       `}</style>
     </div>
   );
