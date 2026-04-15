@@ -7,12 +7,11 @@ const Radio = () => {
   const [playing, setPlaying] = useState(false);
   const rainContainerRef = useRef(null);
 
-  // Tus corazones originales (heart-gem)
   useEffect(() => {
     const createHeart = () => {
       if (!rainContainerRef.current) return;
       const h = document.createElement('div');
-      h.classList.add('heart-gem');
+      h.classList.add('heart-gem'); // Tus corazones originales
       h.style.left = Math.random() * 100 + "vw";
       h.style.animationDuration = Math.random() * 4 + 6 + "s";
       let size = Math.random() * 20 + 20; 
@@ -25,23 +24,24 @@ const Radio = () => {
   }, []);
 
   return (
-    <div className="radio-main-layout">
-      {/* Fondo de corazones detrás de todo */}
-      <div className="heart-rain-container bg-layer" ref={rainContainerRef}></div>
+    <div className="love-universe">
+      {/* Fondo de corazones gemas */}
+      <div className="heart-rain-container bg-hearts" ref={rainContainerRef}></div>
 
-      <div className="content-frame">
-        <Link to="/" className="exit-link">← SALIR</Link>
+      <div className="multimedia-card">
+        <Link to="/" className="back-link">← SALIR</Link>
         
-        <div className="video-card-professional">
+        <div className="video-container-prof">
           {!playing ? (
-            <div className="play-overlay" onClick={() => setPlaying(true)}>
-              <div className="giant-heart-pulse">❤️</div>
+            <div className="tap-to-start" onClick={() => setPlaying(true)}>
+              <div className="pulse-heart-icon">❤️</div>
               <h2>ENCUENTRO CON EL AMOR</h2>
-              <p>Haz clic para ver la transmisión en vivo</p>
+              <p>Toca para conectar la señal de OBS</p>
             </div>
           ) : (
             <div className="player-wrapper">
               <ReactPlayer 
+                // ENLACE HLS DE TU PANEL DE BOZZTV
                 url="https://live20.bozztv.com/akamaissh101/ssh101/fabulosaplay/playlist.m3u8"
                 playing={playing}
                 controls={true}
@@ -53,9 +53,9 @@ const Radio = () => {
           )}
         </div>
 
-        <div className="station-info">
-          <h1 className="main-title">Fabulosa Stereo</h1>
-          <p className="slogan-text">EL ENCUENTRO CON EL AMOR</p>
+        <div className="branding-area">
+          <h1 className="radio-title">Fabulosa Stereo</h1>
+          <p className="radio-slogan">EL ENCUENTRO CON EL AMOR</p>
         </div>
       </div>
     </div>

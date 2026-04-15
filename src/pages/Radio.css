@@ -1,42 +1,36 @@
-.radio-main-layout {
+.love-universe {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: #000;
+    background: radial-gradient(circle, #220000 0%, #000000 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 
-.bg-layer {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    opacity: 0.5;
-}
+.bg-hearts { position: absolute; z-index: 1; width: 100%; height: 100%; opacity: 0.5; }
 
-.content-frame {
+.multimedia-card {
     position: relative;
     z-index: 10;
     width: 90%;
     max-width: 1000px;
 }
 
-.video-card-professional {
+.video-container-prof {
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: #111;
-    border: 2px solid #ff0044;
-    border-radius: 15px;
-    box-shadow: 0 0 40px rgba(255, 0, 68, 0.3);
+    background: #000;
+    border: 3px solid #ff0044;
+    border-radius: 12px;
+    box-shadow: 0 0 50px rgba(255, 0, 68, 0.4);
     overflow: hidden;
 }
 
 .player-wrapper { height: 100%; width: 100%; }
 
-.play-overlay {
+.tap-to-start {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -46,16 +40,13 @@
     cursor: pointer;
 }
 
-.giant-heart-pulse {
-    font-size: 80px;
-    animation: pulseHeart 1.5s infinite;
-}
+.pulse-heart-icon { font-size: 80px; animation: heartbeat 1.5s infinite; }
 
-@keyframes pulseHeart {
+@keyframes heartbeat {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }
 }
 
-.main-title { color: white; font-size: 2.5rem; margin-top: 15px; text-align: center; }
-.slogan-text { color: #ff8888; font-size: 1rem; letter-spacing: 5px; text-align: center; font-weight: bold; }
-.exit-link { color: white; text-decoration: none; position: absolute; top: -40px; left: 0; font-size: 0.9rem; }
+.radio-title { color: white; font-size: 3rem; margin-top: 20px; text-align: center; }
+.radio-slogan { color: #ff8888; letter-spacing: 5px; text-align: center; font-weight: bold; }
+.back-link { color: white; text-decoration: none; position: absolute; top: -40px; left: 0; font-weight: bold; }
