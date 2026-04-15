@@ -5,41 +5,43 @@ import './Radio.css';
 
 const Radio = () => {
   const [playing, setPlaying] = useState(false);
-  const heartsContainer = useRef(null);
+  const rainContainerRef = useRef(null);
 
-  // Corazones por toda la pantalla (detrás del video)
+  // Recuperamos tus corazones originales "heart-gem"
   useEffect(() => {
-    const addHeart = () => {
-      if (!heartsContainer.current) return;
+    const createHeart = () => {
+      if (!rainContainerRef.current) return;
       const h = document.createElement('div');
-      h.className = 'romantic-heart';
-      h.innerHTML = '❤️';
-      h.style.left = Math.random() * 100 + 'vw';
-      h.style.animationDuration = Math.random() * 3 + 5 + 's';
-      heartsContainer.current.appendChild(h);
-      setTimeout(() => h.remove(), 8000);
+      h.classList.add('heart-gem'); 
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.animationDuration = Math.random() * 4 + 6 + "s";
+      let size = Math.random() * 20 + 20; 
+      h.style.width = size + "px"; h.style.height = size + "px";
+      rainContainerRef.current.appendChild(h);
+      setTimeout(() => h.remove(), 10000);
     };
-    const timer = setInterval(addHeart, 300);
-    return () => clearInterval(timer);
+    const interval = setInterval(createHeart, 400);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="love-center-container">
-      {/* CAPA DE FONDO: Corazones */}
-      <div className="hearts-layer" ref={heartsContainer}></div>
+    <div className="love-universe">
+      {/* CAPA DE FONDO: Tus corazones fluyendo detrás del video */}
+      <div className="heart-rain-container background-hearts" ref={rainContainerRef}></div>
 
-      {/* ESCENARIO PRINCIPAL */}
-      <div className="main-stage">
-        <Link to="/" className="back-link">← INICIO</Link>
+      <div className="multimedia-center">
+        <Link to="/" className="back-btn-top">← VOLVER AL INICIO</Link>
         
-        <div className="multimedia-frame">
+        <div className="main-video-frame">
           {!playing ? (
-            <div className="click-to-love" onClick={() => setPlaying(true)}>
-              <div className="big-heart-pulse">❤️</div>
-              <h2>Toca para entrar al Encuentro con el Amor</h2>
+            <div className="start-prompt" onClick={() => setPlaying(true)}>
+              <div className="heart-icon-pulse">❤️</div>
+              <h2>ENTRAR AL ENCUENTRO CON EL AMOR</h2>
+              <p>Haz clic para conectar la señal en vivo</p>
             </div>
           ) : (
             <ReactPlayer 
+              // ENLACE DIRECTO DE TU SEÑAL DE VIDEO
               url="https://live20.bozztv.com/akamaissh101/ssh101/fabulosaplay/playlist.m3u8"
               playing={playing}
               controls={true}
@@ -49,9 +51,11 @@ const Radio = () => {
             />
           )}
         </div>
-        
-        <h1 className="station-title">Fabulosa Stereo</h1>
-        <p className="station-tagline">La Radio que Enamora tu Vida</p>
+
+        <div className="branding-section">
+          <h1 className="main-title">Fabulosa Stereo</h1>
+          <p className="sub-title">LA RADIO QUE ENAMORA TU VIDA</p>
+        </div>
       </div>
     </div>
   );
