@@ -12,6 +12,8 @@ import cardAlabanza from '../assets/card-alabanza.webp';
 import cardCamaras from '../assets/card-camaras.webp'; 
 import cardVerano from '../assets/verano-fabulosa.webp'; 
 import cardCentroMercadeo from '../assets/mercadeo.webp'; 
+// 🧸 NUEVO: Cargamos el logo de Fabulosito Kids
+import cardKids from '../assets/fabulosito_kids.png'; 
 
 const Home = () => {
   const [fecha, setFecha] = useState(new Date());
@@ -22,31 +24,47 @@ const Home = () => {
   }, []);
 
   const cards = [
+    // 🌈 LA NUEVA CARD DE NIÑOS (De primera para que resalte)
+    { id: 'fabulosito-kids', path: '/tv-1', img: cardKids },
     { id: 'radio', path: '/radio', img: cardRadio },
     { id: 'camaras', path: '/camaras', img: cardCamaras },
     { id: 'karaoke', path: '/karaoke', img: cardKaraoke },
     { id: 'cine-play', path: '/cine-play', img: cardMovies },
     { id: 'canales-play', path: '/canales-play', img: cardTv },
-    { id: 'fabulosa-tv', path: '/fabulosa-tv', img: cardFabulosaTv },
-    { id: 'alabanza', path: '/alabanza', img: cardAlabanza },
-    { id: 'verano', path: '/verano', img: cardVerano },
+    { id: 'fabulosa-tv', path: '/tv-fabulosa', img: cardFabulosaTv },
     { id: 'radios-cr', path: '/radios-cr', img: cardRadiosCR },
-    { id: 'centro-mercadeo', path: '/centro-mercadeo', img: cardCentroMercadeo } 
+    { id: 'verano', path: '/fabulosa-verano', img: cardVerano },
+    { id: 'alabanza', path: '/alabanza', img: cardAlabanza },
+    { id: 'mercadeo', path: '/centro-mercadeo', img: cardCentroMercadeo },
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex flex-col text-white font-sans overflow-hidden">
-      <header className="px-8 py-6 flex justify-between items-center z-10">
-        <img src={logoFabulosa} alt="Fabulosa Play" className="h-12 md:h-16" />
-        <div className="text-right">
-          <div className="text-4xl md:text-6xl font-black italic tracking-tighter">
-            {fecha.toLocaleTimeString('es-CR', { hour: '2-digit', minute: '2-digit' }).toUpperCase()}
+    <div className="min-h-screen bg-black flex flex-col font-sans relative overflow-hidden">
+      <header className="p-6 md:p-10 flex flex-col md:flex-row justify-between items-center gap-6 z-10">
+        <div className="flex items-center gap-6">
+          <img src={logoFabulosa} alt="Fabulosa Play" className="h-10 md:h-16 object-contain drop-shadow-2xl" />
+          <div className="h-12 w-[1px] bg-white/10 hidden md:block" />
+          <div className="hidden md:block">
+            <p className="text-white/40 text-[10px] font-black tracking-[0.3em] uppercase mb-1">Transmisión en Vivo</p>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
+              <p className="text-white font-bold text-sm tracking-tighter italic uppercase">Señal Digital 2026</p>
+            </div>
           </div>
         </div>
+
+        <div className="flex flex-col items-end group cursor-default">
+          <p className="text-white text-4xl md:text-6xl font-black tracking-tighter italic leading-none group-hover:text-cyan-400 transition-colors">
+            {fecha.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' })}
+          </p>
+          <p className="text-white/30 text-[10px] font-bold tracking-[0.5em] uppercase mt-2">
+            {fecha.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}
+          </p>
+        </div>
       </header>
-      
-      <main className="flex-1 flex flex-col justify-center overflow-hidden z-10">
-        <div className="flex overflow-x-auto pb-12 pt-4 px-8 gap-8 snap-x snap-mandatory no-scrollbar scroll-smooth">
+
+      <main className="flex-1 flex items-center relative z-10">
+        <div className="flex overflow-x-auto gap-8 px-8 md:px-20 pb-12 no-scrollbar snap-x snap-mandatory scroll-smooth">
           {cards.map((card) => (
             <Link 
               key={card.id} 
@@ -66,13 +84,14 @@ const Home = () => {
 
       <footer className="p-8 flex justify-center items-center z-10">
         <div className="px-6 py-2 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-[10px] font-bold tracking-[0.5em] text-white/30 uppercase">
-          Desliza para explorar â€¢ Fabulosa Play 2026
+          Desliza para explorar • Fabulosa Play 2026
         </div>
       </footer>
 
-      {/* EFECTO DE LUZ DE FONDO */}
-      <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-pink-600/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-cyan-500/10 blur-[150px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-pink-500/10 blur-[150px] rounded-full" />
+      </div>
     </div>
   );
 };
