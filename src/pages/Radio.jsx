@@ -6,12 +6,13 @@ const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosaplay/p
 const Radio = () => {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
+  const hlsRef = useRef(null); // Guardamos la referencia de la transmisión
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
   const [showControls, setShowControls] = useState(true);
   const timerRef = useRef(null);
 
-  // FunciÃ³n para resetear el cronÃ³metro de invisibilidad
+  // Función para resetear el cronómetro de invisibilidad
   const resetTimer = () => {
     setShowControls(true);
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -21,11 +22,27 @@ const Radio = () => {
   };
 
   const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
-      resetTimer();
+    const v = videoRef.current;
+    if (!v) return;
+
+    // MAGIA AQUÍ: Solo cargamos el video cuando el usuario da clic, para que cargue INSTANTÁNEO
+    if (!isPlaying) {
+      if (v.canPlayType('application/vnd.apple.mpegurl')) { 
+        v.src = STREAM_URL; 
+      } else if (window.Hls && window.Hls.isSupported()) {
+        if (hlsRef.current) hlsRef.current.destroy();
+        hlsRef.current = new window.Hls({ enableWorker: true });
+        hlsRef.current.loadSource(STREAM_URL);
+        hlsRef.current.attachMedia(v);
+      } else {
+        // Fallback de seguridad
+        v.src = STREAM_URL;
+      }
     }
+
+    v.play();
+    setIsPlaying(true);
+    resetTimer();
   };
 
   const toggleFullScreen = () => {
@@ -40,26 +57,14 @@ const Radio = () => {
   const handleVolumeChange = (e) => {
     const newVol = parseFloat(e.target.value);
     setVolume(newVol);
-    videoRef.current.volume = newVol;
+    if (videoRef.current) videoRef.current.volume = newVol;
     resetTimer();
   };
 
   useEffect(() => {
-    let hls;
-    const init = () => {
-      const v = videoRef.current;
-      if (!v) return;
-      if (v.canPlayType('application/vnd.apple.mpegurl')) { 
-        v.src = STREAM_URL; 
-      } else if (window.Hls && window.Hls.isSupported()) {
-        hls = new window.Hls({ enableWorker: true });
-        hls.loadSource(STREAM_URL);
-        hls.attachMedia(v);
-      }
-    };
-    init();
+    // Limpiamos todo cuando la persona sale de esta pantalla
     return () => { 
-      if (hls) hls.destroy();
+      if (hlsRef.current) hlsRef.current.destroy();
       if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, []);
@@ -71,27 +76,28 @@ const Radio = () => {
       onMouseMove={resetTimer}
       onTouchStart={resetTimer}
     >
-      <video ref={videoRef} playsInline onClick={resetTimer} />
+      {/* preload="none" ayuda a que la tarjeta de la web cargue más rápido sin descargar video innecesario al inicio */}
+      <video ref={videoRef} playsInline onClick={resetTimer} preload="none" />
       
       {!isPlaying && (
         <button className="center-play-btn" onClick={handlePlay}>
-          <div className="play-icon">â–¶</div>
+          <div className="play-icon">▶</div>
         </button>
       )}
 
       <div className={`bottom-controls ${(!showControls && isPlaying) ? 'hidden' : ''}`}>
         <div className="volume-group">
-          <span>ðŸ”ˆ</span>
+          <span>🔈</span>
           <input 
             type="range" 
             min="0" max="1" step="0.1" 
             value={volume} 
             onChange={handleVolumeChange} 
           />
-          <span>ðŸ”Š</span>
+          <span>🔊</span>
         </div>
         <button className="fs-btn" onClick={toggleFullScreen}>
-          â›¶ PANTALLA COMPLETA
+          ⛶ PANTALLA COMPLETA
         </button>
       </div>
     </div>
