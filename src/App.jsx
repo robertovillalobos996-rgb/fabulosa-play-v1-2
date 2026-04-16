@@ -1,18 +1,18 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// Importamos todas las páginas con nombres claros
+// Páginas - Nombres corregidos según sus archivos
 import Home from './pages/Home';
-import Radio from './pages/Radio'; // Romántica
-import RadiosCR from './pages/RadiosCR'; // Radios de Costa Rica
-import RancheraPlay from './pages/RancheraPlay'; // LA QUE FALTABA
-import Karaoke from './pages/Karaoke'; // CORREGIDA
+import RadioRomantica from './pages/RadioPremium'; // Esta es la de Radios
+import RancheraPlay from './pages/RancheraPlay'; 
+import Karaoke from './pages/Karaoke';
 import CinePlay from './pages/Movies'; 
 import CanalesPlay from './pages/Channels'; 
 import FabulosaAlabanza from './pages/FabulosaAlabanza';
 import CentroMercadeo from './pages/CentroMercadeo';
-import Camaras from './pages/Camaras'; // REPARADA
+import Camaras from './pages/Camaras'; 
 import FabulosaVerano from './pages/FabulosaVerano';
 import FabulositoKids from './pages/FabulosaTV';
 
@@ -25,8 +25,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tv-1" element={<FabulositoKids />} />
-          <Route path="/radio" element={<Radio />} />
-          <Route path="/radios-cr" element={<RadiosCR />} />
+          
+          {/* Aquí acomodamos las radios para que no se clonen */}
+          <Route path="/radio" element={<RadioRomantica />} /> 
+          <Route path="/radios-cr" element={<RadioRomantica />} /> 
+          
           <Route path="/ranchera" element={<RancheraPlay />} />
           <Route path="/karaoke" element={<Karaoke />} />
           <Route path="/cine-play" element={<CinePlay />} />
@@ -35,9 +38,6 @@ function App() {
           <Route path="/centro-mercadeo" element={<CentroMercadeo />} />
           <Route path="/camaras" element={<Camaras />} />
           <Route path="/fabulosa-verano" element={<FabulosaVerano />} />
-          
-          {/* Respaldos por si el usuario escribe rutas viejas */}
-          <Route path="/tv-fabulosa" element={<CanalesPlay />} />
         </Routes>
       </Router>
     </QueryClientProvider>
