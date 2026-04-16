@@ -8262,14 +8262,15 @@ export const canalesTV = [
         "genre": "Variedades",
         "logo": null
     },
-    {
+   
+{
         "id": "tv-1189",
         "title": "Zurquí TV (720p)",
         "url": "https://videoserver.tmcreativos.com:19360/gesfnvpamn/gesfnvpamn.m3u8",
         "genre": "Costa Rica",
         "logo": null
     },
-  {
+    {
         "id": "tv-1190",
         "title": "interTV (1080p)",
         "url": "https://streamtv.intervenhosting.net:3439/hybrid/play.m3u8",
