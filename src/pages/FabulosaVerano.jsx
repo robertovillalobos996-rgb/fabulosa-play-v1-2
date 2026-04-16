@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Maximize } from 'lucide-react';
 import fondoVerano from '../assets/verano-fondo.png';
 
 const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
@@ -48,49 +48,52 @@ const FabulosaVerano = () => {
     }
   };
 
-  // 🎚️ MIXER MEJORADO: Controla volumen de música y de la voz por separado
-  const playOverlayAudio = (path, musicDuckLevel, voiceVolume = 1.0) => {
-    if (!videoRef.current || !hasStarted) return;
+  // 🎚️ MIXER EXTREMO: Tumba el vMix al 5% y dispara el locutor al 100%
+  const playOverlayAudio = (path) => {
+    const video = videoRef.current; // Esto es el vMix
+    const effect = effectAudioRef.current; // Esto es el Locutor
+
+    if (!video || !hasStarted) return;
     
-    const currentVol = volumeRef.current;
+    // 1. TUMBAMOS LA MÚSICA DEL VMIX AL 5% (0.05) DE GOLPE
+    video.volume = 0.05;
     
-    // Bajamos la música al nivel solicitado (Ej: 20%)
-    videoRef.current.volume = currentVol * musicDuckLevel;
+    // 2. DISPARAMOS EL LOCUTOR AL 100% (1.0)
+    effect.src = path;
+    effect.volume = 1.0; 
+    effect.load();
     
-    effectAudioRef.current.src = path;
-    effectAudioRef.current.volume = voiceVolume; // Forzamos la voz al máximo (1.0)
-    effectAudioRef.current.load();
+    effect.play().catch(err => {
+        console.error("Error al reproducir locutor:", err);
+        // Si hay error, le devolvemos el volumen al vMix
+        video.volume = volumeRef.current; 
+    });
     
-    const playPromise = effectAudioRef.current.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(e => {
-        console.error("Error en mixer:", path);
-        videoRef.current.volume = currentVol;
-      });
-    }
-    
-    effectAudioRef.current.onended = () => {
-      if (videoRef.current) videoRef.current.volume = volumeRef.current;
+    // 3. CUANDO EL LOCUTOR TERMINA DE HABLAR, SUBIMOS EL VMIX A LA NORMALIDAD
+    effect.onended = () => {
+      if (video) {
+        video.volume = volumeRef.current;
+      }
     };
   };
 
   useEffect(() => {
     if (!hasStarted) return;
 
-    // 1. Sello cada 3 min -> Música al 20% (0.2)
+    // Sello cada 3 min 
     const selloInterval = setInterval(() => {
-      playOverlayAudio(SELLO_FABULOSA, 0.2, 1.0);
+      playOverlayAudio(SELLO_FABULOSA);
     }, 180000); 
 
-    // 2. Súbele el volumen cada 4 min -> Música al 20% (0.2)
+    // Súbele cada 4 min 
     const subeleInterval = setInterval(() => {
-      playOverlayAudio(SUBELE_VOLUMEN, 0.2, 1.0);
+      playOverlayAudio(SUBELE_VOLUMEN);
     }, 240000); 
 
-    // 3. Locutores cada 15 min -> Música al 20% (0.2)
+    // LOCUTORES cada 15 min 
     const locutorInterval = setInterval(() => {
       const randomLocutor = LOCUTORES[Math.floor(Math.random() * LOCUTORES.length)];
-      playOverlayAudio(randomLocutor, 0.2, 1.0);
+      playOverlayAudio(randomLocutor);
     }, 900000); 
 
     return () => {
@@ -111,6 +114,7 @@ const FabulosaVerano = () => {
     if (videoRef.current) {
         videoRef.current.src = STREAM_URL;
         videoRef.current.play();
+        videoRef.current.volume = volumeRef.current;
     }
     resetControlsTimer();
   };
@@ -162,15 +166,18 @@ const FabulosaVerano = () => {
                         </button>
                         
                         <div className="hidden md:flex items-center gap-4 group/vol">
-                            <button onClick={() => { setIsMuted(!isMuted); videoRef.current.muted = !isMuted; }} className="text-white">
+                            <button onClick={() => { 
+                                setIsMuted(!isMuted); 
+                                if (videoRef.current) videoRef.current.muted = !isMuted; 
+                            }} className="text-white">
                                 {isMuted ? <VolumeX size={30} /> : <Volume2 size={30} />}
                             </button>
                             <input type="range" min="0" max="1" step="0.05" 
                                    defaultValue="1"
                                    onChange={(e) => { 
                                        const v = parseFloat(e.target.value);
-                                       volumeRef.current = v;
-                                       videoRef.current.volume = v;
+                                       volumeRef.current = v; 
+                                       if (videoRef.current) videoRef.current.volume = v;
                                    }} 
                                    className="w-24 md:w-40 accent-cyan-400 h-1.5 rounded-lg appearance-none bg-white/20 cursor-pointer"/>
                         </div>
