@@ -8269,7 +8269,7 @@ export const canalesTV = [
         "genre": "Costa Rica",
         "logo": null
     },
-   {
+  {
         "id": "tv-1190",
         "title": "interTV (1080p)",
         "url": "https://streamtv.intervenhosting.net:3439/hybrid/play.m3u8",
@@ -8277,19 +8277,12 @@ export const canalesTV = [
         "logo": null
     },
     {
-        "id": "tv-1191",
-        "title": "¡OPA! (1080i) [Geo-blocked]",
-        "url": "https://5fc584f3f19c9.streamlock.net/genteopa/videogenteopa/playlist.m3u8",
+        "id": "tv-204",
+        "title": "Canal opa",
+        "url": "https://5fc584f3f19c9.streamlock.net/genteopa/videogenteopa/chunklist_w215971633.m3u8",
         "genre": "Costa Rica",
-        "logo": null
+        "logo": "/logos_canales/opa.png"
     },
-    {
-        "id": "tv-1192",
-        "title": "Alsacias Televisión (Canal 28)",
-        "url": "https://s.emisoras.tv:8081/atv/index.m3u8",
-        "genre": "Costa Rica",
-        "logo": null
-  },
     {
         "id": "tv-1193",
         "title": "canal 3 colosal",
