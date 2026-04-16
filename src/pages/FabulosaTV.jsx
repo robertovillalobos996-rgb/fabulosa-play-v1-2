@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { Play, Pause, Volume2, VolumeX, Maximize, Heart, BookOpen, GraduationCap, Sparkles } from 'lucide-react';
+import { Play, Volume2, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, Home, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// 📂 ACTIVOS LOCALES
-import LOGO_KIDS_HEADER from "../assets/fabulosito_kids.png"; // Logo pequeño arriba
+// 📂 ACTIVOS
+import LOGO_KIDS_HEADER from "../assets/fabulosito_kids.png"; 
 const VIDEO_INTRO = "/media/Video_de_Entrada_para_Canal_Infantil.mp4";
 
-// 🔑 LAS 14 LLAVES MAESTRAS
 const YOUTUBE_API_KEYS = [
     "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
     "AIzaSyBUk0oq1zjA6BKx5HK8DEQc1TxQqreqGtk", "AIzaSyBys-0J3T5Ou_fdPGxqYC5LWDMgppwD0Y4",
@@ -32,9 +30,9 @@ const FabulositoKids = () => {
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [activeCat, setActiveCat] = useState('cine');
-    const [bgMusicPlaying, setBgMusicPlaying] = useState(false);
     const [userEmoji, setUserEmoji] = useState("🐶");
-    const [introMuted, setIntroMuted] = useState(true); // Control de sonido en intro
+    const [isLocked, setIsLocked] = useState(false);
+    const [lockTimer, setLockTimer] = useState(null);
 
     const keyIndex = useRef(0);
     const videoIntroRef = useRef(null);
@@ -57,67 +55,59 @@ const FabulositoKids = () => {
 
     const playSound = () => { hoverSound.volume = 0.2; hoverSound.play(); };
 
-    // Función para activar sonido en Bienvenida de Lujo
-    const activateIntroSound = () => {
-        if (videoIntroRef.current) {
-            videoIntroRef.current.muted = false;
-            setIntroMuted(false);
-        }
+    const handleLockDown = () => {
+        if (!isLocked) { setIsLocked(true); return; }
+        const timer = setTimeout(() => setIsLocked(false), 3000);
+        setLockTimer(timer);
     };
 
     return (
-        <div className="min-h-screen w-full bg-[#0014CC] font-sans overflow-hidden text-white">
+        <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative">
             
-            {/* 🎵 MÚSICA DE FONDO (USANDO IFRAME OCULTO) */}
-            {bgMusicPlaying && view === "HOME" && (
-                <div className="hidden">
+            {/* 📺 FONDO MICKEY MOUSE ORIGINAL (Pointer Events None para que no sea clicable) */}
+            {view === "HOME" && (
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                     <iframe 
-                        src="https://www.youtube.com/embed/iwKS4b9aUeI?autoplay=1&loop=1&playlist=iwKS4b9aUeI" 
-                        allow="autoplay"
+                        className="w-[300%] h-[300%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                        src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&showinfo=0&rel=0" 
+                        allow="autoplay" frameBorder="0"
                     />
                 </div>
             )}
 
             <AnimatePresence mode="wait">
-                {/* 🎬 PASO 1: BIENVENIDA DE LUJO (CORREGIDA) */}
+                {/* 🎬 BIENVENIDA */}
                 {view === "INTRO" && (
-                    <motion.div key="intro" exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-black">
-                        {/* video muted={true} asegura que se reproduzca solo en cualquier navegador */}
-                        <video 
-                            ref={videoIntroRef}
-                            src={VIDEO_INTRO} 
-                            autoPlay 
-                            muted={introMuted}
-                            playsInline 
-                            onEnded={() => { setView("HOME"); setBgMusicPlaying(true); }}
-                            className="w-full h-full object-cover" // object-cover se ve mejor que contain
-                        />
-                        
-                        {/* Botón de Lujo para activar sonido */}
-                        {introMuted && (
-                            <motion.button 
-                                onClick={activateIntroSound}
-                                initial={{ scale: 0 }}
-                                animate={{ scale: [0, 1.2, 1] }}
-                                transition={{ delay: 1, duration: 0.5 }}
-                                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-400 text-black px-10 py-5 rounded-full font-black text-2xl uppercase italic border-8 border-white shadow-[0_0_50px_#FFF] flex items-center gap-4 z-[110]"
-                            >
-                                <Volume2 size={40} /> ¡Activar Sonido Mágico!
-                            </motion.button>
-                        )}
-
-                        <button onClick={() => { setView("HOME"); setBgMusicPlaying(true); }} className="absolute bottom-10 right-10 bg-white/20 px-8 py-3 rounded-full font-black backdrop-blur-md z-[110]">OMITIR ➔</button>
+                    <motion.div key="intro" exit={{ opacity: 0 }} className="fixed inset-0 z-[200] bg-black flex items-center justify-center">
+                        <video ref={videoIntroRef} src={VIDEO_INTRO} autoPlay muted playsInline onEnded={() => setView("HOME")} className="w-full h-full object-contain" />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                             <motion.button 
+                                onClick={() => { videoIntroRef.current.muted = false; videoIntroRef.current.play(); }}
+                                className="bg-yellow-400 text-black px-12 py-6 rounded-full font-black text-2xl border-8 border-white shadow-[0_0_50px_white]"
+                             >
+                                🔊 ¡EMPEZAR MAGIA!
+                             </motion.button>
+                        </div>
                     </motion.div>
                 )}
 
-                {/* 🏠 PASO 2: MUNDO MÁGICO (HOME) CON LOGO GIGANTE */}
+                {/* 🏠 HOME */}
                 {view === "HOME" && (
-                    <motion.div key="home" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} className="p-4 md:p-8 flex flex-col h-screen">
+                    <motion.div key="home" className="relative z-10 p-4 md:p-8 flex flex-col h-screen bg-black/10">
                         
                         <div className="flex justify-between items-center mb-6">
-                            <motion.img whileHover={{ scale: 1.1, rotate: 5 }} src={LOGO_KIDS_HEADER} className="h-16 md:h-24 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
-                            
-                            <div className="flex gap-4 items-center bg-white/10 p-2 rounded-full backdrop-blur-xl border border-white/20">
+                            <div className="flex items-center gap-6">
+                                <img src={LOGO_KIDS_HEADER} className="h-16 md:h-24 drop-shadow-lg" />
+                                <button 
+                                    onMouseDown={handleLockDown} onMouseUp={() => clearTimeout(lockTimer)}
+                                    onTouchStart={handleLockDown} onTouchEnd={() => clearTimeout(lockTimer)}
+                                    className={`p-4 rounded-full transition-all ${isLocked ? 'bg-red-600 animate-pulse' : 'bg-green-500'}`}
+                                >
+                                    {isLocked ? <Lock size={30} /> : <Unlock size={30} />}
+                                </button>
+                            </div>
+
+                            <div className="flex gap-4 items-center bg-black/60 p-2 rounded-full backdrop-blur-xl border border-white/20">
                                 <span className="text-2xl ml-4">{userEmoji}</span>
                                 <div className="flex gap-2 pr-4">
                                     {EMOJIS.map(e => (
@@ -127,88 +117,71 @@ const FabulositoKids = () => {
                             </div>
                         </div>
 
-                        <div className="flex gap-4 md:gap-8 overflow-x-auto pb-6 no-scrollbar">
+                        {/* CATEGORÍAS + LOGO EN LÍNEA */}
+                        <div className="flex gap-4 overflow-x-auto pb-6 no-scrollbar items-center">
                             {CATEGORIAS.map(cat => (
                                 <motion.button
-                                    key={cat.id}
-                                    whileHover={{ scale: 1.1 }}
-                                    onClick={() => setActiveCat(cat.id)}
-                                    className={`${cat.color} ${activeCat === cat.id ? 'ring-8 ring-white' : 'opacity-80'} min-w-[150px] md:min-w-[250px] h-20 md:h-32 rounded-[2rem] flex flex-col items-center justify-center font-black italic border-4 border-white transition-all`}
+                                    key={cat.id} whileHover={{ scale: 1.1 }}
+                                    onClick={() => { setActiveCat(cat.id); playSound(); }}
+                                    className={`${cat.color} ${activeCat === cat.id ? 'ring-8 ring-white' : 'opacity-80'} min-w-[150px] md:min-w-[250px] h-20 md:h-32 rounded-[2rem] flex flex-col items-center justify-center font-black italic border-4 border-white text-black shadow-xl flex-shrink-0`}
                                 >
-                                    {cat.icon}
-                                    <span className="text-sm md:text-xl">{cat.label}</span>
+                                    {cat.icon} <span className="text-sm md:text-xl">{cat.label}</span>
                                 </motion.button>
                             ))}
+
+                            <motion.img 
+                                src="/logo_fabulosito_kids.png" 
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ duration: 4, repeat: Infinity }}
+                                className="h-32 md:h-48 drop-shadow-[0_0_20px_cyan] flex-shrink-0 ml-4"
+                            />
                         </div>
 
-                        {/* 🧸 LOGO GIGANTE ANIMADO "DE LUJO" */}
-                        <motion.div 
-                            className="flex justify-center items-center my-6 relative"
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ type: 'spring', stiffness: 100, delay: 0.5 }}
-                        >
-                            {/* Brillo de fondo mágico */}
-                            <div className="absolute w-[80%] h-[80%] bg-cyan-400 blur-[120px] rounded-full opacity-60 animate-pulse" />
-                            
-                            {/* Logo flotando */}
-                            <motion.img 
-                                src="/logo_fabulosito_kids.png" // Ruta public
-                                alt="Fabulosito Kids Gigante" 
-                                className="h-40 md:h-64 z-10 relative"
-                                animate={{
-                                    y: [0, -25, 0], // Flotación vertical
-                                    rotate: [0, 2, -2, 0] // Balanceo suave
-                                }}
-                                transition={{
-                                    duration: 6,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                            />
-                        </motion.div>
-
-                        <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-4 gap-6 pr-2 mt-4">
-                            {videos.map((vid, index) => (
-                                <motion.div
-                                    key={vid.id.videoId}
-                                    whileHover={{ y: -10 }}
-                                    onClick={() => { setSelectedVideo(vid); setView("WATCH"); setBgMusicPlaying(false); }}
-                                    className="cursor-pointer group"
-                                >
-                                    <div className="aspect-video rounded-[2rem] overflow-hidden border-4 border-white group-hover:border-yellow-400 shadow-xl relative">
+                        {/* VIDEOS */}
+                        <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-4 gap-6 pr-2 mt-4 custom-scrollbar">
+                            {videos.map((vid) => (
+                                <motion.div key={vid.id.videoId} whileHover={{ scale: 1.05 }} onClick={() => { setSelectedVideo(vid); playSound(); }} className="cursor-pointer group">
+                                    <div className="aspect-video rounded-[2rem] overflow-hidden border-4 border-white group-hover:border-yellow-400 shadow-2xl relative">
                                         <img src={vid.snippet.thumbnails.high.url} className="w-full h-full object-cover" />
                                         <div className="absolute bottom-2 right-2 bg-yellow-400 text-black p-2 rounded-full"><Sparkles size={16}/></div>
                                     </div>
-                                    <p className="mt-3 font-bold text-xs md:text-sm line-clamp-2 text-center uppercase">{vid.snippet.title}</p>
+                                    <p className="mt-2 font-black text-[10px] md:text-sm text-center uppercase bg-black/60 p-2 rounded-xl line-clamp-2">{vid.snippet.title}</p>
                                 </motion.div>
                             ))}
                         </div>
                     </motion.div>
                 )}
 
-                {/* 📺 PASO 3: REPRODUCTOR NATIVO */}
-                {view === "WATCH" && selectedVideo && (
-                    <motion.div key="watch" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-50 bg-black flex flex-col">
-                        <div className="p-4 flex items-center justify-between bg-black">
-                            <button 
-                                onClick={() => { setView("HOME"); setBgMusicPlaying(true); }}
-                                className="bg-yellow-400 text-black px-8 py-3 rounded-full font-black uppercase italic border-4 border-white"
-                            >
-                                🏠 VOLVER
-                            </button>
-                            <h2 className="font-black text-white italic truncate max-w-md uppercase">{selectedVideo.snippet.title}</h2>
+                {/* 📺 REPRODUCTOR ANTI-YOUTUBE */}
+                {selectedVideo && (
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[300] bg-black flex flex-col">
+                        <div className="p-4 flex items-center justify-between bg-black border-b border-white/10">
+                            {!isLocked && (
+                                <button onClick={() => setSelectedVideo(null)} className="bg-red-600 text-white px-8 py-3 rounded-full font-black uppercase flex items-center gap-2 border-4 border-white shadow-lg">
+                                    <X size={24}/> CERRAR PELÍCULA
+                                </button>
+                            )}
+                            {isLocked && <div className="flex items-center gap-2 text-yellow-400 font-black animate-pulse"><Lock /> MODO PROTEGIDO</div>}
+                            <h2 className="font-black text-white italic truncate max-w-md uppercase text-sm">{selectedVideo.snippet.title}</h2>
                         </div>
-                        <div className="flex-1 bg-black">
+                        
+                        <div className="flex-1 relative bg-black">
+                            {/* 🛡️ EL "ESCUDO": Capa invisible que bloquea clics al reproductor de YouTube */}
+                            <div className="absolute inset-0 z-20 cursor-default" />
+                            
                             <iframe 
-                                width="100%" 
-                                height="100%" 
-                                src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&rel=0&modestbranding=1`}
-                                title="YouTube video player" 
+                                width="100%" height="100%" 
+                                src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&rel=0&modestbranding=1&controls=1&showinfo=0&disablekb=1`}
                                 frameBorder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allow="autoplay; encrypted-media"
                                 allowFullScreen
+                                className="z-10"
                             ></iframe>
+
+                            {/* Mensaje flotante si intentan tocar */}
+                            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 pointer-events-none opacity-40">
+                                <p className="text-[10px] font-bold text-white/50 tracking-[0.5em]">FABULOSITO PLAY SAFE MODE</p>
+                            </div>
                         </div>
                     </motion.div>
                 )}
