@@ -1421,7 +1421,7 @@ export const canalesTV = [
         "genre": "Variedades",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Tn8_logotipo_2021.png"
     },
-   {
+    {
         "id": "tv-204",
         "title": "Canal opa",
         "url": "https://5fc584f3f19c9.streamlock.net/genteopa/videogenteopa/chunklist_w215971633.m3u8",
@@ -8292,7 +8292,7 @@ export const canalesTV = [
   },
     {
         "id": "tv-1193",
-        "title": "canal 3 colosal ",
+        "title": "canal 3 colosal",
         "url": "https://5eac7b031d945.streamlock.net/canal3/canal3/chunklist_w1141438584.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/colosal_canal_3.png"
