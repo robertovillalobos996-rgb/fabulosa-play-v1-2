@@ -1421,14 +1421,14 @@ export const canalesTV = [
         "genre": "Variedades",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Tn8_logotipo_2021.png"
     },
-    {
+   {
         "id": "tv-204",
         "title": "Canal opa",
         "url": "https://5fc584f3f19c9.streamlock.net/genteopa/videogenteopa/chunklist_w215971633.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/opa.png"
     },
-        {
+    {
         "id": "tv-206",
         "title": "Colosal TV",
         "url": "https://5eac7b031d945.streamlock.net/COLOSAL/COLOSAL/chunklist_w1415709305.m3u8",
@@ -8269,7 +8269,7 @@ export const canalesTV = [
         "genre": "Costa Rica",
         "logo": null
     },
-    {
+   {
         "id": "tv-1190",
         "title": "interTV (1080p)",
         "url": "https://streamtv.intervenhosting.net:3439/hybrid/play.m3u8",
