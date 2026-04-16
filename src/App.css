@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-// Importación de Páginas
+// ImportaciÃ³n de PÃ¡ginas
 import Home from './pages/Home';
 import Radio from './pages/Radio';
 import Movies from './pages/Movies';
-import Channels from './pages/Channels'; // <--- Nueva página de canales
+import Channels from './pages/Channels'; // <--- Nueva pÃ¡gina de canales
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         {/* Ruta de Radio: Reproductor de emisoras */}
         <Route path="/radio" element={<Radio />} />
 
-        {/* Ruta de Cine Play: Películas por categorías */}
+        {/* Ruta de Cine Play: PelÃ­culas por categorÃ­as */}
         <Route path="/movies" element={<Movies />} />
 
         {/* Ruta de Canales Play: TV en vivo con Shaka Player potente */}
@@ -29,16 +29,16 @@ function App() {
 
 export default App;
 /* =========================================
-   ESTILOS CINEMATOGRÁFICOS PREMIUM (4K HDR)
+   ESTILOS CINEMATOGRÃFICOS PREMIUM (4K HDR)
    ========================================= */
 
-/* Contenedor principal con efecto de iluminación global */
+/* Contenedor principal con efecto de iluminaciÃ³n global */
 .app-container-4k {
   background: radial-gradient(circle at 50% 0%, rgba(40, 40, 60, 0.8) 0%, rgba(0, 0, 0, 1) 80%);
   box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
 }
 
-/* Fondo con micro-textura de grano de película */
+/* Fondo con micro-textura de grano de pelÃ­cula */
 .bg-film-grain::before {
   content: "";
   position: absolute;
@@ -52,7 +52,7 @@ export default App;
 
 /* Efecto Glassmorphism Premium para Cards */
 .glass-card-4k {
-  /* Fondo translúcido y blur profundo */
+  /* Fondo translÃºcido y blur profundo */
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(24px) saturate(1.8);
   -webkit-backdrop-filter: blur(24px) saturate(1.8);
@@ -85,7 +85,7 @@ export default App;
   transform: translateY(-8px) scale(1.02);
 }
 
-/* Reflejo de lente cinematográfico */
+/* Reflejo de lente cinematogrÃ¡fico */
 .lens-flare-effect::after {
   content: "";
   position: absolute;
@@ -116,7 +116,7 @@ export default App;
   100% { transform: translate(20%, 20%) rotate(25deg); opacity: 0; }
 }
 
-/* Tipografía HDR de alto contraste */
+/* TipografÃ­a HDR de alto contraste */
 .text-hdr-4k {
   color: #ffffff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);

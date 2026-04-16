@@ -11,7 +11,7 @@ const Radio = () => {
   const [showControls, setShowControls] = useState(true);
   const timerRef = useRef(null);
 
-  // Función para resetear el cronómetro de invisibilidad
+  // FunciÃ³n para resetear el cronÃ³metro de invisibilidad
   const resetTimer = () => {
     setShowControls(true);
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -75,23 +75,23 @@ const Radio = () => {
       
       {!isPlaying && (
         <button className="center-play-btn" onClick={handlePlay}>
-          <div className="play-icon">▶</div>
+          <div className="play-icon">â–¶</div>
         </button>
       )}
 
       <div className={`bottom-controls ${(!showControls && isPlaying) ? 'hidden' : ''}`}>
         <div className="volume-group">
-          <span>🔈</span>
+          <span>ðŸ”ˆ</span>
           <input 
             type="range" 
             min="0" max="1" step="0.1" 
             value={volume} 
             onChange={handleVolumeChange} 
           />
-          <span>🔊</span>
+          <span>ðŸ”Š</span>
         </div>
         <button className="fs-btn" onClick={toggleFullScreen}>
-          ⛶ PANTALLA COMPLETA
+          â›¶ PANTALLA COMPLETA
         </button>
       </div>
     </div>

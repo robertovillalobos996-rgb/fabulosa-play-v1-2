@@ -7,14 +7,14 @@ import MainLogo from "../assets/logo_fabulosa.png";
 import PscLogo from "../assets/logo-psc.png";
 import RadioLogo from "../assets/logo-fabulosa.png"; 
 
-// ✅ TU ENLACE REAL DE TRANSMISIÓN
+// âœ… TU ENLACE REAL DE TRANSMISIÃ“N
 const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosaplay/playlist.m3u8"; 
 
 const CentroMercadeo = () => {
   const [scrolled, setScrolled] = useState(false);
   const audioRef = useRef(null);
 
-  // === 🚀 MOTOR DE AUDIO DE FONDO (HLS Oculto) ===
+  // === ðŸš€ MOTOR DE AUDIO DE FONDO (HLS Oculto) ===
   useEffect(() => {
     const audioPlayer = audioRef.current;
     if (audioPlayer) {
@@ -59,7 +59,7 @@ const CentroMercadeo = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden selection:bg-red-600 pb-20">
       
-      {/* 🎧 REPRODUCTOR INVISIBLE: Usamos <video> porque lee mejor los .m3u8 en móviles, pero está oculto */}
+      {/* ðŸŽ§ REPRODUCTOR INVISIBLE: Usamos <video> porque lee mejor los .m3u8 en mÃ³viles, pero estÃ¡ oculto */}
       <video ref={audioRef} playsInline style={{ display: 'none' }} />
 
       {/* NAVBAR */}
@@ -83,32 +83,32 @@ const CentroMercadeo = () => {
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
                 <img src={MainLogo} alt="Fabulosa Play" className="w-48 h-48 object-contain mx-auto mb-10 drop-shadow-[0_0_30px_rgba(255,0,0,0.5)]" />
                 <h1 className="text-7xl md:text-9xl font-black uppercase tracking-tighter italic leading-none text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-white to-red-600 drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)]">
-                    INNOVACIÓN DIGITAL
+                    INNOVACIÃ“N DIGITAL
                 </h1>
                 <p className="mt-6 text-xl md:text-2xl font-black text-gray-400 uppercase tracking-[0.3em] leading-snug">
-                    TECNOLOGÍA • ENTRETENIMIENTO • COMUNICACIÓN GLOBAL
+                    TECNOLOGÃA â€¢ ENTRETENIMIENTO â€¢ COMUNICACIÃ“N GLOBAL
                 </p>
             </motion.div>
         </div>
       </div>
 
-      {/* QUIÉNES SOMOS */}
+      {/* QUIÃ‰NES SOMOS */}
       <div className="max-w-7xl mx-auto px-6 py-20 border-b border-white/5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
             <div className="border border-white/5 bg-zinc-900/50 p-8 rounded-2xl">
                 <ShieldCheck className="text-red-600 mb-6 mx-auto md:mx-0" size={40} />
-                <h2 className="text-2xl font-black uppercase tracking-tight text-white mb-4">Tecnología Blindada</h2>
-                <p className="text-gray-400 text-sm leading-relaxed">Somos la evolución de la infraestructura multimedia. Sintonizamos señales potentes y estables, garantizando entretenimiento sin interrupciones.</p>
+                <h2 className="text-2xl font-black uppercase tracking-tight text-white mb-4">TecnologÃ­a Blindada</h2>
+                <p className="text-gray-400 text-sm leading-relaxed">Somos la evoluciÃ³n de la infraestructura multimedia. Sintonizamos seÃ±ales potentes y estables, garantizando entretenimiento sin interrupciones.</p>
             </div>
             <div className="border border-white/5 bg-zinc-900/50 p-8 rounded-2xl">
                 <Zap className="text-cyan-400 mb-6 mx-auto md:mx-0" size={40} />
-                <h2 className="text-2xl font-black uppercase tracking-tight text-white mb-4">Innovación Constante</h2>
-                <p className="text-gray-400 text-sm leading-relaxed">El futuro es hoy. Fabulosa Play es el ecosistema digital donde la innovación mediática redefine la forma en que el mundo consume entretenimiento.</p>
+                <h2 className="text-2xl font-black uppercase tracking-tight text-white mb-4">InnovaciÃ³n Constante</h2>
+                <p className="text-gray-400 text-sm leading-relaxed">El futuro es hoy. Fabulosa Play es el ecosistema digital donde la innovaciÃ³n mediÃ¡tica redefine la forma en que el mundo consume entretenimiento.</p>
             </div>
             <div className="border border-white/5 bg-zinc-900/50 p-8 rounded-2xl">
                 <HeartHandshake className="text-green-400 mb-6 mx-auto md:mx-0" size={40} />
-                <h2 className="text-2xl font-black uppercase tracking-tight text-white mb-4">Conexión Humana</h2>
-                <p className="text-gray-400 text-sm leading-relaxed">Unimos a Costa Rica. Integramos información responsable a través de PSC Informa y la compañía musical de Radio Fabulosa.</p>
+                <h2 className="text-2xl font-black uppercase tracking-tight text-white mb-4">ConexiÃ³n Humana</h2>
+                <p className="text-gray-400 text-sm leading-relaxed">Unimos a Costa Rica. Integramos informaciÃ³n responsable a travÃ©s de PSC Informa y la compaÃ±Ã­a musical de Radio Fabulosa.</p>
             </div>
         </div>
       </div>
@@ -150,7 +150,7 @@ const CentroMercadeo = () => {
       {/* CONTACTO */}
       <div className="max-w-7xl mx-auto px-6 pt-20">
         <div className="text-center mb-10">
-            <h3 className="text-5xl font-black uppercase tracking-tighter">CENTRO DE ATENCIÓN</h3>
+            <h3 className="text-5xl font-black uppercase tracking-tighter">CENTRO DE ATENCIÃ“N</h3>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a href={CONTACT_INFO.wa_link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 hover:scale-105 transition-all text-gray-300">
@@ -163,7 +163,7 @@ const CentroMercadeo = () => {
             <a href={`mailto:${CONTACT_INFO.email}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 hover:scale-105 transition-all text-gray-300">
                 <Mail className="text-red-400" size={30} />
                 <div>
-                    <h5 className="font-bold text-sm tracking-widest uppercase">Soporte Técnico</h5>
+                    <h5 className="font-bold text-sm tracking-widest uppercase">Soporte TÃ©cnico</h5>
                     <p className="font-black text-xl truncate">{CONTACT_INFO.email}</p>
                 </div>
             </a>

@@ -6,11 +6,11 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [currentMovie, setCurrentMovie] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState("Acción");
+  const [activeCategory, setActiveCategory] = useState("AcciÃ³n");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // === 💰 ESTADOS PARA EL COMERCIAL DE 30 MINUTOS (ADSENSE) ===
+  // === ðŸ’° ESTADOS PARA EL COMERCIAL DE 30 MINUTOS (ADSENSE) ===
   const ADSENSE_SLOT = "7869741603";
   const AD_INTERVAL = 30 * 60 * 1000; // 30 minutos
   const LONG_AD_DURATION = 12; // 12 segundos
@@ -18,7 +18,7 @@ const Movies = () => {
   const [longAdActive, setLongAdActive] = useState(false);
   const [longAdTimer, setLongAdTimer] = useState(LONG_AD_DURATION);
 
-  // 🔑 LAS 14 LLAVES MAESTRAS DE YOUTUBE (ROTACIÓN AUTOMÁTICA)
+  // ðŸ”‘ LAS 14 LLAVES MAESTRAS DE YOUTUBE (ROTACIÃ“N AUTOMÃTICA)
   const YOUTUBE_API_KEYS = [
     "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww",
     "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
@@ -36,17 +36,17 @@ const Movies = () => {
     "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
   ];
 
-  // 🔄 REFERENCIA PARA SABER QUÉ LLAVE ESTAMOS USANDO
+  // ðŸ”„ REFERENCIA PARA SABER QUÃ‰ LLAVE ESTAMOS USANDO
   const keyIndexRef = useRef(0);
 
-  // === LISTA DE CATEGORÍAS EXTENDIDA ===
+  // === LISTA DE CATEGORÃAS EXTENDIDA ===
   const categories = [
-    "Acción", "Narcos", "Terror", "Comedia", "Documentales", 
-    "Ciencia Ficción", "Infantil", "Animación", "Suspenso", "Romance",
-    "Drama", "Aventura", "Crimen", "Guerra", "Clásicos"
+    "AcciÃ³n", "Narcos", "Terror", "Comedia", "Documentales", 
+    "Ciencia FicciÃ³n", "Infantil", "AnimaciÃ³n", "Suspenso", "Romance",
+    "Drama", "Aventura", "Crimen", "Guerra", "ClÃ¡sicos"
   ];
 
-  // 🧠 FUNCIÓN MAESTRA: Busca películas en YouTube con rotación de llaves
+  // ðŸ§  FUNCIÃ“N MAESTRA: Busca pelÃ­culas en YouTube con rotaciÃ³n de llaves
   const fetchMoviesFromYouTube = async (queryBusqueda) => {
     setLoading(true);
     setErrorMsg("");
@@ -55,25 +55,25 @@ const Movies = () => {
       let exito = false;
       let data = null;
 
-      // Bucle que intenta buscar la película cambiando de llave si hay un Error 403
+      // Bucle que intenta buscar la pelÃ­cula cambiando de llave si hay un Error 403
       while (keyIndexRef.current < YOUTUBE_API_KEYS.length && !exito) {
         const currentKey = YOUTUBE_API_KEYS[keyIndexRef.current];
-        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=pelicula+completa+en+español+latino+${encodeURIComponent(queryBusqueda)}&type=video&videoDuration=long&videoDefinition=high&key=${currentKey}`;
+        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=pelicula+completa+en+espaÃ±ol+latino+${encodeURIComponent(queryBusqueda)}&type=video&videoDuration=long&videoDefinition=high&key=${currentKey}`;
         
         const response = await fetch(url);
 
         if (response.status === 403 || response.status === 429) {
-            console.warn(`⚠️ API Key ${keyIndexRef.current + 1} agotada o bloqueada. Pasando a la siguiente llave...`);
+            console.warn(`âš ï¸ API Key ${keyIndexRef.current + 1} agotada o bloqueada. Pasando a la siguiente llave...`);
             keyIndexRef.current++; // Avanzamos a la siguiente llave
         } else {
             data = await response.json();
             if (data.error) throw new Error(data.error.message);
-            exito = true; // Búsqueda exitosa, rompemos el ciclo
+            exito = true; // BÃºsqueda exitosa, rompemos el ciclo
         }
       }
 
       if (!exito) {
-        setErrorMsg("Los servidores de películas están súper saturados en este momento. Intenta de nuevo más tarde.");
+        setErrorMsg("Los servidores de pelÃ­culas estÃ¡n sÃºper saturados en este momento. Intenta de nuevo mÃ¡s tarde.");
         setMovies([]);
         setLoading(false);
         return;
@@ -92,7 +92,7 @@ const Movies = () => {
       setMovies(peliculasEncontradas);
     } catch (error) {
       console.error("Error API YouTube:", error);
-      setErrorMsg("Error al conectar. Verifica tu conexión a internet.");
+      setErrorMsg("Error al conectar. Verifica tu conexiÃ³n a internet.");
     } finally {
       setLoading(false);
     }
@@ -102,7 +102,7 @@ const Movies = () => {
     fetchMoviesFromYouTube(activeCategory);
   }, [activeCategory]);
 
-  // 💰 LÓGICA DEL COMERCIAL DE 30 MINUTOS (ADSENSE)
+  // ðŸ’° LÃ“GICA DEL COMERCIAL DE 30 MINUTOS (ADSENSE)
   useEffect(() => {
     const interval = setInterval(() => {
       if (currentMovie) {
@@ -145,7 +145,7 @@ const Movies = () => {
     }
   };
 
-  // CUANDO EL USUARIO TOCA UNA PELÍCULA
+  // CUANDO EL USUARIO TOCA UNA PELÃCULA
   const selectMovie = (movie) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setCurrentMovie(movie);
@@ -166,7 +166,7 @@ const Movies = () => {
         </div>
       </nav>
 
-      {/* 🔎 EL NUEVO BUSCADOR GIGANTE Y LLAMATIVO 🔎 */}
+      {/* ðŸ”Ž EL NUEVO BUSCADOR GIGANTE Y LLAMATIVO ðŸ”Ž */}
       <div className="w-full bg-gradient-to-b from-black/80 to-[#050505] py-8 px-6 flex justify-center border-b border-red-600/20">
         <form onSubmit={handleSearch} className="relative w-full max-w-3xl group">
           <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none">
@@ -174,7 +174,7 @@ const Movies = () => {
           </div>
           <input 
             type="text" 
-            placeholder="ESCRIBE AQUÍ LA PELÍCULA QUE BUSCAS (Ej: El Padrino)..." 
+            placeholder="ESCRIBE AQUÃ LA PELÃCULA QUE BUSCAS (Ej: El Padrino)..." 
             value={searchTerm} 
             onChange={(e) => setSearchTerm(e.target.value)} 
             className="w-full bg-black border-2 border-white/10 hover:border-red-600/50 focus:border-red-600 rounded-full py-5 pl-16 pr-6 text-lg font-bold text-white shadow-[0_0_30px_rgba(220,38,38,0.1)] focus:shadow-[0_0_40px_rgba(220,38,38,0.4)] transition-all outline-none placeholder-gray-500 uppercase tracking-wide" 
@@ -185,7 +185,7 @@ const Movies = () => {
         </form>
       </div>
 
-      {/* BOTONES DE CATEGORÍAS */}
+      {/* BOTONES DE CATEGORÃAS */}
       <div className="w-full border-b border-white/5 bg-black/50 backdrop-blur-md sticky top-[73px] z-40">
         <div className="flex gap-2 overflow-x-auto px-6 py-4 custom-scrollbar">
           {categories.map(cat => (
@@ -212,7 +212,7 @@ const Movies = () => {
           <div className="mb-12 animate-fade-in-down">
             <div className="relative w-full aspect-video bg-black rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(220,38,38,0.3)]">
               
-              {/* === 💰 COMERCIAL DE 30 MINUTOS FLOTANTE === */}
+              {/* === ðŸ’° COMERCIAL DE 30 MINUTOS FLOTANTE === */}
               {longAdActive && (
                 <div className="absolute inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center p-6 backdrop-blur-sm">
                   <div className="w-full max-w-4xl bg-[#181818] rounded-xl border border-red-600 shadow-2xl overflow-hidden">
@@ -227,12 +227,12 @@ const Movies = () => {
                            data-ad-format="rectangle"></ins>
                     </div>
                     <div className="p-6 flex justify-between items-center bg-zinc-900 border-t border-white/10">
-                      <span className="text-white/40 text-xs font-bold">La película continuará pronto...</span>
+                      <span className="text-white/40 text-xs font-bold">La pelÃ­cula continuarÃ¡ pronto...</span>
                       {longAdTimer > 0 ? (
                         <div className="text-white font-black text-xl animate-pulse bg-zinc-800 px-6 py-2 rounded-full">{longAdTimer}s</div>
                       ) : (
                         <button onClick={handleSkipLongAd} className="bg-white text-black px-10 py-3 rounded-full font-black uppercase text-sm hover:bg-red-600 hover:text-white transition-all">
-                          Omitir Anuncio ⏭️
+                          Omitir Anuncio â­ï¸
                         </button>
                       )}
                     </div>
@@ -263,7 +263,7 @@ const Movies = () => {
                     </div>
                 </div>
                 <button onClick={() => setCurrentMovie(null)} className="px-8 py-3 rounded-full border border-red-600/50 hover:bg-red-600 font-black transition-all text-sm uppercase tracking-widest text-white shadow-[0_0_15px_rgba(220,38,38,0.2)] hover:shadow-[0_0_20px_rgba(220,38,38,0.5)]">
-                  Cerrar Película
+                  Cerrar PelÃ­cula
                 </button>
             </div>
           </div>
@@ -273,7 +273,7 @@ const Movies = () => {
             <div className="flex items-center gap-3 text-gray-200">
                 <LayoutGrid className="text-red-600" size={24} /> 
                 <h3 className="text-xl font-black uppercase tracking-widest">
-                    {searchTerm ? `Resultados para: ${searchTerm}` : `Catálogo: ${activeCategory}`}
+                    {searchTerm ? `Resultados para: ${searchTerm}` : `CatÃ¡logo: ${activeCategory}`}
                 </h3>
             </div>
             {loading && <div className="flex items-center gap-2 text-red-600 font-bold text-sm uppercase tracking-widest"><Loader2 className="animate-spin" size={20} /> Buscando...</div>}
@@ -301,7 +301,7 @@ const Movies = () => {
         {!loading && movies.length === 0 && !errorMsg && (
           <div className="text-center mt-20 p-10 bg-zinc-900/50 rounded-3xl border border-white/5">
             <Film className="mx-auto mb-4 text-gray-600" size={48} />
-            <p className="text-gray-400 font-black uppercase tracking-widest text-lg">No se encontraron películas en esta búsqueda.</p>
+            <p className="text-gray-400 font-black uppercase tracking-widest text-lg">No se encontraron pelÃ­culas en esta bÃºsqueda.</p>
           </div>
         )}
       </div>

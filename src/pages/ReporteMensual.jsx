@@ -6,7 +6,7 @@ const ReporteMensual = () => {
   const stats = [
     { name: 'Chinito Express', views: '45,230', status: 'Activo', color: 'text-cyan-400' },
     { name: 'La Mexicana', views: '38,100', status: 'Activo', color: 'text-amber-500' },
-    { name: 'Uñas Yendry', views: '12,450', status: 'Finalizado', color: 'text-pink-500' },
+    { name: 'UÃ±as Yendry', views: '12,450', status: 'Finalizado', color: 'text-pink-500' },
   ];
 
   return (
@@ -32,7 +32,7 @@ const ReporteMensual = () => {
           <div className="bg-white/5 p-6 rounded-[2rem] border border-white/10">
             <Users className="text-amber-500 mb-4" />
             <div className="text-4xl font-black">240K</div>
-            <div className="text-xs font-bold text-white/40 uppercase tracking-widest">Oyentes Únicos</div>
+            <div className="text-xs font-bold text-white/40 uppercase tracking-widest">Oyentes Ãšnicos</div>
           </div>
           <div className="bg-white/5 p-6 rounded-[2rem] border border-white/10">
             <TrendingUp className="text-green-500 mb-4" />
@@ -43,7 +43,7 @@ const ReporteMensual = () => {
 
         <div className="bg-white/5 rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl">
           <div className="p-8 border-b border-white/10 flex justify-between items-center">
-            <h2 className="font-black text-xl uppercase italic">Desempeño de Anunciantes</h2>
+            <h2 className="font-black text-xl uppercase italic">DesempeÃ±o de Anunciantes</h2>
             <ShieldCheck className="text-amber-500" />
           </div>
           <table className="w-full">
@@ -51,7 +51,7 @@ const ReporteMensual = () => {
               <tr className="text-left text-xs font-black uppercase tracking-widest text-white/40">
                 <th className="p-6">Cliente</th>
                 <th className="p-6">Visualizaciones</th>
-                <th className="p-6">Estado de Campaña</th>
+                <th className="p-6">Estado de CampaÃ±a</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">

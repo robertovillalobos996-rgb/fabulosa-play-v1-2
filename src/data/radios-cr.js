@@ -14,15 +14,15 @@ export const radiosCR = [
       title: "Radio Musical",
       frequency: "97.5 FM",
       url: "https://live.turadio.stream:7005/;",
-      genre: "Romántica",
+      genre: "RomÃ¡ntica",
       logo: null
     },
     {
       id: 3,
-      title: "Columbia Estéreo",
+      title: "Columbia EstÃ©reo",
       frequency: "92.7 FM",
       url: "https://s5.radio.co/sca838cc60/listen",
-      genre: "Romántica",
+      genre: "RomÃ¡ntica",
       logo: null
     },
     {
@@ -54,7 +54,7 @@ export const radiosCR = [
       title: "Radio Fides",
       frequency: "93.1 FM",
       url: "https://okradio.rtvhd.net:8023/;",
-      genre: "Católica",
+      genre: "CatÃ³lica",
       logo: null
     },
     {
@@ -67,23 +67,23 @@ export const radiosCR = [
     },
     {
       id: 9,
-      title: "Radio Bahía Limón",
+      title: "Radio BahÃ­a LimÃ³n",
       frequency: "107.9 FM",
       url: "http://s44.myradiostream.com/8368/;", 
-      genre: "Caribeña",
+      genre: "CaribeÃ±a",
       logo: null
     },
     {
       id: 10,
-      title: "Radio Sinaí",
+      title: "Radio SinaÃ­",
       frequency: "103.9 FM",
       url: "http://centova12.instainternet.com:8785/;",
-      genre: "Católica",
+      genre: "CatÃ³lica",
       logo: null
     },
     {
       id: 11,
-      title: "Radio Unción",
+      title: "Radio UnciÃ³n",
       frequency: "106.7 FM",
       url: "http://radiouncion.rtvhd.net:9946/;",
       genre: "Cristiana",
@@ -94,7 +94,7 @@ export const radiosCR = [
       title: "Radio Dos",
       frequency: "99.5 FM",
       url: "https://s5.radio.co/sd515b7b34/listen", 
-      genre: "Clásicos Rock/Pop",
+      genre: "ClÃ¡sicos Rock/Pop",
       logo: null
     },
     {
@@ -102,7 +102,7 @@ export const radiosCR = [
       title: "Radio Hit",
       frequency: "104.7 FM",
       url: "http://live.turadio.stream:7004/;",
-      genre: "Clásicos / Hits",
+      genre: "ClÃ¡sicos / Hits",
       logo: null
     },
     {
@@ -140,7 +140,7 @@ export const radiosCR = [
     },
     {
       id: 18,
-      title: "Stereo Visión",
+      title: "Stereo VisiÃ³n",
       frequency: "98.3 FM",
       url: "http://live.turadio.stream:7009/stream",
       genre: "Cristiana",
@@ -159,7 +159,7 @@ export const radiosCR = [
       title: "Amplify Radio",
       frequency: "95.5 FM",
       url: "https://streams.radio.co/s7e8f19c33/listen",
-      genre: "Electrónica / Pop",
+      genre: "ElectrÃ³nica / Pop",
       logo: null
     },
     {
@@ -180,7 +180,7 @@ export const radiosCR = [
     },
     {
       id: 23,
-      title: "Radio Metrópoli",
+      title: "Radio MetrÃ³poli",
       frequency: "1020 AM",
       url: "http://centova.hostingtico.com:7004/stream",
       genre: "Cartago",
@@ -204,10 +204,10 @@ export const radiosCR = [
     },
     {
       id: 26,
-      title: "Radio María",
+      title: "Radio MarÃ­a",
       frequency: "100.7 FM",
       url: "http://dreamsiteradiocp6.com:8128/;",
-      genre: "Católica",
+      genre: "CatÃ³lica",
       logo: null
     },
     {
@@ -247,7 +247,7 @@ export const radiosCR = [
       title: "Amor FM",
       frequency: "93.9 FM",
       url: "http://player.hostingtico.com/proxy/8094",
-      genre: "Romántica",
+      genre: "RomÃ¡ntica",
       logo: null
     },
     {
@@ -263,7 +263,7 @@ export const radiosCR = [
       title: "Radio Sideral",
       frequency: "1340 AM",
       url: "http://audio.4netcloud.com:8030/sideral",
-      genre: "San Ramón",
+      genre: "San RamÃ³n",
       logo: null
     },
     {
@@ -279,7 +279,7 @@ export const radiosCR = [
       title: "Radio Casino",
       frequency: "98.3 FM",
       url: "http://host.rowrigo.com/listen/radiocasino/radiocasino",
-      genre: "Limón",
+      genre: "LimÃ³n",
       logo: null
     },
     {
@@ -301,10 +301,10 @@ export const radiosCR = [
     },
     {
       id: 38,
-      title: "Bésame",
+      title: "BÃ©same",
       frequency: "89.9 FM",
       url: "https://playerservices.streamtheworld.com/api/livestream-redirect/BESAME_CR.mp3",
-      genre: "Romántica",
+      genre: "RomÃ¡ntica",
       logo: null
     }
 ];

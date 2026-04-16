@@ -6,7 +6,7 @@ import { pagesConfig } from './pages.config';
 // Componentes globales
 import SecurityLock from './components/SecurityLock';
 
-// Páginas principales
+// PÃ¡ginas principales
 import Home from './pages/Home';
 import CinePlay from './pages/Movies'; 
 import CanalesPlay from './pages/Channels'; 
@@ -21,16 +21,16 @@ function App() {
       <SecurityLock />
       <Router>
         <Routes>
-          {/* RUTA PRINCIPAL (Menú de Cards) */}
+          {/* RUTA PRINCIPAL (MenÃº de Cards) */}
           <Route path="/" element={<Home />} />
           
-          {/* RUTAS ESPECÍFICAS REPARADAS (Adiós pantallas negras) */}
+          {/* RUTAS ESPECÃFICAS REPARADAS (AdiÃ³s pantallas negras) */}
           <Route path="/cine-play" element={<CinePlay />} />
           <Route path="/canales-play" element={<CanalesPlay />} />
           <Route path="/alabanza" element={<FabulosaAlabanza />} />
           <Route path="/centro-mercadeo" element={<CentroMercadeo />} />
 
-          {/* RUTAS AUTOMÁTICAS (Carga cualquier otra página configurada) */}
+          {/* RUTAS AUTOMÃTICAS (Carga cualquier otra pÃ¡gina configurada) */}
           {Object.entries(pagesConfig?.Pages || {}).map(([path, Page]) => (
             <Route key={path} path={`/${path}`} element={<Page />} />
           ))}

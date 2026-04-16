@@ -7,7 +7,7 @@ const Buses = () => {
   useEffect(() => { const t = setInterval(() => setTime(new Date()), 1000); return () => clearInterval(t); }, []);
 
   const rutas = [
-    { empresa: "TRACOPA", ruta: "Paso Canoas - San José", salidas: "05:00, 07:30, 10:00, 13:30", tel: "2221-4214" },
+    { empresa: "TRACOPA", ruta: "Paso Canoas - San JosÃ©", salidas: "05:00, 07:30, 10:00, 13:30", tel: "2221-4214" },
     { empresa: "UTP", ruta: "Golfito - Ciudad Neily", salidas: "Cada 30 min", tel: "2775-1010" }
   ];
 
@@ -45,7 +45,7 @@ const Buses = () => {
 
         <div className="bg-gradient-to-br from-blue-900/20 to-black border-4 border-dashed border-blue-500/20 rounded-[3rem] flex flex-col items-center justify-center p-10 text-center cursor-pointer hover:bg-blue-900/30 transition-all">
             <div className="bg-blue-600 p-6 rounded-full mb-6 shadow-2xl"><Star size={40} fill="white"/></div>
-            <h3 className="text-3xl font-black italic mb-2 tracking-tighter uppercase leading-none">Anuncie su <br/> Empresa Aquí</h3>
+            <h3 className="text-3xl font-black italic mb-2 tracking-tighter uppercase leading-none">Anuncie su <br/> Empresa AquÃ­</h3>
             <button className="bg-white text-black px-12 py-4 rounded-2xl font-black italic uppercase mt-4">Contactar</button>
         </div>
       </main>

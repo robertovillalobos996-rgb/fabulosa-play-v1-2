@@ -10,7 +10,7 @@
     cursor: none; /* Oculta el puntero por defecto */
 }
 
-/* Si los controles están visibles, mostramos el puntero */
+/* Si los controles estÃ¡n visibles, mostramos el puntero */
 .fullscreen-player:has(.bottom-controls:not(.hidden)) {
     cursor: default;
 }

@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import logoFabulosa from '../assets/logo-fabulosa-play.png';
-import cardRadio from '../assets/card-radio.png';
-import cardRadiosCR from '../assets/card-radios.jpg';
-import cardMovies from '../assets/card-movies.png';
-import cardTv from '../assets/card-tv.jpg';
-import cardKaraoke from '../assets/card-fabulosa-karaoke.jpg';
-import cardFabulosaTv from '../assets/card-fabulosa-tv.jpg';
-import cardAlabanza from '../assets/card.fabulosa-alabanza.jpg';
-import cardCamaras from '../assets/card de camaras.png'; 
-import cardVerano from '../assets/verano-fabulosa.png'; 
-import cardCentroMercadeo from '../assets/mercadeo.png'; 
+import cardRadio from '../assets/card-radio.webp';
+import cardRadiosCR from '../assets/card-radios.webp';
+import cardMovies from '../assets/card-movies.webp';
+import cardTv from '../assets/card-tv.webp';
+import cardKaraoke from '../assets/card-fabulosa-karaoke.webp';
+import cardFabulosaTv from '../assets/card-fabulosa-tv.webp';
+import cardAlabanza from '../assets/card-alabanza.webp';
+import cardCamaras from '../assets/card-camaras.webp'; 
+import cardVerano from '../assets/verano-fabulosa.webp'; 
+import cardCentroMercadeo from '../assets/mercadeo.webp'; 
 
 const Home = () => {
   const [fecha, setFecha] = useState(new Date());
@@ -66,7 +66,7 @@ const Home = () => {
 
       <footer className="p-8 flex justify-center items-center z-10">
         <div className="px-6 py-2 bg-white/5 backdrop-blur-md rounded-full border border-white/10 text-[10px] font-bold tracking-[0.5em] text-white/30 uppercase">
-          Desliza para explorar • Fabulosa Play 2026
+          Desliza para explorar â€¢ Fabulosa Play 2026
         </div>
       </footer>
 

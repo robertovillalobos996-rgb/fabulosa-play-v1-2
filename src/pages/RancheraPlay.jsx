@@ -5,7 +5,7 @@ import { Search, Wine, Play, Pause, Maximize, Volume2, VolumeX, X, HeartCrack, F
 // Assets
 import logoImage from '../assets/logo_fabulosa.png'; 
 
-// 🔑 TUS 14 LLAVES MAESTRAS 
+// ðŸ”‘ TUS 14 LLAVES MAESTRAS 
 const YOUTUBE_API_KEYS = [
     "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
     "AIzaSyBUk0oq1zjA6BKx5HK8DEQc1TxQqreqGtk", "AIzaSyBys-0J3T5Ou_fdPGxqYC5LWDMgppwD0Y4",
@@ -26,35 +26,35 @@ const RancheraPlay = () => {
     const [videos, setVideos] = useState([]);
     const [relatedVideos, setRelatedVideos] = useState([]);
     
-    // 🧠 EL SECRETO COLOMBIANO: Apuntamos a Alzate, Despecho y Popular Colombiana. Cero bloqueos.
+    // ðŸ§  EL SECRETO COLOMBIANO: Apuntamos a Alzate, Despecho y Popular Colombiana. Cero bloqueos.
     const [searchQuery, setSearchQuery] = useState("Mix popular colombiana despecho Alzate audio -vevo -oficial");
     const [loading, setLoading] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [vAdIndex, setVAdIndex] = useState(0);
 
-    // 🎛️ ESTADOS DEL REPRODUCTOR PROPIO
+    // ðŸŽ›ï¸ ESTADOS DEL REPRODUCTOR PROPIO
     const [isPlaying, setIsPlaying] = useState(true);
     const [volume, setVolume] = useState(100);
     const iframeRef = useRef(null);
     const playerWrapperRef = useRef(null);
 
-    // 🔄 LA REFERENCIA DE LA LLAVE 
+    // ðŸ”„ LA REFERENCIA DE LA LLAVE 
     const keyIndexRef = useRef(0);
 
-    // Rotación de Anuncios
+    // RotaciÃ³n de Anuncios
     useEffect(() => {
         const adInterval = setInterval(() => setVAdIndex((p) => (p + 1) % VERTICAL_ADS.length), 15000);
         return () => clearInterval(adInterval);
     }, []);
 
-    // 💰 Inicializador AdSense
+    // ðŸ’° Inicializador AdSense
     useEffect(() => {
         try { if (window.adsbygoogle) window.adsbygoogle.push({}); } 
         catch (e) { console.error("AdSense Error", e); }
     }, [vAdIndex]);
 
-    // 🧠 FUNCIÓN MAESTRA DE BÚSQUEDA 
+    // ðŸ§  FUNCIÃ“N MAESTRA DE BÃšSQUEDA 
     const fetchVideosFromYouTube = async (queryBusqueda, isRelated = false) => {
         if (!isRelated) {
             setLoading(true);
@@ -84,7 +84,7 @@ const RancheraPlay = () => {
 
             if (!exito) {
                 if (!isRelated) {
-                    setErrorMsg("Los servidores de música están saturados. Intenta de nuevo.");
+                    setErrorMsg("Los servidores de mÃºsica estÃ¡n saturados. Intenta de nuevo.");
                     setVideos([]);
                 }
                 setLoading(false);
@@ -116,15 +116,15 @@ const RancheraPlay = () => {
         setIsPlaying(true);
         setVolume(100);
         window.scrollTo({top: 0, behavior: 'smooth'});
-        // Busca videos relacionados asegurando que sean del mismo género colombiano
+        // Busca videos relacionados asegurando que sean del mismo gÃ©nero colombiano
         fetchVideosFromYouTube(`Mix popular colombiana despecho ${video.snippet.channelTitle} audio -vevo -oficial`, true);
     };
 
-    // Búsqueda del form
+    // BÃºsqueda del form
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchQuery.trim() !== "") {
-            // Le inyectamos los filtros anti-bloqueo para que cualquier búsqueda salga buena
+            // Le inyectamos los filtros anti-bloqueo para que cualquier bÃºsqueda salga buena
             fetchVideosFromYouTube(searchQuery + " audio -vevo -oficial", false);
         }
     };
@@ -135,7 +135,7 @@ const RancheraPlay = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // 🎮 CONTROLES PERSONALIZADOS (El Reproductor Blindado)
+    // ðŸŽ® CONTROLES PERSONALIZADOS (El Reproductor Blindado)
     const sendCommand = (func, args = "") => {
         if (iframeRef.current && iframeRef.current.contentWindow) {
             iframeRef.current.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: [args] }), '*');
@@ -199,19 +199,19 @@ const RancheraPlay = () => {
                         </div>
                     )}
 
-                    {/* 📺 REPRODUCTOR PROPIO: Cero controles de YouTube */}
+                    {/* ðŸ“º REPRODUCTOR PROPIO: Cero controles de YouTube */}
                     {selectedVideo && (
                         <div ref={playerWrapperRef} className="relative group w-full aspect-video rounded-[2rem] overflow-hidden bg-black shadow-[0_0_80px_rgba(217,119,6,0.1)] border border-white/10 animate-fade-in mb-14">
                             
-                            {/* 🛡️ EL CRISTAL (Bloquea todo toque al Iframe) */}
+                            {/* ðŸ›¡ï¸ EL CRISTAL (Bloquea todo toque al Iframe) */}
                             <div className="absolute inset-0 z-40 bg-transparent cursor-default"></div>
 
-                            {/* Botón Cerrar */}
+                            {/* BotÃ³n Cerrar */}
                             <button onClick={() => setSelectedVideo(null)} className="absolute top-4 right-4 z-[60] text-white/50 hover:text-red-500 transition-all p-2 bg-black/50 rounded-full backdrop-blur-md">
                                 <X size={30} strokeWidth={2} />
                             </button>
 
-                            {/* 🎛️ NUESTROS CONTROLES PROPIOS (Z-50) */}
+                            {/* ðŸŽ›ï¸ NUESTROS CONTROLES PROPIOS (Z-50) */}
                             <div className="absolute bottom-4 left-4 right-4 z-[50] flex items-center justify-between px-6 py-3 bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 
                                 <div className="flex items-center gap-6">
@@ -250,7 +250,7 @@ const RancheraPlay = () => {
                         <div className="flex justify-center p-32"><Loader2 className="animate-spin text-amber-600" size={60} /></div>
                     ) : (
                         <div className="flex flex-col gap-12">
-                            {/* 🎶 20 VIDEOS RELACIONADOS */}
+                            {/* ðŸŽ¶ 20 VIDEOS RELACIONADOS */}
                             {selectedVideo && relatedVideos.length > 0 && (
                                 <div className="animate-fade-in">
                                     <h2 className="text-amber-500 font-black text-[10px] uppercase tracking-[0.4em] mb-6 flex items-center gap-2"><Play size={14} fill="currentColor"/> SIGUE LA FIESTA</h2>
@@ -271,7 +271,7 @@ const RancheraPlay = () => {
                             {/* GRILLA PRINCIPAL */}
                             {!loading && videos.length === 0 && !errorMsg ? (
                                 <div className="text-center mt-10 p-10 bg-zinc-900/50 rounded-3xl border border-white/5">
-                                    <p className="text-gray-400 font-black uppercase tracking-widest text-lg">No encontramos música para esa búsqueda.</p>
+                                    <p className="text-gray-400 font-black uppercase tracking-widest text-lg">No encontramos mÃºsica para esa bÃºsqueda.</p>
                                 </div>
                             ) : (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
@@ -291,13 +291,13 @@ const RancheraPlay = () => {
                     )}
                 </div>
 
-                {/* 📢 BARRA LATERAL */}
+                {/* ðŸ“¢ BARRA LATERAL */}
                 <div className="w-full xl:w-[420px] flex flex-col gap-8">
                     <div className="h-[650px] bg-white/5 backdrop-blur-3xl rounded-[3.5rem] border border-white/10 overflow-hidden shadow-2xl relative">
                         <img src={VERTICAL_ADS[vAdIndex]} className="w-full h-full object-contain transition-all duration-1000" alt="Ad" />
                     </div>
 
-                    {/* 💰 GOOGLE ADSENSE (Tuyo) */}
+                    {/* ðŸ’° GOOGLE ADSENSE (Tuyo) */}
                     <div className="w-full bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 p-4 shadow-2xl overflow-hidden min-h-[300px] flex flex-col items-center justify-center relative">
                         <ShieldCheck size={16} className="absolute top-4 right-4 text-amber-600/40" />
                         <span className="text-amber-600/40 font-black text-[8px] uppercase tracking-[0.5em] mb-2">PUBLICIDAD PATROCINADA</span>
@@ -309,7 +309,7 @@ const RancheraPlay = () => {
             <footer className="bg-black py-8 border-t border-white/5 z-50">
                 <div className="whitespace-nowrap flex gap-16 text-white/5 font-bold uppercase text-[9px] tracking-[0.6em] animate-marquee">
                     <span className="flex items-center gap-2"><Flame size={12} className="text-amber-900" /> FABULOSA PLAY LA CANTINA</span>
-                    <span className="flex items-center gap-2"><HeartCrack size={12} className="text-red-950" /> PURA MÚSICA POPULAR COLOMBIANA Y DESPECHO</span>
+                    <span className="flex items-center gap-2"><HeartCrack size={12} className="text-red-950" /> PURA MÃšSICA POPULAR COLOMBIANA Y DESPECHO</span>
                 </div>
             </footer>
 

@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 
 const SecurityLock = () => {
   useEffect(() => {
-    // 🚫 Bloquear Clic Derecho
+    // ðŸš« Bloquear Clic Derecho
     const handleContextMenu = (e) => e.preventDefault();
     
-    // 🚫 Bloquear F12, Ctrl+Shift+I, Ctrl+U
+    // ðŸš« Bloquear F12, Ctrl+Shift+I, Ctrl+U
     const handleKeyDown = (e) => {
       if (
         e.keyCode === 123 || 

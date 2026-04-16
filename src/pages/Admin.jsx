@@ -15,12 +15,12 @@ const Admin = () => {
 
     const guardarDolar = async () => {
         await setDoc(doc(db, "configuracion", "dolar"), dolar);
-        alert("💰 Dolar actualizado en Google");
+        alert("ðŸ’° Dolar actualizado en Google");
     };
 
     const guardarPeli = async () => {
         await addDoc(collection(db, "peliculas"), peli);
-        alert("🎬 Pelicula agregada al catálogo");
+        alert("ðŸŽ¬ Pelicula agregada al catÃ¡logo");
         setPeli({ title: "", url: "", category: "Estrenos" });
     };
 
@@ -32,11 +32,11 @@ const Admin = () => {
                     <h2 className="mb-6 font-bold uppercase text-gray-400">Tipo de Cambio</h2>
                     <input value={dolar.compra} onChange={e => setDolar({...dolar, compra: e.target.value})} className="w-full bg-black p-4 mb-4 rounded-xl text-green-500 font-bold" placeholder="Compra" />
                     <input value={dolar.venta} onChange={e => setDolar({...dolar, venta: e.target.value})} className="w-full bg-black p-4 mb-4 rounded-xl text-red-500 font-bold" placeholder="Venta" />
-                    <button onClick={guardarDolar} className="w-full bg-white text-black font-black py-4 rounded-xl uppercase">Guardar Dólar</button>
+                    <button onClick={guardarDolar} className="w-full bg-white text-black font-black py-4 rounded-xl uppercase">Guardar DÃ³lar</button>
                 </div>
                 <div className="bg-zinc-900 p-8 rounded-3xl border border-white/5">
-                    <h2 className="mb-6 font-bold uppercase text-gray-400">Nueva Película / Video</h2>
-                    <input value={peli.title} onChange={e => setPeli({...peli, title: e.target.value})} className="w-full bg-black p-4 mb-4 rounded-xl" placeholder="Título" />
+                    <h2 className="mb-6 font-bold uppercase text-gray-400">Nueva PelÃ­cula / Video</h2>
+                    <input value={peli.title} onChange={e => setPeli({...peli, title: e.target.value})} className="w-full bg-black p-4 mb-4 rounded-xl" placeholder="TÃ­tulo" />
                     <input value={peli.url} onChange={e => setPeli({...peli, url: e.target.value})} className="w-full bg-black p-4 mb-4 rounded-xl" placeholder="Link del video" />
                     <button onClick={guardarPeli} className="w-full bg-red-600 font-black py-4 rounded-xl uppercase">Subir a la App</button>
                 </div>

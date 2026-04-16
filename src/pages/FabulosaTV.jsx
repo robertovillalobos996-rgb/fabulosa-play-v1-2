@@ -21,7 +21,7 @@ const YOUTUBE_API_KEYS = [
 const FabulosaTV = () => {
     const playlist = {
         ids: ["/media/ids/id-1.mp4", "/media/ids/id-2.mp4", "/media/ids/id-3.mp4", "/media/ids/id-4.mp4", "/media/ids/id-5.mp4"],
-        comerciales: ["/media/comerciales/piña express.mp4", "/media/comerciales/comercial chinito express 1.mp4", "/media/comerciales/comercial fabulosa play 1.mp4"],
+        comerciales: ["/media/comerciales/piÃ±a express.mp4", "/media/comerciales/comercial chinito express 1.mp4", "/media/comerciales/comercial fabulosa play 1.mp4"],
         voces: ["/media/voces/Miguel.biembenidos .mp3", "/media/voces/sello-fabulosa.mp3", "/media/voces/Tony Garcia - dale volumen.mp3", "/media/voces/rosalia 1.mp3"]
     };
 
@@ -32,7 +32,7 @@ const FabulosaTV = () => {
     const [quienHabla, setQuienHabla] = useState("SISTEMA"); 
     const [currentYtId, setCurrentYtId] = useState(null);
     const [chatMensaje, setChatMensaje] = useState("");
-    const [chatHistory, setChatHistory] = useState([{ type: 'bot', text: "¡Fabulosito al aire! ¿Qué escuchamos?" }]);
+    const [chatHistory, setChatHistory] = useState([{ type: 'bot', text: "Â¡Fabulosito al aire! Â¿QuÃ© escuchamos?" }]);
 
     const lastLocucionTime = useRef(Date.now());
     const modoRef = useRef(modo);
@@ -93,7 +93,7 @@ const FabulosaTV = () => {
             <video src={FONDO_TV_VIDEO} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-30 z-0"/>
             <div className="relative z-10 flex flex-col h-full p-4 md:p-6 flex-1">
                 <div className="flex justify-between items-center mb-4 bg-black/60 p-4 rounded-3xl border border-white/10">
-                    <Link to="/" className="text-white/70 hover:text-white uppercase text-xs font-black tracking-widest">← Volver</Link>
+                    <Link to="/" className="text-white/70 hover:text-white uppercase text-xs font-black tracking-widest">â† Volver</Link>
                     <div className="bg-red-600 px-4 py-1 rounded-full animate-pulse text-[10px] font-black uppercase">En Vivo</div>
                 </div>
                 <div className="flex-1 grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -113,7 +113,7 @@ const FabulosaTV = () => {
                             {chatHistory.map((m, i) => (<div key={i} className={`text-[10px] p-2 rounded-lg ${m.type === 'bot' ? 'bg-zinc-800' : 'bg-red-950 ml-4'}`}>{m.text}</div>))}
                         </div>
                         <form onSubmit={(e) => { e.preventDefault(); buscarMusicaEnYouTube(chatMensaje); setChatMensaje(""); }} className="p-3 flex gap-2">
-                            <input value={chatMensaje} onChange={(e) => setChatMensaje(e.target.value)} className="flex-1 bg-black/40 border border-white/10 rounded-xl p-2 text-[10px]" placeholder="Pide tu canción..."/>
+                            <input value={chatMensaje} onChange={(e) => setChatMensaje(e.target.value)} className="flex-1 bg-black/40 border border-white/10 rounded-xl p-2 text-[10px]" placeholder="Pide tu canciÃ³n..."/>
                             <button type="submit" className="bg-red-600 p-2 rounded-xl text-xs font-bold uppercase italic">Enviar</button>
                         </form>
                     </div>

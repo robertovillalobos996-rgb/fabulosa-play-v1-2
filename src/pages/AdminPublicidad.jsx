@@ -46,7 +46,7 @@ export default function AdminPublicidad() {
 
       <div className="grid gap-4">
         {loading ? <p className="text-center py-10 opacity-20 italic">Cargando base de datos...</p> : 
-         filtered.length === 0 ? <p className="text-center py-10 text-gray-600 italic uppercase text-xs tracking-widest">No hay anuncios aquí</p> :
+         filtered.length === 0 ? <p className="text-center py-10 text-gray-600 italic uppercase text-xs tracking-widest">No hay anuncios aquÃ­</p> :
          filtered.map(ad => (
           <div key={ad.id} className="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-4">
             <div className="w-16 h-16 rounded-xl overflow-hidden bg-black flex-shrink-0">
@@ -54,7 +54,7 @@ export default function AdminPublicidad() {
             </div>
             <div className="flex-1">
               <h3 className="font-bold text-sm uppercase italic leading-none mb-1">{ad.business_name}</h3>
-              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-tighter">Plan {ad.plan} · {ad.phone_numbers}</p>
+              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-tighter">Plan {ad.plan} Â· {ad.phone_numbers}</p>
             </div>
             <div className="flex gap-2">
               {tab === "pending" && (

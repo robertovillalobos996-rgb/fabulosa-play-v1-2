@@ -13,11 +13,11 @@ const NewsCenter = () => {
         if (data && data.length > 0) {
           setNews(data);
         } else {
-          // Si el archivo está vacío, ponemos este mensaje de respaldo
+          // Si el archivo estÃ¡ vacÃ­o, ponemos este mensaje de respaldo
           setNews([{ 
             id: 1, 
             title: "BIENVENIDOS A PSC INFORMA", 
-            content: "Estamos preparando las últimas noticias para usted. Refresque en un momento.", 
+            content: "Estamos preparando las Ãºltimas noticias para usted. Refresque en un momento.", 
             time: "AHORA", 
             views: "---" 
           }]);
@@ -26,7 +26,7 @@ const NewsCenter = () => {
         // Si no encuentra el archivo json, pone esto para que NO quede en blanco
         setNews([{ 
           id: 2, 
-          title: "SINTONÍA EN VIVO", 
+          title: "SINTONÃA EN VIVO", 
           content: "Conectando con el centro de noticias de Elva... Espere un momento.", 
           time: "EN VIVO", 
           views: "---" 
@@ -52,7 +52,7 @@ const NewsCenter = () => {
 
       <main className="pt-24 pb-12 px-4 md:px-8 max-w-6xl mx-auto">
         
-        {/* ✅ FOTO DE PORTADA CORREGIDA (CON 'N' Y RUTA A PUBLIC) */}
+        {/* âœ… FOTO DE PORTADA CORREGIDA (CON 'N' Y RUTA A PUBLIC) */}
         <section className="mb-10 relative overflow-hidden rounded-[2rem] shadow-2xl h-[250px] md:h-[400px]">
             <img src="/psc_informa.png" className="w-full h-full object-cover" alt="PSC" />
             <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-transparent to-transparent flex flex-col justify-end p-8">
@@ -91,7 +91,7 @@ const NewsCenter = () => {
             <aside className="space-y-6">
                 <div className="bg-blue-900 rounded-[2.5rem] p-8 text-center text-white shadow-xl">
                     <Megaphone className="text-red-500 mx-auto mb-4 animate-bounce" size={40}/>
-                    <h5 className="font-black uppercase italic text-lg mb-2">Anuncia aquí</h5>
+                    <h5 className="font-black uppercase italic text-lg mb-2">Anuncia aquÃ­</h5>
                     <a href="https://wa.me/50664035313" className="block w-full bg-red-600 py-3 rounded-2xl text-white font-black text-xs hover:bg-red-500 transition-all uppercase">Ventas WhatsApp</a>
                 </div>
             </aside>

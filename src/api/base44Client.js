@@ -2,7 +2,7 @@ export const base44 = {
   entities: {
     Advertisement: {
       list: async () => {
-        // Aquí podés meter tus anuncios manualmente para que se vean en la Card
+        // AquÃ­ podÃ©s meter tus anuncios manualmente para que se vean en la Card
         return [
           {
             id: "1",
@@ -15,5 +15,5 @@ export const base44 = {
       update: async (id, data) => data
     }
   },
-  analytics: { track: () => {} } // Esto mata los errores de analítica
+  analytics: { track: () => {} } // Esto mata los errores de analÃ­tica
 };

@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Play, Pause, Search, Tv, Volume2, VolumeX, Maximize, Settings, ShieldCheck, Loader2, Plus } from "lucide-react";
 import Hls from "hls.js";
 
-// IMPORTACIÓN DE TU BASE DE DATOS LIMPIA
+// IMPORTACIÃ“N DE TU BASE DE DATOS LIMPIA
 import { canalesTV } from "../data/canales_finales";
 
 const Channels = () => {
-  // === 💰 LOGICA DE PUBLICIDAD (ADSENSE) ===
+  // === ðŸ’° LOGICA DE PUBLICIDAD (ADSENSE) ===
   const ADSENSE_SLOT = "7869741603";
   const AD_INTERVAL = 30 * 60 * 1000; 
   const LONG_AD_DURATION = 12; 
   const [longAdActive, setLongAdActive] = useState(false);
   const [longAdTimer, setLongAdTimer] = useState(LONG_AD_DURATION);
 
-  // === ⚡ ESTADOS DE RENDIMIENTO ===
+  // === âš¡ ESTADOS DE RENDIMIENTO ===
   const [displayLimit, setDisplayLimit] = useState(30); 
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("Costa Rica");
@@ -109,7 +109,7 @@ const Channels = () => {
             {isLoading && (
               <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/60 backdrop-blur-md">
                 <Loader2 className="text-red-600 animate-spin mb-4" size={50} />
-                <p className="text-xs font-black uppercase tracking-[0.3em]">Sintonizando señal...</p>
+                <p className="text-xs font-black uppercase tracking-[0.3em]">Sintonizando seÃ±al...</p>
               </div>
             )}
             <video ref={videoRef} className="w-full h-full object-contain" playsInline />
@@ -141,7 +141,7 @@ const Channels = () => {
               <h2 className="text-lg md:text-2xl font-black uppercase italic tracking-tighter">{currentChannel?.title}</h2>
             </div>
             <div className="hidden sm:flex items-center gap-2 text-gray-500 text-[10px] font-bold uppercase tracking-widest">
-               <ShieldCheck size={14} className="text-green-500" /> Conexión Segura
+               <ShieldCheck size={14} className="text-green-500" /> ConexiÃ³n Segura
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@ const Channels = () => {
               onClick={() => { setCurrentChannel(channel); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className={`group relative cursor-pointer rounded-3xl p-3 border transition-all duration-500 ${currentChannel?.id === channel.id ? 'bg-red-600/10 border-red-600 shadow-2xl' : 'bg-white/5 border-white/5 hover:border-white/20 hover:-translate-y-2'}`}
             >
-              {/* 🆔 ETIQUETA DE ID PARA MANTENIMIENTO (VISTO EN PANTALLA) */}
+              {/* ðŸ†” ETIQUETA DE ID PARA MANTENIMIENTO (VISTO EN PANTALLA) */}
               <div className="absolute top-4 right-4 z-20 bg-red-600 text-white text-[9px] font-black px-2 py-0.5 rounded-lg shadow-lg border border-red-400">
                 {channel.id}
               </div>
@@ -198,14 +198,14 @@ const Channels = () => {
                     onClick={() => setDisplayLimit(prev => prev + 40)}
                     className="flex items-center gap-3 bg-red-600 hover:bg-red-700 px-12 py-4 rounded-full font-black uppercase text-xs tracking-[0.2em] shadow-2xl transition-all hover:scale-110 active:scale-95"
                 >
-                    <Plus size={18} /> Cargar más canales ({filteredChannels.length - displayLimit} restantes)
+                    <Plus size={18} /> Cargar mÃ¡s canales ({filteredChannels.length - displayLimit} restantes)
                 </button>
             </div>
         )}
       </div>
 
       <footer className="py-10 border-t border-white/5 text-center">
-         <p className="text-[10px] text-gray-600 font-black uppercase tracking-[0.5em]">Fabulosa Play Premium • 2026</p>
+         <p className="text-[10px] text-gray-600 font-black uppercase tracking-[0.5em]">Fabulosa Play Premium â€¢ 2026</p>
       </footer>
 
       <style>{`

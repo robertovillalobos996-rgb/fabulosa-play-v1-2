@@ -1,4 +1,4 @@
-﻿export const canalesTV = [
+export const canalesTV = [
     {
         "id":  "tv-1",
         "title":  "Fabulosa TV",

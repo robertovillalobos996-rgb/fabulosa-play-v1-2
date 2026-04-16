@@ -15,10 +15,10 @@ import paramountTxt from '../assets/play paramount.txt?raw';
 import terrorTxt from '../assets/play terror.txt?raw';
 import videoTxt from '../assets/play video.txt?raw';
 
-// AQUÍ CONECTAMOS EL NOMBRE DEL BOTÓN CON EL ARCHIVO DE TEXTO
+// AQUÃ CONECTAMOS EL NOMBRE DEL BOTÃ“N CON EL ARCHIVO DE TEXTO
 export const movieLists = {
-  "Acción": accionTxt,
-  "Ciencia Ficción": cienciaTxt,
+  "AcciÃ³n": accionTxt,
+  "Ciencia FicciÃ³n": cienciaTxt,
   "Comedia": comediaTxt,
   "Comics": comicsTxt,
   "Drama": dramaTxt,

@@ -5,7 +5,7 @@ import {
   Gift, Mic2, Tv, BookOpen, Film, Music, LayoutGrid, Loader2, Maximize, SkipForward 
 } from 'lucide-react';
 
-// ✅ ASSETS (Solo la imagen)
+// âœ… ASSETS (Solo la imagen)
 import logoAlabanza from '../assets/fabulosa-alabanza-logo.jpeg';
 
 const YOUTUBE_API_KEYS = [
@@ -20,10 +20,10 @@ const YOUTUBE_API_KEYS = [
 
 const VERSICULOS = [
   "Todo lo puedo en Cristo que me fortalece. (Filipenses 4:13)",
-  "Jehová es mi pastor; nada me faltará. (Salmos 23:1)",
+  "JehovÃ¡ es mi pastor; nada me faltarÃ¡. (Salmos 23:1)",
   "La paz os dejo, mi paz os doy. (Juan 14:27)",
-  "Esfuérzate y sé valiente; no temas ni desmayes. (Josué 1:9)",
-  "Clama a mí, y yo te responderé. (Jeremías 33:3)"
+  "EsfuÃ©rzate y sÃ© valiente; no temas ni desmayes. (JosuÃ© 1:9)",
+  "Clama a mÃ­, y yo te responderÃ©. (JeremÃ­as 33:3)"
 ];
 
 const FabulosaAlabanza = () => {
@@ -40,13 +40,13 @@ const FabulosaAlabanza = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true); 
   const [showControls, setShowControls] = useState(true); // NUEVO: Estado de controles
-  const [mensajeDJ, setMensajeDJ] = useState("Conectando con la señal del Reino...");
+  const [mensajeDJ, setMensajeDJ] = useState("Conectando con la seÃ±al del Reino...");
   const [isLoading, setIsLoading] = useState(true);
 
   const [oracionModal, setOracionModal] = useState(false);
   const [donacionModal, setDonacionModal] = useState(false);
 
-  // NUEVO: Lógica estilo YouTube para ocultar controles si no hay movimiento
+  // NUEVO: LÃ³gica estilo YouTube para ocultar controles si no hay movimiento
   const resetControlsTimer = () => {
     setShowControls(true);
     if (hideTimeout.current) clearTimeout(hideTimeout.current);
@@ -57,23 +57,23 @@ const FabulosaAlabanza = () => {
 
   useEffect(() => {
     continuarProgramacion();
-    // AMPLIADO: Se agregaron más películas a tu búsqueda original
-    cargarBiblioteca('movies', 'Jesus de Nazareth Moises Los Diez Mandamientos peliculas completas español cristianas Cuarto de Guerra A prueba de fuego');
+    // AMPLIADO: Se agregaron mÃ¡s pelÃ­culas a tu bÃºsqueda original
+    cargarBiblioteca('movies', 'Jesus de Nazareth Moises Los Diez Mandamientos peliculas completas espaÃ±ol cristianas Cuarto de Guerra A prueba de fuego');
   }, []);
 
   const continuarProgramacion = () => {
     const ahora = Date.now();
     if (ahora - lastMovieTimeRef.current >= 9000000) { 
-      setMensajeDJ("🎬 Cine de Gala: Películas completas y clásicos de la fe...");
+      setMensajeDJ("ðŸŽ¬ Cine de Gala: PelÃ­culas completas y clÃ¡sicos de la fe...");
       // AMPLIADO
       buscarEnYouTube("Jesus de Nazareth Moses Los Diez Mandamientos pelicula completa Cuarto de Guerra A prueba de fuego", 'tv');
       lastMovieTimeRef.current = ahora;
     } else if (playCountRef.current % 5 === 0 && playCountRef.current !== 0) {
-      setMensajeDJ("📖 Tiempo de Palabra: Edificando tu espíritu hoy...");
+      setMensajeDJ("ðŸ“– Tiempo de Palabra: Edificando tu espÃ­ritu hoy...");
       // AMPLIADO
       buscarEnYouTube("predica cristiana poderosa dante gebel armando alducin itiel arroyo chuy olivares andres spyker cash luna juan carlos harrigan", 'tv');
     } else {
-      setMensajeDJ("🎵 Alabanza y Adoración: Elevando incienso al Trono...");
+      setMensajeDJ("ðŸŽµ Alabanza y AdoraciÃ³n: Elevando incienso al Trono...");
       // AMPLIADO
       buscarEnYouTube("alabanzas de adoracion 2026 grandes exitos miel san marcos barak christine d clario redimi2", 'tv', true);
     }
@@ -91,7 +91,7 @@ const FabulosaAlabanza = () => {
       let data = null;
       while (keyIndexRef.current < YOUTUBE_API_KEYS.length && !exito) {
         const key = YOUTUBE_API_KEYS[keyIndexRef.current];
-        // AMPLIADO: maxResults subió a 50 para traer muchísimo más contenido
+        // AMPLIADO: maxResults subiÃ³ a 50 para traer muchÃ­simo mÃ¡s contenido
         const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${encodeURIComponent(query)}&type=video&videoEmbeddable=true&key=${key}${isMusic ? '&videoCategoryId=10' : ''}`;
         const res = await fetch(url);
         if (res.status === 403 || res.status === 429) keyIndexRef.current++;
@@ -137,7 +137,7 @@ const FabulosaAlabanza = () => {
             modestbranding: 1, 
             rel: 0, 
             showinfo: 0,
-            origin: window.location.origin // ✅ PARCHE ANTI-PANTALLA NEGRA DE YOUTUBE
+            origin: window.location.origin // âœ… PARCHE ANTI-PANTALLA NEGRA DE YOUTUBE
         },
         events: {
           'onReady': (e) => { if (isMuted) e.target.mute(); },
@@ -173,7 +173,7 @@ const FabulosaAlabanza = () => {
         </div>
         <div className="flex gap-2">
           <button onClick={() => setOracionModal(true)} className="px-4 py-2 bg-amber-600 rounded-full font-black text-[10px] shadow-lg active:scale-95 transition-all flex items-center gap-2">
-            <Heart size={14} fill="white"/> ORACIÓN
+            <Heart size={14} fill="white"/> ORACIÃ“N
           </button>
           <button onClick={() => setDonacionModal(true)} className="hidden sm:flex px-4 py-2 bg-white/5 border border-white/10 rounded-full font-black text-[10px] hover:bg-white/10 transition-all items-center gap-2 italic">
             <Gift size={14} className="text-amber-500"/> APOYAR EL CANAL
@@ -190,7 +190,7 @@ const FabulosaAlabanza = () => {
                 <p className="text-xs md:text-sm font-bold italic text-amber-100/80">{mensajeDJ}</p>
             </div>
 
-            {/* ✅ EVENTOS DE MOUSE PARA AUTO-OCULTAR CONTROLES */}
+            {/* âœ… EVENTOS DE MOUSE PARA AUTO-OCULTAR CONTROLES */}
             <div ref={playerWrapperRef} onMouseMove={resetControlsTimer} onClick={resetControlsTimer} className="relative aspect-video w-full bg-black rounded-[2.5rem] overflow-hidden border-2 border-slate-800 shadow-2xl group cursor-pointer">
                 {isLoading && (
                     <div className="absolute inset-0 z-30 bg-slate-950 flex flex-col items-center justify-center">
@@ -204,12 +204,12 @@ const FabulosaAlabanza = () => {
                     <div id="youtube-player" className="w-full h-full scale-[1.4] md:scale-[1.25]"></div>
                 </div>
 
-                {/* ✅ LOGO TRANSPARENTE: El mixBlendMode: 'screen' hace el fondo negro invisible */}
+                {/* âœ… LOGO TRANSPARENTE: El mixBlendMode: 'screen' hace el fondo negro invisible */}
                 <div className="absolute top-6 right-6 z-50 w-28 md:w-52 opacity-70 pointer-events-none drop-shadow-2xl">
                     <img src={logoAlabanza} className="w-full" style={{ mixBlendMode: 'screen' }} alt="Logo" />
                 </div>
 
-                {/* ✅ CONTROLES ESTILO YOUTUBE (Desaparecen si no hay movimiento) */}
+                {/* âœ… CONTROLES ESTILO YOUTUBE (Desaparecen si no hay movimiento) */}
                 <div className={`absolute bottom-0 w-full p-6 md:p-10 flex justify-between items-end bg-gradient-to-t from-black via-black/40 to-transparent transition-all duration-500 z-50 ${!showControls ? 'opacity-0 pointer-events-none' : 'opacity-100 translate-y-0'}`}>
                     <div className="flex gap-4">
                         <button onClick={(e) => { e.stopPropagation(); setIsPlaying(!isPlaying); isPlaying ? ytPlayerRef.current.pauseVideo() : ytPlayerRef.current.playVideo(); }} className="p-4 bg-amber-600 rounded-full shadow-2xl hover:scale-110 active:scale-90 transition-all">
@@ -235,16 +235,16 @@ const FabulosaAlabanza = () => {
         </section>
 
         <h2 className="text-xl md:text-2xl font-black uppercase italic tracking-tighter text-amber-500 mb-8 flex items-center gap-3">
-            <LayoutGrid size={28}/> Manantial de Bendición
+            <LayoutGrid size={28}/> Manantial de BendiciÃ³n
         </h2>
 
-        {/* ✅ PESTAÑAS AMPLIADAS CON MÁS RESULTADOS */}
+        {/* âœ… PESTAÃ‘AS AMPLIADAS CON MÃS RESULTADOS */}
         <nav className="flex gap-3 overflow-x-auto pb-6 no-scrollbar mb-10 border-b border-white/5">
             {[
                 { id: 'tv', icon: Tv, label: 'EN VIVO 24/7', q: '' },
                 { id: 'movies', icon: Film, label: 'CINE SEMANA SANTA', q: 'Jesus de Nazareth Moises Los Diez Mandamientos peliculas cristianas completas Cuarto de Guerra A prueba de fuego Vencedor' },
-                { id: 'sermons', icon: BookOpen, label: 'PRÉDICAS VARIADAS', q: 'predicas cristianas dante gebel armando alducin itiel arroyo chuy olivares andres spyker cash luna juan carlos harrigan' },
-                { id: 'music', icon: Music, label: 'ALABANZA Y ADORACIÓN', q: 'musica cristiana adoracion 2026 grandes exitos miel san marcos barak christine d clario redimi2 grupo grace' }
+                { id: 'sermons', icon: BookOpen, label: 'PRÃ‰DICAS VARIADAS', q: 'predicas cristianas dante gebel armando alducin itiel arroyo chuy olivares andres spyker cash luna juan carlos harrigan' },
+                { id: 'music', icon: Music, label: 'ALABANZA Y ADORACIÃ“N', q: 'musica cristiana adoracion 2026 grandes exitos miel san marcos barak christine d clario redimi2 grupo grace' }
             ].map(tab => (
                 <button 
                     key={tab.id}
@@ -283,8 +283,8 @@ const FabulosaAlabanza = () => {
         <div className="fixed inset-0 z-[200] bg-slate-950/95 backdrop-blur-xl flex items-center justify-center p-4">
             <div className="bg-slate-900 border border-amber-500/30 p-10 rounded-[3rem] max-w-lg w-full text-center shadow-2xl">
                 <Heart className="w-16 h-16 text-amber-500 mx-auto mb-6 animate-pulse" fill="currentColor" />
-                <h2 className="text-3xl font-black text-white mb-2 uppercase italic tracking-tighter">Buzón de Oración</h2>
-                <textarea placeholder="Cuéntanos tu motivo de oración..." className="w-full bg-black/60 border border-white/10 rounded-[2rem] p-6 text-white text-sm h-48 focus:border-amber-500 outline-none transition-all mb-8 placeholder:text-slate-700 italic" />
+                <h2 className="text-3xl font-black text-white mb-2 uppercase italic tracking-tighter">BuzÃ³n de OraciÃ³n</h2>
+                <textarea placeholder="CuÃ©ntanos tu motivo de oraciÃ³n..." className="w-full bg-black/60 border border-white/10 rounded-[2rem] p-6 text-white text-sm h-48 focus:border-amber-500 outline-none transition-all mb-8 placeholder:text-slate-700 italic" />
                 <div className="flex gap-4">
                     <button onClick={() => setOracionModal(false)} className="flex-1 py-5 bg-white/5 rounded-2xl font-black text-xs hover:bg-red-500/20 transition-all uppercase tracking-widest text-slate-400 italic">Cancelar</button>
                     <button className="flex-1 py-5 bg-amber-600 rounded-2xl font-black text-xs shadow-2xl shadow-amber-900/50 uppercase tracking-widest italic">Enviar Clamor</button>
@@ -299,10 +299,10 @@ const FabulosaAlabanza = () => {
                 <Gift className="w-20 h-20 text-amber-500 mx-auto mb-8" />
                 <h2 className="text-2xl font-black text-white mb-3 uppercase tracking-tighter italic">Sembrar en este Canal</h2>
                 <div className="bg-amber-500/10 border border-amber-500/30 rounded-[2.5rem] p-10 mb-10 group hover:bg-amber-500/20 transition-all cursor-pointer">
-                    <p className="text-[10px] text-amber-500 font-black uppercase tracking-[0.3em] mb-4 italic">Sinpe Móvil (Costa Rica)</p>
+                    <p className="text-[10px] text-amber-500 font-black uppercase tracking-[0.3em] mb-4 italic">Sinpe MÃ³vil (Costa Rica)</p>
                     <p className="text-4xl font-black text-white tracking-[0.2em] group-hover:scale-110 transition-transform italic">6403-5313</p>
                 </div>
-                <button onClick={() => setDonacionModal(false)} className="w-full py-5 bg-amber-600 rounded-[2rem] font-black text-xs shadow-2xl shadow-amber-900/60 active:scale-95 transition-all tracking-[0.3em] italic uppercase">Amén, Dios te bendiga</button>
+                <button onClick={() => setDonacionModal(false)} className="w-full py-5 bg-amber-600 rounded-[2rem] font-black text-xs shadow-2xl shadow-amber-900/60 active:scale-95 transition-all tracking-[0.3em] italic uppercase">AmÃ©n, Dios te bendiga</button>
             </div>
         </div>
       )}

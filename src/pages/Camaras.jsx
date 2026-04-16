@@ -36,7 +36,7 @@ const Camaras = () => {
     const [volume, setVolume] = useState(1);
     const [keyIndex, setKeyIndex] = useState(0);
     const [showControls, setShowControls] = useState(true);
-    // Estado para controlar la animación de transición
+    // Estado para controlar la animaciÃ³n de transiciÃ³n
     const [isTransitioning, setIsTransitioning] = useState(false);
 
     const resetControlsTimer = () => {
@@ -47,15 +47,15 @@ const Camaras = () => {
         }, 3000);
     };
 
-    // Lógica combinada de rotación con transiciones cinemáticas
+    // LÃ³gica combinada de rotaciÃ³n con transiciones cinemÃ¡ticas
     useEffect(() => {
         if (!isPlaying || isPaused) return;
 
-        // Función para ejecutar el cambio de cámara con efecto
+        // FunciÃ³n para ejecutar el cambio de cÃ¡mara con efecto
         const performCamSwap = () => {
             setIsTransitioning(true); // Inicia fundido a negro
             
-            // Esperamos a que la pantalla esté negra (0.5s) para cambiar la fuente
+            // Esperamos a que la pantalla estÃ© negra (0.5s) para cambiar la fuente
             setTimeout(() => {
                 setCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
                 setKeyIndex((prev) => (prev + 1) % YOUTUBE_API_KEYS.length);
@@ -67,10 +67,10 @@ const Camaras = () => {
             }, 500);
         };
 
-        // Intervalo de Cámaras (Cada 2 minutos ejecuta la transición)
+        // Intervalo de CÃ¡maras (Cada 2 minutos ejecuta la transiciÃ³n)
         const camInterval = setInterval(performCamSwap, 120000);
 
-        // Intervalo de Publicidad (Cada 15 segundos sin transición)
+        // Intervalo de Publicidad (Cada 15 segundos sin transiciÃ³n)
         const adInterval = setInterval(() => {
             setAdIndex((prev) => (prev + 1) % VERTICAL_ADS.length);
         }, 15000);
@@ -114,10 +114,10 @@ const Camaras = () => {
                     {!isPlaying ? (
                         <div className="play-overlay" onClick={handleStart}>
                             <div className="play-circle"><Play size={50} fill="#00f2ff" /></div>
-                            <p>TRANSMISIÓN PROFESIONAL EN VIVO</p>
+                            <p>TRANSMISIÃ“N PROFESIONAL EN VIVO</p>
                         </div>
                     ) : (
-                        // Añadimos la clase 'switching' cuando hay transición
+                        // AÃ±adimos la clase 'switching' cuando hay transiciÃ³n
                         <div className={`video-container ${isTransitioning ? 'switching' : ''}`}>
                             <div className="yt-shield"></div>
                             

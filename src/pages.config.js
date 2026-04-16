@@ -9,7 +9,7 @@ import Camaras from './pages/Camaras';
 import FabulosaTV from './pages/FabulosaTV';
 import FabulosaVerano from './pages/FabulosaVerano'; 
 
-// 👇 IMPORTACIÓN DE LAS NUEVAS SECCIONES PROFESIONALES
+// ðŸ‘‡ IMPORTACIÃ“N DE LAS NUEVAS SECCIONES PROFESIONALES
 import CentroMercadeo from './pages/CentroMercadeo'; 
 import ControlRemoto from './pages/ControlRemoto';
 
@@ -17,7 +17,7 @@ export const pagesConfig = {
   mainPage: 'home',
   Pages: {
     'home': Home,
-    'radio': Radio,                // Fabulosa Romántica
+    'radio': Radio,                // Fabulosa RomÃ¡ntica
     'radios-cr': RadioPremium,     // Radios de Costa Rica (Tuner)
     'movies': Movies,
     'channels': Channels,          // Canales de TV
@@ -27,7 +27,7 @@ export const pagesConfig = {
     'fabulosa-tv': FabulosaTV,
     'verano': FabulosaVerano, 
     
-    // 👇 CONEXIÓN DE MERCADEO Y CONTROL REMOTO
+    // ðŸ‘‡ CONEXIÃ“N DE MERCADEO Y CONTROL REMOTO
     'mercadeo': CentroMercadeo,    // Centro de Mercadeo con fondo DJ y audio
     'control': ControlRemoto,      // Control Remoto Universal blindado
   }

@@ -13,7 +13,7 @@ export default function CardNoticias() {
           backgroundPosition: "center",
         }}
       >
-        {/* Overlay Cinematográfico */}
+        {/* Overlay CinematogrÃ¡fico */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90" />
         
         {/* Logo PSC INFORMA (Cambio 2) */}

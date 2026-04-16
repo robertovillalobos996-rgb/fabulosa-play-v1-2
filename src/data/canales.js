@@ -1,80 +1,80 @@
-// Archivo autogenerado y ordenado por el Robot Maestro 🤖
+// Archivo autogenerado y ordenado por el Robot Maestro ðŸ¤–
 export const canalesTV = [
     {
         "id": "tv-1003",
         "title": "Action 24 (1080p)",
         "url": "http://actionlive.siliconweb.com/actionabr/actiontv/playlist.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/8/88/Action24-logo-small.png"
     },
     {
         "id": "tv-1120",
         "title": "Action 24 (1080p)",
         "url": "http://actionlive.siliconweb.com/actionabr/actiontv/playlist.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/8/88/Action24-logo-small.png"
     },
     {
         "id": "tv-992",
         "title": "Canal 2 Misiones (1080p)",
         "url": "https://nd106.republicaservers.com:4433/hls/canal2misioness/index.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": null
     },
     {
         "id": "tv-1109",
         "title": "Canal 2 Misiones (1080p)",
         "url": "https://nd106.republicaservers.com:4433/hls/canal2misioness/index.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": null
     },
     {
         "id": "tv-993",
         "title": "Misiones Cuatro",
         "url": "https://iptv.ixfo.com.ar:30443/live-HD/MISIONES4/playlist.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": null
     },
     {
         "id": "tv-1110",
         "title": "Misiones Cuatro",
         "url": "https://iptv.ixfo.com.ar:30443/live-HD/MISIONES4/playlist.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": null
     },
     {
         "id": "tv-1094",
         "title": "Movies Action (1080p)",
         "url": "https://shls-live-enc.edgenextcdn.net/out/v1/46079e838e65490c8299f902a7731168/index.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": "https://i.imgur.com/NIVhISa.png"
     },
     {
         "id": "tv-1211",
         "title": "Movies Action (1080p)",
         "url": "https://shls-live-enc.edgenextcdn.net/out/v1/46079e838e65490c8299f902a7731168/index.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": "https://i.imgur.com/NIVhISa.png"
     },
     {
         "id": "tv-994",
         "title": "Xtrema Accion",
         "url": "https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": null
     },
     {
         "id": "tv-1111",
         "title": "Xtrema Accion",
         "url": "https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": null
     },
     {
         "id": "tv-1364",
         "title": "Xtrema Accion",
         "url": "https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8",
-        "genre": "Acción",
+        "genre": "AcciÃ³n",
         "logo": "https://i.imgur.com/z5NwizH.png"
     },
     {
@@ -331,7 +331,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-1255",
-        "title": "Cine Clásico",
+        "title": "Cine ClÃ¡sico",
         "url": "https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/64b9671cdac71b0008f371df/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&sid=172e5cec-2f0b-433d-8fdd-2304fd7d2966&serverSideAds=false",
         "genre": "Estrenos",
         "logo": "https://i.imgur.com/hCA5BRr.png"
@@ -618,7 +618,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-1310",
-        "title": "MCI Televisión (1080p)",
+        "title": "MCI TelevisiÃ³n (1080p)",
         "url": "https://video.ejeserver.com/live/mcitelevision.m3u8",
         "genre": "Estrenos",
         "logo": "https://pbs.twimg.com/profile_images/1836009952420274177/FfYonU6r_400x400.jpg"
@@ -1080,14 +1080,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-1373",
-        "title": "Zylo Ciné Nanar",
+        "title": "Zylo CinÃ© Nanar",
         "url": "https://zylo-cinenanar-rakuten.amagi.tv/playlist.m3u8",
         "genre": "Estrenos",
         "logo": "https://i.imgur.com/YnUZd3W.png"
     },
     {
         "id": "tv-1374",
-        "title": "Zylo Ciné Western",
+        "title": "Zylo CinÃ© Western",
         "url": "https://amg00711-zylo-amg00711c8-rakuten-uk-2686.playouts.now.amagi.tv/playlist/amg00711-zylofast-cinewestern-rakutenuk/playlist.m3u8",
         "genre": "Estrenos",
         "logo": "https://i.imgur.com/tteOFkL.png"
@@ -1150,161 +1150,161 @@ export const canalesTV = [
     },
     {
         "id": "tv-1377",
-        "title": "Детское кино International",
+        "title": "Ð”ÐµÑ‚ÑÐºÐ¾Ðµ ÐºÐ¸Ð½Ð¾ International",
         "url": "https://autopilot.catcast.tv/content/38720/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/dJqFRhQ.png"
     },
     {
         "id": "tv-1378",
-        "title": "Дом Кино",
+        "title": "Ð”Ð¾Ð¼ ÐšÐ¸Ð½Ð¾",
         "url": "https://streaming.thestream.cyou/live/44.m3u8",
         "genre": "Internacional",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/512px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png"
     },
     {
         "id": "tv-1379",
-        "title": "Дом Кино Премиум HD",
+        "title": "Ð”Ð¾Ð¼ ÐšÐ¸Ð½Ð¾ ÐŸÑ€ÐµÐ¼Ð¸ÑƒÐ¼ HD",
         "url": "http://31.148.48.15/Dom_Kino_Premium_HD/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/rJpQtvK.png"
     },
     {
         "id": "tv-1380",
-        "title": "Еврокино",
+        "title": "Ð•Ð²Ñ€Ð¾ÐºÐ¸Ð½Ð¾",
         "url": "http://31.148.48.15/Evrokino/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/8LPtPf6.png"
     },
     {
         "id": "tv-1381",
-        "title": "Иллюзион+",
+        "title": "Ð˜Ð»Ð»ÑŽÐ·Ð¸Ð¾Ð½+",
         "url": "http://31.148.48.15/Illusion_plus/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/9GvuHQ5.png"
     },
     {
         "id": "tv-1384",
-        "title": "КИНОТВ",
+        "title": "ÐšÐ˜ÐÐžÐ¢Ð’",
         "url": "https://vod.tuva.ru/kinotv/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/sMpamNO.png"
     },
     {
         "id": "tv-1382",
-        "title": "Кино 1 International",
+        "title": "ÐšÐ¸Ð½Ð¾ 1 International",
         "url": "http://kino-1.catcast.tv/content/38617/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/zsCPLs4.png"
     },
     {
         "id": "tv-1383",
-        "title": "Кинопоказ",
+        "title": "ÐšÐ¸Ð½Ð¾Ð¿Ð¾ÐºÐ°Ð·",
         "url": "http://31.148.48.15/Kinopokaz/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/nNjMyAq.png"
     },
     {
         "id": "tv-1385",
-        "title": "Новый Русский (720p)",
+        "title": "ÐÐ¾Ð²Ñ‹Ð¹ Ð ÑƒÑÑÐºÐ¸Ð¹ (720p)",
         "url": "https://live.15plusmg.ru/memfs/f983b507-a170-41a9-85a9-d9afc6cba9c1.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/iuRSScH.png"
     },
     {
         "id": "tv-1386",
-        "title": "Патриот (576i)",
+        "title": "ÐŸÐ°Ñ‚Ñ€Ð¸Ð¾Ñ‚ (576i)",
         "url": "http://catchup.videoline.ru/asvtv/index.m3u8",
         "genre": "Internacional",
         "logo": "https://patriotkanal.ru/assets/cached/2025/02/resize/264_112_q100_patriot-only-logo.png"
     },
     {
         "id": "tv-1387",
-        "title": "Русский Бестселлер",
+        "title": "Ð ÑƒÑÑÐºÐ¸Ð¹ Ð‘ÐµÑÑ‚ÑÐµÐ»Ð»ÐµÑ€",
         "url": "http://31.148.48.15/Russkiy_Bestseller/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/w0ZE9QJ.png"
     },
     {
         "id": "tv-1388",
-        "title": "Русский Детектив",
+        "title": "Ð ÑƒÑÑÐºÐ¸Ð¹ Ð”ÐµÑ‚ÐµÐºÑ‚Ð¸Ð²",
         "url": "http://31.148.48.15/Russkiy_Detektiv/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/H3qhN8S.png"
     },
     {
         "id": "tv-1389",
-        "title": "Русский Роман",
+        "title": "Ð ÑƒÑÑÐºÐ¸Ð¹ Ð Ð¾Ð¼Ð°Ð½",
         "url": "http://31.148.48.15/Russkiy_Roman_HD/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/cQN0P2B.png"
     },
     {
         "id": "tv-1390",
-        "title": "Сити Эдем КиноАзия",
+        "title": "Ð¡Ð¸Ñ‚Ð¸ Ð­Ð´ÐµÐ¼ ÐšÐ¸Ð½Ð¾ÐÐ·Ð¸Ñ",
         "url": "https://cityeden.catcast.tv/content/34393/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/gaket4B.png"
     },
     {
         "id": "tv-1391",
-        "title": "Сити Эдем КиноАрт",
+        "title": "Ð¡Ð¸Ñ‚Ð¸ Ð­Ð´ÐµÐ¼ ÐšÐ¸Ð½Ð¾ÐÑ€Ñ‚",
         "url": "https://cityeden.catcast.tv/content/38398/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/67CWCtz.png"
     },
     {
         "id": "tv-1392",
-        "title": "Сити Эдем КиноДетектив",
+        "title": "Ð¡Ð¸Ñ‚Ð¸ Ð­Ð´ÐµÐ¼ ÐšÐ¸Ð½Ð¾Ð”ÐµÑ‚ÐµÐºÑ‚Ð¸Ð²",
         "url": "https://cityeden.catcast.tv/content/41327/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/9rKHwBV.png"
     },
     {
         "id": "tv-1393",
-        "title": "Сити Эдем КиноДрама",
+        "title": "Ð¡Ð¸Ñ‚Ð¸ Ð­Ð´ÐµÐ¼ ÐšÐ¸Ð½Ð¾Ð”Ñ€Ð°Ð¼Ð°",
         "url": "https://cityeden.catcast.tv/content/45269/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/29ddffh.png"
     },
     {
         "id": "tv-1394",
-        "title": "Сити Эдем КиноКлассика",
+        "title": "Ð¡Ð¸Ñ‚Ð¸ Ð­Ð´ÐµÐ¼ ÐšÐ¸Ð½Ð¾ÐšÐ»Ð°ÑÑÐ¸ÐºÐ°",
         "url": "https://cityeden.catcast.tv/content/34185/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/0qGCS1S.png"
     },
     {
         "id": "tv-1395",
-        "title": "Сити Эдем КиноКомедия",
+        "title": "Ð¡Ð¸Ñ‚Ð¸ Ð­Ð´ÐµÐ¼ ÐšÐ¸Ð½Ð¾ÐšÐ¾Ð¼ÐµÐ´Ð¸Ñ",
         "url": "https://cityeden.catcast.tv/content/41331/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/Aga2XVA.png"
     },
     {
         "id": "tv-1396",
-        "title": "Сити Эдем КиноМистика",
+        "title": "Ð¡Ð¸Ñ‚Ð¸ Ð­Ð´ÐµÐ¼ ÐšÐ¸Ð½Ð¾ÐœÐ¸ÑÑ‚Ð¸ÐºÐ°",
         "url": "https://cityeden.catcast.tv/content/40783/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/s1Pid0K.png"
     },
     {
         "id": "tv-1397",
-        "title": "Сити Эдем КиноФантастика",
+        "title": "Ð¡Ð¸Ñ‚Ð¸ Ð­Ð´ÐµÐ¼ ÐšÐ¸Ð½Ð¾Ð¤Ð°Ð½Ñ‚Ð°ÑÑ‚Ð¸ÐºÐ°",
         "url": "https://cityeden.catcast.tv/content/45268/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/I64FeIO.png"
     },
     {
         "id": "tv-1398",
-        "title": "Сити Эдем КиноЭкшен",
+        "title": "Ð¡Ð¸Ñ‚Ð¸ Ð­Ð´ÐµÐ¼ ÐšÐ¸Ð½Ð¾Ð­ÐºÑˆÐµÐ½",
         "url": "https://cityeden.catcast.tv/content/41333/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/uuzuvD0.png"
     },
     {
         "id": "tv-1399",
-        "title": "Феникс плюс Кино",
+        "title": "Ð¤ÐµÐ½Ð¸ÐºÑ Ð¿Ð»ÑŽÑ ÐšÐ¸Ð½Ð¾",
         "url": "http://31.148.48.15/Feniks_plus_kino/index.m3u8",
         "genre": "Internacional",
         "logo": "https://i.imgur.com/S9OPMLE.png"
@@ -1710,14 +1710,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-1026",
-        "title": "Cine Clásico",
+        "title": "Cine ClÃ¡sico",
         "url": "https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/64b9671cdac71b0008f371df/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&sid=172e5cec-2f0b-433d-8fdd-2304fd7d2966&serverSideAds=false",
         "genre": "Movies",
         "logo": "https://i.imgur.com/hCA5BRr.png"
     },
     {
         "id": "tv-1143",
-        "title": "Cine Clásico",
+        "title": "Cine ClÃ¡sico",
         "url": "https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/stitch/hls/channel/64b9671cdac71b0008f371df/master.m3u8?appName=web&appVersion=9.19.0&deviceDNT=0&deviceId=affbdbfa-5fa3-48af-8369-57c005daef42&deviceMake=firefox&deviceModel=web&deviceType=web&deviceVersion=147.0.0&sid=172e5cec-2f0b-433d-8fdd-2304fd7d2966&serverSideAds=false",
         "genre": "Movies",
         "logo": "https://i.imgur.com/hCA5BRr.png"
@@ -2830,7 +2830,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-1103",
-        "title": "Pantalla Clásica EC (512p)",
+        "title": "Pantalla ClÃ¡sica EC (512p)",
         "url": "https://live21.bozztv.com/akamaissh101/ssh101/pantallaclasics/playlist.m3u8",
         "genre": "Movies;Series",
         "logo": "https://i.imgur.com/mhbERF9.jpg"
@@ -2963,7 +2963,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-58",
-        "title": "ATN Televisión (720p)",
+        "title": "ATN TelevisiÃ³n (720p)",
         "url": "https://streaming5.globalhostla.com/rtplive/atntelevision/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3047,7 +3047,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-24",
-        "title": "Alacantí TV (576p)",
+        "title": "AlacantÃ­ TV (576p)",
         "url": "https://streaming01.gestec-video.com/hls/artequatreAlacanti.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3110,42 +3110,42 @@ export const canalesTV = [
     },
     {
         "id": "tv-32",
-        "title": "América Estéreo Guayaquil (360p)",
+        "title": "AmÃ©rica EstÃ©reo Guayaquil (360p)",
         "url": "https://video.makrodigital.com/americaestereoguayaquil/americaestereoguayaquil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-33",
-        "title": "América Estéreo Ibarra (720p)",
+        "title": "AmÃ©rica EstÃ©reo Ibarra (720p)",
         "url": "https://video.makrodigital.com/americaestereoibarra/americaestereoibarra/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-34",
-        "title": "América Estéreo Quito (1080p)",
+        "title": "AmÃ©rica EstÃ©reo Quito (1080p)",
         "url": "https://video.makrodigital.com/americaestereoquito/americaestereoquito/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-35",
-        "title": "América Estéreo Tulcán (614p)",
+        "title": "AmÃ©rica EstÃ©reo TulcÃ¡n (614p)",
         "url": "https://video.makrodigital.com/americaestereotulcan/americaestereotulcan/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-36",
-        "title": "América TeVé (1080p)",
+        "title": "AmÃ©rica TeVÃ© (1080p)",
         "url": "https://live.gideo.video/americateve2/master.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-40",
-        "title": "Andalucía Televisión (1080p)",
+        "title": "AndalucÃ­a TelevisiÃ³n (1080p)",
         "url": "http://176.65.146.237:8401/play/a09g/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3201,14 +3201,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-48",
-        "title": "Anzoátegui TV (360p)",
+        "title": "AnzoÃ¡tegui TV (360p)",
         "url": "https://vcp2.myplaytv.com/anzoateguitv/anzoateguitv/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-49",
-        "title": "Arabí TV (1080p)",
+        "title": "ArabÃ­ TV (1080p)",
         "url": "https://streamtv2.elitecomunicacion.cloud:3628/live/arabitv2025live.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3222,7 +3222,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-51",
-        "title": "Argentinísima Satelital (540p)",
+        "title": "ArgentinÃ­sima Satelital (540p)",
         "url": "https://stream1.sersat.com/hls/argentinisima.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3243,7 +3243,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-55",
-        "title": "Asomavisión (614p)",
+        "title": "AsomavisiÃ³n (614p)",
         "url": "https://asomatv.cloud-ip.cc/livestream/stream.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3285,7 +3285,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-67",
-        "title": "Auténtica Televisión (720p)",
+        "title": "AutÃ©ntica TelevisiÃ³n (720p)",
         "url": "https://live.obslivestream.com/autenticatvmux/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3369,14 +3369,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-96",
-        "title": "BUM Televisión (720p)",
+        "title": "BUM TelevisiÃ³n (720p)",
         "url": "https://movil.ejeserver.com/live/visiondorada.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-74",
-        "title": "Bacán Te Veo (360p)",
+        "title": "BacÃ¡n Te Veo (360p)",
         "url": "https://stmv6.voxtvhd.com.br/vacantveo2/vacantveo2/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3439,7 +3439,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-87",
-        "title": "Bolivisión LPZ (720p)",
+        "title": "BolivisiÃ³n LPZ (720p)",
         "url": "https://alba-bo-bolivision-bolivision.stream.mediatiquestream.com/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3530,14 +3530,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-239",
-        "title": "CNC Bugavisión (720p)",
+        "title": "CNC BugavisiÃ³n (720p)",
         "url": "https://movil.ejeserver.com/live/cncbuga.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-240",
-        "title": "CNC Chocó (720p)",
+        "title": "CNC ChocÃ³ (720p)",
         "url": "https://hvtraficonew.ddns.net/corescomunicaciones/index.fmp4.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3558,7 +3558,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-243",
-        "title": "CNC Tuluá (720p)",
+        "title": "CNC TuluÃ¡ (720p)",
         "url": "https://cdn.amelbasoluciones.co:8081/cnctulualive/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3789,7 +3789,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-108",
-        "title": "Canal 2 Alpavisión Neiva (720p)",
+        "title": "Canal 2 AlpavisiÃ³n Neiva (720p)",
         "url": "https://stmv1.voxtvhd.com.br/alpavision/alpavision/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3824,7 +3824,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-148",
-        "title": "Canal 21 Táchira (360p)",
+        "title": "Canal 21 TÃ¡chira (360p)",
         "url": "https://stmv2.voxtvhd.com.br/canal21/canal21/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -3957,7 +3957,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-161",
-        "title": "Canal 44 Ciudad Juárez (720p)",
+        "title": "Canal 44 Ciudad JuÃ¡rez (720p)",
         "url": "https://5e50264bd6766.streamlock.net/canal44/videocanal44/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4020,7 +4020,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-122",
-        "title": "Canal 7 Neuquén (1080p)",
+        "title": "Canal 7 NeuquÃ©n (1080p)",
         "url": "https://stream.arcast.com.ar/c7nq/ngrp:c7nq_all/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4083,7 +4083,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-128",
-        "title": "Canal 9 Bío Bío Televisión (1080p)",
+        "title": "Canal 9 BÃ­o BÃ­o TelevisiÃ³n (1080p)",
         "url": "https://unlimited6-cl.dps.live/c9/c9.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4167,21 +4167,21 @@ export const canalesTV = [
     },
     {
         "id": "tv-182",
-        "title": "Canal Mundo Visión (720p)",
+        "title": "Canal Mundo VisiÃ³n (720p)",
         "url": "https://movil.ejeserver.com/live/mundovisiontv.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-179",
-        "title": "Canal Málaga RTV (720p)",
+        "title": "Canal MÃ¡laga RTV (720p)",
         "url": "https://canalmalaga-tv-live.flumotion.com/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-180",
-        "title": "Canal Más Televisión (720p)",
+        "title": "Canal MÃ¡s TelevisiÃ³n (720p)",
         "url": "https://movil.ejeserver.com/live/teledoradahd.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4202,7 +4202,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-185",
-        "title": "Canal Oración Con Son (1080p)",
+        "title": "Canal OraciÃ³n Con Son (1080p)",
         "url": "https://canal.mediaserver.com.co/live/oracionconson.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4244,7 +4244,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-191",
-        "title": "Canal Sierra de Cádiz (1080p)",
+        "title": "Canal Sierra de CÃ¡diz (1080p)",
         "url": "https://s.emisoras.tv:8081/sierradecadiz/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4272,7 +4272,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-195",
-        "title": "Canal Sur Andalucía 2 (720p)",
+        "title": "Canal Sur AndalucÃ­a 2 (720p)",
         "url": "https://cdnlive.codev8.net/rtvalive/smil:channel22.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4398,7 +4398,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-216",
-        "title": "Cetelmón TV (404p)",
+        "title": "CetelmÃ³n TV (404p)",
         "url": "http://player.cetelmon.tv/protecteddfd43c2f3a8b41f3f28582bf8993aca6/992_high.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4461,7 +4461,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-227",
-        "title": "Cibaeña TV (720p)",
+        "title": "CibaeÃ±a TV (720p)",
         "url": "https://streamunoapp.com:3958/live/cibaenatvlive.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4573,7 +4573,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-249",
-        "title": "Colorados Visión TV (1080p)",
+        "title": "Colorados VisiÃ³n TV (1080p)",
         "url": "http://177.234.247.66:9975/ColoradosTV/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4741,14 +4741,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-205",
-        "title": "Cáritas TV (1080p)",
+        "title": "CÃ¡ritas TV (1080p)",
         "url": "https://rds3.desdeparaguay.net/caritastv/caritastv/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-272",
-        "title": "Cúcuta Retro TV",
+        "title": "CÃºcuta Retro TV",
         "url": "https://mist01.homestream.fun/hls/ntvlive/0_1/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4783,7 +4783,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-279",
-        "title": "Daystar Español",
+        "title": "Daystar EspaÃ±ol",
         "url": "https://live-mcl.cdn01.net/smarttv/64wj6m6d8/playlist.m3u8?ads.vf=58GrEFelNTK",
         "genre": "TV y Cine",
         "logo": null
@@ -4811,7 +4811,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-284",
-        "title": "Diez TV Úbeda (1080p)",
+        "title": "Diez TV Ãšbeda (1080p)",
         "url": "https://streaming.cloud.innovasur.es/mmj/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4888,14 +4888,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-281",
-        "title": "Décima TV (Ancud) (720p)",
+        "title": "DÃ©cima TV (Ancud) (720p)",
         "url": "https://unlimited2-cl-isp.dps.live/decimatv/decimatv.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-298",
-        "title": "EBN Televisión (720p)",
+        "title": "EBN TelevisiÃ³n (720p)",
         "url": "https://627bb251f23c7.streamlock.net:444/EBNTELEVISION/EBNTELEVISION/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -4979,7 +4979,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-303",
-        "title": "Ecovisión (720p)",
+        "title": "EcovisiÃ³n (720p)",
         "url": "https://streaming.grupomediosdelnorte.com:19360/ecovision/ecovision.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -5112,7 +5112,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-325",
-        "title": "Entelevisión (720p)",
+        "title": "EntelevisiÃ³n (720p)",
         "url": "https://tv.livestreaminggroup.info:3985/live/entelevisionlive.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -5133,14 +5133,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-327",
-        "title": "Escúchame Radio TV (720p)",
+        "title": "EscÃºchame Radio TV (720p)",
         "url": "https://stmv1.transmissaodigital.com/pedro9800/pedro9800/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-328",
-        "title": "Espíritu Santo Y Fuego TV (480p)",
+        "title": "EspÃ­ritu Santo Y Fuego TV (480p)",
         "url": "https://inliveserver.com:1936/8392/8392/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -5154,7 +5154,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-330",
-        "title": "Estepona Televisión (720p)",
+        "title": "Estepona TelevisiÃ³n (720p)",
         "url": "https://cloudvideo.servers10.com:8081/8022/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -5259,14 +5259,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-344",
-        "title": "Fabulosa Estéreo 100.5 FM (720p)",
+        "title": "Fabulosa EstÃ©reo 100.5 FM (720p)",
         "url": "https://www.streaming507.net:19360/videofabulosa/videofabulosa.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-345",
-        "title": "Familia Visión HD",
+        "title": "Familia VisiÃ³n HD",
         "url": "https://584097344c1f0.streamlock.net/29/stream/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -5280,7 +5280,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-348",
-        "title": "Farovisión (720p)",
+        "title": "FarovisiÃ³n (720p)",
         "url": "https://streamtv.intervenhosting.net:3754/hybrid/play.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -5308,7 +5308,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-353",
-        "title": "France 24 Español (1080p)",
+        "title": "France 24 EspaÃ±ol (1080p)",
         "url": "https://live.france24.com/hls/live/2037220-b/F24_ES_HI_HLS/master_5000.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -5364,7 +5364,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-361",
-        "title": "Gamavisión (720p)",
+        "title": "GamavisiÃ³n (720p)",
         "url": "https://stream.esradioecuador.com/hls/stream.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -5525,7 +5525,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-386",
-        "title": "Holvoet TV (Copiapó) (720p)",
+        "title": "Holvoet TV (CopiapÃ³) (720p)",
         "url": "https://unlimited1-us.dps.live/holvoettv/holvoettv.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -5616,14 +5616,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-397",
-        "title": "Impacto Televisión (360p)",
+        "title": "Impacto TelevisiÃ³n (360p)",
         "url": "https://cloudvideo.servers10.com:8081/impactotv/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-396",
-        "title": "Imás TV (1080p)",
+        "title": "ImÃ¡s TV (1080p)",
         "url": "https://secure3.todostreaming.es/live/imastv-livestream.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -5700,7 +5700,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-412",
-        "title": "Josué TV (1080p)",
+        "title": "JosuÃ© TV (1080p)",
         "url": "https://videoserver.tmcreativos.com:19360/abbftuhxxs/abbftuhxxs.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6050,14 +6050,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-463",
-        "title": "Limón TV (1080p)",
+        "title": "LimÃ³n TV (1080p)",
         "url": "http://k4.usastreams.com/limontv1/limontv1/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-464",
-        "title": "Litoral Atlántico HD (720p)",
+        "title": "Litoral AtlÃ¡ntico HD (720p)",
         "url": "https://cdn4.streamgato.us:3595/live/litoralhdlive.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6113,7 +6113,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-472",
-        "title": "Luna Estéreo 106.4 FM (720p)",
+        "title": "Luna EstÃ©reo 106.4 FM (720p)",
         "url": "https://servervideo.intermediacolombia.com:19360/kychbbfhdz/kychbbfhdz.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6134,14 +6134,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-475",
-        "title": "M95 Televisión Marbella (1080p)",
+        "title": "M95 TelevisiÃ³n Marbella (1080p)",
         "url": "https://limited2.todostreaming.es/live/m95-livestream.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-491",
-        "title": "MCI Televisión (1080p)",
+        "title": "MCI TelevisiÃ³n (1080p)",
         "url": "https://video.ejeserver.com/live/mcitelevision.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6169,14 +6169,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-479",
-        "title": "Majestad Televisión (480p)",
+        "title": "Majestad TelevisiÃ³n (480p)",
         "url": "https://livetv.305streamhd.com:3667/live/majestadtvlive.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-478",
-        "title": "Majestad Televisión (720p)",
+        "title": "Majestad TelevisiÃ³n (720p)",
         "url": "https://videoserver.tmcreativos.com:19360/majestadtv/majestadtv.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6204,7 +6204,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-483",
-        "title": "Manavisión (480p)",
+        "title": "ManavisiÃ³n (480p)",
         "url": "https://play.once.net.ec/play/Ily2oYdd3E1fi9wK2zORoRovFU9P5xM0g3CNVK2MT0M/.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6218,14 +6218,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-485",
-        "title": "María Visión Mexico (360p)",
+        "title": "MarÃ­a VisiÃ³n Mexico (360p)",
         "url": "https://1601580044.rsc.cdn77.org/live/_jcn_/amlst:Mariavision/master.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-486",
-        "title": "María+Visión Medjugorje (720p)",
+        "title": "MarÃ­a+VisiÃ³n Medjugorje (720p)",
         "url": "https://1601580044.rsc.cdn77.org/live/_jcn_/amlst:Italiasette/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6239,7 +6239,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-490",
-        "title": "Maxivisión TV (720p)",
+        "title": "MaxivisiÃ³n TV (720p)",
         "url": "https://video03.logicahost.com.br/maxivisiontv/maxivisiontv/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6274,14 +6274,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-496",
-        "title": "Megavisión Canal 19 (720p)",
+        "title": "MegavisiÃ³n Canal 19 (720p)",
         "url": "https://mgvchannel19-ioriver-cdn.encoders.immergo.tv/master.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-497",
-        "title": "Megavisión Canal 21 (720p)",
+        "title": "MegavisiÃ³n Canal 21 (720p)",
         "url": "https://mgvchannel21-ioriver-cdn.encoders.immergo.tv/master.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6456,14 +6456,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-524",
-        "title": "Multimedios Bajío (720p)",
+        "title": "Multimedios BajÃ­o (720p)",
         "url": "https://mdstrm.com/live-stream-playlist/5d4b0fec848918070128c8cb.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-525",
-        "title": "Multimedios Ciudad Juárez (720p)",
+        "title": "Multimedios Ciudad JuÃ¡rez (720p)",
         "url": "https://mdstrm.com/live-stream-playlist/5d9e440d675235586a92be7f.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6512,14 +6512,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-531",
-        "title": "Multivisión Canal 3 (720p)",
+        "title": "MultivisiÃ³n Canal 3 (720p)",
         "url": "https://stream.digitalgt.com:3136/live/multivisionlive.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-533",
-        "title": "Multivisión Sports (720p)",
+        "title": "MultivisiÃ³n Sports (720p)",
         "url": "https://stream.digitalgt.com:3605/live/multivisionsportslive.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6561,21 +6561,21 @@ export const canalesTV = [
     },
     {
         "id": "tv-477",
-        "title": "Mágica Tv (1080p)",
+        "title": "MÃ¡gica Tv (1080p)",
         "url": "https://magicatv.4pu.com/hls/stream.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-487",
-        "title": "Más FM 95.9 (720p)",
+        "title": "MÃ¡s FM 95.9 (720p)",
         "url": "https://vivo.solumedia.com:19360/masfm/masfm.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-489",
-        "title": "Más Talk (1080p)",
+        "title": "MÃ¡s Talk (1080p)",
         "url": "https://vod2live.univtec.com/manifest/89290956-94ab-4950-accb-a54bbd7e176f.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6708,7 +6708,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-556",
-        "title": "Nortvisión (720p)",
+        "title": "NortvisiÃ³n (720p)",
         "url": "https://server.asilivehd.com:3242/live/nortvisionlive.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6757,7 +6757,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-564",
-        "title": "Nueve TV San Luís Potosí (720p)",
+        "title": "Nueve TV San LuÃ­s PotosÃ­ (720p)",
         "url": "https://5ca9af4645e15.streamlock.net/nuevetv/videonuevetv/.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6799,7 +6799,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-568",
-        "title": "Once México (1080p)",
+        "title": "Once MÃ©xico (1080p)",
         "url": "https://vivo.canaloncelive.tv/securepkgr3/oncemexico/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6820,7 +6820,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-571",
-        "title": "Onda Cádiz 24h (720p)",
+        "title": "Onda CÃ¡diz 24h (720p)",
         "url": "https://ondacadiztv.es:30443/octv/24h/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6841,7 +6841,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-575",
-        "title": "Ondas Quevedeñas TV (720p)",
+        "title": "Ondas QuevedeÃ±as TV (720p)",
         "url": "https://stmv6.voxtvhd.com.br/radiosuprema/radiosuprema/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -6953,7 +6953,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-587",
-        "title": "Paraíso TV (720p)",
+        "title": "ParaÃ­so TV (720p)",
         "url": "https://stream.eleden.com/livewtpm/ngrp:livewtpm_all/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7065,7 +7065,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-605",
-        "title": "Presumiendo México (720p)",
+        "title": "Presumiendo MÃ©xico (720p)",
         "url": "https://60417ddeaf0d9.streamlock.net/telemetrika/smil:telemetrika.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7079,7 +7079,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-610",
-        "title": "Pucón TV (1080p)",
+        "title": "PucÃ³n TV (1080p)",
         "url": "https://pantera1-100gb-cl-movistar.dps.live/pucontv/pucontv.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7093,7 +7093,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-612",
-        "title": "Punt 3 Vall Uixó (1080p)",
+        "title": "Punt 3 Vall UixÃ³ (1080p)",
         "url": "https://bit.controlstreams.com:5443/LiveApp/streams/punt3.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7184,14 +7184,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-666",
-        "title": "RT en Español (1080p) [Geo-blocked]",
+        "title": "RT en EspaÃ±ol (1080p) [Geo-blocked]",
         "url": "https://rt-esp.rttv.com/dvr/rtesp/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-667",
-        "title": "RTC Televisión Urabá (720p)",
+        "title": "RTC TelevisiÃ³n UrabÃ¡ (720p)",
         "url": "https://cdn.amelbasoluciones.co:8081/rtcurabalive/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7205,7 +7205,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-669",
-        "title": "RTN (Neuquén) (720p)",
+        "title": "RTN (NeuquÃ©n) (720p)",
         "url": "https://media.neuquen.gov.ar/rtn/television/media.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7219,7 +7219,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-671",
-        "title": "RTQ Querétaro (1080p)",
+        "title": "RTQ QuerÃ©taro (1080p)",
         "url": "https://59d39900ebfb8.streamlock.net/rytqrolive/rytqrolive/chunklist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7254,7 +7254,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-676",
-        "title": "RTV Chirripó (720p)",
+        "title": "RTV ChirripÃ³ (720p)",
         "url": "https://lstv.duckdns.org:449/hls/rtchirripo.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7282,7 +7282,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-620",
-        "title": "Radio Ancón (720p)",
+        "title": "Radio AncÃ³n (720p)",
         "url": "https://www.streaming507.net:19360/anconvideo/anconvideo.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7310,14 +7310,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-625",
-        "title": "Radio Cuenca Estéreo (720p)",
+        "title": "Radio Cuenca EstÃ©reo (720p)",
         "url": "https://eu1.servers10.com:8081/8074/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-626",
-        "title": "Radio Fantástica 98.9 FM (1080p)",
+        "title": "Radio FantÃ¡stica 98.9 FM (1080p)",
         "url": "http://190.107.232.9:8082/livestream/stream.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7394,21 +7394,21 @@ export const canalesTV = [
     },
     {
         "id": "tv-637",
-        "title": "Radio TV Neuquén (720p)",
+        "title": "Radio TV NeuquÃ©n (720p)",
         "url": "https://media.neuquen.gov.ar/rtn/television/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-639",
-        "title": "Radio Yguazú TV (480p)",
+        "title": "Radio YguazÃº TV (480p)",
         "url": "https://live.enhdtv.com:8081/radioiguazutv/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-638",
-        "title": "Radio y Televisión Martí (720p)",
+        "title": "Radio y TelevisiÃ³n MartÃ­ (720p)",
         "url": "https://ocb-ingest.akamaized.net/hls/live/2037032/tvmc01/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7506,7 +7506,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-657",
-        "title": "República TV (720p)",
+        "title": "RepÃºblica TV (720p)",
         "url": "https://rds3.desdeparaguay.net/republicatv/republicatv/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7562,14 +7562,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-621",
-        "title": "Ràdio Bocairent TV (1080p)",
+        "title": "RÃ dio Bocairent TV (1080p)",
         "url": "http://185.81.77.4/BocairentTV/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-661",
-        "title": "Río Televisión [Geo-blocked]",
+        "title": "RÃ­o TelevisiÃ³n [Geo-blocked]",
         "url": "https://cdn.amelbasoluciones.co:8081/riotv/index.fmp4.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7590,14 +7590,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-693",
-        "title": "SET Televisión Canal 26.1 (720p)",
+        "title": "SET TelevisiÃ³n Canal 26.1 (720p)",
         "url": "https://5d0d1d7a6be9e.streamlock.net/sicom/canal1/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-694",
-        "title": "SET Televisión Canal 26.2 (720p)",
+        "title": "SET TelevisiÃ³n Canal 26.2 (720p)",
         "url": "https://5d0d1d7a6be9e.streamlock.net/sicom/canal2/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7660,7 +7660,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-681",
-        "title": "Salvación TV (720p)",
+        "title": "SalvaciÃ³n TV (720p)",
         "url": "https://stream.eleden.com/livesalvatv/ngrp:livesalvatv_all/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7674,14 +7674,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-683",
-        "title": "San José TV (1080p)",
+        "title": "San JosÃ© TV (1080p)",
         "url": "https://rtmp.info/sanjosetv/envivo/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-684",
-        "title": "Santa María Televisión (720p)",
+        "title": "Santa MarÃ­a TelevisiÃ³n (720p)",
         "url": "https://pantera1-100gb-cl-movistar.dps.live/smtv/smtv.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7716,21 +7716,21 @@ export const canalesTV = [
     },
     {
         "id": "tv-690",
-        "title": "Señal España (XHUNES-TDT) (720p)",
+        "title": "SeÃ±al EspaÃ±a (XHUNES-TDT) (720p)",
         "url": "https://tv91.hostingnuclear.com:19360/xhunestv/xhunestv.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-691",
-        "title": "Señal Perú TV (404p)",
+        "title": "SeÃ±al PerÃº TV (404p)",
         "url": "https://livestream.perucast.com/hls/stream.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-692",
-        "title": "Señal Positiva TV (1080p)",
+        "title": "SeÃ±al Positiva TV (1080p)",
         "url": "https://eu1.servers10.com:8081/8108/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7779,7 +7779,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-705",
-        "title": "Sol Televisión (720p)",
+        "title": "Sol TelevisiÃ³n (720p)",
         "url": "https://video03.logicahost.com.br/soltv/soltv/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7800,7 +7800,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-708",
-        "title": "SoloBáilalo (480p)",
+        "title": "SoloBÃ¡ilalo (480p)",
         "url": "https://5ff3d9babae13.streamlock.net/8000/8000/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7821,7 +7821,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-712",
-        "title": "Sophia TV Español (720p)",
+        "title": "Sophia TV EspaÃ±ol (720p)",
         "url": "https://bild-und-ton.stream/sophiatv-es/smil:sophia-tv-es.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7912,7 +7912,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-728",
-        "title": "Supermúsica TV (720p)",
+        "title": "SupermÃºsica TV (720p)",
         "url": "https://backupmaxmedia.hvmultiplay.com/hls/stream4/supermusica.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -7947,7 +7947,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-736",
-        "title": "TBN España (576p)",
+        "title": "TBN EspaÃ±a (576p)",
         "url": "https://edge.xn--tbnespaa-j3a.es/LiveApp/streams/tbnlive.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8003,7 +8003,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-826",
-        "title": "TRC Televisión (720p)",
+        "title": "TRC TelevisiÃ³n (720p)",
         "url": "https://5fe2654d6127d.streamlock.net/trc/videotrc/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8080,7 +8080,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-849",
-        "title": "TV Copán (720p)",
+        "title": "TV CopÃ¡n (720p)",
         "url": "https://s.emisoras.tv:8081/tvcopan/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8129,7 +8129,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-857",
-        "title": "TV Getsemaní (720p)",
+        "title": "TV GetsemanÃ­ (720p)",
         "url": "https://serversv.com:8080/hls/tvgetsemani.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8143,7 +8143,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-859",
-        "title": "TV León de Judá (720p)",
+        "title": "TV LeÃ³n de JudÃ¡ (720p)",
         "url": "https://6110f70ea8d0e.streamlock.net/1838/1838/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8192,7 +8192,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-866",
-        "title": "TV Nuevo León Canal 28 (XHMNL-TDT) (720p)",
+        "title": "TV Nuevo LeÃ³n Canal 28 (XHMNL-TDT) (720p)",
         "url": "https://s5.mexside.net:1936/canal28/canal28/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8227,7 +8227,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-870",
-        "title": "TV Quellón (1080p)",
+        "title": "TV QuellÃ³n (1080p)",
         "url": "https://pantera1-100gb-cl-movistar.dps.live/tvquellon/tvquellon.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8283,7 +8283,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-855",
-        "title": "TV Éxitos (720p)",
+        "title": "TV Ã‰xitos (720p)",
         "url": "https://streaming.grupomediosdelnorte.com:19360/tvexitos/tvexitos.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8360,7 +8360,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-888",
-        "title": "TVMÁS (XHGV-TDT) (360p)",
+        "title": "TVMÃS (XHGV-TDT) (360p)",
         "url": "https://5ca9af4645e15.streamlock.net/rtv/videortv/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8402,7 +8402,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-894",
-        "title": "TVP Culiacán (720p)",
+        "title": "TVP CuliacÃ¡n (720p)",
         "url": "https://5ca3e84a76d30.streamlock.net/gpacifico1/smil:gpculiacan.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8416,14 +8416,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-896",
-        "title": "TVP Mazatlán (720p)",
+        "title": "TVP MazatlÃ¡n (720p)",
         "url": "https://5ca3e84a76d30.streamlock.net/gpacifico4/smil:mazatlan.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-897",
-        "title": "TVP Obregón (720p)",
+        "title": "TVP ObregÃ³n (720p)",
         "url": "https://5ca3e84a76d30.streamlock.net/gpacifico3/obregon.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8458,7 +8458,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-902",
-        "title": "TVU Concepción (1080p)",
+        "title": "TVU ConcepciÃ³n (1080p)",
         "url": "https://unlimited1-cl-isp.dps.live/tvu/tvu.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8479,7 +8479,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-735",
-        "title": "Tarotéame (576p)",
+        "title": "TarotÃ©ame (576p)",
         "url": "https://5d2733224ac48.streamlock.net/taroteame/tarot_web/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8570,7 +8570,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-760",
-        "title": "TeleFórmula (720p)",
+        "title": "TeleFÃ³rmula (720p)",
         "url": "https://mdstrm.com/live-stream-playlist/62f2c855f7981b5a5a2d8763.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8675,7 +8675,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-761",
-        "title": "Teleganés (720p)",
+        "title": "TeleganÃ©s (720p)",
         "url": "https://nlb2-live.emitstream.com/hls/5z6oj7ziwxzfnj78vg2m/master.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8738,7 +8738,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-766",
-        "title": "Telemás (720p)",
+        "title": "TelemÃ¡s (720p)",
         "url": "https://viewhn.com/telemas/live/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8794,7 +8794,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-780",
-        "title": "Telepacífico (1080p) [Geo-blocked]",
+        "title": "TelepacÃ­fico (1080p) [Geo-blocked]",
         "url": "https://play.cdn.enetres.net/6E5C615AA5FF4123ACAF0DAB57B7B8DC021/022/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8927,28 +8927,28 @@ export const canalesTV = [
     },
     {
         "id": "tv-801",
-        "title": "Televisión Aranda (720p)",
+        "title": "TelevisiÃ³n Aranda (720p)",
         "url": "https://cloud.streamingconnect.tv/hls/telearanda/telearanda.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-802",
-        "title": "Televisión Consciente (1080p)",
+        "title": "TelevisiÃ³n Consciente (1080p)",
         "url": "https://cdn318.fractalmedia.es/318/live/hls/tvc/master.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-804",
-        "title": "Televisión Metrópolis 19.2 (1080p)",
+        "title": "TelevisiÃ³n MetrÃ³polis 19.2 (1080p)",
         "url": "https://5e85d90130e77.streamlock.net/6014/6014/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-805",
-        "title": "Televisión Tarapoto (720p)",
+        "title": "TelevisiÃ³n Tarapoto (720p)",
         "url": "https://ott1.hdlatam.tv/live_abr/webtvTarapotoPe/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -8983,7 +8983,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-812",
-        "title": "Thema Televisión (La Serena) (720p)",
+        "title": "Thema TelevisiÃ³n (La Serena) (720p)",
         "url": "https://unlimited1-us.dps.live/thema/thema.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9200,7 +9200,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-926",
-        "title": "UPP TV/Bolivisión SCZ (720p)",
+        "title": "UPP TV/BolivisiÃ³n SCZ (720p)",
         "url": "https://alba-bo-bolivision-upptv.stream.mediatiquestream.com/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9235,7 +9235,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-914",
-        "title": "Une Vinalopó (576p)",
+        "title": "Une VinalopÃ³ (576p)",
         "url": "https://streamingtvi.gestec-video.com/hls/unesd.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9284,7 +9284,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-922",
-        "title": "Univalle Televisión (1080p)",
+        "title": "Univalle TelevisiÃ³n (1080p)",
         "url": "https://master.tucableip.com/univalletv/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9298,7 +9298,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-924",
-        "title": "Universidad Autónoma Temuco (UATV) (1080p)",
+        "title": "Universidad AutÃ³noma Temuco (UATV) (1080p)",
         "url": "https://unlimited1-us.dps.live/uatv/uatv.smil/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9438,7 +9438,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-942",
-        "title": "Venevisión Internacional (720p)",
+        "title": "VenevisiÃ³n Internacional (720p)",
         "url": "https://vod2live.univtec.com/manifest/4c41c0d8-e2e4-43cc-bd43-79afe715e1b3.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9508,14 +9508,14 @@ export const canalesTV = [
     },
     {
         "id": "tv-954",
-        "title": "Visión TV (720p)",
+        "title": "VisiÃ³n TV (720p)",
         "url": "https://cdn.streamhispanatv.net:3076/live/visiontvlive.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-953",
-        "title": "Visión Televisión (720p)",
+        "title": "VisiÃ³n TelevisiÃ³n (720p)",
         "url": "https://cloudvideo.servers10.com:8081/8016/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9550,28 +9550,28 @@ export const canalesTV = [
     },
     {
         "id": "tv-946",
-        "title": "Vía Altomayo (720p)",
+        "title": "VÃ­a Altomayo (720p)",
         "url": "https://live.obslivestream.com/viaaltomayomux/index.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-947",
-        "title": "Vía Televisión (720P)",
+        "title": "VÃ­a TelevisiÃ³n (720P)",
         "url": "https://videoserver.tmcreativos.com:19360/cablerasvia/cablerasvia.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-965",
-        "title": "WDWL-DT1 (Teleadoración/Enlace PR) (720p)",
+        "title": "WDWL-DT1 (TeleadoraciÃ³n/Enlace PR) (720p)",
         "url": "https://67acccf130420.streamlock.net/enlacepr1/enlacepr1/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
     },
     {
         "id": "tv-967",
-        "title": "WECN (Único TV) (720p)",
+        "title": "WECN (Ãšnico TV) (720p)",
         "url": "https://59825a54e4454.streamlock.net:8443/pastorairisn394/pastorairisn394/chunklist_w239411719.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9620,7 +9620,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-974",
-        "title": "WXWZ-LD1 (MásTV Canal 23) (720p)",
+        "title": "WXWZ-LD1 (MÃ¡sTV Canal 23) (720p)",
         "url": "https://5bf8041cb3fed.streamlock.net/mastvpr/mastvpr/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9746,7 +9746,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-991",
-        "title": "Zurquí TV (720p)",
+        "title": "ZurquÃ­ TV (720p)",
         "url": "https://videoserver.tmcreativos.com:19360/gesfnvpamn/gesfnvpamn.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9760,7 +9760,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-12",
-        "title": "¡OPA! (1080i) [Geo-blocked]",
+        "title": "Â¡OPA! (1080i) [Geo-blocked]",
         "url": "https://5fc584f3f19c9.streamlock.net/genteopa/videogenteopa/playlist.m3u8",
         "genre": "TV y Cine",
         "logo": null
@@ -9788,7 +9788,7 @@ export const canalesTV = [
     },
     {
         "id": "tv-30",
-        "title": "Alsacias Televisión (ATV",
+        "title": "Alsacias TelevisiÃ³n (ATV",
         "url": "Canal 28) (720p)",
         "genre": "https://s.emisoras.tv:8081/atv/index.m3u8",
         "logo": "TV y Cine"

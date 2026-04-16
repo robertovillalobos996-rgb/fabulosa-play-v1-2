@@ -54,7 +54,7 @@ const FabulosaVerano = () => {
     
     const currentVol = volumeRef.current;
     
-    // Bajamos la música al nivel solicitado (40%, 50% u 80%)
+    // Bajamos la música al nivel solicitado (Ej: 20%)
     videoRef.current.volume = currentVol * musicDuckLevel;
     
     effectAudioRef.current.src = path;
@@ -77,20 +77,20 @@ const FabulosaVerano = () => {
   useEffect(() => {
     if (!hasStarted) return;
 
-    // 1. Sello cada 3 min -> Música al 80%
+    // 1. Sello cada 3 min -> Música al 20% (0.2)
     const selloInterval = setInterval(() => {
-      playOverlayAudio(SELLO_FABULOSA, 0.8, 1.0);
+      playOverlayAudio(SELLO_FABULOSA, 0.2, 1.0);
     }, 180000); 
 
-    // 2. Súbele el volumen cada 4 min -> Música al 50%
+    // 2. Súbele el volumen cada 4 min -> Música al 20% (0.2)
     const subeleInterval = setInterval(() => {
-      playOverlayAudio(SUBELE_VOLUMEN, 0.5, 1.0);
+      playOverlayAudio(SUBELE_VOLUMEN, 0.2, 1.0);
     }, 240000); 
 
-    // 3. Locutores cada 15 min -> Música al 40% (Voz con máxima presencia)
+    // 3. Locutores cada 15 min -> Música al 20% (0.2)
     const locutorInterval = setInterval(() => {
       const randomLocutor = LOCUTORES[Math.floor(Math.random() * LOCUTORES.length)];
-      playOverlayAudio(randomLocutor, 0.4, 1.0);
+      playOverlayAudio(randomLocutor, 0.2, 1.0);
     }, 900000); 
 
     return () => {

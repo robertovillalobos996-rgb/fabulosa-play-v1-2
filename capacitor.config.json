@@ -1,5 +1,9 @@
-{
-  "appId": "com.fabulosaplay.tv",
-  "appName": "FabulosaPlay",
-  "webDir": "dist"
+﻿{
+    "appId":  "com.fabulosaplay.app",
+    "appName":  "FabulosaPlay",
+    "webDir":  "dist",
+    "server":  {
+                   "cleartext":  true,
+                   "url":  "https://www.fabulosaplay.online"
+               }
 }
