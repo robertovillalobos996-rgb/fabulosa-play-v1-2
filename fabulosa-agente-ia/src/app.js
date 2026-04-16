@@ -1,4 +1,4 @@
-// 1. CARGA DE CONFIGURACIÓN Y LIBRERÍAS
+﻿// 1. CARGA DE CONFIGURACIÃ“N Y LIBRERÃAS
 require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
@@ -9,7 +9,7 @@ const { handleMessage } = require('./agents/salesAgent');
 const app = express();
 app.use(express.json());
 
-// 2. RUTA PARA TU WEB (La Card de Noticias leerá esto)
+// 2. RUTA PARA TU WEB (La Card de Noticias leerÃ¡ esto)
 // Esto entrega el contenido de noticias.json a tu NewsCenter.jsx
 app.get('/api/noticias', (req, res) => {
     const dbPath = path.join(__dirname, '../data/noticias.json');
@@ -31,7 +31,7 @@ app.post('/webhook', (req, res) => {
                 const sender_id = webhook_event.sender.id;
                 const text = webhook_event.message.text;
                 
-                console.log(`📩 Mensaje recibido: ${text}`);
+                console.log(`ðŸ“© Mensaje recibido: ${text}`);
                 // Elva vendedora procesa el mensaje
                 handleMessage(sender_id, text);
             }
@@ -42,14 +42,14 @@ app.post('/webhook', (req, res) => {
     }
 });
 
-// 4. VERIFICACIÓN DEL WEBHOOK (Para configurar en Facebook Developers)
+// 4. VERIFICACIÃ“N DEL WEBHOOK (Para configurar en Facebook Developers)
 app.get('/webhook', (req, res) => {
     const mode = req.query['hub.mode'];
     const token = req.query['hub.verify_token'];
     const challenge = req.query['hub.challenge'];
 
     if (mode && token === process.env.WEBHOOK_VERIFY_TOKEN) {
-        console.log("✅ WEBHOOK VERIFICADO CORRECTAMENTE");
+        console.log("âœ… WEBHOOK VERIFICADO CORRECTAMENTE");
         res.status(200).send(challenge);
     } else {
         res.sendStatus(403);
@@ -60,11 +60,11 @@ app.get('/webhook', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log('--------------------------------------------------');
-    console.log(`🚀 SISTEMA PSC INFORMA & FABULOSA PLAY ACTIVO`);
-    console.log(`📡 Escuchando en el puerto: ${PORT}`);
+    console.log(`ðŸš€ SISTEMA PSC INFORMA & FABULOSA PLAY ACTIVO`);
+    console.log(`ðŸ“¡ Escuchando en el puerto: ${PORT}`);
     console.log('--------------------------------------------------');
     
-    // 🔥 ENCENDER EL MOTOR DE NOTICIAS AUTOMÁTICO
-    // Esto hará que Elva trabaje sola cada 10 minutos
+    // ðŸ”¥ ENCENDER EL MOTOR DE NOTICIAS AUTOMÃTICO
+    // Esto harÃ¡ que Elva trabaje sola cada 10 minutos
     iniciarReportera();
 });

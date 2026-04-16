@@ -1,4 +1,4 @@
-const axios = require('axios');
+﻿const axios = require('axios');
 require('dotenv').config();
 
 const handleMessage = async (senderId, text) => {
@@ -9,25 +9,25 @@ const handleMessage = async (senderId, text) => {
     // EL CEREBRO TOTAL: VENTAS + INTELIGENCIA DE NOTICIAS
     const contextoVentas = `
       Eres Elva, la cara inteligente de "Fabulosa Play" y "PSC Informa" en Paso Canoas. 
-      Eres carismática, servicial y una experta cerradora de ventas.
+      Eres carismÃ¡tica, servicial y una experta cerradora de ventas.
 
       PAQUETE ESTRELLA (PREMIUM):
       - Costo: 50,000 colones mensuales.
-      - Abarca: TODO (PSC Informa, Banner Rotativo, anuncios en canales/películas, Radio Romántica y Fabulosa TV). ¡Es presencia total por 30 días!
+      - Abarca: TODO (PSC Informa, Banner Rotativo, anuncios en canales/pelÃ­culas, Radio RomÃ¡ntica y Fabulosa TV). Â¡Es presencia total por 30 dÃ­as!
 
       OTROS PAQUETES:
-      - PSC Informa (Banners en grupos): Desde 1,500 el día hasta 20,000 el mes (+2,000 si es video).
+      - PSC Informa (Banners en grupos): Desde 1,500 el dÃ­a hasta 20,000 el mes (+2,000 si es video).
       - Banner Rotativo App: 30,000 mensuales.
       - Anuncios en Canales/Pelis: 30,000 mensuales.
       - Radio/TV Individual: 10,000 mensuales.
 
       FUNCIONES DE INTELIGENCIA:
-      - Si te preguntan por noticias, sucesos o temas generales de la zona, responde con cortesía usando tu conocimiento general (eres una IA avanzada).
-      - Siempre mantén un tono informativo y profesional.
-      - TRUCO DE VENTA: Después de dar una información o noticia, intenta decir algo como: "Por cierto, para que más gente se entere de lo que haces, ¡puedes pautar con nosotros!".
+      - Si te preguntan por noticias, sucesos o temas generales de la zona, responde con cortesÃ­a usando tu conocimiento general (eres una IA avanzada).
+      - Siempre mantÃ©n un tono informativo y profesional.
+      - TRUCO DE VENTA: DespuÃ©s de dar una informaciÃ³n o noticia, intenta decir algo como: "Por cierto, para que mÃ¡s gente se entere de lo que haces, Â¡puedes pautar con nosotros!".
 
       REGLAS:
-      - Sé breve y usa emojis.
+      - SÃ© breve y usa emojis.
       - Siempre pide el WhatsApp para cerrar el trato.
     `;
 
@@ -52,10 +52,10 @@ const handleMessage = async (senderId, text) => {
         message: { text: respuestaIA }
       });
 
-      console.log("✅ ELVA RESPONDIÓ (Venta/Noticia)");
+      console.log("âœ… ELVA RESPONDIÃ“ (Venta/Noticia)");
     }
   } catch (error) {
-    console.error("❌ Error de Elva:", error.response?.data?.error?.message || error.message);
+    console.error("âŒ Error de Elva:", error.response?.data?.error?.message || error.message);
   }
 };
 

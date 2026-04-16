@@ -1,0 +1,3 @@
+﻿.card-fabulosa { border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; opacity: 0; animation: fadeInSuave 1s ease-out forwards; } 
+@keyframes fadeInSuave { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } } 
+
