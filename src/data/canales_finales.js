@@ -8289,13 +8289,12 @@ export const canalesTV = [
         "url": "https://s.emisoras.tv:8081/atv/index.m3u8",
         "genre": "Costa Rica",
         "logo": null
-   },
-
+  },
     {
         "id": "tv-1193",
         "title": "canal 3 colosal ",
         "url": "https://5eac7b031d945.streamlock.net/canal3/canal3/chunklist_w1141438584.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/colosal_canal_3.png"
-}
- ];
+    }
+];
