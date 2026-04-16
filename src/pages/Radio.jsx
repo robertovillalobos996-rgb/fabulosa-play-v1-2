@@ -6,41 +6,46 @@ const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosaplay/p
 const Radio = () => {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
-  const hlsRef = useRef(null); // Guardamos la referencia de la transmisión
+  const hlsRef = useRef(null); 
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
   const [showControls, setShowControls] = useState(true);
   const timerRef = useRef(null);
 
-  // Función para resetear el cronómetro de invisibilidad
   const resetTimer = () => {
     setShowControls(true);
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       setShowControls(false);
-    }, 3000); // Se oculta tras 3 segundos de inactividad
+    }, 3000); 
   };
 
   const handlePlay = () => {
     const v = videoRef.current;
     if (!v) return;
 
-    // MAGIA AQUÍ: Solo cargamos el video cuando el usuario da clic, para que cargue INSTANTÁNEO
     if (!isPlaying) {
       if (v.canPlayType('application/vnd.apple.mpegurl')) { 
         v.src = STREAM_URL; 
       } else if (window.Hls && window.Hls.isSupported()) {
         if (hlsRef.current) hlsRef.current.destroy();
-        hlsRef.current = new window.Hls({ enableWorker: true });
+        
+        // 🚀 CONFIGURACIÓN AGRESIVA DE CARGA RÁPIDA
+        hlsRef.current = new window.Hls({ 
+          enableWorker: true,
+          lowLatencyMode: true, // Activa el modo de baja latencia
+          liveSyncDurationCount: 2, // Arranca apenas tenga 2 pedacitos listos
+          maxBufferLength: 10 // No almacena basura innecesaria
+        });
+        
         hlsRef.current.loadSource(STREAM_URL);
         hlsRef.current.attachMedia(v);
       } else {
-        // Fallback de seguridad
         v.src = STREAM_URL;
       }
     }
 
-    v.play();
+    v.play().catch(e => console.log("Cargando stream..."));
     setIsPlaying(true);
     resetTimer();
   };
@@ -62,7 +67,6 @@ const Radio = () => {
   };
 
   useEffect(() => {
-    // Limpiamos todo cuando la persona sale de esta pantalla
     return () => { 
       if (hlsRef.current) hlsRef.current.destroy();
       if (timerRef.current) clearTimeout(timerRef.current);
@@ -76,7 +80,6 @@ const Radio = () => {
       onMouseMove={resetTimer}
       onTouchStart={resetTimer}
     >
-      {/* preload="none" ayuda a que la tarjeta de la web cargue más rápido sin descargar video innecesario al inicio */}
       <video ref={videoRef} playsInline onClick={resetTimer} preload="none" />
       
       {!isPlaying && (
