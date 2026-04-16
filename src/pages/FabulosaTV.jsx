@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Pause, Volume2, VolumeX, Maximize, Star, Heart, BookOpen, GraduationCap, Sparkles } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Maximize, Heart, BookOpen, GraduationCap, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // 📂 ACTIVOS LOCALES
-import LOGO_KIDS from "../assets/fabulosito_kids.png";
+import LOGO_KIDS_HEADER from "../assets/fabulosito_kids.png"; // Logo pequeño arriba
 const VIDEO_INTRO = "/media/Video_de_Entrada_para_Canal_Infantil.mp4";
 
 // 🔑 LAS 14 LLAVES MAESTRAS
@@ -34,8 +34,10 @@ const FabulositoKids = () => {
     const [activeCat, setActiveCat] = useState('cine');
     const [bgMusicPlaying, setBgMusicPlaying] = useState(false);
     const [userEmoji, setUserEmoji] = useState("🐶");
-    
+    const [introMuted, setIntroMuted] = useState(true); // Control de sonido en intro
+
     const keyIndex = useRef(0);
+    const videoIntroRef = useRef(null);
     const hoverSound = new Audio("https://www.myinstants.com/media/sounds/pop-94319.mp3");
 
     const fetchVideos = async (query) => {
@@ -55,6 +57,14 @@ const FabulositoKids = () => {
 
     const playSound = () => { hoverSound.volume = 0.2; hoverSound.play(); };
 
+    // Función para activar sonido en Bienvenida de Lujo
+    const activateIntroSound = () => {
+        if (videoIntroRef.current) {
+            videoIntroRef.current.muted = false;
+            setIntroMuted(false);
+        }
+    };
+
     return (
         <div className="min-h-screen w-full bg-[#0014CC] font-sans overflow-hidden text-white">
             
@@ -69,24 +79,43 @@ const FabulositoKids = () => {
             )}
 
             <AnimatePresence mode="wait">
+                {/* 🎬 PASO 1: BIENVENIDA DE LUJO (CORREGIDA) */}
                 {view === "INTRO" && (
                     <motion.div key="intro" exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-black">
+                        {/* video muted={true} asegura que se reproduzca solo en cualquier navegador */}
                         <video 
+                            ref={videoIntroRef}
                             src={VIDEO_INTRO} 
                             autoPlay 
+                            muted={introMuted}
                             playsInline 
                             onEnded={() => { setView("HOME"); setBgMusicPlaying(true); }}
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-cover" // object-cover se ve mejor que contain
                         />
-                        <button onClick={() => { setView("HOME"); setBgMusicPlaying(true); }} className="absolute bottom-10 right-10 bg-white/20 px-8 py-3 rounded-full font-black backdrop-blur-md">OMITIR ➔</button>
+                        
+                        {/* Botón de Lujo para activar sonido */}
+                        {introMuted && (
+                            <motion.button 
+                                onClick={activateIntroSound}
+                                initial={{ scale: 0 }}
+                                animate={{ scale: [0, 1.2, 1] }}
+                                transition={{ delay: 1, duration: 0.5 }}
+                                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-400 text-black px-10 py-5 rounded-full font-black text-2xl uppercase italic border-8 border-white shadow-[0_0_50px_#FFF] flex items-center gap-4 z-[110]"
+                            >
+                                <Volume2 size={40} /> ¡Activar Sonido Mágico!
+                            </motion.button>
+                        )}
+
+                        <button onClick={() => { setView("HOME"); setBgMusicPlaying(true); }} className="absolute bottom-10 right-10 bg-white/20 px-8 py-3 rounded-full font-black backdrop-blur-md z-[110]">OMITIR ➔</button>
                     </motion.div>
                 )}
 
+                {/* 🏠 PASO 2: MUNDO MÁGICO (HOME) CON LOGO GIGANTE */}
                 {view === "HOME" && (
                     <motion.div key="home" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} className="p-4 md:p-8 flex flex-col h-screen">
                         
                         <div className="flex justify-between items-center mb-6">
-                            <motion.img whileHover={{ scale: 1.1, rotate: 5 }} src={LOGO_KIDS} className="h-16 md:h-24 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
+                            <motion.img whileHover={{ scale: 1.1, rotate: 5 }} src={LOGO_KIDS_HEADER} className="h-16 md:h-24 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" />
                             
                             <div className="flex gap-4 items-center bg-white/10 p-2 rounded-full backdrop-blur-xl border border-white/20">
                                 <span className="text-2xl ml-4">{userEmoji}</span>
@@ -112,7 +141,34 @@ const FabulositoKids = () => {
                             ))}
                         </div>
 
-                        <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-4 gap-6 pr-2">
+                        {/* 🧸 LOGO GIGANTE ANIMADO "DE LUJO" */}
+                        <motion.div 
+                            className="flex justify-center items-center my-6 relative"
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ type: 'spring', stiffness: 100, delay: 0.5 }}
+                        >
+                            {/* Brillo de fondo mágico */}
+                            <div className="absolute w-[80%] h-[80%] bg-cyan-400 blur-[120px] rounded-full opacity-60 animate-pulse" />
+                            
+                            {/* Logo flotando */}
+                            <motion.img 
+                                src="/logo_fabulosito_kids.png" // Ruta public
+                                alt="Fabulosito Kids Gigante" 
+                                className="h-40 md:h-64 z-10 relative"
+                                animate={{
+                                    y: [0, -25, 0], // Flotación vertical
+                                    rotate: [0, 2, -2, 0] // Balanceo suave
+                                }}
+                                transition={{
+                                    duration: 6,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            />
+                        </motion.div>
+
+                        <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-4 gap-6 pr-2 mt-4">
                             {videos.map((vid, index) => (
                                 <motion.div
                                     key={vid.id.videoId}
@@ -131,6 +187,7 @@ const FabulositoKids = () => {
                     </motion.div>
                 )}
 
+                {/* 📺 PASO 3: REPRODUCTOR NATIVO */}
                 {view === "WATCH" && selectedVideo && (
                     <motion.div key="watch" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-50 bg-black flex flex-col">
                         <div className="p-4 flex items-center justify-between bg-black">
@@ -143,11 +200,10 @@ const FabulositoKids = () => {
                             <h2 className="font-black text-white italic truncate max-w-md uppercase">{selectedVideo.snippet.title}</h2>
                         </div>
                         <div className="flex-1 bg-black">
-                            {/* REPRODUCTOR NATIVO DE YOUTUBE */}
                             <iframe 
                                 width="100%" 
                                 height="100%" 
-                                src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&rel=0`}
+                                src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&rel=0&modestbranding=1`}
                                 title="YouTube video player" 
                                 frameBorder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
