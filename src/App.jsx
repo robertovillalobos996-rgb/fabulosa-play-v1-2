@@ -13,8 +13,8 @@ import CanalesPlay from './pages/Channels';
 import FabulosaAlabanza from './pages/FabulosaAlabanza';
 import CentroMercadeo from './pages/CentroMercadeo';
 
-// 🌈 IMPORTANTE: Cargamos el mundo de Fabulosito Kids
-import FabulositoKids from './components/FabulosaTV';
+// 🌈 IMPORTANTE: Cargamos el mundo de Fabulosito Kids desde la carpeta PAGES
+import FabulositoKids from './pages/FabulosaTV';
 
 const queryClient = new QueryClient();
 
@@ -26,7 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           
-          {/* RUTA MÁGICA PARA NIÑOS */}
+          {/* RUTA PARA NIÑOS */}
           <Route path="/tv-1" element={<FabulositoKids />} />
 
           <Route path="/cine-play" element={<CinePlay />} />
