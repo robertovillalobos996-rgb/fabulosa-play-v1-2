@@ -2,8 +2,18 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+// Páginas principales
 import Home from './pages/Home';
-import FabulositoKids from './pages/FabulosaTV'; // El archivo que acabamos de crear arriba
+import Radio from './pages/Radio'; 
+import CinePlay from './pages/Movies'; 
+import CanalesPlay from './pages/Channels'; 
+import FabulosaAlabanza from './pages/FabulosaAlabanza';
+import CentroMercadeo from './pages/CentroMercadeo';
+import FabulosaVerano from './pages/FabulosaVerano';
+import FabulositoKids from './pages/FabulosaTV';
+
+// Nota: Asegúrese de que estos archivos existan en su carpeta /pages con estos nombres exactos
+// Si alguno falta, la página no va a compilar.
 
 const queryClient = new QueryClient();
 
@@ -12,9 +22,23 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
+          {/* EL MENÚ PRINCIPAL */}
           <Route path="/" element={<Home />} />
+          
+          {/* RUTAS DE LAS CARTAS (Una por una para que no fallen) */}
           <Route path="/tv-1" element={<FabulositoKids />} />
-          {/* ... el resto de sus rutas ... */}
+          <Route path="/radio" element={<Radio />} />
+          <Route path="/fabulosa-verano" element={<FabulosaVerano />} />
+          <Route path="/cine-play" element={<CinePlay />} />
+          <Route path="/canales-play" element={<CanalesPlay />} />
+          <Route path="/alabanza" element={<FabulosaAlabanza />} />
+          <Route path="/centro-mercadeo" element={<CentroMercadeo />} />
+          
+          {/* Rutas de respaldo por si acaso el nombre cambia en el Home */}
+          <Route path="/tv-fabulosa" element={<CanalesPlay />} />
+          <Route path="/radios-cr" element={<Radio />} />
+          <Route path="/karaoke" element={<CinePlay />} />
+          <Route path="/camaras" element={<Home />} />
         </Routes>
       </Router>
     </QueryClientProvider>

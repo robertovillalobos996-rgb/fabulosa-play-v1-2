@@ -27,7 +27,6 @@ const CATEGORIAS = [
 const EMOJIS = ["🐶", "🦁", "🦄", "🐼", "🦊", "🦖", "🐧", "⭐"];
 
 const FabulositoKids = () => {
-    // 🚀 Entramos directo al HOME, eliminamos el INTRO
     const [view, setView] = useState("HOME"); 
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -65,17 +64,16 @@ const FabulositoKids = () => {
     return (
         <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative">
             
-            {/* 📺 VIDEO DE FONDO HD (Mickey Mouse) */}
+            {/* 📺 VIDEO DE FONDO HD (Sin interacciones) */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
                 <iframe 
                     className="w-[100vw] h-[100vh] absolute top-0 left-0 scale-[1.5]"
-                    // vq=hd1080 fuerza la alta resolución
                     src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&showinfo=0&rel=0&iv_load_policy=3&vq=hd1080" 
                     allow="autoplay" frameBorder="0"
                 />
             </div>
 
-            {/* 🎵 MÚSICA DE FONDO INTELIGENTE (Se apaga si hay un video seleccionado) */}
+            {/* 🎵 MÚSICA INTELIGENTE (Se apaga cuando el niño elige video) */}
             {!selectedVideo && (
                 <div className="hidden">
                     <iframe 
@@ -85,7 +83,7 @@ const FabulositoKids = () => {
                 </div>
             )}
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative z-10 p-4 md:p-8 flex flex-col h-screen bg-black/30">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative z-10 p-4 md:p-8 flex flex-col h-screen bg-black/40">
                 
                 {/* HEADER */}
                 <div className="flex justify-between items-center mb-6">
@@ -100,7 +98,7 @@ const FabulositoKids = () => {
                         </button>
                     </div>
 
-                    <div className="flex gap-4 items-center bg-black/70 p-2 rounded-full backdrop-blur-xl border border-white/20">
+                    <div className="flex gap-4 items-center bg-black/80 p-2 rounded-full backdrop-blur-xl border border-white/20 shadow-2xl">
                         <span className="text-2xl ml-4">{userEmoji}</span>
                         <div className="flex gap-2 pr-4">
                             {EMOJIS.map(e => (
@@ -116,7 +114,7 @@ const FabulositoKids = () => {
                         <motion.button
                             key={cat.id} whileHover={{ scale: 1.1 }}
                             onClick={() => { setActiveCat(cat.id); playSound(); }}
-                            className={`${cat.color} ${activeCat === cat.id ? 'ring-8 ring-white' : 'opacity-90'} min-w-[150px] md:min-w-[250px] h-20 md:h-32 rounded-[2rem] flex flex-col items-center justify-center font-black italic border-4 border-white text-black shadow-2xl flex-shrink-0`}
+                            className={`${cat.color} ${activeCat === cat.id ? 'ring-8 ring-white shadow-[0_0_30px_white]' : 'opacity-90'} min-w-[150px] md:min-w-[250px] h-20 md:h-32 rounded-[2rem] flex flex-col items-center justify-center font-black italic border-4 border-white text-black shadow-2xl flex-shrink-0`}
                         >
                             {cat.icon} <span className="text-sm md:text-xl">{cat.label}</span>
                         </motion.button>
@@ -126,11 +124,11 @@ const FabulositoKids = () => {
                         src="/logo_fabulosito_kids.png" 
                         animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
                         transition={{ duration: 4, repeat: Infinity }}
-                        className="h-32 md:h-48 drop-shadow-[0_0_30px_cyan] flex-shrink-0 ml-4 pointer-events-none"
+                        className="h-32 md:h-48 drop-shadow-[0_0_40px_cyan] flex-shrink-0 ml-8 pointer-events-none"
                     />
                 </div>
 
-                {/* VIDEOS */}
+                {/* LISTA DE VIDEOS */}
                 <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-4 gap-6 pr-2 mt-4 custom-scrollbar">
                     {videos.map((vid) => (
                         <motion.div key={vid.id.videoId} whileHover={{ scale: 1.05 }} onClick={() => { setSelectedVideo(vid); playSound(); }} className="cursor-pointer group">
@@ -138,30 +136,36 @@ const FabulositoKids = () => {
                                 <img src={vid.snippet.thumbnails.high.url} className="w-full h-full object-cover" />
                                 <div className="absolute bottom-2 right-2 bg-yellow-400 text-black p-2 rounded-full shadow-lg"><Sparkles size={16}/></div>
                             </div>
-                            <p className="mt-2 font-black text-[10px] md:text-xs text-center uppercase bg-black/80 p-2 rounded-xl border border-white/5 line-clamp-2">{vid.snippet.title}</p>
+                            <p className="mt-2 font-black text-[10px] md:text-xs text-center uppercase bg-black/90 p-2 rounded-xl border border-white/5 line-clamp-2">{vid.snippet.title}</p>
                         </motion.div>
                     ))}
                 </div>
             </motion.div>
 
-            {/* 📺 REPRODUCTOR BÚNKER (ANTI-YOUTUBE) */}
+            {/* 📺 REPRODUCTOR BLINDADO ANTI-FUGA */}
             <AnimatePresence>
                 {selectedVideo && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[300] bg-black flex flex-col">
                         <div className="p-4 flex items-center justify-between bg-black border-b border-white/10">
-                            {!isLocked && (
+                            {/* BOTÓN CERRAR: Solo visible si el candado está abierto */}
+                            {!isLocked ? (
                                 <button onClick={() => setSelectedVideo(null)} className="bg-red-600 text-white px-8 py-3 rounded-full font-black uppercase flex items-center gap-2 border-4 border-white shadow-xl hover:scale-105 transition-transform">
-                                    <X size={24}/> CERRAR
+                                    <X size={24}/> CERRAR PELÍCULA
                                 </button>
+                            ) : (
+                                <div className="bg-red-600/20 text-red-500 px-6 py-2 rounded-full font-black flex items-center gap-2 border border-red-500/50 animate-pulse">
+                                    <Lock size={20}/> MODO NIÑOS ACTIVO
+                                </div>
                             )}
-                            {isLocked && <div className="flex items-center gap-2 text-yellow-400 font-black animate-pulse bg-yellow-400/10 px-4 py-2 rounded-full"><Lock size={20}/> SEGURO ACTIVO</div>}
                             <h2 className="font-black text-white italic truncate max-w-md uppercase text-xs">{selectedVideo.snippet.title}</h2>
                         </div>
                         
                         <div className="flex-1 relative bg-black">
-                            {/* 🛡️ BLINDAJE TOTAL: Escudos invisibles sobre el título y el logo de YouTube */}
-                            <div className="absolute top-0 left-0 w-full h-[80px] z-30 cursor-default" /> 
-                            <div className="absolute bottom-0 right-0 w-[140px] h-[80px] z-30 cursor-default" />
+                            {/* 🛡️ EL ESCUDO DE CRISTAL: Bloquea el título y el logo de YouTube */}
+                            {/* Bloquea la barra superior (título y compartir) */}
+                            <div className="absolute top-0 left-0 w-full h-[70px] z-30 cursor-default" /> 
+                            {/* Bloquea el logo de YouTube abajo a la derecha */}
+                            <div className="absolute bottom-0 right-0 w-[140px] h-[70px] z-30 cursor-default" />
 
                             <iframe 
                                 width="100%" height="100%" 
@@ -171,6 +175,11 @@ const FabulositoKids = () => {
                                 allowFullScreen
                                 className="z-10"
                             ></iframe>
+
+                            {/* Mensaje de marca de agua sutil */}
+                            <div className="absolute bottom-4 left-4 z-40 opacity-30 pointer-events-none">
+                                <p className="text-[10px] font-black text-white tracking-[0.5em]">FABULOSITO SAFE PLAYER</p>
+                            </div>
                         </div>
                     </motion.div>
                 )}
