@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Volume2, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, Home, X } from 'lucide-react';
+import { Play, Volume2, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, Home, X, Tv, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // 📂 ACTIVOS
 const LOGO_KIDS_HEADER = "/src/assets/fabulosito_kids.png"; 
-// Intentamos la ruta directa. Asegúrese que el archivo esté exactamente ahí en public/media/
 const VIDEO_INTRO = "/media/Video_de_Entrada_para_Canal_Infantil.mp4";
 
+// 🔑 LAS 14 LLAVES MAESTRAS
 const YOUTUBE_API_KEYS = [
     "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
     "AIzaSyBUk0oq1zjA6BKx5HK8DEQc1TxQqreqGtk", "AIzaSyBys-0J3T5Ou_fdPGxqYC5LWDMgppwD0Y4",
@@ -18,23 +18,24 @@ const YOUTUBE_API_KEYS = [
 ];
 
 const CATEGORIAS = [
+    { id: 'mickey', label: 'MICKEY MOUSE', icon: <Star size={30}/>, color: 'bg-red-600', query: 'mickey mouse episodios completos español' },
+    { id: 'warner', label: 'WARNER BROS', icon: <Tv size={30}/>, color: 'bg-sky-600', query: 'looney tunes clasicos bugs bunny correcaminos español' },
     { id: 'cine', label: 'PELÍCULAS', icon: <Play size={30}/>, color: 'bg-yellow-400', query: 'peliculas infantiles completas español' },
     { id: 'cuentos', label: 'CUENTOS', icon: <BookOpen size={30}/>, color: 'bg-pink-500', query: 'cuentos infantiles animados' },
     { id: 'aprender', label: 'APRENDER', icon: <GraduationCap size={30}/>, color: 'bg-cyan-400', query: 'aprender a leer y contar niños' },
     { id: 'niñas', label: 'SOLO NIÑAS', icon: <Heart size={30}/>, color: 'bg-purple-500', query: 'series para niñas barbie princesas' }
 ];
 
-const EMOJIS = ["🐶", "🦁", "🦄", "🐼", "🦊", "🦖", "🐧", "⭐"];
+const EMOJIS = ["🐶", "🦁", "🦄", "🐼", "🦊", "Rex", "🐧", "⭐"];
 
 const FabulositoKids = () => {
     const [view, setView] = useState("INTRO"); 
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
-    const [activeCat, setActiveCat] = useState('cine');
+    const [activeCat, setActiveCat] = useState('mickey');
     const [userEmoji, setUserEmoji] = useState("🐶");
     const [isLocked, setIsLocked] = useState(false);
     const [lockTimer, setLockTimer] = useState(null);
-    const [videoError, setVideoError] = useState(false);
 
     const keyIndex = useRef(0);
     const videoIntroRef = useRef(null);
@@ -57,17 +58,12 @@ const FabulositoKids = () => {
 
     const playSound = () => { hoverSound.volume = 0.2; hoverSound.play(); };
 
-    // 🚀 FUNCIÓN MAESTRA PARA OBLIGAR AL VIDEO A SALIR
     const startMagic = () => {
         const v = videoIntroRef.current;
         if (v) {
             v.muted = false;
-            v.load(); // Fuerza la recarga
-            v.play().catch(err => {
-                console.error("Fallo al forzar video:", err);
-                setView("HOME"); // Si falla del todo, vamos al home para no quedar en negro
-            });
-        }
+            v.play().catch(() => setView("HOME"));
+        } else { setView("HOME"); }
     };
 
     const handleLockDown = () => {
@@ -79,65 +75,58 @@ const FabulositoKids = () => {
     return (
         <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative">
             
-            {/* 📺 VIDEO DE FONDO YOUTUBE (Búnker) */}
+            {/* 📺 VIDEO DE FONDO Y MUSICA (Solo en HOME) */}
             {view === "HOME" && (
-                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                    <iframe 
-                        className="w-[100vw] h-[100vh] absolute top-0 left-0 scale-[1.5]"
-                        src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&showinfo=0&rel=0" 
-                        allow="autoplay" frameBorder="0"
-                    />
-                </div>
+                <>
+                    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                        <iframe 
+                            className="w-[100vw] h-[100vh] absolute top-0 left-0 scale-[1.5]"
+                            src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&showinfo=0&rel=0" 
+                            allow="autoplay" frameBorder="0"
+                        />
+                    </div>
+                    {/* 🎵 AUDIO INFANTIL DE FONDO RESTAURADO */}
+                    <div className="hidden">
+                        <iframe 
+                            src="https://www.youtube.com/embed/iwKS4b9aUeI?autoplay=1&loop=1&playlist=iwKS4b9aUeI" 
+                            allow="autoplay"
+                        />
+                    </div>
+                </>
             )}
 
             <AnimatePresence mode="wait">
-                {/* 🎬 BIENVENIDA CON BOTÓN ARCOÍRIS GIGANTE */}
+                {/* 🎬 INTRO CON BOTÓN ARCOÍRIS */}
                 {view === "INTRO" && (
                     <motion.div key="intro" exit={{ opacity: 0 }} className="fixed inset-0 z-[200] bg-black flex items-center justify-center">
                         <video 
                             ref={videoIntroRef} 
-                            autoPlay 
-                            muted 
-                            playsInline 
+                            src={VIDEO_INTRO} 
+                            autoPlay muted playsInline 
                             onEnded={() => setView("HOME")}
-                            onError={() => setVideoError(true)}
-                            className="w-full h-full object-contain"
-                        >
-                            <source src={VIDEO_INTRO} type="video/mp4" />
-                            Tu navegador no soporta el video.
-                        </video>
-
-                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60">
-                             {/* BOTÓN GIGANTE QUE CAMBIA DE COLORES */}
+                            onError={() => setView("HOME")}
+                            className="w-full h-full object-contain" 
+                        />
+                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40">
                              <motion.button 
                                 onClick={startMagic}
                                 animate={{ 
                                     backgroundColor: ["#FACC15", "#EC4899", "#06B6D4", "#FACC15"],
                                     scale: [1, 1.1, 1]
                                 }}
-                                transition={{ 
-                                    duration: 3, 
-                                    repeat: Infinity,
-                                    ease: "linear"
-                                }}
-                                className="text-black px-16 py-10 rounded-[3rem] font-black text-4xl md:text-6xl border-[10px] border-white shadow-[0_0_80px_rgba(255,255,255,0.8)] flex flex-col items-center gap-4"
+                                transition={{ duration: 3, repeat: Infinity }}
+                                className="text-black px-16 py-10 rounded-[3rem] font-black text-4xl md:text-6xl border-[10px] border-white shadow-[0_0_80px_white]"
                              >
-                                <span className="flex items-center gap-4"><Volume2 size={60} /> ¡EMPEZAR</span>
-                                <span className="tracking-[0.2em]">MAGIA!</span>
+                                ¡EMPEZAR MAGIA!
                              </motion.button>
-
-                             {videoError && (
-                                <p className="mt-8 text-red-400 font-bold">Aviso: El archivo de video tiene problemas, usa el botón OMITIR si no carga.</p>
-                             )}
                         </div>
-
-                        <button onClick={() => setView("HOME")} className="absolute bottom-10 right-10 bg-white/20 px-8 py-3 rounded-full font-black backdrop-blur-md z-[210]">OMITIR ➔</button>
+                        <button onClick={() => setView("HOME")} className="absolute bottom-10 right-10 bg-white/20 px-8 py-3 rounded-full font-black backdrop-blur-md">OMITIR ➔</button>
                     </motion.div>
                 )}
 
                 {/* 🏠 HOME */}
                 {view === "HOME" && (
-                    <motion.div key="home" className="relative z-10 p-4 md:p-8 flex flex-col h-screen bg-black/10">
+                    <motion.div key="home" className="relative z-10 p-4 md:p-8 flex flex-col h-screen">
                         
                         <div className="flex justify-between items-center mb-6">
                             <div className="flex items-center gap-6">
@@ -151,7 +140,7 @@ const FabulositoKids = () => {
                                 </button>
                             </div>
 
-                            <div className="flex gap-4 items-center bg-black/70 p-2 rounded-full backdrop-blur-xl border border-white/20 shadow-2xl">
+                            <div className="flex gap-4 items-center bg-black/60 p-2 rounded-full backdrop-blur-xl border border-white/20 shadow-2xl">
                                 <span className="text-2xl ml-4">{userEmoji}</span>
                                 <div className="flex gap-2 pr-4">
                                     {EMOJIS.map(e => (
@@ -161,7 +150,7 @@ const FabulositoKids = () => {
                             </div>
                         </div>
 
-                        {/* CATEGORÍAS + LOGO EN FILA */}
+                        {/* CATEGORÍAS + LOGO GIGANTE EN FILA */}
                         <div className="flex gap-4 overflow-x-auto pb-6 no-scrollbar items-center">
                             {CATEGORIAS.map(cat => (
                                 <motion.button
@@ -173,12 +162,11 @@ const FabulositoKids = () => {
                                 </motion.button>
                             ))}
 
-                            {/* 🧸 LOGO GIGANTE AL FINAL DE LA FILA */}
                             <motion.img 
                                 src="/logo_fabulosito_kids.png" 
-                                animate={{ y: [0, -15, 0], rotate: [0, 5, -5, 0] }}
+                                animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
                                 transition={{ duration: 4, repeat: Infinity }}
-                                className="h-32 md:h-48 drop-shadow-[0_0_40px_cyan] flex-shrink-0 ml-8"
+                                className="h-32 md:h-48 drop-shadow-[0_0_20px_cyan] flex-shrink-0 ml-4 pointer-events-none"
                             />
                         </div>
 
@@ -190,14 +178,14 @@ const FabulositoKids = () => {
                                         <img src={vid.snippet.thumbnails.high.url} className="w-full h-full object-cover" />
                                         <div className="absolute bottom-2 right-2 bg-yellow-400 text-black p-2 rounded-full shadow-lg"><Sparkles size={16}/></div>
                                     </div>
-                                    <p className="mt-2 font-black text-[10px] md:text-xs text-center uppercase bg-black/80 p-2 rounded-xl border border-white/5 line-clamp-2">{vid.snippet.title}</p>
+                                    <p className="mt-2 font-black text-[10px] md:text-xs text-center uppercase bg-black/80 p-2 rounded-xl line-clamp-2 border border-white/5">{vid.snippet.title}</p>
                                 </motion.div>
                             ))}
                         </div>
                     </motion.div>
                 )}
 
-                {/* 📺 REPRODUCTOR BÚNKER ANTI-YOUTUBE */}
+                {/* 📺 REPRODUCTOR BÚNKER (ANTI-YOUTUBE) */}
                 {selectedVideo && (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fixed inset-0 z-[300] bg-black flex flex-col">
                         <div className="p-4 flex items-center justify-between bg-black border-b border-white/10">
@@ -211,7 +199,7 @@ const FabulositoKids = () => {
                         </div>
                         
                         <div className="flex-1 relative bg-black">
-                            {/* 🛡️ CAPAS DE BLOQUEO (Para que no toquen el logo de YouTube) */}
+                            {/* 🛡️ ESCUDO: Capas invisibles para bloquear clics en logo y titulo de YouTube */}
                             <div className="absolute top-0 left-0 w-full h-[80px] z-30 cursor-default" /> 
                             <div className="absolute bottom-0 right-0 w-[120px] h-[80px] z-30 cursor-default" />
 
