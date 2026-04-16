@@ -5,21 +5,25 @@ import fondoVerano from '../assets/verano-fondo.png';
 
 const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
-const SELLO_FABULOSA = "/media/voces/sello-fabulosa.mp3";
-const SUBELE_VOLUMEN = "/media/voces/subele-volumen.mp3";
-const LOCUTORES = [
-  "/media/voces/tony-garcia-que-buena-nota.mp3",
-  "/media/voces/tony-garcia-saludos-amas-de-casa.mp3",
-  "/media/voces/tony-garcia-chat-en-vivo.mp3",
-  "/media/voces/tony-garcia-chat-interactivo.mp3",
-  "/media/voces/tony-garcia-dale-volumen.mp3",
-  "/media/voces/miguel-voz-lenta.mp3",
-  "/media/voces/miguel-bienvenidos.mp3",
-  "/media/voces/rosalia-1.mp3",
-  "/media/voces/rosalia-2.mp3",
-  "/media/voces/rosalia-3.mp3",
-  "/media/voces/claus-encant-bueno.mp3",
-  "/media/voces/inicio.mp3"
+// Bolsa de audios con su configuración de volumen individual
+const AUDIO_POOL = [
+  // SELLOS (Bajan la música al 70% / 0.7)
+  { path: "/media/voces/subele-volumen.mp3", duck: 0.7 },
+  { path: "/media/voces/sello-fabulosa.mp3", duck: 0.7 },
+  
+  // LOCUTORES Y VOCES (Bajan la música al 15% / 0.15)
+  { path: "/media/voces/tony-garcia-dale-volumen.mp3", duck: 0.15 },
+  { path: "/media/voces/tony-garcia-que-buena-nota.mp3", duck: 0.15 },
+  { path: "/media/voces/tony-garcia-saludos-amas-de-casa.mp3", duck: 0.15 },
+  { path: "/media/voces/tony-garcia-chat-en-vivo.mp3", duck: 0.15 },
+  { path: "/media/voces/tony-garcia-chat-interactivo.mp3", duck: 0.15 },
+  { path: "/media/voces/rosalia-1.mp3", duck: 0.15 },
+  { path: "/media/voces/rosalia-2.mp3", duck: 0.15 },
+  { path: "/media/voces/rosalia-3.mp3", duck: 0.15 },
+  { path: "/media/voces/claus-encant-bueno.mp3", duck: 0.15 },
+  { path: "/media/voces/inicio.mp3", duck: 0.15 },
+  { path: "/media/voces/miguel-bienvenidos.mp3", duck: 0.15 },
+  { path: "/media/voces/miguel-voz-lenta.mp3", duck: 0.15 }
 ];
 
 const VERTICAL_ADS = [
@@ -48,59 +52,45 @@ const FabulosaVerano = () => {
     }
   };
 
-  // 🎚️ MIXER EXTREMO: Tumba el vMix al 5% y dispara el locutor al 100%
-  const playOverlayAudio = (path) => {
-    const video = videoRef.current; // Esto es el vMix
-    const effect = effectAudioRef.current; // Esto es el Locutor
+  // 🎚️ MIXER INTELIGENTE: Recibe el objeto del audio y aplica su volumen específico
+  const playOverlayAudio = (audioItem) => {
+    const video = videoRef.current; // vMix
+    const effect = effectAudioRef.current; // Voz MP3
 
     if (!video || !hasStarted) return;
     
-    // 1. TUMBAMOS LA MÚSICA DEL VMIX AL 5% (0.05) DE GOLPE
-    video.volume = 0.05;
+    const masterVol = volumeRef.current;
     
-    // 2. DISPARAMOS EL LOCUTOR AL 100% (1.0)
-    effect.src = path;
+    // 1. Bajamos la música al nivel que pide el audio (0.7 o 0.15)
+    video.volume = masterVol * audioItem.duck;
+    
+    // 2. Disparamos la voz del locutor siempre al 100%
+    effect.src = audioItem.path;
     effect.volume = 1.0; 
     effect.load();
     
     effect.play().catch(err => {
-        console.error("Error al reproducir locutor:", err);
-        // Si hay error, le devolvemos el volumen al vMix
-        video.volume = volumeRef.current; 
+        console.error("Error:", err);
+        video.volume = masterVol; 
     });
     
-    // 3. CUANDO EL LOCUTOR TERMINA DE HABLAR, SUBIMOS EL VMIX A LA NORMALIDAD
+    // 3. Al terminar, devolvemos el vMix a la normalidad
     effect.onended = () => {
-      if (video) {
-        video.volume = volumeRef.current;
-      }
+      if (video) video.volume = volumeRef.current;
     };
   };
 
   useEffect(() => {
     if (!hasStarted) return;
 
-    // Sello cada 3 min 
-    const selloInterval = setInterval(() => {
-      playOverlayAudio(SELLO_FABULOSA);
-    }, 180000); 
+    // SISTEMA RANDOM: Cada 5 minutos (300,000 ms) elige cualquier audio de la bolsa
+    const randomInterval = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * AUDIO_POOL.length);
+      const selectedAudio = AUDIO_POOL[randomIndex];
+      playOverlayAudio(selectedAudio);
+    }, 300000); 
 
-    // Súbele cada 4 min 
-    const subeleInterval = setInterval(() => {
-      playOverlayAudio(SUBELE_VOLUMEN);
-    }, 240000); 
-
-    // LOCUTORES cada 15 min 
-    const locutorInterval = setInterval(() => {
-      const randomLocutor = LOCUTORES[Math.floor(Math.random() * LOCUTORES.length)];
-      playOverlayAudio(randomLocutor);
-    }, 900000); 
-
-    return () => {
-      clearInterval(selloInterval); 
-      clearInterval(subeleInterval); 
-      clearInterval(locutorInterval);
-    };
+    return () => clearInterval(randomInterval);
   }, [hasStarted]);
 
   useEffect(() => {
