@@ -1,1 +1,29 @@
-@tailwind base; @tailwind components; @tailwind utilities; body { background: #000; margin: 0; padding: 0; overflow-x: hidden; } .no-scrollbar::-webkit-scrollbar { display: none; } .glass-tv { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.12); }
+@tailwind base; 
+@tailwind components; 
+@tailwind utilities; 
+
+body { 
+  background: #000; 
+  margin: 0; 
+  padding: 0; 
+  overflow-x: hidden; 
+} 
+
+.no-scrollbar::-webkit-scrollbar { 
+  display: none; 
+} 
+
+.glass-tv { 
+  background: rgba(255, 255, 255, 0.04); 
+  backdrop-filter: blur(25px); 
+  border: 1px solid rgba(255, 255, 255, 0.12); 
+}
+
+@layer base {
+  /* Esto afecta a TODOS los botones, tarjetas y links de la página automáticamente en el TV */
+  :focus-visible {
+    outline: none !important;
+    @apply ring-4 ring-pink-500 scale-105 bg-pink-600 transition-all duration-200;
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.6); /* Un brillo extra para que se note en la pantalla grande */
+  }
+}
