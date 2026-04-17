@@ -16,7 +16,7 @@ const YOUTUBE_API_KEYS = [
   "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
-// 💉 CATEGORÍAS (Prioridad Máxima z-[100])
+// 💉 CATEGORÍAS
 const CATEGORIAS = [
     { id: 'mickey', label: 'MICKEY MOUSE', icon: <Star size={30}/>, color: 'bg-red-600', query: 'mickey mouse episodios completos español' },
     { id: 'warner', label: 'WARNER BROS', icon: <Tv size={30}/>, color: 'bg-sky-600', query: 'looney tunes tom y jerry scooby doo español completo' },
@@ -28,23 +28,15 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 LISTA DE JUEGOS MUNDIALES (LOGOS HD Y CARGA GARANTIZADA)
+// 🎮 LISTA DE JUEGOS (Solo los que abren y con rutas de imagen corregidas)
 const LISTA_JUEGOS = [
-    { 
-    id: 'mk', 
-    title: 'Mortal Kombat', 
-    url: 'https://www.retrogames.cc/embed/40238-mortal-kombat-2-usa.html', 
-    icon: '🐉', 
-    color: 'bg-zinc-800', 
-    thumb: "/public/mortal_kombat.png"
-  },
-    { 
+  { 
     id: 'omnomrun', 
     title: 'Om Nom Run', 
     url: 'https://gamesnacks.com/embed/games/omnomrun', 
     icon: '🦖', 
     color: 'bg-lime-500', 
-    thumb: 'public/omnomrun.png"
+    thumb: '/omnomrun.png' 
   },
   { 
     id: 'tigerrun', 
@@ -52,7 +44,7 @@ const LISTA_JUEGOS = [
     url: 'https://gamesnacks.com/embed/games/tigerrun', 
     icon: '🐯', 
     color: 'bg-orange-600', 
-    thumb:/public/tiger_run.png"
+    thumb: '/tigerrun.png' 
   }
 ];
 
@@ -108,15 +100,6 @@ const FabulositoKids = () => {
     useEffect(() => { 
         if (activeCat !== 'juegos_arcade') fetchVideos(CATEGORIAS.find(c => c.id === activeCat).query); 
     }, [activeCat]);
-
-    useEffect(() => {
-        if (selectedVideo) {
-            const iframe = document.getElementById('kids-player');
-            if (iframe) {
-                iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'setVolume', args: [volume] }), '*');
-            }
-        }
-    }, [volume, selectedVideo]);
 
     const toggleFullScreen = () => {
         if (!document.fullscreenElement) {
@@ -195,8 +178,8 @@ const FabulositoKids = () => {
                     {activeCat === 'juegos_arcade' ? (
                         LISTA_JUEGOS.map((juego) => (
                             <motion.div key={juego.id} whileHover={{ scale: 1.05 }} onClick={() => setSelectedGame(juego)} className="cursor-pointer group">
-                                <div className={`aspect-square bg-white rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
-                                    <img src={juego.thumb} className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500" alt={juego.title} />
+                                <div className={`aspect-square bg-zinc-800 rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
+                                    <img src={juego.thumb} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                     <div className="absolute bottom-0 w-full bg-black/70 py-2 text-center z-10 backdrop-blur-sm">
                                         <h3 className="font-black uppercase text-[10px] sm:text-sm text-white">{juego.title}</h3>
                                     </div>
@@ -235,7 +218,7 @@ const FabulositoKids = () => {
                 )}
             </AnimatePresence>
 
-            {/* 🎮 REPRODUCTOR ARCADE / VIDEO */}
+            {/* REPRODUCTOR */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
                     <motion.div 
