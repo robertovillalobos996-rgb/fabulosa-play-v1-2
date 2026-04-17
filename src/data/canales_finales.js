@@ -1,4 +1,8 @@
+// Actualización: 17 de Abril - Cirugía Retrox 3 y 4
 export const canalesTV = [
+    {
+        "id": "tv-1",
+        ...export const canalesTV = [
     {
         "id":  "tv-1",
         "title":  "Fabulosa TV",
