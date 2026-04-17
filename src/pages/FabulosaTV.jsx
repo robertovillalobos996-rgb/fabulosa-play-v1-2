@@ -28,12 +28,12 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 JUEGOS HD PREMIUM CON LOGOS ORIGINALES Y BLINDAJE
+// 🎮 JUEGOS HD PREMIUM - TODOS MIGRADOS A GAMESNACKS PARA MÁXIMA ESTABILIDAD
 const LISTA_JUEGOS = [
-  { id: 'candy', title: 'Candy Rain 7', url: 'https://play.famobi.com/candy-rain-7/embed', icon: '🍬', color: 'bg-pink-500', thumb: 'https://img.famobi.com/portal/html5/candy-rain-7/icon.png' },
+  { id: 'candy', title: 'Candy Rain 7', url: 'https://gamesnacks.com/embed/games/candyrain7', icon: '🍬', color: 'bg-pink-500', thumb: 'https://static.gamesnacks.com/img/games/candyrain7/icon_512.png' },
   { id: 'subway', title: 'Subway Surfers', url: 'https://gamesnacks.com/embed/games/subwaysurfers', icon: '🏃', color: 'bg-yellow-500', thumb: 'https://static.gamesnacks.com/img/games/subwaysurfers/icon_512.png' },
   { id: 'nom-run', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-green-500', thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' },
-  { id: 'bubble-woods', title: 'Bubble Woods', url: 'https://play.famobi.com/bubble-woods/embed', icon: '🔮', color: 'bg-purple-600', thumb: 'https://img.famobi.com/portal/html5/bubble-woods/icon.png' },
+  { id: 'bubble-woods', title: 'Bubble Woods', url: 'https://gamesnacks.com/embed/games/bubblewoods', icon: '🔮', color: 'bg-purple-600', thumb: 'https://static.gamesnacks.com/img/games/bubblewoods/icon_512.png' },
   { id: 'blocks', title: 'Color Blocks', url: 'https://gamesnacks.com/embed/games/elementblocks', icon: '💎', color: 'bg-blue-500', thumb: 'https://static.gamesnacks.com/img/games/elementblocks/icon_512.png' },
   { id: 'jump', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' }
 ];
@@ -177,8 +177,8 @@ const FabulositoKids = () => {
                     {activeCat === 'juegos_arcade' ? (
                         LISTA_JUEGOS.map((juego) => (
                             <motion.div key={juego.id} whileHover={{ scale: 1.05 }} onClick={() => setSelectedGame(juego)} className="cursor-pointer group">
-                                <div className={`aspect-square bg-white rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
-                                    {/* LOGO ORIGINAL DEL JUEGO */}
+                                <div className={`aspect-square bg-zinc-900 rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
+                                    {/* LOGO ORIGINAL DEL JUEGO CON RUTA CORREGIDA */}
                                     <img src={juego.thumb} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                     <div className="absolute bottom-0 w-full bg-black/70 py-2 text-center z-10 backdrop-blur-sm">
                                         <h3 className="font-black uppercase text-[10px] sm:text-sm text-white">{juego.title}</h3>
@@ -250,7 +250,6 @@ const FabulositoKids = () => {
                         </div>
                         
                         <div className="flex-1 relative bg-black overflow-hidden">
-                            {/* IFRAME CON SANDBOX PARA EVITAR QUE EL JUEGO SE SALGA */}
                             <iframe 
                                 id="kids-player"
                                 width="100%" height="100%" 
