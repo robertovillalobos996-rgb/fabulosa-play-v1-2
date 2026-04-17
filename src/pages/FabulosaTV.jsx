@@ -99,7 +99,7 @@ const FabulositoKids = () => {
 
             <motion.div className="relative z-10 p-2 sm:p-4 md:p-8 flex flex-col h-screen bg-black/40">
                 
-                {/* 🚀 LOGO INTELIGENTE: Ajusta tamaño según dispositivo */}
+                {/* 🚀 LOGO */}
                 <div className="flex flex-col items-center mb-4 sm:mb-6">
                     <motion.img 
                         src={LOGO_KIDS_HEADER} 
@@ -109,7 +109,7 @@ const FabulositoKids = () => {
                     />
                 </div>
 
-                {/* HEADER RESPONSIVO: Pone el candado y avatar en lugar cómodo */}
+                {/* HEADER */}
                 <div className="flex justify-between items-center mb-4 sm:mb-6 px-2 sm:px-10">
                     <button onClick={() => setIsLocked(!isLocked)} className={`p-3 sm:p-4 rounded-full transition-all ${isLocked ? 'bg-red-600 animate-pulse' : 'bg-green-500 shadow-xl'}`}>
                         {isLocked ? <Lock size={20} className="sm:w-[30px] sm:h-[30px]" /> : <Unlock size={20} className="sm:w-[30px] sm:h-[30px]" />}
@@ -125,13 +125,13 @@ const FabulositoKids = () => {
                     </div>
                 </div>
 
-                {/* CATEGORÍAS FLUIDAS: Scroll suave y centrado en pantallas grandes */}
-                <div className="flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2">
+                {/* 🎯 CATEGORÍAS EN PRIMER PLANO (z-[100] y touch fluido) */}
+                <div className="relative z-[100] flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2 touch-pan-x overscroll-x-contain">
                     {CATEGORIAS.map(cat => (
                         <motion.button
                             key={cat.id} whileHover={{ scale: 1.05 }}
                             onClick={() => setActiveCat(cat.id)}
-                            className={`${cat.color} ${activeCat === cat.id ? 'ring-4 sm:ring-8 ring-white shadow-2xl scale-105' : 'opacity-80'} min-w-[120px] sm:min-w-[160px] md:min-w-[200px] h-16 sm:h-24 md:h-28 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col items-center justify-center font-black border-2 sm:border-4 border-white text-black flex-shrink-0 uppercase transition-all duration-300`}
+                            className={`${cat.color} ${activeCat === cat.id ? 'ring-4 sm:ring-8 ring-white shadow-2xl scale-105' : 'opacity-80'} min-w-[120px] sm:min-w-[160px] md:min-w-[200px] h-16 sm:h-24 md:h-28 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col items-center justify-center font-black border-2 sm:border-4 border-white text-black flex-shrink-0 uppercase transition-all duration-300 pointer-events-auto`}
                         >
                             <div className="scale-75 sm:scale-100">{cat.icon}</div>
                             <span className="text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1 px-1 text-center">{cat.label}</span>
@@ -139,7 +139,7 @@ const FabulositoKids = () => {
                     ))}
                 </div>
 
-                {/* VIDEOS INTELIGENTES: Cambia columnas según dispositivo (2 en móvil, 3 en tablet, 4/5 en PC) */}
+                {/* VIDEOS */}
                 <div className="flex-1 overflow-y-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 pr-2 mt-2 sm:mt-4 custom-scrollbar scroll-smooth">
                     {videos.map((vid) => (
                         <motion.div key={vid.id.videoId} whileHover={{ scale: 1.03 }} onClick={() => setSelectedVideo(vid)} className="cursor-pointer group">
@@ -153,7 +153,7 @@ const FabulositoKids = () => {
                 </div>
             </motion.div>
 
-            {/* 📺 REPRODUCTOR RESPONSIVO */}
+            {/* 📺 REPRODUCTOR */}
             <AnimatePresence>
                 {selectedVideo && (
                     <motion.div 
@@ -162,7 +162,6 @@ const FabulositoKids = () => {
                         className="fixed inset-0 z-[600] bg-black flex flex-col"
                         onMouseMove={resetTimer}
                     >
-                        {/* CONTROLES QUE SE ADAPTAN AL MÓVIL */}
                         <div className={`absolute top-0 left-0 w-full p-3 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 z-[700] transition-opacity duration-700 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
                             {!isLocked && (
                                 <button onClick={() => setSelectedVideo(null)} className="w-full sm:w-auto bg-red-600/80 backdrop-blur-md text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-black uppercase flex items-center justify-center gap-2 border-2 sm:border-4 border-white shadow-xl">
@@ -193,7 +192,6 @@ const FabulositoKids = () => {
                                 frameBorder="0" allow="autoplay; encrypted-media" className="z-10"
                             />
 
-                            {/* LOGO EN VIDEO: Escala con el dispositivo */}
                             <div className="absolute top-4 right-4 sm:top-10 sm:right-10 z-50 pointer-events-none">
                                 <img src={LOGO_KIDS_HEADER} className="h-12 sm:h-20 md:h-36 opacity-80 drop-shadow-2xl object-contain" />
                             </div>
