@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Volume2, VolumeX, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, X, Tv, Star, Music, Maximize, Minimize, ArrowLeft, Gamepad2 } from 'lucide-react';
+import { Play, Volume2, VolumeX, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, X, Tv, Star, Music, Maximize, Minimize, ArrowLeft, Gamepad2, Rocket, Trophy } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // ✅ LOGO
@@ -16,7 +16,6 @@ const YOUTUBE_API_KEYS = [
   "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
-// 💉 CIRUGÍA: RENOMBRADA LA VIEJA Y AÑADIDA LA NUEVA
 const CATEGORIAS = [
     { id: 'mickey', label: 'MICKEY MOUSE', icon: <Star size={30}/>, color: 'bg-red-600', query: 'mickey mouse episodios completos español' },
     { id: 'warner', label: 'WARNER BROS', icon: <Tv size={30}/>, color: 'bg-sky-600', query: 'looney tunes tom y jerry scooby doo español completo' },
@@ -25,16 +24,17 @@ const CATEGORIAS = [
     { id: 'cine', label: 'PELÍCULAS', icon: <Play size={30}/>, color: 'bg-yellow-400', query: 'peliculas infantiles completas español latino hd 1080p' },
     { id: 'niñas', label: 'SOLO NIÑAS', icon: <Heart size={30}/>, color: 'bg-purple-500', query: 'series para niñas princesas barbie lulu99 episodios completos español' },
     { id: 'juegos_videos', label: 'DIVER-VIDEOS', icon: <Sparkles size={30}/>, color: 'bg-orange-500', query: 'juegos infantiles educativos para bebes interactivos' },
-    { id: 'juegos_arcade', label: 'JUEGOS', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
+    { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
+// 🎮 LISTA DE JUEGOS MODERNOS (Sin publicidad y en HD)
 const LISTA_JUEGOS = [
-  { id: 'mario', title: 'Super Mario', url: 'https://www.retrogames.cc/embed/18575-super-mario-bros-usa-europe.html', icon: '🍄', color: 'bg-red-500' },
-  { id: 'sonic', title: 'Sonic', url: 'https://www.retrogames.cc/embed/40232-sonic-the-hedgehog-usa-europe.html', icon: '🦔', color: 'bg-blue-500' },
-  { id: 'pacman', title: 'Pac-Man', url: 'https://www.retrogames.cc/embed/10137-pac-man-midway.html', icon: '🟡', color: 'bg-yellow-500' },
-  { id: 'tetris', title: 'Tetris', url: 'https://www.retrogames.cc/embed/10129-tetris-set-1.html', icon: '🧱', color: 'bg-purple-500' },
-  { id: 'donkey', title: 'Donkey Kong', url: 'https://www.retrogames.cc/embed/18484-donkey-kong-classics-usa.html', icon: '🦍', color: 'bg-amber-800' },
-  { id: 'galaga', title: 'Galaga', url: 'https://www.retrogames.cc/embed/10115-galaga-namco.html', icon: '🚀', color: 'bg-slate-700' }
+  { id: 'nom-run', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-green-500', thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' },
+  { id: 'drift', title: 'Drift Boss', url: 'https://gamesnacks.com/embed/games/driftboss', icon: '🏎️', color: 'bg-purple-600', thumb: 'https://static.gamesnacks.com/img/games/driftboss/icon_512.png' },
+  { id: 'tower', title: 'Tower Build', url: 'https://gamesnacks.com/embed/games/towerbuild', icon: '🏢', color: 'bg-yellow-500', thumb: 'https://static.gamesnacks.com/img/games/towerbuild/icon_512.png' },
+  { id: 'blocks', title: 'Color Blocks', url: 'https://gamesnacks.com/embed/games/elementblocks', icon: '💎', color: 'bg-blue-500', thumb: 'https://static.gamesnacks.com/img/games/elementblocks/icon_512.png' },
+  { id: 'jump', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' },
+  { id: 'cake', title: 'Cake Master', url: 'https://gamesnacks.com/embed/games/cakemaster', icon: '🎂', color: 'bg-pink-400', thumb: 'https://static.gamesnacks.com/img/games/cakemaster/icon_512.png' }
 ];
 
 const EMOJIS = ["🐶", "🦁", "🦄", "🐼", "🦊", "🐯", "🐧", "⭐"];
@@ -75,9 +75,7 @@ const FabulositoKids = () => {
     };
 
     useEffect(() => { 
-        if (activeCat !== 'juegos_arcade') {
-            fetchVideos(CATEGORIAS.find(c => c.id === activeCat).query); 
-        }
+        if (activeCat !== 'juegos_arcade') fetchVideos(CATEGORIAS.find(c => c.id === activeCat).query); 
     }, [activeCat]);
 
     useEffect(() => {
@@ -102,10 +100,12 @@ const FabulositoKids = () => {
     return (
         <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative" onMouseMove={resetTimer}>
             
+            {/* FONDO */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <iframe className="w-full h-full object-cover scale-[1.2] md:scale-[1.5]" src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&vq=hd1080" frameBorder="0" />
             </div>
 
+            {/* MÚSICA */}
             {!selectedVideo && !selectedGame && (
                 <div className="hidden">
                     <iframe src="https://www.youtube.com/embed/iwKS4b9aUeI?autoplay=1&loop=1&playlist=iwKS4b9aUeI" allow="autoplay" />
@@ -152,13 +152,18 @@ const FabulositoKids = () => {
                     ))}
                 </div>
 
-                <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 pr-2 mt-2 sm:mt-4 custom-scrollbar">
+                {/* GRID DE CONTENIDO */}
+                <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 pr-2 mt-2 sm:mt-4 custom-scrollbar">
                     {activeCat === 'juegos_arcade' ? (
                         LISTA_JUEGOS.map((juego) => (
-                            <motion.div key={juego.id} whileHover={{ scale: 1.05 }} onClick={() => setSelectedGame(juego)} className={`${juego.color} aspect-square rounded-[2rem] sm:rounded-[3rem] border-4 border-white flex flex-col items-center justify-center cursor-pointer shadow-2xl relative group overflow-hidden`}>
-                                <span className="text-5xl sm:text-7xl group-hover:animate-bounce">{juego.icon}</span>
-                                <h3 className="font-black uppercase text-xs sm:text-lg mt-2 sm:mt-4">{juego.title}</h3>
-                                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <motion.div key={juego.id} whileHover={{ scale: 1.05 }} onClick={() => setSelectedGame(juego)} className="cursor-pointer group">
+                                <div className={`aspect-square ${juego.color} rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
+                                    <img src={juego.thumb} className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" />
+                                    <span className="text-5xl sm:text-7xl z-10 drop-shadow-lg group-hover:scale-110 transition-transform">{juego.icon}</span>
+                                    <div className="absolute bottom-0 w-full bg-black/60 py-2 text-center z-10 backdrop-blur-sm">
+                                        <h3 className="font-black uppercase text-[10px] sm:text-sm">{juego.title}</h3>
+                                    </div>
+                                </div>
                             </motion.div>
                         ))
                     ) : (
@@ -166,7 +171,7 @@ const FabulositoKids = () => {
                             <motion.div key={vid.id.videoId} whileHover={{ scale: 1.03 }} onClick={() => setSelectedVideo(vid)} className="cursor-pointer group">
                                 <div className="aspect-video rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border-2 sm:border-4 border-white group-hover:border-yellow-400 shadow-2xl relative bg-zinc-900">
                                     <img src={vid.snippet.thumbnails.high.url} className="w-full h-full object-cover" />
-                                    <div className="absolute bottom-1.5 right-1.5 bg-yellow-400 text-black p-1 sm:p-2 rounded-full shadow-lg scale-75 sm:scale-100"><Sparkles size={16}/></div>
+                                    <div className="absolute bottom-1.5 right-1.5 bg-yellow-400 text-black p-1 rounded-full shadow-lg"><Sparkles size={16}/></div>
                                 </div>
                                 <p className="mt-1.5 font-black text-[9px] sm:text-xs text-center uppercase bg-black/80 p-1.5 rounded-xl border border-white/5 line-clamp-2 italic">{vid.snippet.title}</p>
                             </motion.div>
@@ -175,6 +180,7 @@ const FabulositoKids = () => {
                 </div>
             </motion.div>
 
+            {/* REPRODUCTOR */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
                     <motion.div 
@@ -186,7 +192,7 @@ const FabulositoKids = () => {
                         <div className={`absolute top-0 left-0 w-full p-3 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 z-[700] transition-opacity duration-700 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
                             {!isLocked && (
                                 <button onClick={() => { setSelectedVideo(null); setSelectedGame(null); }} className="bg-red-600 text-white px-8 py-2.5 rounded-full font-black uppercase flex items-center justify-center gap-2 border-2 sm:border-4 border-white shadow-xl">
-                                    <ArrowLeft size={20}/> VOLVER
+                                    <ArrowLeft size={20}/> SALIR
                                 </button>
                             )}
                             
