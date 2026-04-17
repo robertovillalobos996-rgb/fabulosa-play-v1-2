@@ -16,7 +16,7 @@ const YOUTUBE_API_KEYS = [
   "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
-// 💉 CATEGORÍAS
+// 💉 CATEGORÍAS (Prioridad Máxima z-[100])
 const CATEGORIAS = [
     { id: 'mickey', label: 'MICKEY MOUSE', icon: <Star size={30}/>, color: 'bg-red-600', query: 'mickey mouse episodios completos español' },
     { id: 'warner', label: 'WARNER BROS', icon: <Tv size={30}/>, color: 'bg-sky-600', query: 'looney tunes tom y jerry scooby doo español completo' },
@@ -28,7 +28,7 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 LISTA DE JUEGOS MUNDIALES (REVISADOS Y CON LOGOS HD)
+// 🎮 LISTA DE JUEGOS MUNDIALES (LOGOS HD Y CARGA GARANTIZADA)
 const LISTA_JUEGOS = [
   { 
     id: 'mario', 
@@ -36,7 +36,7 @@ const LISTA_JUEGOS = [
     url: 'https://games.construct.net/446/latest', 
     icon: '🍄', 
     color: 'bg-red-600', 
-    thumb: 'https://i.imgur.com/vH977gA.png' 
+    thumb: 'https://upload.wikimedia.org/wikipedia/en/a/a9/Mario_Series_Logo.svg' 
   },
   { 
     id: 'pvz', 
@@ -44,7 +44,7 @@ const LISTA_JUEGOS = [
     url: 'https://gamesnacks.com/embed/games/plantsvszombies', 
     icon: '🌻', 
     color: 'bg-green-700', 
-    thumb: 'https://i.imgur.com/G37vWpI.png' 
+    thumb: 'https://static.wikia.nocookie.net/plantsvszombies/images/c/c5/PvZ1_Logo.png' 
   },
   { 
     id: 'mk', 
@@ -52,7 +52,7 @@ const LISTA_JUEGOS = [
     url: 'https://www.retrogames.cc/embed/40238-mortal-kombat-2-usa.html', 
     icon: '🐉', 
     color: 'bg-zinc-800', 
-    thumb: 'https://i.imgur.com/mOskKUn.png' 
+    thumb: 'https://upload.wikimedia.org/wikipedia/en/b/b1/Mortal_Kombat_Logo.svg' 
   },
   { 
     id: 'subway', 
@@ -60,7 +60,7 @@ const LISTA_JUEGOS = [
     url: 'https://gamesnacks.com/embed/games/subwaysurfers', 
     icon: '🏃', 
     color: 'bg-yellow-500', 
-    thumb: 'https://i.imgur.com/K3ZqWfB.png' 
+    thumb: 'https://static.gamesnacks.com/img/games/subwaysurfers/icon_512.png' 
   },
   { 
     id: 'omnomrun', 
@@ -68,7 +68,7 @@ const LISTA_JUEGOS = [
     url: 'https://gamesnacks.com/embed/games/omnomrun', 
     icon: '🦖', 
     color: 'bg-lime-500', 
-    thumb: 'https://i.imgur.com/p5A8e0L.png' 
+    thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' 
   },
   { 
     id: 'tigerrun', 
@@ -76,7 +76,7 @@ const LISTA_JUEGOS = [
     url: 'https://gamesnacks.com/embed/games/tigerrun', 
     icon: '🐯', 
     color: 'bg-orange-600', 
-    thumb: 'https://i.imgur.com/E88k3yW.png' 
+    thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' 
   }
 ];
 
@@ -202,7 +202,6 @@ const FabulositoKids = () => {
                     </div>
                 </div>
 
-                {/* 🎯 CATEGORÍAS */}
                 <div className="relative z-[100] flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2 touch-pan-x">
                     {CATEGORIAS.map(cat => (
                         <motion.button
@@ -220,9 +219,9 @@ const FabulositoKids = () => {
                     {activeCat === 'juegos_arcade' ? (
                         LISTA_JUEGOS.map((juego) => (
                             <motion.div key={juego.id} whileHover={{ scale: 1.05 }} onClick={() => setSelectedGame(juego)} className="cursor-pointer group">
-                                <div className={`aspect-square bg-zinc-800 rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
-                                    <img src={juego.thumb} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                                    <div className="absolute bottom-0 w-full bg-black/80 py-2 text-center z-10 backdrop-blur-sm">
+                                <div className={`aspect-square bg-white rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
+                                    <img src={juego.thumb} className="w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-500" alt={juego.title} />
+                                    <div className="absolute bottom-0 w-full bg-black/70 py-2 text-center z-10 backdrop-blur-sm">
                                         <h3 className="font-black uppercase text-[10px] sm:text-sm text-white">{juego.title}</h3>
                                     </div>
                                 </div>
@@ -260,7 +259,7 @@ const FabulositoKids = () => {
                 )}
             </AnimatePresence>
 
-            {/* 🎮 REPRODUCTOR */}
+            {/* 🎮 REPRODUCTOR ARCADE / VIDEO */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
                     <motion.div 
