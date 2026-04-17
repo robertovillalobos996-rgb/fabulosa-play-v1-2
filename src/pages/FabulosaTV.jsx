@@ -28,7 +28,7 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 LISTA DE JUEGOS (Solo los que abren y con rutas de imagen corregidas)
+// 🎮 JUEGOS SELECCIONADOS (Rutas de imagen corregidas)
 const LISTA_JUEGOS = [
   { 
     id: 'omnomrun', 
@@ -44,7 +44,7 @@ const LISTA_JUEGOS = [
     url: 'https://gamesnacks.com/embed/games/tigerrun', 
     icon: '🐯', 
     color: 'bg-orange-600', 
-    thumb: '/tigerrun.png' 
+    thumb: '/tiger_run.png' 
   }
 ];
 
