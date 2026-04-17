@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Play, Volume2, VolumeX, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, X, Tv, Star, Music, Maximize, Minimize, ArrowLeft, Gamepad2, Rocket, Trophy } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ✅ LOGO
+// ✅ ASSETS
 const LOGO_KIDS_HEADER = "/logo_fabulosito_kids.png"; 
 
 // 🔑 LAS 14 LLAVES MAESTRAS
@@ -16,6 +16,7 @@ const YOUTUBE_API_KEYS = [
   "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
+// 💉 CATEGORÍAS (Prioridad Máxima)
 const CATEGORIAS = [
     { id: 'mickey', label: 'MICKEY MOUSE', icon: <Star size={30}/>, color: 'bg-red-600', query: 'mickey mouse episodios completos español' },
     { id: 'warner', label: 'WARNER BROS', icon: <Tv size={30}/>, color: 'bg-sky-600', query: 'looney tunes tom y jerry scooby doo español completo' },
@@ -27,14 +28,14 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 LISTA DE JUEGOS MODERNOS (Sin publicidad y en HD)
+// 🎮 JUEGOS PREMIUM HD (Sin publicidad y táctiles)
 const LISTA_JUEGOS = [
+  { id: 'subway', title: 'Subway Surfers', url: 'https://gamesnacks.com/embed/games/subwaysurfers', icon: '🏃', color: 'bg-yellow-500', thumb: 'https://static.gamesnacks.com/img/games/subwaysurfers/icon_512.png' },
   { id: 'nom-run', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-green-500', thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' },
-  { id: 'drift', title: 'Drift Boss', url: 'https://gamesnacks.com/embed/games/driftboss', icon: '🏎️', color: 'bg-purple-600', thumb: 'https://static.gamesnacks.com/img/games/driftboss/icon_512.png' },
-  { id: 'tower', title: 'Tower Build', url: 'https://gamesnacks.com/embed/games/towerbuild', icon: '🏢', color: 'bg-yellow-500', thumb: 'https://static.gamesnacks.com/img/games/towerbuild/icon_512.png' },
+  { id: 'cut-rope', title: 'Cut the Rope', url: 'https://gamesnacks.com/embed/games/cuttherope', icon: '🍬', color: 'bg-emerald-600', thumb: 'https://static.gamesnacks.com/img/games/cuttherope/icon_512.png' },
+  { id: 'fruit', title: 'Fruit Slash', url: 'https://gamesnacks.com/embed/games/fruitslasher', icon: '🍉', color: 'bg-red-500', thumb: 'https://static.gamesnacks.com/img/games/fruitslasher/icon_512.png' },
   { id: 'blocks', title: 'Color Blocks', url: 'https://gamesnacks.com/embed/games/elementblocks', icon: '💎', color: 'bg-blue-500', thumb: 'https://static.gamesnacks.com/img/games/elementblocks/icon_512.png' },
-  { id: 'jump', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' },
-  { id: 'cake', title: 'Cake Master', url: 'https://gamesnacks.com/embed/games/cakemaster', icon: '🎂', color: 'bg-pink-400', thumb: 'https://static.gamesnacks.com/img/games/cakemaster/icon_512.png' }
+  { id: 'jump', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' }
 ];
 
 const EMOJIS = ["🐶", "🦁", "🦄", "🐼", "🦊", "🐯", "🐧", "⭐"];
@@ -100,12 +101,12 @@ const FabulositoKids = () => {
     return (
         <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative" onMouseMove={resetTimer}>
             
-            {/* FONDO */}
+            {/* FONDO ANIMADO */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <iframe className="w-full h-full object-cover scale-[1.2] md:scale-[1.5]" src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&vq=hd1080" frameBorder="0" />
             </div>
 
-            {/* MÚSICA */}
+            {/* MÚSICA DE FONDO */}
             {!selectedVideo && !selectedGame && (
                 <div className="hidden">
                     <iframe src="https://www.youtube.com/embed/iwKS4b9aUeI?autoplay=1&loop=1&playlist=iwKS4b9aUeI" allow="autoplay" />
@@ -114,6 +115,7 @@ const FabulositoKids = () => {
 
             <motion.div className="relative z-10 p-2 sm:p-4 md:p-8 flex flex-col h-screen bg-black/40">
                 
+                {/* LOGO GIGANTE */}
                 <div className="flex flex-col items-center mb-4 sm:mb-6">
                     <motion.img 
                         src={LOGO_KIDS_HEADER} 
@@ -123,6 +125,7 @@ const FabulositoKids = () => {
                     />
                 </div>
 
+                {/* CONTROLES SUPERIORES */}
                 <div className="flex justify-between items-center mb-4 sm:mb-6 px-2 sm:px-10">
                     <button onClick={() => setIsLocked(!isLocked)} className={`p-3 sm:p-4 rounded-full transition-all ${isLocked ? 'bg-red-600 animate-pulse' : 'bg-green-500 shadow-xl'}`}>
                         {isLocked ? <Lock size={20} className="sm:w-[30px] sm:h-[30px]" /> : <Unlock size={20} className="sm:w-[30px] sm:h-[30px]" />}
@@ -138,7 +141,7 @@ const FabulositoKids = () => {
                     </div>
                 </div>
 
-                {/* 🎯 CATEGORÍAS (Prioridad Máxima z-[100]) */}
+                {/* CATEGORÍAS (Prioridad Máxima z-[100] y Fluidez) */}
                 <div className="relative z-[100] flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2 touch-pan-x">
                     {CATEGORIAS.map(cat => (
                         <motion.button
@@ -180,7 +183,7 @@ const FabulositoKids = () => {
                 </div>
             </motion.div>
 
-            {/* REPRODUCTOR */}
+            {/* REPRODUCTOR ARCADE / VIDEO */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
                     <motion.div 
