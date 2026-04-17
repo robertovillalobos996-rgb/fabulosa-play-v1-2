@@ -17,14 +17,14 @@ export const canalesTV = [
         "id": "tv-949",
         "title": "Retrox",
         "url": "https://tvservices.fullhd-streaming.com:3963/live/tvgroupretroxtvlive.m3u8",
-        "genre": "Retro",
+        "genre": "Costa Rica",
         "logo": "/logos_canales/retrox.png"
     },
     {
         "id": "tv-950",
         "title": "Retrox Plus",
         "url": "https://tvservices.fullhd-streaming.com:3100/live/tvgroupretroxtvpluslive.m3u8",
-        "genre": "Retro",
+        "genre": "Costa Rica",
         "logo": "/logos_canales/retro x plus.png"
     },
     {
