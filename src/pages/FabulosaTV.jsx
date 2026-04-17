@@ -16,7 +16,7 @@ const YOUTUBE_API_KEYS = [
   "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
-// 💉 CATEGORÍAS (Prioridad Máxima z-[100])
+// 💉 CATEGORÍAS
 const CATEGORIAS = [
     { id: 'mickey', label: 'MICKEY MOUSE', icon: <Star size={30}/>, color: 'bg-red-600', query: 'mickey mouse episodios completos español' },
     { id: 'warner', label: 'WARNER BROS', icon: <Tv size={30}/>, color: 'bg-sky-600', query: 'looney tunes tom y jerry scooby doo español completo' },
@@ -28,14 +28,14 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 JUEGOS HD PREMIUM - TODOS MIGRADOS A GAMESNACKS PARA MÁXIMA ESTABILIDAD
+// 🎮 JUEGOS HD 100% FUNCIONALES CON LOGOS ORIGINALES (Google GameSnacks)
 const LISTA_JUEGOS = [
-  { id: 'candy', title: 'Candy Rain 7', url: 'https://gamesnacks.com/embed/games/candyrain7', icon: '🍬', color: 'bg-pink-500', thumb: 'https://static.gamesnacks.com/img/games/candyrain7/icon_512.png' },
-  { id: 'subway', title: 'Subway Surfers', url: 'https://gamesnacks.com/embed/games/subwaysurfers', icon: '🏃', color: 'bg-yellow-500', thumb: 'https://static.gamesnacks.com/img/games/subwaysurfers/icon_512.png' },
-  { id: 'nom-run', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-green-500', thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' },
-  { id: 'bubble-woods', title: 'Bubble Woods', url: 'https://gamesnacks.com/embed/games/bubblewoods', icon: '🔮', color: 'bg-purple-600', thumb: 'https://static.gamesnacks.com/img/games/bubblewoods/icon_512.png' },
-  { id: 'blocks', title: 'Color Blocks', url: 'https://gamesnacks.com/embed/games/elementblocks', icon: '💎', color: 'bg-blue-500', thumb: 'https://static.gamesnacks.com/img/games/elementblocks/icon_512.png' },
-  { id: 'jump', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' }
+  { id: 'goldminer', title: 'Oro Miner', url: 'https://gamesnacks.com/embed/games/goldminer', icon: '⛏️', color: 'bg-yellow-600', thumb: 'https://static.gamesnacks.com/img/games/goldminer/icon_512.png' },
+  { id: 'omnomrun', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-green-500', thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' },
+  { id: 'elementblocks', title: 'Color Blocks', url: 'https://gamesnacks.com/embed/games/elementblocks', icon: '💎', color: 'bg-blue-500', thumb: 'https://static.gamesnacks.com/img/games/elementblocks/icon_512.png' },
+  { id: 'tigerrun', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' },
+  { id: 'snakemobile', title: 'Culebrita', url: 'https://gamesnacks.com/embed/games/snakemobile', icon: '🐍', color: 'bg-emerald-500', thumb: 'https://static.gamesnacks.com/img/games/snakemobile/icon_512.png' },
+  { id: 'geometry', title: 'Salto Loco', url: 'https://gamesnacks.com/embed/games/geometryjump', icon: '⏹️', color: 'bg-indigo-500', thumb: 'https://static.gamesnacks.com/img/games/geometryjump/icon_512.png' }
 ];
 
 // 🦁 INFO DE AVATARES
@@ -177,8 +177,7 @@ const FabulositoKids = () => {
                     {activeCat === 'juegos_arcade' ? (
                         LISTA_JUEGOS.map((juego) => (
                             <motion.div key={juego.id} whileHover={{ scale: 1.05 }} onClick={() => setSelectedGame(juego)} className="cursor-pointer group">
-                                <div className={`aspect-square bg-zinc-900 rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
-                                    {/* LOGO ORIGINAL DEL JUEGO CON RUTA CORREGIDA */}
+                                <div className={`aspect-square bg-zinc-800 rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
                                     <img src={juego.thumb} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                     <div className="absolute bottom-0 w-full bg-black/70 py-2 text-center z-10 backdrop-blur-sm">
                                         <h3 className="font-black uppercase text-[10px] sm:text-sm text-white">{juego.title}</h3>
@@ -220,7 +219,7 @@ const FabulositoKids = () => {
                 )}
             </AnimatePresence>
 
-            {/* 🎮 REPRODUCTOR BLINDADO */}
+            {/* 🎮 REPRODUCTOR COMPATIBLE */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
                     <motion.div 
@@ -256,7 +255,6 @@ const FabulositoKids = () => {
                                 src={selectedVideo ? `https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080` : selectedGame.url}
                                 frameBorder="0" 
                                 allow="autoplay; encrypted-media; fullscreen"
-                                sandbox={selectedGame ? "allow-scripts allow-same-origin allow-forms allow-presentation" : undefined}
                                 className="z-10"
                             />
                             <div className="absolute top-4 right-4 sm:top-10 sm:right-10 z-50 pointer-events-none">
