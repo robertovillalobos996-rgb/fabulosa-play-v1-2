@@ -28,14 +28,56 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 JUEGOS HD 100% FUNCIONALES CON LOGOS ORIGINALES (Google GameSnacks)
+// 🎮 LISTA DE JUEGOS MUNDIALES (REVISADOS Y CON LOGOS HD)
 const LISTA_JUEGOS = [
-  { id: 'goldminer', title: 'Oro Miner', url: 'https://gamesnacks.com/embed/games/goldminer', icon: '⛏️', color: 'bg-yellow-600', thumb: 'https://static.gamesnacks.com/img/games/goldminer/icon_512.png' },
-  { id: 'omnomrun', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-green-500', thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' },
-  { id: 'elementblocks', title: 'Color Blocks', url: 'https://gamesnacks.com/embed/games/elementblocks', icon: '💎', color: 'bg-blue-500', thumb: 'https://static.gamesnacks.com/img/games/elementblocks/icon_512.png' },
-  { id: 'tigerrun', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' },
-  { id: 'snakemobile', title: 'Culebrita', url: 'https://gamesnacks.com/embed/games/snakemobile', icon: '🐍', color: 'bg-emerald-500', thumb: 'https://static.gamesnacks.com/img/games/snakemobile/icon_512.png' },
-  { id: 'geometry', title: 'Salto Loco', url: 'https://gamesnacks.com/embed/games/geometryjump', icon: '⏹️', color: 'bg-indigo-500', thumb: 'https://static.gamesnacks.com/img/games/geometryjump/icon_512.png' }
+  { 
+    id: 'mario', 
+    title: 'Super Mario', 
+    url: 'https://games.construct.net/446/latest', 
+    icon: '🍄', 
+    color: 'bg-red-600', 
+    thumb: 'https://i.imgur.com/vH977gA.png' 
+  },
+  { 
+    id: 'pvz', 
+    title: 'Plants vs Zombies', 
+    url: 'https://gamesnacks.com/embed/games/plantsvszombies', 
+    icon: '🌻', 
+    color: 'bg-green-700', 
+    thumb: 'https://i.imgur.com/G37vWpI.png' 
+  },
+  { 
+    id: 'mk', 
+    title: 'Mortal Kombat', 
+    url: 'https://www.retrogames.cc/embed/40238-mortal-kombat-2-usa.html', 
+    icon: '🐉', 
+    color: 'bg-zinc-800', 
+    thumb: 'https://i.imgur.com/mOskKUn.png' 
+  },
+  { 
+    id: 'subway', 
+    title: 'Subway Surfers', 
+    url: 'https://gamesnacks.com/embed/games/subwaysurfers', 
+    icon: '🏃', 
+    color: 'bg-yellow-500', 
+    thumb: 'https://i.imgur.com/K3ZqWfB.png' 
+  },
+  { 
+    id: 'omnomrun', 
+    title: 'Om Nom Run', 
+    url: 'https://gamesnacks.com/embed/games/omnomrun', 
+    icon: '🦖', 
+    color: 'bg-lime-500', 
+    thumb: 'https://i.imgur.com/p5A8e0L.png' 
+  },
+  { 
+    id: 'tigerrun', 
+    title: 'Tiger Jump', 
+    url: 'https://gamesnacks.com/embed/games/tigerrun', 
+    icon: '🐯', 
+    color: 'bg-orange-600', 
+    thumb: 'https://i.imgur.com/E88k3yW.png' 
+  }
 ];
 
 // 🦁 INFO DE AVATARES
@@ -160,6 +202,7 @@ const FabulositoKids = () => {
                     </div>
                 </div>
 
+                {/* 🎯 CATEGORÍAS */}
                 <div className="relative z-[100] flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2 touch-pan-x">
                     {CATEGORIAS.map(cat => (
                         <motion.button
@@ -179,7 +222,7 @@ const FabulositoKids = () => {
                             <motion.div key={juego.id} whileHover={{ scale: 1.05 }} onClick={() => setSelectedGame(juego)} className="cursor-pointer group">
                                 <div className={`aspect-square bg-zinc-800 rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
                                     <img src={juego.thumb} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                                    <div className="absolute bottom-0 w-full bg-black/70 py-2 text-center z-10 backdrop-blur-sm">
+                                    <div className="absolute bottom-0 w-full bg-black/80 py-2 text-center z-10 backdrop-blur-sm">
                                         <h3 className="font-black uppercase text-[10px] sm:text-sm text-white">{juego.title}</h3>
                                     </div>
                                 </div>
@@ -203,9 +246,7 @@ const FabulositoKids = () => {
             <AnimatePresence>
                 {selectedAvatar && (
                     <motion.div 
-                        initial={{ opacity: 0, scale: 0.5, y: 100 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.5, y: 100 }}
+                        initial={{ opacity: 0, scale: 0.5, y: 100 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.5, y: 100 }}
                         onClick={() => setSelectedAvatar(null)}
                         className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 backdrop-blur-md"
                     >
@@ -219,14 +260,12 @@ const FabulositoKids = () => {
                 )}
             </AnimatePresence>
 
-            {/* 🎮 REPRODUCTOR COMPATIBLE */}
+            {/* 🎮 REPRODUCTOR */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
                     <motion.div 
-                        ref={playerContainerRef}
-                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} 
-                        className="fixed inset-0 z-[600] bg-black flex flex-col"
-                        onMouseMove={resetTimer}
+                        ref={playerContainerRef} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} 
+                        className="fixed inset-0 z-[600] bg-black flex flex-col" onMouseMove={resetTimer}
                     >
                         <div className={`absolute top-0 left-0 w-full p-3 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 z-[700] transition-opacity duration-700 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
                             {!isLocked && (
@@ -234,7 +273,6 @@ const FabulositoKids = () => {
                                     <ArrowLeft size={20}/> SALIR
                                 </button>
                             )}
-                            
                             <div className="flex items-center gap-4 sm:gap-6">
                                 {selectedVideo && (
                                     <div className="flex items-center gap-3 bg-black/60 backdrop-blur-xl px-4 py-2 rounded-full border border-white/20">
@@ -247,15 +285,11 @@ const FabulositoKids = () => {
                                 </button>
                             </div>
                         </div>
-                        
                         <div className="flex-1 relative bg-black overflow-hidden">
                             <iframe 
-                                id="kids-player"
-                                width="100%" height="100%" 
+                                id="kids-player" width="100%" height="100%" 
                                 src={selectedVideo ? `https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080` : selectedGame.url}
-                                frameBorder="0" 
-                                allow="autoplay; encrypted-media; fullscreen"
-                                className="z-10"
+                                frameBorder="0" allow="autoplay; encrypted-media; fullscreen" className="z-10"
                             />
                             <div className="absolute top-4 right-4 sm:top-10 sm:right-10 z-50 pointer-events-none">
                                 <img src={LOGO_KIDS_HEADER} className="h-12 sm:h-20 md:h-36 opacity-80 drop-shadow-2xl object-contain" />
