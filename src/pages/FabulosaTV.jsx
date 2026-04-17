@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Play, Volume2, VolumeX, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, X, Tv, Star, Music, Maximize, Minimize, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ✅ LOGO (Ruta directa a public)
+// ✅ LOGO (Ruta corregida para asegurar visibilidad)
 const LOGO_KIDS_HEADER = "/fabulosito_kids.png"; 
 
 // 🔑 LAS 14 LLAVES MAESTRAS
@@ -29,17 +29,26 @@ const CATEGORIAS = [
 const EMOJIS = ["🐶", "🦁", "🦄", "🐼", "🦊", "🐯", "🐧", "⭐"];
 
 const FabulositoKids = () => {
-    const [view, setView] = useState("HOME"); 
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [activeCat, setActiveCat] = useState('mickey');
     const [userEmoji, setUserEmoji] = useState("🐶");
     const [isLocked, setIsLocked] = useState(false);
-    const [volume, setVolume] = useState(1);
-    const [lockTimer, setLockTimer] = useState(null);
-
+    const [volume, setVolume] = useState(100);
+    const [showControls, setShowControls] = useState(true);
+    const [isFullScreen, setIsFullScreen] = useState(false);
+    
     const keyIndex = useRef(0);
+    const playerRef = useRef(null);
+    const controlsTimer = useRef(null);
     const playerContainerRef = useRef(null);
+
+    // 🕒 AUTO-OCULTAR CONTROLES
+    const resetTimer = () => {
+        setShowControls(true);
+        if (controlsTimer.current) clearTimeout(controlsTimer.current);
+        controlsTimer.current = setTimeout(() => setShowControls(false), 3000);
+    };
 
     const fetchVideos = async (query) => {
         let success = false;
@@ -54,57 +63,60 @@ const FabulositoKids = () => {
         }
     };
 
-    useEffect(() => { if (view === "HOME") fetchVideos(CATEGORIAS.find(c => c.id === activeCat).query); }, [activeCat, view]);
+    useEffect(() => { fetchVideos(CATEGORIAS.find(c => c.id === activeCat).query); }, [activeCat]);
 
-    const handleLockDown = () => {
-        if (!isLocked) { setIsLocked(true); return; }
-        const timer = setTimeout(() => setIsLocked(false), 3000);
-        setLockTimer(timer);
+    // 🔊 VOLUMEN DINÁMICO (Sin recargar video)
+    useEffect(() => {
+        if (selectedVideo) {
+            const iframe = document.getElementById('kids-player');
+            if (iframe) {
+                iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'setVolume', args: [volume] }), '*');
+            }
+        }
+    }, [volume, selectedVideo]);
+
+    const toggleFullScreen = () => {
+        if (!document.fullscreenElement) {
+            playerContainerRef.current.requestFullscreen();
+            setIsFullScreen(true);
+        } else {
+            document.exitFullscreen();
+            setIsFullScreen(false);
+        }
     };
 
     return (
-        <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative">
+        <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative" onMouseMove={resetTimer}>
             
             {/* 📺 VIDEO DE FONDO */}
-            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                <iframe className="w-[100vw] h-[100vh] absolute top-0 left-0 scale-[1.5]" src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&showinfo=0&rel=0&iv_load_policy=3&vq=hd1080" allow="autoplay" frameBorder="0" />
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <iframe className="w-full h-full scale-[1.5]" src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&vq=hd1080" frameBorder="0" />
             </div>
 
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative z-10 p-4 md:p-8 flex flex-col h-screen bg-black/40">
+            <motion.div className="relative z-10 p-4 md:p-8 flex flex-col h-screen bg-black/40">
                 
-                {/* 🚀 LOGO GIGANTE CENTRAL */}
+                {/* 🚀 LOGO GIGANTE CENTRAL (CORREGIDO) */}
                 <div className="flex flex-col items-center mb-6">
                     <motion.img 
                         src={LOGO_KIDS_HEADER} 
                         animate={{ y: [0, -15, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="h-32 md:h-52 drop-shadow-[0_0_30px_rgba(255,255,255,0.6)] object-contain"
+                        className="h-40 md:h-64 drop-shadow-[0_0_40px_rgba(255,255,255,0.7)] z-50 object-contain"
+                        onError={(e) => { e.target.src = "https://i.imgur.com/your-fallback-logo.png" }} 
                     />
                 </div>
 
-                {/* BOTONES SUPERIORES */}
-                <div className="flex justify-between items-center mb-6 px-4">
-                    <button 
-                        onMouseDown={handleLockDown} onMouseUp={() => clearTimeout(lockTimer)}
-                        onTouchStart={handleLockDown} onTouchEnd={() => clearTimeout(lockTimer)}
-                        className={`p-4 rounded-full transition-all ${isLocked ? 'bg-red-600 animate-pulse' : 'bg-green-500 shadow-xl'}`}
-                    >
+                {/* AVATARES Y CANDADO */}
+                <div className="flex justify-between items-center mb-6 px-10">
+                    <button onClick={() => setIsLocked(!isLocked)} className={`p-4 rounded-full transition-all ${isLocked ? 'bg-red-600 animate-pulse' : 'bg-green-500 shadow-xl'}`}>
                         {isLocked ? <Lock size={30} /> : <Unlock size={30} />}
                     </button>
 
-                    {/* AVATARES CON ANIMACIÓN */}
                     <div className="flex gap-4 items-center bg-black/60 p-2 rounded-full backdrop-blur-xl border border-white/20">
-                        <motion.span whileTap={{ scale: 2, rotate: 360 }} className="text-3xl ml-4 cursor-pointer">{userEmoji}</motion.span>
+                        <motion.span whileTap={{ scale: 2 }} className="text-4xl ml-4 cursor-pointer">{userEmoji}</motion.span>
                         <div className="flex gap-3 pr-4">
                             {EMOJIS.map(e => (
-                                <motion.button 
-                                    key={e} 
-                                    whileTap={{ y: -20, scale: 1.5 }}
-                                    onClick={() => setUserEmoji(e)} 
-                                    className="text-2xl hover:scale-125 transition-transform"
-                                >
-                                    {e}
-                                </motion.button>
+                                <motion.button key={e} whileTap={{ y: -20 }} onClick={() => setUserEmoji(e)} className="text-2xl hover:scale-125 transition-transform">{e}</motion.button>
                             ))}
                         </div>
                     </div>
@@ -144,42 +156,43 @@ const FabulositoKids = () => {
                         ref={playerContainerRef}
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} 
                         className="fixed inset-0 z-[600] bg-black flex flex-col"
+                        onMouseMove={resetTimer}
                     >
-                        {/* HEADER DEL REPRODUCTOR */}
-                        <div className="p-4 flex items-center justify-between bg-black/90 border-b border-white/10 z-[700]">
-                            <button 
-                                onClick={() => setSelectedVideo(null)} 
-                                className="bg-red-600 text-white px-8 py-3 rounded-full font-black uppercase flex items-center gap-2 border-4 border-white shadow-xl hover:bg-red-700 transition-all"
-                            >
-                                <ArrowLeft size={24}/> VOLVER
-                            </button>
+                        {/* CONTROLES TRANSPARENTES (Se esconden) */}
+                        <div className={`absolute top-0 left-0 w-full p-6 flex items-center justify-between z-[700] transition-opacity duration-700 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
+                            {!isLocked && (
+                                <button onClick={() => setSelectedVideo(null)} className="bg-red-600/80 backdrop-blur-md text-white px-8 py-3 rounded-full font-black uppercase flex items-center gap-2 border-4 border-white shadow-xl">
+                                    <ArrowLeft size={24}/> VOLVER
+                                </button>
+                            )}
                             
-                            <div className="flex items-center gap-4 bg-white/10 px-6 py-2 rounded-full border border-white/20">
-                                <Volume2 size={20} className="text-white/60" />
-                                <input 
-                                    type="range" min="0" max="1" step="0.1" 
-                                    value={volume} 
-                                    onChange={(e) => setVolume(parseFloat(e.target.value))} 
-                                    className="w-24 md:w-40 accent-red-600 cursor-pointer" 
-                                />
+                            <div className="flex items-center gap-6">
+                                <div className="flex items-center gap-4 bg-black/60 backdrop-blur-xl px-6 py-3 rounded-full border border-white/20">
+                                    <Volume2 size={24} className="text-white" />
+                                    <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(e.target.value)} className="w-32 md:w-48 accent-red-600 cursor-pointer" />
+                                </div>
+                                <button onClick={toggleFullScreen} className="bg-black/60 backdrop-blur-xl p-4 rounded-full border border-white/20 text-white hover:bg-red-600 transition-all">
+                                    {isFullScreen ? <Minimize size={28} /> : <Maximize size={28} />}
+                                </button>
                             </div>
                         </div>
                         
                         <div className="flex-1 relative bg-black overflow-hidden">
-                            {/* 🛡️ BLINDAJE ANTI-YOUTUBE (Capas invisibles) */}
+                            {/* 🛡️ BLINDAJE ANTI-YOUTUBE */}
                             <div className="absolute top-0 left-0 w-full h-[15%] z-30" /> 
                             <div className="absolute bottom-0 left-0 w-full h-[15%] z-30" />
                             <div className="absolute inset-0 z-20" /> 
 
                             <iframe 
+                                id="kids-player"
                                 width="100%" height="100%" 
-                                src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080`}
+                                src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080`}
                                 frameBorder="0" allow="autoplay; encrypted-media" className="z-10"
                             />
 
-                            {/* 🏷️ MARCA DE AGUA (Logo Superior Derecha) */}
-                            <div className="absolute top-6 right-6 z-40">
-                                <img src={LOGO_KIDS_HEADER} className="h-16 md:h-28 opacity-70 drop-shadow-2xl object-contain" />
+                            {/* 🏷️ MARCA DE AGUA (Logo Superior Derecha Fijo) */}
+                            <div className="absolute top-10 right-10 z-50 pointer-events-none">
+                                <img src={LOGO_KIDS_HEADER} className="h-20 md:h-36 opacity-80 drop-shadow-2xl object-contain" />
                             </div>
                         </div>
                     </motion.div>
