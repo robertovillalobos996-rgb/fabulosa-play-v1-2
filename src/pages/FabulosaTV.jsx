@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Volume2, VolumeX, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, X, Tv, Star, Music, Maximize, Minimize, ArrowLeft } from 'lucide-react';
+import { Play, Volume2, VolumeX, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, X, Tv, Star, Music, Maximize, Minimize, ArrowLeft, Gamepad2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ✅ LOGO CORREGIDO (Ruta exacta de tu carpeta public)
+// ✅ LOGO
 const LOGO_KIDS_HEADER = "/logo_fabulosito_kids.png"; 
 
 // 🔑 LAS 14 LLAVES MAESTRAS
@@ -16,6 +16,7 @@ const YOUTUBE_API_KEYS = [
   "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
+// 💉 CIRUGÍA: RENOMBRADA LA VIEJA Y AÑADIDA LA NUEVA
 const CATEGORIAS = [
     { id: 'mickey', label: 'MICKEY MOUSE', icon: <Star size={30}/>, color: 'bg-red-600', query: 'mickey mouse episodios completos español' },
     { id: 'warner', label: 'WARNER BROS', icon: <Tv size={30}/>, color: 'bg-sky-600', query: 'looney tunes tom y jerry scooby doo español completo' },
@@ -23,7 +24,17 @@ const CATEGORIAS = [
     { id: 'musical', label: 'MUSICAL', icon: <Music size={30}/>, color: 'bg-indigo-600', query: 'canciones infantiles famosas musica para niños completa' },
     { id: 'cine', label: 'PELÍCULAS', icon: <Play size={30}/>, color: 'bg-yellow-400', query: 'peliculas infantiles completas español latino hd 1080p' },
     { id: 'niñas', label: 'SOLO NIÑAS', icon: <Heart size={30}/>, color: 'bg-purple-500', query: 'series para niñas princesas barbie lulu99 episodios completos español' },
-    { id: 'juegos', label: 'JUEGOS', icon: <Sparkles size={30}/>, color: 'bg-orange-500', query: 'juegos infantiles educativos para bebes interactivos' }
+    { id: 'juegos_videos', label: 'DIVER-VIDEOS', icon: <Sparkles size={30}/>, color: 'bg-orange-500', query: 'juegos infantiles educativos para bebes interactivos' },
+    { id: 'juegos_arcade', label: 'JUEGOS', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
+];
+
+const LISTA_JUEGOS = [
+  { id: 'mario', title: 'Super Mario', url: 'https://www.retrogames.cc/embed/18575-super-mario-bros-usa-europe.html', icon: '🍄', color: 'bg-red-500' },
+  { id: 'sonic', title: 'Sonic', url: 'https://www.retrogames.cc/embed/40232-sonic-the-hedgehog-usa-europe.html', icon: '🦔', color: 'bg-blue-500' },
+  { id: 'pacman', title: 'Pac-Man', url: 'https://www.retrogames.cc/embed/10137-pac-man-midway.html', icon: '🟡', color: 'bg-yellow-500' },
+  { id: 'tetris', title: 'Tetris', url: 'https://www.retrogames.cc/embed/10129-tetris-set-1.html', icon: '🧱', color: 'bg-purple-500' },
+  { id: 'donkey', title: 'Donkey Kong', url: 'https://www.retrogames.cc/embed/18484-donkey-kong-classics-usa.html', icon: '🦍', color: 'bg-amber-800' },
+  { id: 'galaga', title: 'Galaga', url: 'https://www.retrogames.cc/embed/10115-galaga-namco.html', icon: '🚀', color: 'bg-slate-700' }
 ];
 
 const EMOJIS = ["🐶", "🦁", "🦄", "🐼", "🦊", "🐯", "🐧", "⭐"];
@@ -31,6 +42,7 @@ const EMOJIS = ["🐶", "🦁", "🦄", "🐼", "🦊", "🐯", "🐧", "⭐"];
 const FabulositoKids = () => {
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
+    const [selectedGame, setSelectedGame] = useState(null);
     const [activeCat, setActiveCat] = useState('mickey');
     const [userEmoji, setUserEmoji] = useState("🐶");
     const [isLocked, setIsLocked] = useState(false);
@@ -49,6 +61,7 @@ const FabulositoKids = () => {
     };
 
     const fetchVideos = async (query) => {
+        if (!query) return;
         let success = false;
         while (keyIndex.current < YOUTUBE_API_KEYS.length && !success) {
             try {
@@ -61,7 +74,11 @@ const FabulositoKids = () => {
         }
     };
 
-    useEffect(() => { fetchVideos(CATEGORIAS.find(c => c.id === activeCat).query); }, [activeCat]);
+    useEffect(() => { 
+        if (activeCat !== 'juegos_arcade') {
+            fetchVideos(CATEGORIAS.find(c => c.id === activeCat).query); 
+        }
+    }, [activeCat]);
 
     useEffect(() => {
         if (selectedVideo) {
@@ -85,13 +102,11 @@ const FabulositoKids = () => {
     return (
         <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative" onMouseMove={resetTimer}>
             
-            {/* 📺 VIDEO DE FONDO */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <iframe className="w-full h-full object-cover scale-[1.2] md:scale-[1.5]" src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&vq=hd1080" frameBorder="0" />
             </div>
 
-            {/* 🎵 MÚSICA DE FONDO */}
-            {!selectedVideo && (
+            {!selectedVideo && !selectedGame && (
                 <div className="hidden">
                     <iframe src="https://www.youtube.com/embed/iwKS4b9aUeI?autoplay=1&loop=1&playlist=iwKS4b9aUeI" allow="autoplay" />
                 </div>
@@ -99,7 +114,6 @@ const FabulositoKids = () => {
 
             <motion.div className="relative z-10 p-2 sm:p-4 md:p-8 flex flex-col h-screen bg-black/40">
                 
-                {/* 🚀 LOGO */}
                 <div className="flex flex-col items-center mb-4 sm:mb-6">
                     <motion.img 
                         src={LOGO_KIDS_HEADER} 
@@ -109,7 +123,6 @@ const FabulositoKids = () => {
                     />
                 </div>
 
-                {/* HEADER */}
                 <div className="flex justify-between items-center mb-4 sm:mb-6 px-2 sm:px-10">
                     <button onClick={() => setIsLocked(!isLocked)} className={`p-3 sm:p-4 rounded-full transition-all ${isLocked ? 'bg-red-600 animate-pulse' : 'bg-green-500 shadow-xl'}`}>
                         {isLocked ? <Lock size={20} className="sm:w-[30px] sm:h-[30px]" /> : <Unlock size={20} className="sm:w-[30px] sm:h-[30px]" />}
@@ -125,13 +138,13 @@ const FabulositoKids = () => {
                     </div>
                 </div>
 
-                {/* 🎯 CATEGORÍAS EN PRIMER PLANO (z-[100] y touch fluido) */}
-                <div className="relative z-[100] flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2 touch-pan-x overscroll-x-contain">
+                {/* 🎯 CATEGORÍAS (Prioridad Máxima z-[100]) */}
+                <div className="relative z-[100] flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2 touch-pan-x">
                     {CATEGORIAS.map(cat => (
                         <motion.button
                             key={cat.id} whileHover={{ scale: 1.05 }}
                             onClick={() => setActiveCat(cat.id)}
-                            className={`${cat.color} ${activeCat === cat.id ? 'ring-4 sm:ring-8 ring-white shadow-2xl scale-105' : 'opacity-80'} min-w-[120px] sm:min-w-[160px] md:min-w-[200px] h-16 sm:h-24 md:h-28 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col items-center justify-center font-black border-2 sm:border-4 border-white text-black flex-shrink-0 uppercase transition-all duration-300 pointer-events-auto`}
+                            className={`${cat.color} ${activeCat === cat.id ? 'ring-4 sm:ring-8 ring-white shadow-2xl scale-105' : 'opacity-80'} min-w-[120px] sm:min-w-[160px] md:min-w-[200px] h-16 sm:h-24 md:h-28 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col items-center justify-center font-black border-2 sm:border-4 border-white text-black flex-shrink-0 uppercase transition-all duration-300`}
                         >
                             <div className="scale-75 sm:scale-100">{cat.icon}</div>
                             <span className="text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1 px-1 text-center">{cat.label}</span>
@@ -139,23 +152,31 @@ const FabulositoKids = () => {
                     ))}
                 </div>
 
-                {/* VIDEOS */}
-                <div className="flex-1 overflow-y-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 pr-2 mt-2 sm:mt-4 custom-scrollbar scroll-smooth">
-                    {videos.map((vid) => (
-                        <motion.div key={vid.id.videoId} whileHover={{ scale: 1.03 }} onClick={() => setSelectedVideo(vid)} className="cursor-pointer group">
-                            <div className="aspect-video rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border-2 sm:border-4 border-white group-hover:border-yellow-400 shadow-2xl relative bg-zinc-900">
-                                <img src={vid.snippet.thumbnails.high.url} className="w-full h-full object-cover" />
-                                <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 bg-yellow-400 text-black p-1.5 sm:p-2 rounded-full shadow-lg scale-75 sm:scale-100"><Sparkles size={16}/></div>
-                            </div>
-                            <p className="mt-1.5 sm:mt-2 font-black text-[9px] sm:text-[10px] md:text-xs text-center uppercase bg-black/80 p-1.5 sm:p-2 rounded-xl border border-white/5 line-clamp-2 italic">{vid.snippet.title}</p>
-                        </motion.div>
-                    ))}
+                <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6 pr-2 mt-2 sm:mt-4 custom-scrollbar">
+                    {activeCat === 'juegos_arcade' ? (
+                        LISTA_JUEGOS.map((juego) => (
+                            <motion.div key={juego.id} whileHover={{ scale: 1.05 }} onClick={() => setSelectedGame(juego)} className={`${juego.color} aspect-square rounded-[2rem] sm:rounded-[3rem] border-4 border-white flex flex-col items-center justify-center cursor-pointer shadow-2xl relative group overflow-hidden`}>
+                                <span className="text-5xl sm:text-7xl group-hover:animate-bounce">{juego.icon}</span>
+                                <h3 className="font-black uppercase text-xs sm:text-lg mt-2 sm:mt-4">{juego.title}</h3>
+                                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </motion.div>
+                        ))
+                    ) : (
+                        videos.map((vid) => (
+                            <motion.div key={vid.id.videoId} whileHover={{ scale: 1.03 }} onClick={() => setSelectedVideo(vid)} className="cursor-pointer group">
+                                <div className="aspect-video rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border-2 sm:border-4 border-white group-hover:border-yellow-400 shadow-2xl relative bg-zinc-900">
+                                    <img src={vid.snippet.thumbnails.high.url} className="w-full h-full object-cover" />
+                                    <div className="absolute bottom-1.5 right-1.5 bg-yellow-400 text-black p-1 sm:p-2 rounded-full shadow-lg scale-75 sm:scale-100"><Sparkles size={16}/></div>
+                                </div>
+                                <p className="mt-1.5 font-black text-[9px] sm:text-xs text-center uppercase bg-black/80 p-1.5 rounded-xl border border-white/5 line-clamp-2 italic">{vid.snippet.title}</p>
+                            </motion.div>
+                        ))
+                    )}
                 </div>
             </motion.div>
 
-            {/* 📺 REPRODUCTOR */}
             <AnimatePresence>
-                {selectedVideo && (
+                {(selectedVideo || selectedGame) && (
                     <motion.div 
                         ref={playerContainerRef}
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} 
@@ -164,34 +185,31 @@ const FabulositoKids = () => {
                     >
                         <div className={`absolute top-0 left-0 w-full p-3 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 z-[700] transition-opacity duration-700 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
                             {!isLocked && (
-                                <button onClick={() => setSelectedVideo(null)} className="w-full sm:w-auto bg-red-600/80 backdrop-blur-md text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-black uppercase flex items-center justify-center gap-2 border-2 sm:border-4 border-white shadow-xl">
-                                    <ArrowLeft size={20} className="sm:w-[24px] sm:h-[24px]"/> VOLVER
+                                <button onClick={() => { setSelectedVideo(null); setSelectedGame(null); }} className="bg-red-600 text-white px-8 py-2.5 rounded-full font-black uppercase flex items-center justify-center gap-2 border-2 sm:border-4 border-white shadow-xl">
+                                    <ArrowLeft size={20}/> VOLVER
                                 </button>
                             )}
                             
-                            <div className="flex items-center gap-4 sm:gap-6 w-full sm:w-auto justify-center">
-                                <div className="flex items-center gap-3 sm:gap-4 bg-black/60 backdrop-blur-xl px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-white/20 flex-1 sm:flex-none">
-                                    <Volume2 size={20} className="text-white sm:w-[24px] sm:h-[24px]" />
-                                    <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(e.target.value)} className="w-full sm:w-32 md:w-48 accent-red-600 cursor-pointer" />
-                                </div>
-                                <button onClick={toggleFullScreen} className="bg-black/60 backdrop-blur-xl p-3 sm:p-4 rounded-full border border-white/20 text-white hover:bg-red-600 transition-all">
-                                    {isFullScreen ? <Minimize size={24} className="sm:w-[28px] sm:h-[28px]" /> : <Maximize size={24} className="sm:w-[28px] sm:h-[28px]" />}
+                            <div className="flex items-center gap-4 sm:gap-6">
+                                {selectedVideo && (
+                                    <div className="flex items-center gap-3 bg-black/60 backdrop-blur-xl px-4 py-2 rounded-full border border-white/20">
+                                        <Volume2 size={20} className="text-white" />
+                                        <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(e.target.value)} className="w-24 sm:w-48 accent-red-600 cursor-pointer" />
+                                    </div>
+                                )}
+                                <button onClick={toggleFullScreen} className="bg-black/60 backdrop-blur-xl p-3 rounded-full border border-white/20 text-white hover:bg-red-600 transition-all">
+                                    {isFullScreen ? <Minimize size={24} /> : <Maximize size={24} />}
                                 </button>
                             </div>
                         </div>
                         
                         <div className="flex-1 relative bg-black overflow-hidden">
-                            <div className="absolute top-0 left-0 w-full h-[15%] z-30" /> 
-                            <div className="absolute bottom-0 left-0 w-full h-[15%] z-30" />
-                            <div className="absolute inset-0 z-20" /> 
-
                             <iframe 
                                 id="kids-player"
                                 width="100%" height="100%" 
-                                src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080`}
+                                src={selectedVideo ? `https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080` : selectedGame.url}
                                 frameBorder="0" allow="autoplay; encrypted-media" className="z-10"
                             />
-
                             <div className="absolute top-4 right-4 sm:top-10 sm:right-10 z-50 pointer-events-none">
                                 <img src={LOGO_KIDS_HEADER} className="h-12 sm:h-20 md:h-36 opacity-80 drop-shadow-2xl object-contain" />
                             </div>
