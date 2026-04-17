@@ -1,8 +1,4 @@
-// Actualización: 17 de Abril - Cirugía Retrox 3 y 4
-export const canalesTV = [
-    {
-        "id": "tv-1",
-        ...export const canalesTV = [
+ export const canalesTV = [
     {
         "id":  "tv-1",
         "title":  "Fabulosa TV",
@@ -45,7 +41,7 @@ export const canalesTV = [
         "genre":  "Costa Rica",
         "logo":  "/logos_canales/cbtv.png"
     },
-    {
+ {
         "id":  "tv-5",
         "title":  "La Mega",
         "url":  "https://s1.tvdatta.com:3208/live/radiomegaestacionlive.m3u8",
