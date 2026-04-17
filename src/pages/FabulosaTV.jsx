@@ -28,12 +28,12 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 JUEGOS HD PREMIUM (Nuevos proveedores: Famobi / GameDistribution)
+// 🎮 JUEGOS HD PREMIUM CON LOGOS ORIGINALES Y BLINDAJE
 const LISTA_JUEGOS = [
-  { id: 'candy', title: 'Dulces Mágicos', url: 'https://play.famobi.com/jewel-ish-blitz/embed', icon: '🍬', color: 'bg-pink-500', thumb: 'https://img.famobi.com/portal/html5/jewel-ish-blitz/icon.png' },
+  { id: 'candy', title: 'Candy Rain 7', url: 'https://play.famobi.com/candy-rain-7/embed', icon: '🍬', color: 'bg-pink-500', thumb: 'https://img.famobi.com/portal/html5/candy-rain-7/icon.png' },
+  { id: 'subway', title: 'Subway Surfers', url: 'https://gamesnacks.com/embed/games/subwaysurfers', icon: '🏃', color: 'bg-yellow-500', thumb: 'https://static.gamesnacks.com/img/games/subwaysurfers/icon_512.png' },
   { id: 'nom-run', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-green-500', thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' },
-  { id: 'bubble-pro', title: 'Burbujas HD', url: 'https://play.famobi.com/bubble-woods/embed', icon: '🔮', color: 'bg-purple-600', thumb: 'https://img.famobi.com/portal/html5/bubble-woods/icon.png' },
-  { id: 'cannon', title: 'Cañón Loco', url: 'https://play.famobi.com/cannon-balls-3d/embed', icon: '💣', color: 'bg-red-600', thumb: 'https://img.famobi.com/portal/html5/cannon-balls-3d/icon.png' },
+  { id: 'bubble-woods', title: 'Bubble Woods', url: 'https://play.famobi.com/bubble-woods/embed', icon: '🔮', color: 'bg-purple-600', thumb: 'https://img.famobi.com/portal/html5/bubble-woods/icon.png' },
   { id: 'blocks', title: 'Color Blocks', url: 'https://gamesnacks.com/embed/games/elementblocks', icon: '💎', color: 'bg-blue-500', thumb: 'https://static.gamesnacks.com/img/games/elementblocks/icon_512.png' },
   { id: 'jump', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' }
 ];
@@ -177,11 +177,11 @@ const FabulositoKids = () => {
                     {activeCat === 'juegos_arcade' ? (
                         LISTA_JUEGOS.map((juego) => (
                             <motion.div key={juego.id} whileHover={{ scale: 1.05 }} onClick={() => setSelectedGame(juego)} className="cursor-pointer group">
-                                <div className={`aspect-square ${juego.color} rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
-                                    <img src={juego.thumb} className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" />
-                                    <span className="text-5xl sm:text-7xl z-10 drop-shadow-lg group-hover:scale-110 transition-transform">{juego.icon}</span>
-                                    <div className="absolute bottom-0 w-full bg-black/60 py-2 text-center z-10 backdrop-blur-sm">
-                                        <h3 className="font-black uppercase text-[10px] sm:text-sm">{juego.title}</h3>
+                                <div className={`aspect-square bg-white rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
+                                    {/* LOGO ORIGINAL DEL JUEGO */}
+                                    <img src={juego.thumb} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                    <div className="absolute bottom-0 w-full bg-black/70 py-2 text-center z-10 backdrop-blur-sm">
+                                        <h3 className="font-black uppercase text-[10px] sm:text-sm text-white">{juego.title}</h3>
                                     </div>
                                 </div>
                             </motion.div>
@@ -200,7 +200,7 @@ const FabulositoKids = () => {
                 </div>
             </motion.div>
 
-            {/* 🐶 MODAL DE AVATAR INTERACTIVO */}
+            {/* MODAL AVATAR */}
             <AnimatePresence>
                 {selectedAvatar && (
                     <motion.div 
@@ -220,7 +220,7 @@ const FabulositoKids = () => {
                 )}
             </AnimatePresence>
 
-            {/* 🎮 REPRODUCTOR ARCADE / VIDEO */}
+            {/* 🎮 REPRODUCTOR BLINDADO */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
                     <motion.div 
@@ -250,11 +250,15 @@ const FabulositoKids = () => {
                         </div>
                         
                         <div className="flex-1 relative bg-black overflow-hidden">
+                            {/* IFRAME CON SANDBOX PARA EVITAR QUE EL JUEGO SE SALGA */}
                             <iframe 
                                 id="kids-player"
                                 width="100%" height="100%" 
                                 src={selectedVideo ? `https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080` : selectedGame.url}
-                                frameBorder="0" allow="autoplay; encrypted-media" className="z-10"
+                                frameBorder="0" 
+                                allow="autoplay; encrypted-media; fullscreen"
+                                sandbox={selectedGame ? "allow-scripts allow-same-origin allow-forms allow-presentation" : undefined}
+                                className="z-10"
                             />
                             <div className="absolute top-4 right-4 sm:top-10 sm:right-10 z-50 pointer-events-none">
                                 <img src={LOGO_KIDS_HEADER} className="h-12 sm:h-20 md:h-36 opacity-80 drop-shadow-2xl object-contain" />
