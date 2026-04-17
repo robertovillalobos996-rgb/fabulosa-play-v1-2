@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Play, Volume2, VolumeX, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, X, Tv, Star, Music, Maximize, Minimize, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ✅ LOGO (Ruta corregida para asegurar visibilidad)
-const LOGO_KIDS_HEADER = "/fabulosito_kids.png"; 
+// ✅ LOGO CORREGIDO (Ruta exacta de tu carpeta public)
+const LOGO_KIDS_HEADER = "/logo_fabulosito_kids.png"; 
 
 // 🔑 LAS 14 LLAVES MAESTRAS
 const YOUTUBE_API_KEYS = [
@@ -39,11 +39,9 @@ const FabulositoKids = () => {
     const [isFullScreen, setIsFullScreen] = useState(false);
     
     const keyIndex = useRef(0);
-    const playerRef = useRef(null);
     const controlsTimer = useRef(null);
     const playerContainerRef = useRef(null);
 
-    // 🕒 AUTO-OCULTAR CONTROLES
     const resetTimer = () => {
         setShowControls(true);
         if (controlsTimer.current) clearTimeout(controlsTimer.current);
@@ -65,7 +63,7 @@ const FabulositoKids = () => {
 
     useEffect(() => { fetchVideos(CATEGORIAS.find(c => c.id === activeCat).query); }, [activeCat]);
 
-    // 🔊 VOLUMEN DINÁMICO (Sin recargar video)
+    // 🔊 CONTROL DE VOLUMEN SIN RECARGAR
     useEffect(() => {
         if (selectedVideo) {
             const iframe = document.getElementById('kids-player');
@@ -93,20 +91,25 @@ const FabulositoKids = () => {
                 <iframe className="w-full h-full scale-[1.5]" src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&vq=hd1080" frameBorder="0" />
             </div>
 
+            {/* 🎵 MÚSICA DE FONDO (RESTAURADA) */}
+            {!selectedVideo && (
+                <div className="hidden">
+                    <iframe src="https://www.youtube.com/embed/iwKS4b9aUeI?autoplay=1&loop=1&playlist=iwKS4b9aUeI" allow="autoplay" />
+                </div>
+            )}
+
             <motion.div className="relative z-10 p-4 md:p-8 flex flex-col h-screen bg-black/40">
                 
-                {/* 🚀 LOGO GIGANTE CENTRAL (CORREGIDO) */}
+                {/* 🚀 LOGO GIGANTE CENTRAL */}
                 <div className="flex flex-col items-center mb-6">
                     <motion.img 
                         src={LOGO_KIDS_HEADER} 
                         animate={{ y: [0, -15, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="h-40 md:h-64 drop-shadow-[0_0_40px_rgba(255,255,255,0.7)] z-50 object-contain"
-                        onError={(e) => { e.target.src = "https://i.imgur.com/your-fallback-logo.png" }} 
+                        className="h-40 md:h-64 drop-shadow-[0_0_50px_rgba(255,255,255,0.8)] z-50 object-contain"
                     />
                 </div>
 
-                {/* AVATARES Y CANDADO */}
                 <div className="flex justify-between items-center mb-6 px-10">
                     <button onClick={() => setIsLocked(!isLocked)} className={`p-4 rounded-full transition-all ${isLocked ? 'bg-red-600 animate-pulse' : 'bg-green-500 shadow-xl'}`}>
                         {isLocked ? <Lock size={30} /> : <Unlock size={30} />}
@@ -122,7 +125,6 @@ const FabulositoKids = () => {
                     </div>
                 </div>
 
-                {/* CATEGORÍAS */}
                 <div className="flex gap-4 overflow-x-auto pb-6 no-scrollbar items-center justify-center">
                     {CATEGORIAS.map(cat => (
                         <motion.button
@@ -135,7 +137,6 @@ const FabulositoKids = () => {
                     ))}
                 </div>
 
-                {/* VIDEOS */}
                 <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-4 gap-6 pr-2 mt-4 custom-scrollbar">
                     {videos.map((vid) => (
                         <motion.div key={vid.id.videoId} whileHover={{ scale: 1.03 }} onClick={() => setSelectedVideo(vid)} className="cursor-pointer group">
@@ -149,7 +150,7 @@ const FabulositoKids = () => {
                 </div>
             </motion.div>
 
-            {/* 📺 REPRODUCTOR BÚNKER PROFESIONAL */}
+            {/* 📺 REPRODUCTOR BÚNKER */}
             <AnimatePresence>
                 {selectedVideo && (
                     <motion.div 
@@ -158,7 +159,7 @@ const FabulositoKids = () => {
                         className="fixed inset-0 z-[600] bg-black flex flex-col"
                         onMouseMove={resetTimer}
                     >
-                        {/* CONTROLES TRANSPARENTES (Se esconden) */}
+                        {/* CONTROLES TRANSPARENTES */}
                         <div className={`absolute top-0 left-0 w-full p-6 flex items-center justify-between z-[700] transition-opacity duration-700 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
                             {!isLocked && (
                                 <button onClick={() => setSelectedVideo(null)} className="bg-red-600/80 backdrop-blur-md text-white px-8 py-3 rounded-full font-black uppercase flex items-center gap-2 border-4 border-white shadow-xl">
@@ -190,7 +191,7 @@ const FabulositoKids = () => {
                                 frameBorder="0" allow="autoplay; encrypted-media" className="z-10"
                             />
 
-                            {/* 🏷️ MARCA DE AGUA (Logo Superior Derecha Fijo) */}
+                            {/* 🏷️ MARCA DE AGUA (Superior Derecha Fijo) */}
                             <div className="absolute top-10 right-10 z-50 pointer-events-none">
                                 <img src={LOGO_KIDS_HEADER} className="h-20 md:h-36 opacity-80 drop-shadow-2xl object-contain" />
                             </div>
