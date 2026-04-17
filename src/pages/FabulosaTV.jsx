@@ -16,7 +16,7 @@ const YOUTUBE_API_KEYS = [
   "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
-// 💉 CATEGORÍAS
+// 💉 CATEGORÍAS (Prioridad Máxima z-[100])
 const CATEGORIAS = [
     { id: 'mickey', label: 'MICKEY MOUSE', icon: <Star size={30}/>, color: 'bg-red-600', query: 'mickey mouse episodios completos español' },
     { id: 'warner', label: 'WARNER BROS', icon: <Tv size={30}/>, color: 'bg-sky-600', query: 'looney tunes tom y jerry scooby doo español completo' },
@@ -28,17 +28,17 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 JUEGOS REPARADOS (1, 3 y 4 nuevos y funcionales)
+// 🎮 JUEGOS HD PREMIUM (Nuevos proveedores: Famobi / GameDistribution)
 const LISTA_JUEGOS = [
-  { id: 'miner', title: 'Oro Miner', url: 'https://gamesnacks.com/embed/games/goldminer', icon: '⛏️', color: 'bg-yellow-600', thumb: 'https://static.gamesnacks.com/img/games/goldminer/icon_512.png' },
+  { id: 'candy', title: 'Dulces Mágicos', url: 'https://play.famobi.com/jewel-ish-blitz/embed', icon: '🍬', color: 'bg-pink-500', thumb: 'https://img.famobi.com/portal/html5/jewel-ish-blitz/icon.png' },
   { id: 'nom-run', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-green-500', thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' },
-  { id: 'bubbles', title: 'Burbujas', url: 'https://gamesnacks.com/embed/games/bubbleshooter', icon: '🔵', color: 'bg-blue-400', thumb: 'https://static.gamesnacks.com/img/games/bubbleshooter/icon_512.png' },
-  { id: 'snake', title: 'Culebrita', url: 'https://gamesnacks.com/embed/games/snakemobile', icon: '🐍', color: 'bg-emerald-500', thumb: 'https://static.gamesnacks.com/img/games/snakemobile/icon_512.png' },
+  { id: 'bubble-pro', title: 'Burbujas HD', url: 'https://play.famobi.com/bubble-woods/embed', icon: '🔮', color: 'bg-purple-600', thumb: 'https://img.famobi.com/portal/html5/bubble-woods/icon.png' },
+  { id: 'cannon', title: 'Cañón Loco', url: 'https://play.famobi.com/cannon-balls-3d/embed', icon: '💣', color: 'bg-red-600', thumb: 'https://img.famobi.com/portal/html5/cannon-balls-3d/icon.png' },
   { id: 'blocks', title: 'Color Blocks', url: 'https://gamesnacks.com/embed/games/elementblocks', icon: '💎', color: 'bg-blue-500', thumb: 'https://static.gamesnacks.com/img/games/elementblocks/icon_512.png' },
   { id: 'jump', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' }
 ];
 
-// 🦁 INFO DE AVATARES (Interactivo)
+// 🦁 INFO DE AVATARES
 const AVATARES_INFO = {
     "🐶": { en: "Dog", es: "Perro" },
     "🦁": { en: "Lion", es: "León" },
@@ -149,8 +149,7 @@ const FabulositoKids = () => {
                                     onClick={() => {
                                         setUserEmoji(e);
                                         setSelectedAvatar(e);
-                                        // Auto cerrar info después de 3 seg
-                                        setTimeout(() => setSelectedAvatar(null), 3000);
+                                        setTimeout(() => setSelectedAvatar(null), 3500);
                                     }} 
                                     className="text-xl sm:text-2xl hover:scale-125 transition-transform"
                                 >
@@ -161,7 +160,6 @@ const FabulositoKids = () => {
                     </div>
                 </div>
 
-                {/* 🎯 CATEGORÍAS */}
                 <div className="relative z-[100] flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2 touch-pan-x">
                     {CATEGORIAS.map(cat => (
                         <motion.button
@@ -202,7 +200,7 @@ const FabulositoKids = () => {
                 </div>
             </motion.div>
 
-            {/* 🐶 MODAL INTERACTIVO DE AVATAR */}
+            {/* 🐶 MODAL DE AVATAR INTERACTIVO */}
             <AnimatePresence>
                 {selectedAvatar && (
                     <motion.div 
@@ -222,7 +220,7 @@ const FabulositoKids = () => {
                 )}
             </AnimatePresence>
 
-            {/* 🎮 REPRODUCTOR */}
+            {/* 🎮 REPRODUCTOR ARCADE / VIDEO */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
                     <motion.div 
