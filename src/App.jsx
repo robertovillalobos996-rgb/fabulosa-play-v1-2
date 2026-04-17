@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// Páginas - Nombres corregidos según sus archivos
+// Páginas principales
 import Home from './pages/Home';
-import RadioRomantica from './pages/RadioPremium'; // Esta es la de Radios
+import RadioPremium from './pages/RadioPremium'; 
 import RancheraPlay from './pages/RancheraPlay'; 
 import Karaoke from './pages/Karaoke';
 import CinePlay from './pages/Movies'; 
@@ -26,9 +25,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/tv-1" element={<FabulositoKids />} />
           
-          {/* Aquí acomodamos las radios para que no se clonen */}
-          <Route path="/radio" element={<RadioRomantica />} /> 
-          <Route path="/radios-cr" element={<RadioRomantica />} /> 
+          {/* Rutas de Radio */}
+          <Route path="/radio" element={<RadioPremium />} /> 
+          <Route path="/radios-cr" element={<RadioPremium />} /> 
           
           <Route path="/ranchera" element={<RancheraPlay />} />
           <Route path="/karaoke" element={<Karaoke />} />
