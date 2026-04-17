@@ -14,6 +14,20 @@ export const canalesTV = [
         "logo":  "/logos_canales/88_Stereo.png"
     },
     {
+        "id":  "tv-retrox-1",
+        "title":  "Retrox",
+        "url":  "https://tvservices.fullhd-streaming.com:3963/live/tvgroupretroxtvlive.m3u8",
+        "genre":  "Retro",
+        "logo":  "/logos_canales/retrox.png"
+    },
+    {
+        "id":  "tv-retrox-2",
+        "title":  "Retrox Plus",
+        "url":  "https://tvservices.fullhd-streaming.com:3100/live/tvgroupretroxtvpluslive.m3u8",
+        "genre":  "Retro",
+        "logo":  "/logos_canales/retro x plus.png"
+    },
+    {
         "id":  "tv-3",
         "title":  "canal 3 colosal",
         "url":  "https://5eac7b031d945.streamlock.net/canal3/canal3/chunklist_w1141438584.m3u8",
@@ -23,7 +37,7 @@ export const canalesTV = [
     {
         "id":  "tv-4",
         "title":  "Cbtv",
-        "url":  "https://s1.tvdatta.com:3072/live/cotobrustvlive.m3u8",
+        "url":  "https://s1.tvdatta.com:3972/live/cbtvlive.m3u8",
         "genre":  "Costa Rica",
         "logo":  "/logos_canales/cbtv.png"
     },
