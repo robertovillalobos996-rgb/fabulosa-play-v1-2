@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// Páginas principales
+// Páginas - Importaciones exactas
 import Home from './pages/Home';
-import RadioPremium from './pages/RadioPremium'; 
+import RadioRomantica from './pages/Radio'; // La específica que me mandaste
+import RadiosMundo from './pages/RadioPremium'; // La lista global de radios
 import RancheraPlay from './pages/RancheraPlay'; 
 import Karaoke from './pages/Karaoke';
 import CinePlay from './pages/Movies'; 
@@ -22,12 +23,15 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
+          {/* MENÚ PRINCIPAL */}
           <Route path="/" element={<Home />} />
+          
+          {/* EL MUNDO DE LOS NIÑOS */}
           <Route path="/tv-1" element={<FabulositoKids />} />
           
-          {/* Rutas de Radio */}
-          <Route path="/radio" element={<RadioPremium />} /> 
-          <Route path="/radios-cr" element={<RadioPremium />} /> 
+          {/* RADIOS (YA NO SON CLONES) */}
+          <Route path="/radio" element={<RadioRomantica />} /> 
+          <Route path="/radios-cr" element={<RadiosMundo />} /> 
           
           <Route path="/ranchera" element={<RancheraPlay />} />
           <Route path="/karaoke" element={<Karaoke />} />
