@@ -30,45 +30,21 @@ const CATEGORIAS = [
 
 // 🎮 LISTA DE JUEGOS MUNDIALES (LOGOS HD Y CARGA GARANTIZADA)
 const LISTA_JUEGOS = [
-  { 
-    id: 'mario', 
-    title: 'Super Mario', 
-    url: 'https://games.construct.net/446/latest', 
-    icon: '🍄', 
-    color: 'bg-red-600', 
-    thumb: 'https://upload.wikimedia.org/wikipedia/en/a/a9/Mario_Series_Logo.svg' 
-  },
-  { 
-    id: 'pvz', 
-    title: 'Plants vs Zombies', 
-    url: 'https://gamesnacks.com/embed/games/plantsvszombies', 
-    icon: '🌻', 
-    color: 'bg-green-700', 
-    thumb: 'https://static.wikia.nocookie.net/plantsvszombies/images/c/c5/PvZ1_Logo.png' 
-  },
-  { 
+    { 
     id: 'mk', 
     title: 'Mortal Kombat', 
     url: 'https://www.retrogames.cc/embed/40238-mortal-kombat-2-usa.html', 
     icon: '🐉', 
     color: 'bg-zinc-800', 
-    thumb: 'https://upload.wikimedia.org/wikipedia/en/b/b1/Mortal_Kombat_Logo.svg' 
+    thumb: "/public/mortal_kombat.png"
   },
-  { 
-    id: 'subway', 
-    title: 'Subway Surfers', 
-    url: 'https://gamesnacks.com/embed/games/subwaysurfers', 
-    icon: '🏃', 
-    color: 'bg-yellow-500', 
-    thumb: 'https://static.gamesnacks.com/img/games/subwaysurfers/icon_512.png' 
-  },
-  { 
+    { 
     id: 'omnomrun', 
     title: 'Om Nom Run', 
     url: 'https://gamesnacks.com/embed/games/omnomrun', 
     icon: '🦖', 
     color: 'bg-lime-500', 
-    thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' 
+    thumb: 'public/omnomrun.png"
   },
   { 
     id: 'tigerrun', 
@@ -76,7 +52,7 @@ const LISTA_JUEGOS = [
     url: 'https://gamesnacks.com/embed/games/tigerrun', 
     icon: '🐯', 
     color: 'bg-orange-600', 
-    thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' 
+    thumb:/public/tiger_run.png"
   }
 ];
 
