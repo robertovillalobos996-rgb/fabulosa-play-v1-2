@@ -16,7 +16,7 @@ const YOUTUBE_API_KEYS = [
   "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
-// 💉 CATEGORÍAS (Prioridad Máxima)
+// 💉 CATEGORÍAS
 const CATEGORIAS = [
     { id: 'mickey', label: 'MICKEY MOUSE', icon: <Star size={30}/>, color: 'bg-red-600', query: 'mickey mouse episodios completos español' },
     { id: 'warner', label: 'WARNER BROS', icon: <Tv size={30}/>, color: 'bg-sky-600', query: 'looney tunes tom y jerry scooby doo español completo' },
@@ -28,22 +28,34 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 JUEGOS PREMIUM HD (Sin publicidad y táctiles)
+// 🎮 JUEGOS REPARADOS (1, 3 y 4 nuevos y funcionales)
 const LISTA_JUEGOS = [
-  { id: 'subway', title: 'Subway Surfers', url: 'https://gamesnacks.com/embed/games/subwaysurfers', icon: '🏃', color: 'bg-yellow-500', thumb: 'https://static.gamesnacks.com/img/games/subwaysurfers/icon_512.png' },
+  { id: 'miner', title: 'Oro Miner', url: 'https://gamesnacks.com/embed/games/goldminer', icon: '⛏️', color: 'bg-yellow-600', thumb: 'https://static.gamesnacks.com/img/games/goldminer/icon_512.png' },
   { id: 'nom-run', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-green-500', thumb: 'https://static.gamesnacks.com/img/games/omnomrun/icon_512.png' },
-  { id: 'cut-rope', title: 'Cut the Rope', url: 'https://gamesnacks.com/embed/games/cuttherope', icon: '🍬', color: 'bg-emerald-600', thumb: 'https://static.gamesnacks.com/img/games/cuttherope/icon_512.png' },
-  { id: 'fruit', title: 'Fruit Slash', url: 'https://gamesnacks.com/embed/games/fruitslasher', icon: '🍉', color: 'bg-red-500', thumb: 'https://static.gamesnacks.com/img/games/fruitslasher/icon_512.png' },
+  { id: 'bubbles', title: 'Burbujas', url: 'https://gamesnacks.com/embed/games/bubbleshooter', icon: '🔵', color: 'bg-blue-400', thumb: 'https://static.gamesnacks.com/img/games/bubbleshooter/icon_512.png' },
+  { id: 'snake', title: 'Culebrita', url: 'https://gamesnacks.com/embed/games/snakemobile', icon: '🐍', color: 'bg-emerald-500', thumb: 'https://static.gamesnacks.com/img/games/snakemobile/icon_512.png' },
   { id: 'blocks', title: 'Color Blocks', url: 'https://gamesnacks.com/embed/games/elementblocks', icon: '💎', color: 'bg-blue-500', thumb: 'https://static.gamesnacks.com/img/games/elementblocks/icon_512.png' },
   { id: 'jump', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: 'https://static.gamesnacks.com/img/games/tigerrun/icon_512.png' }
 ];
 
-const EMOJIS = ["🐶", "🦁", "🦄", "🐼", "🦊", "🐯", "🐧", "⭐"];
+// 🦁 INFO DE AVATARES (Interactivo)
+const AVATARES_INFO = {
+    "🐶": { en: "Dog", es: "Perro" },
+    "🦁": { en: "Lion", es: "León" },
+    "🦄": { en: "Unicorn", es: "Unicornio" },
+    "🐼": { en: "Panda", es: "Panda" },
+    "🦊": { en: "Fox", es: "Zorro" },
+    "🐯": { en: "Tiger", es: "Tigre" },
+    "🐧": { en: "Penguin", es: "Pingüino" },
+    "⭐": { en: "Star", es: "Estrella" }
+};
+const EMOJIS = Object.keys(AVATARES_INFO);
 
 const FabulositoKids = () => {
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [selectedGame, setSelectedGame] = useState(null);
+    const [selectedAvatar, setSelectedAvatar] = useState(null);
     const [activeCat, setActiveCat] = useState('mickey');
     const [userEmoji, setUserEmoji] = useState("🐶");
     const [isLocked, setIsLocked] = useState(false);
@@ -101,12 +113,10 @@ const FabulositoKids = () => {
     return (
         <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative" onMouseMove={resetTimer}>
             
-            {/* FONDO ANIMADO */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <iframe className="w-full h-full object-cover scale-[1.2] md:scale-[1.5]" src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&vq=hd1080" frameBorder="0" />
             </div>
 
-            {/* MÚSICA DE FONDO */}
             {!selectedVideo && !selectedGame && (
                 <div className="hidden">
                     <iframe src="https://www.youtube.com/embed/iwKS4b9aUeI?autoplay=1&loop=1&playlist=iwKS4b9aUeI" allow="autoplay" />
@@ -115,7 +125,6 @@ const FabulositoKids = () => {
 
             <motion.div className="relative z-10 p-2 sm:p-4 md:p-8 flex flex-col h-screen bg-black/40">
                 
-                {/* LOGO GIGANTE */}
                 <div className="flex flex-col items-center mb-4 sm:mb-6">
                     <motion.img 
                         src={LOGO_KIDS_HEADER} 
@@ -125,7 +134,6 @@ const FabulositoKids = () => {
                     />
                 </div>
 
-                {/* CONTROLES SUPERIORES */}
                 <div className="flex justify-between items-center mb-4 sm:mb-6 px-2 sm:px-10">
                     <button onClick={() => setIsLocked(!isLocked)} className={`p-3 sm:p-4 rounded-full transition-all ${isLocked ? 'bg-red-600 animate-pulse' : 'bg-green-500 shadow-xl'}`}>
                         {isLocked ? <Lock size={20} className="sm:w-[30px] sm:h-[30px]" /> : <Unlock size={20} className="sm:w-[30px] sm:h-[30px]" />}
@@ -135,13 +143,25 @@ const FabulositoKids = () => {
                         <motion.span whileTap={{ scale: 2 }} className="text-2xl sm:text-4xl ml-2 sm:ml-4 cursor-pointer">{userEmoji}</motion.span>
                         <div className="flex gap-1.5 sm:gap-3 pr-2 sm:pr-4">
                             {EMOJIS.map(e => (
-                                <motion.button key={e} whileTap={{ y: -10 }} onClick={() => setUserEmoji(e)} className="text-xl sm:text-2xl hover:scale-125 transition-transform">{e}</motion.button>
+                                <motion.button 
+                                    key={e} 
+                                    whileTap={{ y: -10, scale: 1.5 }} 
+                                    onClick={() => {
+                                        setUserEmoji(e);
+                                        setSelectedAvatar(e);
+                                        // Auto cerrar info después de 3 seg
+                                        setTimeout(() => setSelectedAvatar(null), 3000);
+                                    }} 
+                                    className="text-xl sm:text-2xl hover:scale-125 transition-transform"
+                                >
+                                    {e}
+                                </motion.button>
                             ))}
                         </div>
                     </div>
                 </div>
 
-                {/* CATEGORÍAS (Prioridad Máxima z-[100] y Fluidez) */}
+                {/* 🎯 CATEGORÍAS */}
                 <div className="relative z-[100] flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2 touch-pan-x">
                     {CATEGORIAS.map(cat => (
                         <motion.button
@@ -155,7 +175,6 @@ const FabulositoKids = () => {
                     ))}
                 </div>
 
-                {/* GRID DE CONTENIDO */}
                 <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 pr-2 mt-2 sm:mt-4 custom-scrollbar">
                     {activeCat === 'juegos_arcade' ? (
                         LISTA_JUEGOS.map((juego) => (
@@ -174,7 +193,7 @@ const FabulositoKids = () => {
                             <motion.div key={vid.id.videoId} whileHover={{ scale: 1.03 }} onClick={() => setSelectedVideo(vid)} className="cursor-pointer group">
                                 <div className="aspect-video rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border-2 sm:border-4 border-white group-hover:border-yellow-400 shadow-2xl relative bg-zinc-900">
                                     <img src={vid.snippet.thumbnails.high.url} className="w-full h-full object-cover" />
-                                    <div className="absolute bottom-1.5 right-1.5 bg-yellow-400 text-black p-1 rounded-full shadow-lg"><Sparkles size={16}/></div>
+                                    <div className="absolute bottom-1.5 right-1.5 bg-yellow-400 text-black p-1 rounded-full shadow-lg scale-75 sm:scale-100"><Sparkles size={16}/></div>
                                 </div>
                                 <p className="mt-1.5 font-black text-[9px] sm:text-xs text-center uppercase bg-black/80 p-1.5 rounded-xl border border-white/5 line-clamp-2 italic">{vid.snippet.title}</p>
                             </motion.div>
@@ -183,7 +202,27 @@ const FabulositoKids = () => {
                 </div>
             </motion.div>
 
-            {/* REPRODUCTOR ARCADE / VIDEO */}
+            {/* 🐶 MODAL INTERACTIVO DE AVATAR */}
+            <AnimatePresence>
+                {selectedAvatar && (
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.5, y: 100 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.5, y: 100 }}
+                        onClick={() => setSelectedAvatar(null)}
+                        className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 backdrop-blur-md"
+                    >
+                        <div className="bg-white rounded-[4rem] p-10 flex flex-col items-center border-[10px] border-yellow-400 shadow-[0_0_50px_rgba(255,255,0,0.5)]">
+                            <span className="text-[120px] mb-4 animate-bounce">{selectedAvatar}</span>
+                            <h2 className="text-black font-black text-4xl uppercase tracking-tighter">{AVATARES_INFO[selectedAvatar].en}</h2>
+                            <div className="h-2 w-20 bg-black/10 my-4 rounded-full" />
+                            <h3 className="text-red-600 font-black text-4xl uppercase tracking-tighter">{AVATARES_INFO[selectedAvatar].es}</h3>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* 🎮 REPRODUCTOR */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
                     <motion.div 
