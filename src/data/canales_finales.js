@@ -1,59 +1,59 @@
- export const canalesTV = [
+export const canalesTV = [
     {
-        "id":  "tv-1",
-        "title":  "Fabulosa TV",
-        "url":  "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
-        "genre":  "Costa Rica",
-        "logo":  "/logos_canales/logo_fabulosa.png"
+        "id": "tv-1",
+        "title": "Fabulosa TV",
+        "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/logo_fabulosa.png"
     },
     {
-        "id":  "tv-2",
-        "title":  "88 Stereo",
-        "url":  "https://s1.tvdatta.com:3972/live/88stereolive.m3u8",
-        "genre":  "Costa Rica",
-        "logo":  "/logos_canales/88_Stereo.png"
+        "id": "tv-2",
+        "title": "88 Stereo",
+        "url": "https://s1.tvdatta.com:3972/live/88stereolive.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/88_Stereo.png"
     },
     {
-        "id":  "tv-retrox-1",
-        "title":  "Retrox",
-        "url":  "https://tvservices.fullhd-streaming.com:3963/live/tvgroupretroxtvlive.m3u8",
-        "genre":  "Retro",
-        "logo":  "/logos_canales/retrox.png"
+        "id": "tv-949",
+        "title": "Retrox",
+        "url": "https://tvservices.fullhd-streaming.com:3963/live/tvgroupretroxtvlive.m3u8",
+        "genre": "Retro",
+        "logo": "/logos_canales/retrox.png"
     },
     {
-        "id":  "tv-retrox-2",
-        "title":  "Retrox Plus",
-        "url":  "https://tvservices.fullhd-streaming.com:3100/live/tvgroupretroxtvpluslive.m3u8",
-        "genre":  "Retro",
-        "logo":  "/logos_canales/retro x plus.png"
+        "id": "tv-950",
+        "title": "Retrox Plus",
+        "url": "https://tvservices.fullhd-streaming.com:3100/live/tvgroupretroxtvpluslive.m3u8",
+        "genre": "Retro",
+        "logo": "/logos_canales/retro x plus.png"
     },
     {
-        "id":  "tv-3",
-        "title":  "canal 3 colosal",
-        "url":  "https://5eac7b031d945.streamlock.net/canal3/canal3/chunklist_w1141438584.m3u8",
-        "genre":  "Costa Rica",
-        "logo":  "/logos_canales/colosal_canal_3.png"
+        "id": "tv-3",
+        "title": "canal 3 colosal",
+        "url": "https://5eac7b031d945.streamlock.net/canal3/canal3/chunklist_w1141438584.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/colosal_canal_3.png"
     },
     {
-        "id":  "tv-4",
-        "title":  "Cbtv",
-        "url":  "https://s1.tvdatta.com:3972/live/cbtvlive.m3u8",
-        "genre":  "Costa Rica",
-        "logo":  "/logos_canales/cbtv.png"
-    },
- {
-        "id":  "tv-5",
-        "title":  "La Mega",
-        "url":  "https://s1.tvdatta.com:3208/live/radiomegaestacionlive.m3u8",
-        "genre":  "Costa Rica",
-        "logo":  "/logos_canales/la_mega_cr.png"
+        "id": "tv-4",
+        "title": "Cbtv",
+        "url": "https://s1.tvdatta.com:3972/live/cbtvlive.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/cbtv.png"
     },
     {
-        "id":  "tv-6",
-        "title":  "Alcance TV",
-        "url":  "https://5bf8041cb3fed.streamlock.net/AlcanceTV/AlcanceTV/playlist.m3u8",
-        "genre":  "Costa Rica",
-        "logo":  "/logos_canales/Alcance TV.png"
+        "id": "tv-7-",
+        "title": "La Mega",
+        "url": "https://s1.tvdatta.com:3208/live/radiomegaestacionlive.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/la_mega_cr.png"
+    },
+    {
+        "id": "tv-8-",
+        "title": "Alcance TV",
+        "url": "https://5bf8041cb3fed.streamlock.net/AlcanceTV/AlcanceTV/playlist.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/Alcance TV.png"
     },
     {
         "id":  "tv-7",
