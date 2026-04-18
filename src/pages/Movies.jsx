@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Play, Search, Film, Loader2, Sparkles, ShieldCheck } from "lucide-react";
+import { ArrowLeft, Play, Pause, Search, Maximize, Loader2, Sparkles, ShieldAlert } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Movies = () => {
@@ -9,6 +9,7 @@ const Movies = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("Acción");
   const [loading, setLoading] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   
   // 💰 LÓGICA DE PUBLICIDAD MID-ROLL (MONETAG)
   const [showAd, setShowAd] = useState(false);
@@ -27,46 +28,42 @@ const Movies = () => {
   ];
 
   const keyIndex = useRef(0);
+  const iframeRef = useRef(null);
 
-  // 🕵️ MONITOR DE TIEMPO (7 MINUTOS = 420 SEGUNDOS)
+  // 🕵️ MONITOR DE TIEMPO (7 MINUTOS)
   useEffect(() => {
     let interval;
-    if (currentMovie && !showAd) {
+    if (currentMovie && !showAd && isPlaying) {
       interval = setInterval(() => {
         setSecondsWatched(prev => {
           const newTime = prev + 1;
-          if (newTime === 420 && !adTriggered) {
-            triggerCommercial();
-          }
+          if (newTime === 420 && !adTriggered) triggerCommercial();
           return newTime;
         });
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [currentMovie, showAd, adTriggered]);
+  }, [currentMovie, showAd, adTriggered, isPlaying]);
 
   const triggerCommercial = () => {
     setShowAd(true);
+    setIsPlaying(false);
     setAdTimer(5);
     setAdTriggered(true);
-
-    try {
-      if (typeof window.show_8987154 === 'function') {
-        window.show_8987154();
-      }
-    } catch (e) {
-      console.error("Error al cargar anuncio:", e);
-    }
+    if (typeof window.show_8987154 === 'function') window.show_8987154();
     
     const count = setInterval(() => {
       setAdTimer(prev => {
-        if (prev <= 1) {
-          clearInterval(count);
-          return 0;
-        }
+        if (prev <= 1) { clearInterval(count); return 0; }
         return prev - 1;
       });
     }, 1000);
+  };
+
+  const togglePlay = () => {
+    const command = isPlaying ? '{"event":"command","func":"pauseVideo","args":""}' : '{"event":"command","func":"playVideo","args":""}';
+    iframeRef.current.contentWindow.postMessage(command, '*');
+    setIsPlaying(!isPlaying);
   };
 
   const fetchMovies = async (query) => {
@@ -124,7 +121,7 @@ const Movies = () => {
           movies.map(movie => (
             <motion.div 
               key={movie.id.videoId} whileHover={{ scale: 1.05 }} 
-              onClick={() => { setCurrentMovie(movie); setSecondsWatched(0); setAdTriggered(false); }}
+              onClick={() => { setCurrentMovie(movie); setSecondsWatched(0); setAdTriggered(false); setIsPlaying(true); }}
               className="cursor-pointer group"
             >
               <div className="aspect-[2/3] rounded-[2rem] overflow-hidden border-4 border-transparent group-hover:border-yellow-400 shadow-2xl relative bg-zinc-900">
@@ -139,48 +136,60 @@ const Movies = () => {
         )}
       </div>
 
-      {/* REPRODUCTOR BLINDADO */}
+      {/* REPRODUCTOR BLINDADO TOTAL */}
       <AnimatePresence>
         {currentMovie && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-black flex flex-col">
             
+            {/* TOP BAR */}
             <div className="p-4 flex justify-between items-center bg-zinc-900 border-b border-white/10">
-              <button onClick={() => setCurrentMovie(null)} className="bg-red-600 px-6 py-2 rounded-full font-black text-xs uppercase hover:scale-105 transition-transform">Salir</button>
-              <h2 className="text-xs font-black truncate max-w-[50%] md:max-w-md px-4 uppercase">{currentMovie.snippet.title}</h2>
-              <div className="w-10"></div>
+              <button onClick={() => setCurrentMovie(null)} className="bg-red-600 px-6 py-2 rounded-full font-black text-xs uppercase">Cerrar</button>
+              <div className="flex items-center gap-2 text-yellow-400">
+                <ShieldAlert size={16} />
+                <span className="text-[10px] font-black uppercase tracking-tighter">Conexión Segura Fabulosa</span>
+              </div>
             </div>
 
-            <div className="flex-1 relative">
-              {/* 🛡️ BLINDAJE: CAPA INVISIBLE PARA EVITAR CLICS A YOUTUBE */}
-              <div className="absolute inset-0 z-20 bg-transparent" style={{ pointerEvents: 'none' }}>
-                <div className="absolute top-0 w-full h-20 bg-transparent pointer-events-auto" /> {/* Bloquea título */}
-                <div className="absolute bottom-0 right-0 w-24 h-16 bg-transparent pointer-events-auto" /> {/* Bloquea logo YT */}
-              </div>
+            <div className="flex-1 relative bg-black overflow-hidden flex items-center justify-center">
+              {/* 🛡️ CAPA DE PLOMO: BLOQUEA TODO CONTACTO CON EL VIDEO */}
+              <div className="absolute inset-0 z-30 bg-transparent pointer-events-auto" />
 
               <iframe 
+                ref={iframeRef}
                 width="100%" height="100%" 
-                src={`https://www.youtube.com/embed/${currentMovie.id.videoId}?autoplay=1&controls=1&rel=0&modestbranding=1&iv_load_policy=3&showinfo=0&disablekb=1`}
+                src={`https://www.youtube.com/embed/${currentMovie.id.videoId}?autoplay=1&controls=0&rel=0&modestbranding=1&enablejsapi=1&iv_load_policy=3&disablekb=1&origin=${window.location.origin}`}
                 frameBorder="0" allow="autoplay; encrypted-media; fullscreen"
-                className="z-10"
+                className="z-10 pointer-events-none"
               />
 
-              {/* 📺 COMERCIAL FULL SCREEN (A LOS 7 MIN) */}
+              {/* 🎮 NUESTROS BOTONES FUNCIONALES */}
+              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-40 flex items-center gap-6 bg-black/60 backdrop-blur-xl p-4 px-10 rounded-full border border-white/10 shadow-2xl">
+                <button onClick={togglePlay} className="text-yellow-400 hover:scale-125 transition-transform">
+                  {isPlaying ? <Pause size={40} fill="currentColor" /> : <Play size={40} fill="currentColor" />}
+                </button>
+                <div className="h-8 w-[2px] bg-white/20" />
+                <button onClick={() => iframeRef.current.requestFullscreen()} className="text-white hover:text-yellow-400 transition-colors">
+                  <Maximize size={30} />
+                </button>
+              </div>
+
+              {/* 📺 COMERCIAL FULL SCREEN (7 MIN) */}
               {showAd && (
-                <div className="fixed inset-0 z-[500] bg-black flex flex-col items-center justify-center p-0 m-0">
-                  <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-900 relative">
-                    <Sparkles className="text-yellow-400 mb-6 animate-bounce" size={80} />
-                    <h2 className="text-3xl md:text-6xl font-black uppercase mb-4 text-center tracking-tighter">Publicidad en progreso</h2>
-                    <p className="text-gray-400 text-lg md:text-2xl font-bold uppercase italic">Fabulosa Play Premium</p>
+                <div className="fixed inset-0 z-[500] bg-black flex flex-col items-center justify-center">
+                  <div className="w-full h-full bg-zinc-900 flex flex-col items-center justify-center p-10">
+                    <Sparkles className="text-yellow-400 mb-6 animate-pulse" size={100} />
+                    <h2 className="text-4xl md:text-7xl font-black uppercase mb-4 text-center">Espacio Publicitario</h2>
+                    <p className="text-gray-500 text-xl font-black uppercase">Apoya a Fabulosa Play para seguir gratis</p>
                     
                     <div className="mt-12">
                       <button 
                         disabled={adTimer > 0}
-                        onClick={() => setShowAd(false)}
-                        className={`px-16 py-6 rounded-full font-black uppercase text-2xl md:text-4xl transition-all shadow-[0_0_50px_rgba(250,204,21,0.5)] ${
-                          adTimer > 0 ? 'bg-zinc-800 text-gray-600' : 'bg-yellow-400 text-black scale-110 active:scale-95'
+                        onClick={() => { setShowAd(false); setIsPlaying(true); }}
+                        className={`px-16 py-6 rounded-full font-black uppercase text-2xl md:text-5xl transition-all ${
+                          adTimer > 0 ? 'bg-zinc-800 text-gray-700' : 'bg-yellow-400 text-black scale-110 shadow-[0_0_60px_rgba(250,204,21,0.6)]'
                         }`}
                       >
-                        {adTimer > 0 ? `Saltar en ${adTimer}...` : "Saltar Anuncio ❱"}
+                        {adTimer > 0 ? `Esperar ${adTimer}s...` : "Saltar Anuncio ❱"}
                       </button>
                     </div>
                   </div>
