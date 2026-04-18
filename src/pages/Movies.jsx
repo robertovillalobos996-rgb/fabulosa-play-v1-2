@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Play, Search, Film, Loader2, Sparkles } from "lucide-react";
+import { ArrowLeft, Play, Search, Film, Loader2, Sparkles, ShieldCheck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Movies = () => {
@@ -35,7 +35,6 @@ const Movies = () => {
       interval = setInterval(() => {
         setSecondsWatched(prev => {
           const newTime = prev + 1;
-          // Dispara el comercial a los 7 minutos (420 segundos)
           if (newTime === 420 && !adTriggered) {
             triggerCommercial();
           }
@@ -51,7 +50,6 @@ const Movies = () => {
     setAdTimer(5);
     setAdTriggered(true);
 
-    // 💉 INYECCIÓN GLOBAL DE MONETAG (ID: 8987154)
     try {
       if (typeof window.show_8987154 === 'function') {
         window.show_8987154();
@@ -90,7 +88,8 @@ const Movies = () => {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
-      {/* HEADER BUSCADOR */}
+      
+      {/* HEADER */}
       <div className="p-4 md:p-6 flex items-center justify-between border-b border-white/10 bg-black/80 backdrop-blur-md sticky top-0 z-50">
         <Link to="/" className="p-3 bg-zinc-900 rounded-full hover:bg-yellow-400 hover:text-black transition-all">
           <ArrowLeft size={24} />
@@ -117,7 +116,7 @@ const Movies = () => {
         ))}
       </div>
 
-      {/* GRID DE PELÍCULAS */}
+      {/* GRID */}
       <div className="p-4 md:p-6 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
         {loading ? (
             <div className="col-span-full flex justify-center py-20"><Loader2 className="animate-spin text-yellow-400" size={48} /></div>
@@ -140,7 +139,7 @@ const Movies = () => {
         )}
       </div>
 
-      {/* REPRODUCTOR Y MODAL DE ANUNCIO */}
+      {/* REPRODUCTOR BLINDADO */}
       <AnimatePresence>
         {currentMovie && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-black flex flex-col">
@@ -152,31 +151,38 @@ const Movies = () => {
             </div>
 
             <div className="flex-1 relative">
+              {/* 🛡️ BLINDAJE: CAPA INVISIBLE PARA EVITAR CLICS A YOUTUBE */}
+              <div className="absolute inset-0 z-20 bg-transparent" style={{ pointerEvents: 'none' }}>
+                <div className="absolute top-0 w-full h-20 bg-transparent pointer-events-auto" /> {/* Bloquea título */}
+                <div className="absolute bottom-0 right-0 w-24 h-16 bg-transparent pointer-events-auto" /> {/* Bloquea logo YT */}
+              </div>
+
               <iframe 
                 width="100%" height="100%" 
-                src={`https://www.youtube.com/embed/${currentMovie.id.videoId}?autoplay=1&controls=1&rel=0&modestbranding=1`}
+                src={`https://www.youtube.com/embed/${currentMovie.id.videoId}?autoplay=1&controls=1&rel=0&modestbranding=1&iv_load_policy=3&showinfo=0&disablekb=1`}
                 frameBorder="0" allow="autoplay; encrypted-media; fullscreen"
+                className="z-10"
               />
 
-              {/* 📺 EL COMERCIAL (A LOS 7 MIN) */}
+              {/* 📺 COMERCIAL FULL SCREEN (A LOS 7 MIN) */}
               {showAd && (
-                <div className="absolute inset-0 z-[200] bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center">
-                  <div className="w-full max-w-4xl aspect-video bg-zinc-900 rounded-[3rem] overflow-hidden border-4 border-yellow-400 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(250,204,21,0.3)]">
-                    <Sparkles className="text-yellow-400 mb-4 animate-bounce" size={64} />
-                    <h2 className="text-2xl md:text-4xl font-black uppercase mb-2">Publicidad Premium</h2>
-                    <p className="text-gray-400 text-sm md:text-lg">Gracias por tu espera, la película continuará en breve.</p>
-                  </div>
-
-                  <div className="mt-10">
-                    <button 
-                      disabled={adTimer > 0}
-                      onClick={() => setShowAd(false)}
-                      className={`px-12 py-4 rounded-full font-black uppercase text-xl transition-all shadow-2xl ${
-                        adTimer > 0 ? 'bg-zinc-800 text-gray-600' : 'bg-yellow-400 text-black scale-110 active:scale-95'
-                      }`}
-                    >
-                      {adTimer > 0 ? `Saltar en ${adTimer}...` : "Saltar Anuncio ❱"}
-                    </button>
+                <div className="fixed inset-0 z-[500] bg-black flex flex-col items-center justify-center p-0 m-0">
+                  <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-900 relative">
+                    <Sparkles className="text-yellow-400 mb-6 animate-bounce" size={80} />
+                    <h2 className="text-3xl md:text-6xl font-black uppercase mb-4 text-center tracking-tighter">Publicidad en progreso</h2>
+                    <p className="text-gray-400 text-lg md:text-2xl font-bold uppercase italic">Fabulosa Play Premium</p>
+                    
+                    <div className="mt-12">
+                      <button 
+                        disabled={adTimer > 0}
+                        onClick={() => setShowAd(false)}
+                        className={`px-16 py-6 rounded-full font-black uppercase text-2xl md:text-4xl transition-all shadow-[0_0_50px_rgba(250,204,21,0.5)] ${
+                          adTimer > 0 ? 'bg-zinc-800 text-gray-600' : 'bg-yellow-400 text-black scale-110 active:scale-95'
+                        }`}
+                      >
+                        {adTimer > 0 ? `Saltar en ${adTimer}...` : "Saltar Anuncio ❱"}
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
