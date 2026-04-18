@@ -12,6 +12,28 @@ const Radio = () => {
   const [showControls, setShowControls] = useState(true);
   const timerRef = useRef(null);
 
+  // 💰 INYECCIÓN SEGURA DEL ANUNCIO IN-PAGE PUSH (Zona 10894955)
+  useEffect(() => {
+    try {
+      const script = document.createElement('script');
+      script.dataset.zone = '10894955';
+      script.src = 'https://nap5k.com/tag.min.js';
+      
+      // Esto inyecta el script de Monetag sin romper la página
+      const parent = [document.documentElement, document.body].filter(Boolean).pop();
+      parent.appendChild(script);
+
+      // Limpieza por si el usuario sale de la emisora
+      return () => {
+        if (parent.contains(script)) {
+           parent.removeChild(script);
+        }
+      };
+    } catch (error) {
+      console.error("Error al inyectar anuncio de radio:", error);
+    }
+  }, []);
+
   const resetTimer = () => {
     setShowControls(true);
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -33,9 +55,9 @@ const Radio = () => {
         // 🚀 CONFIGURACIÓN AGRESIVA DE CARGA RÁPIDA
         hlsRef.current = new window.Hls({ 
           enableWorker: true,
-          lowLatencyMode: true, // Activa el modo de baja latencia
-          liveSyncDurationCount: 2, // Arranca apenas tenga 2 pedacitos listos
-          maxBufferLength: 10 // No almacena basura innecesaria
+          lowLatencyMode: true,
+          liveSyncDurationCount: 2, 
+          maxBufferLength: 10 
         });
         
         hlsRef.current.loadSource(STREAM_URL);
