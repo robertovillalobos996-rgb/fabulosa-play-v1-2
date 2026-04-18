@@ -10,14 +10,14 @@ const Movies = () => {
   const [activeCategory, setActiveCategory] = useState("Acción");
   const [loading, setLoading] = useState(false);
   
-  // ESTADOS REPRODUCTOR
   const [isPlaying, setIsPlaying] = useState(true);
   const [volume, setVolume] = useState(100);
   const [isMuted, setIsMuted] = useState(false);
   const [showControls, setShowControls] = useState(true);
   
-  // 💰 LÓGICA DE PUBLICIDAD MONETAG
+  // 💰 LÓGICA AGRESIVA DE PUBLICIDAD (MONETAG)
   const [showAd, setShowAd] = useState(false);
+  const [adTimer, setAdTimer] = useState(5);
   const [secondsWatched, setSecondsWatched] = useState(0);
   const [adTriggered, setAdTriggered] = useState(false);
 
@@ -26,7 +26,7 @@ const Movies = () => {
   const iframeRef = useRef(null);
   const controlsTimeout = useRef(null);
 
-  // 🕵️ MONITOR DE TIEMPO: PAUSA A LOS 7 MINUTOS (420 SEGUNDOS)
+  // 🕵️ MONITOR DE TIEMPO (7 MINUTOS = 420 SEGUNDOS)
   useEffect(() => {
     let interval;
     if (currentMovie && !showAd && isPlaying) {
@@ -34,13 +34,7 @@ const Movies = () => {
         setSecondsWatched(prev => {
           const newTime = prev + 1;
           if (newTime === 420 && !adTriggered) {
-             // A los 7 minutos detenemos la peli y mostramos el botón de continuar
-             setShowAd(true);
-             setIsPlaying(false);
-             setAdTriggered(true);
-             if (iframeRef.current) {
-                iframeRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-             }
+             triggerCommercial();
           }
           return newTime;
         });
@@ -55,16 +49,35 @@ const Movies = () => {
     controlsTimeout.current = setTimeout(() => isPlaying && setShowControls(false), 3000);
   };
 
-  // 💉 ESTE ES EL CLIC REAL QUE EL NAVEGADOR SÍ PERMITE
-  const handleResumeAndAd = () => {
-    // 1. Disparamos Monetag de forma segura porque hubo un clic
+  // 💥 DISPARO DEL COMERCIAL A LA FUERZA
+  const triggerCommercial = () => {
+    setShowAd(true);
+    setIsPlaying(false);
+    setAdTimer(5);
+    setAdTriggered(true);
+
+    // 1. Pausamos el video de YouTube
+    if (iframeRef.current) {
+       iframeRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    }
+
+    // 2. Disparamos Monetag sin pedir permiso
     try {
       if (typeof window.show_8987154 === 'function') {
           window.show_8987154();
       }
-    } catch (e) { console.error("Monetag script no encontrado"); }
+    } catch (e) { console.error("Fallo Monetag"); }
 
-    // 2. Quitamos nuestra pantalla y le damos Play a la peli
+    // 3. Reloj de 5 segundos de castigo
+    const count = setInterval(() => {
+      setAdTimer(prev => {
+        if (prev <= 1) { clearInterval(count); return 0; }
+        return prev - 1;
+      });
+    }, 1000);
+  };
+
+  const skipAdAndResume = () => {
     setShowAd(false);
     setIsPlaying(true);
     if (iframeRef.current) {
@@ -159,7 +172,7 @@ const Movies = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-black">
             <div className="w-full h-full relative flex items-center justify-center bg-black">
               
-              {/* 🛡️ EL VIDRIO INVISIBLE: z-30 sobre el video pero SIN estirarlo */}
+              {/* 🛡️ EL VIDRIO INVISIBLE: z-30 sobre el video */}
               <div className="absolute inset-0 z-30 pointer-events-auto bg-transparent" onClick={handleMouseMove} />
 
               {/* VIDEO EN TAMAÑO PERFECTO */}
@@ -196,19 +209,23 @@ const Movies = () => {
                 </div>
               </motion.div>
 
-              {/* ⏸️ PANTALLA DE PAUSA COMERCIAL (A LOS 7 MINUTOS) */}
+              {/* ⏸️ PUBLICIDAD FORZADA (CERO PEDIR PERMISO) */}
               {showAd && (
-                <div className="fixed inset-0 z-[500] bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6">
-                   <Sparkles className="text-yellow-400 mb-6 animate-bounce" size={60} />
-                   <h2 className="text-3xl md:text-5xl font-black uppercase mb-4 tracking-tighter">Pausa <span className="text-yellow-400">Comercial</span></h2>
-                   <p className="text-gray-400 font-bold uppercase text-xs md:text-sm tracking-widest mb-10 max-w-md">Para mantener Fabulosa Play gratis, haz clic abajo para ver un anuncio de nuestros patrocinadores y continuar.</p>
+                <div className="fixed inset-0 z-[500] bg-black flex flex-col items-center justify-center text-center p-6">
+                   <Sparkles className="text-yellow-400 mb-6 animate-pulse" size={60} />
+                   <h2 className="text-4xl md:text-6xl font-black uppercase mb-4 tracking-tighter">Publicidad</h2>
+                   <p className="text-gray-400 font-bold uppercase text-xs md:text-sm tracking-widest mb-10 max-w-md">La película se reanudará en breve.</p>
                    
-                   {/* AQUÍ ESTÁ LA MAGIA: EL CLIC REAL DEL USUARIO */}
                    <button 
-                     onClick={handleResumeAndAd}
-                     className="px-10 py-5 rounded-full font-black uppercase text-lg md:text-2xl bg-yellow-400 text-black shadow-[0_0_50px_rgba(250,204,21,0.6)] hover:scale-110 transition-transform"
+                     disabled={adTimer > 0}
+                     onClick={skipAdAndResume}
+                     className={`px-12 py-5 rounded-full font-black uppercase text-lg md:text-2xl transition-all ${
+                        adTimer > 0 
+                        ? 'bg-zinc-900 text-zinc-600 border border-white/5' 
+                        : 'bg-yellow-400 text-black hover:scale-110 shadow-[0_0_50px_rgba(250,204,21,0.6)]'
+                     }`}
                    >
-                     Continuar Película ▶
+                     {adTimer > 0 ? `Saltar en ${adTimer}s` : "Saltar Anuncio ❱"}
                    </button>
                 </div>
               )}
