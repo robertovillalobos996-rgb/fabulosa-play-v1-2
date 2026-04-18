@@ -183,10 +183,10 @@ export const canalesTV = [
     },
     {
         "id": "tv-36",
-        "title": "Multimedios Guadalajara (720p)",
-        "url": "https://mdstrm.com/live-stream-playlist/5c54d38ca392a5119bb0aa0d.m3u8",
+        "title": "stv",
+        "url": "https://acceso.mediosdecostarica.com:3422/hybrid/play.m3u8",
         "genre": "Costa Rica",
-        "logo": null
+        "logo": "/logos_canales/stv.png"
     },
     {
         "id": "tv-37",
