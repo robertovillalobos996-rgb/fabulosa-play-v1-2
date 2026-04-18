@@ -38,7 +38,6 @@ const Movies = () => {
       interval = setInterval(() => {
         setSecondsWatched(prev => {
           const newTime = prev + 1;
-          // Si quiere probarlo rápido, cambie el 420 por 10
           if (newTime === 420 && !adTriggered) {
              triggerMonetagAd();
           }
@@ -55,24 +54,24 @@ const Movies = () => {
     controlsTimeout.current = setTimeout(() => isPlaying && setShowControls(false), 3000);
   };
 
-  // 💥 DISPARO EXACTO DEL CÓDIGO QUE USTED ME MANDÓ (ZONA 10892804)
+  // 💥 DISPARO EXCLUSIVO (A LOS 7 MINUTOS)
   const triggerMonetagAd = () => {
     setAdTriggered(true);
     setIsPlaying(false);
 
-    // 1. Pausa el video
+    // 1. Pausamos el video de YouTube
     if (iframeRef.current) {
        iframeRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
     }
 
-    // 2. Inyecta su script de Monetag sin romper React
+    // 2. Nacimiento del script SOLO AQUÍ, para que Monetag tire su anuncio original
     try {
-      const s = document.createElement('script');
-      s.dataset.zone = '10892804';
-      s.src = 'https://n6wxm.com/vignette.min.js';
-      document.body.appendChild(s);
-    } catch (error) {
-      console.error("Error al cargar anuncio:", error);
+      const script = document.createElement('script');
+      script.dataset.zone = '10892804';
+      script.src = 'https://n6wxm.com/vignette.min.js';
+      document.body.appendChild(script);
+    } catch (e) {
+      console.error("Error inyectando Monetag");
     }
   };
 
