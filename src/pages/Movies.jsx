@@ -18,7 +18,15 @@ const Movies = () => {
   const [secondsWatched, setSecondsWatched] = useState(0);
   const [adTriggered, setAdTriggered] = useState(false);
 
-  const YOUTUBE_API_KEYS = ["AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0", "AIzaSyBUk0oq1zjA6BKx5HK8DEQc1TxQqreqGtk", "AIzaSyBys-0J3T5Ou_fdPGxqYC5LWDMgppwD0Y4", "AIzaSyDHdkSo4WSHjYL4nHFU9wKmXW5D9PScO4g", "AIzaSyDJqDMnZsYHyJtzahtvv1r55Z-JfgLk5TU", "AIzaSyCruj7UZTEmElS3ZUeUBmYPecbsAA667U8", "AIzaSyBfMNrgQESeymMQ9srVBHKjXB3_WeRfkXE", "AIzaSyB1e_YSB74yAelvAhapDWu11VPLz2wBkUg", "AIzaSyCsvViGGiPJxx8-FkSwQvHE2T_U8d2UO5E", "AIzaSyBRvdUqolryjMRustJUyqN_HtkjRCbHLfI", "AIzaSyCdmCZW6J49Onl-QAf3cTsNu0im84EBVZc", "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"];
+  const YOUTUBE_API_KEYS = [
+    "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
+    "AIzaSyBUk0oq1zjA6BKx5HK8DEQc1TxQqreqGtk", "AIzaSyBys-0J3T5Ou_fdPGxqYC5LWDMgppwD0Y4",
+    "AIzaSyDHdkSo4WSHjYL4nHFU9wKmXW5D9PScO4g", "AIzaSyDJqDMnZsYHyJtzahtvv1r55Z-JfgLk5TU",
+    "AIzaSyCruj7UZTEmElS3ZUeUBmYPecbsAA667U8", "AIzaSyBfMNrgQESeymMQ9srVBHKjXB3_WeRfkXE",
+    "AIzaSyB1e_YSB74yAelvAhapDWu11VPLz2wBkUg", "AIzaSyCsvViGGiPJxx8-FkSwQvHE2T_U8d2UO5E",
+    "AIzaSyBRvdUqolryjMRustJUyqN_HtkjRCbHLfI", "AIzaSyCdmCZW6J49Onl-QAf3cTsNu0im84EBVZc",
+    "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
+  ];
 
   const iframeRef = useRef(null);
   const controlsTimeout = useRef(null);
@@ -30,6 +38,7 @@ const Movies = () => {
       interval = setInterval(() => {
         setSecondsWatched(prev => {
           const newTime = prev + 1;
+          // Si quiere probarlo rápido, cambie el 420 por 10
           if (newTime === 420 && !adTriggered) {
              triggerMonetagAd();
           }
@@ -46,24 +55,24 @@ const Movies = () => {
     controlsTimeout.current = setTimeout(() => isPlaying && setShowControls(false), 3000);
   };
 
-  // 💥 DISPARO DEL BANNER DE VIÑETA (ZONA: 10892804)
+  // 💥 DISPARO EXACTO DEL CÓDIGO QUE USTED ME MANDÓ (ZONA 10892804)
   const triggerMonetagAd = () => {
     setAdTriggered(true);
     setIsPlaying(false);
 
-    // 1. Pausamos la película 
+    // 1. Pausa el video
     if (iframeRef.current) {
        iframeRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
     }
 
-    // 2. Inyectamos tu código exacto de Monetag en el cuerpo de la página
+    // 2. Inyecta su script de Monetag sin romper React
     try {
-      const script = document.createElement('script');
-      script.dataset.zone = '10892804';
-      script.src = 'https://n6wxm.com/vignette.min.js';
-      document.body.appendChild(script);
-    } catch (e) {
-      console.error("Error al inyectar Monetag:", e);
+      const s = document.createElement('script');
+      s.dataset.zone = '10892804';
+      s.src = 'https://n6wxm.com/vignette.min.js';
+      document.body.appendChild(s);
+    } catch (error) {
+      console.error("Error al cargar anuncio:", error);
     }
   };
 
