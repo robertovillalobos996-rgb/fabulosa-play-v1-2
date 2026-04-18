@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Play, Pause, Search, Maximize, Loader2, Sparkles, Volume2, VolumeX } from "lucide-react";
+import { ArrowLeft, Play, Pause, Search, Maximize, Loader2, Volume2, VolumeX } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Movies = () => {
@@ -15,9 +15,6 @@ const Movies = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [showControls, setShowControls] = useState(true);
   
-  // 💰 LÓGICA AGRESIVA DE PUBLICIDAD (MONETAG)
-  const [showAd, setShowAd] = useState(false);
-  const [adTimer, setAdTimer] = useState(5);
   const [secondsWatched, setSecondsWatched] = useState(0);
   const [adTriggered, setAdTriggered] = useState(false);
 
@@ -26,22 +23,22 @@ const Movies = () => {
   const iframeRef = useRef(null);
   const controlsTimeout = useRef(null);
 
-  // 🕵️ MONITOR DE TIEMPO (7 MINUTOS = 420 SEGUNDOS)
+  // 🕵️ RELOJ DE 7 MINUTOS (420 SEGUNDOS)
   useEffect(() => {
     let interval;
-    if (currentMovie && !showAd && isPlaying) {
+    if (currentMovie && isPlaying) {
       interval = setInterval(() => {
         setSecondsWatched(prev => {
           const newTime = prev + 1;
           if (newTime === 420 && !adTriggered) {
-             triggerCommercial();
+             triggerMonetagAd();
           }
           return newTime;
         });
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [currentMovie, showAd, adTriggered, isPlaying]);
+  }, [currentMovie, adTriggered, isPlaying]);
 
   const handleMouseMove = () => {
     setShowControls(true);
@@ -49,39 +46,24 @@ const Movies = () => {
     controlsTimeout.current = setTimeout(() => isPlaying && setShowControls(false), 3000);
   };
 
-  // 💥 DISPARO DEL COMERCIAL A LA FUERZA
-  const triggerCommercial = () => {
-    setShowAd(true);
-    setIsPlaying(false);
-    setAdTimer(5);
+  // 💥 DISPARO DEL BANNER DE VIÑETA (ZONA: 10892804)
+  const triggerMonetagAd = () => {
     setAdTriggered(true);
+    setIsPlaying(false);
 
-    // 1. Pausamos el video de YouTube
+    // 1. Pausamos la película 
     if (iframeRef.current) {
        iframeRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
     }
 
-    // 2. Disparamos Monetag sin pedir permiso
+    // 2. Inyectamos tu código exacto de Monetag en el cuerpo de la página
     try {
-      if (typeof window.show_8987154 === 'function') {
-          window.show_8987154();
-      }
-    } catch (e) { console.error("Fallo Monetag"); }
-
-    // 3. Reloj de 5 segundos de castigo
-    const count = setInterval(() => {
-      setAdTimer(prev => {
-        if (prev <= 1) { clearInterval(count); return 0; }
-        return prev - 1;
-      });
-    }, 1000);
-  };
-
-  const skipAdAndResume = () => {
-    setShowAd(false);
-    setIsPlaying(true);
-    if (iframeRef.current) {
-       iframeRef.current.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      const script = document.createElement('script');
+      script.dataset.zone = '10892804';
+      script.src = 'https://n6wxm.com/vignette.min.js';
+      document.body.appendChild(script);
+    } catch (e) {
+      console.error("Error al inyectar Monetag:", e);
     }
   };
 
@@ -166,13 +148,13 @@ const Movies = () => {
         )}
       </div>
 
-      {/* REPRODUCTOR CON VIDRIO PERFECTO */}
+      {/* REPRODUCTOR BLINDADO */}
       <AnimatePresence>
         {currentMovie && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-black">
             <div className="w-full h-full relative flex items-center justify-center bg-black">
               
-              {/* 🛡️ EL VIDRIO INVISIBLE: z-30 sobre el video */}
+              {/* 🛡️ EL VIDRIO INVISIBLE */}
               <div className="absolute inset-0 z-30 pointer-events-auto bg-transparent" onClick={handleMouseMove} />
 
               {/* VIDEO EN TAMAÑO PERFECTO */}
@@ -185,7 +167,7 @@ const Movies = () => {
                 />
               </div>
 
-              {/* CONTROLES ESTILO NETFLIX (AUTO-HIDE) */}
+              {/* CONTROLES NETFLIX */}
               <motion.div animate={{ opacity: showControls ? 1 : 0 }} className="absolute inset-0 z-40 bg-gradient-to-t from-black via-transparent to-black/70 flex flex-col justify-between p-6">
                 <div className="flex justify-between items-center">
                   <button onClick={() => setCurrentMovie(null)} className="p-3 bg-red-600 rounded-full hover:scale-110 transition-transform"><ArrowLeft size={24} /></button>
@@ -208,27 +190,6 @@ const Movies = () => {
                    <button onClick={() => document.documentElement.requestFullscreen()} className="p-3 bg-zinc-900/90 hover:bg-yellow-400 hover:text-black rounded-full transition-all"><Maximize size={20} /></button>
                 </div>
               </motion.div>
-
-              {/* ⏸️ PUBLICIDAD FORZADA (CERO PEDIR PERMISO) */}
-              {showAd && (
-                <div className="fixed inset-0 z-[500] bg-black flex flex-col items-center justify-center text-center p-6">
-                   <Sparkles className="text-yellow-400 mb-6 animate-pulse" size={60} />
-                   <h2 className="text-4xl md:text-6xl font-black uppercase mb-4 tracking-tighter">Publicidad</h2>
-                   <p className="text-gray-400 font-bold uppercase text-xs md:text-sm tracking-widest mb-10 max-w-md">La película se reanudará en breve.</p>
-                   
-                   <button 
-                     disabled={adTimer > 0}
-                     onClick={skipAdAndResume}
-                     className={`px-12 py-5 rounded-full font-black uppercase text-lg md:text-2xl transition-all ${
-                        adTimer > 0 
-                        ? 'bg-zinc-900 text-zinc-600 border border-white/5' 
-                        : 'bg-yellow-400 text-black hover:scale-110 shadow-[0_0_50px_rgba(250,204,21,0.6)]'
-                     }`}
-                   >
-                     {adTimer > 0 ? `Saltar en ${adTimer}s` : "Saltar Anuncio ❱"}
-                   </button>
-                </div>
-              )}
             </div>
           </motion.div>
         )}
