@@ -6,13 +6,13 @@ import { motion } from 'framer-motion';
 const FabulosaRadioVIP = () => {
   const videoRef = useRef(null);
   const audioPoolRef = useRef(null);
-  const [isPlayingRadio, setIsPlayingRadio] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
 
-  // 🔗 ENLACES DE FABULOSA
-  const TV_URL = "https://tvservices.fullhd-streaming.com:3941/multi_web/play_720.m3u8"; 
-  const RADIO_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
+  // 📡 SU SEÑAL REAL (FABULOSA)
+  const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
-  // 🎙️ BOLSA DE VOCES (Lógica de Verano)
+  // 🎙️ SU LÓGICA DE VOCES Y SELLOS
   const AUDIO_POOL = [
     { path: "/media/voces/subele-volumen.mp3", duck: 0.7 },
     { path: "/media/voces/sello-fabulosa.mp3", duck: 0.7 },
@@ -22,16 +22,18 @@ const FabulosaRadioVIP = () => {
     { path: "/media/voces/tony-garcia-chat-en-vivo.mp3", duck: 0.15 }
   ];
 
-  // 📺 CARGA DE TV (HLS)
+  // 📺 CARGA DE SEÑAL HLS (PARA LA TV Y RADIO)
   useEffect(() => {
     const loadVideo = () => {
       if (window.Hls && window.Hls.isSupported()) {
         const hls = new window.Hls();
-        hls.loadSource(TV_URL);
+        hls.loadSource(STREAM_URL);
         hls.attachMedia(videoRef.current);
-        hls.on(window.Hls.Events.MANIFEST_PARSED, () => videoRef.current.play().catch(e => {}));
+        hls.on(window.Hls.Events.MANIFEST_PARSED, () => {
+            if (isPlaying) videoRef.current.play().catch(e => {});
+        });
       } else if (videoRef.current?.canPlayType('application/vnd.apple.mpegurl')) {
-        videoRef.current.src = TV_URL;
+        videoRef.current.src = STREAM_URL;
       }
     };
     if (!window.Hls) {
@@ -42,37 +44,34 @@ const FabulosaRadioVIP = () => {
     } else { loadVideo(); }
   }, []);
 
-  // 🎙️ LÓGICA DE LOCUTORES AUTOMÁTICOS
+  // 🎙️ ACTIVADOR DE LOCUTORES (SU LÓGICA DE DUCKING)
   useEffect(() => {
     const playRandomAudio = () => {
-      if (!isPlayingRadio) return;
+      if (!isPlaying || isMuted) return;
+      
       const track = AUDIO_POOL[Math.floor(Math.random() * AUDIO_POOL.length)];
-      if (audioPoolRef.current) {
+      if (audioPoolRef.current && videoRef.current) {
         audioPoolRef.current.src = track.path;
-        // Ducking: Baja el volumen de la radio para que hable el locutor
-        const radioElement = document.getElementById('radio-hls-element');
-        if (radioElement) radioElement.volume = track.duck;
         
+        // Baja el volumen de la música para que hable el locutor
+        videoRef.current.volume = track.duck;
         audioPoolRef.current.play();
+        
         audioPoolRef.current.onended = () => {
-          if (radioElement) radioElement.volume = 1;
+          // Sube el volumen cuando termina de hablar
+          if (videoRef.current) videoRef.current.volume = 1;
         };
       }
     };
 
     const interval = setInterval(playRandomAudio, 300000); // Cada 5 minutos
     return () => clearInterval(interval);
-  }, [isPlayingRadio]);
+  }, [isPlaying, isMuted]);
 
-  const toggleRadio = () => {
-    const radioElement = document.getElementById('radio-hls-element');
-    if (isPlayingRadio) {
-      radioElement.pause();
-    } else {
-      radioElement.play();
-      if(videoRef.current) videoRef.current.muted = true;
-    }
-    setIsPlayingRadio(!isPlayingRadio);
+  const togglePlay = () => {
+    if (isPlaying) videoRef.current.pause();
+    else videoRef.current.play();
+    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -81,30 +80,30 @@ const FabulosaRadioVIP = () => {
         <Link to="/premium" className="p-3 bg-white/5 rounded-full hover:bg-yellow-500 hover:text-black transition-all">
           <ArrowLeft size={24} />
         </Link>
-        <button className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-full font-black uppercase text-xs transition-colors">
+        <button className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-full font-black uppercase text-xs transition-colors shadow-lg shadow-blue-500/20">
           <Megaphone size={16} /> Sonar Sello ID
         </button>
       </nav>
 
       <div className="max-w-7xl mx-auto p-6 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
         
-        {/* COLUMNA IZQUIERDA (IGUAL A VOICE OVER) */}
+        {/* COLUMNA IZQUIERDA: LOGO Y RADIO VIP */}
         <div className="lg:col-span-4 flex flex-col gap-8">
-          <div className="bg-zinc-900/50 p-10 rounded-[3rem] border border-white/5 shadow-2xl flex justify-center items-center">
-            <img src="/logo-fabulosa.png" alt="Fabulosa" className="w-full max-w-[250px] object-contain" />
+          <div className="bg-zinc-900/50 p-10 rounded-[3rem] border border-white/5 shadow-2xl flex justify-center items-center backdrop-blur-sm">
+            <img src="/logo-fabulosa.png" alt="Fabulosa" className="w-full max-w-[250px] object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]" />
           </div>
 
-          <div className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-[2rem] border border-white/10">
+          <div className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-[2rem] border border-white/10 shadow-2xl">
             <div className="flex items-center gap-4 mb-6">
               <Radio className="text-yellow-500" size={30} />
-              <h2 className="text-xl font-black uppercase tracking-widest">Radio en Vivo</h2>
+              <h2 className="text-xl font-black uppercase tracking-widest text-yellow-500">Radio VIP</h2>
             </div>
             
-            <video id="radio-hls-element" src={RADIO_URL} className="hidden" />
             <audio ref={audioPoolRef} className="hidden" />
 
-            <button onClick={toggleRadio} className="w-full py-4 rounded-full font-black uppercase bg-yellow-500 text-black shadow-lg hover:scale-105 transition-transform">
-              {isPlayingRadio ? "Pausar Radio" : "Escuchar Ahora"}
+            <button onClick={togglePlay} className="w-full py-4 rounded-full font-black uppercase bg-yellow-500 text-black shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-3">
+              {isPlaying ? <Pause fill="black" /> : <Play fill="black" />}
+              {isPlaying ? "PAUSAR SEÑAL" : "ENCENDER RADIO"}
             </button>
           </div>
 
@@ -116,20 +115,25 @@ const FabulosaRadioVIP = () => {
           </div>
         </div>
 
-        {/* COLUMNA DERECHA (IGUAL A VOICE OVER) */}
+        {/* COLUMNA DERECHA: SEÑAL DE TV VIP */}
         <div className="lg:col-span-8 flex flex-col">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-6 px-4">
             <Tv className="text-blue-500" size={28} />
-            <h2 className="text-2xl font-black uppercase tracking-widest">Señal de TV</h2>
+            <h2 className="text-2xl font-black uppercase tracking-widest">Fabulosa TV VIP</h2>
           </div>
 
-          <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
-            <video ref={videoRef} controls autoPlay muted className="w-full h-full object-cover" />
+          <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-black shadow-2xl group">
+            <video 
+              ref={videoRef} 
+              controls 
+              className="w-full h-full object-cover"
+              poster="/logo-fabulosa.png"
+            />
           </div>
 
           <div className="mt-8 grid grid-cols-2 gap-4">
              <div className="bg-zinc-900/50 aspect-video rounded-2xl border border-white/5 flex items-center justify-center text-gray-500 font-bold uppercase text-[10px]">Cámara en Vivo</div>
-             <div className="bg-zinc-900/50 aspect-video rounded-2xl border border-white/5 flex items-center justify-center text-gray-500 font-bold uppercase text-[10px]">Galería de Fotos</div>
+             <div className="bg-zinc-900/50 aspect-video rounded-2xl border border-white/5 flex items-center justify-center text-gray-500 font-bold uppercase text-[10px]">Galería VIP</div>
           </div>
         </div>
 
