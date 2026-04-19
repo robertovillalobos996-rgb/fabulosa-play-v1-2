@@ -1,12 +1,11 @@
 export const canalesTV = [
-    {
-        "id": "tv-1",
-        "title": "Fabulosa TV",
-        "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/logo_fabulosa.png"
-    },
-    {
+   {
+    "id": "fabulosa-tv-vip", 
+    "name": "Fabulosa TV VIP",
+    "logo": "/img/fabulosa.jpg", // He cambiado 'image' a 'logo' para dar consistencia con el resto
+    "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8" // Es la misma señal
+  },
+   {
         "id": "tv-2",
         "title": "88 Stereo",
         "url": "https://s1.tvdatta.com:3972/live/88stereolive.m3u8",
