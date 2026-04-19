@@ -11,7 +11,7 @@ const FabulosaRadioVIP = () => {
   // 📡 SEÑAL DE FABULOSA
   const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
-  // 🎙️ CAPA 1: TODA LA LISTA DE LOCUTORES (15 Minutos / Duck 20%)
+  // 🎙️ LISTA COMPLETA DE LOCUTORES (15 Minutos / Música al 20%)
   const LOCUTORES_POOL = [
     "/media/voces/tony-garcia-chat-interactivo.mp3",
     "/media/voces/tony-garcia-dale-volumen.mp3",
@@ -49,38 +49,41 @@ const FabulosaRadioVIP = () => {
     } else { loadVideo(); }
   }, []);
 
-  // 🎚️ FUNCIÓN MIXER PROFESIONAL
+  // 🎚️ FUNCIÓN MIXER CON DUCKING (BAJA EL VOLUMEN)
   const playMixerAudio = (path, musicDuckVolume) => {
     if (!isPlaying || isMuted || !audioPoolRef.current || !videoRef.current) return;
     
-    // Evita que se monten dos voces al mismo tiempo
+    // Si ya está sonando algo, no interrumpimos para no hacer ruido
     if (!audioPoolRef.current.paused) return;
 
     audioPoolRef.current.src = path;
-    videoRef.current.volume = musicDuckVolume; // Baja la música según el efecto
-    audioPoolRef.current.play();
+    // Efecto Mixer: Baja la música al nivel solicitado (0.2, 0.75 u 0.8)
+    videoRef.current.volume = musicDuckVolume; 
+    
+    audioPoolRef.current.play().catch(e => console.error("Error al sonar audio:", e));
 
     audioPoolRef.current.onended = () => {
-      if (videoRef.current) videoRef.current.volume = 1; // Vuelve al 100%
+      // Efecto Mixer: Sube la música al 100% cuando termina la voz
+      if (videoRef.current) videoRef.current.volume = 1;
     };
   };
 
-  // 🕒 SINCRONIZACIÓN DE TIEMPOS (Mixer Automático)
+  // 🕒 TEMPORIZADORES DE MÁQUINA (No se detienen)
   useEffect(() => {
     if (!isPlaying) return;
 
-    // 1. LOCUTORES (15 min / 900,000 ms) -> Música al 20%
+    // 1. LOCUTORES: Cada 15 minutos (900,000 ms) - Música al 20%
     const timerLocutores = setInterval(() => {
       const track = LOCUTORES_POOL[Math.floor(Math.random() * LOCUTORES_POOL.length)];
       playMixerAudio(track, 0.2);
     }, 900000);
 
-    // 2. SELLO RADIO (4 min / 240,000 ms) -> Música al 80%
+    // 2. SELLO FABULOSA: Cada 4 minutos (240,000 ms) - Música al 80%
     const timerSello = setInterval(() => {
       playMixerAudio("/media/voces/sello-fabulosa.mp3", 0.8);
     }, 240000);
 
-    // 3. SUBELE VOLUMEN (7 min / 420,000 ms) -> Música al 75%
+    // 3. SUBELE VOLUMEN: Cada 7 minutos (420,000 ms) - Música al 75%
     const timerSubele = setInterval(() => {
       playMixerAudio("/media/voces/subele-volumen.mp3", 0.75);
     }, 420000);
@@ -93,37 +96,38 @@ const FabulosaRadioVIP = () => {
   }, [isPlaying, isMuted]);
 
   const togglePlay = () => {
-    if (isPlaying) videoRef.current.pause();
-    else videoRef.current.play();
+    if (isPlaying) {
+        videoRef.current.pause();
+    } else {
+        videoRef.current.play();
+    }
     setIsPlaying(!isPlaying);
   };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden font-sans relative">
       
-      {/* 🎬 VIDEO DE FONDO YOUTUBE (Loop Infinito) */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+      {/* 🎬 FONDO YOUTUBE INFINITO (Máxima Resolución) */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <iframe 
           className="w-[300%] h-[300%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           src="https://www.youtube.com/embed/sC6m9xDMfso?autoplay=1&mute=1&loop=1&playlist=sC6m9xDMfso&controls=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0"
           frameBorder="0"
           allow="autoplay; encrypted-media"
         />
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       <nav className="relative z-50 p-6 flex items-center justify-between border-b border-white/5 bg-black/50 backdrop-blur-xl sticky top-0">
         <Link to="/premium" className="p-3 bg-white/5 rounded-full hover:bg-yellow-500 hover:text-black transition-all">
           <ArrowLeft size={24} />
         </Link>
-        <button onClick={() => playMixerAudio("/media/voces/sello-fabulosa.mp3", 0.7)} className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-full font-black uppercase text-xs shadow-lg">
+        <button onClick={() => playMixerAudio("/media/voces/sello-fabulosa.mp3", 0.7)} className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-full font-black uppercase text-xs shadow-xl">
           <Megaphone size={16} /> Sonar Sello ID
         </button>
       </nav>
 
       <div className="relative z-10 max-w-7xl mx-auto p-6 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
-        {/* LADO IZQUIERDO: LOGO Y CONTROLES */}
         <div className="lg:col-span-4 flex flex-col gap-8">
           <div className="bg-zinc-900/80 p-10 rounded-[3rem] border border-white/10 shadow-2xl flex justify-center items-center backdrop-blur-md">
             <img src="/logo-fabulosa.png" alt="Fabulosa" className="w-full max-w-[250px] object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]" />
@@ -151,7 +155,6 @@ const FabulosaRadioVIP = () => {
           </div>
         </div>
 
-        {/* LADO DERECHO: TV VIP */}
         <div className="lg:col-span-8 flex flex-col">
           <div className="flex items-center gap-3 mb-6 px-4">
             <Tv className="text-blue-500" size={28} />
@@ -165,7 +168,6 @@ const FabulosaRadioVIP = () => {
              <div className="bg-zinc-900/80 aspect-video rounded-2xl border border-white/10 flex items-center justify-center text-gray-400 font-bold uppercase text-[10px] backdrop-blur-md">Galería VIP</div>
           </div>
         </div>
-
       </div>
     </div>
   );
