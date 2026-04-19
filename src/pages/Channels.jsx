@@ -1,4 +1,4 @@
-// 🔥 CÓDIGO SAGRADO BLINDADO Y REPARADO: NO QUITAR NADA NI TOCAR LÓGICA 24/7 🔥
+// 🔥 CÓDIGO SAGRADO BLINDADO Y REPARADO 🔥
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -13,13 +13,12 @@ const Channels = () => {
   const [activeFilter, setActiveFilter] = useState("Todos");
   const [viewMode, setViewMode] = useState("grid"); // grid / list
 
-  // Generar filtros únicos basados en 'genre' (usamos la base de datos completa)
+  // Generar filtros únicos basados en 'genre'
   const filters = ["Todos", ...new Set(canalesTV.map(canal => canal.genre).filter(Boolean))];
 
   // Lógica de filtrado y búsqueda
   const filteredChannels = canalesTV.filter(canal => {
     if (!canal) return false;
-    // Buscamos por title (como está en la DB)
     const titleMatch = canal.title ? canal.title.toLowerCase().includes(searchTerm.toLowerCase()) : false;
     const filterMatch = activeFilter === "Todos" || (canal.genre === activeFilter);
     return titleMatch && filterMatch;
@@ -28,7 +27,7 @@ const Channels = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden relative">
       
-      {/* 🎬 FONDO DE VIDEO YOUTUBE DE FONDO (Loop Infinito, Máxima Resolución) */}
+      {/* 🎬 FONDO DE VIDEO YOUTUBE DE FONDO */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden scale-110">
         <iframe 
           className="w-full h-full object-cover"
@@ -60,7 +59,7 @@ const Channels = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="flex-1 bg-transparent text-white focus:outline-none text-sm"
                 />
-            }
+            </div> {/* 🔥 ¡AQUÍ ESTABA EL ERROR! Era un div cerrado, no una llave 🔥 */}
             
             <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
@@ -79,17 +78,13 @@ const Channels = () => {
             </div>
         </div>
 
-        {/* --- 🔥 AQUÍ ESTÁ LA CIRUGÍA MAYOR REPARADA --- */}
-        {/* Mantenemos el mapeo de filteredChannels, que usa la DB sagrada */}
+        {/* --- GRID DE CANALES --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence>
                 {filteredChannels.map((canal) => {
                     
-                    // --- 🔥 CASO ESPECIAL: CANAL FABULOSA NORMAL ---
-                    // Detectamos el ID normal 'fabulosa-tv' desde la DB
+                    // --- CASO ESPECIAL: CANAL FABULOSA NORMAL ---
                     if (canal.id === 'fabulosa-tv') {
-                        // Renderizamos la card especial COMPLETA, UNCOMMENTED Y CORREGIDA.
-                        // Esta card se ve igual que la VIP, pero carga la señal VMix y apunta al reproductor VIP blindado.
                         return (
                             <motion.div 
                                 key={canal.id}
@@ -100,19 +95,15 @@ const Channels = () => {
                                 whileHover={{ scale: 1.05 }}
                                 className="col-span-1 md:col-span-2 lg:col-span-3 relative group overflow-hidden rounded-[2rem]"
                             >
-                                {/* --- IMPLANTACIÓN VIP SAGRADA (Uncommented y Arreglada) --- */}
                                 <div className="relative w-full aspect-[21/9] rounded-[2rem] overflow-hidden bg-black/80 border border-white/10 shadow-2xl backdrop-blur-md flex group relative">
-                                    {/* 🎬 FONDO DE VIDEO YOUTUBE INTERNO (Loop Infinito) */}
                                     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden scale-110">
                                         <iframe className="w-full h-full object-cover" src="https://www.youtube.com/embed/JQczw3V7St8?autoplay=1&mute=1&loop=1&playlist=JQczw3V7St8&controls=0&modestbranding=1&rel=0" frameBorder="0" allow="autoplay; encrypted-media" />
                                         <div className="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-colors" />
                                     </div>
 
-                                    {/* Logo Fabulosa Gigante (Usamos canal.logo de la DB) */}
                                     <div className="relative z-10 p-8 flex-1 flex items-center gap-6">
                                         <img src={canal.logo} alt={canal.title} className="w-32 h-32 object-contain rounded-3xl bg-black border border-white/10 p-4 drop-shadow-2xl" />
                                         <div className="flex-1">
-                                            {/* Badge VIP (Mismo diseño sagrado) */}
                                             <div className="absolute top-4 right-4 bg-yellow-500/10 border border-yellow-500/30 p-2 rounded-xl flex items-center gap-2 text-yellow-500 text-[9px] font-black uppercase tracking-widest backdrop-blur-sm z-20 shadow-inner">
                                                 <Crown size={12} className="text-yellow-500 animate-pulse" /> VIP
                                             </div>
@@ -121,8 +112,6 @@ const Channels = () => {
                                         </div>
                                     </div>
 
-                                    {/* LÓGICA DE MEZCLA Y VOCES: El mixer 24/7 está blindado en PlayChannel.jsx, no aquí. */}
-                                    {/* Esta card solo apunta a /canales-tv/fabulosa-tv, que activa el reproductor blindado. */}
                                     <Link to={`/canales-tv/${canal.id}`} className="absolute inset-0 z-20"></Link>
                                     
                                     <div className="p-4 border-l border-white/10 flex items-center justify-center relative z-10">
@@ -131,13 +120,11 @@ const Channels = () => {
                                         </button>
                                     </div>
                                 </div>
-                                {/* --- FIN DE LA IMPLANTACIÓN VIP SAGRADA --- */}
                             </motion.div>
                         );
                     }
 
-                    // --- 🔥 CASO NORMAL: RESTO DE CANALES ---
-                    // Usamos propiedades estandarizadas (canal.title, canal.logo, canal.id)
+                    // --- CASO NORMAL: RESTO DE CANALES ---
                     return (
                         <motion.div 
                             key={canal.id}
@@ -149,16 +136,13 @@ const Channels = () => {
                             className="bg-gradient-to-br from-zinc-900/90 to-black p-6 rounded-[2rem] border border-white/10 shadow-2xl backdrop-blur-md flex flex-col group relative overflow-hidden"
                         >
                             <div className="flex items-center gap-5 mb-5 relative z-10">
-                                {/* Usamos canal.logo (Stándar sagrado) */}
                                 <img src={canal.logo} alt={canal.title} className="w-20 h-20 object-contain rounded-2xl bg-black border border-white/10 p-2 drop-shadow-xl" />
                                 <div className="flex-1">
-                                    {/* Usamos canal.title (Stándar sagrado) */}
                                     <h3 className="text-lg font-black uppercase tracking-tight text-white group-hover:text-yellow-500 transition-colors drop-shadow">{canal.title}</h3>
                                     <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 py-1 bg-white/5 rounded-full mt-1.5 inline-block">{canal.genre || 'Costa Rica'}</span>
                                 </div>
                             </div>
 
-                            {/* Enlace para reproducir usando canal.id (Stándar sagrado) */}
                             <Link to={`/canales-tv/${canal.id}`} className="mt-auto w-full py-4 bg-yellow-500 hover:bg-yellow-400 text-black rounded-full font-black uppercase text-xs text-center flex items-center justify-center gap-2 group-hover:scale-105 transition-all shadow-xl shadow-yellow-500/20">
                                 Ver Señal en Directo
                             </Link>
@@ -167,7 +151,6 @@ const Channels = () => {
                 })}
             </AnimatePresence>
         </div>
-        {/* --- 🔥 FIN DE LA CIRUGÍA MAYOR REPARADA --- */}
 
       </div>
     </div>
