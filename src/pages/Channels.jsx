@@ -1,17 +1,16 @@
-// 🔥 CÓDIGO SAGRADO BLINDADO Y REPARADO 🔥
+// 🔥 CÓDIGO SAGRADO REPARADO PARA VERCEL 🔥
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, ChevronDown, ListFilter, LayoutGrid, X, Tv, Crown } from 'lucide-react';
 
-// 🔥 RUTA CORREGIDA PARA VERCEL 🔥
-import canalesTV from "../canales_finales"; 
+// 🔥 LA SOLUCIÓN AL ERROR: Ruta corregida incluyendo la carpeta /data/ 🔥
+import { canalesTV } from "../data/canales_finales.js"; 
 
 const Channels = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilter, setActiveFilter] = useState("Todos");
-  const [viewMode, setViewMode] = useState("grid"); // grid / list
 
   // Generar filtros únicos basados en 'genre'
   const filters = ["Todos", ...new Set(canalesTV.map(canal => canal.genre).filter(Boolean))];
@@ -20,14 +19,16 @@ const Channels = () => {
   const filteredChannels = canalesTV.filter(canal => {
     if (!canal) return false;
     const titleMatch = canal.title ? canal.title.toLowerCase().includes(searchTerm.toLowerCase()) : false;
+    // Si no tiene title, buscamos por name (por si acaso)
+    const nameMatch = canal.name ? canal.name.toLowerCase().includes(searchTerm.toLowerCase()) : false;
     const filterMatch = activeFilter === "Todos" || (canal.genre === activeFilter);
-    return titleMatch && filterMatch;
+    return (titleMatch || nameMatch) && filterMatch;
   });
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden relative">
       
-      {/* 🎬 FONDO DE VIDEO YOUTUBE DE FONDO */}
+      {/* 🎬 FONDO DE VIDEO YOUTUBE */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden scale-110">
         <iframe 
           className="w-full h-full object-cover"
@@ -42,116 +43,89 @@ const Channels = () => {
             <Tv className="text-yellow-500" size={28} />
             <h1 className="text-2xl font-black uppercase tracking-widest text-white drop-shadow-lg">Fabulosa TV Directo</h1>
         </div>
-        <button className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-full font-black uppercase text-xs shadow-lg">
-            Guía de Programación
-        </button>
+        <div className="px-4 py-1 bg-yellow-500 text-black text-[10px] font-black rounded-full animate-pulse">
+            LIVE 24/7
+        </div>
       </nav>
 
       <div className="relative z-10 max-w-7xl mx-auto p-6 md:p-12">
-        {/* Barra de Búsqueda y Filtros */}
+        {/* Barra de Búsqueda */}
         <div className="bg-zinc-900 rounded-3xl p-6 border border-white/10 mb-8 shadow-2xl backdrop-blur-md relative z-10">
             <div className="flex items-center gap-4 border border-white/10 rounded-full px-5 py-3 bg-black/40 mb-6">
                 <Search className="text-gray-500" size={20} />
                 <input 
                     type="text" 
-                    placeholder="Buscar canal, emisora o género..." 
+                    placeholder="Buscar entre los 900+ canales..." 
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="flex-1 bg-transparent text-white focus:outline-none text-sm"
                 />
-            </div> {/* 🔥 ¡AQUÍ ESTABA EL ERROR! Era un div cerrado, no una llave 🔥 */}
+            </div>
             
-            <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                    {filters.map(filter => (
-                        <button 
-                            key={filter}
-                            onClick={() => setActiveFilter(filter)}
-                            className={`px-5 py-2 rounded-full font-bold text-xs uppercase transition-colors whitespace-nowrap ${
-                                activeFilter === filter ? 'bg-yellow-500 text-black shadow-lg' : 'bg-white/5 hover:bg-white/10'
-                            }`}
-                        >
-                            {filter}
-                        </button>
-                    ))}
-                </div>
+            <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                {filters.map(filter => (
+                    <button 
+                        key={filter}
+                        onClick={() => setActiveFilter(filter)}
+                        className={`px-5 py-2 rounded-full font-bold text-xs uppercase transition-colors whitespace-nowrap ${
+                            activeFilter === filter ? 'bg-yellow-500 text-black shadow-lg' : 'bg-white/5 hover:bg-white/10'
+                        }`}
+                    >
+                        {filter}
+                    </button>
+                ))}
             </div>
         </div>
 
-        {/* --- GRID DE CANALES --- */}
+        {/* GRID DE CANALES */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence>
                 {filteredChannels.map((canal) => {
-                    
-                    // --- CASO ESPECIAL: CANAL FABULOSA NORMAL ---
-                    if (canal.id === 'fabulosa-tv') {
-                        return (
-                            <motion.div 
-                                key={canal.id}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.3 }}
-                                whileHover={{ scale: 1.05 }}
-                                className="col-span-1 md:col-span-2 lg:col-span-3 relative group overflow-hidden rounded-[2rem]"
-                            >
-                                <div className="relative w-full aspect-[21/9] rounded-[2rem] overflow-hidden bg-black/80 border border-white/10 shadow-2xl backdrop-blur-md flex group relative">
-                                    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden scale-110">
-                                        <iframe className="w-full h-full object-cover" src="https://www.youtube.com/embed/JQczw3V7St8?autoplay=1&mute=1&loop=1&playlist=JQczw3V7St8&controls=0&modestbranding=1&rel=0" frameBorder="0" allow="autoplay; encrypted-media" />
-                                        <div className="absolute inset-0 bg-black/70 group-hover:bg-black/50 transition-colors" />
-                                    </div>
+                    // Si es el VIP o el principal de Fabulosa
+                    const isVip = canal.id === 'fabulosa-tv-vip' || canal.id === 'fabulosa-tv';
 
-                                    <div className="relative z-10 p-8 flex-1 flex items-center gap-6">
-                                        <img src={canal.logo} alt={canal.title} className="w-32 h-32 object-contain rounded-3xl bg-black border border-white/10 p-4 drop-shadow-2xl" />
-                                        <div className="flex-1">
-                                            <div className="absolute top-4 right-4 bg-yellow-500/10 border border-yellow-500/30 p-2 rounded-xl flex items-center gap-2 text-yellow-500 text-[9px] font-black uppercase tracking-widest backdrop-blur-sm z-20 shadow-inner">
-                                                <Crown size={12} className="text-yellow-500 animate-pulse" /> VIP
-                                            </div>
-                                            <h2 className="text-3xl font-black uppercase tracking-widest text-white group-hover:text-yellow-500 transition-colors drop-shadow-2xl">Fabulosa TV Directo</h2>
-                                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 py-1 bg-white/5 rounded-full mt-1.5 inline-block">{canal.genre || 'Costa Rica'}</span>
-                                        </div>
-                                    </div>
-
-                                    <Link to={`/canales-tv/${canal.id}`} className="absolute inset-0 z-20"></Link>
-                                    
-                                    <div className="p-4 border-l border-white/10 flex items-center justify-center relative z-10">
-                                        <button className="p-4 bg-yellow-500 rounded-full text-black hover:scale-110 transition-transform shadow-xl group-hover:bg-yellow-400">
-                                            <Tv size={24} />
-                                        </button>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        );
-                    }
-
-                    // --- CASO NORMAL: RESTO DE CANALES ---
                     return (
                         <motion.div 
                             key={canal.id}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9 }}
-                            transition={{ duration: 0.3 }}
                             whileHover={{ scale: 1.05 }}
-                            className="bg-gradient-to-br from-zinc-900/90 to-black p-6 rounded-[2rem] border border-white/10 shadow-2xl backdrop-blur-md flex flex-col group relative overflow-hidden"
+                            className={`p-6 rounded-[2rem] border border-white/10 shadow-2xl backdrop-blur-md flex flex-col group relative overflow-hidden ${isVip ? 'bg-gradient-to-br from-yellow-600/20 to-black' : 'bg-zinc-900/90'}`}
                         >
+                            {isVip && (
+                                <div className="absolute top-4 right-4 bg-yellow-500 text-black p-1 px-2 rounded-lg flex items-center gap-1 text-[9px] font-black uppercase z-20">
+                                    <Crown size={12} /> VIP
+                                </div>
+                            )}
+
                             <div className="flex items-center gap-5 mb-5 relative z-10">
-                                <img src={canal.logo} alt={canal.title} className="w-20 h-20 object-contain rounded-2xl bg-black border border-white/10 p-2 drop-shadow-xl" />
+                                <img 
+                                    src={canal.logo || canal.image || '/img/fabulosa.jpg'} 
+                                    alt={canal.title} 
+                                    className="w-20 h-20 object-contain rounded-2xl bg-black border border-white/10 p-2 shadow-xl" 
+                                />
                                 <div className="flex-1">
-                                    <h3 className="text-lg font-black uppercase tracking-tight text-white group-hover:text-yellow-500 transition-colors drop-shadow">{canal.title}</h3>
-                                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 py-1 bg-white/5 rounded-full mt-1.5 inline-block">{canal.genre || 'Costa Rica'}</span>
+                                    <h3 className="text-lg font-black uppercase tracking-tight text-white group-hover:text-yellow-500 transition-colors">
+                                        {canal.title || canal.name}
+                                    </h3>
+                                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 py-1 bg-white/5 rounded-full mt-1.5 inline-block">
+                                        {canal.genre || 'Costa Rica'}
+                                    </span>
                                 </div>
                             </div>
 
-                            <Link to={`/canales-tv/${canal.id}`} className="mt-auto w-full py-4 bg-yellow-500 hover:bg-yellow-400 text-black rounded-full font-black uppercase text-xs text-center flex items-center justify-center gap-2 group-hover:scale-105 transition-all shadow-xl shadow-yellow-500/20">
-                                Ver Señal en Directo
+                            <Link 
+                                to={`/canales-tv/${canal.id}`} 
+                                className="mt-auto w-full py-4 bg-yellow-500 hover:bg-yellow-400 text-black rounded-full font-black uppercase text-xs text-center flex items-center justify-center gap-2 transition-all shadow-xl shadow-yellow-500/20"
+                            >
+                                <Play size={16} fill="black" /> Ver Señal
                             </Link>
                         </motion.div>
                     );
                 })}
             </AnimatePresence>
         </div>
-
       </div>
     </div>
   );
