@@ -11,23 +11,33 @@ const FabulosaRadioVIP = () => {
   // 📡 SEÑAL DE FABULOSA (HLS)
   const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
-  // 🎙️ LA ARTILLERÍA COMPLETA: LOS 12 LOCUTORES SAGRADOS (No tocar)
+  // 🎙️ LA ARTILLERÍA COMPLETA Y ACTUALIZADA: LOS 21 LOCUTORES SAGRADOS (No tocar)
+  // Se han incluido todas las voces nuevas y existentes solicitadas para rotación 24h.
   const LOCUTORES_POOL = [
-    "/media/voces/tony-garcia-chat-interactivo.mp3",
-    "/media/voces/tony-garcia-dale-volumen.mp3",
-    "/media/voces/tony-garcia-que-buena-nota.mp3",
-    "/media/voces/tony-garcia-saludos-amas-de-casa.mp3",
-    "/media/voces/tony-garcia-chat-en-vivo.mp3",
-    "/media/voces/inicio.mp3",
-    "/media/voces/miguel-bienvenidos.mp3",
     "/media/voces/miguel-voz-lenta.mp3",
     "/media/voces/rosalia-1.mp3",
     "/media/voces/rosalia-2.mp3",
     "/media/voces/rosalia-3.mp3",
-    "/media/voces/claus-encant-bueno.mp3"
+    "/media/voces/claus-encant-bueno.mp3",
+    "/media/voces/ElevenLabs_2026-04-19T17_23_11_Zabra - Energetic and Engaging Announcer_pvc_sp103_s100_sb100_se0_b_m2.mp3",
+    "/media/voces/ElevenLabs_2026-04-19T17_24_42_Juan Carlos - Confident and Upbeat_pvc_sp100_s50_sb75_se0_b_m2.mp3",
+    "/media/voces/ElevenLabs_2026-04-19T17_26_19_Cesar Rodriguez - Young and Energetic_pvc_sp100_s50_sb68_se0_b_m2.mp3",
+    "/media/voces/ElevenLabs_2026-04-19T17_27_29_Cesar Rodriguez - Young and Energetic_pvc_sp100_s50_sb68_se0_b_m2.mp3",
+    "/media/voces/ElevenLabs_2026-04-19T17_29_50_Claus Encant - Motivational and Urgent_pvc_sp109_s50_sb100_se0_b_m2.mp3",
+    "/media/voces/ElevenLabs_2026-04-19T17_31_12_Cesar Rodriguez - Young and Energetic_pvc_sp100_s50_sb68_se0_b_m2.mp3",
+    "/media/voces/ElevenLabs_2026-04-19T17_35_30_Sandra - Dynamic, Engaging and Energetic_pvc_sp108_s50_sb100_se0_b_m2.mp3",
+    "/media/voces/ElevenLabs_2026-04-19T17_37_14_Cesar Rodriguez - Young and Energetic_pvc_sp100_s50_sb68_se0_b_m2.mp3",
+    "/media/voces/ElevenLabs_2026-04-19T17_38_50_Zabra - Energetic and Engaging Announcer_pvc_sp103_s100_sb100_se0_b_m2.mp3",
+    "/media/voces/inicio.mp3",
+    "/media/voces/miguel-bienvenidos.mp3",
+    "/media/voces/tony-garcia-dale-volumen.mp3",
+    "/media/voces/tony-garcia-que-buena-nota.mp3",
+    "/media/voces/tony-garcia-saludos-amas-de-casa.mp3",
+    "/media/voces/tony-garcia-chat-en-vivo.mp3",
+    "/media/voces/tony-garcia-chat-interactivo.mp3"
   ];
 
-  // 📱 DATOS DE CONTACTO (Rellenados por solicitud, sagrados también)
+  // 📱 DATOS DE CONTACTO
   const CONTACTO = {
     whatsapp: "https://wa.me/50664035313",
     email: "mailto:fabulosaplay@gmail.com",
@@ -39,9 +49,10 @@ const FabulosaRadioVIP = () => {
     // Si la radio no está encendida o ya hay una voz sonando, esperamos
     if (!isPlaying || !audioPoolRef.current || !videoRef.current) return;
     
-    // Evita montajes de voces
+    // Evita montajes de voces (mecánica sagrada)
     if (!audioPoolRef.current.paused) return; 
 
+    console.log("Reproduciendo locución/sello: " + path);
     audioPoolRef.current.src = path;
     
     // 1. BAJA LA MÚSICA AL NIVEL SOLICITADO (Efecto Mixer)
@@ -63,10 +74,10 @@ const FabulosaRadioVIP = () => {
   useEffect(() => {
     if (!isPlaying) return;
 
-    // Sello de confirmación inicial a los 2 segundos
+    // Sello de confirmación inicial a los 2 segundos para verificar mixer
     setTimeout(() => playMixerAudio("/media/voces/sello-fabulosa.mp3", 0.8), 2000);
 
-    // 1. TEMPORIZADOR LOCUTORES (15 min / 900,000 ms) -> Música al 20%
+    // 1. TEMPORIZADOR LOCUTORES (15 min / 900,000 ms) -> Música al 20% (Usa el POOL actualizado de 21 voces)
     const timerLocutores = setInterval(() => {
       const track = LOCUTORES_POOL[Math.floor(Math.random() * LOCUTORES_POOL.length)];
       playMixerAudio(track, 0.2);
@@ -164,10 +175,9 @@ const FabulosaRadioVIP = () => {
             </button>
           </div>
 
-          {/* ICONOS SOCIALES ANIMADOS ORIGINALES RELLENADOS (Mantenemos colores y movimiento) */}
+          {/* ICONOS SOCIALES ANIMADOS ORIGINALES RELLENADOS */}
           <div className="flex gap-4 justify-center">
-            
-            {/* WhatsApp - +506 64035313 */}
+            {/* WhatsApp */}
             <a href={CONTACTO.whatsapp} target="_blank" rel="noopener noreferrer" 
                className="flex-1 bg-zinc-900/80 p-4 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-colors shadow-lg border border-white/5 text-center group">
               <svg viewBox="0 0 24 24" width="32" height="32" fill="#25D366" className="animate-bounce group-hover:scale-110 transition-transform">
@@ -175,7 +185,7 @@ const FabulosaRadioVIP = () => {
               </svg>
             </a>
 
-            {/* Gmail - fabulosaplay@gmail.com */}
+            {/* Gmail */}
             <a href={CONTACTO.email} target="_blank" rel="noopener noreferrer"
                className="flex-1 bg-zinc-900/80 p-4 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-colors shadow-lg border border-white/5 text-center group">
               <svg viewBox="0 0 24 24" width="32" height="32" className="animate-bounce group-hover:scale-110 transition-transform" style={{animationDelay: "100ms"}}>
@@ -183,7 +193,7 @@ const FabulosaRadioVIP = () => {
               </svg>
             </a>
 
-            {/* Web - www.fabulosaplay.online */}
+            {/* Web */}
             <a href={CONTACTO.web} target="_blank" rel="noopener noreferrer"
                className="flex-1 bg-zinc-900/80 p-4 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-colors shadow-lg border border-white/5 text-center group">
               <Globe size={32} color="#4285F4" className="animate-bounce group-hover:scale-110 transition-transform" style={{animationDelay: "200ms"}} />
