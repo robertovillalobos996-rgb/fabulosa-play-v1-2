@@ -1,11 +1,12 @@
-// 🔥 CÓDIGO SAGRADO REPARADO PARA VERCEL 🔥
+// 🔥 CÓDIGO SAGRADO BLINDADO Y REPARADO 🔥
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Search, ChevronDown, ListFilter, LayoutGrid, X, Tv, Crown } from 'lucide-react';
+// He agregado 'Play' aquí para que la consola no tire error
+import { Search, Tv, Crown, Play } from 'lucide-react';
 
-// 🔥 LA SOLUCIÓN AL ERROR: Ruta corregida incluyendo la carpeta /data/ 🔥
+// 🔥 RUTA CORREGIDA: Apuntando a la carpeta /data/ como me indicó
 import { canalesTV } from "../data/canales_finales.js"; 
 
 const Channels = () => {
@@ -19,7 +20,6 @@ const Channels = () => {
   const filteredChannels = canalesTV.filter(canal => {
     if (!canal) return false;
     const titleMatch = canal.title ? canal.title.toLowerCase().includes(searchTerm.toLowerCase()) : false;
-    // Si no tiene title, buscamos por name (por si acaso)
     const nameMatch = canal.name ? canal.name.toLowerCase().includes(searchTerm.toLowerCase()) : false;
     const filterMatch = activeFilter === "Todos" || (canal.genre === activeFilter);
     return (titleMatch || nameMatch) && filterMatch;
@@ -34,6 +34,7 @@ const Channels = () => {
           className="w-full h-full object-cover"
           src="https://www.youtube.com/embed/JQczw3V7St8?autoplay=1&mute=1&loop=1&playlist=JQczw3V7St8&controls=0&modestbranding=1&rel=0"
           frameBorder="0" allow="autoplay; encrypted-media"
+          title="Fondo"
         />
         <div className="absolute inset-0 bg-black/70" />
       </div>
@@ -44,18 +45,18 @@ const Channels = () => {
             <h1 className="text-2xl font-black uppercase tracking-widest text-white drop-shadow-lg">Fabulosa TV Directo</h1>
         </div>
         <div className="px-4 py-1 bg-yellow-500 text-black text-[10px] font-black rounded-full animate-pulse">
-            LIVE 24/7
+            900+ CANALES LIVE
         </div>
       </nav>
 
       <div className="relative z-10 max-w-7xl mx-auto p-6 md:p-12">
         {/* Barra de Búsqueda */}
-        <div className="bg-zinc-900 rounded-3xl p-6 border border-white/10 mb-8 shadow-2xl backdrop-blur-md relative z-10">
+        <div className="bg-zinc-900/90 rounded-3xl p-6 border border-white/10 mb-8 shadow-2xl backdrop-blur-md">
             <div className="flex items-center gap-4 border border-white/10 rounded-full px-5 py-3 bg-black/40 mb-6">
                 <Search className="text-gray-500" size={20} />
                 <input 
                     type="text" 
-                    placeholder="Buscar entre los 900+ canales..." 
+                    placeholder="Buscar canal o emisora..." 
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="flex-1 bg-transparent text-white focus:outline-none text-sm"
@@ -81,7 +82,6 @@ const Channels = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence>
                 {filteredChannels.map((canal) => {
-                    // Si es el VIP o el principal de Fabulosa
                     const isVip = canal.id === 'fabulosa-tv-vip' || canal.id === 'fabulosa-tv';
 
                     return (
@@ -102,7 +102,7 @@ const Channels = () => {
                             <div className="flex items-center gap-5 mb-5 relative z-10">
                                 <img 
                                     src={canal.logo || canal.image || '/img/fabulosa.jpg'} 
-                                    alt={canal.title} 
+                                    alt={canal.title || canal.name} 
                                     className="w-20 h-20 object-contain rounded-2xl bg-black border border-white/10 p-2 shadow-xl" 
                                 />
                                 <div className="flex-1">
@@ -110,7 +110,7 @@ const Channels = () => {
                                         {canal.title || canal.name}
                                     </h3>
                                     <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 py-1 bg-white/5 rounded-full mt-1.5 inline-block">
-                                        {canal.genre || 'Costa Rica'}
+                                        {canal.genre || 'Variado'}
                                     </span>
                                 </div>
                             </div>
