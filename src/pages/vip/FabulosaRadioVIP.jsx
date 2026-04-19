@@ -22,7 +22,7 @@ const FabulosaRadioVIP = () => {
     { path: "/media/voces/tony-garcia-chat-en-vivo.mp3", duck: 0.15 }
   ];
 
-  // 📺 CARGA DE SEÑAL HLS (PARA LA TV Y RADIO)
+  // 📺 CARGA DE SEÑAL HLS (PARA TV Y RADIO)
   useEffect(() => {
     const loadVideo = () => {
       if (window.Hls && window.Hls.isSupported()) {
@@ -44,29 +44,35 @@ const FabulosaRadioVIP = () => {
     } else { loadVideo(); }
   }, []);
 
-  // 🎙️ ACTIVADOR DE LOCUTORES (SU LÓGICA DE DUCKING)
+  // 🎙️ LÓGICA DE LOCUTORES AUTOMÁTICOS (DUCKING)
   useEffect(() => {
     const playRandomAudio = () => {
       if (!isPlaying || isMuted) return;
-      
       const track = AUDIO_POOL[Math.floor(Math.random() * AUDIO_POOL.length)];
-      if (audioPoolRef.current && videoRef.current) {
-        audioPoolRef.current.src = track.path;
-        
-        // Baja el volumen de la música para que hable el locutor
-        videoRef.current.volume = track.duck;
-        audioPoolRef.current.play();
-        
-        audioPoolRef.current.onended = () => {
-          // Sube el volumen cuando termina de hablar
-          if (videoRef.current) videoRef.current.volume = 1;
-        };
-      }
+      playSpecificAudio(track);
     };
 
     const interval = setInterval(playRandomAudio, 300000); // Cada 5 minutos
     return () => clearInterval(interval);
   }, [isPlaying, isMuted]);
+
+  // Función para procesar cualquier audio con ducking
+  const playSpecificAudio = (track) => {
+    if (audioPoolRef.current && videoRef.current) {
+      audioPoolRef.current.src = track.path;
+      videoRef.current.volume = track.duck; // Baja música
+      audioPoolRef.current.play();
+      audioPoolRef.current.onended = () => {
+        if (videoRef.current) videoRef.current.volume = 1; // Sube música
+      };
+    }
+  };
+
+  // 💥 FUNCIÓN DEL BOTÓN "SELLO ID"
+  const triggerManualSello = () => {
+    const selloTrack = { path: "/media/voces/sello-fabulosa.mp3", duck: 0.6 };
+    playSpecificAudio(selloTrack);
+  };
 
   const togglePlay = () => {
     if (isPlaying) videoRef.current.pause();
@@ -80,17 +86,16 @@ const FabulosaRadioVIP = () => {
         <Link to="/premium" className="p-3 bg-white/5 rounded-full hover:bg-yellow-500 hover:text-black transition-all">
           <ArrowLeft size={24} />
         </Link>
-        <button className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-full font-black uppercase text-xs transition-colors shadow-lg shadow-blue-500/20">
+        {/* BOTÓN DE SELLO ID CONECTADO A LA LÓGICA */}
+        <button onClick={triggerManualSello} className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-full font-black uppercase text-xs transition-colors shadow-lg">
           <Megaphone size={16} /> Sonar Sello ID
         </button>
       </nav>
 
       <div className="max-w-7xl mx-auto p-6 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
-        {/* COLUMNA IZQUIERDA: LOGO Y RADIO VIP */}
         <div className="lg:col-span-4 flex flex-col gap-8">
-          <div className="bg-zinc-900/50 p-10 rounded-[3rem] border border-white/5 shadow-2xl flex justify-center items-center backdrop-blur-sm">
-            <img src="/logo-fabulosa.png" alt="Fabulosa" className="w-full max-w-[250px] object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]" />
+          <div className="bg-zinc-900/50 p-10 rounded-[3rem] border border-white/5 shadow-2xl flex justify-center items-center">
+            <img src="/logo-fabulosa.png" alt="Fabulosa" className="w-full max-w-[250px] object-contain" />
           </div>
 
           <div className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-[2rem] border border-white/10 shadow-2xl">
@@ -115,28 +120,19 @@ const FabulosaRadioVIP = () => {
           </div>
         </div>
 
-        {/* COLUMNA DERECHA: SEÑAL DE TV VIP */}
         <div className="lg:col-span-8 flex flex-col">
           <div className="flex items-center gap-3 mb-6 px-4">
             <Tv className="text-blue-500" size={28} />
             <h2 className="text-2xl font-black uppercase tracking-widest">Fabulosa TV VIP</h2>
           </div>
-
-          <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-black shadow-2xl group">
-            <video 
-              ref={videoRef} 
-              controls 
-              className="w-full h-full object-cover"
-              poster="/logo-fabulosa.png"
-            />
+          <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
+            <video ref={videoRef} controls className="w-full h-full object-cover" poster="/logo-fabulosa.png" />
           </div>
-
           <div className="mt-8 grid grid-cols-2 gap-4">
              <div className="bg-zinc-900/50 aspect-video rounded-2xl border border-white/5 flex items-center justify-center text-gray-500 font-bold uppercase text-[10px]">Cámara en Vivo</div>
              <div className="bg-zinc-900/50 aspect-video rounded-2xl border border-white/5 flex items-center justify-center text-gray-500 font-bold uppercase text-[10px]">Galería VIP</div>
           </div>
         </div>
-
       </div>
     </div>
   );
