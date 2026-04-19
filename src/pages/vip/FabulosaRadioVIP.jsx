@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Play, Pause, Radio, Tv, Instagram, Globe, Mail, Download, Megaphone } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const FabulosaRadioVIP = () => {
   const videoRef = useRef(null);
@@ -12,7 +11,7 @@ const FabulosaRadioVIP = () => {
   // 📡 SEÑAL DE FABULOSA
   const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
-  // 🎙️ CAPA 1: LOCUTORES (15 Minutos / Baja música al 20%)
+  // 🎙️ CAPA 1: TODA LA LISTA DE LOCUTORES (15 Minutos / Duck 20%)
   const LOCUTORES_POOL = [
     "/media/voces/tony-garcia-chat-interactivo.mp3",
     "/media/voces/tony-garcia-dale-volumen.mp3",
@@ -50,15 +49,15 @@ const FabulosaRadioVIP = () => {
     } else { loadVideo(); }
   }, []);
 
-  // 🎚️ FUNCIÓN CENTRAL DE MEZCLA (MIXER)
+  // 🎚️ FUNCIÓN MIXER PROFESIONAL
   const playMixerAudio = (path, musicDuckVolume) => {
     if (!isPlaying || isMuted || !audioPoolRef.current || !videoRef.current) return;
     
-    // Si ya está sonando algo, no interrumpimos
+    // Evita que se monten dos voces al mismo tiempo
     if (!audioPoolRef.current.paused) return;
 
     audioPoolRef.current.src = path;
-    videoRef.current.volume = musicDuckVolume; // Baja la música al nivel solicitado
+    videoRef.current.volume = musicDuckVolume; // Baja la música según el efecto
     audioPoolRef.current.play();
 
     audioPoolRef.current.onended = () => {
@@ -66,22 +65,22 @@ const FabulosaRadioVIP = () => {
     };
   };
 
-  // 🕒 TEMPORIZADORES AUTOMÁTICOS
+  // 🕒 SINCRONIZACIÓN DE TIEMPOS (Mixer Automático)
   useEffect(() => {
     if (!isPlaying) return;
 
-    // 1. LOCUTORES: Cada 15 minutos (900,000 ms) - Música al 20%
+    // 1. LOCUTORES (15 min / 900,000 ms) -> Música al 20%
     const timerLocutores = setInterval(() => {
       const track = LOCUTORES_POOL[Math.floor(Math.random() * LOCUTORES_POOL.length)];
       playMixerAudio(track, 0.2);
     }, 900000);
 
-    // 2. SELLO FABULOSA: Cada 4 minutos (240,000 ms) - Música al 80%
+    // 2. SELLO RADIO (4 min / 240,000 ms) -> Música al 80%
     const timerSello = setInterval(() => {
       playMixerAudio("/media/voces/sello-fabulosa.mp3", 0.8);
     }, 240000);
 
-    // 3. SUBELE VOLUMEN: Cada 7 minutos (420,000 ms) - Música al 75%
+    // 3. SUBELE VOLUMEN (7 min / 420,000 ms) -> Música al 75%
     const timerSubele = setInterval(() => {
       playMixerAudio("/media/voces/subele-volumen.mp3", 0.75);
     }, 420000);
@@ -100,8 +99,20 @@ const FabulosaRadioVIP = () => {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white overflow-x-hidden font-sans">
-      <nav className="p-6 flex items-center justify-between border-b border-white/5 bg-black/50 backdrop-blur-xl sticky top-0 z-50">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden font-sans relative">
+      
+      {/* 🎬 VIDEO DE FONDO YOUTUBE (Loop Infinito) */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <iframe 
+          className="w-[300%] h-[300%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          src="https://www.youtube.com/embed/sC6m9xDMfso?autoplay=1&mute=1&loop=1&playlist=sC6m9xDMfso&controls=0&modestbranding=1&rel=0&iv_load_policy=3&showinfo=0"
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+
+      <nav className="relative z-50 p-6 flex items-center justify-between border-b border-white/5 bg-black/50 backdrop-blur-xl sticky top-0">
         <Link to="/premium" className="p-3 bg-white/5 rounded-full hover:bg-yellow-500 hover:text-black transition-all">
           <ArrowLeft size={24} />
         </Link>
@@ -110,13 +121,15 @@ const FabulosaRadioVIP = () => {
         </button>
       </nav>
 
-      <div className="max-w-7xl mx-auto p-6 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="relative z-10 max-w-7xl mx-auto p-6 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        {/* LADO IZQUIERDO: LOGO Y CONTROLES */}
         <div className="lg:col-span-4 flex flex-col gap-8">
-          <div className="bg-zinc-900/50 p-10 rounded-[3rem] border border-white/5 shadow-2xl flex justify-center items-center">
-            <img src="/logo-fabulosa.png" alt="Fabulosa" className="w-full max-w-[250px] object-contain" />
+          <div className="bg-zinc-900/80 p-10 rounded-[3rem] border border-white/10 shadow-2xl flex justify-center items-center backdrop-blur-md">
+            <img src="/logo-fabulosa.png" alt="Fabulosa" className="w-full max-w-[250px] object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]" />
           </div>
 
-          <div className="bg-gradient-to-br from-zinc-900 to-black p-8 rounded-[2rem] border border-white/10 shadow-2xl">
+          <div className="bg-gradient-to-br from-zinc-900/90 to-black/90 p-8 rounded-[2rem] border border-white/10 shadow-2xl backdrop-blur-md">
             <div className="flex items-center gap-4 mb-6">
               <Radio className="text-yellow-500" size={30} />
               <h2 className="text-xl font-black uppercase tracking-widest text-yellow-500">Radio VIP</h2>
@@ -138,19 +151,21 @@ const FabulosaRadioVIP = () => {
           </div>
         </div>
 
+        {/* LADO DERECHO: TV VIP */}
         <div className="lg:col-span-8 flex flex-col">
           <div className="flex items-center gap-3 mb-6 px-4">
             <Tv className="text-blue-500" size={28} />
             <h2 className="text-2xl font-black uppercase tracking-widest text-white">Fabulosa TV VIP</h2>
           </div>
-          <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
+          <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-black/80 shadow-2xl backdrop-blur-sm">
             <video ref={videoRef} controls className="w-full h-full object-cover" poster="/logo-fabulosa.png" />
           </div>
           <div className="mt-8 grid grid-cols-2 gap-4">
-             <div className="bg-zinc-900/50 aspect-video rounded-2xl border border-white/5 flex items-center justify-center text-gray-500 font-bold uppercase text-[10px]">Cámara en Vivo</div>
-             <div className="bg-zinc-900/50 aspect-video rounded-2xl border border-white/5 flex items-center justify-center text-gray-500 font-bold uppercase text-[10px]">Galería VIP</div>
+             <div className="bg-zinc-900/80 aspect-video rounded-2xl border border-white/10 flex items-center justify-center text-gray-400 font-bold uppercase text-[10px] backdrop-blur-md">Estudio en Vivo</div>
+             <div className="bg-zinc-900/80 aspect-video rounded-2xl border border-white/10 flex items-center justify-center text-gray-400 font-bold uppercase text-[10px] backdrop-blur-md">Galería VIP</div>
           </div>
         </div>
+
       </div>
     </div>
   );
