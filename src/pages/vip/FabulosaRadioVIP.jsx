@@ -9,20 +9,26 @@ const FabulosaRadioVIP = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
 
-  // 📡 SU SEÑAL REAL (FABULOSA)
+  // 📡 SEÑAL DE FABULOSA
   const STREAM_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
-  // 🎙️ SU LÓGICA DE VOCES Y SELLOS
-  const AUDIO_POOL = [
-    { path: "/media/voces/subele-volumen.mp3", duck: 0.7 },
-    { path: "/media/voces/sello-fabulosa.mp3", duck: 0.7 },
-    { path: "/media/voces/tony-garcia-dale-volumen.mp3", duck: 0.15 },
-    { path: "/media/voces/tony-garcia-que-buena-nota.mp3", duck: 0.15 },
-    { path: "/media/voces/tony-garcia-saludos-amas-de-casa.mp3", duck: 0.15 },
-    { path: "/media/voces/tony-garcia-chat-en-vivo.mp3", duck: 0.15 }
+  // 🎙️ CAPA 1: LOCUTORES (15 Minutos / Baja música al 20%)
+  const LOCUTORES_POOL = [
+    "/media/voces/tony-garcia-chat-interactivo.mp3",
+    "/media/voces/tony-garcia-dale-volumen.mp3",
+    "/media/voces/tony-garcia-que-buena-nota.mp3",
+    "/media/voces/tony-garcia-saludos-amas-de-casa.mp3",
+    "/media/voces/tony-garcia-chat-en-vivo.mp3",
+    "/media/voces/inicio.mp3",
+    "/media/voces/miguel-bienvenidos.mp3",
+    "/media/voces/miguel-voz-lenta.mp3",
+    "/media/voces/rosalia-1.mp3",
+    "/media/voces/rosalia-2.mp3",
+    "/media/voces/rosalia-3.mp3",
+    "/media/voces/claus-encant-bueno.mp3"
   ];
 
-  // 📺 CARGA DE SEÑAL HLS (PARA TV Y RADIO)
+  // 📺 CARGA DE SEÑAL HLS
   useEffect(() => {
     const loadVideo = () => {
       if (window.Hls && window.Hls.isSupported()) {
@@ -44,35 +50,48 @@ const FabulosaRadioVIP = () => {
     } else { loadVideo(); }
   }, []);
 
-  // 🎙️ LÓGICA DE LOCUTORES AUTOMÁTICOS (DUCKING)
-  useEffect(() => {
-    const playRandomAudio = () => {
-      if (!isPlaying || isMuted) return;
-      const track = AUDIO_POOL[Math.floor(Math.random() * AUDIO_POOL.length)];
-      playSpecificAudio(track);
+  // 🎚️ FUNCIÓN CENTRAL DE MEZCLA (MIXER)
+  const playMixerAudio = (path, musicDuckVolume) => {
+    if (!isPlaying || isMuted || !audioPoolRef.current || !videoRef.current) return;
+    
+    // Si ya está sonando algo, no interrumpimos
+    if (!audioPoolRef.current.paused) return;
+
+    audioPoolRef.current.src = path;
+    videoRef.current.volume = musicDuckVolume; // Baja la música al nivel solicitado
+    audioPoolRef.current.play();
+
+    audioPoolRef.current.onended = () => {
+      if (videoRef.current) videoRef.current.volume = 1; // Vuelve al 100%
     };
+  };
 
-    const interval = setInterval(playRandomAudio, 300000); // Cada 5 minutos
-    return () => clearInterval(interval);
+  // 🕒 TEMPORIZADORES AUTOMÁTICOS
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    // 1. LOCUTORES: Cada 15 minutos (900,000 ms) - Música al 20%
+    const timerLocutores = setInterval(() => {
+      const track = LOCUTORES_POOL[Math.floor(Math.random() * LOCUTORES_POOL.length)];
+      playMixerAudio(track, 0.2);
+    }, 900000);
+
+    // 2. SELLO FABULOSA: Cada 4 minutos (240,000 ms) - Música al 80%
+    const timerSello = setInterval(() => {
+      playMixerAudio("/media/voces/sello-fabulosa.mp3", 0.8);
+    }, 240000);
+
+    // 3. SUBELE VOLUMEN: Cada 7 minutos (420,000 ms) - Música al 75%
+    const timerSubele = setInterval(() => {
+      playMixerAudio("/media/voces/subele-volumen.mp3", 0.75);
+    }, 420000);
+
+    return () => {
+      clearInterval(timerLocutores);
+      clearInterval(timerSello);
+      clearInterval(timerSubele);
+    };
   }, [isPlaying, isMuted]);
-
-  // Función para procesar cualquier audio con ducking
-  const playSpecificAudio = (track) => {
-    if (audioPoolRef.current && videoRef.current) {
-      audioPoolRef.current.src = track.path;
-      videoRef.current.volume = track.duck; // Baja música
-      audioPoolRef.current.play();
-      audioPoolRef.current.onended = () => {
-        if (videoRef.current) videoRef.current.volume = 1; // Sube música
-      };
-    }
-  };
-
-  // 💥 FUNCIÓN DEL BOTÓN "SELLO ID"
-  const triggerManualSello = () => {
-    const selloTrack = { path: "/media/voces/sello-fabulosa.mp3", duck: 0.6 };
-    playSpecificAudio(selloTrack);
-  };
 
   const togglePlay = () => {
     if (isPlaying) videoRef.current.pause();
@@ -86,8 +105,7 @@ const FabulosaRadioVIP = () => {
         <Link to="/premium" className="p-3 bg-white/5 rounded-full hover:bg-yellow-500 hover:text-black transition-all">
           <ArrowLeft size={24} />
         </Link>
-        {/* BOTÓN DE SELLO ID CONECTADO A LA LÓGICA */}
-        <button onClick={triggerManualSello} className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-full font-black uppercase text-xs transition-colors shadow-lg">
+        <button onClick={() => playMixerAudio("/media/voces/sello-fabulosa.mp3", 0.7)} className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-full font-black uppercase text-xs shadow-lg">
           <Megaphone size={16} /> Sonar Sello ID
         </button>
       </nav>
@@ -123,7 +141,7 @@ const FabulosaRadioVIP = () => {
         <div className="lg:col-span-8 flex flex-col">
           <div className="flex items-center gap-3 mb-6 px-4">
             <Tv className="text-blue-500" size={28} />
-            <h2 className="text-2xl font-black uppercase tracking-widest">Fabulosa TV VIP</h2>
+            <h2 className="text-2xl font-black uppercase tracking-widest text-white">Fabulosa TV VIP</h2>
           </div>
           <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-black shadow-2xl">
             <video ref={videoRef} controls className="w-full h-full object-cover" poster="/logo-fabulosa.png" />
