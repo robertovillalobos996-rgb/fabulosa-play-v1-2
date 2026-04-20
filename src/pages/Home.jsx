@@ -26,7 +26,8 @@ const Home = () => {
     { id: 'kids', path: '/tv-1', img: cardKids },
     { id: 'romantica', path: '/radio', img: cardRadio }, 
     { id: 'radios-cr', path: '/radios-cr', img: cardRadiosCR }, 
-    { id: 'fabulosatube', path: '/fabulosa-tube', img: logoFabulosa }, // 🔥 LA NUEVA CARD EN POSICIÓN
+    // 🔥 LA CARD NUEVA APUNTANDO A SU IMAGEN EN PUBLIC 🔥
+    { id: 'fabulosatube', path: '/fabulosa-tube', img: '/fabulosa_play.png' }, 
     { id: 'cine-play', path: '/cine-play', img: cardMovies }, 
     { id: 'canales-play', path: '/canales-play', img: cardTv }, 
     { id: 'ranchera', path: '/ranchera', img: cardKaraoke }, 
