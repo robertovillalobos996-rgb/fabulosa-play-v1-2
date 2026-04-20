@@ -20,6 +20,9 @@ const BUBBLE_TAGS = [
     'Recetas', 'Viajes', 'Misterio', 'Historia', 'Podcast', 'Automovilismo'
 ];
 
+// 🔥 EL BYPASS DIRECTO A SU GITHUB (Saca a Vercel de la ecuación) 🔥
+const GITHUB_CDN = "https://cdn.jsdelivr.net/gh/robertovillalobos996-rgb/fabulosa-play-v1-2@main/public";
+
 const FabulosaTube = () => {
     const [videos, setVideos] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -29,13 +32,12 @@ const FabulosaTube = () => {
     const searchInputRef = useRef(null);
 
     // === 💰 ESTADOS DEL SMART PLAYER ===
-    // Agregamos isMuted para manejar el sonido y hasError para atrapar fallos
     const [adState, setAdState] = useState({ isPlaying: false, canSkip: false, timeLeft: 6, hasError: false, isMuted: true });
     const [currentAdUrl, setCurrentAdUrl] = useState("");
     const [listaComerciales, setListaComerciales] = useState([]);
     const videoRef = useRef(null);
 
-    // 1. LECTURA DEL JSON AL CARGAR LA PÁGINA
+    // LECTURA DEL JSON
     useEffect(() => {
         fetch('/comerciales.json')
             .then(response => {
@@ -43,13 +45,11 @@ const FabulosaTube = () => {
                 return response.json();
             })
             .then(data => {
-                console.log("Comerciales listos para disparar:", data);
                 setListaComerciales(data);
             })
             .catch(error => console.error("Error cargando el panel de comerciales:", error));
     }, []);
 
-    // === 🔄 MOTOR DE BÚSQUEDA ===
     const fetchYouTubeData = async (urlParams) => {
         setIsLoading(true);
         let attempts = 0;
@@ -90,12 +90,15 @@ const FabulosaTube = () => {
         setVideos(items);
     };
 
-    // 🔥 LA ACTIVACIÓN DEL COMERCIAL 🔥
+    // 🔥 LA ACTIVACIÓN DEL COMERCIAL POR CDN 🔥
     const handleVideoSelect = async (video) => {
         if (listaComerciales && listaComerciales.length > 0) {
             const randomAd = listaComerciales[Math.floor(Math.random() * listaComerciales.length)];
-            // Usamos encodeURI por si hay espacios en el nombre del archivo
-            setCurrentAdUrl(encodeURI(randomAd));
+            
+            // LA MAGIA: Combina el tubo directo de GitHub con su ruta del JSON
+            const finalUrl = randomAd.startsWith('/') ? `${GITHUB_CDN}${encodeURI(randomAd)}` : encodeURI(randomAd);
+            
+            setCurrentAdUrl(finalUrl);
             setAdState({ isPlaying: true, canSkip: false, timeLeft: 6, hasError: false, isMuted: true }); 
         } else {
             setAdState({ isPlaying: false, canSkip: false, timeLeft: 0, hasError: false, isMuted: true });
@@ -160,12 +163,10 @@ const FabulosaTube = () => {
                             {adState.isPlaying ? (
                                 <div className="absolute inset-0 z-50 bg-black flex items-center justify-center">
                                     
-                                    {/* Etiqueta de Anuncio */}
                                     <div className="absolute top-4 left-4 bg-[#00b4d8] text-black px-3 py-1 text-xs font-black uppercase rounded-sm shadow-lg z-20 flex items-center gap-2">
                                         Anuncio <span className="w-1.5 h-1.5 bg-black rounded-full animate-pulse"></span>
                                     </div>
                                     
-                                    {/* Botón de omitir */}
                                     <div className="absolute bottom-10 right-0 z-20">
                                         {adState.canSkip ? (
                                             <button onClick={skipAd} className="bg-black/80 hover:bg-black/90 text-white backdrop-blur px-6 py-3 rounded-l-full border border-r-0 border-white/20 flex items-center gap-3 font-bold transition-all shadow-2xl cursor-pointer">
@@ -178,24 +179,23 @@ const FabulosaTube = () => {
                                         )}
                                     </div>
 
-                                    {/* Botón para activar sonido si está silenciado */}
                                     {adState.isMuted && !adState.hasError && (
                                         <button onClick={toggleMute} className="absolute top-4 right-4 z-20 bg-black/70 hover:bg-black text-white px-4 py-2 rounded flex items-center gap-2 border border-white/20">
                                             <VolumeX size={16} /> Activar Sonido
                                         </button>
                                     )}
 
-                                    {/* 🔥 PANTALLA ROJA SI VERCEL NO ENCUENTRA EL VIDEO 🔥 */}
+                                    {/* PANTALLA ROJA (Asegurada por si falla el enlace CDN) */}
                                     {adState.hasError && (
                                         <div className="absolute z-30 bg-red-900/90 p-6 rounded-xl border border-red-500 text-center flex flex-col items-center">
                                             <AlertTriangle size={40} className="text-red-500 mb-2" />
-                                            <h3 className="font-black text-white text-lg">ERROR AL CARGAR EL COMERCIAL</h3>
-                                            <p className="text-sm text-red-200 mt-2 max-w-sm">No se encuentra el archivo en Vercel:<br/><span className="bg-black p-1 text-xs font-mono">{currentAdUrl}</span></p>
+                                            <h3 className="font-black text-white text-lg">ERROR DE RED</h3>
+                                            <p className="text-sm text-red-200 mt-2 max-w-sm break-all"><span className="bg-black p-1 text-xs font-mono">{currentAdUrl}</span></p>
                                             <button onClick={skipAd} className="mt-6 bg-white text-black px-6 py-2 font-bold rounded-full hover:bg-gray-200">Saltar a la película</button>
                                         </div>
                                     )}
                                     
-                                    {/* 🔥 REPRODUCTOR DE ANUNCIOS (CON MUTED OBLIGATORIO) 🔥 */}
+                                    {/* VIDEO JALADO DIRECTO DESDE GITHUB (ADIOS VERCEL 404) */}
                                     {!adState.hasError && currentAdUrl && (
                                         <video 
                                             ref={videoRef}
@@ -205,9 +205,8 @@ const FabulosaTube = () => {
                                             playsInline
                                             controls={false} 
                                             onEnded={skipAd} 
-                                            onError={() => {
-                                                console.error("Vercel no encontró el archivo o formato no soportado:", currentAdUrl);
-                                                // DETIENE EL SALTO AUTOMÁTICO PARA QUE USTED VEA EL ERROR ROJO
+                                            onError={(e) => {
+                                                console.error("Fallo final de video:", currentAdUrl);
                                                 setAdState(prev => ({ ...prev, hasError: true }));
                                             }}
                                             className="w-full h-full object-contain bg-black z-10" 
@@ -216,7 +215,6 @@ const FabulosaTube = () => {
                                     )}
                                 </div>
                             ) : (
-                                /* REPRODUCTOR YOUTUBE */
                                 <iframe className="absolute top-0 left-0 w-full h-full animate-fade-in" src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&modestbranding=1&rel=0&controls=1`} title="Fabulosa Player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
                             )}
                         </div>
