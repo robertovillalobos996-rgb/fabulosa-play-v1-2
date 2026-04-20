@@ -14,14 +14,6 @@ const YOUTUBE_API_KEYS = [
 
 let currentKeyIndex = 0;
 
-// === 📺 SUS 4 COMERCIALES PREMIUM (Quemados en el código) ===
-const AD_VIDEOS = [
-    "/media/comerciales/comercial_chinito.mp4",
-    "/media/comerciales/comercial_fabulosa.mp4",
-    "/media/comerciales/pina_express.mp4",
-    "/media/comerciales/repuestos_hayco.mp4"
-];
-
 const BUBBLE_TAGS = [
     'Todos', 'Películas Completas', 'Música', 'Documentales', 'Noticias en Vivo', 
     'Deportes', 'Comedia', 'Terror', 'Tecnología', 'Videojuegos', 'Naturaleza', 
@@ -38,9 +30,26 @@ const FabulosaTube = () => {
 
     // === 💰 ESTADOS DEL SMART PLAYER (6 Segundos Obligatorios) ===
     const [adState, setAdState] = useState({ isPlaying: false, canSkip: false, timeLeft: 6 });
-    const [currentAdUrl, setCurrentAdUrl] = useState(AD_VIDEOS[0]);
+    const [currentAdUrl, setCurrentAdUrl] = useState("");
+    
+    // Lista donde guardamos lo que lee del JSON
+    const [listaComerciales, setListaComerciales] = useState([]);
 
-    // === 🔄 MOTOR DE BÚSQUEDA ===
+    // 1. LECTURA DEL JSON AL CARGAR LA PÁGINA
+    useEffect(() => {
+        fetch('/comerciales.json')
+            .then(response => {
+                if (!response.ok) throw new Error("No se pudo cargar el JSON");
+                return response.json();
+            })
+            .then(data => {
+                console.log("Comerciales cargados:", data);
+                setListaComerciales(data);
+            })
+            .catch(error => console.error("Error cargando el panel de comerciales:", error));
+    }, []);
+
+    // === 🔄 MOTOR DE BÚSQUEDA Y ROTACIÓN DE APIS ===
     const fetchYouTubeData = async (urlParams) => {
         setIsLoading(true);
         let attempts = 0;
@@ -81,14 +90,15 @@ const FabulosaTube = () => {
         setVideos(items);
     };
 
-    // 🔥 RULETA DE COMERCIALES ARREGLADA 🔥
+    // 🔥 LA ACTIVACIÓN DEL COMERCIAL AL HACER CLICK EN UN VIDEO 🔥
     const handleVideoSelect = async (video) => {
-        // 1. Lee directamente de la lista quemada AD_VIDEOS
-        if (AD_VIDEOS && AD_VIDEOS.length > 0) {
-            const randomAd = AD_VIDEOS[Math.floor(Math.random() * AD_VIDEOS.length)];
+        // Seleccionamos al azar de la lista del JSON
+        if (listaComerciales && listaComerciales.length > 0) {
+            const randomAd = listaComerciales[Math.floor(Math.random() * listaComerciales.length)];
             setCurrentAdUrl(randomAd);
-            setAdState({ isPlaying: true, canSkip: false, timeLeft: 6 }); // Activa el contador a 6
+            setAdState({ isPlaying: true, canSkip: false, timeLeft: 6 }); // Inicia en 6
         } else {
+            // Si el JSON falla o no hay nada, entra directo al video
             setAdState({ isPlaying: false, canSkip: false, timeLeft: 0 });
         }
         
@@ -100,7 +110,7 @@ const FabulosaTube = () => {
         setRelatedVideos(related.filter(v => v.id.videoId !== video.id.videoId));
     };
 
-    // LÓGICA DEL CONTADOR
+    // LÓGICA DEL CONTADOR DE 6 SEGUNDOS
     useEffect(() => {
         let timer;
         if (adState.isPlaying && !adState.canSkip) {
@@ -143,12 +153,15 @@ const FabulosaTube = () => {
                         <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl focus:ring-4 focus:ring-[#00b4d8] outline-none" tabIndex={0}>
                             {adState.isPlaying ? (
                                 <div className="absolute inset-0 z-50 bg-black flex items-center justify-center">
+                                    {/* Etiqueta de Anuncio */}
                                     <div className="absolute top-4 left-4 bg-[#00b4d8] text-black px-3 py-1 text-xs font-black uppercase rounded-sm shadow-lg z-20 flex items-center gap-2">
                                         Anuncio <span className="w-1.5 h-1.5 bg-black rounded-full animate-pulse"></span>
                                     </div>
+                                    
+                                    {/* Botón de omitir */}
                                     <div className="absolute bottom-10 right-0 z-20">
                                         {adState.canSkip ? (
-                                            <button onClick={skipAd} className="bg-black/80 hover:bg-black/90 text-white backdrop-blur px-6 py-3 rounded-l-full border border-r-0 border-white/20 flex items-center gap-3 font-bold transition-all shadow-2xl">
+                                            <button onClick={skipAd} className="bg-black/80 hover:bg-black/90 text-white backdrop-blur px-6 py-3 rounded-l-full border border-r-0 border-white/20 flex items-center gap-3 font-bold transition-all shadow-2xl cursor-pointer">
                                                 Omitir Anuncio <SkipForward size={18} className="text-[#00b4d8]" />
                                             </button>
                                         ) : (
@@ -158,23 +171,26 @@ const FabulosaTube = () => {
                                         )}
                                     </div>
                                     
-                                    {/* 🔥 REPRODUCTOR DE ANUNCIOS BLINDADO 🔥 */}
-                                    <video 
-                                        key={currentAdUrl} 
-                                        autoPlay 
-                                        playsInline
-                                        controls={false} 
-                                        onEnded={skipAd} 
-                                        onError={() => {
-                                            console.warn("Falla en el video del anuncio, saltando...", currentAdUrl);
-                                            skipAd();
-                                        }}
-                                        className="w-full h-full object-contain bg-black z-10" 
-                                        src={currentAdUrl} 
-                                    />
+                                    {/* 🔥 REPRODUCTOR DE ANUNCIOS 🔥 */}
+                                    {currentAdUrl && (
+                                        <video 
+                                            key={currentAdUrl} 
+                                            autoPlay 
+                                            playsInline
+                                            controls={false} 
+                                            onEnded={skipAd} 
+                                            onError={() => {
+                                                console.error("Falla en el video del anuncio:", currentAdUrl);
+                                                skipAd();
+                                            }}
+                                            className="w-full h-full object-contain bg-black z-10" 
+                                            src={currentAdUrl} 
+                                        />
+                                    )}
                                     <div className="absolute top-4 right-4 text-white/50 text-xs z-20 bg-black/50 px-2 py-1 rounded">Activa el sonido si no lo escuchas</div>
                                 </div>
                             ) : (
+                                /* REPRODUCTOR YOUTUBE */
                                 <iframe className="absolute top-0 left-0 w-full h-full animate-fade-in" src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&modestbranding=1&rel=0&controls=1`} title="Fabulosa Player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
                             )}
                         </div>
@@ -192,6 +208,7 @@ const FabulosaTube = () => {
                     </div>
 
                     <div className="w-full lg:w-[400px] flex flex-col gap-4 h-auto lg:h-[calc(100vh-100px)] lg:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                        {/* IMAGEN PATROCINADA FIJA (NO MONETAG) */}
                         <div className="w-full aspect-video bg-[#121212] border border-[#303030] rounded-xl overflow-hidden relative shrink-0">
                             <div className="absolute top-1 right-2 bg-black/80 px-1.5 py-0.5 rounded text-[10px] font-bold z-10 text-zinc-300">Patrocinado</div>
                             <img src="/centro-de-publicidad.png" alt="Publicidad Fabulosa" className="w-full h-full object-contain" />
@@ -245,6 +262,7 @@ const FabulosaTube = () => {
                         <div className="flex justify-center items-center h-64"><div className="w-12 h-12 border-4 border-[#00b4d8] border-t-transparent rounded-full animate-spin"></div></div>
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-10 pb-20 pt-4">
+                            {/* CAJA DE PUBLICIDAD (IMAGEN FIJA NO MONETAG) */}
                             <div className="flex flex-col cursor-pointer focus:ring-4 focus:ring-[#00b4d8] outline-none rounded-xl tabIndex={0}">
                                 <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-[#303030] bg-[#121212] mb-3">
                                     <div className="absolute bottom-1 right-1 bg-black/80 px-1.5 py-0.5 rounded text-xs font-bold text-white">Patrocinado</div>
@@ -255,6 +273,8 @@ const FabulosaTube = () => {
                                     <div><h3 className="text-white font-bold text-sm line-clamp-2">Contenido Patrocinado</h3><p className="text-[#aaa] text-xs mt-1">Fabulosa Play Premium</p></div>
                                 </div>
                             </div>
+                            
+                            {/* GRILLA DE VIDEOS YOUTUBE */}
                             {videos.map((video, idx) => (
                                 <div key={idx} onClick={() => handleVideoSelect(video)} className="flex flex-col cursor-pointer group focus:ring-4 focus:ring-[#00b4d8] outline-none rounded-xl p-1 tabIndex={0}">
                                     <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#222] mb-3"><img src={video.snippet.thumbnails.high?.url || video.snippet.thumbnails.medium?.url} alt={video.snippet.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" /></div>
