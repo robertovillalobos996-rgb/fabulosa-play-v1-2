@@ -13,7 +13,7 @@ import CanalesPlay from './pages/Channels';
 import FabulosaAlabanza from './pages/FabulosaAlabanza';
 import CentroMercadeo from './pages/CentroMercadeo';
 import Camaras from './pages/Camaras'; 
-import FabulosaVerano from './pages/FabulosaVerano';
+import FabulosaTube from './pages/FabulosaTube'; // 🔥 EL NUEVO GIGANTE DE VIDEOS
 import FabulositoKids from './pages/FabulosaTV';
 
 // 💎 MUNDO PREMIUM VIP
@@ -47,7 +47,7 @@ function App() {
           <Route path="/alabanza" element={<FabulosaAlabanza />} />
           <Route path="/centro-mercadeo" element={<CentroMercadeo />} />
           <Route path="/camaras" element={<Camaras />} />
-          <Route path="/verano" element={<FabulosaVerano />} />
+          <Route path="/fabulosa-tube" element={<FabulosaTube />} /> {/* 🔥 LA RUTA MAESTRA */}
         </Routes>
       </Router>
     </QueryClientProvider>
