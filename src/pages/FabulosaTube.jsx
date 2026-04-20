@@ -14,7 +14,7 @@ const YOUTUBE_API_KEYS = [
 
 let currentKeyIndex = 0;
 
-// === 📺 SUS 4 COMERCIALES PREMIUM (Sin Ñ ni espacios) ===
+// === 📺 SUS 4 COMERCIALES PREMIUM (Quemados en el código) ===
 const AD_VIDEOS = [
     "/media/comerciales/comercial_chinito.mp4",
     "/media/comerciales/comercial_fabulosa.mp4",
@@ -37,7 +37,6 @@ const FabulosaTube = () => {
     const searchInputRef = useRef(null);
 
     // === 💰 ESTADOS DEL SMART PLAYER (6 Segundos Obligatorios) ===
-    // Tiempo inicial configurado estrictamente a 6
     const [adState, setAdState] = useState({ isPlaying: false, canSkip: false, timeLeft: 6 });
     const [currentAdUrl, setCurrentAdUrl] = useState(AD_VIDEOS[0]);
 
@@ -82,25 +81,26 @@ const FabulosaTube = () => {
         setVideos(items);
     };
 
-    // 🔥 RULETA DE COMERCIALES AL DARLE PLAY 🔥
+    // 🔥 RULETA DE COMERCIALES ARREGLADA 🔥
     const handleVideoSelect = async (video) => {
-        // 1. Selecciona un comercial al azar de la lista
-        const randomAd = AD_VIDEOS[Math.floor(Math.random() * AD_VIDEOS.length)];
-        setCurrentAdUrl(randomAd);
-        
-        // 2. Activa el comercial y pone el contador en 6 segundos forzosos
-        setAdState({ isPlaying: true, canSkip: false, timeLeft: 6 });
+        // 1. Lee directamente de la lista quemada AD_VIDEOS
+        if (AD_VIDEOS && AD_VIDEOS.length > 0) {
+            const randomAd = AD_VIDEOS[Math.floor(Math.random() * AD_VIDEOS.length)];
+            setCurrentAdUrl(randomAd);
+            setAdState({ isPlaying: true, canSkip: false, timeLeft: 6 }); // Activa el contador a 6
+        } else {
+            setAdState({ isPlaying: false, canSkip: false, timeLeft: 0 });
+        }
         
         setSelectedVideo(video);
         window.scrollTo({ top: 0, behavior: 'smooth' });
         
-        // 3. Busca videos relacionados
         const smartQuery = `${video.snippet.channelTitle} ${video.snippet.title.substring(0, 30)}`;
         const related = await fetchYouTubeData(`search?part=snippet&maxResults=50&q=${encodeURIComponent(smartQuery)}&type=video`);
         setRelatedVideos(related.filter(v => v.id.videoId !== video.id.videoId));
     };
 
-    // LÓGICA DEL CONTADOR (Corre segundo a segundo)
+    // LÓGICA DEL CONTADOR
     useEffect(() => {
         let timer;
         if (adState.isPlaying && !adState.canSkip) {
@@ -108,7 +108,7 @@ const FabulosaTube = () => {
                 setAdState(prev => {
                     if (prev.timeLeft <= 1) {
                         clearInterval(timer);
-                        return { ...prev, canSkip: true, timeLeft: 0 }; // Aparece el botón
+                        return { ...prev, canSkip: true, timeLeft: 0 };
                     }
                     return { ...prev, timeLeft: prev.timeLeft - 1 };
                 });
@@ -117,7 +117,6 @@ const FabulosaTube = () => {
         return () => clearInterval(timer);
     }, [adState.isPlaying, adState.canSkip]);
 
-    // Función para saltar el anuncio
     const skipAd = () => setAdState({ isPlaying: false, canSkip: false, timeLeft: 0 });
 
     if (selectedVideo) {
@@ -193,7 +192,6 @@ const FabulosaTube = () => {
                     </div>
 
                     <div className="w-full lg:w-[400px] flex flex-col gap-4 h-auto lg:h-[calc(100vh-100px)] lg:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                        {/* ESTA ZONA YA NO TIENE CLASES PARA MONETAG, SOLO SU IMAGEN DE PAUTA */}
                         <div className="w-full aspect-video bg-[#121212] border border-[#303030] rounded-xl overflow-hidden relative shrink-0">
                             <div className="absolute top-1 right-2 bg-black/80 px-1.5 py-0.5 rounded text-[10px] font-bold z-10 text-zinc-300">Patrocinado</div>
                             <img src="/centro-de-publicidad.png" alt="Publicidad Fabulosa" className="w-full h-full object-contain" />
