@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Mic, Bell, Home as HomeIcon, Flame, PlaySquare, Clock, ThumbsUp, ArrowLeft, Tv, MoreVertical, SkipForward } from 'lucide-react';
+import { Search, Mic, Bell, Home as HomeIcon, Flame, PlaySquare, Clock, ThumbsUp, ArrowLeft, Tv, MoreVertical, SkipForward, AlertTriangle, VolumeX } from 'lucide-react';
 
 const YOUTUBE_API_KEYS = [
     "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
@@ -28,12 +28,12 @@ const FabulosaTube = () => {
     const [isLoading, setIsLoading] = useState(false);
     const searchInputRef = useRef(null);
 
-    // === 💰 ESTADOS DEL SMART PLAYER (6 Segundos Obligatorios) ===
-    const [adState, setAdState] = useState({ isPlaying: false, canSkip: false, timeLeft: 6 });
+    // === 💰 ESTADOS DEL SMART PLAYER ===
+    // Agregamos isMuted para manejar el sonido y hasError para atrapar fallos
+    const [adState, setAdState] = useState({ isPlaying: false, canSkip: false, timeLeft: 6, hasError: false, isMuted: true });
     const [currentAdUrl, setCurrentAdUrl] = useState("");
-    
-    // Lista donde guardamos lo que lee del JSON
     const [listaComerciales, setListaComerciales] = useState([]);
+    const videoRef = useRef(null);
 
     // 1. LECTURA DEL JSON AL CARGAR LA PÁGINA
     useEffect(() => {
@@ -43,13 +43,13 @@ const FabulosaTube = () => {
                 return response.json();
             })
             .then(data => {
-                console.log("Comerciales cargados:", data);
+                console.log("Comerciales listos para disparar:", data);
                 setListaComerciales(data);
             })
             .catch(error => console.error("Error cargando el panel de comerciales:", error));
     }, []);
 
-    // === 🔄 MOTOR DE BÚSQUEDA Y ROTACIÓN DE APIS ===
+    // === 🔄 MOTOR DE BÚSQUEDA ===
     const fetchYouTubeData = async (urlParams) => {
         setIsLoading(true);
         let attempts = 0;
@@ -74,7 +74,7 @@ const FabulosaTube = () => {
 
     useEffect(() => {
         const loadInitial = async () => {
-            const randomSeeds = ['tendencias 2026', 'peliculas de accion completas', 'documentales', 'exitos musicales hd'];
+            const randomSeeds = ['tendencias 2026', 'peliculas de accion completas', 'documentales'];
             const seed = randomSeeds[Math.floor(Math.random() * randomSeeds.length)];
             const items = await fetchYouTubeData(`search?part=snippet&maxResults=48&q=${encodeURIComponent(seed)}&type=video`);
             setVideos(items);
@@ -90,16 +90,15 @@ const FabulosaTube = () => {
         setVideos(items);
     };
 
-    // 🔥 LA ACTIVACIÓN DEL COMERCIAL AL HACER CLICK EN UN VIDEO 🔥
+    // 🔥 LA ACTIVACIÓN DEL COMERCIAL 🔥
     const handleVideoSelect = async (video) => {
-        // Seleccionamos al azar de la lista del JSON
         if (listaComerciales && listaComerciales.length > 0) {
             const randomAd = listaComerciales[Math.floor(Math.random() * listaComerciales.length)];
-            setCurrentAdUrl(randomAd);
-            setAdState({ isPlaying: true, canSkip: false, timeLeft: 6 }); // Inicia en 6
+            // Usamos encodeURI por si hay espacios en el nombre del archivo
+            setCurrentAdUrl(encodeURI(randomAd));
+            setAdState({ isPlaying: true, canSkip: false, timeLeft: 6, hasError: false, isMuted: true }); 
         } else {
-            // Si el JSON falla o no hay nada, entra directo al video
-            setAdState({ isPlaying: false, canSkip: false, timeLeft: 0 });
+            setAdState({ isPlaying: false, canSkip: false, timeLeft: 0, hasError: false, isMuted: true });
         }
         
         setSelectedVideo(video);
@@ -113,7 +112,7 @@ const FabulosaTube = () => {
     // LÓGICA DEL CONTADOR DE 6 SEGUNDOS
     useEffect(() => {
         let timer;
-        if (adState.isPlaying && !adState.canSkip) {
+        if (adState.isPlaying && !adState.canSkip && !adState.hasError) {
             timer = setInterval(() => {
                 setAdState(prev => {
                     if (prev.timeLeft <= 1) {
@@ -125,9 +124,16 @@ const FabulosaTube = () => {
             }, 1000);
         }
         return () => clearInterval(timer);
-    }, [adState.isPlaying, adState.canSkip]);
+    }, [adState.isPlaying, adState.canSkip, adState.hasError]);
 
-    const skipAd = () => setAdState({ isPlaying: false, canSkip: false, timeLeft: 0 });
+    const skipAd = () => setAdState({ isPlaying: false, canSkip: false, timeLeft: 0, hasError: false, isMuted: true });
+
+    const toggleMute = () => {
+        if (videoRef.current) {
+            videoRef.current.muted = false;
+            setAdState(prev => ({ ...prev, isMuted: false }));
+        }
+    };
 
     if (selectedVideo) {
         return (
@@ -153,6 +159,7 @@ const FabulosaTube = () => {
                         <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl focus:ring-4 focus:ring-[#00b4d8] outline-none" tabIndex={0}>
                             {adState.isPlaying ? (
                                 <div className="absolute inset-0 z-50 bg-black flex items-center justify-center">
+                                    
                                     {/* Etiqueta de Anuncio */}
                                     <div className="absolute top-4 left-4 bg-[#00b4d8] text-black px-3 py-1 text-xs font-black uppercase rounded-sm shadow-lg z-20 flex items-center gap-2">
                                         Anuncio <span className="w-1.5 h-1.5 bg-black rounded-full animate-pulse"></span>
@@ -170,24 +177,43 @@ const FabulosaTube = () => {
                                             </div>
                                         )}
                                     </div>
+
+                                    {/* Botón para activar sonido si está silenciado */}
+                                    {adState.isMuted && !adState.hasError && (
+                                        <button onClick={toggleMute} className="absolute top-4 right-4 z-20 bg-black/70 hover:bg-black text-white px-4 py-2 rounded flex items-center gap-2 border border-white/20">
+                                            <VolumeX size={16} /> Activar Sonido
+                                        </button>
+                                    )}
+
+                                    {/* 🔥 PANTALLA ROJA SI VERCEL NO ENCUENTRA EL VIDEO 🔥 */}
+                                    {adState.hasError && (
+                                        <div className="absolute z-30 bg-red-900/90 p-6 rounded-xl border border-red-500 text-center flex flex-col items-center">
+                                            <AlertTriangle size={40} className="text-red-500 mb-2" />
+                                            <h3 className="font-black text-white text-lg">ERROR AL CARGAR EL COMERCIAL</h3>
+                                            <p className="text-sm text-red-200 mt-2 max-w-sm">No se encuentra el archivo en Vercel:<br/><span className="bg-black p-1 text-xs font-mono">{currentAdUrl}</span></p>
+                                            <button onClick={skipAd} className="mt-6 bg-white text-black px-6 py-2 font-bold rounded-full hover:bg-gray-200">Saltar a la película</button>
+                                        </div>
+                                    )}
                                     
-                                    {/* 🔥 REPRODUCTOR DE ANUNCIOS 🔥 */}
-                                    {currentAdUrl && (
+                                    {/* 🔥 REPRODUCTOR DE ANUNCIOS (CON MUTED OBLIGATORIO) 🔥 */}
+                                    {!adState.hasError && currentAdUrl && (
                                         <video 
+                                            ref={videoRef}
                                             key={currentAdUrl} 
                                             autoPlay 
+                                            muted={true} 
                                             playsInline
                                             controls={false} 
                                             onEnded={skipAd} 
                                             onError={() => {
-                                                console.error("Falla en el video del anuncio:", currentAdUrl);
-                                                skipAd();
+                                                console.error("Vercel no encontró el archivo o formato no soportado:", currentAdUrl);
+                                                // DETIENE EL SALTO AUTOMÁTICO PARA QUE USTED VEA EL ERROR ROJO
+                                                setAdState(prev => ({ ...prev, hasError: true }));
                                             }}
                                             className="w-full h-full object-contain bg-black z-10" 
                                             src={currentAdUrl} 
                                         />
                                     )}
-                                    <div className="absolute top-4 right-4 text-white/50 text-xs z-20 bg-black/50 px-2 py-1 rounded">Activa el sonido si no lo escuchas</div>
                                 </div>
                             ) : (
                                 /* REPRODUCTOR YOUTUBE */
@@ -208,7 +234,6 @@ const FabulosaTube = () => {
                     </div>
 
                     <div className="w-full lg:w-[400px] flex flex-col gap-4 h-auto lg:h-[calc(100vh-100px)] lg:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                        {/* IMAGEN PATROCINADA FIJA (NO MONETAG) */}
                         <div className="w-full aspect-video bg-[#121212] border border-[#303030] rounded-xl overflow-hidden relative shrink-0">
                             <div className="absolute top-1 right-2 bg-black/80 px-1.5 py-0.5 rounded text-[10px] font-bold z-10 text-zinc-300">Patrocinado</div>
                             <img src="/centro-de-publicidad.png" alt="Publicidad Fabulosa" className="w-full h-full object-contain" />
@@ -262,7 +287,6 @@ const FabulosaTube = () => {
                         <div className="flex justify-center items-center h-64"><div className="w-12 h-12 border-4 border-[#00b4d8] border-t-transparent rounded-full animate-spin"></div></div>
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-10 pb-20 pt-4">
-                            {/* CAJA DE PUBLICIDAD (IMAGEN FIJA NO MONETAG) */}
                             <div className="flex flex-col cursor-pointer focus:ring-4 focus:ring-[#00b4d8] outline-none rounded-xl tabIndex={0}">
                                 <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-[#303030] bg-[#121212] mb-3">
                                     <div className="absolute bottom-1 right-1 bg-black/80 px-1.5 py-0.5 rounded text-xs font-bold text-white">Patrocinado</div>
@@ -274,7 +298,6 @@ const FabulosaTube = () => {
                                 </div>
                             </div>
                             
-                            {/* GRILLA DE VIDEOS YOUTUBE */}
                             {videos.map((video, idx) => (
                                 <div key={idx} onClick={() => handleVideoSelect(video)} className="flex flex-col cursor-pointer group focus:ring-4 focus:ring-[#00b4d8] outline-none rounded-xl p-1 tabIndex={0}">
                                     <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#222] mb-3"><img src={video.snippet.thumbnails.high?.url || video.snippet.thumbnails.medium?.url} alt={video.snippet.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" /></div>
