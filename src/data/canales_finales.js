@@ -4,14 +4,31 @@ export const canalesTV = [
         "title": "Canal 6 Repretel",
         "url": "https://alba-cr-repretel-c6.stream.mediatiquestream.com/index.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/repretel_6.png"
+        "logo": "/logos_canales/repretel_6.png",
+        "headers": {
+            "Referer": "https://www.repretel.com/"
+        }
     },
     {
         "id": "trivision-36",
         "title": "Trivision 36",
         "url": "https://liveingesta118.cdnmedia.tv/trivisionlive/rtmp01-900/chunklist.m3u8?DVR=",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/trivision.png"
+        "logo": "/logos_canales/trivision.png",
+        "headers": {
+            "Referer": "https://player.instantvideocloud.net/"
+        }
+    },
+    {
+        "id": "trivision-36",
+        "title": "Trivision 36",
+        "url": "https://liveingesta118.cdnmedia.tv/trivisionlive/rtmp01-900/chunklist.m3u8?DVR=",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/trivision.png",
+        "headers": {
+            "Referer": "https://player.instantvideocloud.net/",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36 CrKey/1.44.191160"
+        }
     },
    {
     "id": "fabulosa-tv-vip", 
