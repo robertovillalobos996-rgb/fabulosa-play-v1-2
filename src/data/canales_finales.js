@@ -1,13 +1,11 @@
 export const canalesTV = [
-{
+    {
         "id": "repretel-6",
         "title": "Canal 6 Repretel",
         "url": "https://alba-cr-repretel-c6.stream.mediatiquestream.com/index.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/repretel_6.png",
-        "headers": {
-            "Referer": "https://www.repretel.com/"
-        }
+        "headers": { "Referer": "https://www.repretel.com/" }
     },
     {
         "id": "trivision-36",
@@ -15,27 +13,15 @@ export const canalesTV = [
         "url": "https://liveingesta118.cdnmedia.tv/trivisionlive/rtmp01-900/chunklist.m3u8?DVR=",
         "genre": "Costa Rica",
         "logo": "/logos_canales/trivision.png",
-        "headers": {
-            "Referer": "https://player.instantvideocloud.net/"
-        }
+        "headers": { "Referer": "https://player.instantvideocloud.net/" }
     },
     {
-        "id": "trivision-36",
-        "title": "Trivision 36",
-        "url": "https://liveingesta118.cdnmedia.tv/trivisionlive/rtmp01-900/chunklist.m3u8?DVR=",
+        "id": "fabulosa-tv-vip", 
+        "title": "Fabulosa TV VIP",
+        "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/trivision.png",
-        "headers": {
-            "Referer": "https://player.instantvideocloud.net/",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36 CrKey/1.44.191160"
-        }
+        "logo": "/fabulosa.jpg"
     },
-   {
-    "id": "fabulosa-tv-vip", 
-    "name": "Fabulosa TV VIP",
-    "logo": "/img/fabulosa.jpg", // He cambiado 'image' a 'logo' para dar consistencia con el resto
-    "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8" // Es la misma señal
-  },
    {
         "id": "tv-2",
         "title": "88 Stereo",

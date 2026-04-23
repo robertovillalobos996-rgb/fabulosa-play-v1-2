@@ -1,285 +1,192 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Play, Pause, Search, Tv, Volume2, VolumeX, Maximize, Settings, ShieldCheck, Loader2, Plus } from "lucide-react";
+import { ArrowLeft, Play, Pause, Search, Tv, Volume2, VolumeX, Maximize, Loader2 } from "lucide-react";
 import Hls from "hls.js";
 
-// IMPORTACIÓN DE TU BASE DE DATOS
+// IMPORTACIÓN DE TU LOGO Y BASE DE DATOS
+import logoFabulosa from "../assets/logo_fabulosa.png";
 import { canalesTV } from "../data/canales_finales.js";
 
 const Channels = () => {
-  // === 💰 LOGICA DE PUBLICIDAD ===
-  const ADSENSE_SLOT = "7869741603";
-  const [displayLimit, setDisplayLimit] = useState(30); 
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("Costa Rica");
-
   const [channels] = useState(canalesTV || []);
   const [currentChannel, setCurrentChannel] = useState(
     canalesTV.find(c => c.genre === "Costa Rica") || canalesTV[0]
   );
-  const [isPlaying, setIsPlaying] = useState(false);
+  
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
+  
   const videoRef = useRef(null);
   const hlsRef = useRef(null);
 
-  // === 🖥️ REPRODUCTOR HLS ENGINE CON TÚNEL ANTI-BLOQUEO ===
+  // === MOTOR DE VIDEO CON TÚNEL Y LÓGICA DE CARGA ===
   useEffect(() => {
     if (!currentChannel?.url || !videoRef.current) return;
-
     setIsLoading(true);
 
-    if (hlsRef.current) {
-      hlsRef.current.destroy();
-    }
+    if (hlsRef.current) { hlsRef.current.destroy(); }
 
-    // --- CIRUGÍA DE ENGAÑO (CORS PROXY) ---
-    // Si el canal tiene la etiqueta 'headers', usamos el túnel para que abra sí o sí
+    // Puente para canales bloqueados (Repretel/Trivision)
     let finalUrl = currentChannel.url;
     if (currentChannel.headers) {
-      finalUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(currentChannel.url)}`;
+      finalUrl = `https://corsproxy.io/?${encodeURIComponent(currentChannel.url)}`;
     }
 
     if (Hls.isSupported()) {
-      const hls = new Hls({
-        manifestLoadingTimeOut: 20000,
-        manifestLoadingMaxRetry: 5,
-        enableWorker: true,
-        xhrSetup: (xhr, url) => {
-          // Desactivamos credenciales para que el proxy pase limpio
-          xhr.withCredentials = false;
-          // Inyectamos X-Requested-With como blindaje extra
-          if (currentChannel.headers) {
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-          }
-        }
-      });
-
+      const hls = new Hls({ manifestLoadingTimeOut: 15000, enableWorker: true });
       hls.loadSource(finalUrl);
       hls.attachMedia(videoRef.current);
       hlsRef.current = hls;
 
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        setIsLoading(false);
-        if (isPlaying) {
-          videoRef.current.play().catch(() => setIsPlaying(false));
-        }
+        // Un pequeño delay para que el video ya tenga imagen antes de quitar el logo
+        setTimeout(() => setIsLoading(false), 1000);
+        videoRef.current.play().catch(() => setIsPlaying(false));
       });
 
-      hls.on(Hls.Events.ERROR, (event, data) => {
+      hls.on(Hls.Events.ERROR, (e, data) => {
         if (data.fatal) {
-          switch (data.type) {
-            case Hls.ErrorTypes.NETWORK_ERROR:
-              console.log("Error de red, reintentando señal...");
-              hls.startLoad();
-              break;
-            case Hls.ErrorTypes.MEDIA_ERROR:
-              hls.recoverMediaError();
-              break;
-            default:
-              hls.destroy();
-              break;
-          }
+          if (data.type === Hls.ErrorTypes.NETWORK_ERROR) hls.startLoad();
+          else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) hls.recoverMediaError();
         }
-      });
-    } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
-      // Soporte para Safari/iPhone
-      videoRef.current.src = finalUrl;
-      videoRef.current.addEventListener("loadedmetadata", () => {
-        setIsLoading(false);
-        if (isPlaying) videoRef.current.play().catch(() => setIsPlaying(false));
       });
     }
-
-    return () => {
-      if (hlsRef.current) {
-        hlsRef.current.destroy();
-      }
-    };
   }, [currentChannel]);
 
-  // Manejo de Play/Pause
-  useEffect(() => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.play().catch(() => setIsPlaying(false));
-      } else {
-        videoRef.current.pause();
-      }
-    }
-  }, [isPlaying]);
-
-  const togglePlay = () => setIsPlaying(!isPlaying);
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
-
-  const handleChannelSelect = (channel) => {
-    setCurrentChannel(channel);
-    setIsPlaying(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Pantalla completa con doble clic
+  const handleDoubleClick = () => {
+    if (videoRef.current.requestFullscreen) videoRef.current.requestFullscreen();
   };
 
   const filteredChannels = useMemo(() => {
-    return channels.filter(channel => {
-      const matchesSearch = (channel.title || channel.name || "").toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = channel.genre === activeCategory;
-      return matchesSearch && matchesCategory;
-    });
+    return channels.filter(c => 
+      (c.title || c.name || "").toLowerCase().includes(searchTerm.toLowerCase()) &&
+      c.genre === activeCategory
+    );
   }, [channels, searchTerm, activeCategory]);
 
   const categories = useMemo(() => {
-    const genres = channels.map(c => c.genre).filter(Boolean);
-    return ["Costa Rica", ...new Set(genres.filter(g => g !== "Costa Rica"))];
+    return ["Costa Rica", ...new Set(channels.map(c => c.genre).filter(g => g && g !== "Costa Rica"))];
   }, [channels]);
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans">
-      {/* HEADER */}
-      <div className="bg-zinc-900/50 border-b border-white/5 p-4 sticky top-0 z-50 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
-            <ArrowLeft size={20} />
-            <span className="font-black uppercase text-xs tracking-widest italic">Volver</span>
-          </Link>
-          <div className="flex items-center gap-2">
-            <Tv className="text-red-600" size={20} />
-            <h1 className="font-black uppercase italic tracking-tighter text-xl">
-              <span className="text-red-600">Fabulosa</span> Play
-            </h1>
-          </div>
-          <div className="w-20"></div>
+    <div className="h-screen bg-[#0a0a0a] text-white flex flex-col overflow-hidden font-sans">
+      
+      {/* BARRA SUPERIOR ESTILO PLUTO */}
+      <header className="h-16 bg-black border-b border-white/10 flex items-center justify-between px-6 shrink-0">
+        <div className="flex items-center gap-6">
+          <Link to="/" className="text-zinc-500 hover:text-white"><ArrowLeft size={24} /></Link>
+          <img src={logoFabulosa} alt="Fabulosa Logo" className="h-10 object-contain" />
         </div>
-      </div>
-
-      <div className="max-w-[1600px] mx-auto p-4 lg:p-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          
-          {/* REPRODUCTOR PRINCIPAL */}
-          <div className="flex-1">
-            <div className="relative aspect-video bg-zinc-950 rounded-[2.5rem] overflow-hidden border border-white/5 shadow-2xl group">
-              {isLoading && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-20">
-                  <Loader2 className="text-red-600 animate-spin mb-4" size={48} />
-                  <p className="font-black uppercase italic text-xs tracking-[0.3em] animate-pulse">Sintonizando Señal...</p>
-                </div>
-              )}
-              
-              <video
-                ref={videoRef}
-                className="w-full h-full object-contain"
-                playsInline
-                onClick={togglePlay}
-              />
-
-              {/* CONTROLES OVERLAY */}
-              <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-4">
-                    <button onClick={togglePlay} className="bg-white text-black p-3 rounded-2xl hover:scale-110 transition-transform">
-                      {isPlaying ? <Pause size={24} fill="currentColor" /> : <Play size={24} fill="currentColor" />}
-                    </button>
-                    <button onClick={toggleMute} className="text-white p-2 hover:bg-white/10 rounded-xl transition-colors">
-                      {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
-                    </button>
-                  </div>
-                  
-                  <div className="flex-1">
-                    <p className="font-black uppercase italic text-sm tracking-tight truncate">{currentChannel?.title || currentChannel?.name}</p>
-                    <div className="flex items-center gap-2 text-[10px] font-bold text-zinc-400 uppercase tracking-widest">
-                      <ShieldCheck size={12} className="text-green-500" />
-                      <span>Conexión Segura</span>
-                    </div>
-                  </div>
-
-                  <button onClick={() => videoRef.current.requestFullscreen()} className="text-white p-2 hover:bg-white/10 rounded-xl">
-                    <Maximize size={24} />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* INFO CANAL */}
-            <div className="mt-8 flex items-center gap-6 p-6 bg-zinc-900/30 rounded-[2.5rem] border border-white/5">
-              <div className="w-20 h-20 bg-black rounded-3xl p-4 flex items-center justify-center border border-white/10 overflow-hidden">
-                <img src={currentChannel?.logo || "/img/fabulosa.jpg"} className="max-h-full object-contain" alt="logo" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-black uppercase italic leading-none">{currentChannel?.title || currentChannel?.name}</h2>
-                <p className="text-zinc-500 text-xs font-black uppercase mt-2 tracking-widest italic">{currentChannel?.genre} • Señal Digital</p>
-              </div>
-            </div>
-          </div>
-
-          {/* SIDEBAR: BUSQUEDA Y CATEGORIAS */}
-          <div className="w-full lg:w-[400px] space-y-6">
-            <div className="bg-zinc-900/50 p-6 rounded-[2.5rem] border border-white/5">
-              <div className="relative mb-6">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" size={18} />
-                <input
-                  type="text"
-                  placeholder="BUSCAR CANAL..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full bg-black border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-xs font-black uppercase tracking-widest focus:border-red-600 outline-none transition-all"
-                />
-              </div>
-
-              <div className="flex gap-2 overflow-x-auto pb-2 custom-scrollbar">
-                {categories.map(cat => (
-                  <button
-                    key={cat}
-                    onClick={() => { setActiveCategory(cat); setDisplayLimit(30); }}
-                    className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase whitespace-nowrap transition-all ${
-                      activeCategory === cat ? 'bg-red-600 text-white' : 'bg-zinc-800 text-zinc-500 hover:text-zinc-300'
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* LISTA DE CANALES FILTRADA */}
-            <div className="grid grid-cols-2 gap-4">
-              {filteredChannels.slice(0, displayLimit).map((channel) => (
-                <div
-                  key={channel.id}
-                  onClick={() => handleChannelSelect(channel)}
-                  className={`group bg-white/5 rounded-3xl p-4 border transition-all cursor-pointer hover:bg-white/10 ${
-                    currentChannel?.id === channel.id ? 'border-red-600 bg-red-600/5' : 'border-white/10'
-                  }`}
-                >
-                  <div className="aspect-square bg-black rounded-2xl p-4 mb-4 flex items-center justify-center relative overflow-hidden">
-                    <img src={channel.logo || "/img/fabulosa.jpg"} className="max-h-full object-contain z-10 group-hover:scale-110 transition-transform" alt="" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-red-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <h4 className="font-black text-[10px] uppercase truncate text-center italic">
-                    {(channel.title || channel.name || "Sin Nombre").toUpperCase()}
-                  </h4>
-                </div>
-              ))}
-            </div>
-
-            {filteredChannels.length > displayLimit && (
-              <div className="flex justify-center py-4">
-                <button onClick={() => setDisplayLimit(prev => prev + 40)} className="bg-red-600 px-10 py-3 rounded-full font-black uppercase text-xs hover:bg-red-500 transition-colors flex items-center gap-2">
-                  <Plus size={16} /> Cargar Más Canales
-                </button>
-              </div>
-            )}
-          </div>
+        <div className="relative w-64">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={16} />
+          <input 
+            type="text" placeholder="Buscar canal..." value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full bg-zinc-900 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-red-600 outline-none"
+          />
         </div>
+      </header>
+
+      {/* ÁREA DEL REPRODUCTOR (SIEMPRE ARRIBA) */}
+      <section className="relative w-full bg-black flex items-center justify-center border-b border-white/5" style={{ height: '45vh' }}>
+        <video 
+          ref={videoRef} 
+          className="h-full w-full object-contain cursor-pointer"
+          onDoubleClick={handleDoubleClick}
+          onClick={() => setIsPlaying(!isPlaying)}
+          autoPlay muted={isMuted}
+        />
+
+        {/* OVERLAY DE CARGA: Muestra el logo mientras el canal entra */}
+        {isLoading && (
+          <div className="absolute inset-0 bg-black flex flex-col items-center justify-center z-20">
+            <img 
+              src={currentChannel?.logo || "/fabulosa.jpg"} 
+              className="h-32 w-32 object-contain animate-pulse mb-4" 
+              alt="Cargando..."
+            />
+            <Loader2 className="animate-spin text-red-600" size={32} />
+          </div>
+        )}
+
+        {/* CONTROLES ESTILO OVERLAY */}
+        <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between bg-black/40 backdrop-blur-md p-4 rounded-2xl opacity-0 hover:opacity-100 transition-opacity">
+           <div className="flex items-center gap-4">
+              <button onClick={() => setIsPlaying(!isPlaying)} className="text-white">
+                {isPlaying ? <Pause size={28} fill="currentColor" /> : <Play size={28} fill="currentColor" />}
+              </button>
+              <button onClick={() => setIsMuted(!isMuted)}>{isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}</button>
+              <span className="font-black uppercase italic text-sm">{currentChannel?.title || currentChannel?.name}</span>
+           </div>
+           <button onClick={handleDoubleClick}><Maximize size={24} /></button>
+        </div>
+      </section>
+
+      {/* CONTENIDO INFERIOR: CATEGORÍAS Y CANALES */}
+      <div className="flex flex-1 overflow-hidden">
+        
+        {/* COLUMNA IZQUIERDA: CATEGORÍAS (Desplazamiento suave) */}
+        <aside className="w-64 bg-black border-r border-white/5 overflow-y-auto custom-scrollbar shrink-0">
+          <div className="p-4 space-y-2">
+            <h3 className="text-[10px] font-black text-zinc-600 uppercase tracking-widest mb-4 ml-2">Categorías</h3>
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${
+                  activeCategory === cat ? 'bg-red-600 text-white shadow-lg shadow-red-600/20' : 'text-zinc-500 hover:bg-white/5 hover:text-white'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </aside>
+
+        {/* COLUMNA DERECHA: GRILLA DE CANALES */}
+        <main className="flex-1 overflow-y-auto p-6 bg-[#080808] custom-scrollbar">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {filteredChannels.map(channel => (
+              <div
+                key={channel.id}
+                onClick={() => { setCurrentChannel(channel); setIsPlaying(true); }}
+                className={`group relative aspect-square bg-zinc-900 rounded-3xl p-4 cursor-pointer transition-all border-2 ${
+                  currentChannel.id === channel.id ? 'border-red-600 ring-4 ring-red-600/20' : 'border-transparent hover:border-white/20'
+                }`}
+              >
+                <div className="h-full w-full flex flex-col items-center justify-center">
+                  <img 
+                    src={channel.logo || "/fabulosa.jpg"} 
+                    alt={channel.title} 
+                    className="max-h-[60%] object-contain mb-3 group-hover:scale-110 transition-transform"
+                    onError={(e) => e.target.src = "/fabulosa.jpg"}
+                  />
+                  <p className="text-[10px] font-black uppercase text-center truncate w-full italic text-zinc-400 group-hover:text-white">
+                    {channel.title || channel.name}
+                  </p>
+                </div>
+                {/* Indicador de "En vivo" si es el seleccionado */}
+                {currentChannel.id === channel.id && (
+                  <div className="absolute top-3 right-3 flex items-center gap-1 bg-red-600 px-2 py-0.5 rounded-full">
+                    <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+                    <span className="text-[8px] font-black">VIVO</span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </main>
       </div>
 
       <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar { height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #333; }
       `}</style>
     </div>
   );
