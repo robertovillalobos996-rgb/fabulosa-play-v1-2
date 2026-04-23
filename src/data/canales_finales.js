@@ -1,21 +1,19 @@
 export const canalesTV = [
-    {
+{
         "id": "repretel-6",
         "title": "Canal 6 Repretel",
-        "url": "https://alba-cr-repretel-c6.stream.mediatiquestream.com/index.m3u8",
+        "url": "/api/proxy?url=https://alba-cr-repretel-c6.stream.mediatiquestream.com/index.m3u8&referer=https://www.repretel.com/",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/repretel_6.png",
-        "headers": { "Referer": "https://www.repretel.com/" }
+        "logo": "/logos_canales/repretel_6.png"
     },
     {
         "id": "trivision-36",
         "title": "Trivision 36",
-        "url": "https://liveingesta118.cdnmedia.tv/trivisionlive/rtmp01-900/chunklist.m3u8?DVR=",
+        "url": "/api/proxy?url=https://liveingesta118.cdnmedia.tv/trivisionlive/rtmp01-900/chunklist.m3u8?DVR=&referer=https://player.instantvideocloud.net/",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/trivision.png",
-        "headers": { "Referer": "https://player.instantvideocloud.net/" }
+        "logo": "/logos_canales/trivision.png"
     },
-    {
+       {
         "id": "fabulosa-tv-vip", 
         "title": "Fabulosa TV VIP",
         "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
