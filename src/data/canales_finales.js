@@ -1,4 +1,18 @@
 export const canalesTV = [
+{
+        "id": "repretel-6",
+        "title": "Canal 6 Repretel",
+        "url": "https://alba-cr-repretel-c6.stream.mediatiquestream.com/index.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/repretel_6.png"
+    },
+    {
+        "id": "trivision-36",
+        "title": "Trivision 36",
+        "url": "https://liveingesta118.cdnmedia.tv/trivisionlive/rtmp01-900/chunklist.m3u8?DVR=",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/trivision.png"
+    },
    {
     "id": "fabulosa-tv-vip", 
     "name": "Fabulosa TV VIP",
