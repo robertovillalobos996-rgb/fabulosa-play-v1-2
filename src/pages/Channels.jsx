@@ -1,191 +1,167 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Play, Pause, Search, Tv, Volume2, VolumeX, Maximize, Loader2, ShieldAlert } from "lucide-react";
+import { ArrowLeft, Play, Pause, Search, Tv, Volume2, VolumeX, Maximize, Loader2, Trash2, ArrowUp, ArrowDown, Save, Edit3, UploadCloud, ChevronDown } from "lucide-react";
 import Hls from "hls.js";
 
-// IMPORTACIÓN DE TU LOGO Y BASE DE DATOS
 import logoFabulosa from "../assets/logo_fabulosa.png";
-import { canalesTV } from "../data/canales_finales.js";
+import { canalesTV as initialCanales } from "../data/canales_finales.js";
 
 const Channels = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("Costa Rica");
-  const [channels] = useState(canalesTV || []);
-  const [currentChannel, setCurrentChannel] = useState(canalesTV[0]);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(false);
+  const [channels, setChannels] = useState(initialCanales || []);
+  const [currentChannel, setCurrentChannel] = useState(initialCanales[0]);
+  const [editMode, setEditMode] = useState(false);
+  const [isMuted, setIsMuted] = useState(true); // Arranca mudo por regla de Chrome
   const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
   
   const videoRef = useRef(null);
   const hlsRef = useRef(null);
+  const fileInputRef = useRef(null);
+  const [uploadingFor, setUploadingFor] = useState(null);
 
-  // === MOTOR DE FUERZA BRUTA ESTILO HACKER ===
+  // --- GESTIÓN DE LOGOS Y CATEGORÍAS ---
+  const handleLogoUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file || !uploadingFor) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+      const base64Data = reader.result.split(',')[1];
+      try {
+        const res = await fetch('http://localhost:3001/upload-logo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fileName: file.name, base64Data })
+        });
+        const result = await res.json();
+        if (res.ok) setChannels(channels.map(c => c.id === uploadingFor ? { ...c, logo: result.path } : c));
+      } catch (err) { alert("Error al subir"); }
+    };
+  };
+
+  const saveToDisk = async () => {
+    try {
+      const res = await fetch('http://localhost:3001/save-channels', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(channels)
+      });
+      if (res.ok) alert("✅ ¡DATOS GUARDADOS FÍSICAMENTE!");
+    } catch (err) { alert("❌ Puente inactivo."); }
+  };
+
+  // --- REPRODUCTOR ---
   useEffect(() => {
     if (!currentChannel?.url || !videoRef.current) return;
     setIsLoading(true);
-    setHasError(false);
-
-    if (hlsRef.current) { hlsRef.current.destroy(); }
-
-    // LÓGICA DE INYECCIÓN: Si el canal es rebelde, forzamos el túnel de Vercel
+    if (hlsRef.current) hlsRef.current.destroy();
+    
     let finalUrl = currentChannel.url;
-    const isProtected = finalUrl.includes("repretel") || 
-                        finalUrl.includes("cdnmedia") || 
-                        currentChannel.headers;
-
-    if (isProtected && !finalUrl.includes("/api/proxy")) {
+    if ((finalUrl.includes("repretel") || finalUrl.includes("cdnmedia") || currentChannel.headers) && !finalUrl.includes("/api/proxy")) {
       finalUrl = `/api/proxy?url=${encodeURIComponent(currentChannel.url)}&referer=${encodeURIComponent(currentChannel.headers?.Referer || 'https://www.repretel.com/')}`;
     }
 
     if (Hls.isSupported()) {
-      const hls = new Hls({ 
-        manifestLoadingTimeOut: 20000,
-        xhrSetup: (xhr) => { xhr.withCredentials = false; }
-      });
-
+      const hls = new Hls({ manifestLoadingTimeOut: 20000 });
       hls.loadSource(finalUrl);
       hls.attachMedia(videoRef.current);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => { 
+        setIsLoading(false); 
+        videoRef.current.play().catch(()=>{}); 
+      });
       hlsRef.current = hls;
-
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        setTimeout(() => setIsLoading(false), 1200);
-        videoRef.current.play().catch(() => setIsPlaying(false));
-      });
-
-      hls.on(Hls.Events.ERROR, (e, data) => {
-        if (data.fatal) {
-          if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
-            hls.startLoad();
-          } else {
-            setIsLoading(false);
-            setHasError(true);
-            hls.destroy();
-          }
-        }
-      });
     }
   }, [currentChannel]);
 
-  // Pantalla completa
-  const handleFullScreen = () => {
-    if (videoRef.current.requestFullscreen) videoRef.current.requestFullscreen();
-  };
-
+  const categories = useMemo(() => [...new Set(channels.map(c => c.genre).filter(Boolean))], [channels]);
   const filteredChannels = useMemo(() => {
-    return channels.filter(c => {
-      const matchesSearch = (c.title || c.name || "").toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = searchTerm ? true : c.genre === activeCategory;
-      return matchesSearch && matchesCategory;
-    });
+    return channels.filter(c => (c.title || "").toLowerCase().includes(searchTerm.toLowerCase()) && (searchTerm ? true : c.genre === activeCategory));
   }, [channels, searchTerm, activeCategory]);
 
-  const categories = useMemo(() => {
-    const genres = channels.map(c => c.genre).filter(Boolean);
-    return ["Costa Rica", ...new Set(genres.filter(g => g !== "Costa Rica"))];
-  }, [channels]);
-
   return (
-    <div className="h-screen bg-black text-white flex flex-col overflow-hidden font-sans">
-      {/* HEADER TIPO PLUTO TV */}
-      <header className="h-16 bg-zinc-950 border-b border-white/10 flex items-center justify-between px-6 shrink-0">
-        <div className="flex items-center gap-6">
-          <Link to="/" className="text-zinc-500 hover:text-white"><ArrowLeft size={24} /></Link>
-          <img src={logoFabulosa} alt="Fabulosa Logo" className="h-10 object-contain" />
+    <div className="h-screen bg-[#050505] text-white flex flex-col overflow-hidden">
+      <input type="file" ref={fileInputRef} onChange={handleLogoUpload} className="hidden" accept="image/*" />
+
+      <header className="h-20 bg-black border-b border-white/10 flex items-center justify-between px-8 shrink-0 z-50">
+        <div className="flex items-center gap-4">
+          <Link to="/" className="text-zinc-600"><ArrowLeft size={24} /></Link>
+          <img src={logoFabulosa} alt="Logo" className="h-10 object-contain" />
+          <button onClick={() => setEditMode(!editMode)} className={`px-6 py-2 rounded-full text-[10px] font-black uppercase ${editMode ? 'bg-red-600' : 'bg-zinc-800'}`}>
+            {editMode ? 'SALIR DEL EDITOR' : 'MODO EDITOR'}
+          </button>
         </div>
-        <div className="relative w-80">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-600" size={16} />
-          <input 
-            type="text" placeholder="BUSCAR CANAL..." value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-zinc-900 border-none rounded-full py-2.5 pl-12 pr-4 text-[10px] font-black uppercase outline-none focus:ring-1 focus:ring-red-600 transition-all"
-          />
+        {editMode && <button onClick={saveToDisk} className="bg-green-600 px-10 py-3 rounded-full text-xs font-black uppercase shadow-lg shadow-green-900/20">GUARDAR TODO</button>}
+        <div className="relative w-64">
+          <input type="text" placeholder="BUSCAR..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-zinc-900 rounded-full py-2.5 px-6 text-xs outline-none" />
         </div>
       </header>
 
-      {/* REPRODUCTOR FIJO ARRIBA */}
-      <section className="relative w-full bg-black flex items-center justify-center border-b border-white/5" style={{ height: '42vh' }}>
+      {/* ÁREA DE VIDEO - CON CONTROL DE AUDIO */}
+      <section className="relative w-full bg-black flex items-center justify-center border-b border-white/5" style={{ height: '40vh' }}>
         <video 
           ref={videoRef} 
-          className="h-full w-full object-contain cursor-pointer"
-          onDoubleClick={handleFullScreen}
-          onClick={() => setIsPlaying(!isPlaying)}
-          autoPlay muted={isMuted}
+          className="h-full w-full object-contain cursor-pointer" 
+          autoPlay 
+          muted={isMuted}
+          onClick={() => setIsMuted(!isMuted)} 
         />
-        
-        {/* OVERLAY DE CARGA / LOGO */}
-        {isLoading && !hasError && (
-          <div className="absolute inset-0 bg-black flex flex-col items-center justify-center z-20">
-            <img src={currentChannel?.logo || "/fabulosa.jpg"} className="h-28 w-28 object-contain animate-pulse mb-4" alt="" />
-            <div className="flex items-center gap-2">
-              <Loader2 className="animate-spin text-red-600" size={24} />
-              <span className="text-[10px] font-black tracking-widest uppercase italic">Sintonizando...</span>
-            </div>
+        {isMuted && (
+          <div className="absolute top-4 right-4 bg-red-600 px-3 py-1 rounded-full text-[10px] font-black animate-pulse">
+            TOQUE EL VIDEO PARA ACTIVAR AUDIO 🔊
           </div>
         )}
-
-        {/* ERROR DE BLOQUEO */}
-        {hasError && (
-          <div className="absolute inset-0 bg-zinc-900 flex flex-col items-center justify-center z-30 text-center p-8">
-            <ShieldAlert className="text-red-600 mb-4" size={48} />
-            <h3 className="font-black uppercase italic text-sm">Señal Bloqueada por el Servidor</h3>
-            <p className="text-zinc-500 text-[9px] uppercase mt-2 tracking-widest">El canal detectó la conexión web y cerró el paso.</p>
-            <button onClick={() => window.location.reload()} className="mt-6 bg-red-600 px-10 py-2 rounded-full text-[10px] font-black uppercase">Refrescar App</button>
-          </div>
-        )}
+        {isLoading && <div className="absolute inset-0 bg-black flex items-center justify-center"><Loader2 className="animate-spin text-red-600" size={40} /></div>}
       </section>
 
-      {/* CUERPO INFERIOR */}
       <div className="flex flex-1 overflow-hidden">
-        
-        {/* ASIDE: CATEGORÍAS */}
-        <aside className="w-64 bg-zinc-950 border-r border-white/5 overflow-y-auto custom-scrollbar shrink-0">
-          <div className="p-4 space-y-1">
-            <p className="text-[9px] font-black text-zinc-700 uppercase tracking-widest mb-4 ml-4 italic">Categorías</p>
-            {categories.map(cat => (
-              <button
-                key={cat} onClick={() => { setActiveCategory(cat); setSearchTerm(""); }}
-                className={`w-full text-left px-5 py-3.5 rounded-2xl text-[11px] font-black uppercase transition-all ${
-                  activeCategory === cat && !searchTerm ? 'bg-red-600 text-white shadow-lg shadow-red-900/20' : 'text-zinc-500 hover:bg-white/5'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+        <aside className="w-64 bg-black border-r border-white/5 overflow-y-auto shrink-0 py-6">
+          {categories.map(cat => (
+            <button key={cat} onClick={() => { setActiveCategory(cat); setSearchTerm(""); }} className={`w-full text-left px-8 py-4 text-[11px] font-black uppercase transition-all ${activeCategory === cat ? 'bg-red-600 text-white' : 'text-zinc-600 hover:bg-zinc-900'}`}>{cat}</button>
+          ))}
         </aside>
 
-        {/* MAIN: GRILLA DE CANALES */}
-        <main className="flex-1 overflow-y-auto p-6 bg-[#050505] custom-scrollbar">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-            {filteredChannels.map(channel => (
-              <div
-                key={channel.id} onClick={() => { setCurrentChannel(channel); setIsPlaying(true); }}
-                className={`group relative aspect-video bg-zinc-900 rounded-[2rem] p-4 cursor-pointer transition-all border-2 ${
-                  currentChannel.id === channel.id ? 'border-red-600 bg-red-600/10 scale-95 shadow-2xl' : 'border-transparent hover:border-white/10'
-                }`}
+        <main className="flex-1 overflow-y-auto p-6 bg-zinc-900/5 custom-scrollbar">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {filteredChannels.map((channel) => (
+              <div 
+                key={channel.id} 
+                onClick={() => setCurrentChannel(channel)}
+                className={`group relative aspect-video bg-zinc-900 rounded-2xl overflow-hidden cursor-pointer border-2 transition-all duration-300 ${currentChannel.id === channel.id ? 'border-red-600 scale-95 shadow-[0_0_20px_rgba(220,38,38,0.3)]' : 'border-transparent hover:border-white/20'}`}
               >
-                <div className="h-full w-full flex flex-col items-center justify-center">
-                  <img 
-                    src={channel.logo || "/fabulosa.jpg"} 
-                    className="max-h-[60%] object-contain mb-2 group-hover:scale-110 transition-transform" 
-                    onError={(e) => { e.target.src = "/fabulosa.jpg" }}
-                    alt="" 
-                  />
-                  <p className="text-[9px] font-black uppercase text-center truncate w-full italic text-zinc-500 group-hover:text-white">
-                    {channel.title || channel.name}
-                  </p>
+                {/* IMAGEN TOTAL: Cubre cada centímetro */}
+                <img 
+                  src={channel.logo || "/fabulosa.jpg"} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                  onError={(e)=>e.target.src="/fabulosa.jpg"} 
+                />
+                
+                {/* Degradado inferior para que el texto se lea */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4">
+                  <p className="text-[10px] font-black uppercase italic tracking-wider truncate">{channel.title}</p>
                 </div>
+
+                {/* MENÚ DE EDICIÓN FLOTANTE */}
+                {editMode && (
+                  <div className="absolute inset-0 bg-black/90 flex flex-col p-4 justify-center gap-2 opacity-0 group-hover:opacity-100 transition-all z-10">
+                    <button onClick={(e) => { e.stopPropagation(); setUploadingFor(channel.id); fileInputRef.current.click(); }} className="bg-blue-600 p-2 rounded-lg text-[9px] font-black uppercase">CAMBIAR LOGO</button>
+                    <select 
+                      value={channel.genre}
+                      onClick={(e)=>e.stopPropagation()}
+                      onChange={(e) => { e.stopPropagation(); setChannels(channels.map(c => c.id === channel.id ? {...c, genre: e.target.value} : c)); }}
+                      className="bg-zinc-800 text-[9px] font-black p-2 rounded-lg outline-none border border-white/10 uppercase"
+                    >
+                      {categories.map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                    <div className="flex gap-1 mt-1">
+                      <button onClick={(e) => { e.stopPropagation(); setChannels(channels.filter(c => c.id !== channel.id)); }} className="flex-1 bg-red-600 p-2 rounded-lg"><Trash2 size={14} className="mx-auto"/></button>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </main>
       </div>
-
-      <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
-      `}</style>
     </div>
   );
 };

@@ -1,28 +1,12 @@
 export const canalesTV = [
     {
-        "id": "repretel-6",
-        "title": "Canal 6 Repretel",
-        "url": `/api/proxy?url=${encodeURIComponent("https://alba-cr-repretel-c6.stream.mediatiquestream.com/index.m3u8")}&referer=https://www.repretel.com/`,
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/repretel_6.png",
-        "headers": true
-    },
-    {
-        "id": "trivision-36",
-        "title": "Trivision 36",
-        "url": `/api/proxy?url=${encodeURIComponent("https://liveingesta118.cdnmedia.tv/trivisionlive/rtmp01-900/chunklist.m3u8?DVR=")}&referer=https://player.instantvideocloud.net/`,
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/trivision.png",
-        "headers": true
-    },
-       {
-        "id": "fabulosa-tv-vip", 
+        "id": "fabulosa-tv-vip",
         "title": "Fabulosa TV VIP",
         "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
         "genre": "Costa Rica",
-        "logo": "/fabulosa.jpg"
+        "logo": "/logos_canales/logo_fabulosa.png"
     },
-   {
+    {
         "id": "tv-2",
         "title": "88 Stereo",
         "url": "https://s1.tvdatta.com:3972/live/88stereolive.m3u8",
@@ -68,7 +52,7 @@ export const canalesTV = [
         "id": "tv-8-",
         "title": "Alcance TV",
         "url": "https://5bf8041cb3fed.streamlock.net/AlcanceTV/AlcanceTV/playlist.m3u8",
-        "genre": "Costa Rica",
+        "genre": "Cristianos",
         "logo": "/logos_canales/Alcance TV.png"
     },
     {
@@ -111,42 +95,35 @@ export const canalesTV = [
         "title": "360 RFTV (576p) [Geo-blocked]",
         "url": "https://acceso.mediosdecostarica.com:3638/live/360rftvcrlive.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-16.png"
+        "logo": "/logos_canales/360.jpg"
     },
     {
         "id": "tv-17",
         "title": "Canal 1 (720p)",
         "url": "https://vid.canal1cr.com:3424/multi_live/play_720.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-17.png"
+        "logo": "/logos_canales/1.jpg"
     },
     {
         "id": "tv-19",
         "title": "Canal 11 (1080p)",
         "url": "https://redirector.rudo.video/hls-video/c54ac2799874375c81c1672abb700870537c5223/canal11hn/canal11hn.smil/playlist.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-19.png"
-    },
-    {
-        "id": "tv-20",
-        "title": "Canal 11 TuTV (349p)",
-        "url": "https://stream.giostreaming.app/canal11/canal11.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-20.png"
+        "logo": "/logos_canales/canal_11.png"
     },
     {
         "id": "tv-21",
         "title": "Canal 11 de la Costa (720p)",
         "url": "https://vivo.solumedia.com:19360/dadaproductora/dadaproductora.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-21.png"
+        "logo": "/logos_canales/canal_11_tv.jpg"
     },
     {
         "id": "tv-23",
         "title": "Canal 13 San Luis",
         "url": "https://stream.radiosmundiales.com:19360/sanluismas/sanluismas.m3u8",
         "genre": "Costa Rica",
-        "logo": null
+        "logo": "/logos_canales/13_san luis.jpg"
     },
     {
         "id": "tv-25",
@@ -163,39 +140,18 @@ export const canalesTV = [
         "logo": "/logos_canales/tv-28.png"
     },
     {
-        "id": "tv-29",
-        "title": "Canal 45 (576p)",
-        "url": "https://nlb1-live.emitstream.com/hls/625csn5et2iszm9oze65/master.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-29.png"
-    },
-    {
         "id": "tv-32",
         "title": "Josué TV (1080p)",
         "url": "https://videoserver.tmcreativos.com:19360/abbftuhxxs/abbftuhxxs.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-32.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/josue_tv.jpg"
     },
     {
         "id": "tv-33",
         "title": "Lenca Television Canal 40 (720p)",
         "url": "https://lencatelevision.com/hls/stream.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-33.png"
-    },
-    {
-        "id": "tv-34",
-        "title": "Multimedios Bajío (720p)",
-        "url": "https://mdstrm.com/live-stream-playlist/5d4b0fec848918070128c8cb.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-34.png"
-    },
-    {
-        "id": "tv-35",
-        "title": "Multimedios Ciudad Juárez (720p)",
-        "url": "https://mdstrm.com/live-stream-playlist/5d9e440d675235586a92be7f.m3u8",
-        "genre": "Costa Rica",
-        "logo": null
+        "logo": "/logos_canales/lenca.png"
     },
     {
         "id": "tv-36",
@@ -203,34 +159,6 @@ export const canalesTV = [
         "url": "https://acceso.mediosdecostarica.com:3422/hybrid/play.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/stv.png"
-    },
-    {
-        "id": "tv-37",
-        "title": "Multimedios Laguna (720p)",
-        "url": "https://mdstrm.com/live-stream-playlist/57bf686a61ff39e1085d43e1.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-37.png"
-    },
-    {
-        "id": "tv-38",
-        "title": "Multimedios Puebla (720p)",
-        "url": "https://mdstrm.com/live-stream-playlist/5d56ed29c92dd106ff01543b.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-38.png"
-    },
-    {
-        "id": "tv-39",
-        "title": "Multimedios Saltillo (720p)",
-        "url": "https://mdstrm.com/live-stream-playlist/5d5d51a4e9a40e25f4a0332c.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-39.png"
-    },
-    {
-        "id": "tv-40",
-        "title": "Nicoya TV (720p)",
-        "url": "https://59ef525c24caa.streamlock.net/nicoyatv/nicoyatv/playlist.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-40.png"
     },
     {
         "id": "tv-41",
@@ -244,14 +172,14 @@ export const canalesTV = [
         "title": "Ready TV Canal 6 (720p)",
         "url": "https://streaming.telecablecentral.com.do/ReadyTV/ReadyHD/playlist.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-42.png"
+        "logo": "/logos_canales/ready.png"
     },
     {
         "id": "tv-43",
         "title": "Romana TV Canal 42 (480p)",
         "url": "https://videoserver.tmcreativos.com:19360/cvmhbyrcat/cvmhbyrcat.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-43.png"
+        "logo": "/logos_canales/romana.png"
     },
     {
         "id": "tv-44",
@@ -265,35 +193,28 @@ export const canalesTV = [
         "title": "TV Sur Canal 14 (1080p)",
         "url": "https://k20.usastreams.com:8081/tvsur/index.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-46.png"
+        "logo": "/logos_canales/tv_sur.png"
     },
     {
         "id": "tv-47",
         "title": "Tele Proyecto TV",
         "url": "https://5790d294af2dc.streamlock.net/Teleproyecto/Teleproyecto/playlist.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-47.png"
-    },
-    {
-        "id": "tv-48",
-        "title": "TeleBrunca (720p)",
-        "url": "https://59ef525c24caa.streamlock.net/telebrunca/telebrunca/playlist.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-48.png"
+        "logo": "/logos_canales/tp.png"
     },
     {
         "id": "tv-49",
         "title": "TicaVision",
         "url": "https://5eac7b031d945.streamlock.net/TICAVISION/TICAVISION/playlist.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-49.png"
+        "logo": "/logos_canales/tica_vision.jpg"
     },
     {
         "id": "tv-50",
         "title": "Urbano TV (720p)",
         "url": "https://59ef525c24caa.streamlock.net/tvurbano/tvurbano/playlist.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-50.png"
+        "logo": "/logos_canales/urbano.png"
     },
     {
         "id": "tv-51",
@@ -307,21 +228,14 @@ export const canalesTV = [
         "title": "Vía Televisión (720P)",
         "url": "https://videoserver.tmcreativos.com:19360/cablerasvia/cablerasvia.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-52.png"
+        "logo": "/logos_canales/via_tv.jpg"
     },
     {
         "id": "tv-53",
         "title": "Zurquí TV (720p)",
         "url": "https://videoserver.tmcreativos.com:19360/gesfnvpamn/gesfnvpamn.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-53.png"
-    },
-    {
-        "id": "tv-54",
-        "title": "Canal opa",
-        "url": "https://5fc584f3f19c9.streamlock.net/genteopa/videogenteopa/chunklist_w215971633.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/opa.png"
+        "logo": "/logos_canales/zurqui.png"
     },
     {
         "id": "tv-319",
@@ -331,115 +245,73 @@ export const canalesTV = [
         "logo": "/logos_canales/tv-319.png"
     },
     {
-        "id": "tv-906",
-        "title": "ABN Bible Movies (720p)",
-        "url": "https://mediaserver.abnvideos.com/streams/abnbiblemovies.m3u8",
-        "genre": "Documentales",
-        "logo": "https://i.imgur.com/NCqZdaL.png"
-    },
-    {
-        "id": "tv-914",
-        "title": "Cinema",
-        "url": "http://catchup.videoline.ru/cinema/playlist.m3u8",
-        "genre": "Documentales",
-        "logo": "https://i.imgur.com/b5e9qUA.png"
-    },
-    {
-        "id": "tv-937",
-        "title": "Rotana Cinema Egypt (1080p) [Geo-blocked]",
-        "url": "https://rotana.hibridcdn.net/rotananet/cinemamasr_net-7Y83PP5adWixDF93/playlist.m3u8",
-        "genre": "Documentales",
-        "logo": "https://i.imgur.com/dGlKoLW.png"
-    },
-    {
-        "id": "tv-938",
-        "title": "Rotana Cinema KSA (1080p) [Geo-blocked]",
-        "url": "https://rotana.hibridcdn.net/rotananet/cinema_net-7Y83PP5adWixDF93/playlist.m3u8",
-        "genre": "Documentales",
-        "logo": "https://i.imgur.com/pGgp38I.png"
-    },
-    {
         "id": "tv-147",
         "title": "AS3 Sport TV (1080p)",
         "url": "https://streamtv.as3sport.online:3394/hybrid/play.m3u8",
-        "genre": "Documentales",
-        "logo": "/logos_canales/tv-147.png"
+        "genre": "Deportes",
+        "logo": "/logos_canales/AS3 Sport TV.jpg"
     },
     {
         "id": "tv-777",
         "title": "UMTV (1080p)",
         "url": "https://60417ddeaf0d9.streamlock.net/montemorelos/videomontemorelos/playlist.m3u8",
-        "genre": "Documentales",
-        "logo": "/logos_canales/tv-777.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/um.jpg"
     },
     {
         "id": "tv-853",
         "title": "Fabulosa Estéreo 100.5 FM (720p)",
         "url": "https://www.streaming507.net:19360/videofabulosa/videofabulosa.m3u8",
-        "genre": "Documentales",
-        "logo": "/logos_canales/tv-853.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/fabulosa.jpg"
     },
     {
         "id": "tv-854",
         "title": "Frecuencia Musical TV",
         "url": "https://s2.tvdatta.com:3307/hybrid/play.m3u8",
-        "genre": "Documentales",
-        "logo": "/logos_canales/tv-854.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/frecuencia.png"
     },
     {
         "id": "tv-860",
         "title": "Music TV Granada (1080p)",
         "url": "https://cloudvideo.servers10.com:8081/8032/index.m3u8",
-        "genre": "Documentales",
-        "logo": "/logos_canales/tv-860.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/granada.png"
     },
     {
         "id": "tv-941",
         "title": "Extrema Kids",
         "url": "https://627bb251f23c7.streamlock.net:444/ExtremaKids/ExtremaKids/playlist.m3u8",
-        "genre": "Documentales",
-        "logo": "extrema-Kids.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/extrema_kids.jpg"
     },
     {
         "id": "tv-942",
         "title": "KidsFlix (1080p)",
         "url": "https://stream-us-east-1.getpublica.com/playlist.m3u8?network_id=50",
-        "genre": "Documentales",
-        "logo": "https://i.imgur.com/4Pn0ADQ.png"
+        "genre": "Internacionales",
+        "logo": "/logos_canales/flix.png"
     },
     {
         "id": "tv-946",
         "title": "Logos TV Kids (720p)",
         "url": "https://streamer1.streamhost.org/salive/logoskidsH/playlist.m3u8",
-        "genre": "Documentales",
-        "logo": "/logos_canales/tv-946.png"
+        "genre": "Infantil",
+        "logo": "/logos_canales/kids_tv.png"
     },
     {
         "id": "tv-947",
         "title": "Peniel Kids & Young (480p)",
         "url": "https://s.emisoras.tv:8081/penielkids/index.m3u8",
-        "genre": "Documentales",
-        "logo": "/logos_canales/tv-947.png"
-    },
-    {
-        "id": "tv-85",
-        "title": "MCI Televisión (1080p)",
-        "url": "https://video.ejeserver.com/live/mcitelevision.m3u8",
-        "genre": "Documentales",
-        "logo": "https://pbs.twimg.com/profile_images/1836009952420274177/FfYonU6r_400x400.jpg"
-    },
-    {
-        "id": "tv-114",
-        "title": "Патриот (576i)",
-        "url": "http://catchup.videoline.ru/asvtv/index.m3u8",
-        "genre": "Documentales",
-        "logo": "https://patriotkanal.ru/assets/cached/2025/02/resize/264_112_q100_patriot-only-logo.png"
+        "genre": "Infantil",
+        "logo": "/logos_canales/peniel.jpg"
     },
     {
         "id": "tv-125",
         "title": "8NTV",
         "url": "https://60417ddeaf0d9.streamlock.net/ntv/videontv/playlist.m3u8",
-        "genre": "Documentales",
+        "genre": "Noticias",
         "logo": "/logos_canales/8NTV.jpg"
     },
     {
@@ -447,7 +319,7 @@ export const canalesTV = [
         "title": "Mexiquense TV",
         "url": "https://5e50264bd6766.streamlock.net/mexiquense2/videomexiquense2/playlist.m3u8",
         "genre": "Documentales",
-        "logo": "mexiquense-tv.jpg"
+        "logo": "/logos_canales/mexicanensi.png"
     },
     {
         "id": "tv-156",
@@ -1342,7 +1214,7 @@ export const canalesTV = [
         "id": "tv-900",
         "title": "VoiceOver Radio TV (720p)",
         "url": "https://cloudvideo.servers10.com:8081/8198/index.m3u8",
-        "genre": "Documentales",
+        "genre": "Musica",
         "logo": "/logos_canales/tv-900.png"
     },
     {
@@ -1363,7 +1235,7 @@ export const canalesTV = [
         "id": "tv-905",
         "title": "alpha Cinema (1080p)",
         "url": "https://live.15plusmg.ru/memfs/b389173a-df4e-4171-8904-e249893e71eb.m3u8",
-        "genre": "Peliculas",
+        "genre": "Internacionales",
         "logo": "https://i.imgur.com/146OgfU.png"
     },
     {
@@ -1777,371 +1649,315 @@ export const canalesTV = [
         "title": "Multivisión Sports (720p)",
         "url": "https://stream.digitalgt.com:3605/live/multivisionsportslive.m3u8",
         "genre": "Deportes",
-        "logo": "/logos_canales/tv-510.png"
+        "logo": "/logos_canales/multi_sport.jpg"
     },
     {
         "id": "tv-322",
         "title": "CromTV (1080p)",
         "url": "https://fox.hostlagarto.com:8081/cromtv/tracks-v1a1/mono.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-322.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/crom.jpg"
     },
     {
         "id": "tv-155",
         "title": "Agape TV (720p)",
         "url": "https://5fc584f3f19c9.streamlock.net/agape/smil:agape.smil/playlist.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-155.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/agape.jpg"
     },
     {
         "id": "tv-188",
         "title": "Bajo Techo TV (1080p)",
         "url": "https://fox.hostlagarto.com:8081/bajotechotv/tracks-v1a1/mono.m3u8",
-        "genre": "Deportes",
-        "logo": null
+        "genre": "Noticias",
+        "logo": "/logos_canales/bajotecho.jpg"
     },
     {
         "id": "tv-190",
         "title": "Bellavision (1080p)",
         "url": "https://fox.hostlagarto.com:8081/bellavision8hd/tracks-v1a1/mono.m3u8",
-        "genre": "Deportes",
-        "logo": null
+        "genre": "Noticias",
+        "logo": "/logos_canales/Bellavision.jpg"
     },
     {
         "id": "tv-193",
         "title": "Boca Chica TV (720p)",
         "url": "https://fox.hostlagarto.com:8081/bocachicatv/tracks-v1a1/mono.m3u8",
-        "genre": "Deportes",
+        "genre": "Peliculas",
         "logo": "/logos_canales/tv-193.png"
     },
     {
         "id": "tv-333",
         "title": "Delta TV Canal 50 (720p)",
         "url": "https://fox.hostlagarto.com:8081/deltatv50/tracks-v1a1/mono.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-333.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/delta.png"
     },
     {
         "id": "tv-376",
         "title": "F10 HD [Geo-blocked]",
         "url": "https://tv2.bitstreaming.net:3235/multi_live/play.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-376.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/f10.jpg"
     },
     {
         "id": "tv-389",
         "title": "GH Television (1080p)",
         "url": "https://fox.hostlagarto.com:8081/ghtelevision/tracks-v1a1/mono.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-389.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/gh.jpg"
     },
     {
         "id": "tv-403",
         "title": "HTV Live (1080p)",
         "url": "https://fox.hostlagarto.com:8081/canalhtv/tracks-v1a1/mono.m3u8",
-        "genre": "Deportes",
+        "genre": "Musica",
         "logo": "/logos_canales/tv-403.png"
-    },
-    {
-        "id": "tv-410",
-        "title": "ICRTV Colima (1080p)",
-        "url": "https://5fc584f3f19c9.streamlock.net/icrtvcolima/smil:icrtvcolima.smil/playlist.m3u8",
-        "genre": "Deportes",
-        "logo": null
     },
     {
         "id": "tv-566",
         "title": "Pula TV (1080p)",
         "url": "https://fox.hostlagarto.com:8081/pulatv/index.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-566.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/pula.jpg"
     },
     {
         "id": "tv-568",
         "title": "Punta Cana TV (720p)",
         "url": "https://fox.hostlagarto.com:8081/puntacanatv/index.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-568.png"
-    },
-    {
-        "id": "tv-583",
-        "title": "RTS (480p)",
-        "url": "https://d2qsan2ut81n2k.cloudfront.net/live/72a3661e-1019-45f8-af10-af59f6ef6222/ts:abr.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-583.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/puntacana.jpg"
     },
     {
         "id": "tv-661",
         "title": "TV Cuatro 4.1 (1080p)",
         "url": "https://5f1af61612fb5.streamlock.net/tv4/tv4.smil/.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-661.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/4.jpg"
     },
     {
         "id": "tv-669",
         "title": "TV Mar La Paz (1080p)",
         "url": "https://5fc584f3f19c9.streamlock.net/tvmarlapaz/smil:tvmarlapaz.smil/playlist.m3u8",
-        "genre": "Deportes",
-        "logo": null
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/tvmar.png"
     },
     {
         "id": "tv-670",
         "title": "TV Mar Los Cabos (1080p)",
         "url": "https://5fc584f3f19c9.streamlock.net/tvmarloscabos/smil:tvmarloscabos.smil/playlist.m3u8",
-        "genre": "Deportes",
-        "logo": null
-    },
-    {
-        "id": "tv-684",
-        "title": "TVC (480p)",
-        "url": "https://d2qsan2ut81n2k.cloudfront.net/live/19e86940-42cc-485e-80f4-89ae27c69f1b/ts:abr.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-684.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/tvmar_2.png"
     },
     {
         "id": "tv-733",
         "title": "Telenord 10 (720p)",
         "url": "https://fox.hostlagarto.com:8081/telenord10/playlist.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-733.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/telenort.jpg"
     },
     {
         "id": "tv-734",
         "title": "Telenord 12 (720p)",
         "url": "https://fox.hostlagarto.com:8081/telenord12/playlist.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-734.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/telenort_12.png"
     },
     {
         "id": "tv-735",
         "title": "Telenord 8 (1080p)",
         "url": "https://fox.hostlagarto.com:8081/telenord8/playlist.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-735.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/telenort_8.png"
     },
     {
         "id": "tv-737",
         "title": "Telenovisa43 (720p)",
         "url": "https://fox.hostlagarto.com:8081/telenonisa43/tracks-v1a1/mono.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-737.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/telenovisa.jpg"
     },
     {
         "id": "tv-749",
         "title": "Teletrak (720p)",
         "url": "https://unlimited6-cl.dps.live/sportinghd/sportinghd.smil/playlist.m3u8",
         "genre": "Deportes",
-        "logo": "/logos_canales/tv-749.png"
+        "logo": "/logos_canales/teletrak.jpg"
     },
     {
         "id": "tv-750",
         "title": "Teletur (720p)",
         "url": "https://fox.hostlagarto.com:8081/teleturtv/tracks-v1a1/mono.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-750.png"
+        "genre": "Documentales",
+        "logo": "/logos_canales/teletur.jpg"
     },
     {
         "id": "tv-807",
         "title": "Vegavision Canal 18 (1080p)",
         "url": "https://fox.hostlagarto.com:8081/canal26/tracks-v1a1/mono.m3u8",
-        "genre": "Deportes",
-        "logo": null
+        "genre": "Peliculas",
+        "logo": "/logos_canales/cd.jpg"
     },
     {
         "id": "tv-862",
         "title": "NG Radio TV (360p)",
         "url": "https://67acccf130420.streamlock.net/ngradiotv/ngradiotv/playlist.m3u8",
-        "genre": "Deportes",
-        "logo": "/logos_canales/tv-862.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/ng.jpg"
     },
     {
         "id": "tv-610",
         "title": "SUMtv Latino (1080p)",
         "url": "https://bozztv.com/uni10rtmp/ssstv2-cdn/smil:ssstv2web.smil/playlist.m3u8",
-        "genre": "Musica",
-        "logo": null
+        "genre": "Cristianos",
+        "logo": "/logos_canales/sun.png"
     },
     {
         "id": "tv-856",
         "title": "La Fabulosa Radio y TV",
         "url": "https://eu1.servers10.com:8081/8004/index.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-856.png"
+        "logo": "/logos_canales/la_fabulosa.png"
     },
     {
         "id": "tv-864",
         "title": "Peniel Musical (480p)",
         "url": "https://s.emisoras.tv:8081/penielmusical/index.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-864.png"
+        "logo": "/logos_canales/peniel_musical.jpg"
     },
     {
         "id": "tv-890",
         "title": "Totalmusic (720p)",
         "url": "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic/SA_LIVE_hls_enc/master.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-890.png"
+        "logo": "/logos_canales/total_music.png"
     },
     {
         "id": "tv-891",
         "title": "Totalmusic 2000s (720p)",
         "url": "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_00s/SA_LIVE_hls_enc/master.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-891.png"
+        "logo": "/logos_canales/total.jpg"
     },
     {
         "id": "tv-892",
         "title": "Totalmusic 80s (720p)",
         "url": "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_80s/SA_LIVE_hls_enc/master.m3u8",
         "genre": "Musica",
-        "logo": null
+        "logo": "/logos_canales/80.jpg"
     },
     {
         "id": "tv-893",
         "title": "Totalmusic Concerts (720p)",
         "url": "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_Concerts/SA_LIVE_hls_enc/master.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-893.png"
+        "logo": "/logos_canales/tota.png"
     },
     {
         "id": "tv-894",
         "title": "Totalmusic Dance (720p)",
         "url": "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_Dance/SA_LIVE_hls_enc/master.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-894.png"
+        "logo": "/logos_canales/dance.jpg"
     },
     {
         "id": "tv-897",
         "title": "Tropical Music TV (720p)",
         "url": "https://59a564764e2b6.streamlock.net/vallenato/tropical/playlist.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-897.png"
+        "logo": "/logos_canales/tropical.png"
     },
     {
         "id": "tv-121",
         "title": "Groovy TV (360p)",
         "url": "http://web.onair-radio.eu:1935/groovytv/groovytv/playlist.m3u8",
-        "genre": "Musica",
-        "logo": "https://i.imgur.com/ZYNQuf1.png"
+        "genre": "Internacionales",
+        "logo": "/logos_canales/groovy.png"
     },
     {
         "id": "tv-153",
         "title": "Activa TV (720p)",
         "url": "https://streamtv.mediasector.es/hls/activatv/index.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-153.png"
+        "logo": "/logos_canales/activa.jpg"
     },
     {
         "id": "tv-281",
         "title": "Canalda 26 HD",
         "url": "https://canalda.rgradio.net:3084/live/canaldalive.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-281.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/canalda.jpg"
     },
     {
         "id": "tv-373",
         "title": "Expresa TV (720p)",
         "url": "https://5ca9af4645e15.streamlock.net/teleradio/smil:teleradio.smil/playlist.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-373.png"
+        "genre": "Documentales",
+        "logo": "/logos_canales/expresa.png"
     },
     {
         "id": "tv-385",
         "title": "Fortuna TV (1080p)",
         "url": "https://streamtv.intervenhosting.net:3355/live/fortunatvlive.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-385.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/ftv.jpg"
     },
     {
         "id": "tv-387",
         "title": "Fuego TV",
         "url": "https://streamunoapp.com:3553/live/cromtvlive.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-387.png"
+        "logo": "/logos_canales/fuego.jpg"
     },
     {
         "id": "tv-397",
         "title": "Gol Classics",
         "url": "https://d71gqtnep83vb.cloudfront.net/gol_classics/gol_classics.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-397.png"
+        "genre": "Deportes",
+        "logo": "/logos_canales/gol.jpg"
     },
     {
         "id": "tv-401",
         "title": "Guaro TV (720p)",
         "url": "https://streamtv.intervenhosting.net:3592/stream/play.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-401.png"
-    },
-    {
-        "id": "tv-437",
-        "title": "LIM TV (720p)",
-        "url": "https://tv.invasivamedia.com/hls/limtv.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-437.png"
-    },
-    {
-        "id": "tv-484",
-        "title": "María+Visión Medjugorje (720p)",
-        "url": "https://1601580044.rsc.cdn77.org/live/_jcn_/amlst:Italiasette/playlist.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-484.png"
+        "genre": "Documentales",
+        "logo": "/logos_canales/planet.png"
     },
     {
         "id": "tv-496",
         "title": "Metro TV (720p)",
         "url": "https://streamtv12.ddns.net:5443/LiveApp/streams/193945633734205616732920.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-496.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/metro.jpg"
     },
     {
         "id": "tv-540",
         "title": "Ondambiental TV (360p)",
         "url": "https://stmv4.voxtvhd.com.br/ondastereo/ondastereo/playlist.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-540.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/onda.jpg"
     },
     {
         "id": "tv-559",
         "title": "Popular TV Melilla (1080p)",
         "url": "http://5940924978228.streamlock.net:1935/8009/8009/playlist.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-559.png"
-    },
-    {
-        "id": "tv-560",
-        "title": "Popular TV Murcia (1080p)",
-        "url": "https://cloud.fastchannel.es/mic/manifiest/populartvrm.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-560.png"
-    },
-    {
-        "id": "tv-561",
-        "title": "PortuTV (480p)",
-        "url": "https://streamtv.intervenhosting.net:3789/live/portutvlive.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-561.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/mellilla.png"
     },
     {
         "id": "tv-641",
         "title": "Supermúsica TV (720p)",
         "url": "https://backupmaxmedia.hvmultiplay.com/hls/stream4/supermusica.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-641.png"
+        "logo": "/logos_canales/super.jpg"
     },
     {
         "id": "tv-642",
         "title": "Suram TV (1080p)",
         "url": "https://livetv.305streamhd.com:3111/live/suramtvlive.m3u8",
         "genre": "Musica",
-        "logo": null
-    },
-    {
-        "id": "tv-655",
-        "title": "TV Canal Sur (1080p)",
-        "url": "https://streamtvs.tvcanalsur.com.do/hls/stream/index.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-655.png"
+        "logo": "/logos_canales/suram.jpg"
     },
     {
         "id": "tv-681",
@@ -2154,50 +1970,43 @@ export const canalesTV = [
         "id": "tv-692",
         "title": "TVM para ti (1080p)",
         "url": "https://streamtv.intervenhosting.net:3529/live/tvmparatilive.m3u8",
-        "genre": "Musica",
-        "logo": null
+        "genre": "Infantil",
+        "logo": "/logos_canales/tvm.png"
     },
     {
         "id": "tv-705",
         "title": "TVUNO (720p)",
         "url": "https://streamtv.onliv3.online:1936/karibtv/karibtv/playlist.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-705.png"
+        "logo": "/logos_canales/uno.jpg"
     },
     {
         "id": "tv-736",
         "title": "Telenorte (720p)",
         "url": "https://627bb251f23c7.streamlock.net:444/TopRadioTV/TopRadioTV/playlist.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-736.png"
-    },
-    {
-        "id": "tv-795",
-        "title": "V Classic TV (720p)",
-        "url": "https://5eaccbab48461.streamlock.net:1936/8112/8112/playlist.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-795.png"
+        "logo": "/logos_canales/norte.png"
     },
     {
         "id": "tv-844",
         "title": "AE Radio TV (720p)",
         "url": "https://tls-cl.cdnz.cl/aeradio/live/playlist.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-844.png"
+        "logo": "/logos_canales/ae.jpg"
     },
     {
         "id": "tv-845",
         "title": "Azahares Radio Multimedia (720p)",
         "url": "https://streamyes.alsolnet.com/azaharesfm/live/playlist.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-845.png"
+        "logo": "/logos_canales/azares.jpg"
     },
     {
         "id": "tv-847",
         "title": "Caoba TV Radio (720p)",
         "url": "https://host.streamingnation.live:3940/live/caobatvlive.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-847.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/caoba.jpg"
     },
     {
         "id": "tv-850",
@@ -2210,8 +2019,8 @@ export const canalesTV = [
         "id": "tv-851",
         "title": "Escúchame Radio TV (720p)",
         "url": "https://stmv1.transmissaodigital.com/pedro9800/pedro9800/playlist.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-851.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/escuchame.png"
     },
     {
         "id": "tv-855",
@@ -2224,50 +2033,43 @@ export const canalesTV = [
         "id": "tv-857",
         "title": "La Morada Radio TV (720p)",
         "url": "https://movil.ejeserver.com/live/lamoradatv.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-857.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/la_morada.png"
     },
     {
         "id": "tv-858",
         "title": "La Perla Radio TV (720p)",
         "url": "https://eu1.servers10.com:8081/8068/index.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-858.png"
+        "logo": "/logos_canales/peerla.png"
     },
     {
         "id": "tv-859",
         "title": "Mel Radio TV (360p)",
         "url": "https://eu1.servers10.com:8081/8334/index.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-859.png"
+        "logo": "/logos_canales/mi.png"
     },
     {
         "id": "tv-865",
         "title": "Pequeradio (720p)",
         "url": "https://canadaremar2.todostreaming.es/live/peque-pequetv.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-865.png"
+        "genre": "Infantil",
+        "logo": "/logos_canales/pequeradio.png"
     },
     {
         "id": "tv-870",
         "title": "Radio Cuenca Estéreo (720p)",
         "url": "https://eu1.servers10.com:8081/8074/index.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-870.png"
-    },
-    {
-        "id": "tv-871",
-        "title": "Radio Fantástica 98.9 FM (1080p)",
-        "url": "http://190.107.232.9:8082/livestream/stream.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-871.png"
+        "logo": "/logos_canales/cuenca.jpg"
     },
     {
         "id": "tv-873",
         "title": "Radio Imagen 105.1 FM (720p)",
         "url": "https://streaming.imagenfm105-1.com/hls/stream.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-873.png"
+        "logo": "/logos_canales/imagen.jpg"
     },
     {
         "id": "tv-874",
@@ -2305,46 +2107,32 @@ export const canalesTV = [
         "logo": "/logos_canales/tv-880.png"
     },
     {
-        "id": "tv-881",
-        "title": "Radio Yguazú TV (480p)",
-        "url": "https://live.enhdtv.com:8081/radioiguazutv/index.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-881.png"
-    },
-    {
         "id": "tv-882",
         "title": "Radio y Televisión Martí (720p)",
         "url": "https://ocb-ingest.akamaized.net/hls/live/2037032/tvmc01/playlist.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-882.png"
+        "logo": "/logos_canales/marti.png"
     },
     {
         "id": "tv-883",
         "title": "RadioMensaje TV (720p)",
         "url": "https://eu1.servers10.com:8081/8230/index.m3u8",
-        "genre": "Musica",
+        "genre": "Cristianos",
         "logo": "/logos_canales/tv-883.png"
     },
     {
         "id": "tv-884",
         "title": "RadioTV Oriente",
         "url": "https://live.obslivestream.com/tvoriente/index.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-884.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/oriente.png"
     },
     {
         "id": "tv-885",
         "title": "Radiocanal San Francisco (1080p)",
         "url": "http://204.199.3.2/.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-885.png"
-    },
-    {
-        "id": "tv-888",
-        "title": "TeleRadioNorte (720p)",
-        "url": "https://angelistic.live:3785/live/tvoficiallive.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-888.png"
+        "logo": "/logos_canales/radiocanal.jpg"
     },
     {
         "id": "tv-898",
@@ -2352,13 +2140,6 @@ export const canalesTV = [
         "url": "https://7.innovatestream.pe:19360/turbomixoficial/turbomixoficial.m3u8",
         "genre": "Musica",
         "logo": "/logos_canales/tv-898.png"
-    },
-    {
-        "id": "tv-901",
-        "title": "WWXY-DT3 (Maranatha Radio Ministries) (720p)",
-        "url": "https://vip.livecastnet.com:3930/live/maranatharadiolive.m3u8",
-        "genre": "Musica",
-        "logo": "/logos_canales/tv-901.png"
     },
     {
         "id": "tv-948",
@@ -2372,21 +2153,21 @@ export const canalesTV = [
         "title": "ADN Noticias",
         "url": "https://mdstrm.com/live-stream-playlist/60b578b060947317de7b57ac.m3u8",
         "genre": "Noticias",
-        "logo": "adn-noticias.png"
+        "logo": "/logos_canales/adn.jpg"
     },
     {
         "id": "tv-56",
         "title": "Estrella News",
         "url": "https://estrella-news-oando.amagi.tv/playlist.m3u8",
         "genre": "Noticias",
-        "logo": "estrella.news.webp"
+        "logo": "/logos_canales/extrella news.jpg"
     },
     {
         "id": "tv-57",
         "title": "24/7 Canal de Noticias",
         "url": "https://panel.host-live.com:19360/cn247tv/cn247tv.m3u8",
         "genre": "Noticias",
-        "logo": "/logos_canales/tv-57.png"
+        "logo": "/logos_canales/247.jpg"
     },
     {
         "id": "tv-58",
@@ -2403,13 +2184,6 @@ export const canalesTV = [
         "logo": "/logos_canales/tv-59.png"
     },
     {
-        "id": "tv-60",
-        "title": "Canal 24 Horas Catalunya (720p)",
-        "url": "https://ztnr.rtve.es/ztnr/4952053.m3u8",
-        "genre": "Noticias",
-        "logo": "/logos_canales/tv-60.png"
-    },
-    {
         "id": "tv-61",
         "title": "Canal Sur Noticias",
         "url": "https://cdnlive.codev8.net/rtvalive/smil:channel42.smil/playlist.m3u8",
@@ -2420,7 +2194,7 @@ export const canalesTV = [
         "id": "tv-62",
         "title": "Telenews TV",
         "url": "https://hilandofinotv.essastream.com:3480/live/telenewscanallive.m3u8",
-        "genre": "Noticias",
+        "genre": "Musica",
         "logo": "/logos_canales/tv-62.png"
     },
     {
@@ -2428,20 +2202,20 @@ export const canalesTV = [
         "title": "RTVE 24h",
         "url": "https://ztnr.rtve.es/ztnr/1694255.m3u8",
         "genre": "Noticias",
-        "logo": "rtve.jpg"
+        "logo": "/logos_canales/24.png"
     },
     {
         "id": "tv-538",
         "title": "Onda Cádiz 24h (720p)",
         "url": "https://ondacadiztv.es:30443/octv/24h/playlist.m3u8",
         "genre": "Noticias",
-        "logo": "/logos_canales/tv-538.png"
+        "logo": "/logos_canales/onda_cadiz.png"
     },
     {
         "id": "tv-97",
         "title": "Shemaroo Josh (720p)",
         "url": "https://airtelapp.shemaroo.com/shemarooChumbakTV/smil:shemarooChumbakTVadp.smil/playlist.m3u8",
-        "genre": "Noticias",
+        "genre": "Internacionales",
         "logo": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_CHUMBAK_TV/images/LOGO_HD/image.png"
     },
     {
@@ -2449,42 +2223,42 @@ export const canalesTV = [
         "title": "DW Español",
         "url": "https://dwamdstream104.akamaized.net/hls/live/2015530/dwstream104/stream04/streamPlaylist.m3u8",
         "genre": "Noticias",
-        "logo": "dw-deutsche.webp"
+        "logo": "/logos_canales/dw.png"
     },
     {
         "id": "tv-138",
         "title": "Supreme Master TV",
         "url": "https://cf-lbs.suprememastertv.com/origin/720p/playlist.m3u8",
-        "genre": "Noticias",
+        "genre": "Internacionales",
         "logo": "/logos_canales/tv-138.png"
     },
     {
         "id": "tv-182",
         "title": "BBC Drama (1080p)",
         "url": "https://amg00793-amg00793c40-rakuten-es-5444.playouts.now.amagi.tv/playlist.m3u8",
-        "genre": "Noticias",
-        "logo": "/logos_canales/tv-182.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/bbc.png"
     },
     {
         "id": "tv-200",
         "title": "CBN Espanol (1080p)",
         "url": "https://fastly.live.brightcove.com/6383462549112/us-east-1/734546207001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiczFpM3ZpLmVncmVzcy50N2M3emwiLCJhY2NvdW50X2lkIjoiNzM0NTQ2MjA3MDAxIiwiZWhuIjoiZmFzdGx5LmxpdmUuYnJpZ2h0Y292ZS5jb20iLCJpc3MiOiJibGl2ZS1wbGF5YmFjay1zb3VyY2UtYXBpIiwic3ViIjoicGF0aG1hcHRva2VuIiwiYXVkIjpbIjczNDU0NjIwNzAwMSJdLCJqdGkiOiI2MzgzNDYyNTQ5MTEyIn0.g04lznsvgqgIXQt2ZH0H_tWtIeTsMgGjVORsjOJ0T6U/playlist-hls.m3u8",
         "genre": "Noticias",
-        "logo": "/logos_canales/tv-200.png"
+        "logo": "/logos_canales/cvn.png"
     },
     {
         "id": "tv-258",
         "title": "Canal 9 Resistencia (720p)",
         "url": "http://coninfo.net:1935/9linklivert/smil:9linkmultibr.smil/playlist.m3u8",
         "genre": "Noticias",
-        "logo": "/logos_canales/tv-258.png"
+        "logo": "/logos_canales/9.png"
     },
     {
         "id": "tv-268",
         "title": "Canal Málaga RTV (720p)",
         "url": "https://canalmalaga-tv-live.flumotion.com/playlist.m3u8",
         "genre": "Noticias",
-        "logo": "/logos_canales/tv-268.png"
+        "logo": "/logos_canales/malaga.jpg"
     },
     {
         "id": "tv-275",
@@ -2498,56 +2272,42 @@ export const canalesTV = [
         "title": "Canal Sur Andalucía 2 (720p)",
         "url": "https://cdnlive.codev8.net/rtvalive/smil:channel22.smil/playlist.m3u8",
         "genre": "Noticias",
-        "logo": "/logos_canales/tv-278.png"
+        "logo": "/logos_canales/canalsur.png"
     },
     {
         "id": "tv-304",
         "title": "Clan Internacional Americas (1080p) [Geo-blocked]",
         "url": "https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/clan_int_main_1080.m3u8",
-        "genre": "Noticias",
-        "logo": "/logos_canales/tv-304.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/clan.jpg"
     },
     {
         "id": "tv-306",
         "title": "ColimdoT TV (720p)",
         "url": "https://cnn.livestreaminggroup.info:3132/live/colimdotvlive.m3u8",
-        "genre": "Noticias",
-        "logo": "/logos_canales/tv-306.png"
+        "genre": "Deportes",
+        "logo": "/logos_canales/colidot.jpg"
     },
     {
         "id": "tv-324",
         "title": "Cupertino City Channel (720p)",
         "url": "https://cdn3.wowza.com/5/dk84U1p2UUdoMGxT/cupertino/G0067_003/playlist.m3u8",
-        "genre": "Noticias",
+        "genre": "Internacionales",
         "logo": "/logos_canales/tv-324.png"
     },
     {
         "id": "tv-328",
         "title": "DAN TV (1080p)",
         "url": "https://cnn.hostlagarto.com/telesiglo/tracks-v1a1/mono.m3u8",
-        "genre": "Noticias",
-        "logo": null
-    },
-    {
-        "id": "tv-330",
-        "title": "DW Espanol (1080p)",
-        "url": "https://dwamdstream104.akamaized.net/hls/live/2015530/dwstream104/master.m3u8",
-        "genre": "Noticias",
-        "logo": "/logos_canales/tv-330.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/telesiglo.jpg"
     },
     {
         "id": "tv-332",
         "title": "De Ultimo Minuto TV",
         "url": "https://soportedvb.click:3620/live/deultimominutomedialive.m3u8",
         "genre": "Noticias",
-        "logo": "/logos_canales/tv-332.png"
-    },
-    {
-        "id": "tv-386",
-        "title": "France 24 Español (1080p)",
-        "url": "https://live.france24.com/hls/live/2037220-b/F24_ES_HI_HLS/master_5000.m3u8",
-        "genre": "Noticias",
-        "logo": null
+        "logo": "/logos_canales/minuto.png"
     },
     {
         "id": "tv-388",
@@ -2854,7 +2614,7 @@ export const canalesTV = [
         "id": "tv-140",
         "title": "Canal sin nombre",
         "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
-        "genre": "Entretenimiento",
+        "genre": "Musica",
         "logo": "logo-fabulosa.png"
     },
     {
@@ -3526,15 +3286,15 @@ export const canalesTV = [
         "id": "tv-571",
         "title": "Puranoticia TV (720p)",
         "url": "https://pnt.janusmedia.tv/hls/pnt.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-571.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/pura_noticia.png"
     },
     {
         "id": "tv-64",
         "title": "Misiones Cuatro",
         "url": "https://iptv.ixfo.com.ar:30443/live-HD/MISIONES4/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-64.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/misiones_4.png"
     },
     {
         "id": "tv-69",
@@ -3551,39 +3311,18 @@ export const canalesTV = [
         "logo": "https://i.imgur.com/1rxmu2u.png"
     },
     {
-        "id": "tv-76",
-        "title": "GEM Pixel",
-        "url": "https://glserver1.tamashaland.com/live/aBCH96886YznRbGOiqTnnQ__/stream_0.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.ibb.co/Q3tkbPrn/icon-27.png"
-    },
-    {
-        "id": "tv-78",
-        "title": "Home Plus",
-        "url": "https://homeplushls.wns.live/hls/stream.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://www.lyngsat.com/logo/tv/hh/homeplus.png"
-    },
-    {
         "id": "tv-79",
         "title": "ICC Plus (1080p)",
         "url": "https://icchls.wns.live/hls/stream.m3u8",
         "genre": "Internacionales",
-        "logo": "https://www.lyngsat.com/logo/tv/ii/iccplus-us.png"
-    },
-    {
-        "id": "tv-80",
-        "title": "Kairali We (576p)",
-        "url": "https://cdn-3.pishow.tv/live/1530/master.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_KAIRALI_WE/images/LOGO_HD/image.png"
+        "logo": "/logos_canales/icc.png"
     },
     {
         "id": "tv-83",
         "title": "MBC Bollywood (1080p) [Geo-blocked]",
         "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-bollywood/546eb40d7dcf9a209255dd2496903764/index.m3u8",
         "genre": "Internacionales",
-        "logo": "https://i.imgur.com/TTAGFHG.png"
+        "logo": "/logos_canales/bo.jpg"
     },
     {
         "id": "tv-84",
@@ -3593,32 +3332,11 @@ export const canalesTV = [
         "logo": "https://i.imgur.com/lxWdjXG.png"
     },
     {
-        "id": "tv-87",
-        "title": "Next HD (480p)",
-        "url": "https://live.enhdtv.com:19360/nexthd/nexthd.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/c2rF3SS.png"
-    },
-    {
-        "id": "tv-93",
-        "title": "SL 1",
-        "url": "https://slonehls.wns.live/hls/stream.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/n9cuM2W.jpg"
-    },
-    {
-        "id": "tv-94",
-        "title": "SL 2",
-        "url": "https://sltwohls.wns.live/hls/stream.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/BVuUx5R.jpg"
-    },
-    {
         "id": "tv-98",
         "title": "Spooky Nights (1080p)",
         "url": "https://shls-live-enc.edgenextcdn.net/out/v1/18cffab0757d448ca6c1a686d330b346/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://shahid.mbc.net/mediaObject/b0016b19-b35b-4ea6-afb9-5b74a0aac825?height=auto&width=512&croppingPoint=&version=1&type=png"
+        "genre": "Deportes",
+        "logo": "/logos_canales/depo.png"
     },
     {
         "id": "tv-99",
@@ -3642,83 +3360,6 @@ export const canalesTV = [
         "logo": "https://i.imgur.com/tGmKbil.png"
     },
     {
-        "id": "tv-107",
-        "title": "Дом Кино",
-        "url": "https://streaming.thestream.cyou/live/44.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/512px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png"
-    },
-    {
-        "id": "tv-108",
-        "title": "Дом Кино Премиум HD",
-        "url": "http://31.148.48.15/Dom_Kino_Premium_HD/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/rJpQtvK.png"
-    },
-    {
-        "id": "tv-109",
-        "title": "Еврокино",
-        "url": "http://31.148.48.15/Evrokino/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/8LPtPf6.png"
-    },
-    {
-        "id": "tv-110",
-        "title": "Иллюзион+",
-        "url": "http://31.148.48.15/Illusion_plus/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/9GvuHQ5.png"
-    },
-    {
-        "id": "tv-111",
-        "title": "КИНОТВ",
-        "url": "https://vod.tuva.ru/kinotv/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/sMpamNO.png"
-    },
-    {
-        "id": "tv-112",
-        "title": "Кинопоказ",
-        "url": "http://31.148.48.15/Kinopokaz/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/nNjMyAq.png"
-    },
-    {
-        "id": "tv-113",
-        "title": "Новый Русский (720p)",
-        "url": "https://live.15plusmg.ru/memfs/f983b507-a170-41a9-85a9-d9afc6cba9c1.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/iuRSScH.png"
-    },
-    {
-        "id": "tv-115",
-        "title": "Русский Бестселлер",
-        "url": "http://31.148.48.15/Russkiy_Bestseller/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/w0ZE9QJ.png"
-    },
-    {
-        "id": "tv-116",
-        "title": "Русский Детектив",
-        "url": "http://31.148.48.15/Russkiy_Detektiv/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/H3qhN8S.png"
-    },
-    {
-        "id": "tv-117",
-        "title": "Русский Роман",
-        "url": "http://31.148.48.15/Russkiy_Roman_HD/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/cQN0P2B.png"
-    },
-    {
-        "id": "tv-119",
-        "title": "Alankar TV (720p)",
-        "url": "https://livetv.tarangplus.in/alankar-origin/live/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_ALANKAR/images/LOGO_HD/image.png"
-    },
-    {
         "id": "tv-120",
         "title": "Classique TV (360p)",
         "url": "https://stmv1.srvif.com/classique/classique/playlist.m3u8",
@@ -3726,157 +3367,94 @@ export const canalesTV = [
         "logo": "https://i.imgur.com/rHxcraT.png"
     },
     {
-        "id": "tv-122",
-        "title": "Itage TV",
-        "url": "https://viewmedia7219.bozztv.com/wmedia/viewmedia100/web_011/Stream/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/FP1aUPw.jpg"
-    },
-    {
-        "id": "tv-123",
-        "title": "Komsan TV",
-        "url": "http://tv.cootel.com.kh:8077/streams/d/Komsan/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/SNTf2r3.png"
-    },
-    {
         "id": "tv-126",
         "title": "AZ Mundo",
         "url": "https://azt-mun.otteravision.com/azt/mun/mun.m3u8",
-        "genre": "Internacionales",
-        "logo": "az-mundo.png"
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/Azteca Internaciona.jpg"
     },
     {
         "id": "tv-129",
         "title": "Conecta TVX",
         "url": "https://stream8.mexiserver.com:19360/conectatvx/conectatvx.m3u8",
-        "genre": "Internacionales",
-        "logo": "conecta.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/conecta.png"
     },
     {
         "id": "tv-132",
         "title": "Hossana",
         "url": "https://1206618505.rsc.cdn77.org/LS-ATL-59020-1/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "hossana-vision.png"
-    },
-    {
-        "id": "tv-133",
-        "title": "Locomotion",
-        "url": "http://locomotiontv.com/envivo/loco_ch/stream.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://logodix.com/logo/2192948.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/hosana.png"
     },
     {
         "id": "tv-135",
         "title": "NC TV",
         "url": "https://unlimited1-us.dps.live/nctv/nctv.smil/nctv/livestream1/chunks.m3u8",
-        "genre": "Internacionales",
-        "logo": "nctv.jpg"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/nctv.png"
     },
     {
         "id": "tv-136",
         "title": "Plural TV",
         "url": "https://live-scjn.ovp-vivaro.digital/ovp-origin/638a22b47746d/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "plural-tv.jpg"
-    },
-    {
-        "id": "tv-139",
-        "title": "TV ONE nic",
-        "url": "https://bit.ly/3s0hReU",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-139.png"
-    },
-    {
-        "id": "tv-141",
-        "title": "12tv",
-        "url": "https://cloud.streamingconnect.tv/hls/12tv/12tv2.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/12tv.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/pluraltv.png"
     },
     {
         "id": "tv-142",
         "title": "3ABN Latino",
         "url": "https://3abn.bozztv.com/3abn2/Lat_live/smil:Lat_live.smil/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Cristianos",
         "logo": "/logos_canales/3ABN Latino.png"
     },
     {
         "id": "tv-143",
         "title": "5TV Corrientes (480p)",
         "url": "http://www.coninfo.net:1935/tvcinco/live1/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-143.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/5tv.jpg"
     },
     {
         "id": "tv-144",
         "title": "6 Wise Tv (720p)",
         "url": "https://live.enhdtv.com:8081/8150/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-144.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/6 Wise Tv.jpg"
     },
     {
         "id": "tv-145",
         "title": "7 TeleValencia (576p)",
         "url": "https://play.cdn.enetres.net/9E9557EFCEBB43A89CEC8FBD3C500247022/028/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-145.png"
-    },
-    {
-        "id": "tv-149",
-        "title": "ATV (720p)",
-        "url": "https://d2qsan2ut81n2k.cloudfront.net/live/25046411-8673-4dec-8ae8-5b41984f34e1/ts:abr.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-149.png"
-    },
-    {
-        "id": "tv-151",
-        "title": "ATV+ (720p)",
-        "url": "https://d2qsan2ut81n2k.cloudfront.net/live/77eece7f-8de5-4406-9f7e-7be16d81f2ce/ts:abr.m3u8",
-        "genre": "Internacionales",
-        "logo": null
-    },
-    {
-        "id": "tv-152",
-        "title": "Acento TV",
-        "url": "https://acentotv01.streamprolive.com/hls/live.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/Acento TV.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/valencia.png"
     },
     {
         "id": "tv-160",
         "title": "Alegre TV RD (720p)",
         "url": "https://streamunoapp.com:3149/live/alegretvlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-160.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/alegre.jpg"
     },
     {
         "id": "tv-161",
         "title": "Aliento Vision (720p)",
         "url": "https://627bb251f23c7.streamlock.net:444/Alientoenvivo/Alientoenvivo/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Cristianos",
         "logo": "/logos_canales/tv-161.png"
     },
     {
         "id": "tv-162",
         "title": "Ame 47 (576p)",
         "url": "https://ss2.tvrdomi.com:1936/ame47/ame47/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-162.png"
-    },
-    {
-        "id": "tv-163",
-        "title": "America TV (720p)",
-        "url": "https://prepublish.f.qaotic.net/a07/americahls-100056/playlist_720p.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-163.png"
+        "genre": "Deportes",
+        "logo": "/logos_canales/ametv.png"
     },
     {
         "id": "tv-164",
         "title": "Amigos TV Chiquimula (480p)",
         "url": "https://antmedia.cablevisionrobles.com:5443/LiveApp/streams/CqwAgRagMvBNYN8c1731608980342.m3u8",
-        "genre": "Internacionales",
+        "genre": "Cristianos",
         "logo": "/logos_canales/tv-164.png"
     },
     {
@@ -3884,196 +3462,161 @@ export const canalesTV = [
         "title": "Angel TV Spanish (720p)",
         "url": "https://janya-digimix.akamaized.net/vglive-sk-351398/spanish/ngrp:angelspanish_all/playlist.m3u8",
         "genre": "Internacionales",
-        "logo": "/logos_canales/tv-166.png"
-    },
-    {
-        "id": "tv-167",
-        "title": "Antena 21 (480p)  [Geo-blocked]",
-        "url": "https://alba-do-antena7-c21.stream.mediatiquestream.com/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-167.png"
+        "logo": "/logos_canales/angeltv.jpg"
     },
     {
         "id": "tv-170",
         "title": "Antofagasta TV (ATV) (1080p)",
         "url": "https://unlimited6-cl.dps.live/atv/atv.smil/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-170.png"
     },
     {
         "id": "tv-171",
         "title": "Argentinísima Satelital (540p)",
         "url": "https://stream1.sersat.com/hls/argentinisima.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-171.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/argentin.jpg"
     },
     {
         "id": "tv-174",
         "title": "Asomavisión (614p)",
         "url": "https://asomatv.cloud-ip.cc/livestream/stream.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-174.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/asoma_vision.jpg"
     },
     {
         "id": "tv-175",
         "title": "Austral TV (1080p)",
         "url": "https://stmv3.voxtvhd.com.br/australtv/australtv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-175.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/austral.jpg"
     },
     {
         "id": "tv-176",
         "title": "Auténtica Televisión (720p)",
         "url": "https://live.obslivestream.com/autenticatvmux/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-176.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/autentica.png"
     },
     {
         "id": "tv-178",
         "title": "Aysen TV (720p)",
         "url": "https://v1.tustreaming.cl/aysentv/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-178.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/aysen.jpg"
     },
     {
         "id": "tv-183",
         "title": "BCN Gospel TV (1080p)",
         "url": "https://live1.ovalcast.com:3641/live/bcngospeltvlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-183.png"
+        "genre": "Documentales",
+        "logo": "/logos_canales/BCN Gospel TV.jpg"
     },
     {
         "id": "tv-185",
         "title": "BTA TV (720p)",
         "url": "https://cloud.fastchannel.es/manifiest/hls/prog9/btatv.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-185.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/bta.png"
     },
     {
         "id": "tv-186",
         "title": "BUM Televisión (720p)",
         "url": "https://movil.ejeserver.com/live/visiondorada.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-186.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/bum.png"
     },
     {
         "id": "tv-187",
         "title": "Bacán Te Veo (360p)",
         "url": "https://stmv6.voxtvhd.com.br/vacantveo2/vacantveo2/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-187.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/Bacán Te Veo.jpg"
     },
     {
         "id": "tv-191",
         "title": "Bendicion Channel (720p)",
         "url": "https://s.emisoras.tv:8081/bendicionchannel/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-191.png"
-    },
-    {
-        "id": "tv-194",
-        "title": "Bolivisión LPZ (720p)",
-        "url": "https://alba-bo-bolivision-bolivision.stream.mediatiquestream.com/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-194.png"
-    },
-    {
-        "id": "tv-195",
-        "title": "Bonao TV (720p)",
-        "url": "https://bonaotv.com/stream2/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-195.png"
-    },
-    {
-        "id": "tv-196",
-        "title": "Bonches Latinos TV (720p)",
-        "url": "https://5790d294af2dc.streamlock.net/latinostv/latinostv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-196.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/Bendicion Channel.png"
     },
     {
         "id": "tv-198",
         "title": "Bruno Masi TV (720p)",
         "url": "https://rds3.desdeparaguay.net/brunomasitv/brunomasitv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-198.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/bruno.png"
     },
     {
         "id": "tv-199",
         "title": "Buena TV (1080p)",
         "url": "https://59825a54e4454.streamlock.net:8443/papo351/papo351/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-199.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/buena.jpg"
     },
     {
         "id": "tv-201",
         "title": "CDM Internacional (480p)",
         "url": "https://627bb251f23c7.streamlock.net:444/CDMInternacional/CDMInternacional/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-201.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/CDM Internaciona.png"
     },
     {
         "id": "tv-202",
         "title": "CGTN Spanish",
         "url": "https://dash4.antik.sk/live/test_cgtn_esp_tizen/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": null
+        "genre": "Peliculas",
+        "logo": "/logos_canales/cgtn.png"
     },
     {
         "id": "tv-203",
         "title": "CHTV",
         "url": "https://viewhn.com/chtv/live/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-203.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/chtv.png"
     },
     {
         "id": "tv-204",
         "title": "CNC Bugavisión (720p)",
         "url": "https://movil.ejeserver.com/live/cncbuga.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-204.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/cnc.jpg"
     },
     {
         "id": "tv-205",
         "title": "CNC Santander de Quilichao (480p)",
         "url": "https://movil.ejeserver.com/live/cncsantander.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-205.png"
-    },
-    {
-        "id": "tv-207",
-        "title": "CTV",
-        "url": "https://live.ctvbolivia.com/hls/ctv.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-207.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/cnc_s.jpg"
     },
     {
         "id": "tv-208",
         "title": "CV Vision TV [Geo-blocked]",
         "url": "https://eu1.servers10.com:8081/8128/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-208.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/cv.png"
     },
     {
         "id": "tv-209",
         "title": "Cable Imagen Armstrong (540p)",
         "url": "https://stream.arcast.com.ar/casse/casse/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-209.png"
     },
     {
         "id": "tv-210",
         "title": "Cadena 103 (720p)",
         "url": "http://arcast.net:1935/cadena103/cadena103/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-210.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/cadena103.png"
     },
     {
         "id": "tv-212",
         "title": "Cadena TV (720p)",
         "url": "https://tv.bitstreaming.net:3789/live/cdntvlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-212.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/cadena.jpg"
     },
     {
         "id": "tv-213",
@@ -4086,36 +3629,36 @@ export const canalesTV = [
         "id": "tv-214",
         "title": "Cali TV (540p)",
         "url": "https://5ab772334c39c.streamlock.net/live-calitv/calitv1/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-214.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/cali_tv.png"
     },
     {
         "id": "tv-215",
         "title": "Campus TV (480p)",
         "url": "https://5e85d90130e77.streamlock.net/6052/6052/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-215.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/campus.png"
     },
     {
         "id": "tv-217",
         "title": "Cana TV Digital (720p)",
         "url": "https://stream.hostuis.com:19360/canatvdigital/canatvdigital.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-217.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/cana.jpg"
     },
     {
         "id": "tv-282",
         "title": "Cananga TV (720p)",
         "url": "https://cdn.streamingcpanel.com:3545/live/canangatlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-282.png"
+        "genre": "Documentales",
+        "logo": "/logos_canales/cananga.jpg"
     },
     {
         "id": "tv-283",
         "title": "Candelita TV (480p)",
         "url": "https://6110f70ea8d0e.streamlock.net/1689/1689/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-283.png"
+        "genre": "Cristianos",
+        "logo": "/logos_canales/candelita.jpg"
     },
     {
         "id": "tv-285",
@@ -4968,7 +4511,7 @@ export const canalesTV = [
         "id": "tv-530",
         "title": "Nuevo Tiempo (720p)",
         "url": "https://stream.live.novotempo.com/tv/smil:tvnuevotiempo.smil/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Cristianos",
         "logo": "/logos_canales/tv-530.png"
     },
     {
@@ -6060,8 +5603,8 @@ export const canalesTV = [
         "id": "tv-842",
         "title": "Planet 100.9 FM",
         "url": "https://streamlov.alsolnet.com/planet1009fm/live/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "planet-radio.webp"
+        "genre": "Musica",
+        "logo": "/logos_canales/planet_radio.jpg"
     },
     {
         "id": "tv-848",
@@ -6074,7 +5617,7 @@ export const canalesTV = [
         "id": "tv-849",
         "title": "Dance FM (720p)",
         "url": "https://5eaccbab48461.streamlock.net:1936/dancefm_1/dancefm_1/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Musica",
         "logo": "/logos_canales/tv-849.png"
     },
     {
@@ -6102,92 +5645,50 @@ export const canalesTV = [
         "id": "tv-889",
         "title": "Top FM TV (240p)",
         "url": "https://tvdatta.com:3084/live/toptvaguaytialive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-889.png"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/top.png"
     },
     {
         "id": "tv-895",
         "title": "Triunfo 96.9 FM TV (360p)",
         "url": "https://59825a54e4454.streamlock.net:8443/william652/william652/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Cristianos",
         "logo": "/logos_canales/tv-895.png"
     },
     {
         "id": "tv-899",
         "title": "Urban Mix (720p)",
         "url": "https://cloud.tvomix.com/URBANMIX/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-899.png"
-    },
-    {
-        "id": "tv-943",
-        "title": "30A TV Classic Movies",
-        "url": "https://30a-tv.com/feeds/pzaz/30atvmovies.m3u8",
-        "genre": "Cristianos",
-        "logo": "https://babaktv.com/wp-content/uploads/2023/09/30A-Classi-Movies.jpeg"
-    },
-    {
-        "id": "tv-66",
-        "title": "Abzy Dhakad (504p)",
-        "url": "https://d2lk5u59tns74c.cloudfront.net/out/v1/4fe6ab07a13543d6bdb2ec63b3e2df44/index.m3u8",
-        "genre": "Cristianos",
-        "logo": "https://i.imgur.com/5ORC4tn.png"
-    },
-    {
-        "id": "tv-72",
-        "title": "Cafe Film",
-        "url": "https://cafefhls.wns.live/hls/stream.m3u8",
-        "genre": "Cristianos",
-        "logo": "https://i.postimg.cc/bJV7Ls4M/cafe-film.jpg"
-    },
-    {
-        "id": "tv-95",
-        "title": "START Air",
-        "url": "https://livetv.mylifeisgood.net.ru/channels/strwc.m3u8",
-        "genre": "Cristianos",
-        "logo": "https://i.imgur.com/4bACa7x.png"
-    },
-    {
-        "id": "tv-96",
-        "title": "START World",
-        "url": "https://livetv.mylifeisgood.net.ru/channels/strvf.m3u8",
-        "genre": "Cristianos",
-        "logo": "https://i.imgur.com/TXtY5eM.png"
-    },
-    {
-        "id": "tv-118",
-        "title": "Феникс плюс Кино",
-        "url": "http://31.148.48.15/Feniks_plus_kino/index.m3u8",
-        "genre": "Cristianos",
-        "logo": "https://i.imgur.com/S9OPMLE.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/urban.png"
     },
     {
         "id": "tv-146",
         "title": "A&R Canal Adventista (720p)",
         "url": "http://51.222.9.192:3589/stream/play.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-146.png"
+        "logo": "/logos_canales/A&R Canal Adventista.png"
     },
     {
         "id": "tv-158",
         "title": "Aire de Santa Fe (1080p)",
         "url": "https://unlimited1-us.dps.live/airedesantafetv/airedesantafetv.smil/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-158.png"
+        "logo": "/logos_canales/Aire de Santa Fe.png"
     },
     {
         "id": "tv-192",
         "title": "Bethel TV",
         "url": "https://alfa.betheltv.tv/srt/3_abr/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/Bethel TV.png"
+        "logo": "/logos_canales/bethel.jpg"
     },
     {
         "id": "tv-224",
         "title": "Canal 17 RTVD (720p)",
         "url": "https://protvradiostream.com:1936/rtvd17/ngrp:rtvd17_all/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-224.png"
+        "logo": "/logos_canales/rtvd.png"
     },
     {
         "id": "tv-238",
@@ -6201,42 +5702,42 @@ export const canalesTV = [
         "title": "Canal Oración Con Son (1080p)",
         "url": "https://canal.mediaserver.com.co/live/oracionconson.m3u8",
         "genre": "Cristianos",
-        "logo": null
+        "logo": "/logos_canales/oracion.jpg"
     },
     {
         "id": "tv-300",
         "title": "Ciracu TV (720p)",
         "url": "https://cloud37.ecuatel.com/ciracutv/live/manifest.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-300.png"
+        "genre": "Documentales",
+        "logo": "/logos_canales/ciracu.png"
     },
     {
         "id": "tv-331",
         "title": "Daystar Español",
         "url": "https://live-mcl.cdn01.net/smarttv/64wj6m6d8/playlist.m3u8?ads.vf=58GrEFelNTK",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-331.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/daystar.jpg"
     },
     {
         "id": "tv-354",
         "title": "Ecovisión (720p)",
         "url": "https://streaming.grupomediosdelnorte.com:19360/ecovision/ecovision.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-354.png"
+        "genre": "Documentales",
+        "logo": "/logos_canales/eco.jpg"
     },
     {
         "id": "tv-361",
         "title": "El PuertoTV (720p)",
         "url": "https://5bf8041cb3fed.streamlock.net/PuertoTV/PuertoTV/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-361.png"
+        "logo": "/logos_canales/puerto.jpg"
     },
     {
         "id": "tv-391",
         "title": "Galaxia TV (360p)",
         "url": "https://streaming.grupomediosdelnorte.com:19360/galaxiateve/galaxiateve.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-391.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/galaxia.jpg"
     },
     {
         "id": "tv-416",
@@ -6249,28 +5750,28 @@ export const canalesTV = [
         "id": "tv-432",
         "title": "KandelaTV (480p)",
         "url": "https://streamtv.intervenhosting.net:3718/live/kandelamedioslive.m3u8",
-        "genre": "Cristianos",
+        "genre": "Peliculas",
         "logo": "/logos_canales/tv-432.png"
     },
     {
         "id": "tv-436",
         "title": "LIFE! End Times TV (360p)",
         "url": "https://2-fss-1.streamhoster.com/pl_122/200226-1427780-1/playlist.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-436.png"
+        "genre": "Internacionales",
+        "logo": "/logos_canales/times_tv.jpg"
     },
     {
         "id": "tv-459",
         "title": "Latina (720p)",
         "url": "https://redirector.rudo.video/hls-video/567ffde3fa319fadf3419efda25619456231dfea/latina/latina.smil/playlist.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-459.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/latina_2.png"
     },
     {
         "id": "tv-461",
         "title": "Latina TV (1080p)",
         "url": "https://streamtv.latinamedios.com:3413/live/latinatvlive.m3u8",
-        "genre": "Cristianos",
+        "genre": "Musica",
         "logo": "/logos_canales/tv-461.png"
     },
     {
@@ -6284,21 +5785,21 @@ export const canalesTV = [
         "id": "tv-513",
         "title": "Más Talk (1080p)",
         "url": "https://vod2live.univtec.com/manifest/89290956-94ab-4950-accb-a54bbd7e176f.m3u8",
-        "genre": "Cristianos",
-        "logo": null
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/kandela.png"
     },
     {
         "id": "tv-517",
         "title": "NG Federal (720p)",
         "url": "http://www.coninfo.net:1935/tvlink/live/playlist.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-517.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/ng_federal.png"
     },
     {
         "id": "tv-541",
         "title": "Ondas Quevedeñas TV (720p)",
         "url": "https://stmv6.voxtvhd.com.br/radiosuprema/radiosuprema/playlist.m3u8",
-        "genre": "Cristianos",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-541.png"
     },
     {
@@ -6306,35 +5807,21 @@ export const canalesTV = [
         "title": "Reforma TV (1080p)",
         "url": "https://5bf8041cb3fed.streamlock.net/ReformaTV/ReformaTV/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-592.png"
-    },
-    {
-        "id": "tv-617",
-        "title": "Sevilla FC TV (360p)",
-        "url": "https://open.http.mp.streamamg.com/p/3001314/sp/300131400/playManifest/entryId/0_ye0b8tc0/format/applehttp/protocol/https/uiConfId/30026292/a.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-617.png"
+        "logo": "/logos_canales/reforma.jpg"
     },
     {
         "id": "tv-634",
         "title": "Stingray Classica (1080p)",
         "url": "https://lotus.stingray.com/manifest/classica-cla008-montreal/samsungtvplus/master.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-634.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/clasica.png"
     },
     {
         "id": "tv-650",
         "title": "TRC Televisión (720p)",
         "url": "https://5fe2654d6127d.streamlock.net/trc/videotrc/playlist.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-650.png"
-    },
-    {
-        "id": "tv-683",
-        "title": "TV Éxitos (720p)",
-        "url": "https://streaming.grupomediosdelnorte.com:19360/tvexitos/tvexitos.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-683.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/trc.png"
     },
     {
         "id": "tv-716",
@@ -6347,35 +5834,35 @@ export const canalesTV = [
         "id": "tv-721",
         "title": "Telecomercio TV (720p)",
         "url": "https://streaming.grupomediosdelnorte.com:19360/telecomerciotv/telecomerciotv.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-721.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/comercio.jpg"
     },
     {
         "id": "tv-722",
         "title": "Telecontacto",
         "url": "https://streaming.grupomediosdelnorte.com:19360/telecontacto/telecontacto.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-722.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/contacto.png"
     },
     {
         "id": "tv-760",
         "title": "Teve Vida Network (480p)",
         "url": "https://5bf8041cb3fed.streamlock.net/Tevevida/Tevevida/.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-760.png"
+        "logo": "/logos_canales/vida.jpg"
     },
     {
         "id": "tv-767",
         "title": "Tu Universo TV (720p)",
         "url": "https://5bf8041cb3fed.streamlock.net/TUUNIVERSOTV/TUUNIVERSOTV/playlist.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-767.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/universo.png"
     },
     {
         "id": "tv-786",
         "title": "Unife TV",
         "url": "https://5dcabf026b188.streamlock.net/StreamUnife/livestream/playlist.m3u8",
-        "genre": "Cristianos",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-786.png"
     },
     {
@@ -6389,42 +5876,42 @@ export const canalesTV = [
         "id": "tv-808",
         "title": "Venevisión Internacional (720p)",
         "url": "https://vod2live.univtec.com/manifest/4c41c0d8-e2e4-43cc-bd43-79afe715e1b3.m3u8",
-        "genre": "Cristianos",
-        "logo": null
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/vene.jpg"
     },
     {
         "id": "tv-811",
         "title": "Vida Mejor TV (480p)",
         "url": "https://tgn.bozztv.com/betterlife/bettervida/bettervida/index.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-811.png"
+        "logo": "/logos_canales/vida_mejor.jpg"
     },
     {
         "id": "tv-822",
         "title": "WECN (Único TV) (720p)",
         "url": "https://59825a54e4454.streamlock.net:8443/pastorairisn394/pastorairisn394/chunklist_w239411719.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-822.png"
+        "genre": "Noticias",
+        "logo": "/logos_canales/france_24.png"
     },
     {
         "id": "tv-828",
         "title": "WXWZ-LD1 (MásTV Canal 23) (720p)",
         "url": "https://5bf8041cb3fed.streamlock.net/mastvpr/mastvpr/playlist.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-828.png"
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/mas_tv.png"
     },
     {
         "id": "tv-872",
         "title": "Radio Ideal 104.7 FM (La Esperanza) (720p)",
         "url": "https://www.idealfm104-7.com/hls/0/stream.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-872.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/radio_ideal.jpg"
     },
     {
         "id": "tv-876",
         "title": "Radio Monumental TV (720p)",
         "url": "https://cloud37.ecuatel.com/monumentaltv/live/manifest.m3u8",
-        "genre": "Cristianos",
+        "genre": "Musica",
         "logo": "/logos_canales/tv-876.png"
     },
     {
@@ -6432,42 +5919,42 @@ export const canalesTV = [
         "title": "Canal ISB (Iglesia San Bernardo) (720p)",
         "url": "https://unlimited1-us.dps.live/isb/isb.smil/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": null
+        "logo": "/logos_canales/isb.jpg"
     },
     {
         "id": "tv-339",
         "title": "Dios Te Ve (720p)",
         "url": "https://s.emisoras.tv:8081/diostevetv/index.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-339.png"
+        "logo": "/logos_canales/dios_tv.png"
     },
     {
         "id": "tv-340",
         "title": "Dios Tv Talanga (1080p)",
         "url": "https://tv.webmedialive.com/unciontv/live/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": null
+        "logo": "/logos_canales/dios_tv_2.jpg"
     },
     {
         "id": "tv-351",
         "title": "Ebenezer TV (1080p)",
         "url": "https://5e85d90130e77.streamlock.net/6010/ngrp:6010_all/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-351.png"
+        "logo": "/logos_canales/ebenezer.jpg"
     },
     {
         "id": "tv-417",
         "title": "Iglesia Del Camino (480p)",
         "url": "http://streamingcontrol.com:1935/ectv/ectv/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-417.png"
+        "logo": "/logos_canales/el_camino.png"
     },
     {
         "id": "tv-498",
         "title": "Metropoli Medios TV (720p)",
         "url": "https://eu1.servers10.com:8081/8214/index.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/tv-498.png"
+        "genre": "Musica",
+        "logo": "/logos_canales/metropolis.png"
     },
     {
         "id": "tv-554",
@@ -6481,13 +5968,13 @@ export const canalesTV = [
         "title": "WDWL-DT1 (Teleadoración/Enlace PR) (720p)",
         "url": "https://67acccf130420.streamlock.net/enlacepr1/enlacepr1/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-821.png"
+        "logo": "/logos_canales/enlace.png"
     },
     {
         "id": "tv-945",
         "title": "Dios Te Ve Kids (720p)",
         "url": "https://s.emisoras.tv:8081/diostevekids/index.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-945.png"
+        "logo": "/logos_canales/dios_kids.png"
     }
 ];
