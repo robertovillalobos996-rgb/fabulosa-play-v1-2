@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Play, Volume2, VolumeX, Heart, BookOpen, GraduationCap, Sparkles, Lock, Unlock, X, Tv, Star, Music, Maximize, Minimize, ArrowLeft, Gamepad2, Rocket, Trophy } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 // ✅ ASSETS
 const LOGO_KIDS_HEADER = "/logo_fabulosito_kids.png"; 
@@ -28,40 +29,21 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 JUEGOS SELECCIONADOS (Rutas de imagen corregidas)
+// 🎮 JUEGOS SELECCIONADOS
 const LISTA_JUEGOS = [
-  { 
-    id: 'omnomrun', 
-    title: 'Om Nom Run', 
-    url: 'https://gamesnacks.com/embed/games/omnomrun', 
-    icon: '🦖', 
-    color: 'bg-lime-500', 
-    thumb: '/omnomrun.png' 
-  },
-  { 
-    id: 'tigerrun', 
-    title: 'Tiger Jump', 
-    url: 'https://gamesnacks.com/embed/games/tigerrun', 
-    icon: '🐯', 
-    color: 'bg-orange-600', 
-    thumb: '/tiger_run.png' 
-  }
+  { id: 'omnomrun', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-lime-500', thumb: '/omnomrun.png' },
+  { id: 'tigerrun', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: '/tiger_run.png' }
 ];
 
 // 🦁 INFO DE AVATARES
 const AVATARES_INFO = {
-    "🐶": { en: "Dog", es: "Perro" },
-    "🦁": { en: "Lion", es: "León" },
-    "🦄": { en: "Unicorn", es: "Unicornio" },
-    "🐼": { en: "Panda", es: "Panda" },
-    "🦊": { en: "Fox", es: "Zorro" },
-    "🐯": { en: "Tiger", es: "Tigre" },
-    "🐧": { en: "Penguin", es: "Pingüino" },
-    "⭐": { en: "Star", es: "Estrella" }
+    "🐶": { en: "Dog", es: "Perro" }, "🦁": { en: "Lion", es: "León" }, "🦄": { en: "Unicorn", es: "Unicornio" }, "🐼": { en: "Panda", es: "Panda" },
+    "🦊": { en: "Fox", es: "Zorro" }, "🐯": { en: "Tiger", es: "Tigre" }, "🐧": { en: "Penguin", es: "Pingüino" }, "⭐": { en: "Star", es: "Estrella" }
 };
 const EMOJIS = Object.keys(AVATARES_INFO);
 
 const FabulositoKids = () => {
+    const navigate = useNavigate();
     const [videos, setVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [selectedGame, setSelectedGame] = useState(null);
@@ -73,6 +55,9 @@ const FabulositoKids = () => {
     const [showControls, setShowControls] = useState(true);
     const [isFullScreen, setIsFullScreen] = useState(false);
     
+    // === 🎮 CONTROL REMOTO ===
+    const [activeIndex, setActiveIndex] = useState(0); 
+    const gridRefs = useRef([]);
     const keyIndex = useRef(0);
     const controlsTimer = useRef(null);
     const playerContainerRef = useRef(null);
@@ -101,6 +86,41 @@ const FabulositoKids = () => {
         if (activeCat !== 'juegos_arcade') fetchVideos(CATEGORIAS.find(c => c.id === activeCat).query); 
     }, [activeCat]);
 
+    // 🕹️ MOTOR DE NAVEGACIÓN CONTROL REMOTO
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (selectedVideo || selectedGame || isLocked) return;
+            const itemsPerRow = 5;
+            const totalContent = activeCat === 'juegos_arcade' ? LISTA_JUEGOS.length : videos.length;
+            const totalIdx = CATEGORIAS.length + totalContent;
+
+            if (e.key === 'ArrowRight') setActiveIndex(p => Math.min(p + 1, totalIdx - 1));
+            if (e.key === 'ArrowLeft') setActiveIndex(p => (p === 0 || p === CATEGORIAS.length) ? -1 : Math.max(p - 1, -1));
+            if (e.key === 'ArrowDown') {
+                if (activeIndex === -1) setActiveIndex(0);
+                else if (activeIndex < CATEGORIAS.length) setActiveIndex(CATEGORIAS.length);
+                else setActiveIndex(p => Math.min(p + itemsPerRow, totalIdx - 1));
+            }
+            if (e.key === 'ArrowUp') {
+                if (activeIndex < CATEGORIAS.length) setActiveIndex(-1);
+                else if (activeIndex < CATEGORIAS.length + itemsPerRow) setActiveIndex(0);
+                else setActiveIndex(p => p - itemsPerRow);
+            }
+            if (e.key === 'Enter') {
+                if (activeIndex === -1) navigate("/");
+                else if (activeIndex < CATEGORIAS.length) setActiveCat(CATEGORIAS[activeIndex].id);
+                else {
+                    const idx = activeIndex - CATEGORIAS.length;
+                    if (activeCat === 'juegos_arcade') setSelectedGame(LISTA_JUEGOS[idx]);
+                    else setSelectedVideo(videos[idx]);
+                }
+            }
+            if (e.key === 'Escape' || e.key === 'Backspace') navigate("/");
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [activeIndex, activeCat, videos, navigate, isLocked, selectedVideo, selectedGame]);
+
     const toggleFullScreen = () => {
         if (!document.fullscreenElement) {
             playerContainerRef.current.requestFullscreen();
@@ -114,10 +134,12 @@ const FabulositoKids = () => {
     return (
         <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative" onMouseMove={resetTimer}>
             
+            {/* FONDO ORIGINAL */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <iframe className="w-full h-full object-cover scale-[1.2] md:scale-[1.5]" src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&vq=hd1080" frameBorder="0" />
             </div>
 
+            {/* MÚSICA DE FONDO */}
             {!selectedVideo && !selectedGame && (
                 <div className="hidden">
                     <iframe src="https://www.youtube.com/embed/iwKS4b9aUeI?autoplay=1&loop=1&playlist=iwKS4b9aUeI" allow="autoplay" />
@@ -126,6 +148,17 @@ const FabulositoKids = () => {
 
             <motion.div className="relative z-10 p-2 sm:p-4 md:p-8 flex flex-col h-screen bg-black/40">
                 
+                {/* 🚀 BOTÓN VOLVER INFANTIL (Inyectado) */}
+                <div className="absolute top-4 left-4 z-[100]">
+                    <button 
+                        onClick={() => navigate("/")}
+                        className={`flex items-center gap-2 px-6 py-3 rounded-full border-4 transition-all duration-300 ${activeIndex === -1 ? 'bg-pink-600 border-white scale-110 shadow-[0_0_30px_white]' : 'bg-black/50 border-white/20 opacity-80'}`}
+                    >
+                        <Rocket size={24} className="text-white animate-bounce" />
+                        <span className="font-black uppercase tracking-widest text-sm">Menú</span>
+                    </button>
+                </div>
+
                 <div className="flex flex-col items-center mb-4 sm:mb-6">
                     <motion.img 
                         src={LOGO_KIDS_HEADER} 
@@ -144,29 +177,18 @@ const FabulositoKids = () => {
                         <motion.span whileTap={{ scale: 2 }} className="text-2xl sm:text-4xl ml-2 sm:ml-4 cursor-pointer">{userEmoji}</motion.span>
                         <div className="flex gap-1.5 sm:gap-3 pr-2 sm:pr-4">
                             {EMOJIS.map(e => (
-                                <motion.button 
-                                    key={e} 
-                                    whileTap={{ y: -10, scale: 1.5 }} 
-                                    onClick={() => {
-                                        setUserEmoji(e);
-                                        setSelectedAvatar(e);
-                                        setTimeout(() => setSelectedAvatar(null), 3500);
-                                    }} 
-                                    className="text-xl sm:text-2xl hover:scale-125 transition-transform"
-                                >
-                                    {e}
-                                </motion.button>
+                                <motion.button key={e} whileTap={{ y: -10, scale: 1.5 }} onClick={() => { setUserEmoji(e); setSelectedAvatar(e); setTimeout(() => setSelectedAvatar(null), 3500); }} className="text-xl sm:text-2xl hover:scale-125 transition-transform">{e}</motion.button>
                             ))}
                         </div>
                     </div>
                 </div>
 
                 <div className="relative z-[100] flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2 touch-pan-x">
-                    {CATEGORIAS.map(cat => (
+                    {CATEGORIAS.map((cat, i) => (
                         <motion.button
-                            key={cat.id} whileHover={{ scale: 1.05 }}
+                            key={cat.id} 
                             onClick={() => setActiveCat(cat.id)}
-                            className={`${cat.color} ${activeCat === cat.id ? 'ring-4 sm:ring-8 ring-white shadow-2xl scale-105' : 'opacity-80'} min-w-[120px] sm:min-w-[160px] md:min-w-[200px] h-16 sm:h-24 md:h-28 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col items-center justify-center font-black border-2 sm:border-4 border-white text-black flex-shrink-0 uppercase transition-all duration-300`}
+                            className={`${cat.color} ${activeCat === cat.id ? 'ring-4 sm:ring-8 ring-white shadow-2xl scale-105' : 'opacity-80'} ${activeIndex === i ? 'ring-4 ring-pink-400 scale-105' : ''} min-w-[120px] sm:min-w-[160px] md:min-w-[200px] h-16 sm:h-24 md:h-28 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col items-center justify-center font-black border-2 sm:border-4 border-white text-black flex-shrink-0 uppercase transition-all duration-300`}
                         >
                             <div className="scale-75 sm:scale-100">{cat.icon}</div>
                             <span className="text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1 px-1 text-center">{cat.label}</span>
@@ -174,40 +196,42 @@ const FabulositoKids = () => {
                     ))}
                 </div>
 
-                <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 pr-2 mt-2 sm:mt-4 custom-scrollbar">
+                <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 pr-2 mt-2 sm:mt-4 no-scrollbar">
                     {activeCat === 'juegos_arcade' ? (
-                        LISTA_JUEGOS.map((juego) => (
-                            <motion.div key={juego.id} whileHover={{ scale: 1.05 }} onClick={() => setSelectedGame(juego)} className="cursor-pointer group">
-                                <div className={`aspect-square bg-zinc-800 rounded-[2rem] sm:rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden flex flex-col items-center justify-center`}>
-                                    <img src={juego.thumb} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                                    <div className="absolute bottom-0 w-full bg-black/70 py-2 text-center z-10 backdrop-blur-sm">
-                                        <h3 className="font-black uppercase text-[10px] sm:text-sm text-white">{juego.title}</h3>
+                        LISTA_JUEGOS.map((juego, idx) => {
+                            const isFocused = activeIndex === (CATEGORIAS.length + idx);
+                            return (
+                                <motion.div key={juego.id} onClick={() => setSelectedGame(juego)} className={`cursor-pointer group rounded-[2rem] sm:rounded-[3rem] border-4 transition-all ${isFocused ? 'border-pink-500 scale-105 shadow-2xl' : 'border-white'}`}>
+                                    <div className={`aspect-square bg-zinc-800 rounded-inherit relative overflow-hidden flex flex-col items-center justify-center`}>
+                                        <img src={juego.thumb} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                        <div className="absolute bottom-0 w-full bg-black/70 py-2 text-center z-10 backdrop-blur-sm">
+                                            <h3 className="font-black uppercase text-[10px] sm:text-sm text-white">{juego.title}</h3>
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))
+                                </motion.div>
+                            )
+                        })
                     ) : (
-                        videos.map((vid) => (
-                            <motion.div key={vid.id.videoId} whileHover={{ scale: 1.03 }} onClick={() => setSelectedVideo(vid)} className="cursor-pointer group">
-                                <div className="aspect-video rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border-2 sm:border-4 border-white group-hover:border-yellow-400 shadow-2xl relative bg-zinc-900">
-                                    <img src={vid.snippet.thumbnails.high.url} className="w-full h-full object-cover" />
-                                    <div className="absolute bottom-1.5 right-1.5 bg-yellow-400 text-black p-1 rounded-full shadow-lg scale-75 sm:scale-100"><Sparkles size={16}/></div>
-                                </div>
-                                <p className="mt-1.5 font-black text-[9px] sm:text-xs text-center uppercase bg-black/80 p-1.5 rounded-xl border border-white/5 line-clamp-2 italic">{vid.snippet.title}</p>
-                            </motion.div>
-                        ))
+                        videos.map((vid, idx) => {
+                            const isFocused = activeIndex === (CATEGORIAS.length + idx);
+                            return (
+                                <motion.div key={vid.id.videoId} onClick={() => setSelectedVideo(vid)} className={`cursor-pointer group transition-all ${isFocused ? 'scale-105 z-20' : ''}`}>
+                                    <div className={`aspect-video rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border-2 sm:border-4 shadow-2xl relative bg-zinc-900 ${isFocused ? 'border-pink-500' : 'border-white'}`}>
+                                        <img src={vid.snippet.thumbnails.high.url} className="w-full h-full object-cover" />
+                                        <div className="absolute bottom-1.5 right-1.5 bg-yellow-400 text-black p-1 rounded-full shadow-lg scale-75 sm:scale-100"><Sparkles size={16}/></div>
+                                    </div>
+                                    <p className="mt-1.5 font-black text-[9px] sm:text-xs text-center uppercase bg-black/80 p-1.5 rounded-xl border border-white/5 line-clamp-2 italic">{vid.snippet.title}</p>
+                                </motion.div>
+                            )
+                        })
                     )}
                 </div>
             </motion.div>
 
-            {/* MODAL AVATAR */}
+            {/* MODAL AVATAR (ORIGINAL) */}
             <AnimatePresence>
                 {selectedAvatar && (
-                    <motion.div 
-                        initial={{ opacity: 0, scale: 0.5, y: 100 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.5, y: 100 }}
-                        onClick={() => setSelectedAvatar(null)}
-                        className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 backdrop-blur-md"
-                    >
+                    <motion.div initial={{ opacity: 0, scale: 0.5, y: 100 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.5, y: 100 }} onClick={() => setSelectedAvatar(null)} className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 backdrop-blur-md">
                         <div className="bg-white rounded-[4rem] p-10 flex flex-col items-center border-[10px] border-yellow-400 shadow-[0_0_50px_rgba(255,255,0,0.5)]">
                             <span className="text-[120px] mb-4 animate-bounce">{selectedAvatar}</span>
                             <h2 className="text-black font-black text-4xl uppercase tracking-tighter">{AVATARES_INFO[selectedAvatar].en}</h2>
@@ -218,13 +242,10 @@ const FabulositoKids = () => {
                 )}
             </AnimatePresence>
 
-            {/* REPRODUCTOR */}
+            {/* REPRODUCTOR (ORIGINAL) */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
-                    <motion.div 
-                        ref={playerContainerRef} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} 
-                        className="fixed inset-0 z-[600] bg-black flex flex-col" onMouseMove={resetTimer}
-                    >
+                    <motion.div ref={playerContainerRef} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[600] bg-black flex flex-col" onMouseMove={resetTimer}>
                         <div className={`absolute top-0 left-0 w-full p-3 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 z-[700] transition-opacity duration-700 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
                             {!isLocked && (
                                 <button onClick={() => { setSelectedVideo(null); setSelectedGame(null); }} className="bg-red-600 text-white px-8 py-2.5 rounded-full font-black uppercase flex items-center justify-center gap-2 border-2 sm:border-4 border-white shadow-xl">
@@ -244,11 +265,7 @@ const FabulositoKids = () => {
                             </div>
                         </div>
                         <div className="flex-1 relative bg-black overflow-hidden">
-                            <iframe 
-                                id="kids-player" width="100%" height="100%" 
-                                src={selectedVideo ? `https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080` : selectedGame.url}
-                                frameBorder="0" allow="autoplay; encrypted-media; fullscreen" className="z-10"
-                            />
+                            <iframe id="kids-player" width="100%" height="100%" src={selectedVideo ? `https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080` : selectedGame.url} frameBorder="0" allow="autoplay; encrypted-media; fullscreen" className="z-10" />
                             <div className="absolute top-4 right-4 sm:top-10 sm:right-10 z-50 pointer-events-none">
                                 <img src={LOGO_KIDS_HEADER} className="h-12 sm:h-20 md:h-36 opacity-80 drop-shadow-2xl object-contain" />
                             </div>

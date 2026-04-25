@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeft, Play, Pause, Search, Maximize, Loader2, Volume2, VolumeX } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+// ✅ IMPORTACIÓN CORREGIDA: Se agregó 'Star'
+import { ArrowLeft, Play, Pause, Search, Maximize, Loader2, Volume2, VolumeX, Clapperboard, Film, Star, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const CATEGORIES = ["Acción", "Terror", "Comedia", "Drama", "Sci-Fi", "Documentales"];
+
 const Movies = () => {
+  const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
   const [currentMovie, setCurrentMovie] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,10 +17,10 @@ const Movies = () => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [volume, setVolume] = useState(100);
   const [isMuted, setIsMuted] = useState(false);
-  const [showControls, setShowControls] = useState(true);
   
-  const [secondsWatched, setSecondsWatched] = useState(0);
-  const [adTriggered, setAdTriggered] = useState(false);
+  // === 🎮 ESTADOS CONTROL REMOTO ===
+  const [activeIndex, setActiveIndex] = useState(0); 
+  const gridRefs = useRef([]);
 
   const YOUTUBE_API_KEYS = [
     "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
@@ -28,177 +32,198 @@ const Movies = () => {
     "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
   ];
 
-  const iframeRef = useRef(null);
-  const controlsTimeout = useRef(null);
-
-  // 🕵️ RELOJ DE 7 MINUTOS (420 SEGUNDOS)
-  useEffect(() => {
-    let interval;
-    if (currentMovie && isPlaying) {
-      interval = setInterval(() => {
-        setSecondsWatched(prev => {
-          const newTime = prev + 1;
-          if (newTime === 420 && !adTriggered) {
-             triggerMonetagAd();
-          }
-          return newTime;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [currentMovie, adTriggered, isPlaying]);
-
-  const handleMouseMove = () => {
-    setShowControls(true);
-    if (controlsTimeout.current) clearTimeout(controlsTimeout.current);
-    controlsTimeout.current = setTimeout(() => isPlaying && setShowControls(false), 3000);
-  };
-
-  // 💥 DISPARO EXCLUSIVO (A LOS 7 MINUTOS)
-  const triggerMonetagAd = () => {
-    setAdTriggered(true);
-    setIsPlaying(false);
-
-    // 1. Pausamos el video de YouTube
-    if (iframeRef.current) {
-       iframeRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-    }
-
-    // 2. Nacimiento del script SOLO AQUÍ, para que Monetag tire su anuncio original
-    try {
-      const script = document.createElement('script');
-      script.dataset.zone = '10892804';
-      script.src = 'https://n6wxm.com/vignette.min.js';
-      document.body.appendChild(script);
-    } catch (e) {
-      console.error("Error inyectando Monetag");
-    }
-  };
-
-  const sendCommand = (func, args = "") => {
-    iframeRef.current?.contentWindow.postMessage(JSON.stringify({ event: "command", func, args }), "*");
-  };
-
-  const togglePlay = () => {
-    isPlaying ? sendCommand("pauseVideo") : sendCommand("playVideo");
-    setIsPlaying(!isPlaying);
-  };
-
-  const handleVolumeChange = (e) => {
-    const val = e.target.value;
-    setVolume(val);
-    sendCommand("setVolume", [val]);
-    setIsMuted(val === "0");
-  };
+  const keyIndex = useRef(0);
 
   const fetchMovies = async (query) => {
     setLoading(true);
-    try {
-      const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${encodeURIComponent(query + " película completa español latino")}&type=video&videoDuration=long&key=${YOUTUBE_API_KEYS[0]}`);
-      const data = await res.json();
-      setMovies(data.items || []);
-    } catch (e) { console.error(e); }
+    let success = false;
+    while (keyIndex.current < YOUTUBE_API_KEYS.length && !success) {
+      try {
+        const res = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${encodeURIComponent(
+            query + " pelicula completa español latino"
+          )}&type=video&videoDuration=long&key=${YOUTUBE_API_KEYS[keyIndex.current]}`
+        );
+        if (res.status === 403 || res.status === 429) {
+          keyIndex.current++;
+          continue;
+        }
+        const data = await res.json();
+        setMovies(data.items || []);
+        success = true;
+      } catch (e) {
+        keyIndex.current++;
+      }
+    }
     setLoading(false);
   };
 
-  useEffect(() => { fetchMovies(activeCategory); }, [activeCategory]);
+  useEffect(() => {
+    fetchMovies(activeCategory);
+  }, [activeCategory]);
+
+  const handleSearch = (e) => {
+    if(e) e.preventDefault();
+    if (searchTerm) fetchMovies(searchTerm);
+  };
+
+  // 🕹️ MOTOR DE NAVEGACIÓN CONTROL REMOTO
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (currentMovie) return; 
+      
+      const cols = 5; 
+      const totalCats = CATEGORIES.length;
+      const totalMovies = movies.length;
+
+      if (e.key === "ArrowRight") setActiveIndex(p => Math.min(p + 1, totalCats + totalMovies - 1));
+      if (e.key === "ArrowLeft") setActiveIndex(p => (p === 0 || p === totalCats) ? -1 : Math.max(p - 1, -1));
+      
+      if (e.key === "ArrowDown") {
+        if (activeIndex === -1) setActiveIndex(0);
+        else if (activeIndex < totalCats) setActiveIndex(totalCats);
+        else setActiveIndex(p => Math.min(p + cols, totalCats + totalMovies - 1));
+      }
+      
+      if (e.key === "ArrowUp") {
+        if (activeIndex < totalCats) setActiveIndex(-1);
+        else if (activeIndex < totalCats + cols) setActiveIndex(0);
+        else setActiveIndex(p => p - cols);
+      }
+
+      if (e.key === "Enter") {
+        if (activeIndex === -1) navigate("/");
+        else if (activeIndex < totalCats) {
+          setActiveCategory(CATEGORIES[activeIndex]);
+        } else {
+          setCurrentMovie(movies[activeIndex - totalCats]);
+        }
+      }
+
+      if (e.key === "Escape" || e.key === "Backspace") {
+        if (currentMovie) setCurrentMovie(null);
+        else navigate("/");
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeIndex, movies, currentMovie, navigate]);
+
+  useEffect(() => {
+    if (activeIndex >= 0 && gridRefs.current[activeIndex]) {
+      gridRefs.current[activeIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [activeIndex]);
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden" onMouseMove={handleMouseMove}>
+    <div className="min-h-screen bg-[#050505] text-white font-sans overflow-x-hidden">
       
-      {/* HEADER BUSCADOR */}
-      <div className="p-4 md:p-6 flex items-center justify-between border-b border-white/10 bg-black/80 backdrop-blur-md sticky top-0 z-50">
-        <Link to="/" className="p-2 bg-zinc-900 rounded-full hover:bg-yellow-400 hover:text-black transition-all">
-          <ArrowLeft size={24} />
-        </Link>
-        <div className="flex-1 max-w-xl mx-4 relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
-          <input 
-            type="text" placeholder="Buscar película..." 
-            className="w-full bg-zinc-800 border-none rounded-full py-2 pl-10 pr-6 focus:ring-2 focus:ring-yellow-400 outline-none text-xs"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
+      {/* 🚀 BOTÓN VOLVER NEÓN */}
+      <div className="fixed top-6 left-6 z-[100]">
+        <button 
+          onClick={() => navigate("/")}
+          className={`
+            flex items-center gap-3 px-6 py-2.5 rounded-full border-4 transition-all duration-300
+            ${activeIndex === -1 
+              ? 'bg-yellow-600 border-white scale-110 shadow-[0_0_40px_rgba(255,255,255,0.5)]' 
+              : 'bg-black/50 border-white/10 opacity-70'}
+          `}
+        >
+          <ArrowLeft size={24} className="text-white" />
+          <span className="font-black uppercase tracking-widest text-sm">Menú</span>
+        </button>
       </div>
 
-      {/* CATEGORÍAS */}
-      <div className="flex gap-3 p-4 overflow-x-auto no-scrollbar">
-        {["Acción", "Terror", "Comedia", "Animación", "Drama", "Cristiano"].map(cat => (
-          <button 
-            key={cat} onClick={() => setActiveCategory(cat)}
-            className={`px-6 py-1.5 rounded-full font-bold uppercase text-[10px] border transition-all ${activeCategory === cat ? 'bg-yellow-400 border-yellow-400 text-black' : 'border-white/10 text-gray-400'}`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+      <div className="max-w-[1800px] mx-auto p-6 md:p-12">
+        <header className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16 pt-10">
+          <div className="flex items-center gap-4">
+            <div className="bg-yellow-400 p-3 rounded-2xl text-black">
+              <Film size={32} />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-black italic tracking-tighter uppercase">Cine<span className="text-yellow-400">Play</span></h1>
+          </div>
 
-      {/* GRID */}
-      <div className="p-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {loading ? (
-            <div className="col-span-full flex justify-center py-20"><Loader2 className="animate-spin text-yellow-400" size={40} /></div>
-        ) : (
-          movies.map(movie => (
-            <motion.div 
-              key={movie.id.videoId} whileHover={{ scale: 1.05 }} 
-              onClick={() => { setCurrentMovie(movie); setSecondsWatched(0); setAdTriggered(false); setIsPlaying(true); }}
-              className="cursor-pointer group"
+          <form onSubmit={handleSearch} className="w-full md:w-[500px] relative">
+            <input
+              type="text"
+              placeholder="Busca tu película favorita..."
+              className="w-full bg-zinc-900 border-2 border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-yellow-400 transition-all italic"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button type="submit" className="absolute right-4 top-4 text-white/40 hover:text-yellow-400">
+              <Search size={24} />
+            </button>
+          </form>
+        </header>
+
+        {/* CATEGORÍAS */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {CATEGORIES.map((cat, i) => (
+            <button
+              key={cat}
+              ref={el => gridRefs.current[i] = el}
+              onClick={() => { setActiveCategory(cat); setActiveIndex(i); }}
+              className={`
+                px-8 py-3 rounded-full font-black uppercase text-xs tracking-widest transition-all border-2
+                ${activeCategory === cat ? "bg-white text-black border-white" : "bg-transparent border-white/10"}
+                ${activeIndex === i ? "ring-4 ring-yellow-400 scale-105" : ""}
+              `}
             >
-              <div className="aspect-[2/3] rounded-xl overflow-hidden border-2 border-transparent group-hover:border-yellow-400 relative bg-zinc-900 shadow-xl">
-                <img src={movie.snippet.thumbnails.high.url} className="w-full h-full object-cover" alt="" />
-                <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                   <Play fill="yellow" size={30} className="text-yellow-400" />
-                </div>
-              </div>
-              <h3 className="mt-2 text-[10px] font-bold uppercase text-center line-clamp-1 text-gray-500">{movie.snippet.title}</h3>
-            </motion.div>
-          ))
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {loading ? (
+          <div className="flex flex-col items-center justify-center h-96">
+            <Loader2 className="animate-spin text-yellow-400 mb-4" size={60} />
+            <p className="font-black uppercase tracking-[0.3em] text-yellow-400">Cargando...</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            {movies.map((movie, idx) => {
+              const globalIdx = idx + CATEGORIES.length;
+              const isFocused = activeIndex === globalIdx;
+              return (
+                <motion.div
+                  key={movie.id.videoId}
+                  ref={el => gridRefs.current[globalIdx] = el}
+                  onClick={() => setCurrentMovie(movie)}
+                  className={`
+                    relative group cursor-pointer aspect-[2/3] rounded-[2rem] overflow-hidden border-4 transition-all
+                    ${isFocused ? 'border-yellow-400 scale-105 shadow-[0_0_50px_rgba(250,204,21,0.3)] z-50' : 'border-white/5'}
+                  `}
+                >
+                  <img src={movie.snippet.thumbnails.high.url} className="w-full h-full object-cover" alt="Poster" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex flex-col justify-end p-6">
+                    <h3 className="font-black text-sm uppercase leading-tight mb-2">{movie.snippet.title}</h3>
+                    {/* ✅ AQUÍ ESTÁ LA ESTRELLA CORREGIDA */}
+                    <div className="flex items-center gap-2 text-yellow-400 font-bold text-[10px]">
+                      <Star size={12} fill="currentColor" /> 4K ULTRA HD
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         )}
       </div>
 
-      {/* REPRODUCTOR BLINDADO */}
+      {/* REPRODUCTOR */}
       <AnimatePresence>
         {currentMovie && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] bg-black">
-            <div className="w-full h-full relative flex items-center justify-center bg-black">
-              
-              {/* 🛡️ EL VIDRIO INVISIBLE */}
-              <div className="absolute inset-0 z-30 pointer-events-auto bg-transparent" onClick={handleMouseMove} />
-
-              {/* VIDEO EN TAMAÑO PERFECTO */}
-              <div className="w-full aspect-video md:h-full md:w-auto relative z-10 pointer-events-none">
-                <iframe 
-                  ref={iframeRef}
-                  width="100%" height="100%" 
-                  src={`https://www.youtube.com/embed/${currentMovie.id.videoId}?autoplay=1&controls=0&rel=0&modestbranding=1&enablejsapi=1&iv_load_policy=3&disablekb=1&origin=${window.location.origin}`}
-                  frameBorder="0" allow="autoplay; encrypted-media; fullscreen"
-                />
-              </div>
-
-              {/* CONTROLES NETFLIX */}
-              <motion.div animate={{ opacity: showControls ? 1 : 0 }} className="absolute inset-0 z-40 bg-gradient-to-t from-black via-transparent to-black/70 flex flex-col justify-between p-6">
-                <div className="flex justify-between items-center">
-                  <button onClick={() => setCurrentMovie(null)} className="p-3 bg-red-600 rounded-full hover:scale-110 transition-transform"><ArrowLeft size={24} /></button>
-                  <h2 className="text-sm font-black uppercase text-yellow-400 truncate max-w-[60%] drop-shadow-md">{currentMovie.snippet.title}</h2>
-                </div>
-
-                <div className="flex justify-center">
-                  <button onClick={togglePlay} className="p-8 bg-yellow-400/20 hover:bg-yellow-400 hover:text-black rounded-full backdrop-blur-md transition-all">
-                    {isPlaying ? <Pause size={48} fill="currentColor" /> : <Play size={48} fill="currentColor" className="ml-1" />}
-                  </button>
-                </div>
-
-                <div className="flex items-center justify-between">
-                   <div className="flex items-center gap-4 bg-zinc-900/90 p-3 px-6 rounded-full border border-white/10 backdrop-blur-md">
-                      <button onClick={() => setIsMuted(!isMuted)} className="text-white">
-                        {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-                      </button>
-                      <input type="range" min="0" max="100" value={volume} onChange={handleVolumeChange} className="w-24 md:w-40 accent-yellow-400 h-1 bg-white/20 rounded-lg cursor-pointer" />
-                   </div>
-                   <button onClick={() => document.documentElement.requestFullscreen()} className="p-3 bg-zinc-900/90 hover:bg-yellow-400 hover:text-black rounded-full transition-all"><Maximize size={20} /></button>
-                </div>
-              </motion.div>
-            </div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[1000] bg-black">
+             <div className="absolute top-8 left-8 z-[1100]">
+                <button onClick={() => setCurrentMovie(null)} className="bg-white/10 hover:bg-yellow-400 hover:text-black p-4 rounded-full backdrop-blur-xl transition-all">
+                  <X size={32} />
+                </button>
+             </div>
+             <iframe 
+                width="100%" height="100%" frameBorder="0" allow="autoplay; fullscreen"
+                src={`https://www.youtube.com/embed/${currentMovie.id.videoId}?autoplay=1&rel=0&modestbranding=1`}
+             />
           </motion.div>
         )}
       </AnimatePresence>

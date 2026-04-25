@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Search, Mic, Bell, Home as HomeIcon, Flame, PlaySquare, Clock, ThumbsUp, ArrowLeft, Tv, MoreVertical, SkipForward, AlertTriangle, VolumeX } from 'lucide-react';
 
 const YOUTUBE_API_KEYS = [
@@ -20,16 +20,22 @@ const BUBBLE_TAGS = [
     'Recetas', 'Viajes', 'Misterio', 'Historia', 'Podcast', 'Automovilismo'
 ];
 
-// 🔥 EL BYPASS DIRECTO A SU GITHUB (Saca a Vercel de la ecuación) 🔥
+// 🔥 EL BYPASS DIRECTO A SU GITHUB 🔥
 const GITHUB_CDN = "https://cdn.jsdelivr.net/gh/robertovillalobos996-rgb/fabulosa-play-v1-2@main/public";
 
 const FabulosaTube = () => {
+    const navigate = useNavigate(); // Inyectado para el botón Volver
     const [videos, setVideos] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [relatedVideos, setRelatedVideos] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const searchInputRef = useRef(null);
+    
+    // === 🎮 ESTADOS DEL CONTROL REMOTO ===
+    // activeIndex = -1 (Botón Volver), 0 (Publicidad/Primer video), 1...N (Videos)
+    const [activeIndex, setActiveIndex] = useState(0); 
+    const gridRefs = useRef([]);
+    const columnsRef = useRef(1);
 
     // === 💰 ESTADOS DEL SMART PLAYER ===
     const [adState, setAdState] = useState({ isPlaying: false, canSkip: false, timeLeft: 6, hasError: false, isMuted: true });
@@ -86,6 +92,7 @@ const FabulosaTube = () => {
         if(e) e.preventDefault();
         if (!searchTerm) return;
         setSelectedVideo(null); 
+        setActiveIndex(0); // Resetea el foco al buscar
         const items = await fetchYouTubeData(`search?part=snippet&maxResults=48&q=${encodeURIComponent(searchTerm)}&type=video`);
         setVideos(items);
     };
@@ -94,10 +101,7 @@ const FabulosaTube = () => {
     const handleVideoSelect = async (video) => {
         if (listaComerciales && listaComerciales.length > 0) {
             const randomAd = listaComerciales[Math.floor(Math.random() * listaComerciales.length)];
-            
-            // LA MAGIA: Combina el tubo directo de GitHub con su ruta del JSON
             const finalUrl = randomAd.startsWith('/') ? `${GITHUB_CDN}${encodeURI(randomAd)}` : encodeURI(randomAd);
-            
             setCurrentAdUrl(finalUrl);
             setAdState({ isPlaying: true, canSkip: false, timeLeft: 6, hasError: false, isMuted: true }); 
         } else {
@@ -105,6 +109,7 @@ const FabulosaTube = () => {
         }
         
         setSelectedVideo(video);
+        setActiveIndex(0); // Foco al primer video relacionado
         window.scrollTo({ top: 0, behavior: 'smooth' });
         
         const smartQuery = `${video.snippet.channelTitle} ${video.snippet.title.substring(0, 30)}`;
@@ -138,15 +143,104 @@ const FabulosaTube = () => {
         }
     };
 
+    // === 🎮 MOTOR DE NAVEGACIÓN CONTROL REMOTO ===
+    useEffect(() => {
+        const updateColumns = () => {
+            if (window.innerWidth >= 1536) columnsRef.current = 5; // 2xl
+            else if (window.innerWidth >= 1280) columnsRef.current = 4; // xl
+            else if (window.innerWidth >= 1024) columnsRef.current = 3; // lg
+            else if (window.innerWidth >= 640) columnsRef.current = 2; // sm
+            else columnsRef.current = 1; // mobile
+        };
+        updateColumns();
+        window.addEventListener('resize', updateColumns);
+        return () => window.removeEventListener('resize', updateColumns);
+    }, []);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            // Ignorar si el usuario está escribiendo en el buscador
+            if (document.activeElement.tagName === 'INPUT') return;
+
+            const cols = columnsRef.current;
+            
+            if (!selectedVideo) {
+                // NAVEGACIÓN EN LA GRILLA PRINCIPAL
+                const totalItems = videos.length + 1; // +1 por el patrocinado
+                if (e.key === 'ArrowRight') setActiveIndex(p => Math.min(p + 1, totalItems - 1));
+                if (e.key === 'ArrowLeft') setActiveIndex(p => {
+                    if (p === 0 || p % cols === 0) return -1; // Salta al botón volver
+                    return Math.max(p - 1, 0);
+                });
+                if (e.key === 'ArrowDown') setActiveIndex(p => p === -1 ? 0 : Math.min(p + cols, totalItems - 1));
+                if (e.key === 'ArrowUp') setActiveIndex(p => {
+                    if (p === -1) return -1;
+                    if (p < cols) return -1;
+                    return p - cols;
+                });
+                if (e.key === 'Enter') {
+                    if (activeIndex === -1) navigate("/");
+                    else if (activeIndex === 0) { /* Patrocinado no hace nada por ahora */ }
+                    else handleVideoSelect(videos[activeIndex - 1]);
+                }
+                if (e.key === 'Escape' || e.key === 'Backspace') navigate("/");
+            } else {
+                // NAVEGACIÓN EN LA VISTA DEL REPRODUCTOR (Videos Relacionados)
+                const totalRelated = relatedVideos.length;
+                if (e.key === 'ArrowDown') setActiveIndex(p => Math.min(p + 1, totalRelated - 1));
+                if (e.key === 'ArrowUp') setActiveIndex(p => p <= 0 ? -1 : p - 1);
+                if (e.key === 'ArrowLeft') setActiveIndex(-1);
+                if (e.key === 'Enter') {
+                    if (activeIndex === -1) {
+                        setSelectedVideo(null);
+                        setActiveIndex(0);
+                    } else {
+                        handleVideoSelect(relatedVideos[activeIndex]);
+                    }
+                }
+                if (e.key === 'Escape' || e.key === 'Backspace') {
+                    setSelectedVideo(null);
+                    setActiveIndex(0);
+                }
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [activeIndex, selectedVideo, videos, relatedVideos, navigate]);
+
+    // Centrado automático al navegar con control
+    useEffect(() => {
+        if (activeIndex >= 0 && gridRefs.current[activeIndex]) {
+            gridRefs.current[activeIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    }, [activeIndex]);
+
+    const setGridRef = (idx) => (el) => { gridRefs.current[idx] = el; };
+
+    // =========================================================
+    // VISTA 1: REPRODUCTOR DE VIDEO
+    // =========================================================
     if (selectedVideo) {
         return (
             <div className="min-h-screen bg-[#0f0f0f] text-white flex flex-col font-sans">
-                <nav className="h-14 px-4 flex items-center justify-between bg-[#0f0f0f] sticky top-0 z-50 border-b border-[#272727]">
+                <nav className="h-16 px-4 flex items-center justify-between bg-[#0f0f0f] sticky top-0 z-50 border-b border-[#272727]">
                     <div className="flex items-center gap-4">
-                        <button onClick={() => setSelectedVideo(null)} className="p-2 hover:bg-[#272727] rounded-full outline-none">
-                            <ArrowLeft size={24} />
-                        </button>
-                        <h1 className="text-xl font-black italic tracking-tighter hidden sm:block">FABULOSA<span className="text-[#00b4d8]">PLAY</span></h1>
+                        {/* BOTÓN VOLVER NEÓN */}
+                        <div 
+                            onClick={() => { setSelectedVideo(null); setActiveIndex(0); }}
+                            className={`
+                                inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-2 transition-all duration-300 cursor-pointer
+                                ${activeIndex === -1 
+                                    ? 'bg-cyan-600 border-cyan-300 scale-105 shadow-[0_0_20px_rgba(34,211,238,0.6)] z-50' 
+                                    : 'bg-white/5 border-white/10 hover:bg-white/10 opacity-80'}
+                            `}
+                        >
+                            <ArrowLeft size={20} className={activeIndex === -1 ? 'text-white' : 'text-gray-300'} />
+                            <span className={`font-black uppercase tracking-widest text-xs sm:text-sm hidden sm:block ${activeIndex === -1 ? 'text-white' : 'text-gray-300'}`}>
+                                Atrás
+                            </span>
+                        </div>
+                        <h1 className="text-xl font-black italic tracking-tighter hidden lg:block">FABULOSA<span className="text-[#00b4d8]">PLAY</span></h1>
                     </div>
                     <form onSubmit={handleSearch} className="flex-1 max-w-2xl mx-4 sm:mx-10 flex items-center">
                         <div className="flex w-full">
@@ -162,11 +256,9 @@ const FabulosaTube = () => {
                         <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl focus:ring-4 focus:ring-[#00b4d8] outline-none" tabIndex={0}>
                             {adState.isPlaying ? (
                                 <div className="absolute inset-0 z-50 bg-black flex items-center justify-center">
-                                    
                                     <div className="absolute top-4 left-4 bg-[#00b4d8] text-black px-3 py-1 text-xs font-black uppercase rounded-sm shadow-lg z-20 flex items-center gap-2">
                                         Anuncio <span className="w-1.5 h-1.5 bg-black rounded-full animate-pulse"></span>
                                     </div>
-                                    
                                     <div className="absolute bottom-10 right-0 z-20">
                                         {adState.canSkip ? (
                                             <button onClick={skipAd} className="bg-black/80 hover:bg-black/90 text-white backdrop-blur px-6 py-3 rounded-l-full border border-r-0 border-white/20 flex items-center gap-3 font-bold transition-all shadow-2xl cursor-pointer">
@@ -178,14 +270,11 @@ const FabulosaTube = () => {
                                             </div>
                                         )}
                                     </div>
-
                                     {adState.isMuted && !adState.hasError && (
                                         <button onClick={toggleMute} className="absolute top-4 right-4 z-20 bg-black/70 hover:bg-black text-white px-4 py-2 rounded flex items-center gap-2 border border-white/20">
                                             <VolumeX size={16} /> Activar Sonido
                                         </button>
                                     )}
-
-                                    {/* PANTALLA ROJA (Asegurada por si falla el enlace CDN) */}
                                     {adState.hasError && (
                                         <div className="absolute z-30 bg-red-900/90 p-6 rounded-xl border border-red-500 text-center flex flex-col items-center">
                                             <AlertTriangle size={40} className="text-red-500 mb-2" />
@@ -194,24 +283,8 @@ const FabulosaTube = () => {
                                             <button onClick={skipAd} className="mt-6 bg-white text-black px-6 py-2 font-bold rounded-full hover:bg-gray-200">Saltar a la película</button>
                                         </div>
                                     )}
-                                    
-                                    {/* VIDEO JALADO DIRECTO DESDE GITHUB (ADIOS VERCEL 404) */}
                                     {!adState.hasError && currentAdUrl && (
-                                        <video 
-                                            ref={videoRef}
-                                            key={currentAdUrl} 
-                                            autoPlay 
-                                            muted={true} 
-                                            playsInline
-                                            controls={false} 
-                                            onEnded={skipAd} 
-                                            onError={(e) => {
-                                                console.error("Fallo final de video:", currentAdUrl);
-                                                setAdState(prev => ({ ...prev, hasError: true }));
-                                            }}
-                                            className="w-full h-full object-contain bg-black z-10" 
-                                            src={currentAdUrl} 
-                                        />
+                                        <video ref={videoRef} key={currentAdUrl} autoPlay muted={true} playsInline controls={false} onEnded={skipAd} onError={() => setAdState(prev => ({ ...prev, hasError: true }))} className="w-full h-full object-contain bg-black z-10" src={currentAdUrl} />
                                     )}
                                 </div>
                             ) : (
@@ -238,7 +311,15 @@ const FabulosaTube = () => {
                         </div>
                         <div className="flex flex-col gap-3 pb-10">
                             {relatedVideos.map((v, i) => (
-                                <div key={i} onClick={() => handleVideoSelect(v)} className="flex gap-2 cursor-pointer group hover:bg-[#272727] rounded-lg p-1 transition-colors">
+                                <div 
+                                    key={i} 
+                                    ref={setGridRef(i)}
+                                    onClick={() => handleVideoSelect(v)} 
+                                    className={`
+                                        flex gap-2 cursor-pointer group rounded-lg p-1 transition-colors
+                                        ${activeIndex === i ? 'bg-[#272727] ring-2 ring-[#00b4d8] scale-[1.02]' : 'hover:bg-[#272727]'}
+                                    `}
+                                >
                                     <div className="relative w-40 aspect-video rounded-lg overflow-hidden shrink-0 bg-[#222]"><img src={v.snippet.thumbnails.medium?.url || v.snippet.thumbnails.high?.url} className="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="thumbnail" /></div>
                                     <div className="flex flex-col"><h3 className="text-sm font-bold text-zinc-100 line-clamp-2 leading-tight group-hover:text-[#00b4d8]">{v.snippet.title}</h3><span className="text-xs text-zinc-400 mt-1">{v.snippet.channelTitle}</span><span className="text-[10px] bg-[#272727] text-zinc-300 px-1.5 py-0.5 rounded mt-1 w-fit">Nuevo</span></div>
                                 </div>
@@ -250,14 +331,32 @@ const FabulosaTube = () => {
         );
     }
 
+    // =========================================================
+    // VISTA 2: MENÚ PRINCIPAL (GRILLA)
+    // =========================================================
     return (
         <div className="min-h-screen bg-[#0f0f0f] text-white font-sans flex flex-col overflow-hidden">
-            <header className="h-14 px-4 flex items-center justify-between sticky top-0 bg-[#0f0f0f] z-50">
+            <header className="h-16 px-4 flex items-center justify-between sticky top-0 bg-[#0f0f0f] z-50">
                 <div className="flex items-center gap-4">
-                    <Link to="/" className="p-2 hover:bg-[#272727] rounded-full outline-none" tabIndex={0}><ArrowLeft size={24} /></Link>
+                    {/* BOTÓN VOLVER NEÓN PRINCIPAL */}
+                    <div 
+                        onClick={() => navigate("/")}
+                        className={`
+                            inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all duration-300 cursor-pointer
+                            ${activeIndex === -1 
+                                ? 'bg-cyan-600 border-cyan-300 scale-105 shadow-[0_0_20px_rgba(34,211,238,0.6)] z-50' 
+                                : 'bg-white/5 border-white/10 hover:bg-white/10 opacity-80'}
+                        `}
+                    >
+                        <ArrowLeft size={20} className={activeIndex === -1 ? 'text-white' : 'text-gray-300'} />
+                        <span className={`font-black uppercase tracking-widest text-xs sm:text-sm hidden sm:block ${activeIndex === -1 ? 'text-white' : 'text-gray-300'}`}>
+                            Volver al Menú
+                        </span>
+                    </div>
+
                     <div className="flex items-center gap-1 cursor-pointer" onClick={() => window.location.reload()}>
                         <div className="bg-[#00b4d8] text-black p-1 rounded-lg"><Tv size={20} /></div>
-                        <h1 className="text-xl font-black italic tracking-tighter ml-1 hidden sm:block">FABULOSA<span className="text-[#00b4d8]">PLAY</span></h1>
+                        <h1 className="text-xl font-black italic tracking-tighter ml-1 hidden lg:block">FABULOSA<span className="text-[#00b4d8]">PLAY</span></h1>
                     </div>
                 </div>
                 <form onSubmit={handleSearch} className="flex-1 max-w-2xl mx-4 sm:mx-10 flex items-center">
@@ -266,13 +365,12 @@ const FabulosaTube = () => {
                 <div className="flex items-center gap-2 sm:gap-4"><button className="p-2 hover:bg-[#272727] rounded-full hidden sm:block"><Bell size={20} /></button><div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#00b4d8] to-rose-900 border border-white/20 shrink-0"></div></div>
             </header>
 
-            <div className="flex flex-1 h-[calc(100vh-56px)]">
+            <div className="flex flex-1 h-[calc(100vh-64px)]">
                 <aside className="w-[72px] xl:w-[240px] hidden md:flex flex-col gap-2 p-3 overflow-y-auto bg-[#0f0f0f] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                     <div className="flex flex-col xl:flex-row items-center xl:justify-start gap-1 xl:gap-5 p-3 rounded-xl hover:bg-[#272727] cursor-pointer bg-[#272727]" onClick={() => window.location.reload()}><HomeIcon size={24} /> <span className="text-[10px] xl:text-sm font-bold">Inicio</span></div>
                     <div className="flex flex-col xl:flex-row items-center xl:justify-start gap-1 xl:gap-5 p-3 rounded-xl hover:bg-[#272727] cursor-pointer" onClick={() => { setSearchTerm('Tendencias 2026'); handleSearch(); }}><Flame size={24} /> <span className="text-[10px] xl:text-sm font-bold">Tendencias</span></div>
                     <div className="flex flex-col xl:flex-row items-center xl:justify-start gap-1 xl:gap-5 p-3 rounded-xl hover:bg-[#272727] cursor-pointer"><PlaySquare size={24} /> <span className="text-[10px] xl:text-sm font-bold">Suscripciones</span></div>
                     <div className="my-3 border-b border-[#3f3f3f] hidden xl:block"></div>
-                    
                     <div className="mt-auto hidden xl:block w-full rounded-xl overflow-hidden border border-[#303030]"><img src="/centro-de-publicidad.png" alt="Publicidad" className="w-full h-auto" /></div>
                 </aside>
 
@@ -285,7 +383,15 @@ const FabulosaTube = () => {
                         <div className="flex justify-center items-center h-64"><div className="w-12 h-12 border-4 border-[#00b4d8] border-t-transparent rounded-full animate-spin"></div></div>
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-10 pb-20 pt-4">
-                            <div className="flex flex-col cursor-pointer focus:ring-4 focus:ring-[#00b4d8] outline-none rounded-xl tabIndex={0}">
+                            
+                            {/* VIDEO PATROCINADO */}
+                            <div 
+                                ref={setGridRef(0)}
+                                className={`
+                                    flex flex-col cursor-pointer outline-none rounded-xl transition-all duration-300
+                                    ${activeIndex === 0 ? 'ring-4 ring-[#00b4d8] scale-105 z-10 shadow-[0_10px_30px_rgba(0,180,216,0.3)] bg-[#272727] p-2' : ''}
+                                `}
+                            >
                                 <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-[#303030] bg-[#121212] mb-3">
                                     <div className="absolute bottom-1 right-1 bg-black/80 px-1.5 py-0.5 rounded text-xs font-bold text-white">Patrocinado</div>
                                     <img src="/centro-de-publicidad.png" className="w-full h-full object-contain" alt="Ad" />
@@ -296,10 +402,19 @@ const FabulosaTube = () => {
                                 </div>
                             </div>
                             
+                            {/* VIDEOS DE YOUTUBE */}
                             {videos.map((video, idx) => (
-                                <div key={idx} onClick={() => handleVideoSelect(video)} className="flex flex-col cursor-pointer group focus:ring-4 focus:ring-[#00b4d8] outline-none rounded-xl p-1 tabIndex={0}">
+                                <div 
+                                    key={idx} 
+                                    ref={setGridRef(idx + 1)}
+                                    onClick={() => handleVideoSelect(video)} 
+                                    className={`
+                                        flex flex-col cursor-pointer group outline-none rounded-xl transition-all duration-300
+                                        ${activeIndex === idx + 1 ? 'ring-4 ring-[#00b4d8] scale-105 z-10 shadow-[0_10px_30px_rgba(0,180,216,0.3)] bg-[#272727] p-2' : 'p-1'}
+                                    `}
+                                >
                                     <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-[#222] mb-3"><img src={video.snippet.thumbnails.high?.url || video.snippet.thumbnails.medium?.url} alt={video.snippet.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" /></div>
-                                    <div className="flex gap-3"><div className="w-9 h-9 rounded-full bg-[#272727] shrink-0 overflow-hidden"><div className="w-full h-full bg-gradient-to-br from-[#00b4d8] to-black"></div></div><div><h3 className="text-white font-bold text-sm line-clamp-2 leading-snug group-hover:text-[#00b4d8] transition-colors">{video.snippet.title}</h3><p className="text-[#aaa] text-xs mt-1 hover:text-white">{video.snippet.channelTitle}</p></div></div>
+                                    <div className="flex gap-3"><div className="w-9 h-9 rounded-full bg-[#272727] shrink-0 overflow-hidden"><div className="w-full h-full bg-gradient-to-br from-[#00b4d8] to-black"></div></div><div><h3 className={`font-bold text-sm line-clamp-2 leading-snug transition-colors ${activeIndex === idx + 1 ? 'text-[#00b4d8]' : 'text-white group-hover:text-[#00b4d8]'}`}>{video.snippet.title}</h3><p className="text-[#aaa] text-xs mt-1 hover:text-white">{video.snippet.channelTitle}</p></div></div>
                                 </div>
                             ))}
                         </div>
