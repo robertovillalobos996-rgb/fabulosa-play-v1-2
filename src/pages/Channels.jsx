@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Play, Pause, Volume2, Loader2, Trash2, UploadCloud, Save, Rocket, X, Edit3, CheckCircle } from "lucide-react";
+import { 
+  Search, Play, Pause, Volume2, Loader2, Trash2, UploadCloud, 
+  Save, Rocket, X, Maximize, ChevronRight, CheckCircle, VolumeX
+} from "lucide-react";
 import Hls from "hls.js";
 
 import logoFabulosa from "../assets/logo_fabulosa.png";
@@ -10,26 +13,28 @@ const Channels = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("Todos");
-  
-  // 🛡️ ÚNICA FUENTE DE VERDAD
-  const [channels, setChannels] = useState(initialCanales);
+  const [channels, setChannels] = useState(initialCanales || []);
   const [currentChannel, setCurrentChannel] = useState(initialCanales[0]);
   
+  // Estados del Reproductor
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [volume, setVolume] = useState(1);
+  const [isMuted, setIsMuted] = useState(false);
+  const [showControls, setShowControls] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   
   const videoRef = useRef(null);
   const hlsRef = useRef(null);
+  const containerRef = useRef(null);
+  const controlsTimeout = useRef(null);
 
   const isAdmin = new URLSearchParams(window.location.search).get("admin") === "fabulosa";
 
-  // Categorías basadas en la lista actual en memoria
   const categories = useMemo(() => {
     return ["Todos", ...new Set(channels.map((c) => c.genre || "Varios"))];
   }, [channels]);
 
-  // Canales filtrados para la grilla
   const filteredChannels = useMemo(() => {
     return channels.filter((c) => {
       const matchCat = activeCategory === "Todos" || c.genre === activeCategory;
@@ -38,36 +43,24 @@ const Channels = () => {
     });
   }, [channels, activeCategory, searchTerm]);
 
-  // --- 🛠️ MOTOR DE ADMINISTRACIÓN (BLINDADO) ---
-
-  // Función maestra para actualizar sin perder datos
-  const patchChannel = (fields) => {
-    setChannels(prev => {
-      const updated = prev.map(c => 
-        c.id === currentChannel.id ? { ...c, ...fields } : c
-      );
-      // Actualizamos el canal activo para que el panel refleje el cambio
-      setCurrentChannel(updated.find(c => c.id === currentChannel.id));
-      return updated;
-    });
+  // --- 🛠️ FUNCIONES DE ADMIN ---
+  const updateData = (field, value) => {
+    const updated = channels.map(c => c.id === currentChannel.id ? { ...c, [field]: value } : c);
+    setChannels(updated);
+    setCurrentChannel({ ...currentChannel, [field]: value });
   };
 
-  const deleteChannel = () => {
-    if (!window.confirm(`¿BORRAR DEFINITIVAMENTE: ${currentChannel.name}?`)) return;
-    
-    const idToDelete = currentChannel.id;
-    setChannels(prev => {
-      const remaining = prev.filter(c => c.id !== idToDelete);
-      // Cambiamos al primer canal de la lista para no quedar en el vacío
-      if (remaining.length > 0) setCurrentChannel(remaining[0]);
-      return remaining;
-    });
+  const deleteActiveChannel = () => {
+    if (window.confirm(`¿BORRAR CANAL: ${currentChannel.name}?`)) {
+      const updated = channels.filter(c => c.id !== currentChannel.id);
+      setChannels(updated);
+      setCurrentChannel(updated[0] || null);
+    }
   };
 
   const handleLogoUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = async () => {
@@ -79,30 +72,49 @@ const Channels = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ fileName, base64Data })
         });
-        if (res.ok) {
-          // ESTAMPADO INMEDIATO
-          patchChannel({ logo: `/logos_canales/${fileName}` });
-        }
-      } catch (err) { alert("ERROR: ¿Inició bridge.js?"); }
+        if (res.ok) updateData('logo', `/logos_canales/${fileName}`);
+      } catch (err) { alert("Error: ¿Inició bridge.js?"); }
     };
   };
 
   const saveToDisk = async () => {
     setIsSaving(true);
     try {
-      const res = await fetch('http://localhost:3001/save-channels', {
+      await fetch('http://localhost:3001/save-channels', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(channels)
       });
-      if (res.ok) {
-        alert("✅ LISTA DEFINITIVA GUARDADA. Ya puede cerrar o refrescar.");
-      }
-    } catch (e) { alert("Error al conectar con bridge.js"); }
+      alert("✅ LISTA GUARDADA CORRECTAMENTE");
+    } catch (e) { alert("Error al guardar"); }
     setIsSaving(false);
   };
 
-  // MOTOR HLS
+  // --- 📺 CONTROLES TIPO YOUTUBE ---
+  const togglePlay = () => {
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      containerRef.current.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  };
+
+  const handleMouseMove = () => {
+    setShowControls(true);
+    clearTimeout(controlsTimeout.current);
+    controlsTimeout.current = setTimeout(() => setShowControls(false), 3000);
+  };
+
   useEffect(() => {
     if (!currentChannel?.url) return;
     setIsLoading(true);
@@ -121,103 +133,150 @@ const Channels = () => {
   }, [currentChannel]);
 
   return (
-    <div className="flex h-screen w-full bg-black text-white font-sans overflow-hidden">
+    <div className="flex flex-col lg:flex-row h-screen w-full bg-black text-white font-sans overflow-hidden">
       
-      {/* 1. SIDEBAR CATEGORÍAS */}
-      <aside className="w-64 bg-[#0a0a0a] border-r border-white/5 flex flex-col py-6 shrink-0 overflow-y-auto no-scrollbar">
-        <div className="px-8 mb-8"><img src={logoFabulosa} className="h-10 object-contain" /></div>
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`px-8 py-4 flex items-center gap-4 border-l-4 transition-all ${activeCategory === cat ? 'border-red-600 text-red-600 bg-red-600/5' : 'border-transparent text-white/40'}`}
-          >
-            <span className="text-xs font-black uppercase truncate">{cat}</span>
-          </button>
-        ))}
+      {/* 📋 ASIDE: Categorías (Adaptable) */}
+      <aside className="w-full lg:w-64 bg-[#0a0a0a] border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col shrink-0">
+        <div className="p-4 flex items-center justify-between lg:block">
+          <img src={logoFabulosa} className="h-8 lg:h-10 object-contain lg:mb-8" />
+          <div className="relative lg:w-full w-48">
+            <input 
+              type="text" placeholder="BUSCAR..." 
+              className="w-full bg-white/5 border border-white/10 p-2 lg:p-3 rounded-xl text-xs outline-none focus:border-red-600"
+              value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </div>
+        
+        <div className="flex lg:flex-col overflow-x-auto lg:overflow-y-auto no-scrollbar p-2 lg:p-4 gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 lg:px-6 py-2 lg:py-4 rounded-xl flex items-center gap-3 transition-all shrink-0 lg:shrink ${activeCategory === cat ? 'bg-red-600 text-white font-black' : 'bg-white/5 text-white/40 hover:bg-white/10'}`}
+            >
+              <span className="text-[10px] lg:text-xs uppercase truncate tracking-tighter">{cat}</span>
+            </button>
+          ))}
+        </div>
       </aside>
 
-      {/* 2. ÁREA DE TRABAJO */}
-      <main className="flex-1 flex flex-col overflow-hidden bg-[#080808]">
+      {/* 📺 MAIN: Reproductor y Grilla */}
+      <main className="flex-1 flex flex-col overflow-hidden bg-[#050505]">
         
-        {/* REPRODUCTOR (Arriba) */}
-        <section className="h-[40%] bg-black relative shrink-0">
+        {/* REPRODUCTOR PROFESIONAL (YouTube Style) */}
+        <div 
+          ref={containerRef}
+          onMouseMove={handleMouseMove}
+          className="relative w-full aspect-video lg:h-[50%] bg-black group shrink-0"
+        >
           {isLoading && <div className="absolute inset-0 flex items-center justify-center z-50 bg-black"><Loader2 className="animate-spin text-red-600" size={50} /></div>}
-          <video ref={videoRef} className="w-full h-full object-contain" />
-          <div className="absolute bottom-4 left-6 bg-black/60 p-4 rounded-2xl border border-white/10 backdrop-blur-md">
-            <h2 className="text-2xl font-black uppercase text-red-600">{currentChannel?.name}</h2>
-          </div>
-        </section>
+          
+          <video 
+            ref={videoRef} 
+            onClick={togglePlay}
+            className="w-full h-full object-contain cursor-pointer" 
+          />
 
-        {/* GRILLA DE CANALES (Centro) */}
-        <div className="flex-1 overflow-y-auto p-6 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 no-scrollbar">
+          {/* Overlay de Controles */}
+          <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40 transition-opacity duration-300 flex flex-col justify-between p-4 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
+            
+            {/* Arriba: Info Canal */}
+            <div className="flex justify-between items-start">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-white rounded-lg p-1.5"><img src={currentChannel?.logo} className="w-full h-full object-contain" /></div>
+                <h2 className="text-xl font-black uppercase italic drop-shadow-lg">{currentChannel?.name}</h2>
+              </div>
+              <button onClick={() => navigate('/')} className="bg-white/10 p-2 rounded-full hover:bg-red-600"><X size={20}/></button>
+            </div>
+
+            {/* Centro: Play/Pause Gigante */}
+            <div className="flex justify-center items-center">
+               {!isPlaying && <button onClick={togglePlay} className="bg-red-600/80 p-6 rounded-full scale-110"><Play size={40} fill="white"/></button>}
+            </div>
+
+            {/* Abajo: Barra YouTube */}
+            <div className="space-y-3">
+              {/* Barra de progreso decorativa (Live) */}
+              <div className="h-1 w-full bg-white/20 rounded-full overflow-hidden">
+                 <div className="h-full bg-red-600 w-full animate-pulse" />
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-6">
+                  <button onClick={togglePlay} className="hover:text-red-600 transition-colors">
+                    {isPlaying ? <Pause size={28} fill="currentColor"/> : <Play size={28} fill="currentColor"/>}
+                  </button>
+                  
+                  <div className="flex items-center gap-2 group/vol">
+                    <button onClick={() => setIsMuted(!isMuted)}>
+                      {isMuted || volume === 0 ? <VolumeX size={24}/> : <Volume2 size={24}/>}
+                    </button>
+                    <input 
+                      type="range" min="0" max="1" step="0.1" 
+                      value={volume} onChange={e => {setVolume(e.target.value); videoRef.current.volume = e.target.value;}}
+                      className="w-0 group-hover/vol:w-20 transition-all accent-red-600"
+                    />
+                  </div>
+                  
+                  <span className="text-[10px] font-bold text-red-600 flex items-center gap-2">
+                    <div className="w-2 h-2 bg-red-600 rounded-full animate-ping" /> EN VIVO
+                  </span>
+                </div>
+
+                <button onClick={toggleFullscreen} className="hover:scale-110 transition-transform"><Maximize size={24}/></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 🛠️ PANEL ADMIN (Fijo debajo del player en PC, scroll en movil) */}
+        {isAdmin && (
+          <div className="bg-[#111] border-b border-white/5 p-4 flex flex-wrap items-center justify-between gap-4 shrink-0 overflow-x-auto">
+            <input 
+              type="text" value={currentChannel?.name || ""} 
+              onChange={e => updateData('name', e.target.value)}
+              className="bg-black border border-white/10 p-2 rounded-xl text-xs font-bold focus:border-red-600 outline-none w-full sm:w-auto flex-1"
+            />
+            <select 
+              value={currentChannel?.genre || ""} 
+              onChange={e => updateData('genre', e.target.value)}
+              className="bg-black border border-white/10 p-2 rounded-xl text-[10px] font-bold uppercase outline-none"
+            >
+              {categories.map(c => c !== "Todos" && <option key={c} value={c}>{c}</option>)}
+            </select>
+            <div className="flex items-center gap-2">
+              <label className="bg-blue-600 hover:bg-blue-500 p-2 rounded-xl cursor-pointer"><UploadCloud size={18}/><input type="file" className="hidden" onChange={handleLogoUpload} /></label>
+              <button onClick={deleteActiveChannel} className="bg-white/5 text-red-600 p-2 rounded-xl hover:bg-red-600 hover:text-white transition-all"><Trash2 size={18}/></button>
+              <button onClick={saveToDisk} className="bg-red-600 px-4 py-2 rounded-xl font-black text-[10px] uppercase flex items-center gap-2">
+                <Save size={18}/> {isSaving ? "..." : "GUARDAR"}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* 🔳 GRILLA DE CANALES (Scrollable) */}
+        <div className="flex-1 overflow-y-auto p-4 md:p-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 no-scrollbar">
           {filteredChannels.map((channel) => (
             <div
               key={channel.id}
-              className={`relative cursor-pointer aspect-square rounded-[2rem] transition-all flex flex-col items-center justify-center p-4 bg-[#121212] border-4 ${currentChannel?.id === channel.id ? 'border-red-600' : 'border-transparent'}`}
+              className={`relative group cursor-pointer aspect-square rounded-[2rem] transition-all flex flex-col items-center justify-center p-4 bg-[#121212] border-4 ${currentChannel?.id === channel.id ? 'border-red-600' : 'border-transparent'} hover:scale-105`}
               onClick={() => setCurrentChannel(channel)}
             >
               <img src={channel.logo} className="max-w-full max-h-full object-contain" alt="Logo" />
-              <div className="absolute -bottom-2 bg-red-600 text-white px-3 py-1 rounded-full text-[8px] font-black uppercase truncate max-w-[90%]">
+              <div className="absolute -bottom-2 bg-red-600 text-white px-3 py-1 rounded-full text-[8px] font-black uppercase shadow-xl truncate max-w-[90%]">
                 {channel.name}
               </div>
             </div>
           ))}
         </div>
-
-        {/* 3. PANEL DE ADMINISTRACIÓN (ABAJO - Fijo) */}
-        {isAdmin && (
-          <div className="h-44 bg-[#111111] border-t-4 border-red-600 p-6 flex items-center justify-between gap-6 shrink-0 z-[100] shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
-            
-            {/* Editar Nombre */}
-            <div className="flex-1">
-              <label className="text-[10px] font-black text-red-600 mb-2 block uppercase italic">Nombre Canal</label>
-              <input 
-                type="text" value={currentChannel?.name || ""} 
-                onChange={e => patchChannel({ name: e.target.value })}
-                className="w-full bg-black border border-white/10 p-4 rounded-2xl text-sm font-black uppercase outline-none focus:border-blue-600"
-              />
-            </div>
-
-            {/* Cambiar Categoría */}
-            <div className="w-64">
-              <label className="text-[10px] font-black text-red-600 mb-2 block uppercase italic">Categoría</label>
-              <select 
-                value={currentChannel?.genre || ""} 
-                onChange={e => patchChannel({ genre: e.target.value })}
-                className="w-full bg-black border border-white/10 p-4 rounded-2xl text-xs font-black uppercase outline-none"
-              >
-                {categories.map(c => c !== "Todos" && <option key={c} value={c}>{c}</option>)}
-              </select>
-            </div>
-
-            {/* Botón Logo */}
-            <label className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-5 rounded-2xl font-black text-[11px] uppercase flex items-center gap-3 cursor-pointer transition-all shadow-xl">
-              <UploadCloud size={24}/> ACTUALIZAR LOGO
-              <input type="file" className="hidden" onChange={handleLogoUpload} />
-            </label>
-
-            {/* Botón Borrar */}
-            <button onClick={deleteChannel} className="bg-white/5 border border-red-600/30 text-red-600 p-5 rounded-2xl hover:bg-red-600 hover:text-white transition-all shadow-xl">
-              <Trash2 size={28}/>
-            </button>
-
-            {/* GUARDADO FINAL */}
-            <button 
-              onClick={saveToDisk}
-              className={`px-12 py-7 rounded-[2rem] font-black text-sm uppercase tracking-[0.2em] shadow-2xl transition-all flex items-center gap-3 ${isSaving ? 'bg-green-600' : 'bg-red-600 hover:scale-105 active:scale-95'}`}
-            >
-              <Save size={28}/> {isSaving ? "GUARDANDO..." : "GUARDAR TODO"}
-            </button>
-          </div>
-        )}
       </main>
 
-      {/* SALIR */}
-      <button onClick={() => navigate("/")} className="fixed top-6 right-6 z-[200] bg-white/10 p-3 rounded-full hover:bg-red-600 transition-all shadow-2xl">
-        <X size={24}/>
-      </button>
-
+      <style jsx global>{`
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 10px; }
+      `}</style>
     </div>
   );
 };
