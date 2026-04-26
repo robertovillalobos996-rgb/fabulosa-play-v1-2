@@ -17,7 +17,6 @@ const Home = () => {
     '/tv_9.webp', '/tv_10.webp', '/tv_11.webp', '/tv_12.webp', '/tv_13.webp'
   ];
 
-  // ✅ LAS 12 CARDS COMPLETAS RESPETADAS AL 100%
   const cards = [
     { id: 'premium', path: '/premium', img: '/fabulosa_premiun.webp' },
     { id: 'noticias', isExternal: true, path: 'https://psc-informa.vercel.app', img: '/psc_imforma.webp' },
@@ -39,6 +38,30 @@ const Home = () => {
     return () => { clearInterval(timer); clearInterval(bgTimer); };
   }, [backgrounds.length]);
 
+  // 📱 DETECTOR DE CENTRO PARA CELULARES
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const container = scrollRef.current;
+      const center = container.scrollLeft + container.offsetWidth / 2;
+      
+      let closestIndex = 0;
+      let minDistance = Infinity;
+
+      container.childNodes.forEach((child, index) => {
+        const childCenter = child.offsetLeft + child.offsetWidth / 2;
+        const distance = Math.abs(center - childCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      if (closestIndex !== activeIndex) {
+        setActiveIndex(closestIndex);
+      }
+    }
+  };
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight') {
@@ -55,13 +78,17 @@ const Home = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activeIndex, navigate, cards]);
 
+  // Centrado cuando se usa teclado/control
   useEffect(() => {
     if (scrollRef.current) {
       const container = scrollRef.current;
       const activeItem = container.childNodes[activeIndex];
       if (activeItem) {
         const scrollLeft = activeItem.offsetLeft - (container.offsetWidth / 2) + (activeItem.offsetWidth / 2);
-        container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        // Solo centramos por código si no se está haciendo scroll manual (para no pelear con el dedo)
+        if (Math.abs(container.scrollLeft - scrollLeft) > 10) {
+           container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        }
       }
     }
   }, [activeIndex]);
@@ -69,7 +96,6 @@ const Home = () => {
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black text-white font-sans">
       
-      {/* CAPA DE FONDOS (Al fondo de todo) */}
       {backgrounds.map((bg, i) => (
         <div
           key={bg}
@@ -79,7 +105,6 @@ const Home = () => {
       ))}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-0" />
 
-      {/* HEADER (Detrás de las cards cuando estas suben) */}
       <header className="absolute top-8 left-10 md:left-16 z-10 flex items-center gap-8 pointer-events-none">
         <img src={logoFabulosa} alt="Logo" className="h-12 md:h-20 object-contain drop-shadow-2xl" />
         <div className="flex flex-col border-l-2 border-cyan-400/30 pl-6">
@@ -92,11 +117,12 @@ const Home = () => {
         </div>
       </header>
 
-      {/* 🏁 CINTA DE CARDS: DELANTE DE TODO EL MUNDO */}
+      {/* 🏁 CINTA DE CARDS: DETECTA EL DEDO */}
       <div className="absolute bottom-0 w-full z-[999] bg-gradient-to-t from-black via-transparent to-transparent pb-4 md:pb-8">
         <div 
           ref={scrollRef}
-          className="flex items-end overflow-x-auto no-scrollbar px-[45vw] h-[55vh] gap-3 md:gap-8 scroll-smooth"
+          onScroll={handleScroll}
+          className="flex items-end overflow-x-auto no-scrollbar px-[45vw] h-[55vh] gap-3 md:gap-8 scroll-smooth snap-x snap-mandatory"
         >
           {cards.map((card, idx) => {
             const focused = idx === activeIndex;
