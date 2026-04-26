@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, Send, Mic2, Loader2, Sparkles, Music, Star, Trophy, Ghost } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft, Search, Loader2, Music, X, Play, Clock, Star, Mic2, RotateCcw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ✅ ASSETS
-const LOGO_KARAOKE = "/karaoke_play.png";
+import logoFabulosa from "../assets/logo_fabulosa.png";
 
-// 🔑 LAS 14 LLAVES MAESTRAS
+// 🔑 LAS 14 LLAVES MAESTRAS (Respaldo total)
 const YOUTUBE_API_KEYS = [
   "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
   "AIzaSyBUk0oq1zjA6BKx5HK8DEQc1TxQqreqGtk", "AIzaSyBys-0J3T5Ou_fdPGxqYC5LWDMgppwD0Y4",
@@ -17,202 +16,228 @@ const YOUTUBE_API_KEYS = [
   "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
-const FRASES_BOT = {
-  buscando: [
-    "¡Oído cocina! Buscando ese temazo en los archivos de Las Vegas... ✨",
-    "¡Uff, qué buen gusto! Preparando el escenario para una estrella... 🎤",
-    "¡Esa es de las mías! Ya casi te pongo a brillar... 📁",
-    "¡Atención público! Se viene un momento épico... 🌟"
-  ],
-  exito: [
-    "¡LISTO! Dale con todo, ¡hoy te conviertes en leyenda! 🔥",
-    "¡Pista cargada! Micrófono abierto, el escenario es tuyo... 🎸",
-    "¡Qué voz se ocupa para esto! ¡A romperla! 🚀"
-  ],
-  error: [
-    "¡Uy! Esa canción está muy exclusiva y no la encontré. ¿Probamos con otra? 😅",
-    "Parece que el DJ se tomó un descanso. ¡Intenta con otro nombre! 🍺"
-  ]
-};
-
-const KaraokeLasVegas = () => {
-  const [video, setVideo] = useState(null);
+const Karaoke = () => {
+  const navigate = useNavigate();
+  const [fecha, setFecha] = useState(new Date());
+  const [songs, setSongs] = useState([]);
+  const [currentSong, setCurrentSong] = useState(null);
+  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState('');
-  const [botMessage, setBotMessage] = useState("¡Bienvenido al Centro Nocturno Fabulosa! ¿Qué vas a cantar hoy, estrella?");
-  const keyIndex = useRef(0);
+  const [keyIndex, setKeyIndex] = useState(0);
 
-  const getFrase = (tipo) => {
-    const frases = FRASES_BOT[tipo];
-    return frases[Math.floor(Math.random() * frases.length)];
+  useEffect(() => {
+    const timer = setInterval(() => setFecha(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // 🧹 LIMPIADOR DE TÍTULOS (Solo nombre y artista)
+  const cleanTitle = (title) => {
+    return title
+      .replace(/\[.*?\]/g, "") 
+      .replace(/\(.*?\)/g, "") 
+      .replace(/karaoke|instrumental|con guia|version|lyrics|letra|pista|pistas|oficial|original|hd|4k/gi, "")
+      .replace(/[|:\-–—]/g, " ")
+      .trim();
   };
 
-  const buscarVideo = async (e) => {
-    if (e) e.preventDefault();
-    if (!query.trim()) return;
-
+  const searchSongs = async (searchQuery) => {
+    if (!searchQuery) return;
     setLoading(true);
-    setBotMessage(getFrase('buscando'));
-    let exito = false;
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&q=${searchQuery}+karaoke+espanol&type=video&key=${YOUTUBE_API_KEYS[keyIndex]}`
+      );
+      const data = await response.json();
 
-    while (keyIndex.current < YOUTUBE_API_KEYS.length && !exito) {
-      try {
-        const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURIComponent(query + " karaoke español")}&type=video&key=${YOUTUBE_API_KEYS[keyIndex.current]}`
-        );
-
-        if (response.status === 403 || response.status === 429) {
-          keyIndex.current++;
-          continue; 
-        }
-
-        const data = await response.json();
-        if (data.items && data.items.length > 0) {
-          setVideo(data.items[0]);
-          setBotMessage(getFrase('exito'));
-          exito = true;
-        } else {
-          setBotMessage(getFrase('error'));
-          exito = true; 
-        }
-      } catch (error) {
-        keyIndex.current++;
+      if (data.error && (data.error.code === 403 || data.error.code === 429)) {
+        setKeyIndex((prev) => (prev + 1) % YOUTUBE_API_KEYS.length);
+        return;
       }
+
+      if (data.items) setSongs(data.items);
+    } catch (error) {
+      console.error("Error Karaoke API:", error);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
+
+  useEffect(() => {
+    searchSongs("exitos actuales");
+  }, [keyIndex]);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans flex flex-col overflow-hidden selection:bg-red-500">
+    <div className="min-h-screen w-full bg-[#080008] text-white font-sans overflow-x-hidden selection:bg-fuchsia-600">
       
-      {/* 🌆 FONDO ESTILO LAS VEGAS (Animado) */}
-      <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(220,38,38,0.15),transparent_70%)]" />
-        <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+      {/* FONDO ANIMADO NEÓN */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-fuchsia-600/10 blur-[120px] rounded-full animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-600/10 blur-[120px] rounded-full animate-pulse delay-1000" />
       </div>
 
-      {/* HEADER PREMIUM */}
-      <header className="relative z-50 p-6 flex items-center justify-between bg-black/60 backdrop-blur-2xl border-b border-red-900/30">
-        <Link to="/" className="flex items-center gap-2 text-white/40 hover:text-red-500 transition-all uppercase font-black text-xs tracking-widest group">
-          <div className="p-2 rounded-full group-hover:bg-red-500/10 transition-colors"><ArrowLeft size={20} /></div>
-          Salir del Club
-        </Link>
-        
-        <div className="flex flex-col items-center">
-            <img src={LOGO_KARAOKE} className="h-16 md:h-20 drop-shadow-[0_0_15px_rgba(220,38,38,0.8)]" />
+      {/* HEADER PRO */}
+      <header className="relative z-50 p-6 md:p-10 flex justify-between items-center bg-gradient-to-b from-black to-transparent">
+        <div className="flex items-center gap-4">
+          <button onClick={() => navigate("/")} className="bg-white/5 p-3 rounded-full hover:bg-fuchsia-600 transition-all active:scale-90 border border-white/10">
+            <ArrowLeft size={24} />
+          </button>
+          <img src={logoFabulosa} className="h-8 md:h-12 object-contain" alt="Logo" />
         </div>
 
-        <div className="hidden md:flex items-center gap-4 bg-red-950/20 px-6 py-2 rounded-full border border-red-500/20">
-            <div className="w-2 h-2 bg-red-500 rounded-full animate-ping" />
-            <span className="text-[10px] font-black tracking-[0.4em] text-red-500 uppercase">Live Show Vegas</span>
+        <div className="flex flex-col items-end bg-black/40 px-6 py-2 rounded-2xl border border-fuchsia-500/20 backdrop-blur-md">
+          <span className="text-xl md:text-3xl font-black italic text-fuchsia-500 leading-none shadow-fuchsia-500/50 drop-shadow-md">
+            {fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
+          </span>
+          <div className="flex items-center gap-2 mt-1">
+             <Mic2 size={12} className="text-cyan-400" />
+             <span className="text-[10px] uppercase font-black opacity-50 tracking-[0.2em]">Karaoke Play</span>
+          </div>
         </div>
       </header>
 
-      <main className="relative z-10 flex-1 flex flex-col lg:flex-row p-4 md:p-8 gap-8 overflow-hidden">
-        
-        {/* REPRODUCTOR BLINDADO */}
-        <div className="flex-1 flex flex-col gap-4">
-            <div className="relative flex-1 bg-black rounded-[3rem] overflow-hidden border-4 border-red-900/20 shadow-[0_0_50px_rgba(220,38,38,0.2)]">
-                {video ? (
-                    <>
-                        {/* 🛡️ EL CANDADO TRANSPARENTE (Escudo Total) */}
-                        <div className="absolute top-0 left-0 w-full h-[100px] z-30" /> 
-                        <div className="absolute bottom-0 left-0 w-full h-[100px] z-30" />
-                        <div className="absolute inset-0 z-20" /> {/* Capa central para evitar clics en el video */}
-
-                        <iframe
-                            src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1&modestbranding=1&rel=0&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080`}
-                            className="w-full h-full pointer-events-none"
-                            allow="autoplay"
-                        />
-                    </>
-                ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-zinc-900/10">
-                        <Music size={80} className="text-red-900/20 animate-pulse mb-4" />
-                        <p className="text-red-900/40 font-black uppercase tracking-[0.5em] text-xs">Esperando a la estrella...</p>
-                    </div>
-                )}
-            </div>
-
-            {/* BOTÓN DE CONTROL VISUAL */}
-            <div className="flex justify-center gap-6 p-4">
-                <div className="flex items-center gap-2 text-yellow-500"><Trophy size={20}/> <span className="text-[10px] font-bold uppercase tracking-widest">Show de Calidad</span></div>
-                <div className="flex items-center gap-2 text-cyan-500"><Star size={20}/> <span className="text-[10px] font-bold uppercase tracking-widest">Voz Fabulosa</span></div>
-            </div>
-        </div>
-
-        {/* PANEL DEL BOT INTERACTIVO */}
-        <aside className="w-full lg:w-[450px] flex flex-col gap-6">
-          
-          {/* CHAT DEL BOT */}
-          <div className="flex-1 bg-zinc-900/40 backdrop-blur-3xl border border-white/5 rounded-[3rem] p-8 flex flex-col shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-5"><Ghost size={100}/></div>
-            
-            <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-red-600/40">
-                    <Mic2 size={24} className="text-white animate-bounce" />
-                </div>
-                <div>
-                    <h3 className="text-sm font-black uppercase tracking-widest text-red-500 italic">Host Virtual</h3>
-                    <p className="text-[10px] text-white/40 font-bold uppercase">Club Fabulosa 24/7</p>
-                </div>
-            </div>
-
-            <div className="flex-1 flex flex-col justify-center">
-                <AnimatePresence mode="wait">
-                    <motion.p 
-                        key={botMessage}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="text-2xl md:text-3xl font-black italic leading-tight text-transparent bg-clip-text bg-gradient-to-br from-white to-white/40 mb-8"
-                    >
-                        "{botMessage}"
-                    </motion.p>
-                </AnimatePresence>
-            </div>
-
-            {/* BUSCADOR LAS VEGAS */}
-            <form onSubmit={buscarVideo} className="relative mt-auto">
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Busca artista o canción..."
-                className="w-full bg-white/5 border-2 border-white/10 rounded-2xl py-5 px-6 pr-16 text-sm focus:outline-none focus:border-red-600/50 transition-all font-bold placeholder:text-gray-700 shadow-inner"
-              />
-              <button type="submit" className="absolute right-3 top-2.5 p-3 bg-red-600 rounded-xl text-white hover:bg-red-500 transition-all shadow-lg shadow-red-600/40 active:scale-95">
-                {loading ? <Loader2 size={22} className="animate-spin" /> : <Send size={22}/>}
-              </button>
-            </form>
+      {/* BUSCADOR INTELIGENTE */}
+      <div className="relative z-50 px-6 md:px-10 mb-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative group">
+            <input 
+              type="text" 
+              placeholder="BUSCAR ARTISTA O CANCIÓN..." 
+              className="w-full bg-white/5 border-2 border-white/10 p-5 rounded-[2rem] outline-none focus:border-fuchsia-600 pl-14 font-black uppercase text-sm tracking-widest transition-all placeholder:text-white/20 group-hover:bg-white/10"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && searchSongs(query)}
+            />
+            <Search className="absolute left-6 top-6 text-fuchsia-500" size={24} />
+            <button 
+                onClick={() => searchSongs(query)}
+                className="absolute right-3 top-2.5 bg-fuchsia-600 px-6 py-3 rounded-[1.5rem] font-black text-xs hover:bg-fuchsia-500 active:scale-95 transition-all shadow-lg shadow-fuchsia-600/30"
+            >
+                BUSCAR
+            </button>
           </div>
 
-          {/* PLAYLIST RECOMENDADA */}
-          <div className="p-4 flex gap-4 overflow-x-auto no-scrollbar">
-            {["José José", "Selena", "Luis Miguel", "Karol G"].map(exito => (
-                <button 
-                    key={exito} 
-                    onClick={() => { setQuery(exito); }}
-                    className="px-6 py-3 bg-red-950/30 border border-red-500/20 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all whitespace-nowrap"
-                >
-                    🔥 {exito}
-                </button>
+          {/* Sugerencias Rápidas */}
+          <div className="flex gap-3 mt-6 overflow-x-auto no-scrollbar pb-2">
+            {["José José", "Christian Nodal", "Karol G", "Selena", "Rancheras", "Baladas"].map(tag => (
+              <button 
+                key={tag}
+                onClick={() => { setQuery(tag); searchSongs(tag); }}
+                className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-widest hover:border-fuchsia-500 hover:text-fuchsia-500 transition-all whitespace-nowrap"
+              >
+                🔥 {tag}
+              </button>
             ))}
           </div>
-        </aside>
-      </main>
+        </div>
+      </div>
 
-      {/* FOOTER NEÓN */}
-      <footer className="p-4 bg-black/80 border-t border-red-900/20 text-center relative z-50">
-        <p className="text-[9px] font-black tracking-[1em] text-white/20 uppercase">The Las Vegas Experience • Fabulosa Play 2026</p>
-      </footer>
+      {/* GRILLA DE CANCIONES (2 columnas en celular) */}
+      <div className="relative z-50 px-4 md:px-10 pb-32">
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-20">
+            <Loader2 className="animate-spin text-fuchsia-500 mb-4" size={60} />
+            <span className="font-black text-xs uppercase tracking-[0.5em] text-fuchsia-500/50">Afinando Voz...</span>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-8">
+            {songs.map((song) => (
+              <motion.div
+                key={song.id.videoId}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setCurrentSong(song)}
+                className="relative cursor-pointer group"
+              >
+                <div className="aspect-square rounded-[2rem] overflow-hidden shadow-2xl relative border-2 border-white/5 group-hover:border-fuchsia-500/50 transition-all">
+                  <img src={song.snippet.thumbnails.high.url} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Song" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#080008] via-transparent to-transparent opacity-90" />
+                  
+                  {/* Botón Play Central */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-fuchsia-600 p-4 rounded-full shadow-fuchsia-600/50 shadow-xl">
+                      <Play size={30} fill="white" />
+                    </div>
+                  </div>
 
-      <style>{`
+                  {/* Info Canción */}
+                  <div className="absolute bottom-0 left-0 p-4 w-full">
+                    <h3 className="text-[11px] md:text-sm font-black uppercase leading-tight drop-shadow-lg italic">
+                      {cleanTitle(song.snippet.title)}
+                    </h3>
+                    <div className="flex items-center gap-1 text-cyan-400 mt-1">
+                      <Star size={10} fill="currentColor" />
+                      <span className="text-[8px] font-black tracking-widest uppercase">HD Karaoke</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* 📺 REPRODUCTOR FULLSCREEN CON "VIDRIO" (CANDADO) */}
+      <AnimatePresence>
+        {currentSong && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[2000] bg-black">
+            
+            {/* 🛡️ EL VIDRIO (Protección invisible) */}
+            <div className="absolute inset-0 z-[2500] pointer-events-none">
+              {/* Bloquea cabecera (Título de YouTube) */}
+              <div className="absolute top-0 w-full h-[20%] pointer-events-auto bg-transparent cursor-default" />
+              {/* Bloquea logo de YouTube y botones de compartir abajo */}
+              <div className="absolute bottom-0 right-0 w-[30%] h-[15%] pointer-events-auto bg-transparent cursor-default" />
+              <div className="absolute bottom-0 left-0 w-full h-[10%] pointer-events-auto bg-transparent cursor-default" />
+            </div>
+
+            {/* CONTROLES SUPERIORES */}
+            <div className="absolute top-6 left-0 w-full px-6 flex justify-between items-center z-[3000]">
+               <div className="bg-black/60 backdrop-blur-xl px-6 py-3 rounded-2xl border border-white/10 max-w-[70%]">
+                  <h2 className="text-lg md:text-2xl font-black uppercase italic text-fuchsia-500 truncate">
+                    {cleanTitle(currentSong.snippet.title)}
+                  </h2>
+               </div>
+               <button 
+                onClick={() => setCurrentSong(null)}
+                className="bg-red-600 text-white p-4 rounded-full shadow-2xl active:scale-90 transition-all border-2 border-white/20"
+               >
+                <X size={30} />
+               </button>
+            </div>
+            
+            {/* VIDEO PLAYER */}
+            <iframe 
+              width="100%" height="100%" 
+              src={`https://www.youtube.com/embed/${currentSong.id.videoId}?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&controls=1&disablekb=1`}
+              title="Karaoke Player" frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+              className="relative z-[2100]"
+            />
+
+            {/* BOTÓN REPETIR (Para el usuario) */}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-[3000]">
+               <button 
+                onClick={() => {
+                   const vid = currentSong;
+                   setCurrentSong(null);
+                   setTimeout(() => setCurrentSong(vid), 100);
+                }}
+                className="bg-cyan-600/80 backdrop-blur-md px-8 py-4 rounded-full flex items-center gap-3 font-black uppercase text-xs tracking-widest border border-white/20 shadow-2xl active:scale-95"
+               >
+                <RotateCcw size={20} /> REPETIR CANCIÓN
+               </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <style jsx global>{`
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { background-color: #080008; margin: 0; overflow-x: hidden; }
       `}</style>
     </div>
   );
 };
 
-export default KaraokeLasVegas;
+export default Karaoke;
