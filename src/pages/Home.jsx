@@ -17,7 +17,7 @@ const Home = () => {
     '/tv_9.webp', '/tv_10.webp', '/tv_11.webp', '/tv_12.webp', '/tv_13.webp'
   ];
 
-  const cards = [
+  const originalCards = [
     { id: 'premium', path: '/premium', img: '/fabulosa_premiun.webp' },
     { id: 'noticias', isExternal: true, path: 'https://psc-informa.vercel.app', img: '/psc_imforma.webp' },
     { id: 'fabulosa', path: '/fabulosa-tube', img: '/fabulosa_play.webp' },
@@ -32,66 +32,74 @@ const Home = () => {
     { id: 'mercadeo', path: '/centro-mercadeo', img: '/mercadeo.webp' },
   ];
 
+  // Triplicamos las cards para el efecto infinito
+  const cards = [...originalCards, ...originalCards, ...originalCards];
+
   useEffect(() => {
     const timer = setInterval(() => setFecha(new Date()), 1000);
     const bgTimer = setInterval(() => setBgIndex((prev) => (prev + 1) % backgrounds.length), 15000);
-    return () => { clearInterval(timer); clearInterval(bgTimer); };
-  }, [backgrounds.length]);
-
-  // 📱 DETECTOR DE CENTRO PARA CELULARES
-  const handleScroll = () => {
+    // Posicionar el scroll en el bloque del medio al iniciar
     if (scrollRef.current) {
-      const container = scrollRef.current;
-      const center = container.scrollLeft + container.offsetWidth / 2;
-      
-      let closestIndex = 0;
-      let minDistance = Infinity;
+        const mid = originalCards.length;
+        setActiveIndex(mid);
+        const container = scrollRef.current;
+        setTimeout(() => {
+            const activeItem = container.childNodes[mid];
+            container.scrollLeft = activeItem.offsetLeft - (container.offsetWidth / 2) + (activeItem.offsetWidth / 2);
+        }, 100);
+    }
+    return () => { clearInterval(timer); clearInterval(bgTimer); };
+  }, []);
 
-      container.childNodes.forEach((child, index) => {
-        const childCenter = child.offsetLeft + child.offsetWidth / 2;
-        const distance = Math.abs(center - childCenter);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestIndex = index;
+  // 🚀 DETECTOR DE CENTRO ULTRA-RÁPIDO (Intersection Observer)
+  useEffect(() => {
+    const options = {
+      root: scrollRef.current,
+      rootMargin: '0px -45% 0px -45%', // Solo detecta lo que está en el puro centro
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = Array.from(scrollRef.current.childNodes).indexOf(entry.target);
+          setActiveIndex(index);
         }
       });
+    }, options);
 
-      if (closestIndex !== activeIndex) {
-        setActiveIndex(closestIndex);
-      }
+    if (scrollRef.current) {
+      scrollRef.current.childNodes.forEach((child) => observer.observe(child));
+    }
+
+    return () => observer.disconnect();
+  }, [cards.length]);
+
+  // Manejo de infinito (salto invisible al llegar a los extremos)
+  const handleScroll = () => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const scrollWidth = container.scrollWidth / 3;
+    if (container.scrollLeft < 10) {
+        container.scrollLeft = scrollWidth;
+    } else if (container.scrollLeft > scrollWidth * 2) {
+        container.scrollLeft = scrollWidth;
     }
   };
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowRight') {
-        setActiveIndex((prev) => (prev + 1) % cards.length);
-      } else if (e.key === 'ArrowLeft') {
-        setActiveIndex((prev) => (prev - 1 + cards.length) % cards.length);
-      } else if (e.key === 'Enter') {
-        const card = cards[activeIndex];
-        if (card.isExternal) window.location.href = card.path;
-        else navigate(card.path);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeIndex, navigate, cards]);
-
-  // Centrado cuando se usa teclado/control
-  useEffect(() => {
-    if (scrollRef.current) {
+  const handleCardClick = (idx, card) => {
+    if (idx === activeIndex) {
+      if (card.isExternal) window.location.href = card.path;
+      else navigate(card.path);
+    } else {
+      setActiveIndex(idx);
       const container = scrollRef.current;
-      const activeItem = container.childNodes[activeIndex];
-      if (activeItem) {
-        const scrollLeft = activeItem.offsetLeft - (container.offsetWidth / 2) + (activeItem.offsetWidth / 2);
-        // Solo centramos por código si no se está haciendo scroll manual (para no pelear con el dedo)
-        if (Math.abs(container.scrollLeft - scrollLeft) > 10) {
-           container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-        }
-      }
+      const activeItem = container.childNodes[idx];
+      const scrollLeft = activeItem.offsetLeft - (container.offsetWidth / 2) + (activeItem.offsetWidth / 2);
+      container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
     }
-  }, [activeIndex]);
+  };
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black text-white font-sans">
@@ -117,37 +125,37 @@ const Home = () => {
         </div>
       </header>
 
-      {/* 🏁 CINTA DE CARDS: DETECTA EL DEDO */}
-      <div className="absolute bottom-0 w-full z-[999] bg-gradient-to-t from-black via-transparent to-transparent pb-4 md:pb-8">
+      {/* 🏁 CINTA DE CARDS: INFINITA Y FLUIDA */}
+      <div className="absolute bottom-0 w-full z-[999] pb-4 md:pb-8">
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex items-end overflow-x-auto no-scrollbar px-[45vw] h-[55vh] gap-3 md:gap-8 scroll-smooth snap-x snap-mandatory"
+          className="flex items-end overflow-x-auto no-scrollbar px-[10vw] h-[55vh] gap-4 md:gap-10 snap-x snap-mandatory pointer-events-auto"
+          style={{ WebkitOverflowScrolling: 'touch' }}
         >
           {cards.map((card, idx) => {
             const focused = idx === activeIndex;
             return (
               <div
-                key={card.id}
-                onClick={() => {
-                  setActiveIndex(idx);
-                  if (focused) {
-                    if (card.isExternal) window.location.href = card.path;
-                    else navigate(card.path);
-                  }
-                }}
+                key={`${card.id}-${idx}`}
+                onClick={() => handleCardClick(idx, card)}
                 className={`
-                  snap-center relative flex-shrink-0 cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
+                  snap-center relative flex-shrink-0 cursor-pointer transition-all duration-300 ease-out will-change-transform
                   ${focused 
-                    ? 'w-[75vw] sm:w-[350px] lg:w-[460px] z-[1000] scale-125 -translate-y-24' 
-                    : 'w-[28vw] sm:w-[170px] lg:w-[240px] z-10 scale-90 translate-y-0 opacity-30 blur-[1px]'}
+                    ? 'w-[75vw] sm:w-[350px] lg:w-[460px] z-[1000] opacity-100' 
+                    : 'w-[30vw] sm:w-[180px] lg:w-[260px] z-10 opacity-30 blur-[0.5px]'}
                 `}
+                style={{
+                  transform: focused 
+                    ? 'scale(1.2) translateY(-60px)' 
+                    : 'scale(0.95) translateY(0px)'
+                }}
               >
-                <div className="relative w-full aspect-[16/10] flex items-center justify-center p-2">
+                <div className="relative w-full aspect-[16/10] flex items-center justify-center p-2 pointer-events-none">
                   <img 
                     src={card.img} 
                     className={`
-                      max-w-full max-h-full object-contain transition-all duration-500
+                      max-w-full max-h-full object-contain transition-all duration-300
                       ${focused 
                         ? 'drop-shadow-[0_0_50px_rgba(34,211,238,1)] brightness-110' 
                         : 'drop-shadow-[0_10px_20px_rgba(0,0,0,1)]'}
@@ -164,7 +172,7 @@ const Home = () => {
       <style jsx global>{`
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        body { background-color: black; margin: 0; overflow: hidden; }
+        body { background-color: black; margin: 0; overflow: hidden; touch-action: pan-y; }
       `}</style>
     </div>
   );
