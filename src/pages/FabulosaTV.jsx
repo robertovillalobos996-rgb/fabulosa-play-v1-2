@@ -3,8 +3,8 @@ import { Play, Volume2, VolumeX, Heart, BookOpen, GraduationCap, Sparkles, Lock,
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-// ✅ ASSETS
-const LOGO_KIDS_HEADER = "/logo_fabulosito_kids.png"; 
+// ✅ ASSETS ACTUALIZADOS A WEBP
+const LOGO_KIDS_HEADER = "/logo_fabulosito_kids.webp"; 
 
 // 🔑 LAS 14 LLAVES MAESTRAS
 const YOUTUBE_API_KEYS = [
@@ -29,13 +29,12 @@ const CATEGORIAS = [
     { id: 'juegos_arcade', label: 'JUEGOS HD', icon: <Gamepad2 size={30}/>, color: 'bg-pink-600', query: null }
 ];
 
-// 🎮 JUEGOS SELECCIONADOS
+// 🎮 JUEGOS ACTUALIZADOS A WEBP
 const LISTA_JUEGOS = [
-  { id: 'omnomrun', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-lime-500', thumb: '/omnomrun.png' },
-  { id: 'tigerrun', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: '/tiger_run.png' }
+  { id: 'omnomrun', title: 'Om Nom Run', url: 'https://gamesnacks.com/embed/games/omnomrun', icon: '🦖', color: 'bg-lime-500', thumb: '/omnomrun.webp' },
+  { id: 'tigerrun', title: 'Tiger Jump', url: 'https://gamesnacks.com/embed/games/tigerrun', icon: '🐯', color: 'bg-orange-600', thumb: '/tiger_run.webp' }
 ];
 
-// 🦁 INFO DE AVATARES
 const AVATARES_INFO = {
     "🐶": { en: "Dog", es: "Perro" }, "🦁": { en: "Lion", es: "León" }, "🦄": { en: "Unicorn", es: "Unicornio" }, "🐼": { en: "Panda", es: "Panda" },
     "🦊": { en: "Fox", es: "Zorro" }, "🐯": { en: "Tiger", es: "Tigre" }, "🐧": { en: "Penguin", es: "Pingüino" }, "⭐": { en: "Star", es: "Estrella" }
@@ -55,12 +54,12 @@ const FabulositoKids = () => {
     const [showControls, setShowControls] = useState(true);
     const [isFullScreen, setIsFullScreen] = useState(false);
     
-    // === 🎮 CONTROL REMOTO ===
+    // === 🕹️ ESTADOS CONTROL REMOTO ===
     const [activeIndex, setActiveIndex] = useState(0); 
-    const gridRefs = useRef([]);
     const keyIndex = useRef(0);
     const controlsTimer = useRef(null);
     const playerContainerRef = useRef(null);
+    const gridRefs = useRef([]);
 
     const resetTimer = () => {
         setShowControls(true);
@@ -86,7 +85,7 @@ const FabulositoKids = () => {
         if (activeCat !== 'juegos_arcade') fetchVideos(CATEGORIAS.find(c => c.id === activeCat).query); 
     }, [activeCat]);
 
-    // 🕹️ MOTOR DE NAVEGACIÓN CONTROL REMOTO
+    // MOTOR DE CONTROL REMOTO
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (selectedVideo || selectedGame || isLocked) return;
@@ -121,6 +120,12 @@ const FabulositoKids = () => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [activeIndex, activeCat, videos, navigate, isLocked, selectedVideo, selectedGame]);
 
+    useEffect(() => {
+        if (activeIndex >= 0 && gridRefs.current[activeIndex]) {
+            gridRefs.current[activeIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    }, [activeIndex]);
+
     const toggleFullScreen = () => {
         if (!document.fullscreenElement) {
             playerContainerRef.current.requestFullscreen();
@@ -134,12 +139,12 @@ const FabulositoKids = () => {
     return (
         <div className="min-h-screen w-full bg-black font-sans overflow-hidden text-white relative" onMouseMove={resetTimer}>
             
-            {/* FONDO ORIGINAL */}
+            {/* 📺 FONDO ANIMADO ORIGINAL */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <iframe className="w-full h-full object-cover scale-[1.2] md:scale-[1.5]" src="https://www.youtube.com/embed/yveCKWxSmlY?autoplay=1&mute=1&loop=1&playlist=yveCKWxSmlY&controls=0&vq=hd1080" frameBorder="0" />
             </div>
 
-            {/* MÚSICA DE FONDO */}
+            {/* 🎵 MÚSICA DE FONDO ORIGINAL */}
             {!selectedVideo && !selectedGame && (
                 <div className="hidden">
                     <iframe src="https://www.youtube.com/embed/iwKS4b9aUeI?autoplay=1&loop=1&playlist=iwKS4b9aUeI" allow="autoplay" />
@@ -148,17 +153,18 @@ const FabulositoKids = () => {
 
             <motion.div className="relative z-10 p-2 sm:p-4 md:p-8 flex flex-col h-screen bg-black/40">
                 
-                {/* 🚀 BOTÓN VOLVER INFANTIL (Inyectado) */}
-                <div className="absolute top-4 left-4 z-[100]">
+                {/* 🚀 BOTÓN VOLVER AL MENÚ */}
+                <div className="absolute top-6 left-6 z-[100]">
                     <button 
                         onClick={() => navigate("/")}
                         className={`flex items-center gap-2 px-6 py-3 rounded-full border-4 transition-all duration-300 ${activeIndex === -1 ? 'bg-pink-600 border-white scale-110 shadow-[0_0_30px_white]' : 'bg-black/50 border-white/20 opacity-80'}`}
                     >
                         <Rocket size={24} className="text-white animate-bounce" />
-                        <span className="font-black uppercase tracking-widest text-sm">Menú</span>
+                        <span className="font-black uppercase tracking-widest text-sm">Menú Principal</span>
                     </button>
                 </div>
 
+                {/* LOGO CENTRAL ORIGINAL */}
                 <div className="flex flex-col items-center mb-4 sm:mb-6">
                     <motion.img 
                         src={LOGO_KIDS_HEADER} 
@@ -168,6 +174,7 @@ const FabulositoKids = () => {
                     />
                 </div>
 
+                {/* CONTROLES AVATAR ORIGINALES */}
                 <div className="flex justify-between items-center mb-4 sm:mb-6 px-2 sm:px-10">
                     <button onClick={() => setIsLocked(!isLocked)} className={`p-3 sm:p-4 rounded-full transition-all ${isLocked ? 'bg-red-600 animate-pulse' : 'bg-green-500 shadow-xl'}`}>
                         {isLocked ? <Lock size={20} className="sm:w-[30px] sm:h-[30px]" /> : <Unlock size={20} className="sm:w-[30px] sm:h-[30px]" />}
@@ -183,12 +190,13 @@ const FabulositoKids = () => {
                     </div>
                 </div>
 
+                {/* CATEGORÍAS ORIGINALES */}
                 <div className="relative z-[100] flex gap-2 sm:gap-4 overflow-x-auto pb-4 sm:pb-6 no-scrollbar items-center justify-start md:justify-center scroll-smooth px-2 touch-pan-x">
                     {CATEGORIAS.map((cat, i) => (
                         <motion.button
                             key={cat.id} 
                             onClick={() => setActiveCat(cat.id)}
-                            className={`${cat.color} ${activeCat === cat.id ? 'ring-4 sm:ring-8 ring-white shadow-2xl scale-105' : 'opacity-80'} ${activeIndex === i ? 'ring-4 ring-pink-400 scale-105' : ''} min-w-[120px] sm:min-w-[160px] md:min-w-[200px] h-16 sm:h-24 md:h-28 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col items-center justify-center font-black border-2 sm:border-4 border-white text-black flex-shrink-0 uppercase transition-all duration-300`}
+                            className={`${cat.color} ${activeCat === cat.id ? 'ring-4 sm:ring-8 ring-white shadow-2xl scale-105' : 'opacity-80'} ${activeIndex === i ? 'ring-4 ring-white scale-105 shadow-2xl' : ''} min-w-[120px] sm:min-w-[160px] md:min-w-[200px] h-16 sm:h-24 md:h-28 rounded-[1.5rem] sm:rounded-[2rem] flex flex-col items-center justify-center font-black border-2 sm:border-4 border-white text-black flex-shrink-0 uppercase transition-all duration-300`}
                         >
                             <div className="scale-75 sm:scale-100">{cat.icon}</div>
                             <span className="text-[10px] sm:text-xs md:text-sm mt-0.5 sm:mt-1 px-1 text-center">{cat.label}</span>
@@ -196,12 +204,13 @@ const FabulositoKids = () => {
                     ))}
                 </div>
 
+                {/* GRILLA DE CONTENIDO ORIGINAL */}
                 <div className="flex-1 overflow-y-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 pr-2 mt-2 sm:mt-4 no-scrollbar">
                     {activeCat === 'juegos_arcade' ? (
                         LISTA_JUEGOS.map((juego, idx) => {
                             const isFocused = activeIndex === (CATEGORIAS.length + idx);
                             return (
-                                <motion.div key={juego.id} onClick={() => setSelectedGame(juego)} className={`cursor-pointer group rounded-[2rem] sm:rounded-[3rem] border-4 transition-all ${isFocused ? 'border-pink-500 scale-105 shadow-2xl' : 'border-white'}`}>
+                                <motion.div key={juego.id} onClick={() => setSelectedGame(juego)} className={`cursor-pointer group rounded-[2rem] sm:rounded-[3rem] border-4 transition-all ${isFocused ? 'border-pink-500 scale-105 shadow-2xl z-20' : 'border-white'}`}>
                                     <div className={`aspect-square bg-zinc-800 rounded-inherit relative overflow-hidden flex flex-col items-center justify-center`}>
                                         <img src={juego.thumb} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                         <div className="absolute bottom-0 w-full bg-black/70 py-2 text-center z-10 backdrop-blur-sm">
@@ -228,7 +237,7 @@ const FabulositoKids = () => {
                 </div>
             </motion.div>
 
-            {/* MODAL AVATAR (ORIGINAL) */}
+            {/* MODALES ORIGINALES */}
             <AnimatePresence>
                 {selectedAvatar && (
                     <motion.div initial={{ opacity: 0, scale: 0.5, y: 100 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.5, y: 100 }} onClick={() => setSelectedAvatar(null)} className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/60 backdrop-blur-md">
@@ -242,7 +251,6 @@ const FabulositoKids = () => {
                 )}
             </AnimatePresence>
 
-            {/* REPRODUCTOR (ORIGINAL) */}
             <AnimatePresence>
                 {(selectedVideo || selectedGame) && (
                     <motion.div ref={playerContainerRef} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[600] bg-black flex flex-col" onMouseMove={resetTimer}>
@@ -253,12 +261,6 @@ const FabulositoKids = () => {
                                 </button>
                             )}
                             <div className="flex items-center gap-4 sm:gap-6">
-                                {selectedVideo && (
-                                    <div className="flex items-center gap-3 bg-black/60 backdrop-blur-xl px-4 py-2 rounded-full border border-white/20">
-                                        <Volume2 size={20} className="text-white" />
-                                        <input type="range" min="0" max="100" value={volume} onChange={(e) => setVolume(e.target.value)} className="w-24 sm:w-48 accent-red-600 cursor-pointer" />
-                                    </div>
-                                )}
                                 <button onClick={toggleFullScreen} className="bg-black/60 backdrop-blur-xl p-3 rounded-full border border-white/20 text-white hover:bg-red-600 transition-all">
                                     {isFullScreen ? <Minimize size={24} /> : <Maximize size={24} />}
                                 </button>
@@ -266,9 +268,6 @@ const FabulositoKids = () => {
                         </div>
                         <div className="flex-1 relative bg-black overflow-hidden">
                             <iframe id="kids-player" width="100%" height="100%" src={selectedVideo ? `https://www.youtube.com/embed/${selectedVideo.id.videoId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3&vq=hd1080` : selectedGame.url} frameBorder="0" allow="autoplay; encrypted-media; fullscreen" className="z-10" />
-                            <div className="absolute top-4 right-4 sm:top-10 sm:right-10 z-50 pointer-events-none">
-                                <img src={LOGO_KIDS_HEADER} className="h-12 sm:h-20 md:h-36 opacity-80 drop-shadow-2xl object-contain" />
-                            </div>
                         </div>
                     </motion.div>
                 )}
