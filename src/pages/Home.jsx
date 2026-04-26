@@ -32,63 +32,58 @@ const Home = () => {
     { id: 'mercadeo', path: '/centro-mercadeo', img: '/mercadeo.webp' },
   ];
 
-  // Triplicamos las cards para el efecto infinito
+  // Triplicamos para el loop sin fin
   const cards = [...originalCards, ...originalCards, ...originalCards];
 
   useEffect(() => {
     const timer = setInterval(() => setFecha(new Date()), 1000);
     const bgTimer = setInterval(() => setBgIndex((prev) => (prev + 1) % backgrounds.length), 15000);
-    // Posicionar el scroll en el bloque del medio al iniciar
+    
+    // Posicionamiento inicial en el bloque central
     if (scrollRef.current) {
-        const mid = originalCards.length;
-        setActiveIndex(mid);
+      const mid = originalCards.length;
+      setActiveIndex(mid);
+      setTimeout(() => {
         const container = scrollRef.current;
-        setTimeout(() => {
-            const activeItem = container.childNodes[mid];
-            container.scrollLeft = activeItem.offsetLeft - (container.offsetWidth / 2) + (activeItem.offsetWidth / 2);
-        }, 100);
+        const activeItem = container.childNodes[mid];
+        container.scrollLeft = activeItem.offsetLeft - (container.offsetWidth / 2) + (activeItem.offsetWidth / 2);
+      }, 50);
     }
     return () => { clearInterval(timer); clearInterval(bgTimer); };
   }, []);
 
-  // 🚀 DETECTOR DE CENTRO ULTRA-RÁPIDO (Intersection Observer)
-  useEffect(() => {
-    const options = {
-      root: scrollRef.current,
-      rootMargin: '0px -45% 0px -45%', // Solo detecta lo que está en el puro centro
-      threshold: 0.5
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = Array.from(scrollRef.current.childNodes).indexOf(entry.target);
-          setActiveIndex(index);
-        }
-      });
-    }, options);
-
-    if (scrollRef.current) {
-      scrollRef.current.childNodes.forEach((child) => observer.observe(child));
-    }
-
-    return () => observer.disconnect();
-  }, [cards.length]);
-
-  // Manejo de infinito (salto invisible al llegar a los extremos)
+  // 🚀 DETECTOR DE CENTRO ULTRA-AGIL
   const handleScroll = () => {
     const container = scrollRef.current;
     if (!container) return;
 
+    const center = container.scrollLeft + container.offsetWidth / 2;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    container.childNodes.forEach((child, index) => {
+      const childCenter = child.offsetLeft + child.offsetWidth / 2;
+      const distance = Math.abs(center - childCenter);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== activeIndex) {
+      setActiveIndex(closestIndex);
+    }
+
+    // Lógica de infinito
     const scrollWidth = container.scrollWidth / 3;
-    if (container.scrollLeft < 10) {
-        container.scrollLeft = scrollWidth;
+    if (container.scrollLeft < 50) {
+      container.scrollLeft = scrollWidth + container.scrollLeft;
     } else if (container.scrollLeft > scrollWidth * 2) {
-        container.scrollLeft = scrollWidth;
+      container.scrollLeft = container.scrollLeft - scrollWidth;
     }
   };
 
-  const handleCardClick = (idx, card) => {
+  const onCardClick = (idx, card) => {
     if (idx === activeIndex) {
       if (card.isExternal) window.location.href = card.path;
       else navigate(card.path);
@@ -113,6 +108,7 @@ const Home = () => {
       ))}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-0" />
 
+      {/* HEADER: LOGO, HORA, FECHA */}
       <header className="absolute top-8 left-10 md:left-16 z-10 flex items-center gap-8 pointer-events-none">
         <img src={logoFabulosa} alt="Logo" className="h-12 md:h-20 object-contain drop-shadow-2xl" />
         <div className="flex flex-col border-l-2 border-cyan-400/30 pl-6">
@@ -125,12 +121,12 @@ const Home = () => {
         </div>
       </header>
 
-      {/* 🏁 CINTA DE CARDS: INFINITA Y FLUIDA */}
+      {/* CARRUSEL INFINITO Y AL FRENTE */}
       <div className="absolute bottom-0 w-full z-[999] pb-4 md:pb-8">
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex items-end overflow-x-auto no-scrollbar px-[10vw] h-[55vh] gap-4 md:gap-10 snap-x snap-mandatory pointer-events-auto"
+          className="flex items-end overflow-x-auto no-scrollbar px-[40vw] h-[55vh] gap-4 md:gap-10 snap-x snap-mandatory pointer-events-auto"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
           {cards.map((card, idx) => {
@@ -138,16 +134,16 @@ const Home = () => {
             return (
               <div
                 key={`${card.id}-${idx}`}
-                onClick={() => handleCardClick(idx, card)}
+                onClick={() => onCardClick(idx, card)}
                 className={`
                   snap-center relative flex-shrink-0 cursor-pointer transition-all duration-300 ease-out will-change-transform
                   ${focused 
-                    ? 'w-[75vw] sm:w-[350px] lg:w-[460px] z-[1000] opacity-100' 
-                    : 'w-[30vw] sm:w-[180px] lg:w-[260px] z-10 opacity-30 blur-[0.5px]'}
+                    ? 'w-[75vw] sm:w-[320px] lg:w-[450px] z-[1000] opacity-100' 
+                    : 'w-[28vw] sm:w-[160px] lg:w-[240px] z-10 opacity-30 blur-[0.5px]'}
                 `}
                 style={{
                   transform: focused 
-                    ? 'scale(1.2) translateY(-60px)' 
+                    ? 'scale(1.2) translateY(-70px)' 
                     : 'scale(0.95) translateY(0px)'
                 }}
               >
