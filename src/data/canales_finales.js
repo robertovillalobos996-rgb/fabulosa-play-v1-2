@@ -147,6 +147,55 @@ export const canalesTV = [
         "logo": "/logos_canales/13_san luis.jpg"
     },
     {
+        "id": "nosara-tv",
+        "title": "Nosara",
+        "url": "https://latamvdo.com:3870/hybrid/play.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/nosara_tv.jpg"
+    },
+    {
+        "id": "extrema-tv",
+        "title": "Extrema",
+        "url": "https://627bb251f23c7.streamlock.net:444/ExtremaTV/ExtremaTV/playlist.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/extrema.jpg"
+    },
+    {
+        "id": "garavito-tv",
+        "title": "Garavito TV",
+        "url": "https://59ef525c24caa.streamlock.net/garabitoTV/garabitotv/playlist.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/garavito_tv.png"
+    },
+    {
+        "id": "norte-info",
+        "title": "Norte Informativo",
+        "url": "https://videohd.live:19360/8076/8076.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/norte_informativo.jpg"
+    },
+    {
+        "id": "soy-plancha",
+        "title": "Soy Plancha",
+        "url": "https://59ef525c24caa.streamlock.net/vmtv/soyplancha/playlist.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/soy_plancha.png"
+    },
+    {
+        "id": "tele-brunca",
+        "title": "Tele Brunca",
+        "url": "https://59ef525c24caa.streamlock.net/telebrunca/telebrunca/playlist.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/tele_brunca.png"
+    },
+    {
+        "id": "vm-latino",
+        "title": "VM Latino",
+        "url": "https://59ef525c24caa.streamlock.net/vmtv/vmlatino/playlist.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/vm_latino.png"
+    },
+    {
         "id": "tv-25",
         "title": "Canal 4 Posadas (576p)",
         "url": "https://iptv.ixfo.com.ar:30443/live/C4POS/playlist.m3u8",
