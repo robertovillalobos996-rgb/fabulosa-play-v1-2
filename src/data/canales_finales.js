@@ -119,6 +119,69 @@ export const canalesTV = [
         "logo": "/logos_canales/canal_11_tv.jpg"
     },
     {
+        "id": "best-clasicos",
+        "title": "Best Clásicos TV",
+        "url": "https://acceso.mediosdecostarica.com:3873/hybrid/play.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/best_clásicos_tv.jpg"
+    },
+    {
+        "id": "10-cr",
+        "title": "10 Costa Rica",
+        "url": "https://acceso.mediosdecostarica.com:3606/hybrid/play.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/10 _costa_rica.jpg"
+    },
+    {
+        "id": "tele-plus",
+        "title": "Tele +",
+        "url": "https://acceso.mediosdecostarica.com:3192/hybrid/play.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/tele_+.png"
+    },
+    {
+        "id": "tudn",
+        "title": "TUDN",
+        "url": "https://streaming.alwaysdata.net/tudn.php",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/tudn.png"
+    },
+    {
+        "id": "arch-extra",
+        "title": "Archivos Extraterrestres",
+        "url": "https://jmp2.uk/plu-645d1abbe1979c0008779d5a.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/archivos_extraterrestres.png"
+    },
+    {
+        "id": "arch-forense",
+        "title": "Archivos Forenses",
+        "url": "https://jmp2.uk/plu-5efb8c19b2678b000780d032.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/archivos_forenses.png"
+    },
+    {
+        "id": "baby-shark",
+        "title": "Baby Shark",
+        "url": "https://jmp2.uk/plu-66997d18a1b69e00082ee85f.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/baby_shark.png"
+    },
+    {
+        "id": "claro-sports",
+        "title": "Claro Sports",
+        "url": "https://jmp2.uk/plu-5e67d41b93312100076f3fca.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/claro_sports.png"
+    },
+    {
+        "id": "corazon-tv",
+        "title": "Corazón",
+        "url": "https://jmp2.uk/plu-6322099c822bbc00074857db.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/corazon.png"
+    },
+    {
         "id": "tv-23",
         "title": "Canal 13 San Luis",
         "url": "https://stream.radiosmundiales.com:19360/sanluismas/sanluismas.m3u8",
