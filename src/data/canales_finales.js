@@ -7,11 +7,25 @@ export const canalesTV = [
         "logo": "/logos_canales/logo_fabulosa.png"
     },
     {
+        "id": "tv-36",
+        "title": "stv",
+        "url": "https://acceso.mediosdecostarica.com:3422/hybrid/play.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/stv.png"
+    },
+    {
         "id": "tv-2",
         "title": "88 Stereo",
         "url": "https://s1.tvdatta.com:3972/live/88stereolive.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/88_Stereo.png"
+    },
+    {
+        "id": "canal-6",
+        "title": "Canal 6",
+        "url": "https://d2qsan2ut81n2k.cloudfront.net/live/02f0dc35-8fd4-4021-8fa0-96c277f62653/ts:abr.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/Repretel_6_logo.png"
     },
     {
         "id": "tv-949",
@@ -145,13 +159,6 @@ export const canalesTV = [
         "url": "https://lencatelevision.com/hls/stream.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/lenca.png"
-    },
-    {
-        "id": "tv-36",
-        "title": "stv",
-        "url": "https://acceso.mediosdecostarica.com:3422/hybrid/play.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/stv.png"
     },
     {
         "id": "tv-41",
