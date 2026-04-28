@@ -30,7 +30,7 @@ export const canalesTV = [
     {
         "id": "tv-36-trivision",
         "title": "Trivisión Canal 36",
-        "url_externa": "https://www.youtube.com/@Trivision36/live",
+        "iframe_url": "https://player.instantvideocloud.net/v2/channel/1591",
         "genre": "Costa Rica",
         "logo": "/logos_canales/trivision.png"
     },
