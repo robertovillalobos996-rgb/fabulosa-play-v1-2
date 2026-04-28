@@ -16,7 +16,6 @@ export const canalesTV = [
     {
         "id": "tv-7-teletica",
         "title": "Teletica Canal 7",
-        "url": "https://6zklxk9bdw9b-hls-live.5centscdn.com/TeleticaLiveStream/d072c3a8dde8622c607ecd258fd628e8.sdp/playlist.m3u8",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv7&mediaUrl=https://cdn01.teletica.com/TeleticaLiveStream/Stream/playlist_dvr.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/canal_7.png"
@@ -26,14 +25,7 @@ export const canalesTV = [
         "title": "SINART Canal 13",
         "iframe_url": "https://www.dailymotion.com/embed/video/x7vh8g3?autoplay=1",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/canal_13.png"
-    },
-    {
-        "id": "tv-8-multimedios",
-        "title": "Multimedios Canal 8",
-        "iframe_url": "https://mdstrm.com/live-stream/5a7b1e63a8da282c34d65445?autoplay=1",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/canal_8.png"
+        "logo": "/logos_canales/canal_13.jpg"
     },
     {
         "id": "tv-2",
