@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Hls from 'hls.js'; 
 import logoImage from '../assets/logo_fabulosa.png';
 
-// 📡 CONFIGURACIÓN BROADCAST MASTER
+// 📡 CONFIGURACIÓN DE SEÑAL BROADCAST
 const AUDIO_RADIO_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
-const SELLO_ID_URL = "/audio/sello_fabulosa.mp3"; // El sello que dispara los locutores
+const SELLO_ID_URL = "/audio/sello_fabulosa.mp3"; 
 
 const YOUTUBE_API_KEYS = [
     "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
@@ -42,40 +42,43 @@ const Camaras = () => {
     const [keyIndex, setKeyIndex] = useState(0);
     const [isMuted, setIsMuted] = useState(false);
 
-    // --- 🔊 CIRUGÍA DE AUDIO (Sello -> Radio HLS) ---
-    const startRadioHLS = () => {
+    // --- 🔊 MOTOR HLS PROFESIONAL (Igual que RadioPremium) ---
+    const startRadioAnnouncers = () => {
         const audio = audioRef.current;
         if (Hls.isSupported()) {
+            if (hlsRef.current) hlsRef.current.destroy();
             const hls = new Hls();
             hls.loadSource(AUDIO_RADIO_URL);
             hls.attachMedia(audio);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => audio.play());
+            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                audio.play();
+            });
             hlsRef.current = hls;
-        } else {
+        } else if (audio.canPlayType('application/vnd.apple.mpegurl')) {
             audio.src = AUDIO_RADIO_URL;
             audio.play();
         }
     };
 
-    const handleStartFull = () => {
+    const handleStartMonitoring = () => {
         setIsPlaying(true);
         if (selloRef.current) {
-            selloRef.current.play().catch(e => console.log("Click requerido para audio"));
+            selloRef.current.play().catch(e => console.log("Permiso audio..."));
         }
     };
 
-    // --- 📺 LÓGICA DE ROTACIÓN Y PUBLICIDAD ---
+    // --- 📺 LÓGICA DE CICLOS ---
     useEffect(() => {
         if (!isPlaying) return;
 
-        // Rotación de Cámaras cada 2 min
+        // Rotación de Cámaras (2 min)
         const camTimer = setInterval(() => {
             setCamIndex(prev => (prev + 1) % YOUTUBE_CAMS.length);
             setKeyIndex(prev => (prev + 1) % YOUTUBE_API_KEYS.length);
         }, 120000);
 
-        // Ciclo de Publicidad cada 6 min
-        const masterAdTimer = setInterval(() => {
+        // Ciclo de Publicidad (6 min)
+        const adTimer = setInterval(() => {
             setIsAdMode(true);
             setAdIndex(0);
             let count = 0;
@@ -92,56 +95,56 @@ const Camaras = () => {
 
         return () => { 
             clearInterval(camTimer); 
-            clearInterval(masterAdTimer);
+            clearInterval(adTimer);
             if (hlsRef.current) hlsRef.current.destroy();
         };
     }, [isPlaying]);
 
     return (
-        <div className="broadcast-pro-container" style={{ 
+        <div className="broadcast-pro-main" style={{ 
             backgroundImage: isAdMode ? "url('/camaras.jpg')" : "none",
             backgroundColor: "#000", backgroundSize: 'cover', backgroundPosition: 'center'
         }}>
-            {/* AUDIOS: Sello e HLS Radio */}
-            <audio ref={selloRef} src={SELLO_ID_URL} onEnded={startRadioHLS} />
+            {/* AUDIOS: Sello y Radio con Locutores */}
+            <audio ref={selloRef} src={SELLO_ID_URL} onEnded={startRadioAnnouncers} />
             <audio ref={audioRef} />
 
             {!isPlaying ? (
-                <div className="init-fullscreen-screen" onClick={handleStartFull}>
-                    <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity }} className="play-btn-main">
+                <div className="power-on-overlay" onClick={handleStartMonitoring}>
+                    <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity }} className="play-icon-giant">
                         <Play size={130} fill="#ff0033" stroke="none" />
                     </motion.div>
                     <h1>CONTROL MASTER DE MONITOREO</h1>
-                    <p>TOQUE PARA ACTIVAR SISTEMA VIP</p>
+                    <p>TOQUE PARA ACTIVAR SEÑAL VIP</p>
                 </div>
             ) : (
-                <div className="broadcast-workspace" ref={containerRef}>
+                <div className="workspace-dynamic" ref={containerRef}>
                     
-                    {/* 📹 REPRODUCTOR BLINDADO (Pantalla Dinámica) */}
+                    {/* 📹 CAJA 1: VIDEO (Independiente) */}
                     <motion.div 
                         animate={{ 
                             width: isAdMode ? "55%" : "100%", 
                             height: isAdMode ? "75%" : "100%",
-                            x: isAdMode ? -40 : 0 
+                            x: isAdMode ? -20 : 0 
                         }}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                        className="player-viewport"
+                        className="player-viewport-isolated"
                     >
-                        {/* 🛡️ ESCUDO ANTI-YOUTUBE */}
-                        <div className="shield-total-invisible"></div>
+                        {/* 🛡️ ESCUDO TOTAL */}
+                        <div className="shield-yt-blindado"></div>
 
                         {/* 🏷️ LOGO GIGANTE ORIGINAL */}
-                        <div className="broadcast-logo-bug">
-                            <img src={logoImage} alt="Fabulosa TV" />
+                        <div className="broadcast-bug-logo">
+                            <img src={logoImage} alt="Fabulosa" />
                         </div>
 
-                        {/* 🔘 BOTONES INVISIBLES */}
-                        <div className="secret-zone top-right" onClick={() => containerRef.current.requestFullscreen()}></div>
-                        <div className="secret-zone bottom-left" onClick={() => {
+                        {/* 🔘 BOTONES SECRETOS */}
+                        <div className="secret-spot tr" onClick={() => containerRef.current.requestFullscreen()}></div>
+                        <div className="secret-spot bl" onClick={() => {
                             setIsMuted(!isMuted);
                             audioRef.current.muted = !isMuted;
                         }}></div>
-                        <div className="secret-zone bottom-right" onClick={() => navigate('/')}></div>
+                        <div className="secret-spot br" onClick={() => navigate('/')}></div>
 
                         <iframe 
                             src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&key=${YOUTUBE_API_KEYS[keyIndex]}`} 
@@ -149,16 +152,16 @@ const Camaras = () => {
                         />
                     </motion.div>
 
-                    {/* 💰 CAJA DE PUBLICIDAD (Individual y Separada) */}
+                    {/* 💰 CAJA 2: PUBLICIDAD (Independiente y Separada) */}
                     <AnimatePresence>
                         {isAdMode && (
                             <motion.div 
                                 initial={{ x: 800, opacity: 0 }} 
                                 animate={{ x: 0, opacity: 1 }} 
                                 exit={{ x: 800, opacity: 0 }}
-                                className="ads-viewport-separated"
+                                className="ads-viewport-isolated"
                             >
-                                <div className="ad-box-vip">
+                                <div className="ad-container-clean">
                                     <motion.img 
                                         key={adIndex} 
                                         initial={{ opacity: 0, scale: 0.9 }} 
@@ -173,34 +176,30 @@ const Camaras = () => {
             )}
 
             <style jsx>{`
-                .broadcast-pro-container { width: 100vw; height: 100vh; overflow: hidden; font-family: 'Inter', sans-serif; }
+                .broadcast-pro-main { width: 100vw; height: 100vh; overflow: hidden; font-family: 'Inter', sans-serif; }
                 
-                .init-fullscreen-screen { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; cursor: pointer; }
-                .init-fullscreen-screen h1 { color: #fff; font-weight: 900; letter-spacing: 5px; margin-top: 30px; }
-                .init-fullscreen-screen p { color: #ff0033; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; }
+                .power-on-overlay { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; cursor: pointer; }
+                .power-on-overlay h1 { color: #fff; font-weight: 900; letter-spacing: 5px; margin-top: 30px; }
+                .power-on-overlay p { color: #ff0033; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; }
 
-                .broadcast-workspace { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; gap: 40px; }
+                .workspace-dynamic { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; gap: 60px; padding: 0 40px; }
                 
-                .player-viewport { background: #000; position: relative; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.8); border: 2px solid rgba(255,255,255,0.05); border-radius: 20px; }
-                iframe { width: 100%; height: 100%; transform: scale(1.35); pointer-events: none; }
+                .player-viewport-isolated { background: #000; position: relative; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,0.9); border: 2px solid rgba(255,255,255,0.05); border-radius: 30px; }
+                iframe { width: 100%; height: 100%; transform: scale(1.3); pointer-events: none; }
                 
-                /* Blindaje */
-                .shield-total-invisible { position: absolute; inset: 0; z-index: 50; background: transparent; cursor: default; }
+                .shield-yt-blindado { position: absolute; inset: 0; z-index: 50; background: transparent; cursor: default; }
 
-                /* Botones Secretos */
-                .secret-zone { position: absolute; width: 150px; height: 150px; z-index: 100; cursor: pointer; }
-                .top-right { top: 0; right: 0; }
-                .bottom-left { bottom: 0; left: 0; }
-                .bottom-right { bottom: 0; right: 0; }
+                .secret-spot { position: absolute; width: 160px; height: 160px; z-index: 100; cursor: pointer; }
+                .tr { top: 0; right: 0; }
+                .bl { bottom: 0; left: 0; }
+                .br { bottom: 0; right: 0; }
 
-                /* Logo Bug */
-                .broadcast-logo-bug { position: absolute; top: 50px; left: 60px; z-index: 60; }
-                .broadcast-logo-bug img { height: 130px; width: auto; object-fit: contain; filter: drop-shadow(0 0 30px rgba(0,0,0,0.9)); }
+                .broadcast-bug-logo { position: absolute; top: 60px; left: 70px; z-index: 60; }
+                .broadcast-bug-logo img { height: 140px; width: auto; object-fit: contain; filter: drop-shadow(0 0 35px rgba(0,0,0,1)); }
 
-                /* Caja Publicidad Individual */
-                .ads-viewport-separated { width: 30%; height: 75%; background: rgba(0,0,0,0.85); border: 8px solid #ff0033; border-radius: 50px; padding: 25px; box-shadow: 0 0 60px rgba(255,0,51,0.4); }
-                .ad-box-vip { width: 100%; height: 100%; position: relative; border-radius: 35px; overflow: hidden; }
-                .ad-box-vip img { width: 100%; height: 100%; object-fit: cover; }
+                .ads-viewport-isolated { width: 32%; height: 75%; background: rgba(0,0,0,0.9); border: 10px solid #ff0033; border-radius: 60px; padding: 30px; box-shadow: 0 0 80px rgba(255,0,51,0.5); }
+                .ad-container-clean { width: 100%; height: 100%; position: relative; border-radius: 35px; overflow: hidden; }
+                .ad-container-clean img { width: 100%; height: 100%; object-fit: cover; }
             `}</style>
         </div>
     );
