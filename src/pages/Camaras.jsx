@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Play, Maximize, Volume2, VolumeX } from 'lucide-react';
+import { Maximize, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hls from 'hls.js'; 
 import logoImage from '../assets/logo_fabulosa.png';
 
-// 📡 CONFIGURACIÓN DE SEÑAL BROADCAST (RADIO DIRECTA)
+// 📡 CONFIGURACIÓN DE SEÑAL BROADCAST (RADIO CON LOCUTORES)
 const AUDIO_RADIO_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
-// 📹 LISTA DE 9 CÁMARAS (INCLUYENDO LAS NUEVAS)
+// 📹 LISTA DE CÁMARAS FILTRADA (SE ELIMINÓ LA CORRUPTA kkVrj2cr9Ko)
 const YOUTUBE_CAMS = [
-    "rnXIjl_Rzy4", "EO_1LWqsCNE", "gFRtAAmiFbE", "loHbMM9JfCs", "uV3wWHSvkfs",
-    "nFozEhYTEMo", "8Rw-tZTeBjU", "kkVrj2cr9Ko", "rqBfiegG5qU"
+    "rnXIjl_Rzy4", "EO_1LWqsCNE", "gFRtAAmiFbE", "loHbMM9JfCs", 
+    "uV3wWHSvkfs", "nFozEhYTEMo", "8Rw-tZTeBjU", "rqBfiegG5qU"
 ];
 
 const YOUTUBE_API_KEYS = ["AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0"];
@@ -33,8 +33,8 @@ const Camaras = () => {
     const [adIndex, setAdIndex] = useState(0);
     const [isMuted, setIsMuted] = useState(false);
 
-    // --- 🔊 MOTOR DE AUDIO INMORTAL (INYECCIÓN DIRECTA SIN LOCUTORES) ---
-    const sintonizarRadioPermanente = () => {
+    // --- 🔊 MOTOR DE AUDIO HLS (INYECCIÓN DIRECTA PARA LOCUTORES) ---
+    const sintonizarRadioVip = () => {
         const audio = audioRef.current;
         if (Hls.isSupported()) {
             if (hlsRef.current) hlsRef.current.destroy();
@@ -42,16 +42,17 @@ const Camaras = () => {
                 enableWorker: true,
                 lowLatencyMode: true,
                 manifestLoadingMaxRetry: 50,
-                levelLoadingMaxRetry: 50
+                levelLoadingMaxRetry: 50,
+                fragLoadingMaxRetry: 50
             });
             
             hls.loadSource(AUDIO_RADIO_URL);
             hls.attachMedia(audio);
             hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                audio.play().catch(e => console.log("Audio en espera de señal..."));
+                audio.play().catch(e => console.log("Audio esperando señal..."));
             });
 
-            // Auto-Recuperación de señal para que NUNCA se apague
+            // Recuperación automática de señal
             hls.on(Hls.Events.ERROR, (event, data) => {
                 if (data.fatal) {
                     hls.startLoad();
@@ -66,7 +67,7 @@ const Camaras = () => {
 
     const handleMasterStart = () => {
         setIsPlaying(true);
-        sintonizarRadioPermanente();
+        sintonizarRadioVip();
     };
 
     // --- 📺 LÓGICA DE MONITOREO (ROTACIÓN CADA 2 MIN) ---
@@ -77,7 +78,7 @@ const Camaras = () => {
             setCamIndex(prev => (prev + 1) % YOUTUBE_CAMS.length);
         }, 120000);
 
-        // Ciclo de Publicidad cada 6 min (Split-Screen)
+        // Ciclo de Publicidad cada 6 min (Pantallas Separadas)
         const adTimer = setInterval(() => {
             setIsAdMode(true);
             setAdIndex(0);
@@ -100,7 +101,7 @@ const Camaras = () => {
             backgroundImage: isAdMode ? "url('/camaras.jpg')" : "none",
             backgroundColor: "#000", backgroundSize: 'cover', backgroundPosition: 'center'
         }}>
-            {/* AUDIO DE FONDO PERMANENTE */}
+            {/* AUDIO DE FONDO PERMANENTE (LOCUTORES) */}
             <audio ref={audioRef} preload="auto" />
 
             {!isPlaying ? (
@@ -109,19 +110,19 @@ const Camaras = () => {
                         <Play size={160} fill="#ff0033" stroke="none" />
                     </motion.div>
                     <h1>SISTEMA CENTRAL DE MONITOREO VIP</h1>
-                    <p>TOQUE PARA ACTIVAR CONTROL MASTER Y AUDIO DIRECTO</p>
+                    <p>TOQUE PARA ACTIVAR CONTROL MASTER Y AUDIO EN VIVO</p>
                 </div>
             ) : (
                 <div className="workspace-broadcast-isolated" ref={containerRef}>
                     
-                    {/* 📹 CAJA 1: VIDEO (Independiente y Blindado) */}
+                    {/* 📹 CAJA 1: VIDEO (Independiente y Fluida) */}
                     <motion.div 
                         layout
                         initial={false}
                         animate={{ 
-                            width: isAdMode ? "52%" : "100%", 
-                            height: isAdMode ? "75%" : "100%",
-                            x: isAdMode ? -30 : 0 
+                            width: isAdMode ? "55%" : "100%", 
+                            height: isAdMode ? "80%" : "100%",
+                            x: isAdMode ? -40 : 0 
                         }}
                         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                         className="isolated-viewport-box"
@@ -158,7 +159,12 @@ const Camaras = () => {
                                 className="ads-viewport-isolated"
                             >
                                 <div className="ad-container-vip">
-                                    <motion.img key={adIndex} initial={{ opacity: 0 }} animate={{ opacity: 1 }} src={VERTICAL_ADS[adIndex]} />
+                                    <motion.img 
+                                        key={adIndex} 
+                                        initial={{ opacity: 0, scale: 0.9 }} 
+                                        animate={{ opacity: 1, scale: 1 }} 
+                                        src={VERTICAL_ADS[adIndex]} 
+                                    />
                                 </div>
                             </motion.div>
                         )}
@@ -175,7 +181,7 @@ const Camaras = () => {
 
                 .workspace-broadcast-isolated { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; gap: 80px; padding: 0 60px; }
                 
-                .isolated-viewport-box { background: #000; position: relative; overflow: hidden; border-radius: 40px; box-shadow: 0 60px 120px rgba(0,0,0,0.9); border: 4px solid rgba(255,255,255,0.05); }
+                .isolated-viewport-box { background: #000; position: relative; overflow: hidden; border-radius: 40px; box-shadow: 0 60px 120px rgba(0,0,0,0.9); border: 2px solid rgba(255,255,255,0.05); }
                 iframe { width: 100%; height: 100%; transform: scale(1.4); pointer-events: none; }
                 
                 .shield-invisible-master { position: absolute; inset: 0; z-index: 50; background: transparent; cursor: default; }
@@ -185,10 +191,10 @@ const Camaras = () => {
                 .bl { bottom: 0; left: 0; }
                 .br { bottom: 0; right: 0; }
 
-                .broadcast-bug-logo { position: absolute; top: 60px; left: 80px; z-index: 60; }
-                .broadcast-bug-logo img { height: 190px; width: auto; object-fit: contain; filter: drop-shadow(0 0 40px rgba(0,0,0,1)); }
+                .broadcast-bug-logo { position: absolute; top: 70px; left: 90px; z-index: 60; }
+                .broadcast-bug-logo img { height: 220px; width: auto; object-fit: contain; filter: drop-shadow(0 0 50px rgba(0,0,0,1)); }
 
-                .ads-viewport-isolated { width: 30%; height: 75%; background: rgba(0,0,0,0.95); border: 12px solid #ff0033; border-radius: 70px; padding: 40px; box-shadow: 0 0 100px rgba(255,0,51,0.5); }
+                .ads-viewport-isolated { width: 30%; height: 80%; background: rgba(0,0,0,0.95); border: 12px solid #ff0033; border-radius: 70px; padding: 40px; box-shadow: 0 0 100px rgba(255,0,51,0.5); }
                 .ad-container-vip { width: 100%; height: 100%; border-radius: 40px; overflow: hidden; }
                 .ad-container-vip img { width: 100%; height: 100%; object-fit: cover; }
             `}</style>
