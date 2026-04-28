@@ -28,6 +28,13 @@ export const canalesTV = [
         "logo": "/logos_canales/canal_13.jpg"
     },
     {
+        "id": "tv-36-trivision",
+        "title": "Trivisión Canal 36",
+        "iframe_url": "https://player.instantvideocloud.net/v2/channel/1591",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/trivision.png"
+    },
+    {
         "id": "tv-2",
         "title": "88 Stereo",
         "url": "https://s1.tvdatta.com:3972/live/88stereolive.m3u8",
