@@ -6,11 +6,11 @@ const filePath = path.join(process.cwd(), 'src', 'data', 'canales_finales.js');
 try {
     let content = fs.readFileSync(filePath, 'utf8');
 
-    // 1. LIMPIEZA
+    // 1. LIMPIEZA TOTAL
     const regexLimpieza = /\s*\{\s*"id":\s*"(tv-7-teletica|tv-13-sinart|tv-36-trivision)"[\s\S]*?\},/g;
     content = content.replace(regexLimpieza, '');
 
-    // 2. DEFINICIÓN: Usamos el reproductor directo de Instant Video Cloud para el 36
+    // 2. DEFINICIÓN: El 36 llevará un "link_externo" para que su reproductor lo maneje diferente
     const canalesNuevos = `
     {
         "id": "tv-7-teletica",
@@ -29,7 +29,7 @@ try {
     {
         "id": "tv-36-trivision",
         "title": "Trivisión Canal 36",
-        "iframe_url": "https://player.instantvideocloud.net/v2/channel/1591",
+        "link_externo": "https://player.instantvideocloud.net/v2/channel/1591",
         "genre": "Costa Rica",
         "logo": "/logos_canales/trivision.png"
     },`;
@@ -41,7 +41,7 @@ try {
         let insertPoint = segundoCierre + 2;
         let nuevoContenido = content.slice(0, insertPoint) + canalesNuevos + content.slice(insertPoint);
         fs.writeFileSync(filePath, nuevoContenido, 'utf8');
-        console.log('✅ LISTA ACTUALIZADA: 7, 13 y 36 (Modo Webview).');
+        console.log('✅ CIRUGÍA AJUSTADA: Canal 36 configurado como enlace externo para evitar bloqueos.');
     }
 } catch (error) {
     console.error('❌ Error:', error.message);
