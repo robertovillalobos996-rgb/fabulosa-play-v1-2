@@ -16,7 +16,6 @@ const Channels = () => {
   const [channels, setChannels] = useState(initialCanales || []);
   const [currentChannel, setCurrentChannel] = useState(initialCanales[0]);
   
-  // Estados del Reproductor
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [volume, setVolume] = useState(1);
@@ -43,7 +42,6 @@ const Channels = () => {
     });
   }, [channels, activeCategory, searchTerm]);
 
-  // --- 🛠️ FUNCIONES DE ADMIN ---
   const updateData = (field, value) => {
     const updated = channels.map(c => c.id === currentChannel.id ? { ...c, [field]: value } : c);
     setChannels(updated);
@@ -90,7 +88,6 @@ const Channels = () => {
     setIsSaving(false);
   };
 
-  // --- 📺 CONTROLES TIPO YOUTUBE ---
   const togglePlay = () => {
     if(!videoRef.current) return;
     if (videoRef.current.paused) {
@@ -119,7 +116,6 @@ const Channels = () => {
   useEffect(() => {
     if (!currentChannel?.url && !currentChannel?.iframe_url) return;
     
-    // Si el canal tiene Iframe (incluyendo webview recortado), no cargamos HLS
     if(currentChannel.iframe_url) {
       setIsLoading(false);
       if (hlsRef.current) hlsRef.current.destroy();
@@ -180,11 +176,13 @@ const Channels = () => {
           {isLoading && <div className="absolute inset-0 flex items-center justify-center z-50 bg-black"><Loader2 className="animate-spin text-red-600" size={50} /></div>}
           
           {currentChannel?.iframe_url ? (
-            <div className="w-full h-full overflow-hidden relative">
+            <div className="w-full h-full overflow-hidden relative bg-black">
               <iframe 
                 src={currentChannel.iframe_url} 
                 className={`absolute border-none transition-all duration-500 ${
-                  currentChannel.tipo === 'webview_recortado' 
+                  currentChannel.tipo === 'repre_crop'
+                    ? 'w-[125%] h-[200%] -top-[55%] -left-[12%] scale-[1.2]' // 🚀 CORTE PARA CANAL 6
+                    : currentChannel.tipo === 'webview_recortado' 
                     ? 'w-[100%] h-[150%] -top-[25%] left-0 scale-[1.1]' 
                     : 'w-full h-full top-0 left-0'
                 }`}
