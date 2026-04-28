@@ -1,16 +1,4 @@
-import fs from 'fs';
-import path from 'path';
-
-const filePath = path.join(process.cwd(), 'src', 'data', 'canales_finales.js');
-
-try {
-    let content = fs.readFileSync(filePath, 'utf8');
-
-    // 1. LIMPIEZA TOTAL
-    const regexLimpieza = /\s*\{\s*"id":\s*"(tv-7-teletica|tv-13-sinart|tv-36-trivision)"[\s\S]*?\},/g;
-    content = content.replace(regexLimpieza, '');
-
-    // 2. DEFINICIÓN: El 36 llevará un "link_externo" para que su reproductor lo maneje diferente
+// ... (mismo inicio de su script cirugia_teletica.js)
     const canalesNuevos = `
     {
         "id": "tv-7-teletica",
@@ -29,20 +17,9 @@ try {
     {
         "id": "tv-36-trivision",
         "title": "Trivisión Canal 36",
-        "link_externo": "https://player.instantvideocloud.net/v2/channel/1591",
+        "iframe_url": "https://player.instantvideocloud.net/v2/channel/1591",
+        "tipo": "webview_recortado",
         "genre": "Costa Rica",
         "logo": "/logos_canales/trivision.png"
     },`;
-
-    let primerCierre = content.indexOf('},');
-    let segundoCierre = content.indexOf('},', primerCierre + 1);
-    
-    if (segundoCierre !== -1) {
-        let insertPoint = segundoCierre + 2;
-        let nuevoContenido = content.slice(0, insertPoint) + canalesNuevos + content.slice(insertPoint);
-        fs.writeFileSync(filePath, nuevoContenido, 'utf8');
-        console.log('✅ CIRUGÍA AJUSTADA: Canal 36 configurado como enlace externo para evitar bloqueos.');
-    }
-} catch (error) {
-    console.error('❌ Error:', error.message);
-}
+// ... (restaurar el resto del script y ejecutarlo)

@@ -38,7 +38,7 @@ const Channels = () => {
   const filteredChannels = useMemo(() => {
     return channels.filter((c) => {
       const matchCat = activeCategory === "Todos" || c.genre === activeCategory;
-      const nombre = c.name || c.title || ""; // Ajuste por si usa title en vez de name
+      const nombre = c.name || c.title || ""; 
       return matchCat && nombre.toLowerCase().includes(searchTerm.toLowerCase());
     });
   }, [channels, activeCategory, searchTerm]);
@@ -119,7 +119,7 @@ const Channels = () => {
   useEffect(() => {
     if (!currentChannel?.url && !currentChannel?.iframe_url) return;
     
-    // 🚨 CAMBIO AQUI 🚨: Si el canal tiene Iframe, no cargamos el reproductor HLS normal.
+    // Si el canal tiene Iframe (incluyendo webview recortado), no cargamos HLS
     if(currentChannel.iframe_url) {
       setIsLoading(false);
       if (hlsRef.current) hlsRef.current.destroy();
@@ -145,7 +145,6 @@ const Channels = () => {
   return (
     <div className="flex flex-col lg:flex-row h-screen w-full bg-black text-white font-sans overflow-hidden">
       
-      {/* 📋 ASIDE: Categorías (Adaptable) */}
       <aside className="w-full lg:w-64 bg-[#0a0a0a] border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col shrink-0">
         <div className="p-4 flex items-center justify-between lg:block">
           <img src={logoFabulosa} className="h-8 lg:h-10 object-contain lg:mb-8" />
@@ -171,10 +170,8 @@ const Channels = () => {
         </div>
       </aside>
 
-      {/* 📺 MAIN: Reproductor y Grilla */}
       <main className="flex-1 flex flex-col overflow-hidden bg-[#050505]">
         
-        {/* REPRODUCTOR PROFESIONAL (YouTube Style) */}
         <div 
           ref={containerRef}
           onMouseMove={handleMouseMove}
@@ -182,15 +179,20 @@ const Channels = () => {
         >
           {isLoading && <div className="absolute inset-0 flex items-center justify-center z-50 bg-black"><Loader2 className="animate-spin text-red-600" size={50} /></div>}
           
-          {/* 🚨 CAMBIO AQUI 🚨: Si hay iframe lo mostramos, si no, mostramos el video normal */}
           {currentChannel?.iframe_url ? (
-            <iframe 
-              src={currentChannel.iframe_url} 
-              className="w-full h-full border-none"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              title={currentChannel.name || currentChannel.title}
-            ></iframe>
+            <div className="w-full h-full overflow-hidden relative">
+              <iframe 
+                src={currentChannel.iframe_url} 
+                className={`absolute border-none transition-all duration-500 ${
+                  currentChannel.tipo === 'webview_recortado' 
+                    ? 'w-[100%] h-[150%] -top-[25%] left-0 scale-[1.1]' 
+                    : 'w-full h-full top-0 left-0'
+                }`}
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title={currentChannel.name || currentChannel.title}
+              ></iframe>
+            </div>
           ) : (
             <>
               <video 
@@ -199,10 +201,8 @@ const Channels = () => {
                 className="w-full h-full object-contain cursor-pointer" 
               />
               
-              {/* Overlay de Controles (Solo se muestra en los canales normales, el iframe ya trae los suyos) */}
               <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40 transition-opacity duration-300 flex flex-col justify-between p-4 pointer-events-none ${showControls ? 'opacity-100' : 'opacity-0'}`}>
                 
-                {/* Arriba: Info Canal */}
                 <div className="flex justify-between items-start pointer-events-auto">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-white rounded-lg p-1.5"><img src={currentChannel?.logo} className="w-full h-full object-contain" /></div>
@@ -211,12 +211,10 @@ const Channels = () => {
                   <button onClick={() => navigate('/')} className="bg-white/10 p-2 rounded-full hover:bg-red-600"><X size={20}/></button>
                 </div>
 
-                {/* Centro: Play/Pause Gigante */}
                 <div className="flex justify-center items-center pointer-events-auto">
                    {!isPlaying && <button onClick={togglePlay} className="bg-red-600/80 p-6 rounded-full scale-110"><Play size={40} fill="white"/></button>}
                 </div>
 
-                {/* Abajo: Barra YouTube */}
                 <div className="space-y-3 pointer-events-auto">
                   <div className="h-1 w-full bg-white/20 rounded-full overflow-hidden">
                      <div className="h-full bg-red-600 w-full animate-pulse" />
@@ -252,7 +250,6 @@ const Channels = () => {
           )}
         </div>
 
-        {/* 🛠️ PANEL ADMIN (Fijo debajo del player en PC, scroll en movil) */}
         {isAdmin && (
           <div className="bg-[#111] border-b border-white/5 p-4 flex flex-wrap items-center justify-between gap-4 shrink-0 overflow-x-auto">
             <input 
@@ -277,7 +274,6 @@ const Channels = () => {
           </div>
         )}
 
-        {/* 🔳 GRILLA DE CANALES (Scrollable) */}
         <div className="flex-1 overflow-y-auto p-4 md:p-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 no-scrollbar">
           {filteredChannels.map((channel) => (
             <div
