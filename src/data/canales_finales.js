@@ -1,19 +1,5 @@
 export const canalesTV = [
     {
-        "id": "fabulosa-tv-vip",
-        "title": "Fabulosa TV VIP",
-        "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/logo_fabulosa.png"
-    },
-    {
-        "id": "tv-36",
-        "title": "stv",
-        "url": "https://acceso.mediosdecostarica.com:3422/hybrid/play.m3u8",
-        "genre": "Costa Rica",
-        "logo": "/logos_canales/stv.png"
-    },
-    {
         "id": "tv-6-repretel",
         "title": "Repretel Canal 6",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=repre6&mediaUrl=https://d2qsan2ut81n2k.cloudfront.net/live/02f0dc35-8fd4-4021-8fa0-96c277f62653/ts:abr.m3u8",
@@ -33,6 +19,20 @@ export const canalesTV = [
         "iframe_url": "https://www.dailymotion.com/embed/video/x7vh8g3?autoplay=1",
         "genre": "Costa Rica",
         "logo": "/logos_canales/canal_13.jpg"
+    },
+    {
+        "id": "fabulosa-tv-vip",
+        "title": "Fabulosa TV VIP",
+        "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/logo_fabulosa.png"
+    },
+    {
+        "id": "tv-36",
+        "title": "stv",
+        "url": "https://acceso.mediosdecostarica.com:3422/hybrid/play.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/stv.png"
     },
     {
         "id": "tv-2",

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
   Search, Play, Pause, Volume2, Loader2, Trash2, UploadCloud, 
-  Save, Rocket, X, Maximize, ChevronRight, CheckCircle, VolumeX
+  Save, X, Maximize, VolumeX
 } from "lucide-react";
 import Hls from "hls.js";
 
@@ -21,14 +21,11 @@ const Channels = () => {
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
   const [showControls, setShowControls] = useState(true);
-  const [isSaving, setIsSaving] = useState(false);
   
   const videoRef = useRef(null);
   const hlsRef = useRef(null);
   const containerRef = useRef(null);
   const controlsTimeout = useRef(null);
-
-  const isAdmin = new URLSearchParams(window.location.search).get("admin") === "fabulosa";
 
   const categories = useMemo(() => {
     return ["Todos", ...new Set(channels.map((c) => c.genre || "Varios"))];
@@ -41,25 +38,6 @@ const Channels = () => {
       return matchCat && nombre.toLowerCase().includes(searchTerm.toLowerCase());
     });
   }, [channels, activeCategory, searchTerm]);
-
-  const updateData = (field, value) => {
-    const updated = channels.map(c => c.id === currentChannel.id ? { ...c, [field]: value } : c);
-    setChannels(updated);
-    setCurrentChannel({ ...currentChannel, [field]: value });
-  };
-
-  const saveToDisk = async () => {
-    setIsSaving(true);
-    try {
-      await fetch('http://localhost:3001/save-channels', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(channels)
-      });
-      alert("✅ LISTA GUARDADA CORRECTAMENTE");
-    } catch (e) { alert("Error al guardar"); }
-    setIsSaving(false);
-  };
 
   const togglePlay = () => {
     if(!videoRef.current) return;
@@ -149,7 +127,7 @@ const Channels = () => {
           {isLoading && <div className="absolute inset-0 flex items-center justify-center z-50 bg-black"><Loader2 className="animate-spin text-red-600" size={50} /></div>}
           
           {currentChannel?.iframe_url ? (
-            <div className="w-full h-full overflow-hidden bg-black">
+            <div className="w-full h-full bg-black">
               <iframe 
                 src={currentChannel.iframe_url} 
                 className="w-full h-full border-none"
