@@ -14,6 +14,14 @@ export const canalesTV = [
         "logo": "/logos_canales/stv.png"
     },
     {
+        "id": "tv-7-teletica",
+        "title": "Teletica Canal 7",
+        "url": "https://6zklxk9bdw9b-hls-live.5centscdn.com/TeleticaLiveStream/d072c3a8dde8622c607ecd258fd628e8.sdp/playlist.m3u8",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv7&mediaUrl=https://cdn01.teletica.com/TeleticaLiveStream/Stream/playlist_dvr.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/canal_7.png"
+    },
+    {
         "id": "tv-2",
         "title": "88 Stereo",
         "url": "https://s1.tvdatta.com:3972/live/88stereolive.m3u8",
