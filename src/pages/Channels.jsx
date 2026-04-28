@@ -38,7 +38,7 @@ const Channels = () => {
   const filteredChannels = useMemo(() => {
     return channels.filter((c) => {
       const matchCat = activeCategory === "Todos" || c.genre === activeCategory;
-      const nombre = c.name || ""; 
+      const nombre = c.name || c.title || ""; // Ajuste por si usa title en vez de name
       return matchCat && nombre.toLowerCase().includes(searchTerm.toLowerCase());
     });
   }, [channels, activeCategory, searchTerm]);
@@ -51,7 +51,7 @@ const Channels = () => {
   };
 
   const deleteActiveChannel = () => {
-    if (window.confirm(`¿BORRAR CANAL: ${currentChannel.name}?`)) {
+    if (window.confirm(`¿BORRAR CANAL: ${currentChannel.name || currentChannel.title}?`)) {
       const updated = channels.filter(c => c.id !== currentChannel.id);
       setChannels(updated);
       setCurrentChannel(updated[0] || null);
@@ -92,6 +92,7 @@ const Channels = () => {
 
   // --- 📺 CONTROLES TIPO YOUTUBE ---
   const togglePlay = () => {
+    if(!videoRef.current) return;
     if (videoRef.current.paused) {
       videoRef.current.play();
       setIsPlaying(true);
@@ -116,11 +117,20 @@ const Channels = () => {
   };
 
   useEffect(() => {
-    if (!currentChannel?.url) return;
+    if (!currentChannel?.url && !currentChannel?.iframe_url) return;
+    
+    // 🚨 CAMBIO AQUI 🚨: Si el canal tiene Iframe, no cargamos el reproductor HLS normal.
+    if(currentChannel.iframe_url) {
+      setIsLoading(false);
+      if (hlsRef.current) hlsRef.current.destroy();
+      return; 
+    }
+
     setIsLoading(true);
     if (hlsRef.current) hlsRef.current.destroy();
     const video = videoRef.current;
-    if (Hls.isSupported()) {
+    
+    if (video && Hls.isSupported()) {
       const hls = new Hls();
       hls.loadSource(currentChannel.url);
       hls.attachMedia(video);
@@ -172,69 +182,81 @@ const Channels = () => {
         >
           {isLoading && <div className="absolute inset-0 flex items-center justify-center z-50 bg-black"><Loader2 className="animate-spin text-red-600" size={50} /></div>}
           
-          <video 
-            ref={videoRef} 
-            onClick={togglePlay}
-            className="w-full h-full object-contain cursor-pointer" 
-          />
-
-          {/* Overlay de Controles */}
-          <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40 transition-opacity duration-300 flex flex-col justify-between p-4 ${showControls ? 'opacity-100' : 'opacity-0'}`}>
-            
-            {/* Arriba: Info Canal */}
-            <div className="flex justify-between items-start">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 bg-white rounded-lg p-1.5"><img src={currentChannel?.logo} className="w-full h-full object-contain" /></div>
-                <h2 className="text-xl font-black uppercase italic drop-shadow-lg">{currentChannel?.name}</h2>
-              </div>
-              <button onClick={() => navigate('/')} className="bg-white/10 p-2 rounded-full hover:bg-red-600"><X size={20}/></button>
-            </div>
-
-            {/* Centro: Play/Pause Gigante */}
-            <div className="flex justify-center items-center">
-               {!isPlaying && <button onClick={togglePlay} className="bg-red-600/80 p-6 rounded-full scale-110"><Play size={40} fill="white"/></button>}
-            </div>
-
-            {/* Abajo: Barra YouTube */}
-            <div className="space-y-3">
-              {/* Barra de progreso decorativa (Live) */}
-              <div className="h-1 w-full bg-white/20 rounded-full overflow-hidden">
-                 <div className="h-full bg-red-600 w-full animate-pulse" />
-              </div>
+          {/* 🚨 CAMBIO AQUI 🚨: Si hay iframe lo mostramos, si no, mostramos el video normal */}
+          {currentChannel?.iframe_url ? (
+            <iframe 
+              src={currentChannel.iframe_url} 
+              className="w-full h-full border-none"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              title={currentChannel.name || currentChannel.title}
+            ></iframe>
+          ) : (
+            <>
+              <video 
+                ref={videoRef} 
+                onClick={togglePlay}
+                className="w-full h-full object-contain cursor-pointer" 
+              />
               
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-6">
-                  <button onClick={togglePlay} className="hover:text-red-600 transition-colors">
-                    {isPlaying ? <Pause size={28} fill="currentColor"/> : <Play size={28} fill="currentColor"/>}
-                  </button>
-                  
-                  <div className="flex items-center gap-2 group/vol">
-                    <button onClick={() => setIsMuted(!isMuted)}>
-                      {isMuted || volume === 0 ? <VolumeX size={24}/> : <Volume2 size={24}/>}
-                    </button>
-                    <input 
-                      type="range" min="0" max="1" step="0.1" 
-                      value={volume} onChange={e => {setVolume(e.target.value); videoRef.current.volume = e.target.value;}}
-                      className="w-0 group-hover/vol:w-20 transition-all accent-red-600"
-                    />
+              {/* Overlay de Controles (Solo se muestra en los canales normales, el iframe ya trae los suyos) */}
+              <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40 transition-opacity duration-300 flex flex-col justify-between p-4 pointer-events-none ${showControls ? 'opacity-100' : 'opacity-0'}`}>
+                
+                {/* Arriba: Info Canal */}
+                <div className="flex justify-between items-start pointer-events-auto">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-white rounded-lg p-1.5"><img src={currentChannel?.logo} className="w-full h-full object-contain" /></div>
+                    <h2 className="text-xl font-black uppercase italic drop-shadow-lg">{currentChannel?.name || currentChannel?.title}</h2>
                   </div>
-                  
-                  <span className="text-[10px] font-bold text-red-600 flex items-center gap-2">
-                    <div className="w-2 h-2 bg-red-600 rounded-full animate-ping" /> EN VIVO
-                  </span>
+                  <button onClick={() => navigate('/')} className="bg-white/10 p-2 rounded-full hover:bg-red-600"><X size={20}/></button>
                 </div>
 
-                <button onClick={toggleFullscreen} className="hover:scale-110 transition-transform"><Maximize size={24}/></button>
+                {/* Centro: Play/Pause Gigante */}
+                <div className="flex justify-center items-center pointer-events-auto">
+                   {!isPlaying && <button onClick={togglePlay} className="bg-red-600/80 p-6 rounded-full scale-110"><Play size={40} fill="white"/></button>}
+                </div>
+
+                {/* Abajo: Barra YouTube */}
+                <div className="space-y-3 pointer-events-auto">
+                  <div className="h-1 w-full bg-white/20 rounded-full overflow-hidden">
+                     <div className="h-full bg-red-600 w-full animate-pulse" />
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-6">
+                      <button onClick={togglePlay} className="hover:text-red-600 transition-colors">
+                        {isPlaying ? <Pause size={28} fill="currentColor"/> : <Play size={28} fill="currentColor"/>}
+                      </button>
+                      
+                      <div className="flex items-center gap-2 group/vol">
+                        <button onClick={() => setIsMuted(!isMuted)}>
+                          {isMuted || volume === 0 ? <VolumeX size={24}/> : <Volume2 size={24}/>}
+                        </button>
+                        <input 
+                          type="range" min="0" max="1" step="0.1" 
+                          value={volume} onChange={e => {setVolume(e.target.value); if(videoRef.current) videoRef.current.volume = e.target.value;}}
+                          className="w-0 group-hover/vol:w-20 transition-all accent-red-600"
+                        />
+                      </div>
+                      
+                      <span className="text-[10px] font-bold text-red-600 flex items-center gap-2">
+                        <div className="w-2 h-2 bg-red-600 rounded-full animate-ping" /> EN VIVO
+                      </span>
+                    </div>
+
+                    <button onClick={toggleFullscreen} className="hover:scale-110 transition-transform"><Maximize size={24}/></button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </>
+          )}
         </div>
 
         {/* 🛠️ PANEL ADMIN (Fijo debajo del player en PC, scroll en movil) */}
         {isAdmin && (
           <div className="bg-[#111] border-b border-white/5 p-4 flex flex-wrap items-center justify-between gap-4 shrink-0 overflow-x-auto">
             <input 
-              type="text" value={currentChannel?.name || ""} 
+              type="text" value={currentChannel?.name || currentChannel?.title || ""} 
               onChange={e => updateData('name', e.target.value)}
               className="bg-black border border-white/10 p-2 rounded-xl text-xs font-bold focus:border-red-600 outline-none w-full sm:w-auto flex-1"
             />
@@ -265,7 +287,7 @@ const Channels = () => {
             >
               <img src={channel.logo} className="max-w-full max-h-full object-contain" alt="Logo" />
               <div className="absolute -bottom-2 bg-red-600 text-white px-3 py-1 rounded-full text-[8px] font-black uppercase shadow-xl truncate max-w-[90%]">
-                {channel.name}
+                {channel.name || channel.title}
               </div>
             </div>
           ))}
