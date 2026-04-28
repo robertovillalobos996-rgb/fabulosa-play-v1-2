@@ -22,6 +22,20 @@ export const canalesTV = [
         "logo": "/logos_canales/canal_7.png"
     },
     {
+        "id": "tv-13-sinart",
+        "title": "SINART Canal 13",
+        "iframe_url": "https://www.dailymotion.com/embed/video/x7vh8g3?autoplay=1",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/canal_13.png"
+    },
+    {
+        "id": "tv-8-multimedios",
+        "title": "Multimedios Canal 8",
+        "iframe_url": "https://mdstrm.com/live-stream/5a7b1e63a8da282c34d65445?autoplay=1",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/canal_8.png"
+    },
+    {
         "id": "tv-2",
         "title": "88 Stereo",
         "url": "https://s1.tvdatta.com:3972/live/88stereolive.m3u8",
