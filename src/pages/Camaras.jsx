@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Volume2, VolumeX, Play, Pause, Maximize, Loader2 } from 'lucide-react';
+import { ArrowLeft, Volume2, VolumeX, Play, Pause, Maximize, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoImage from '../assets/logo_fabulosa.png';
 
-// 📡 CONFIGURACIÓN TÉCNICA (PROTEGIENDO SUS LLAVES)
-const AUDIO_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
+// 📡 CONFIGURACIÓN BROADCAST VIP
+const AUDIO_LOCUTORES = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
+const SELLO_ID_URL = "/audio/sello_fabulosa.mp3"; // Asegúrese de que el archivo esté en public/audio/
 
 const YOUTUBE_API_KEYS = [
     "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
@@ -18,7 +19,6 @@ const YOUTUBE_API_KEYS = [
 ];
 
 const YOUTUBE_CAMS = ["rnXIjl_Rzy4", "EO_1LWqsCNE", "gFRtAAmiFbE", "loHbMM9JfCs", "uV3wWHSvkfs"];
-
 const VERTICAL_ADS = [
     "/publicidad_vertical/anunciete_1.png", "/publicidad_vertical/chinito_express.png",
     "/publicidad_vertical/mexicana_1.png", "/publicidad_vertical/mexicana_2.png", "/publicidad_vertical/unas_yendry.png"
@@ -29,177 +29,154 @@ const BANNER_TIME = 6000;  // 6 Segundos
 
 const Camaras = () => {
     const audioRef = useRef(null);
+    const selloRef = useRef(null);
     const containerRef = useRef(null);
     
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isPaused, setIsPaused] = useState(false);
+    const [isSelloPlaying, setIsSelloPlaying] = useState(false);
     const [camIndex, setCamIndex] = useState(0);
     const [adIndex, setAdIndex] = useState(0);
     const [isAdMode, setIsAdMode] = useState(false);
     const [keyIndex, setKeyIndex] = useState(0);
-    const [isTransitioning, setIsTransitioning] = useState(false);
 
-    // --- 🔊 AUDIO DE FONDO AUTOMÁTICO ---
-    const handleStart = () => {
+    // --- 🎵 LÓGICA DE AUDIO PROFESIONAL (Sello -> Radio) ---
+    const startMonitoring = () => {
         setIsPlaying(true);
-        if (audioRef.current) {
-            audioRef.current.play().catch(e => console.log("Permiso de audio requerido"));
+        setIsSelloPlaying(true);
+        if (selloRef.current) {
+            selloRef.current.play().catch(e => console.log("Interacción requerida"));
         }
     };
 
-    // --- 🔄 ROTACIÓN DE CÁMARAS (2 MINUTOS) ---
-    useEffect(() => {
-        if (!isPlaying || isPaused) return;
-        const interval = setInterval(() => {
-            setIsTransitioning(true);
-            setTimeout(() => {
-                setCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
-                setKeyIndex((prev) => (prev + 1) % YOUTUBE_API_KEYS.length);
-                setIsTransitioning(false);
-            }, 600);
-        }, 120000);
-        return () => clearInterval(interval);
-    }, [isPlaying, isPaused]);
+    const handleSelloEnd = () => {
+        setIsSelloPlaying(false);
+        if (audioRef.current) {
+            audioRef.current.play(); // Entran los locutores
+        }
+    };
 
-    // --- 💰 SISTEMA DE PUBLICIDAD (6 MINUTOS) ---
+    // --- 🔄 ROTACIÓN DE CÁMARAS Y PUBLICIDAD ---
     useEffect(() => {
-        if (!isPlaying || isPaused) return;
-        const masterInterval = setInterval(() => {
+        if (!isPlaying) return;
+        const camTimer = setInterval(() => {
+            setCamIndex(prev => (prev + 1) % YOUTUBE_CAMS.length);
+            setKeyIndex(prev => (prev + 1) % YOUTUBE_API_KEYS.length);
+        }, 120000);
+
+        const adTimer = setInterval(() => {
             setIsAdMode(true);
-            setAdIndex(0);
             let count = 0;
-            const bannerRotation = setInterval(() => {
+            const bannerInterval = setInterval(() => {
                 count++;
                 if (count < VERTICAL_ADS.length) setAdIndex(count);
                 else {
-                    clearInterval(bannerRotation);
+                    clearInterval(bannerInterval);
                     setIsAdMode(false);
+                    setAdIndex(0);
                 }
             }, BANNER_TIME);
         }, AD_CYCLE);
-        return () => clearInterval(masterInterval);
-    }, [isPlaying, isPaused]);
+
+        return () => { clearInterval(camTimer); clearInterval(adTimer); };
+    }, [isPlaying]);
 
     return (
-        <div className="cam-broadcast-container" style={{ 
+        <div className="broadcast-pro-main" style={{ 
             backgroundImage: isAdMode ? "url('/camaras.jpg')" : "none",
             backgroundColor: "#000", backgroundSize: 'cover', backgroundPosition: 'center'
         }}>
-            <audio ref={audioRef} src={AUDIO_URL} loop />
+            {/* ELEMENTOS DE AUDIO */}
+            <audio ref={selloRef} src={SELLO_ID_URL} onEnded={handleSelloEnd} />
+            <audio ref={audioRef} src={AUDIO_LOCUTORES} loop />
 
-            <header className="broadcast-top-bar">
-                <Link to="/" className="exit-gate">
-                    <ArrowLeft size={20} /> <span>CENTRAL</span>
-                </Link>
-                <img src={logoImage} alt="Logo" className="master-logo-bug" />
-                <div className="air-signal">
-                    <div className="dot" /> MONITOREO LIVE
+            {!isPlaying ? (
+                <div className="master-power-on" onClick={startMonitoring}>
+                    <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity }} className="power-icon">
+                        <Play size={100} fill="#ff0033" stroke="none" />
+                    </motion.div>
+                    <h1>SISTEMA DE MONITOREO VIP</h1>
+                    <p>TOQUE PARA ACTIVAR CONTROL MASTER</p>
                 </div>
-            </header>
+            ) : (
+                <div className="broadcast-layout-full" ref={containerRef}>
+                    
+                    {/* 📺 REPRODUCTOR BLINDADO */}
+                    <motion.div 
+                        animate={{ 
+                            width: isAdMode ? "60%" : "100%", 
+                            height: isAdMode ? "75%" : "100%",
+                            x: isAdMode ? -20 : 0 
+                        }}
+                        className="player-viewport"
+                    >
+                        {/* 🛡️ ESCUDO INVISIBLE (Bloquea YouTube) */}
+                        <div className="yt-shield-blindaje"></div>
 
-            <div className="broadcast-floor" ref={containerRef}>
-                <motion.div 
-                    layout
-                    transition={{ duration: 0.8, ease: "circOut" }}
-                    className={`vid-frame ${isAdMode ? 'split-left' : 'fullscreen-box'} ${isTransitioning ? 'fx-fade' : ''}`}
-                >
-                    {!isPlaying ? (
-                        <div className="init-overlay" onClick={handleStart}>
-                            <Play size={80} fill="#ff0033" stroke="none" />
-                            <p>INICIAR TRANSMISIÓN VIP</p>
+                        {/* 🏷️ LOGO TV PROFESIONAL (Flotante Arriba-Izquierda) */}
+                        <div className="tv-logo-bug">
+                            <img src={logoImage} alt="Fabulosa Logo" />
+                            {isSelloPlaying && <div className="id-tag">IDENTIFICANDO SEÑAL...</div>}
                         </div>
-                    ) : (
+
                         <iframe 
-                            src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&key=${YOUTUBE_API_KEYS[keyIndex]}`} 
+                            src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&key=${YOUTUBE_API_KEYS[keyIndex]}`} 
                             frameBorder="0" allow="autoplay; encrypted-media"
                         />
-                    )}
-                </motion.div>
 
-                <AnimatePresence>
-                    {isAdMode && (
-                        <motion.div 
-                            initial={{ x: 800, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: 800, opacity: 0 }}
-                            className="ad-frame-right"
-                        >
-                            <div className="ad-content-box">
-                                <motion.img 
-                                    key={adIndex}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    src={VERTICAL_ADS[adIndex]} 
-                                />
-                                <div className="timer-line">
-                                    <motion.div 
-                                        initial={{ width: 0 }}
-                                        animate={{ width: "100%" }}
-                                        key={`t-${adIndex}`}
-                                        transition={{ duration: BANNER_TIME/1000, ease: "linear" }}
-                                        className="fill"
-                                    />
+                        {/* BOTONES INVISIBLES DE CONTROL (Esquinas) */}
+                        <button className="hidden-fs-btn" onClick={() => containerRef.current.requestFullscreen()} />
+                    </motion.div>
+
+                    {/* 💰 CAJA DE PUBLICIDAD (SPLIT SCREEN) */}
+                    <AnimatePresence>
+                        {isAdMode && (
+                            <motion.div 
+                                initial={{ x: 800, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 800, opacity: 0 }}
+                                className="ad-split-box"
+                            >
+                                <div className="ad-wrapper-vip">
+                                    <motion.img key={adIndex} initial={{ opacity: 0 }} animate={{ opacity: 1 }} src={VERTICAL_ADS[adIndex]} />
+                                    <div className="ad-progress">
+                                        <motion.div 
+                                            key={`bar-${adIndex}`} initial={{ width: 0 }} animate={{ width: "100%" }}
+                                            transition={{ duration: BANNER_TIME/1000, ease: "linear" }}
+                                            className="fill" 
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
-
-            <footer className="broadcast-base-bar">
-                <div className="f-left">
-                    <button onClick={() => {
-                        setIsPaused(!isPaused);
-                        if (!isPaused) audioRef.current.pause();
-                        else audioRef.current.play();
-                    }}>
-                        {isPaused ? <Play size={24} fill="white" /> : <Pause size={24} fill="white" />}
-                    </button>
-                    <div className="volume-set">
-                        <Volume2 size={20} />
-                        <input type="range" min="0" max="1" step="0.1" value={audioRef.current?.volume || 1} onChange={(e) => audioRef.current.volume = e.target.value} />
-                    </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
-                <div className="f-center">
-                    <span className="info-main">AUDIO: FABULOSA RADIO (BACKGROUND)</span>
-                    <span className="info-sub">SISTEMA DE MONITOREO MULTI-CAM</span>
-                </div>
-                <button onClick={() => containerRef.current.requestFullscreen()} className="fs-toggle">
-                    <Maximize size={24} />
-                </button>
-            </footer>
+            )}
 
             <style jsx>{`
-                .cam-broadcast-container { width: 100vw; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
-                .broadcast-top-bar { padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.85); border-bottom: 1px solid rgba(255,255,255,0.1); }
-                .master-logo-bug { height: 40px; }
-                .exit-gate { display: flex; items-center; gap: 10px; color: #fff; font-weight: 800; font-size: 11px; letter-spacing: 2px; }
-                .air-signal { color: #ff0033; font-weight: 900; font-size: 10px; display: flex; align-items: center; gap: 8px; }
-                .dot { width: 8px; height: 8px; background: #ff0033; border-radius: 50%; animation: blink 1s infinite; }
+                .broadcast-pro-main { width: 100vw; height: 100vh; overflow: hidden; font-family: 'Inter', sans-serif; }
                 
-                .broadcast-floor { flex: 1; display: flex; align-items: center; justify-content: center; padding: 30px; gap: 30px; position: relative; }
-                .vid-frame { background: #000; border-radius: 30px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.6); border: 2px solid rgba(255,255,255,0.1); }
-                .fullscreen-box { width: 95%; height: 90%; }
-                .split-left { width: 60%; height: 75%; }
-                
-                iframe { width: 100%; height: 100%; pointer-events: none; }
-                .init-overlay { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; gap: 20px; }
-                .init-overlay p { font-weight: 900; letter-spacing: 3px; font-size: 0.9rem; color: #666; }
+                .master-power-on { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; cursor: pointer; }
+                .master-power-on h1 { font-size: 1.5rem; font-weight: 900; letter-spacing: 4px; color: #fff; margin-top: 20px; }
+                .master-power-on p { color: #ff0033; font-weight: 700; font-size: 0.7rem; letter-spacing: 2px; }
 
-                .ad-frame-right { width: 30%; height: 75%; background: rgba(0,0,0,0.7); backdrop-filter: blur(20px); border-radius: 30px; border: 4px solid #ff0033; padding: 20px; }
-                .ad-content-box { width: 100%; height: 100%; position: relative; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
-                .ad-content-box img { width: 100%; height: 100%; object-fit: cover; }
-                .timer-line { height: 6px; background: rgba(255,255,255,0.2); width: 100%; margin-top: 15px; border-radius: 10px; overflow: hidden; }
-                .timer-line .fill { height: 100%; background: #ff0033; }
-
-                .broadcast-base-bar { height: 90px; background: #000; display: flex; justify-content: space-between; align-items: center; padding: 0 60px; border-top: 1px solid rgba(255,255,255,0.1); }
-                .f-left, .volume-set { display: flex; align-items: center; gap: 25px; }
-                .f-center { display: flex; flex-direction: column; align-items: center; }
-                .info-main { color: #ff0033; font-weight: 900; font-size: 10px; letter-spacing: 3px; }
-                .info-sub { color: #444; font-size: 11px; margin-top: 5px; }
+                .broadcast-layout-full { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
                 
-                .fx-fade { opacity: 0; }
-                @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+                .player-viewport { background: #000; position: relative; overflow: hidden; box-shadow: 0 0 100px rgba(0,0,0,0.9); }
+                iframe { width: 100%; height: 100%; transform: scale(1.15); pointer-events: none; }
+                
+                /* Blindaje */
+                .yt-shield-blindaje { position: absolute; inset: 0; z-index: 10; background: transparent; cursor: default; }
+
+                /* Logo Bug */
+                .tv-logo-bug { position: absolute; top: 40px; left: 40px; z-index: 20; display: flex; flex-direction: column; gap: 8px; }
+                .tv-logo-bug img { height: 50px; filter: drop-shadow(0 0 20px rgba(0,0,0,0.8)); }
+                .id-tag { background: #ff0033; color: white; padding: 3px 10px; font-size: 9px; font-weight: 900; border-radius: 2px; text-transform: uppercase; }
+
+                .hidden-fs-btn { position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: transparent; border: none; z-index: 30; cursor: pointer; }
+
+                .ad-split-box { width: 30%; height: 75%; background: rgba(0,0,0,0.85); border: 3px solid #ff0033; border-radius: 40px; padding: 15px; }
+                .ad-wrapper-vip { width: 100%; height: 100%; position: relative; border-radius: 25px; overflow: hidden; }
+                .ad-wrapper-vip img { width: 100%; height: 100%; object-fit: cover; }
+                .ad-progress { position: absolute; bottom: 0; width: 100%; height: 6px; background: rgba(255,255,255,0.1); }
+                .ad-progress .fill { height: 100%; background: #ff0033; }
             `}</style>
         </div>
     );
