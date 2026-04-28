@@ -16,7 +16,7 @@ export const canalesTV = [
     {
         "id": "tv-6-repretel",
         "title": "Repretel Canal 6",
-        "iframe_url": "https://vmf.edge-apps.net/embed/live.php?channel_id=6",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=repre6&mediaUrl=https://d2qsan2ut81n2k.cloudfront.net/live/02f0dc35-8fd4-4021-8fa0-96c277f62653/ts:abr.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/Repretel_6_logo.png"
     },

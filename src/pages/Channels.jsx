@@ -48,33 +48,6 @@ const Channels = () => {
     setCurrentChannel({ ...currentChannel, [field]: value });
   };
 
-  const deleteActiveChannel = () => {
-    if (window.confirm(`¿BORRAR CANAL: ${currentChannel.name || currentChannel.title}?`)) {
-      const updated = channels.filter(c => c.id !== currentChannel.id);
-      setChannels(updated);
-      setCurrentChannel(updated[0] || null);
-    }
-  };
-
-  const handleLogoUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = async () => {
-      const base64Data = reader.result.split(',')[1];
-      const fileName = file.name.replace(/\s/g, '_'); 
-      try {
-        const res = await fetch('http://localhost:3001/upload-logo', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ fileName, base64Data })
-        });
-        if (res.ok) updateData('logo', `/logos_canales/${fileName}`);
-      } catch (err) { alert("Error: ¿Inició bridge.js?"); }
-    };
-  };
-
   const saveToDisk = async () => {
     setIsSaving(true);
     try {
@@ -176,16 +149,10 @@ const Channels = () => {
           {isLoading && <div className="absolute inset-0 flex items-center justify-center z-50 bg-black"><Loader2 className="animate-spin text-red-600" size={50} /></div>}
           
           {currentChannel?.iframe_url ? (
-            <div className="w-full h-full overflow-hidden relative bg-black">
+            <div className="w-full h-full overflow-hidden bg-black">
               <iframe 
                 src={currentChannel.iframe_url} 
-                className={`absolute border-none transition-all duration-500 ${
-                  currentChannel.tipo === 'repre_crop'
-                    ? 'w-[125%] h-[200%] -top-[55%] -left-[12%] scale-[1.2]' // 🚀 CORTE PARA CANAL 6
-                    : currentChannel.tipo === 'webview_recortado' 
-                    ? 'w-[100%] h-[150%] -top-[25%] left-0 scale-[1.1]' 
-                    : 'w-full h-full top-0 left-0'
-                }`}
+                className="w-full h-full border-none"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
                 title={currentChannel.name || currentChannel.title}
@@ -247,30 +214,6 @@ const Channels = () => {
             </>
           )}
         </div>
-
-        {isAdmin && (
-          <div className="bg-[#111] border-b border-white/5 p-4 flex flex-wrap items-center justify-between gap-4 shrink-0 overflow-x-auto">
-            <input 
-              type="text" value={currentChannel?.name || currentChannel?.title || ""} 
-              onChange={e => updateData('name', e.target.value)}
-              className="bg-black border border-white/10 p-2 rounded-xl text-xs font-bold focus:border-red-600 outline-none w-full sm:w-auto flex-1"
-            />
-            <select 
-              value={currentChannel?.genre || ""} 
-              onChange={e => updateData('genre', e.target.value)}
-              className="bg-black border border-white/10 p-2 rounded-xl text-[10px] font-bold uppercase outline-none"
-            >
-              {categories.map(c => c !== "Todos" && <option key={c} value={c}>{c}</option>)}
-            </select>
-            <div className="flex items-center gap-2">
-              <label className="bg-blue-600 hover:bg-blue-500 p-2 rounded-xl cursor-pointer"><UploadCloud size={18}/><input type="file" className="hidden" onChange={handleLogoUpload} /></label>
-              <button onClick={deleteActiveChannel} className="bg-white/5 text-red-600 p-2 rounded-xl hover:bg-red-600 hover:text-white transition-all"><Trash2 size={18}/></button>
-              <button onClick={saveToDisk} className="bg-red-600 px-4 py-2 rounded-xl font-black text-[10px] uppercase flex items-center gap-2">
-                <Save size={18}/> {isSaving ? "..." : "GUARDAR"}
-              </button>
-            </div>
-          </div>
-        )}
 
         <div className="flex-1 overflow-y-auto p-4 md:p-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 no-scrollbar">
           {filteredChannels.map((channel) => (
