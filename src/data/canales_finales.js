@@ -30,7 +30,7 @@ export const canalesTV = [
     {
         "id": "tv-36-trivision",
         "title": "Trivisión Canal 36",
-        "iframe_url": "https://rudo.video/live/trivision36",
+        "iframe_url": "https://www.youtube.com/embed/live_stream?channel=UCXInz-N5m3A-hFzS78bA5fA&autoplay=1",
         "genre": "Costa Rica",
         "logo": "/logos_canales/trivision.png"
     },
