@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Volume2, VolumeX, Play, Pause, Maximize } from 'lucide-react';
+import { ArrowLeft, Volume2, VolumeX, Play, Pause, Maximize, Loader2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import logoImage from '../assets/logo_fabulosa.png';
-import './Camaras.css';
 
+// 📡 CONFIGURACIÓN TÉCNICA (PROTEGIENDO SUS LLAVES)
 const AUDIO_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
 const YOUTUBE_API_KEYS = [
@@ -19,145 +20,187 @@ const YOUTUBE_API_KEYS = [
 const YOUTUBE_CAMS = ["rnXIjl_Rzy4", "EO_1LWqsCNE", "gFRtAAmiFbE", "loHbMM9JfCs", "uV3wWHSvkfs"];
 
 const VERTICAL_ADS = [
-  "/publicidad_vertical/anunciete_1.png", "/publicidad_vertical/chinito_express.png",
-  "/publicidad_vertical/mexicana_1.png", "/publicidad_vertical/mexicana_2.png", "/publicidad_vertical/unas_yendry.png"
+    "/publicidad_vertical/anunciete_1.png", "/publicidad_vertical/chinito_express.png",
+    "/publicidad_vertical/mexicana_1.png", "/publicidad_vertical/mexicana_2.png", "/publicidad_vertical/unas_yendry.png"
 ];
+
+const AD_CYCLE = 360000; // 6 Minutos
+const BANNER_TIME = 6000;  // 6 Segundos
 
 const Camaras = () => {
     const audioRef = useRef(null);
-    const videoContainerRef = useRef(null);
-    const controlsTimer = useRef(null);
+    const containerRef = useRef(null);
     
     const [isPlaying, setIsPlaying] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [camIndex, setCamIndex] = useState(0);
     const [adIndex, setAdIndex] = useState(0);
-    const [isMuted, setIsMuted] = useState(false);
-    const [volume, setVolume] = useState(1);
+    const [isAdMode, setIsAdMode] = useState(false);
     const [keyIndex, setKeyIndex] = useState(0);
-    const [showControls, setShowControls] = useState(true);
-    // Estado para controlar la animaciÃ³n de transiciÃ³n
     const [isTransitioning, setIsTransitioning] = useState(false);
 
-    const resetControlsTimer = () => {
-        setShowControls(true);
-        if (controlsTimer.current) clearTimeout(controlsTimer.current);
-        controlsTimer.current = setTimeout(() => {
-            if (isPlaying && !isPaused) setShowControls(false);
-        }, 3000);
+    // --- 🔊 AUDIO DE FONDO AUTOMÁTICO ---
+    const handleStart = () => {
+        setIsPlaying(true);
+        if (audioRef.current) {
+            audioRef.current.play().catch(e => console.log("Permiso de audio requerido"));
+        }
     };
 
-    // LÃ³gica combinada de rotaciÃ³n con transiciones cinemÃ¡ticas
+    // --- 🔄 ROTACIÓN DE CÁMARAS (2 MINUTOS) ---
     useEffect(() => {
         if (!isPlaying || isPaused) return;
-
-        // FunciÃ³n para ejecutar el cambio de cÃ¡mara con efecto
-        const performCamSwap = () => {
-            setIsTransitioning(true); // Inicia fundido a negro
-            
-            // Esperamos a que la pantalla estÃ© negra (0.5s) para cambiar la fuente
+        const interval = setInterval(() => {
+            setIsTransitioning(true);
             setTimeout(() => {
                 setCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
                 setKeyIndex((prev) => (prev + 1) % YOUTUBE_API_KEYS.length);
-                
-                // Esperamos un momento corto y volvemos a mostrar (fade in)
-                setTimeout(() => {
-                    setIsTransitioning(false);
-                }, 100); 
-            }, 500);
-        };
-
-        // Intervalo de CÃ¡maras (Cada 2 minutos ejecuta la transiciÃ³n)
-        const camInterval = setInterval(performCamSwap, 120000);
-
-        // Intervalo de Publicidad (Cada 15 segundos sin transiciÃ³n)
-        const adInterval = setInterval(() => {
-            setAdIndex((prev) => (prev + 1) % VERTICAL_ADS.length);
-        }, 15000);
-
-        return () => { clearInterval(camInterval); clearInterval(adInterval); };
+                setIsTransitioning(false);
+            }, 600);
+        }, 120000);
+        return () => clearInterval(interval);
     }, [isPlaying, isPaused]);
 
-    const handleStart = () => {
-        setIsPlaying(true);
-        if (audioRef.current) audioRef.current.play();
-        resetControlsTimer();
-    };
-
-    const handleVolumeChange = (e) => {
-        const val = parseFloat(e.target.value);
-        setVolume(val);
-        if (audioRef.current) {
-            audioRef.current.volume = val;
-            setIsMuted(val === 0);
-        }
-    };
-
-    const toggleFullscreen = () => {
-        if (!document.fullscreenElement) {
-            videoContainerRef.current.requestFullscreen();
-        } else {
-            document.exitFullscreen();
-        }
-    };
+    // --- 💰 SISTEMA DE PUBLICIDAD (6 MINUTOS) ---
+    useEffect(() => {
+        if (!isPlaying || isPaused) return;
+        const masterInterval = setInterval(() => {
+            setIsAdMode(true);
+            setAdIndex(0);
+            let count = 0;
+            const bannerRotation = setInterval(() => {
+                count++;
+                if (count < VERTICAL_ADS.length) setAdIndex(count);
+                else {
+                    clearInterval(bannerRotation);
+                    setIsAdMode(false);
+                }
+            }, BANNER_TIME);
+        }, AD_CYCLE);
+        return () => clearInterval(masterInterval);
+    }, [isPlaying, isPaused]);
 
     return (
-        <div className="cam-screen" onMouseMove={resetControlsTimer} onClick={resetControlsTimer}>
+        <div className="cam-broadcast-container" style={{ 
+            backgroundImage: isAdMode ? "url('/camaras.jpg')" : "none",
+            backgroundColor: "#000", backgroundSize: 'cover', backgroundPosition: 'center'
+        }}>
             <audio ref={audioRef} src={AUDIO_URL} loop />
-            
-            <Link to="/" className={`back-btn-float ${!showControls && isPlaying ? 'hidden' : ''}`}>
-                <ArrowLeft size={24} />
-            </Link>
 
-            <div className="main-layout">
-                <div className="video-section" ref={videoContainerRef}>
+            <header className="broadcast-top-bar">
+                <Link to="/" className="exit-gate">
+                    <ArrowLeft size={20} /> <span>CENTRAL</span>
+                </Link>
+                <img src={logoImage} alt="Logo" className="master-logo-bug" />
+                <div className="air-signal">
+                    <div className="dot" /> MONITOREO LIVE
+                </div>
+            </header>
+
+            <div className="broadcast-floor" ref={containerRef}>
+                <motion.div 
+                    layout
+                    transition={{ duration: 0.8, ease: "circOut" }}
+                    className={`vid-frame ${isAdMode ? 'split-left' : 'fullscreen-box'} ${isTransitioning ? 'fx-fade' : ''}`}
+                >
                     {!isPlaying ? (
-                        <div className="play-overlay" onClick={handleStart}>
-                            <div className="play-circle"><Play size={50} fill="#00f2ff" /></div>
-                            <p>TRANSMISIÃ“N PROFESIONAL EN VIVO</p>
+                        <div className="init-overlay" onClick={handleStart}>
+                            <Play size={80} fill="#ff0033" stroke="none" />
+                            <p>INICIAR TRANSMISIÓN VIP</p>
                         </div>
                     ) : (
-                        // AÃ±adimos la clase 'switching' cuando hay transiciÃ³n
-                        <div className={`video-container ${isTransitioning ? 'switching' : ''}`}>
-                            <div className="yt-shield"></div>
-                            
-                            {/* LOGO TV GRANDE CON PRESENCIA */}
-                            <img src={logoImage} alt="Logo TV" className={`tv-bug-premium ${!showControls ? 'low-opacity' : ''}`} />
+                        <iframe 
+                            src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&key=${YOUTUBE_API_KEYS[keyIndex]}`} 
+                            frameBorder="0" allow="autoplay; encrypted-media"
+                        />
+                    )}
+                </motion.div>
 
-                            {!isPaused && (
-                                <iframe 
-                                    src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&key=${YOUTUBE_API_KEYS[keyIndex]}`} 
-                                    frameBorder="0" allow="autoplay; encrypted-media"
+                <AnimatePresence>
+                    {isAdMode && (
+                        <motion.div 
+                            initial={{ x: 800, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: 800, opacity: 0 }}
+                            className="ad-frame-right"
+                        >
+                            <div className="ad-content-box">
+                                <motion.img 
+                                    key={adIndex}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    src={VERTICAL_ADS[adIndex]} 
                                 />
-                            )}
-
-                            {/* CONTROLES ESTILO YOUTUBE */}
-                            <div className={`yt-controls-bar ${!showControls ? 'fade-out' : ''}`}>
-                                <div className="controls-left">
-                                    <button onClick={() => setIsPaused(!isPaused)}>
-                                        {isPaused ? <Play size={22} fill="white" /> : <Pause size={22} fill="white" />}
-                                    </button>
-                                    <div className="volume-group">
-                                        <button onClick={() => { setIsMuted(!isMuted); if (audioRef.current) audioRef.current.muted = !isMuted; }}>
-                                            {isMuted || volume === 0 ? <VolumeX size={22} /> : <Volume2 size={22} />}
-                                        </button>
-                                        <input type="range" min="0" max="1" step="0.1" value={isMuted ? 0 : volume} onChange={handleVolumeChange} className="vol-slider" />
-                                    </div>
-                                </div>
-                                <div className="controls-right">
-                                    <button onClick={toggleFullscreen}><Maximize size={22} /></button>
+                                <div className="timer-line">
+                                    <motion.div 
+                                        initial={{ width: 0 }}
+                                        animate={{ width: "100%" }}
+                                        key={`t-${adIndex}`}
+                                        transition={{ duration: BANNER_TIME/1000, ease: "linear" }}
+                                        className="fill"
+                                    />
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     )}
-                </div>
-
-                <aside className="ad-section">
-                    <div className="ad-card">
-                        <img src={VERTICAL_ADS[adIndex]} alt="Publicidad" />
-                    </div>
-                </aside>
+                </AnimatePresence>
             </div>
+
+            <footer className="broadcast-base-bar">
+                <div className="f-left">
+                    <button onClick={() => {
+                        setIsPaused(!isPaused);
+                        if (!isPaused) audioRef.current.pause();
+                        else audioRef.current.play();
+                    }}>
+                        {isPaused ? <Play size={24} fill="white" /> : <Pause size={24} fill="white" />}
+                    </button>
+                    <div className="volume-set">
+                        <Volume2 size={20} />
+                        <input type="range" min="0" max="1" step="0.1" value={audioRef.current?.volume || 1} onChange={(e) => audioRef.current.volume = e.target.value} />
+                    </div>
+                </div>
+                <div className="f-center">
+                    <span className="info-main">AUDIO: FABULOSA RADIO (BACKGROUND)</span>
+                    <span className="info-sub">SISTEMA DE MONITOREO MULTI-CAM</span>
+                </div>
+                <button onClick={() => containerRef.current.requestFullscreen()} className="fs-toggle">
+                    <Maximize size={24} />
+                </button>
+            </footer>
+
+            <style jsx>{`
+                .cam-broadcast-container { width: 100vw; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+                .broadcast-top-bar { padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.85); border-bottom: 1px solid rgba(255,255,255,0.1); }
+                .master-logo-bug { height: 40px; }
+                .exit-gate { display: flex; items-center; gap: 10px; color: #fff; font-weight: 800; font-size: 11px; letter-spacing: 2px; }
+                .air-signal { color: #ff0033; font-weight: 900; font-size: 10px; display: flex; align-items: center; gap: 8px; }
+                .dot { width: 8px; height: 8px; background: #ff0033; border-radius: 50%; animation: blink 1s infinite; }
+                
+                .broadcast-floor { flex: 1; display: flex; align-items: center; justify-content: center; padding: 30px; gap: 30px; position: relative; }
+                .vid-frame { background: #000; border-radius: 30px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.6); border: 2px solid rgba(255,255,255,0.1); }
+                .fullscreen-box { width: 95%; height: 90%; }
+                .split-left { width: 60%; height: 75%; }
+                
+                iframe { width: 100%; height: 100%; pointer-events: none; }
+                .init-overlay { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; gap: 20px; }
+                .init-overlay p { font-weight: 900; letter-spacing: 3px; font-size: 0.9rem; color: #666; }
+
+                .ad-frame-right { width: 30%; height: 75%; background: rgba(0,0,0,0.7); backdrop-filter: blur(20px); border-radius: 30px; border: 4px solid #ff0033; padding: 20px; }
+                .ad-content-box { width: 100%; height: 100%; position: relative; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+                .ad-content-box img { width: 100%; height: 100%; object-fit: cover; }
+                .timer-line { height: 6px; background: rgba(255,255,255,0.2); width: 100%; margin-top: 15px; border-radius: 10px; overflow: hidden; }
+                .timer-line .fill { height: 100%; background: #ff0033; }
+
+                .broadcast-base-bar { height: 90px; background: #000; display: flex; justify-content: space-between; align-items: center; padding: 0 60px; border-top: 1px solid rgba(255,255,255,0.1); }
+                .f-left, .volume-set { display: flex; align-items: center; gap: 25px; }
+                .f-center { display: flex; flex-direction: column; align-items: center; }
+                .info-main { color: #ff0033; font-weight: 900; font-size: 10px; letter-spacing: 3px; }
+                .info-sub { color: #444; font-size: 11px; margin-top: 5px; }
+                
+                .fx-fade { opacity: 0; }
+                @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+            `}</style>
         </div>
     );
 };
