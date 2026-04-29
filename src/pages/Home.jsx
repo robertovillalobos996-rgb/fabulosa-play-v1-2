@@ -10,6 +10,8 @@ const Home = () => {
   
   const navigate = useNavigate();
   const scrollRef = useRef(null);
+  // Nuevo: Referencia para el amortiguador del scroll
+  const scrollTimeoutRef = useRef(null); 
 
   const backgrounds = [
     '/tv_1.webp', '/tv_2.webp', '/tv_3.webp', '/tv_4.webp', 
@@ -24,13 +26,8 @@ const Home = () => {
     { id: 'kids', path: '/tv-1', img: '/fabulosito_kids.webp' },
     { id: 'ranchera', path: '/ranchera', img: '/borrachos_play.webp' },
     { id: 'radioscr', path: '/radios-cr', img: '/card-radios.webp' },
-    
-    // 👇 NUEVA CIRUGÍA: CAMBIO DE CINE PLAY 👇
     { id: 'movies', path: '/cine-play', img: '/cine_play.png' },
-    
-    // 👇 CIRUGÍA ANTERIOR INTACTA: CANALES PLAY 👇
     { id: 'tv', path: '/canales-play', img: '/canales_play.png' },
-    
     { id: 'karaoke', path: '/karaoke', img: '/card-fabulosa-karaoke.webp' },
     { id: 'alabanza', path: '/alabanza', img: '/card-alabanza.webp' },
     { id: 'camaras', path: '/camaras', img: '/card-camaras.webp' },
@@ -57,7 +54,7 @@ const Home = () => {
     return () => { clearInterval(timer); clearInterval(bgTimer); };
   }, []);
 
-  // 🚀 DETECTOR DE CENTRO ULTRA-AGIL
+  // 🚀 DETECTOR DE CENTRO ULTRA-FLUIDO (Sin brincos)
   const handleScroll = () => {
     const container = scrollRef.current;
     if (!container) return;
@@ -79,13 +76,19 @@ const Home = () => {
       setActiveIndex(closestIndex);
     }
 
-    // Lógica de infinito
-    const scrollWidth = container.scrollWidth / 3;
-    if (container.scrollLeft < 50) {
-      container.scrollLeft = scrollWidth + container.scrollLeft;
-    } else if (container.scrollLeft > scrollWidth * 2) {
-      container.scrollLeft = container.scrollLeft - scrollWidth;
-    }
+    // EL SECRETO: Esperamos a que el usuario deje de mover el dedo para hacer el loop infinito
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    
+    scrollTimeoutRef.current = setTimeout(() => {
+      if (!container) return;
+      const scrollWidth = container.scrollWidth / 3;
+      
+      if (container.scrollLeft < 50) {
+        container.scrollLeft = scrollWidth + container.scrollLeft;
+      } else if (container.scrollLeft > scrollWidth * 2) {
+        container.scrollLeft = container.scrollLeft - scrollWidth;
+      }
+    }, 150); // 150ms de amortiguador
   };
 
   const onCardClick = (idx, card) => {
@@ -131,6 +134,7 @@ const Home = () => {
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
+          // AQUÍ SE PUSIERON LOS FRENOS: snap-mandatory
           className="flex items-end overflow-x-auto no-scrollbar px-[40vw] h-[55vh] gap-4 md:gap-10 snap-x snap-mandatory pointer-events-auto"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
@@ -141,7 +145,7 @@ const Home = () => {
                 key={`${card.id}-${idx}`}
                 onClick={() => onCardClick(idx, card)}
                 className={`
-                  snap-center relative flex-shrink-0 cursor-pointer transition-all duration-300 ease-out will-change-transform
+                  snap-center snap-always relative flex-shrink-0 cursor-pointer transition-all duration-500 ease-out will-change-transform
                   ${focused 
                     ? 'w-[75vw] sm:w-[320px] lg:w-[450px] z-[1000] opacity-100' 
                     : 'w-[28vw] sm:w-[160px] lg:w-[240px] z-10 opacity-30 blur-[0.5px]'}
@@ -156,7 +160,7 @@ const Home = () => {
                   <img 
                     src={card.img} 
                     className={`
-                      max-w-full max-h-full object-contain transition-all duration-300
+                      max-w-full max-h-full object-contain transition-all duration-500
                       ${focused 
                         ? 'drop-shadow-[0_0_50px_rgba(34,211,238,1)] brightness-110' 
                         : 'drop-shadow-[0_10px_20px_rgba(0,0,0,1)]'}
