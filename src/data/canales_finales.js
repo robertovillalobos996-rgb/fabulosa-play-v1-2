@@ -229,6 +229,110 @@ export const canalesTV = [
         "logo": "/logos_canales/tele_brunca.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tele-brunca&mediaUrl=https%3A%2F%2F59ef525c24caa.streamlock.net%2Ftelebrunca%2Ftelebrunca%2Fplaylist.m3u8"
     },
+   {
+        "id": "video-tour",
+        "title": "CANAL VIDEO TOUR CHANNEL",
+        "url": "https://59ef525c24caa.streamlock.net/videotour/videotour/chunklist_w868169864.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/video.jpg",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=video-tour&mediaUrl=https%3A%2F%2F59ef525c24caa.streamlock.net%2Fvideotour%2Fvideotour%2Fchunklist_w868169864.m3u8"
+    },
+    {
+        "id": "cristo-vision-31",
+        "title": "Canal 31 Cristo Visión",
+        "url": "https://3a310f6ec721e6b362fcd22772b57f36a2fe6bb2.tabeelcr.com:8080/cristovision31/iptv.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/Cristo_Visión.png",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=cristo-vision-31&mediaUrl=https%3A%2F%2F3a310f6ec721e6b362fcd22772b57f36a2fe6bb2.tabeelcr.com%3A8080%2Fcristovision31%2Fiptv.m3u8"
+    },
+    {
+        "id": "sarapiqui-tv",
+        "title": "SARAPIQUI TV",
+        "url": "https://lstv.duckdns.org:449/hls/stv.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/SARAPIQUI TV.png",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=sarapiqui-tv&mediaUrl=https%3A%2F%2Flstv.duckdns.org%3A449%2Fhls%2Fstv.m3u8"
+    },
+    {
+        "id": "anime-station",
+        "title": "CANAL ANIME STATION",
+        "url": "https://live20.bozztv.com/akamaissh101/ssh101/livestreamingtv/chunks.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/CANAL ANIME STATION.jpg",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=anime-station&mediaUrl=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Flivestreamingtv%2Fchunks.m3u8"
+    },
+    {
+        "id": "telesistema",
+        "title": "TELESISTEMA",
+        "url": "https://k20.usastreams.com:8081/telesistema/tracks-v1a1/mono.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/TELESISTEMA.jpg",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=telesistema&mediaUrl=https%3A%2F%2Fk20.usastreams.com%3A8081%2Ftelesistema%2Ftracks-v1a1%2Fmono.m3u8"
+    },
+    {
+        "id": "wow",
+        "title": "WOW",
+        "url": "https://live20.bozztv.com/giatv/giatv-wowmovies/wowmovies/chunks.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/WOW.png",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=wow&mediaUrl=https%3A%2F%2Flive20.bozztv.com%2Fgiatv%2Fgiatv-wowmovies%2Fwowmovies%2Fchunks.m3u8"
+    },
+    {
+        "id": "retro-musi-tv",
+        "title": "RETRO MUSI TV",
+        "url": "https://stream.enlineatv.net/hls/retromusic/1_2/index.m3u8?tkn=2333110130",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/RETRO MUSI TV.jpg",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=retro-musi-tv&mediaUrl=https%3A%2F%2Fstream.enlineatv.net%2Fhls%2Fretromusic%2F1_2%2Findex.m3u8%3Ftkn%3D2333110130"
+    },
+    {
+        "id": "tele-uno",
+        "title": "TELE UNO",
+        "url": "https://5eac7b031d945.streamlock.net/TVUNO/TVUNO/chunklist_w605186919.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/TELE UNO.jpg",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tele-uno&mediaUrl=https%3A%2F%2F5eac7b031d945.streamlock.net%2FTVUNO%2FTVUNO%2Fchunklist_w605186919.m3u8"
+    },
+    {
+        "id": "clasicos-animados",
+        "title": "CLASICOS ANIMADOS",
+        "url": "https://live20.bozztv.com/giatvplayout7/giatv-209599/tracks-v1a1/mono.ts.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/CLASICOS ANIMADOS.png",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=clasicos-animados&mediaUrl=https%3A%2F%2Flive20.bozztv.com%2Fgiatvplayout7%2Fgiatv-209599%2Ftracks-v1a1%2Fmono.ts.m3u8"
+    },
+    {
+        "id": "cedros-tv",
+        "title": "CEDROS TV",
+        "url": "https://eu1.servers10.com:8081/cedrostv/tracks-v1a1/mono.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/CEDROS TV.jpg",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=cedros-tv&mediaUrl=https%3A%2F%2Feu1.servers10.com%3A8081%2Fcedrostv%2Ftracks-v1a1%2Fmono.m3u8"
+    },
+    {
+        "id": "ejtv",
+        "title": "EJTV",
+        "url": "https://livecdn.enlace.plus/ejtv/smil:ejtv-hd.smil/chunklist_b1712000_sleng.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/EJTV.png",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=ejtv&mediaUrl=https%3A%2F%2Flivecdn.enlace.plus%2Fejtv%2Fsmil%3Aejtv-hd.smil%2Fchunklist_b1712000_sleng.m3u8"
+    },
+    {
+        "id": "retro-tv-online",
+        "title": "RETRO TV ONLINE",
+        "url": "https://live20.bozztv.com/akamaissh101/ssh101/retrotvcr2025/chunks.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/RETRO TV ONLINE.jpg",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=retro-tv-online&mediaUrl=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Fretrotvcr2025%2Fchunks.m3u8"
+    },
+    {
+        "id": "dragon-ball",
+        "title": "DRAGON BALL",
+        "url": "https://live20.bozztv.com/giatv/giatv-dball/dball/chunks.m3u8",
+        "genre": "Costa Rica",
+        "logo": "/logos_canales/DRAGON BALL.png",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=dragon-ball&mediaUrl=https%3A%2F%2Flive20.bozztv.com%2Fgiatv%2Fgiatv-dball%2Fdball%2Fchunks.m3u8"
+    },
     {
         "id": "vm-latino",
         "title": "VM Latino",
