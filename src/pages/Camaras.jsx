@@ -12,21 +12,13 @@ const YOUTUBE_CAMS = [
     "uV3wWHSvkfs", "nFozEhYTEMo", "8Rw-tZTeBjU", "rqBfiegG5qU"
 ];
 
-// RUTAS DE IMÁGENES
+// SOLO QUEDAN LAS IMÁGENES
 const ADS_IMAGES = [
     '/publicidad_vertical/mexicana_1.png',
     '/publicidad_vertical/mexicana_2.png',
     '/publicidad_vertical/unas_yendry.png',
     '/publicidad_vertical/anunciete_1.png',
     '/publicidad_vertical/chinito_express.png'
-];
-
-// RUTAS NUEVAS DE LOS VIDEOS COMERCIALES
-const ADS_VIDEOS = [
-    '/media/comerciales/pina_express.mp4',
-    '/media/comerciales/repuestos_hayco.mp4',
-    '/media/comerciales/comercial_chinito.mp4',
-    '/media/comerciales/comercial_fabulosa.mp4'
 ];
 
 const Camaras = () => {
@@ -42,7 +34,7 @@ const Camaras = () => {
     // ESTADOS DE CÁMARAS
     const [currentCamIndex, setCurrentCamIndex] = useState(0);
     
-    // ESTADOS DE PUBLICIDAD
+    // ESTADOS DE PUBLICIDAD (SOLO IMÁGENES)
     const [adPhase, setAdPhase] = useState('IDLE'); 
     const [currentAdIndex, setCurrentAdIndex] = useState(0);
     const timerRef = useRef(null);
@@ -69,7 +61,7 @@ const Camaras = () => {
         }
     }, [volume, isMuted]);
 
-    // 2. CONTROLES ESTILO YOUTUBE (Se ocultan por inactividad)
+    // 2. CONTROLES ESTILO YOUTUBE
     useEffect(() => {
         const handleActivity = () => {
             setIsControlsVisible(true);
@@ -93,7 +85,7 @@ const Camaras = () => {
         };
     }, []);
 
-    // 3. CAMBIO DE CÁMARA CADA 2 MINUTOS
+    // 3. CAMBIO DE CÁMARA CADA 2 MINUTOS CON EFECTO CROSSFADE
     useEffect(() => {
         const camTimer = setInterval(() => {
             setCurrentCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
@@ -101,7 +93,7 @@ const Camaras = () => {
         return () => clearInterval(camTimer);
     }, []);
 
-    // 4. LÓGICA DE TIEMPOS DE PUBLICIDAD
+    // 4. LÓGICA DE TIEMPOS DE PUBLICIDAD (SOLO IMÁGENES)
     useEffect(() => {
         timerRef.current = setTimeout(() => {
             setAdPhase('IMAGES');
@@ -112,19 +104,12 @@ const Camaras = () => {
     }, []);
 
     const nextAdPhase = () => {
-        if (adPhase === 'IMAGES') {
-            setAdPhase('IDLE');
-            timerRef.current = setTimeout(() => {
-                setAdPhase('VIDEOS');
-                setCurrentAdIndex(0);
-            }, 5 * 60 * 1000); // 5 Minutos
-        } else if (adPhase === 'VIDEOS') {
-            setAdPhase('IDLE');
-            timerRef.current = setTimeout(() => {
-                setAdPhase('IMAGES');
-                setCurrentAdIndex(0);
-            }, 6 * 60 * 1000); // 6 Minutos
-        }
+        setAdPhase('IDLE');
+        // Después de las imágenes, espera 6 minutos para volver a mostrarlas
+        timerRef.current = setTimeout(() => {
+            setAdPhase('IMAGES');
+            setCurrentAdIndex(0);
+        }, 6 * 60 * 1000); 
     };
 
     // 5. REPRODUCCIÓN AUTOMÁTICA DE IMÁGENES
@@ -140,14 +125,6 @@ const Camaras = () => {
             return () => clearTimeout(imgTimer);
         }
     }, [adPhase, currentAdIndex]);
-
-    const handleVideoEnd = () => {
-        if (currentAdIndex + 1 < ADS_VIDEOS.length) {
-            setCurrentAdIndex(prev => prev + 1);
-        } else {
-            nextAdPhase();
-        }
-    };
 
     return (
         <>
@@ -183,15 +160,13 @@ const Camaras = () => {
                 >
                     <div className="absolute inset-0 z-40 bg-transparent cursor-default"></div>
 
-                    {/* CANAL DE YOUTUBE CON EFECTO CROSSFADE SÚPER RÁPIDO Y SIN CORTES NEGROS */}
-                    {/* Al quitar mode="wait", el video viejo se queda mientras el nuevo carga por encima, tapando el botón de play */}
                     <AnimatePresence>
                         <motion.div
                             key={currentCamIndex}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }} // Transición rápida de 0.8s
+                            transition={{ duration: 0.8 }} 
                             className="absolute inset-0 w-full h-full"
                         >
                             <iframe 
@@ -205,15 +180,13 @@ const Camaras = () => {
                     </AnimatePresence>
                 </motion.div>
 
-                {/* SECCIÓN 2: CAJA DE COMERCIALES (DERECHA) */}
+                {/* SECCIÓN 2: CAJA DE COMERCIALES (DERECHA - SOLO IMÁGENES) */}
                 <motion.div 
                     className="h-full bg-black border-l-2 border-neutral-800 flex items-center justify-center relative overflow-hidden"
                     animate={{ width: isAdMode ? '40vw' : '0vw' }}
                     transition={{ duration: 1.2, ease: "easeInOut" }}
                 >
-                    {/* ENVOLTORIO ANIMADO PARA LAS 2 CAJAS (IMÁGENES O VIDEOS) */}
                     <AnimatePresence mode="wait">
-                        {/* 1. CAJA PARA IMÁGENES */}
                         {isAdMode && adPhase === 'IMAGES' && ADS_IMAGES[currentAdIndex] && (
                             <motion.div 
                                 key={`img-${currentAdIndex}`}
@@ -226,27 +199,6 @@ const Camaras = () => {
                                 <img 
                                     src={ADS_IMAGES[currentAdIndex]} 
                                     alt="Fabulosa Publicidad" 
-                                    className="max-w-full max-h-full object-contain drop-shadow-2xl rounded-xl"
-                                />
-                            </motion.div>
-                        )}
-
-                        {/* 2. CAJA PARA VIDEOS (REPRODUCTOR 100% MUDO CON RUTAS NUEVAS) */}
-                        {isAdMode && adPhase === 'VIDEOS' && ADS_VIDEOS[currentAdIndex] && (
-                            <motion.div 
-                                key={`vid-${currentAdIndex}`}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 1.05 }}
-                                transition={{ duration: 0.8 }}
-                                className="absolute inset-0 flex items-center justify-center p-4 bg-black"
-                            >
-                                <video 
-                                    src={ADS_VIDEOS[currentAdIndex]} 
-                                    autoPlay 
-                                    playsInline 
-                                    muted={true} // SIN AUDIO
-                                    onEnded={handleVideoEnd}
                                     className="max-w-full max-h-full object-contain drop-shadow-2xl rounded-xl"
                                 />
                             </motion.div>
@@ -295,7 +247,6 @@ const Camaras = () => {
                 </div>
             </div>
 
-            {/* CSS DEL BLOQUEO DE ROTACIÓN */}
             <style jsx global>{`
                 .landscape-lock-overlay {
                     position: fixed;
@@ -307,14 +258,9 @@ const Camaras = () => {
                     align-items: center;
                     justify-content: center;
                 }
-
                 @media screen and (max-width: 850px) and (orientation: portrait) {
-                    .landscape-lock-overlay {
-                        display: flex !important;
-                    }
-                    .broadcast-master {
-                        display: none !important;
-                    }
+                    .landscape-lock-overlay { display: flex !important; }
+                    .broadcast-master { display: none !important; }
                 }
             `}</style>
         </>
