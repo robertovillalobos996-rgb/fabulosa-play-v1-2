@@ -1,24 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Maximize, Play, Pause, Volume2, VolumeX, ArrowLeft } from 'lucide-react';
+import { Volume2, VolumeX, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hls from 'hls.js'; 
 import logoImage from '../assets/logo_fabulosa.png';
 
 const AUDIO_RADIO_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
-const YOUTUBE_CAMS = [
-    "rnXIjl_Rzy4", // Pantalla 1
-    "EO_1LWqsCNE", // Pantalla 2 (LÓGICA DE COMERCIALES)
-    "gFRtAAmiFbE", 
-    "loHbMM9JfCs", 
-    "uV3wWHSvkfs", 
-    "nFozEhYTEMo", 
-    "8Rw-tZTeBjU", 
-    "rqBfiegG5qU"
-];
-
-// SUS API KEYS RESTAURADAS Y PROTEGIDAS
+// SUS API KEYS PROTEGIDAS
 const YOUTUBE_API_KEYS = [
     "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
     "AIzaSyBUk0oq1zjA6BKx5HK8DEQc1TxQqreqGtk", "AIzaSyBys-0J3T5Ou_fdPGxqYC5LWDMgppwD0Y4",
@@ -29,11 +18,39 @@ const YOUTUBE_API_KEYS = [
     "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
+const YOUTUBE_CAMS = [
+    "rnXIjl_Rzy4", "EO_1LWqsCNE", "gFRtAAmiFbE", "loHbMM9JfCs", 
+    "uV3wWHSvkfs", "nFozEhYTEMo", "8Rw-tZTeBjU", "rqBfiegG5qU"
+];
+
+// LISTA OFICIAL DE COMERCIALES EXACTAMENTE COMO USTED LA PIDIÓ
+const PUBLICIDAD = [
+    { type: 'video', src: '/publicidad_vertical/comercial_fabulosa.mp4' },
+    { type: 'image', src: '/publicidad_vertical/mexicana_1.png' },
+    { type: 'image', src: '/publicidad_vertical/mexicana_2.png' },
+    { type: 'video', src: '/publicidad_vertical/pina_express.mp4' },
+    { type: 'video', src: '/publicidad_vertical/repuestos_hayco.mp4' },
+    { type: 'image', src: '/publicidad_vertical/unas_yendry.png' },
+    { type: 'image', src: '/publicidad_vertical/anunciete_1.png' },
+    { type: 'image', src: '/publicidad_vertical/chinito_express.png' },
+    { type: 'video', src: '/publicidad_vertical/comercial_chinito.mp4' }
+];
+
 const Camaras = () => {
     const navigate = useNavigate();
-    const [isMuted, setIsMuted] = useState(true);
+    
+    // ESTADOS DEL AUDIO
+    const [volume, setVolume] = useState(0.5);
+    const [isMuted, setIsMuted] = useState(false);
+    const [showVolBar, setShowVolBar] = useState(false);
     const audioRef = useRef(null);
 
+    // ESTADOS DE CÁMARAS Y PUBLICIDAD
+    const [currentCamIndex, setCurrentCamIndex] = useState(0);
+    const [isAdMode, setIsAdMode] = useState(false);
+    const [currentAdIndex, setCurrentAdIndex] = useState(0);
+
+    // 1. INICIAR AUDIO RADIO HLS
     useEffect(() => {
         if (audioRef.current) {
             if (Hls.isSupported()) {
@@ -43,202 +60,181 @@ const Camaras = () => {
             } else if (audioRef.current.canPlayType('application/vnd.apple.mpegurl')) {
                 audioRef.current.src = AUDIO_RADIO_URL;
             }
+            audioRef.current.volume = volume;
         }
     }, []);
 
-    const toggleMute = () => {
+    // 2. ACTUALIZAR VOLUMEN EN TIEMPO REAL
+    useEffect(() => {
         if (audioRef.current) {
-            audioRef.current.muted = !isMuted;
-            setIsMuted(!isMuted);
-            audioRef.current.play().catch(() => {});
+            audioRef.current.volume = isMuted ? 0 : volume;
         }
+    }, [volume, isMuted]);
+
+    // 3. CAMBIAR DE CÁMARA CADA 2 MINUTOS (120,000 ms)
+    useEffect(() => {
+        const camTimer = setInterval(() => {
+            setCurrentCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
+        }, 120000); 
+        return () => clearInterval(camTimer);
+    }, []);
+
+    // 4. DISPARAR MODO COMERCIALES CADA 6 MINUTOS (360,000 ms)
+    useEffect(() => {
+        const adTrigger = setInterval(() => {
+            setCurrentAdIndex(0); // Reiniciar lista de anuncios
+            setIsAdMode(true);    // Partir la pantalla
+        }, 360000); 
+        return () => clearInterval(adTrigger);
+    }, []);
+
+    // 5. LÓGICA DE REPRODUCCIÓN DE COMERCIALES
+    useEffect(() => {
+        if (!isAdMode) return;
+
+        const currentAd = PUBLICIDAD[currentAdIndex];
+        
+        // Si ya no hay más anuncios, volver a pantalla completa
+        if (!currentAd) {
+            setIsAdMode(false);
+            return;
+        }
+
+        // Si es IMAGEN, esperamos 10 segundos y pasamos al siguiente
+        if (currentAd.type === 'image') {
+            const imgTimer = setTimeout(() => {
+                setCurrentAdIndex((prev) => prev + 1);
+            }, 10000);
+            return () => clearTimeout(imgTimer);
+        }
+        // Si es VIDEO, el evento "onEnded" del tag <video> hará el cambio
+    }, [isAdMode, currentAdIndex]);
+
+    const handleVideoEnd = () => {
+        setCurrentAdIndex((prev) => prev + 1);
     };
 
     return (
-        <div className="broadcast-master-root">
-            <audio ref={audioRef} autoPlay muted={isMuted} loop />
+        <div className="broadcast-master bg-black h-screen w-screen overflow-hidden relative flex">
+            
+            {/* RADIO OCULTA DE FONDO */}
+            <audio ref={audioRef} autoPlay loop />
 
-            <div className="broadcast-bug-logo">
-                <img src={logoImage} alt="Fabulosa Logo" />
+            {/* LOGO FIJO */}
+            <div className="absolute top-6 left-6 z-50 pointer-events-none">
+                <img src={logoImage} alt="Fabulosa Logo" className="h-16 md:h-24 drop-shadow-[0_0_20px_rgba(0,0,0,1)]" />
             </div>
 
-            <div className="pan-view-strip">
-                {YOUTUBE_CAMS.map((id, index) => (
-                    <div key={id} className="isolated-viewport-box">
-                        <div className="shield-invisible-master"></div>
-                        
-                        {/* LÓGICA DE COMERCIALES EN LA SEGUNDA PANTALLA */}
-                        {index === 1 && (
-                            <a 
-                                href="https://wa.me/50664035313?text=Hola!%20Me%20interesa%20anunciar%20mi%20negocio%20en%20esta%20pantalla" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="hitbox-btn"
-                                title="Anuncie su marca aquí"
-                            ></a>
-                        )}
+            {/* SECCIÓN IZQUIERDA: PANTALLA GIGANTE DE CÁMARAS */}
+            <motion.div 
+                className="h-full relative flex items-center justify-center bg-black overflow-hidden"
+                animate={{ width: isAdMode ? '60vw' : '100vw' }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+            >
+                {/* CANDADO / ESPEJO PARA QUE NO VAYAN A YOUTUBE */}
+                <div className="absolute inset-0 z-40 bg-transparent cursor-default"></div>
 
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={currentCamIndex}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.5 }}
+                        className="absolute w-full h-full"
+                    >
                         <iframe 
-                            src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&playlist=${id}&loop=1`}
+                            src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[currentCamIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0`}
+                            className="w-full h-full pointer-events-none"
+                            style={{ transform: 'scale(1.3)' }} // Zoom para evitar bordes negros de YouTube
                             frameBorder="0"
                             allow="autoplay; encrypted-media"
                         ></iframe>
-                    </div>
-                ))}
-            </div>
+                    </motion.div>
+                </AnimatePresence>
+            </motion.div>
 
-            <div className="control-center-deck">
-                <button onClick={() => navigate('/')} className="btn-premium-action gray">
-                    <ArrowLeft size={20} /> <span className="hide-mobile">VOLVER</span>
-                </button>
+            {/* SECCIÓN DERECHA: CAJA DE COMERCIALES */}
+            <motion.div 
+                className="h-full bg-neutral-900 border-l border-neutral-800 flex items-center justify-center relative overflow-hidden"
+                animate={{ width: isAdMode ? '40vw' : '0vw' }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+            >
+                {isAdMode && PUBLICIDAD[currentAdIndex] && (
+                    <motion.div 
+                        key={currentAdIndex}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -50 }}
+                        transition={{ duration: 0.8 }}
+                        className="w-full h-full flex items-center justify-center p-4"
+                    >
+                        {PUBLICIDAD[currentAdIndex].type === 'image' ? (
+                            <img 
+                                src={PUBLICIDAD[currentAdIndex].src} 
+                                alt="Anuncio" 
+                                className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
+                            />
+                        ) : (
+                            <video 
+                                src={PUBLICIDAD[currentAdIndex].src} 
+                                autoPlay 
+                                muted={false} // Se reproduce con su propio audio
+                                onEnded={handleVideoEnd}
+                                className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
+                            />
+                        )}
+                    </motion.div>
+                )}
+            </motion.div>
+
+            {/* PANEL DE CONTROL: VOLUMEN Y SALIR */}
+            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-50 flex items-center gap-6 bg-black/60 backdrop-blur-md px-8 py-4 rounded-full border border-white/10">
                 
-                <div className="live-status-pill">
-                    <div className="blink-red"></div>
-                    <span>MULTICAM EN VIVO</span>
+                <button onClick={() => navigate('/')} className="text-gray-400 hover:text-white transition font-bold flex items-center gap-2 text-sm uppercase tracking-widest">
+                    <ArrowLeft size={18} /> Salir
+                </button>
+
+                <div className="w-px h-6 bg-white/20"></div>
+
+                <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
+                    <span className="text-white text-xs font-black tracking-[0.2em]">EN VIVO</span>
                 </div>
 
-                <button onClick={toggleMute} className={`btn-premium-action ${isMuted ? 'red' : 'green'}`}>
-                    {isMuted ? <VolumeX size={22} /> : <Volume2 size={22} />}
-                    <span>{isMuted ? 'ACTIVAR AUDIO' : 'AUDIO ON'}</span>
-                </button>
+                <div className="w-px h-6 bg-white/20"></div>
+
+                {/* BOTÓN Y BARRA DE VOLUMEN INTELIGENTE */}
+                <div 
+                    className="relative flex items-center gap-4 group"
+                    onMouseEnter={() => setShowVolBar(true)}
+                    onMouseLeave={() => setShowVolBar(false)}
+                >
+                    <button 
+                        onClick={() => setIsMuted(!isMuted)} 
+                        className={`transition ${isMuted ? 'text-red-500' : 'text-green-400'}`}
+                    >
+                        {isMuted || volume === 0 ? <VolumeX size={24} /> : <Volume2 size={24} />}
+                    </button>
+                    
+                    {/* La barra aparece y desaparece sola */}
+                    <div className={`overflow-hidden transition-all duration-500 flex items-center ${showVolBar ? 'w-24 opacity-100' : 'w-0 opacity-0'}`}>
+                        <input 
+                            type="range" 
+                            min="0" 
+                            max="1" 
+                            step="0.01" 
+                            value={isMuted ? 0 : volume}
+                            onChange={(e) => {
+                                setVolume(parseFloat(e.target.value));
+                                setIsMuted(false);
+                            }}
+                            className="w-full accent-green-400 h-1 bg-gray-600 rounded-lg outline-none cursor-pointer"
+                        />
+                    </div>
+                </div>
+
             </div>
-
-            <style jsx>{`
-                .broadcast-master-root { 
-                    background: #000; 
-                    height: 100vh; 
-                    width: 100vw; 
-                    overflow-x: auto; 
-                    overflow-y: hidden; 
-                    display: flex; 
-                    align-items: center; 
-                    position: relative;
-                    scroll-snap-type: x mandatory; 
-                }
-
-                .pan-view-strip { 
-                    display: flex; 
-                    align-items: center; 
-                    gap: 0px; 
-                    padding: 0px; 
-                    flex-shrink: 0;
-                }
-
-                .isolated-viewport-box { 
-                    background: #000; 
-                    position: relative; 
-                    overflow: hidden; 
-                    width: 100vw; 
-                    height: 100vh; 
-                    scroll-snap-align: center; 
-                }
-
-                iframe { 
-                    width: 100%; 
-                    height: 100%; 
-                    transform: scale(1.3); 
-                    pointer-events: none; 
-                }
-                
-                .shield-invisible-master { 
-                    position: absolute; 
-                    inset: 0; 
-                    z-index: 50; 
-                    background: transparent; 
-                }
-
-                /* BOTÓN INVISIBLE DE COMERCIALES */
-                .hitbox-btn {
-                    position: absolute;
-                    inset: 0;
-                    z-index: 60; 
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                    cursor: pointer;
-                    background: transparent;
-                }
-
-                .broadcast-bug-logo { 
-                    position: fixed; 
-                    top: 40px; 
-                    left: 40px; 
-                    z-index: 100; 
-                    pointer-events: none;
-                }
-                .broadcast-bug-logo img { 
-                    height: 120px; 
-                    filter: drop-shadow(0 0 30px rgba(0,0,0,1)); 
-                }
-
-                .control-center-deck { 
-                    position: fixed; 
-                    bottom: 40px; 
-                    left: 50%; 
-                    transform: translateX(-50%); 
-                    background: rgba(20,20,20,0.8); 
-                    backdrop-filter: blur(30px); 
-                    border: 1px solid rgba(255,255,255,0.1); 
-                    padding: 15px 40px; 
-                    border-radius: 100px; 
-                    display: flex; 
-                    align-items: center; 
-                    gap: 30px; 
-                    z-index: 200;
-                    width: auto;
-                    max-width: 90%;
-                }
-
-                .btn-premium-action {
-                    background: transparent;
-                    border: none;
-                    color: #fff;
-                    font-weight: 900;
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    cursor: pointer;
-                    font-size: 14px;
-                    text-transform: uppercase;
-                }
-
-                .btn-premium-action.red { color: #ff4444; }
-                .btn-premium-action.green { color: #00ff88; }
-                .btn-premium-action.gray { color: #888; }
-
-                .live-status-pill {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    background: rgba(255,255,255,0.05);
-                    padding: 8px 20px;
-                    border-radius: 50px;
-                    font-size: 12px;
-                    font-weight: 900;
-                    letter-spacing: 2px;
-                }
-
-                .blink-red { width: 8px; height: 8px; background: red; border-radius: 50%; animation: pulse 1s infinite; }
-
-                @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-
-                /* 📱 RESPONSIVO PERFECTO PARA CELULARES */
-                @media (max-width: 768px) {
-                    .broadcast-bug-logo { top: 20px; left: 20px; }
-                    .broadcast-bug-logo img { height: 60px; } 
-                    
-                    .control-center-deck { 
-                        bottom: 20px; 
-                        padding: 10px 20px; 
-                        gap: 15px; 
-                    }
-                    .hide-mobile { display: none; }
-                    .btn-premium-action span { font-size: 10px; }
-                    .live-status-pill { padding: 6px 12px; font-size: 9px; }
-                    
-                    iframe { transform: scale(1.5); } 
-                }
-            `}</style>
         </div>
     );
 };
