@@ -8,9 +8,11 @@ const Home = () => {
   const [bgIndex, setBgIndex] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   
+  // NUEVO: Detector exclusivo para iPhone
+  const [isIPhone, setIsIPhone] = useState(false);
+
   const navigate = useNavigate();
   const scrollRef = useRef(null);
-  // Nuevo: Referencia para el amortiguador del scroll
   const scrollTimeoutRef = useRef(null); 
 
   const backgrounds = [
@@ -34,14 +36,15 @@ const Home = () => {
     { id: 'mercadeo', path: '/centro-mercadeo', img: '/mercadeo.webp' },
   ];
 
-  // Triplicamos para el loop sin fin
   const cards = [...originalCards, ...originalCards, ...originalCards];
 
   useEffect(() => {
+    // Activamos el detector exclusivo de iPhone
+    setIsIPhone(/iPhone/i.test(navigator.userAgent));
+
     const timer = setInterval(() => setFecha(new Date()), 1000);
     const bgTimer = setInterval(() => setBgIndex((prev) => (prev + 1) % backgrounds.length), 15000);
     
-    // Posicionamiento inicial en el bloque central
     if (scrollRef.current) {
       const mid = originalCards.length;
       setActiveIndex(mid);
@@ -54,7 +57,6 @@ const Home = () => {
     return () => { clearInterval(timer); clearInterval(bgTimer); };
   }, []);
 
-  // 🚀 DETECTOR DE CENTRO ULTRA-FLUIDO (Sin brincos)
   const handleScroll = () => {
     const container = scrollRef.current;
     if (!container) return;
@@ -76,7 +78,6 @@ const Home = () => {
       setActiveIndex(closestIndex);
     }
 
-    // EL SECRETO: Esperamos a que el usuario deje de mover el dedo para hacer el loop infinito
     if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     
     scrollTimeoutRef.current = setTimeout(() => {
@@ -88,7 +89,7 @@ const Home = () => {
       } else if (container.scrollLeft > scrollWidth * 2) {
         container.scrollLeft = container.scrollLeft - scrollWidth;
       }
-    }, 150); // 150ms de amortiguador
+    }, 150); 
   };
 
   const onCardClick = (idx, card) => {
@@ -116,7 +117,6 @@ const Home = () => {
       ))}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-0" />
 
-      {/* HEADER: LOGO, HORA, FECHA */}
       <header className="absolute top-8 left-10 md:left-16 z-10 flex items-center gap-8 pointer-events-none">
         <img src={logoFabulosa} alt="Logo" className="h-12 md:h-20 object-contain drop-shadow-2xl" />
         <div className="flex flex-col border-l-2 border-cyan-400/30 pl-6">
@@ -129,12 +129,10 @@ const Home = () => {
         </div>
       </header>
 
-      {/* CARRUSEL INFINITO Y AL FRENTE */}
       <div className="absolute bottom-0 w-full z-[999] pb-4 md:pb-8">
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          // AQUÍ SE PUSIERON LOS FRENOS: snap-mandatory
           className="flex items-end overflow-x-auto no-scrollbar px-[40vw] h-[55vh] gap-4 md:gap-10 snap-x snap-mandatory pointer-events-auto"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
@@ -144,15 +142,17 @@ const Home = () => {
               <div
                 key={`${card.id}-${idx}`}
                 onClick={() => onCardClick(idx, card)}
+                // CIRUGÍA DE CLASES: Si es iPhone, usamos w-[55vw] en vez de w-[75vw] para evitar cortes
                 className={`
                   snap-center snap-always relative flex-shrink-0 cursor-pointer transition-all duration-500 ease-out will-change-transform
                   ${focused 
-                    ? 'w-[75vw] sm:w-[320px] lg:w-[450px] z-[1000] opacity-100' 
-                    : 'w-[28vw] sm:w-[160px] lg:w-[240px] z-10 opacity-30 blur-[0.5px]'}
+                    ? `${isIPhone ? 'w-[55vw]' : 'w-[75vw]'} sm:w-[320px] lg:w-[450px] z-[1000] opacity-100` 
+                    : `${isIPhone ? 'w-[20vw]' : 'w-[28vw]'} sm:w-[160px] lg:w-[240px] z-10 opacity-30 blur-[0.5px]`}
                 `}
+                // CIRUGÍA DE ESTILOS: Si es iPhone, la escala máxima es 1.05 en vez de 1.2
                 style={{
                   transform: focused 
-                    ? 'scale(1.2) translateY(-70px)' 
+                    ? (isIPhone ? 'scale(1.05) translateY(-50px)' : 'scale(1.2) translateY(-70px)')
                     : 'scale(0.95) translateY(0px)'
                 }}
               >

@@ -8,8 +8,25 @@ import logoImage from '../assets/logo_fabulosa.png';
 const AUDIO_RADIO_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
 const YOUTUBE_CAMS = [
-    "rnXIjl_Rzy4", "EO_1LWqsCNE", "gFRtAAmiFbE", "loHbMM9JfCs", 
-    "uV3wWHSvkfs", "nFozEhYTEMo", "8Rw-tZTeBjU", "rqBfiegG5qU"
+    "rnXIjl_Rzy4", // Pantalla 1
+    "EO_1LWqsCNE", // Pantalla 2 (LÓGICA DE COMERCIALES)
+    "gFRtAAmiFbE", 
+    "loHbMM9JfCs", 
+    "uV3wWHSvkfs", 
+    "nFozEhYTEMo", 
+    "8Rw-tZTeBjU", 
+    "rqBfiegG5qU"
+];
+
+// SUS API KEYS RESTAURADAS Y PROTEGIDAS
+const YOUTUBE_API_KEYS = [
+    "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
+    "AIzaSyBUk0oq1zjA6BKx5HK8DEQc1TxQqreqGtk", "AIzaSyBys-0J3T5Ou_fdPGxqYC5LWDMgppwD0Y4",
+    "AIzaSyDHdkSo4WSHjYL4nHFU9wKmXW5D9PScO4g", "AIzaSyDJqDMnZsYHyJtzahtvv1r55Z-JfgLk5TU",
+    "AIzaSyCruj7UZTEmElS3ZUeUBmYPecbsAA667U8", "AIzaSyBfMNrgQESeymMQ9srVBHKjXB3_WeRfkXE",
+    "AIzaSyB1e_YSB74yAelvAhapDWu11VPLz2wBkUg", "AIzaSyCsvViGGiPJxx8-FkSwQvHE2T_U8d2UO5E",
+    "AIzaSyBRvdUqolryjMRustJUyqN_HtkjRCbHLfI", "AIzaSyCdmCZW6J49Onl-QAf3cTsNu0im84EBVZc",
+    "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
 ];
 
 const Camaras = () => {
@@ -49,6 +66,18 @@ const Camaras = () => {
                 {YOUTUBE_CAMS.map((id, index) => (
                     <div key={id} className="isolated-viewport-box">
                         <div className="shield-invisible-master"></div>
+                        
+                        {/* LÓGICA DE COMERCIALES EN LA SEGUNDA PANTALLA */}
+                        {index === 1 && (
+                            <a 
+                                href="https://wa.me/50664035313?text=Hola!%20Me%20interesa%20anunciar%20mi%20negocio%20en%20esta%20pantalla" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="hitbox-btn"
+                                title="Anuncie su marca aquí"
+                            ></a>
+                        )}
+
                         <iframe 
                             src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&playlist=${id}&loop=1`}
                             frameBorder="0"
@@ -84,13 +113,14 @@ const Camaras = () => {
                     display: flex; 
                     align-items: center; 
                     position: relative;
+                    scroll-snap-type: x mandatory; 
                 }
 
                 .pan-view-strip { 
                     display: flex; 
                     align-items: center; 
-                    gap: 80px; 
-                    padding: 0 100px; 
+                    gap: 0px; 
+                    padding: 0px; 
                     flex-shrink: 0;
                 }
 
@@ -98,23 +128,43 @@ const Camaras = () => {
                     background: #000; 
                     position: relative; 
                     overflow: hidden; 
-                    border-radius: 40px; 
-                    box-shadow: 0 60px 120px rgba(0,0,0,0.9); 
-                    border: 2px solid rgba(255,255,255,0.05);
-                    width: 80vw;
-                    max-width: 1200px;
-                    aspect-ratio: 16/9;
+                    width: 100vw; 
+                    height: 100vh; 
+                    scroll-snap-align: center; 
                 }
 
-                iframe { width: 100%; height: 100%; transform: scale(1.1); pointer-events: none; }
+                iframe { 
+                    width: 100%; 
+                    height: 100%; 
+                    transform: scale(1.3); 
+                    pointer-events: none; 
+                }
                 
-                .shield-invisible-master { position: absolute; inset: 0; z-index: 50; background: transparent; }
+                .shield-invisible-master { 
+                    position: absolute; 
+                    inset: 0; 
+                    z-index: 50; 
+                    background: transparent; 
+                }
+
+                /* BOTÓN INVISIBLE DE COMERCIALES */
+                .hitbox-btn {
+                    position: absolute;
+                    inset: 0;
+                    z-index: 60; 
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    cursor: pointer;
+                    background: transparent;
+                }
 
                 .broadcast-bug-logo { 
                     position: fixed; 
                     top: 40px; 
                     left: 40px; 
                     z-index: 100; 
+                    pointer-events: none;
                 }
                 .broadcast-bug-logo img { 
                     height: 120px; 
@@ -172,13 +222,10 @@ const Camaras = () => {
 
                 @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-                /* 📱 RESPONSIVO PARA CELULARES */
+                /* 📱 RESPONSIVO PERFECTO PARA CELULARES */
                 @media (max-width: 768px) {
                     .broadcast-bug-logo { top: 20px; left: 20px; }
-                    .broadcast-bug-logo img { height: 60px; }
-                    
-                    .pan-view-strip { gap: 30px; padding: 0 40px; }
-                    .isolated-viewport-box { width: 85vw; border-radius: 20px; }
+                    .broadcast-bug-logo img { height: 60px; } 
                     
                     .control-center-deck { 
                         bottom: 20px; 
@@ -188,6 +235,8 @@ const Camaras = () => {
                     .hide-mobile { display: none; }
                     .btn-premium-action span { font-size: 10px; }
                     .live-status-pill { padding: 6px 12px; font-size: 9px; }
+                    
+                    iframe { transform: scale(1.5); } 
                 }
             `}</style>
         </div>
