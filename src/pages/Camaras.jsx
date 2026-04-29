@@ -12,6 +12,7 @@ const YOUTUBE_CAMS = [
     "uV3wWHSvkfs", "nFozEhYTEMo", "8Rw-tZTeBjU", "rqBfiegG5qU"
 ];
 
+// RUTAS DE IMÁGENES
 const ADS_IMAGES = [
     '/publicidad_vertical/mexicana_1.png',
     '/publicidad_vertical/mexicana_2.png',
@@ -20,17 +21,18 @@ const ADS_IMAGES = [
     '/publicidad_vertical/chinito_express.png'
 ];
 
+// RUTAS NUEVAS DE LOS VIDEOS COMERCIALES
 const ADS_VIDEOS = [
-    '/publicidad_vertical/comercial_fabulosa.mp4',
-    '/publicidad_vertical/pina_express.mp4',
-    '/publicidad_vertical/repuestos_hayco.mp4',
-    '/publicidad_vertical/comercial_chinito.mp4'
+    '/media/comerciales/pina_express.mp4',
+    '/media/comerciales/repuestos_hayco.mp4',
+    '/media/comerciales/comercial_chinito.mp4',
+    '/media/comerciales/comercial_fabulosa.mp4'
 ];
 
 const Camaras = () => {
     const navigate = useNavigate();
     
-    // ESTADOS DEL AUDIO Y CONTROLES (ESTILO YOUTUBE)
+    // ESTADOS DEL AUDIO Y CONTROLES
     const [volume, setVolume] = useState(0.5);
     const [isMuted, setIsMuted] = useState(false);
     const [isControlsVisible, setIsControlsVisible] = useState(true);
@@ -91,7 +93,7 @@ const Camaras = () => {
         };
     }, []);
 
-    // 3. CAMBIO DE CÁMARA CADA 2 MINUTOS (Sin video, solo cambio directo para el efecto suave)
+    // 3. CAMBIO DE CÁMARA CADA 2 MINUTOS
     useEffect(() => {
         const camTimer = setInterval(() => {
             setCurrentCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
@@ -173,7 +175,7 @@ const Camaras = () => {
                     <img src={logoImage} alt="Fabulosa Logo" className="h-16 md:h-24 drop-shadow-[0_0_20px_rgba(0,0,0,1)]" />
                 </div>
 
-                {/* SECCIÓN 1: PANTALLA DE CÁMARAS */}
+                {/* SECCIÓN 1: PANTALLA DE CÁMARAS (IZQUIERDA) */}
                 <motion.div 
                     className="h-full relative flex items-center justify-center bg-black overflow-hidden"
                     animate={{ width: isAdMode ? '60vw' : '100vw' }}
@@ -181,18 +183,19 @@ const Camaras = () => {
                 >
                     <div className="absolute inset-0 z-40 bg-transparent cursor-default"></div>
 
-                    {/* EL CANAL DE YOUTUBE CON EFECTO DE TRANSICIÓN SUAVE (FADE IN/OUT) */}
-                    <AnimatePresence mode="wait">
+                    {/* CANAL DE YOUTUBE CON EFECTO CROSSFADE SÚPER RÁPIDO Y SIN CORTES NEGROS */}
+                    {/* Al quitar mode="wait", el video viejo se queda mientras el nuevo carga por encima, tapando el botón de play */}
+                    <AnimatePresence>
                         <motion.div
                             key={currentCamIndex}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 1.5 }} // Efecto suave de 1.5 segundos
-                            className="absolute w-full h-full"
+                            transition={{ duration: 0.8 }} // Transición rápida de 0.8s
+                            className="absolute inset-0 w-full h-full"
                         >
                             <iframe 
-                                src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[currentCamIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&vq=hd1080`}
+                                src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[currentCamIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&playsinline=1&vq=hd1080`}
                                 className="w-full h-full pointer-events-none"
                                 style={{ transform: 'scale(1.3)' }}
                                 frameBorder="0"
@@ -202,47 +205,53 @@ const Camaras = () => {
                     </AnimatePresence>
                 </motion.div>
 
-                {/* SECCIÓN 2: CAJA DE COMERCIALES */}
+                {/* SECCIÓN 2: CAJA DE COMERCIALES (DERECHA) */}
                 <motion.div 
-                    className="h-full bg-neutral-900 border-l border-neutral-800 flex items-center justify-center relative overflow-hidden"
+                    className="h-full bg-black border-l-2 border-neutral-800 flex items-center justify-center relative overflow-hidden"
                     animate={{ width: isAdMode ? '40vw' : '0vw' }}
                     transition={{ duration: 1.2, ease: "easeInOut" }}
                 >
-                    {isAdMode && (
-                        <motion.div 
-                            key={adPhase + currentAdIndex}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 1.05 }}
-                            transition={{ duration: 0.8 }}
-                            className="w-full h-full flex items-center justify-center p-4 bg-black"
-                        >
-                            {adPhase === 'IMAGES' && ADS_IMAGES[currentAdIndex] && (
+                    {/* ENVOLTORIO ANIMADO PARA LAS 2 CAJAS (IMÁGENES O VIDEOS) */}
+                    <AnimatePresence mode="wait">
+                        {/* 1. CAJA PARA IMÁGENES */}
+                        {isAdMode && adPhase === 'IMAGES' && ADS_IMAGES[currentAdIndex] && (
+                            <motion.div 
+                                key={`img-${currentAdIndex}`}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 1.05 }}
+                                transition={{ duration: 0.8 }}
+                                className="absolute inset-0 flex items-center justify-center p-4 bg-black"
+                            >
                                 <img 
                                     src={ADS_IMAGES[currentAdIndex]} 
                                     alt="Fabulosa Publicidad" 
                                     className="max-w-full max-h-full object-contain drop-shadow-2xl rounded-xl"
                                 />
-                            )}
+                            </motion.div>
+                        )}
 
-                            {/* REPRODUCTOR DE VIDEO DE PUBLICIDAD - 100% MUDO Y SEGURO */}
-                            {adPhase === 'VIDEOS' && ADS_VIDEOS[currentAdIndex] && (
+                        {/* 2. CAJA PARA VIDEOS (REPRODUCTOR 100% MUDO CON RUTAS NUEVAS) */}
+                        {isAdMode && adPhase === 'VIDEOS' && ADS_VIDEOS[currentAdIndex] && (
+                            <motion.div 
+                                key={`vid-${currentAdIndex}`}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 1.05 }}
+                                transition={{ duration: 0.8 }}
+                                className="absolute inset-0 flex items-center justify-center p-4 bg-black"
+                            >
                                 <video 
-                                    key={ADS_VIDEOS[currentAdIndex]} 
                                     src={ADS_VIDEOS[currentAdIndex]} 
                                     autoPlay 
                                     playsInline 
-                                    webkit-playsinline="true"
-                                    muted={true} // <--- 100% SIN AUDIO COMO LO PIDIÓ
+                                    muted={true} // SIN AUDIO
                                     onEnded={handleVideoEnd}
-                                    ref={(el) => {
-                                        if (el) el.play().catch(e => console.log("Auto-play comercial detectó pausa:", e));
-                                    }}
                                     className="max-w-full max-h-full object-contain drop-shadow-2xl rounded-xl"
                                 />
-                            )}
-                        </motion.div>
-                    )}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </motion.div>
 
                 {/* PANEL DE CONTROL ESTILO YOUTUBE */}
