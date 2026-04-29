@@ -64,6 +64,15 @@ const Channels = () => {
     controlsTimeout.current = setTimeout(() => setShowControls(false), 3000);
   };
 
+  // 🚀 CIRUGÍA: Función para cambiar de canal limpiando el historial
+  const handleChannelSelect = (channel) => {
+    setCurrentChannel(channel);
+    navigate(".", { replace: true });
+    if (window.history.length > 1) {
+       window.history.replaceState(null, '', window.location.href);
+    }
+  };
+
   useEffect(() => {
     if (!currentChannel?.url && !currentChannel?.iframe_url) return;
     
@@ -129,6 +138,7 @@ const Channels = () => {
           {currentChannel?.iframe_url ? (
             <div className="w-full h-full bg-black">
               <iframe 
+                key={currentChannel.id || currentChannel.iframe_url} // 🚀 CIRUGÍA: Esto evita que el iframe secuestre el historial
                 src={currentChannel.iframe_url} 
                 className="w-full h-full border-none"
                 allow="autoplay; encrypted-media"
@@ -198,7 +208,7 @@ const Channels = () => {
             <div
               key={channel.id}
               className={`relative group cursor-pointer aspect-square rounded-[2rem] transition-all flex flex-col items-center justify-center p-4 bg-[#121212] border-4 ${currentChannel?.id === channel.id ? 'border-red-600' : 'border-transparent'} hover:scale-105`}
-              onClick={() => setCurrentChannel(channel)}
+              onClick={() => handleChannelSelect(channel)} // 🚀 CIRUGÍA: Llamamos a la función segura aquí
             >
               <img src={channel.logo} className="max-w-full max-h-full object-contain" alt="Logo" />
               <div className="absolute -bottom-2 bg-red-600 text-white px-3 py-1 rounded-full text-[8px] font-black uppercase shadow-xl truncate max-w-[90%]">
