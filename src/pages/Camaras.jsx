@@ -1,202 +1,194 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Maximize, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Maximize, Play, Pause, Volume2, VolumeX, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hls from 'hls.js'; 
 import logoImage from '../assets/logo_fabulosa.png';
 
-// 📡 CONFIGURACIÓN DE SEÑAL BROADCAST (RADIO CON LOCUTORES)
 const AUDIO_RADIO_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
-// 📹 LISTA DE CÁMARAS FILTRADA (SE ELIMINÓ LA CORRUPTA kkVrj2cr9Ko)
 const YOUTUBE_CAMS = [
     "rnXIjl_Rzy4", "EO_1LWqsCNE", "gFRtAAmiFbE", "loHbMM9JfCs", 
     "uV3wWHSvkfs", "nFozEhYTEMo", "8Rw-tZTeBjU", "rqBfiegG5qU"
 ];
 
-const YOUTUBE_API_KEYS = ["AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0"];
-
-const VERTICAL_ADS = [
-    "/publicidad_vertical/anunciete_1.png", "/publicidad_vertical/chinito_express.png",
-    "/publicidad_vertical/mexicana_1.png", "/publicidad_vertical/mexicana_2.png", "/publicidad_vertical/unas_yendry.png"
-];
-
 const Camaras = () => {
     const navigate = useNavigate();
+    const [isMuted, setIsMuted] = useState(true);
     const audioRef = useRef(null);
-    const containerRef = useRef(null);
-    const hlsRef = useRef(null);
-    
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [isAdMode, setIsAdMode] = useState(false);
-    const [camIndex, setCamIndex] = useState(0);
-    const [adIndex, setAdIndex] = useState(0);
-    const [isMuted, setIsMuted] = useState(false);
 
-    // --- 🔊 MOTOR DE AUDIO HLS (INYECCIÓN DIRECTA PARA LOCUTORES) ---
-    const sintonizarRadioVip = () => {
-        const audio = audioRef.current;
-        if (Hls.isSupported()) {
-            if (hlsRef.current) hlsRef.current.destroy();
-            const hls = new Hls({
-                enableWorker: true,
-                lowLatencyMode: true,
-                manifestLoadingMaxRetry: 50,
-                levelLoadingMaxRetry: 50,
-                fragLoadingMaxRetry: 50
-            });
-            
-            hls.loadSource(AUDIO_RADIO_URL);
-            hls.attachMedia(audio);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                audio.play().catch(e => console.log("Audio esperando señal..."));
-            });
+    useEffect(() => {
+        if (audioRef.current) {
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(AUDIO_RADIO_URL);
+                hls.attachMedia(audioRef.current);
+            } else if (audioRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+                audioRef.current.src = AUDIO_RADIO_URL;
+            }
+        }
+    }, []);
 
-            // Recuperación automática de señal
-            hls.on(Hls.Events.ERROR, (event, data) => {
-                if (data.fatal) {
-                    hls.startLoad();
-                }
-            });
-            hlsRef.current = hls;
-        } else {
-            audio.src = AUDIO_RADIO_URL;
-            audio.play();
+    const toggleMute = () => {
+        if (audioRef.current) {
+            audioRef.current.muted = !isMuted;
+            setIsMuted(!isMuted);
+            audioRef.current.play().catch(() => {});
         }
     };
 
-    const handleMasterStart = () => {
-        setIsPlaying(true);
-        sintonizarRadioVip();
-    };
-
-    // --- 📺 LÓGICA DE MONITOREO (ROTACIÓN CADA 2 MIN) ---
-    useEffect(() => {
-        if (!isPlaying) return;
-
-        const camTimer = setInterval(() => {
-            setCamIndex(prev => (prev + 1) % YOUTUBE_CAMS.length);
-        }, 120000);
-
-        // Ciclo de Publicidad cada 6 min (Pantallas Separadas)
-        const adTimer = setInterval(() => {
-            setIsAdMode(true);
-            setAdIndex(0);
-            let count = 0;
-            const rotation = setInterval(() => {
-                count++;
-                if (count < VERTICAL_ADS.length) setAdIndex(count);
-                else {
-                    clearInterval(rotation);
-                    setIsAdMode(false);
-                }
-            }, 6000); 
-        }, 360000);
-
-        return () => { clearInterval(camTimer); clearInterval(adTimer); };
-    }, [isPlaying]);
-
     return (
-        <div className="broadcast-master-screen" style={{ 
-            backgroundImage: isAdMode ? "url('/camaras.jpg')" : "none",
-            backgroundColor: "#000", backgroundSize: 'cover', backgroundPosition: 'center'
-        }}>
-            {/* AUDIO DE FONDO PERMANENTE (LOCUTORES) */}
-            <audio ref={audioRef} preload="auto" />
+        <div className="broadcast-master-root">
+            <audio ref={audioRef} autoPlay muted={isMuted} loop />
 
-            {!isPlaying ? (
-                <div className="init-fullscreen-overlay" onClick={handleMasterStart}>
-                    <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ repeat: Infinity }} className="play-btn-pro">
-                        <Play size={160} fill="#ff0033" stroke="none" />
-                    </motion.div>
-                    <h1>SISTEMA CENTRAL DE MONITOREO VIP</h1>
-                    <p>TOQUE PARA ACTIVAR CONTROL MASTER Y AUDIO EN VIVO</p>
-                </div>
-            ) : (
-                <div className="workspace-broadcast-isolated" ref={containerRef}>
-                    
-                    {/* 📹 CAJA 1: VIDEO (Independiente y Fluida) */}
-                    <motion.div 
-                        layout
-                        initial={false}
-                        animate={{ 
-                            width: isAdMode ? "55%" : "100%", 
-                            height: isAdMode ? "80%" : "100%",
-                            x: isAdMode ? -40 : 0 
-                        }}
-                        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                        className="isolated-viewport-box"
-                    >
-                        {/* 🛡️ ESCUDO TOTAL (BLOQUEA YOUTUBE) */}
+            <div className="broadcast-bug-logo">
+                <img src={logoImage} alt="Fabulosa Logo" />
+            </div>
+
+            <div className="pan-view-strip">
+                {YOUTUBE_CAMS.map((id, index) => (
+                    <div key={id} className="isolated-viewport-box">
                         <div className="shield-invisible-master"></div>
-
-                        {/* 🏷️ LOGO GIGANTE ORIGINAL */}
-                        <div className="broadcast-bug-logo">
-                            <img src={logoImage} alt="Fabulosa TV" />
-                        </div>
-
-                        {/* 🔘 BOTONES SECRETOS (ESQUINAS) */}
-                        <div className="hitbox-btn tr" onClick={() => containerRef.current.requestFullscreen()}></div>
-                        <div className="hitbox-btn bl" onClick={() => {
-                            setIsMuted(!isMuted);
-                            audioRef.current.muted = !isMuted;
-                        }}></div>
-                        <div className="hitbox-btn br" onClick={() => navigate('/')}></div>
-
                         <iframe 
-                            src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[camIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&key=${YOUTUBE_API_KEYS[0]}`} 
-                            frameBorder="0" allow="autoplay; encrypted-media"
-                        />
-                    </motion.div>
+                            src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&playlist=${id}&loop=1`}
+                            frameBorder="0"
+                            allow="autoplay; encrypted-media"
+                        ></iframe>
+                    </div>
+                ))}
+            </div>
 
-                    {/* 💰 CAJA 2: PUBLICIDAD (Independiente y Separada) */}
-                    <AnimatePresence>
-                        {isAdMode && (
-                            <motion.div 
-                                initial={{ x: 800, opacity: 0 }} 
-                                animate={{ x: 0, opacity: 1 }} 
-                                exit={{ x: 800, opacity: 0 }}
-                                className="ads-viewport-isolated"
-                            >
-                                <div className="ad-container-vip">
-                                    <motion.img 
-                                        key={adIndex} 
-                                        initial={{ opacity: 0, scale: 0.9 }} 
-                                        animate={{ opacity: 1, scale: 1 }} 
-                                        src={VERTICAL_ADS[adIndex]} 
-                                    />
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+            <div className="control-center-deck">
+                <button onClick={() => navigate('/')} className="btn-premium-action gray">
+                    <ArrowLeft size={20} /> <span className="hide-mobile">VOLVER</span>
+                </button>
+                
+                <div className="live-status-pill">
+                    <div className="blink-red"></div>
+                    <span>MULTICAM EN VIVO</span>
                 </div>
-            )}
+
+                <button onClick={toggleMute} className={`btn-premium-action ${isMuted ? 'red' : 'green'}`}>
+                    {isMuted ? <VolumeX size={22} /> : <Volume2 size={22} />}
+                    <span>{isMuted ? 'ACTIVAR AUDIO' : 'AUDIO ON'}</span>
+                </button>
+            </div>
 
             <style jsx>{`
-                .broadcast-master-screen { width: 100vw; height: 100vh; overflow: hidden; font-family: 'Inter', sans-serif; position: relative; }
+                .broadcast-master-root { 
+                    background: #000; 
+                    height: 100vh; 
+                    width: 100vw; 
+                    overflow-x: auto; 
+                    overflow-y: hidden; 
+                    display: flex; 
+                    align-items: center; 
+                    position: relative;
+                }
+
+                .pan-view-strip { 
+                    display: flex; 
+                    align-items: center; 
+                    gap: 80px; 
+                    padding: 0 100px; 
+                    flex-shrink: 0;
+                }
+
+                .isolated-viewport-box { 
+                    background: #000; 
+                    position: relative; 
+                    overflow: hidden; 
+                    border-radius: 40px; 
+                    box-shadow: 0 60px 120px rgba(0,0,0,0.9); 
+                    border: 2px solid rgba(255,255,255,0.05);
+                    width: 80vw;
+                    max-width: 1200px;
+                    aspect-ratio: 16/9;
+                }
+
+                iframe { width: 100%; height: 100%; transform: scale(1.1); pointer-events: none; }
                 
-                .init-fullscreen-overlay { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #000; cursor: pointer; z-index: 100; position: relative; }
-                .init-fullscreen-overlay h1 { color: #fff; font-weight: 900; letter-spacing: 5px; margin-top: 30px; }
-                .init-fullscreen-overlay p { color: #ff0033; font-weight: 700; letter-spacing: 2px; }
+                .shield-invisible-master { position: absolute; inset: 0; z-index: 50; background: transparent; }
 
-                .workspace-broadcast-isolated { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; gap: 80px; padding: 0 60px; }
-                
-                .isolated-viewport-box { background: #000; position: relative; overflow: hidden; border-radius: 40px; box-shadow: 0 60px 120px rgba(0,0,0,0.9); border: 2px solid rgba(255,255,255,0.05); }
-                iframe { width: 100%; height: 100%; transform: scale(1.4); pointer-events: none; }
-                
-                .shield-invisible-master { position: absolute; inset: 0; z-index: 50; background: transparent; cursor: default; }
+                .broadcast-bug-logo { 
+                    position: fixed; 
+                    top: 40px; 
+                    left: 40px; 
+                    z-index: 100; 
+                }
+                .broadcast-bug-logo img { 
+                    height: 120px; 
+                    filter: drop-shadow(0 0 30px rgba(0,0,0,1)); 
+                }
 
-                .hitbox-btn { position: absolute; width: 220px; height: 220px; z-index: 100; cursor: pointer; }
-                .tr { top: 0; right: 0; }
-                .bl { bottom: 0; left: 0; }
-                .br { bottom: 0; right: 0; }
+                .control-center-deck { 
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 50%; 
+                    transform: translateX(-50%); 
+                    background: rgba(20,20,20,0.8); 
+                    backdrop-filter: blur(30px); 
+                    border: 1px solid rgba(255,255,255,0.1); 
+                    padding: 15px 40px; 
+                    border-radius: 100px; 
+                    display: flex; 
+                    align-items: center; 
+                    gap: 30px; 
+                    z-index: 200;
+                    width: auto;
+                    max-width: 90%;
+                }
 
-                .broadcast-bug-logo { position: absolute; top: 70px; left: 90px; z-index: 60; }
-                .broadcast-bug-logo img { height: 220px; width: auto; object-fit: contain; filter: drop-shadow(0 0 50px rgba(0,0,0,1)); }
+                .btn-premium-action {
+                    background: transparent;
+                    border: none;
+                    color: #fff;
+                    font-weight: 900;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                }
 
-                .ads-viewport-isolated { width: 30%; height: 80%; background: rgba(0,0,0,0.95); border: 12px solid #ff0033; border-radius: 70px; padding: 40px; box-shadow: 0 0 100px rgba(255,0,51,0.5); }
-                .ad-container-vip { width: 100%; height: 100%; border-radius: 40px; overflow: hidden; }
-                .ad-container-vip img { width: 100%; height: 100%; object-fit: cover; }
+                .btn-premium-action.red { color: #ff4444; }
+                .btn-premium-action.green { color: #00ff88; }
+                .btn-premium-action.gray { color: #888; }
+
+                .live-status-pill {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    background: rgba(255,255,255,0.05);
+                    padding: 8px 20px;
+                    border-radius: 50px;
+                    font-size: 12px;
+                    font-weight: 900;
+                    letter-spacing: 2px;
+                }
+
+                .blink-red { width: 8px; height: 8px; background: red; border-radius: 50%; animation: pulse 1s infinite; }
+
+                @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+                /* 📱 RESPONSIVO PARA CELULARES */
+                @media (max-width: 768px) {
+                    .broadcast-bug-logo { top: 20px; left: 20px; }
+                    .broadcast-bug-logo img { height: 60px; }
+                    
+                    .pan-view-strip { gap: 30px; padding: 0 40px; }
+                    .isolated-viewport-box { width: 85vw; border-radius: 20px; }
+                    
+                    .control-center-deck { 
+                        bottom: 20px; 
+                        padding: 10px 20px; 
+                        gap: 15px; 
+                    }
+                    .hide-mobile { display: none; }
+                    .btn-premium-action span { font-size: 10px; }
+                    .live-status-pill { padding: 6px 12px; font-size: 9px; }
+                }
             `}</style>
         </div>
     );
