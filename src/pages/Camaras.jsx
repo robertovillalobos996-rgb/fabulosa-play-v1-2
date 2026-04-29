@@ -40,15 +40,15 @@ const ADS_VIDEOS = [
 const Camaras = () => {
     const navigate = useNavigate();
     
-    // ESTADOS DEL AUDIO Y VIDEO
+    // ESTADOS DEL AUDIO
     const [volume, setVolume] = useState(0.5);
     const [isMuted, setIsMuted] = useState(false);
-    const [showVolBar, setShowVolBar] = useState(false);
     const audioRef = useRef(null);
 
     // ESTADOS DE CÁMARAS Y TRANSICIÓN
     const [currentCamIndex, setCurrentCamIndex] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
+    const transitionVideoRef = useRef(null); // Ref para controlar el video cortinilla
     
     // ESTADOS DE PUBLICIDAD
     const [adPhase, setAdPhase] = useState('IDLE'); // 'IDLE', 'IMAGES', 'VIDEOS'
@@ -78,10 +78,18 @@ const Camaras = () => {
         }
     }, [volume, isMuted]);
 
-    // 3. CAMBIAR DE CÁMARA CADA 2 MINUTOS CON VIDEO CORTINILLA
+    // 3. CAMBIAR DE CÁMARA CADA 2 MINUTOS CON EL VIDEO CORTINILLA
     useEffect(() => {
         const camTimer = setInterval(() => {
             setIsTransitioning(true);
+            if (transitionVideoRef.current) {
+                transitionVideoRef.current.currentTime = 0; // Reinicia el video
+                transitionVideoRef.current.play().catch(() => {
+                    // Si el navegador bloquea el video por alguna razón, pasa directo a la cámara
+                    setCurrentCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
+                    setIsTransitioning(false);
+                });
+            }
         }, 120000); 
         return () => clearInterval(camTimer);
     }, []);
@@ -136,7 +144,7 @@ const Camaras = () => {
 
     return (
         <>
-            {/* PANTALLA DE BLOQUEO: SOLO SE VE EN CELULARES VERTICALES */}
+            {/* PANTALLA DE BLOQUEO PARA CELULARES */}
             <div className="landscape-lock-overlay">
                 <motion.div 
                     animate={{ rotate: 90 }} 
@@ -170,32 +178,21 @@ const Camaras = () => {
                 >
                     <div className="absolute inset-0 z-40 bg-transparent cursor-default"></div>
 
-                    {/* VIDEO CORTINILLA AL CAMBIAR DE CANAL */}
-                    <AnimatePresence>
-                        {isTransitioning && (
-                            <motion.div 
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.5 }}
-                                className="absolute inset-0 z-50 bg-black"
-                            >
-                                <video 
-                                    src="/logo_fabulosa_moviento.mp4" 
-                                    autoPlay 
-                                    muted 
-                                    playsInline
-                                    className="w-full h-full object-cover"
-                                    onPlay={() => setCurrentCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length)}
-                                    onEnded={() => setIsTransitioning(false)}
-                                    onError={() => {
-                                        setCurrentCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
-                                        setIsTransitioning(false);
-                                    }}
-                                />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                    {/* VIDEO CORTINILLA: Ahora está siempre en el DOM pero se oculta con CSS para evitar bloqueos */}
+                    <div className={`absolute inset-0 z-50 bg-black transition-opacity duration-500 flex items-center justify-center ${isTransitioning ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                        <video 
+                            ref={transitionVideoRef}
+                            src="/logo_fabulosa_moviento.mp4" 
+                            muted 
+                            playsInline
+                            className="w-full h-full object-cover"
+                            onPlay={() => {
+                                // Cambia el iframe por debajo apenas empieza la cortinilla
+                                setCurrentCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
+                            }}
+                            onEnded={() => setIsTransitioning(false)}
+                        />
+                    </div>
 
                     {/* EL CANAL DE YOUTUBE */}
                     <div className="absolute w-full h-full">
@@ -248,7 +245,7 @@ const Camaras = () => {
                     )}
                 </motion.div>
 
-                {/* PANEL DE CONTROL INFERIOR CON BARRA DESPLEGABLE */}
+                {/* PANEL DE CONTROL INFERIOR */}
                 <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-[100] flex items-center bg-black/60 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
                     
                     <button onClick={() => navigate('/')} className="text-gray-400 hover:text-white transition font-bold flex items-center gap-2 text-sm uppercase tracking-widest mr-6">
@@ -264,23 +261,21 @@ const Camaras = () => {
 
                     <div className="w-px h-6 bg-white/20"></div>
 
-                    {/* BOTÓN MAGICO DE VOLUMEN */}
-                    <div 
-                        className="relative flex items-center h-10 ml-4 group"
-                        onMouseEnter={() => setShowVolBar(true)}
-                        onMouseLeave={() => setShowVolBar(false)}
-                    >
-                        <div className="absolute -inset-y-4 -inset-x-4 z-10 cursor-pointer"></div>
+                    {/* BOTÓN MAGICO DE VOLUMEN CON CSS PURO (INFALIBLE) */}
+                    <div className="relative flex items-center h-10 ml-4 group">
+                        {/* Zona interactiva expandida */}
+                        <div className="absolute -inset-y-6 -inset-x-6 z-10 cursor-pointer"></div>
 
-                        <div className="flex items-center transition-all duration-500">
+                        <div className="flex items-center z-20">
                             <button 
                                 onClick={() => setIsMuted(!isMuted)} 
-                                className={`transition z-20 ${isMuted ? 'text-red-500' : 'text-green-400'}`}
+                                className={`transition ${isMuted ? 'text-red-500' : 'text-green-400'}`}
                             >
                                 {isMuted || volume === 0 ? <VolumeX size={24} /> : <Volume2 size={24} />}
                             </button>
                             
-                            <div className={`overflow-hidden transition-all duration-500 flex items-center z-20 ${showVolBar ? 'w-24 ml-4 opacity-100' : 'w-0 ml-0 opacity-0'}`}>
+                            {/* La magia de Tailwind: Al hacer hover al grupo, el ancho pasa de 0 a 24 */}
+                            <div className="overflow-hidden transition-all duration-500 flex items-center w-0 ml-0 opacity-0 group-hover:w-24 group-hover:ml-4 group-hover:opacity-100">
                                 <input 
                                     type="range" 
                                     min="0" 
@@ -313,7 +308,6 @@ const Camaras = () => {
                     justify-content: center;
                 }
 
-                /* SI EL CELULAR ESTÁ EN VERTICAL (PARADO) */
                 @media screen and (max-width: 850px) and (orientation: portrait) {
                     .landscape-lock-overlay {
                         display: flex !important;
