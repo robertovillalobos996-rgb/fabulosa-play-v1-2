@@ -103,7 +103,7 @@ const CentroMercadeo = () => {
                 className="inline-block w-full bg-yellow-500 text-black font-black text-3xl py-8 rounded-3xl shadow-[0_30px_70px_rgba(234,179,8,0.4)] hover:scale-105 transition-transform"
               >
                 <Megaphone className="inline-block mr-3 mb-1 animate-bounce" />
-                ¡PÁUTATE YA!
+                ¡ANUNCIATE AQUI!
               </a>
               <p className="mt-10 text-gray-500 font-black uppercase text-xs tracking-widest italic">Línea de Ventas: {PHONE_NUMBER}</p>
             </motion.div>
