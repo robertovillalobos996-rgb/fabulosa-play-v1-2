@@ -37,10 +37,8 @@ const Camaras = () => {
     const audioRef = useRef(null);
     const controlsTimeoutRef = useRef(null);
 
-    // ESTADOS DE CÁMARAS Y TRANSICIÓN
+    // ESTADOS DE CÁMARAS
     const [currentCamIndex, setCurrentCamIndex] = useState(0);
-    const [isTransitioning, setIsTransitioning] = useState(false);
-    const transitionVideoRef = useRef(null);
     
     // ESTADOS DE PUBLICIDAD
     const [adPhase, setAdPhase] = useState('IDLE'); 
@@ -76,14 +74,14 @@ const Camaras = () => {
             if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
             controlsTimeoutRef.current = setTimeout(() => {
                 setIsControlsVisible(false);
-            }, 3000); // Se oculta a los 3 segundos de no tocar nada
+            }, 3000); 
         };
 
         window.addEventListener('mousemove', handleActivity);
         window.addEventListener('touchstart', handleActivity);
         window.addEventListener('click', handleActivity);
 
-        handleActivity(); // Iniciar el timer apenas carga
+        handleActivity(); 
 
         return () => {
             window.removeEventListener('mousemove', handleActivity);
@@ -93,22 +91,10 @@ const Camaras = () => {
         };
     }, []);
 
-    // 3. CAMBIO DE CÁMARA CADA 2 MINUTOS CON CORTINILLA FORZADA
+    // 3. CAMBIO DE CÁMARA CADA 2 MINUTOS (Sin video, solo cambio directo para el efecto suave)
     useEffect(() => {
         const camTimer = setInterval(() => {
-            setIsTransitioning(true);
-            
-            // Forzar el play nativo por Javascript para que no falle
-            if (transitionVideoRef.current) {
-                transitionVideoRef.current.currentTime = 0;
-                transitionVideoRef.current.play().catch(e => console.log("Video cortinilla bloqueado:", e));
-            }
-            
-            // Seguro: si a los 5 segundos no ha pasado nada, cambiar la cámara a la fuerza
-            setTimeout(() => {
-                setIsTransitioning(false);
-            }, 5000);
-
+            setCurrentCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
         }, 120000); 
         return () => clearInterval(camTimer);
     }, []);
@@ -118,7 +104,7 @@ const Camaras = () => {
         timerRef.current = setTimeout(() => {
             setAdPhase('IMAGES');
             setCurrentAdIndex(0);
-        }, 15000); // 15 Segundos
+        }, 15000); // 15 Segundos iniciales
 
         return () => clearTimeout(timerRef.current);
     }, []);
@@ -195,34 +181,25 @@ const Camaras = () => {
                 >
                     <div className="absolute inset-0 z-40 bg-transparent cursor-default"></div>
 
-                    {/* VIDEO CORTINILLA SIEMPRE CARGADO EN EL DOM */}
-                    <div className={`absolute inset-0 z-[150] bg-black transition-opacity duration-500 ${isTransitioning ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                        <video 
-                            ref={transitionVideoRef}
-                            src="/logo_fabulosa_moviento.mp4" 
-                            muted 
-                            playsInline
-                            webkit-playsinline="true"
-                            className="w-full h-full object-cover"
-                            onPlay={() => {
-                                // Cambia la cámara justo cuando empieza el video
-                                setCurrentCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
-                            }}
-                            onEnded={() => setIsTransitioning(false)}
-                        />
-                    </div>
-
-                    {/* EL CANAL DE YOUTUBE CON CALIDAD FORZADA (vq=hd1080) */}
-                    <div className="absolute w-full h-full">
-                        <iframe 
+                    {/* EL CANAL DE YOUTUBE CON EFECTO DE TRANSICIÓN SUAVE (FADE IN/OUT) */}
+                    <AnimatePresence mode="wait">
+                        <motion.div
                             key={currentCamIndex}
-                            src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[currentCamIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&vq=hd1080`}
-                            className="w-full h-full pointer-events-none"
-                            style={{ transform: 'scale(1.3)' }}
-                            frameBorder="0"
-                            allow="autoplay; encrypted-media; picture-in-picture"
-                        ></iframe>
-                    </div>
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 1.5 }} // Efecto suave de 1.5 segundos
+                            className="absolute w-full h-full"
+                        >
+                            <iframe 
+                                src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[currentCamIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&vq=hd1080`}
+                                className="w-full h-full pointer-events-none"
+                                style={{ transform: 'scale(1.3)' }}
+                                frameBorder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"
+                            ></iframe>
+                        </motion.div>
+                    </AnimatePresence>
                 </motion.div>
 
                 {/* SECCIÓN 2: CAJA DE COMERCIALES */}
@@ -248,21 +225,18 @@ const Camaras = () => {
                                 />
                             )}
 
-                            {/* REPRODUCTOR DE VIDEO DE PUBLICIDAD BLINDADO */}
+                            {/* REPRODUCTOR DE VIDEO DE PUBLICIDAD - 100% MUDO Y SEGURO */}
                             {adPhase === 'VIDEOS' && ADS_VIDEOS[currentAdIndex] && (
                                 <video 
-                                    key={ADS_VIDEOS[currentAdIndex]} // Forza a que React recargue el tag de video
+                                    key={ADS_VIDEOS[currentAdIndex]} 
                                     src={ADS_VIDEOS[currentAdIndex]} 
                                     autoPlay 
                                     playsInline 
                                     webkit-playsinline="true"
-                                    muted={false} 
+                                    muted={true} // <--- 100% SIN AUDIO COMO LO PIDIÓ
                                     onEnded={handleVideoEnd}
                                     ref={(el) => {
-                                        if (el) {
-                                            // Inyección JS para forzar reproducción
-                                            el.play().catch(e => console.log("Auto-play de comercial detectó pausa:", e));
-                                        }
+                                        if (el) el.play().catch(e => console.log("Auto-play comercial detectó pausa:", e));
                                     }}
                                     className="max-w-full max-h-full object-contain drop-shadow-2xl rounded-xl"
                                 />
@@ -271,7 +245,7 @@ const Camaras = () => {
                     )}
                 </motion.div>
 
-                {/* PANEL DE CONTROL ESTILO YOUTUBE (Oculto si no hay actividad) */}
+                {/* PANEL DE CONTROL ESTILO YOUTUBE */}
                 <div 
                     className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 z-[200] flex items-center bg-black/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 transition-opacity duration-700 ${isControlsVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 >
