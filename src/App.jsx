@@ -2,29 +2,31 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'; 
 
-// Importación de sus 4 módulos originales[cite: 3]
+// Importación de Páginas
 import Home from './pages/Home';
 import Radio from './pages/Radio';
 import Movies from './pages/Movies';
 import Channels from './pages/Channels'; 
-
-// Importación del nuevo cerebro de control
 import AdminPanel from './AdminPanel';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Aquí es donde viven sus 12 CARDS principales (No se tocan)[cite: 3] */}
+        {/* PANTALLA PRINCIPAL CON LAS 12 CARDS */}
         <Route path="/" element={<Home />} />
 
-        {/* Sus otros módulos activos[cite: 3] */}
-        <Route path="/radio" element={<Radio />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/channels" element={<Channels />} />
-
-        {/* ENLACE PRIVADO: Solo para usted administrar[cite: 4] */}
+        {/* RUTAS CORREGIDAS PARA QUE COINCIDAN CON HOME.JSX */}
+        <Route path="/radios-cr" element={<Radio />} />
+        <Route path="/cine-play" element={<Movies />} />
+        <Route path="/canales-play" element={<Channels />} />
+        
+        {/* PANEL DE ADMINISTRACIÓN */}
         <Route path="/admin" element={<AdminPanel />} />
+
+        {/* NOTA: Para las tarjetas de Premium, Karaoke, etc., 
+            asegúrese de tener sus archivos .jsx creados o 
+            crearemos rutas para ellos más adelante. */}
       </Routes>
     </BrowserRouter>
   );
