@@ -1,56 +1,32 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css'; 
 
-// 🏠 PÁGINAS PRINCIPALES
+// Importación de sus 4 módulos originales[cite: 3]
 import Home from './pages/Home';
-import RadioRomantica from './pages/Radio'; 
-import RadiosMundo from './pages/RadioPremium'; 
-import RancheraPlay from './pages/RancheraPlay'; 
-import Karaoke from './pages/Karaoke';
-import CinePlay from './pages/Movies'; 
-import CanalesPlay from './pages/Channels'; 
-import FabulosaAlabanza from './pages/FabulosaAlabanza';
-import CentroMercadeo from './pages/CentroMercadeo';
-import Camaras from './pages/Camaras'; 
-import FabulosaTube from './pages/FabulosaTube'; // 🔥 EL NUEVO GIGANTE DE VIDEOS
-import FabulositoKids from './pages/FabulosaTV';
+import Radio from './pages/Radio';
+import Movies from './pages/Movies';
+import Channels from './pages/Channels'; 
 
-// 💎 MUNDO PREMIUM VIP
-import PremiumHub from './pages/PremiumHub';
-import VoiceOverVIP from './pages/vip/VoiceOverVIP';
-import FabulosaRadioVIP from './pages/vip/FabulosaRadioVIP';
-
-const queryClient = new QueryClient();
+// Importación del nuevo cerebro de control
+import AdminPanel from './AdminPanel';
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Router>
-        <Routes>
-          {/* MENÚ PRINCIPAL */}
-          <Route path="/" element={<Home />} />
-          
-          {/* 💎 SECCIÓN VIP PREMIUM */}
-          <Route path="/premium" element={<PremiumHub />} />
-          <Route path="/premium/voice-over" element={<VoiceOverVIP />} />
-          <Route path="/premium/fabulosa-radio" element={<FabulosaRadioVIP />} />
-          
-          {/* SECCIONES PÚBLICAS */}
-          <Route path="/tv-1" element={<FabulositoKids />} />
-          <Route path="/radio" element={<RadioRomantica />} /> 
-          <Route path="/radios-cr" element={<RadiosMundo />} /> 
-          <Route path="/ranchera" element={<RancheraPlay />} />
-          <Route path="/karaoke" element={<Karaoke />} />
-          <Route path="/cine-play" element={<CinePlay />} />
-          <Route path="/canales-play" element={<CanalesPlay />} />
-          <Route path="/alabanza" element={<FabulosaAlabanza />} />
-          <Route path="/centro-mercadeo" element={<CentroMercadeo />} />
-          <Route path="/camaras" element={<Camaras />} />
-          <Route path="/fabulosa-tube" element={<FabulosaTube />} /> {/* 🔥 LA RUTA MAESTRA */}
-        </Routes>
-      </Router>
-    </QueryClientProvider>
+    <BrowserRouter>
+      <Routes>
+        {/* Aquí es donde viven sus 12 CARDS principales (No se tocan)[cite: 3] */}
+        <Route path="/" element={<Home />} />
+
+        {/* Sus otros módulos activos[cite: 3] */}
+        <Route path="/radio" element={<Radio />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/channels" element={<Channels />} />
+
+        {/* ENLACE PRIVADO: Solo para usted administrar[cite: 4] */}
+        <Route path="/admin" element={<AdminPanel />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

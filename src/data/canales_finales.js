@@ -229,7 +229,7 @@ export const canalesTV = [
         "logo": "/logos_canales/tele_brunca.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tele-brunca&mediaUrl=https%3A%2F%2F59ef525c24caa.streamlock.net%2Ftelebrunca%2Ftelebrunca%2Fplaylist.m3u8"
     },
-   {
+    {
         "id": "video-tour",
         "title": "CANAL VIDEO TOUR CHANNEL",
         "url": "https://59ef525c24caa.streamlock.net/videotour/videotour/chunklist_w868169864.m3u8",
@@ -458,7 +458,7 @@ export const canalesTV = [
         "title": "Costa Rica Channel (576p)",
         "url": "https://video0.rogohosting.com:19360/8006/8006.m3u8",
         "genre": "Costa Rica",
-        "logo": "/logos_canales/tv-319.png",
+        "logo": "/logos_canales/1777557317956_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-319&mediaUrl=https%3A%2F%2Fvideo0.rogohosting.com%3A19360%2F8006%2F8006.m3u8"
     },
     {
@@ -738,7 +738,7 @@ export const canalesTV = [
         "title": "Impacto Televisión (360p)",
         "url": "https://cloudvideo.servers10.com:8081/impactotv/index.m3u8",
         "genre": "Infantil",
-        "logo": "/logos_canales/tv-419.png",
+        "logo": "/logos_canales/1777557841111_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-419&mediaUrl=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2Fimpactotv%2Findex.m3u8"
     },
     {
@@ -874,7 +874,7 @@ export const canalesTV = [
         "title": "Mexiquense TV (720p)",
         "url": "https://5e50264bd6766.streamlock.net/mexiquense/videomexiquense/playlist.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-499.png",
+        "logo": "/logos_canales/1777558115395_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-499&mediaUrl=https%3A%2F%2F5e50264bd6766.streamlock.net%2Fmexiquense%2Fvideomexiquense%2Fplaylist.m3u8"
     },
     {
@@ -882,7 +882,7 @@ export const canalesTV = [
         "title": "Mijas 3.40TV (720p)",
         "url": "https://streaming004.gestec-video.com/hls/MIJAS.m3u8",
         "genre": "Peliculas",
-        "logo": "/logos_canales/tv-503.png",
+        "logo": "/logos_canales/1777558179964_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-503&mediaUrl=https%3A%2F%2Fstreaming004.gestec-video.com%2Fhls%2FMIJAS.m3u8"
     },
     {
@@ -970,8 +970,9 @@ export const canalesTV = [
         "title": "Pacific Coast TV HMB Coastside Channel 27 (720p)",
         "url": "https://livestream.telvue.com/pacificaca1/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8",
         "genre": "Internacionales",
-        "logo": "/logos_canales/tv-549.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-549&mediaUrl=https%3A%2F%2Flivestream.telvue.com%2Fpacificaca1%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8"
+        "logo": "/logos_canales/1777543229511_logo.png",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-549&mediaUrl=https%3A%2F%2Flivestream.telvue.com%2Fpacificaca1%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8",
+        "name": "PCT"
     },
     {
         "id": "tv-573",
@@ -1026,7 +1027,7 @@ export const canalesTV = [
         "title": "Taber TV (1080p)",
         "url": "https://5fc584f3f19c9.streamlock.net/tabertv/videotabertv/playlist.m3u8",
         "genre": "Cristianos",
-        "logo": "/logos_canales/tv-706.png",
+        "logo": "/logos_canales/1777558236747_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-706&mediaUrl=https%3A%2F%2F5fc584f3f19c9.streamlock.net%2Ftabertv%2Fvideotabertv%2Fplaylist.m3u8"
     },
     {
@@ -1202,7 +1203,7 @@ export const canalesTV = [
         "title": "Radio Conexion Web TV (720p)",
         "url": "https://tuvideoonline.com.ar:3391/live/radioconexionlive.m3u8",
         "genre": "Musica",
-        "logo": "/logos_canales/tv-869.png",
+        "logo": "/logos_canales/1777558681864_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-869&mediaUrl=https%3A%2F%2Ftuvideoonline.com.ar%3A3391%2Flive%2Fradioconexionlive.m3u8"
     },
     {
@@ -1246,28 +1247,12 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-911&mediaUrl=https%3A%2F%2Fa-cdn.klowdtv.com%2Flive1%2Fcine_720p%2Fplaylist.m3u8"
     },
     {
-        "id": "tv-921",
-        "title": "Grjngo Western Movies (720p)",
-        "url": "https://amogonetworx-grjngo-3-dk.samsung.wurl.tv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/wFqhK3p.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-921&mediaUrl=https%3A%2F%2Famogonetworx-grjngo-3-dk.samsung.wurl.tv%2Fplaylist.m3u8"
-    },
-    {
         "id": "tv-924",
         "title": "Maverick Black Cinema (1080p)",
         "url": "https://maverick-maverick-black-cinema-3-us.roku.wurl.tv/playlist.m3u8",
         "genre": "Peliculas",
         "logo": "https://images.fubo.tv/station_logos/maverick_black_cinema_c.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-924&mediaUrl=https%3A%2F%2Fmaverick-maverick-black-cinema-3-us.roku.wurl.tv%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-925",
-        "title": "MovieBox (720p)",
-        "url": "https://cdn4.skygo.mn/live/disk1/Moviebox/HLSv3-FTA/Moviebox.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/xeO1Zb4.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-925&mediaUrl=https%3A%2F%2Fcdn4.skygo.mn%2Flive%2Fdisk1%2FMoviebox%2FHLSv3-FTA%2FMoviebox.m3u8"
     },
     {
         "id": "tv-928",
@@ -1282,7 +1267,7 @@ export const canalesTV = [
         "title": "MyTime Movie Network Brazil (720p)",
         "url": "https://appletree-mytime-samsungbrazil.amagi.tv/playlist.m3u8",
         "genre": "Internacionales",
-        "logo": "https://i.imgur.com/aiGQtzI.png",
+        "logo": "/logos_canales/1777543412091_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-930&mediaUrl=https%3A%2F%2Fappletree-mytime-samsungbrazil.amagi.tv%2Fplaylist.m3u8"
     },
     {
@@ -1290,7 +1275,7 @@ export const canalesTV = [
         "title": "MyTime movie network Spain (1080p)",
         "url": "https://appletree-mytimespain-rakuten.amagi.tv/playlist.m3u8",
         "genre": "Peliculas",
-        "logo": "https://i.imgur.com/pw4NZK1.png",
+        "logo": "/logos_canales/1777559176189_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-932&mediaUrl=https%3A%2F%2Fappletree-mytimespain-rakuten.amagi.tv%2Fplaylist.m3u8"
     },
     {
@@ -2774,22 +2759,6 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-79&mediaUrl=https%3A%2F%2Ficchls.wns.live%2Fhls%2Fstream.m3u8"
     },
     {
-        "id": "tv-83",
-        "title": "MBC Bollywood (1080p) [Geo-blocked]",
-        "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-bollywood/546eb40d7dcf9a209255dd2496903764/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/bo.jpg",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-83&mediaUrl=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-bollywood%2F546eb40d7dcf9a209255dd2496903764%2Findex.m3u8"
-    },
-    {
-        "id": "tv-84",
-        "title": "MBC+ Drama (1080p)",
-        "url": "https://shd-gcp-live.edgenextcdn.net/live/bitmovin-mbc-plus-drama/e37251ec2aac8f6c98f75cd0fa37cd28/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/lxWdjXG.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-84&mediaUrl=https%3A%2F%2Fshd-gcp-live.edgenextcdn.net%2Flive%2Fbitmovin-mbc-plus-drama%2Fe37251ec2aac8f6c98f75cd0fa37cd28%2Findex.m3u8"
-    },
-    {
         "id": "tv-98",
         "title": "Spooky Nights (1080p)",
         "url": "https://shls-live-enc.edgenextcdn.net/out/v1/18cffab0757d448ca6c1a686d330b346/index.m3u8",
@@ -2801,17 +2770,9 @@ export const canalesTV = [
         "id": "tv-99",
         "title": "Studio One + (720p)",
         "url": "https://cdn-1.pishow.tv/live/276/master.m3u8",
-        "genre": "Internacionales",
+        "genre": "",
         "logo": "https://i.imgur.com/yOPB7JB.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-99&mediaUrl=https%3A%2F%2Fcdn-1.pishow.tv%2Flive%2F276%2Fmaster.m3u8"
-    },
-    {
-        "id": "tv-102",
-        "title": "Zylo Emotion' L",
-        "url": "https://rakutenaa-zylo-emotional-rakuten-r1zkm.amagi.tv/playlist/rakutenAA-zylo-emotional-rakuten/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "https://i.imgur.com/MP34aaj.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-102&mediaUrl=https%3A%2F%2Frakutenaa-zylo-emotional-rakuten-r1zkm.amagi.tv%2Fplaylist%2FrakutenAA-zylo-emotional-rakuten%2Fplaylist.m3u8"
     },
     {
         "id": "tv-103",
@@ -2932,14 +2893,6 @@ export const canalesTV = [
         "genre": "Cristianos",
         "logo": "/logos_canales/amigos_tv.jpg",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-164&mediaUrl=https%3A%2F%2Fantmedia.cablevisionrobles.com%3A5443%2FLiveApp%2Fstreams%2FCqwAgRagMvBNYN8c1731608980342.m3u8"
-    },
-    {
-        "id": "tv-166",
-        "title": "Angel TV Spanish (720p)",
-        "url": "https://janya-digimix.akamaized.net/vglive-sk-351398/spanish/ngrp:angelspanish_all/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/angeltv.jpg",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-166&mediaUrl=https%3A%2F%2Fjanya-digimix.akamaized.net%2Fvglive-sk-351398%2Fspanish%2Fngrp%3Aangelspanish_all%2Fplaylist.m3u8"
     },
     {
         "id": "tv-170",
@@ -3118,14 +3071,6 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-212&mediaUrl=https%3A%2F%2Ftv.bitstreaming.net%3A3789%2Flive%2Fcdntvlive.m3u8"
     },
     {
-        "id": "tv-213",
-        "title": "Calabasas Channel (480p)",
-        "url": "https://cdn3.wowza.com/5/UWpORHhLSEs5SkJs/calabasas/G0009_003/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-213.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-213&mediaUrl=https%3A%2F%2Fcdn3.wowza.com%2F5%2FUWpORHhLSEs5SkJs%2Fcalabasas%2FG0009_003%2Fplaylist.m3u8"
-    },
-    {
         "id": "tv-214",
         "title": "Cali TV (540p)",
         "url": "https://5ab772334c39c.streamlock.net/live-calitv/calitv1/playlist.m3u8",
@@ -3166,26 +3111,19 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-283&mediaUrl=https%3A%2F%2F6110f70ea8d0e.streamlock.net%2F1689%2F1689%2Fplaylist.m3u8"
     },
     {
-        "id": "tv-285",
-        "title": "Carivision (1080p) [Geo-blocked]",
-        "url": "https://ss2.tvrdomi.com:1936/carivision/carivision/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-285.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-285&mediaUrl=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fcarivision%2Fcarivision%2Fplaylist.m3u8"
-    },
-    {
         "id": "tv-286",
         "title": "Cascara TV (720p)",
         "url": "https://ss2.tvrdomi.com:1936/cascaratv/cascaratv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-286.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-286&mediaUrl=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fcascaratv%2Fcascaratv%2Fplaylist.m3u8"
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777546184381_logo.png",
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-286&mediaUrl=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fcascaratv%2Fcascaratv%2Fplaylist.m3u8",
+        "name": "CASCARA TV"
     },
     {
         "id": "tv-288",
         "title": "Catatumbo TV (406p)",
         "url": "https://cloud.fastchannel.es/manifiest/hls/prog9/catatumbotv.m3u8",
-        "genre": "Internacionales",
+        "genre": "Peliculas",
         "logo": "/logos_canales/tv-288.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-288&mediaUrl=https%3A%2F%2Fcloud.fastchannel.es%2Fmanifiest%2Fhls%2Fprog9%2Fcatatumbotv.m3u8"
     },
@@ -3193,95 +3131,47 @@ export const canalesTV = [
         "id": "tv-289",
         "title": "Celta TV (240p)",
         "url": "https://vivo.solumedia.com:19360/celta/celta.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-289.png",
+        "genre": "Documentales",
+        "logo": "/logos_canales/1777547701490_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-289&mediaUrl=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Fcelta%2Fcelta.m3u8"
     },
     {
         "id": "tv-290",
         "title": "Cenovision HD (720p)",
         "url": "https://5790d294af2dc.streamlock.net/cenovision/cenovision/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-290.png",
+        "genre": "Documentales",
+        "logo": "/logos_canales/1777546563972_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-290&mediaUrl=https%3A%2F%2F5790d294af2dc.streamlock.net%2Fcenovision%2Fcenovision%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-291",
-        "title": "Cerritos TV3 (360p)",
-        "url": "https://cdn3.wowza.com/5/UWpORHhLSEs5SkJs/cerritos/G0010_002/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-291.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-291&mediaUrl=https%3A%2F%2Fcdn3.wowza.com%2F5%2FUWpORHhLSEs5SkJs%2Fcerritos%2FG0010_002%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-292",
-        "title": "Cetelmón TV (404p)",
-        "url": "http://player.cetelmon.tv/protecteddfd43c2f3a8b41f3f28582bf8993aca6/992_high.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-292.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-292&mediaUrl=http%3A%2F%2Fplayer.cetelmon.tv%2Fprotecteddfd43c2f3a8b41f3f28582bf8993aca6%2F992_high.m3u8"
     },
     {
         "id": "tv-293",
         "title": "Chile Channel (720p)",
         "url": "https://v2.tustreaming.cl/chilechannel/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-293.png",
+        "genre": "Noticias",
+        "logo": "/logos_canales/1777546832055_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-293&mediaUrl=https%3A%2F%2Fv2.tustreaming.cl%2Fchilechannel%2Findex.m3u8"
-    },
-    {
-        "id": "tv-294",
-        "title": "Chiloe Red 25",
-        "url": "https://v2.tustreaming.cl/chiloered/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-294.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-294&mediaUrl=https%3A%2F%2Fv2.tustreaming.cl%2Fchiloered%2Findex.m3u8"
-    },
-    {
-        "id": "tv-295",
-        "title": "Chino Hills City TV Channel 3/41 (360p)",
-        "url": "https://edge-f.swagit.com/live/chinohillsca/live-1-a/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-295.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-295&mediaUrl=https%3A%2F%2Fedge-f.swagit.com%2Flive%2Fchinohillsca%2Flive-1-a%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-297",
-        "title": "Choluteca TV (1080p)",
-        "url": "https://s.emisoras.tv:8081/cholutecatv/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-297.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-297&mediaUrl=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fcholutecatv%2Findex.m3u8"
     },
     {
         "id": "tv-298",
         "title": "Cibaeña TV (720p)",
         "url": "https://streamunoapp.com:3958/live/cibaenatvlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-298.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777547008288_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-298&mediaUrl=https%3A%2F%2Fstreamunoapp.com%3A3958%2Flive%2Fcibaenatvlive.m3u8"
-    },
-    {
-        "id": "tv-301",
-        "title": "City of Oakland (KTOP) (480p)",
-        "url": "https://cdn3.wowza.com/5/cHYzekYzM2kvTVFH/oakland/G0219_002/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-301.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-301&mediaUrl=https%3A%2F%2Fcdn3.wowza.com%2F5%2FcHYzekYzM2kvTVFH%2Foakland%2FG0219_002%2Fplaylist.m3u8"
     },
     {
         "id": "tv-305",
         "title": "Click TV (Coronel) (720p)",
         "url": "https://v2.tustreaming.cl/clicktv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-305.png",
+        "genre": "Deportes",
+        "logo": "/logos_canales/1777547114300_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-305&mediaUrl=https%3A%2F%2Fv2.tustreaming.cl%2Fclicktv%2Fplaylist.m3u8"
     },
     {
         "id": "tv-307",
         "title": "Colome TV",
         "url": "https://ss2.tvrdomi.com:1936/colometv/colometv/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Documentales",
         "logo": "/logos_canales/tv-307.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-307&mediaUrl=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fcolometv%2Fcolometv%2Fplaylist.m3u8"
     },
@@ -3289,239 +3179,143 @@ export const canalesTV = [
         "id": "tv-308",
         "title": "Conecta2TV (720p)",
         "url": "https://live.obslivestream.com/conecta2/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-308.png",
+        "genre": "Noticias",
+        "logo": "/logos_canales/1777547220295_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-308&mediaUrl=https%3A%2F%2Flive.obslivestream.com%2Fconecta2%2Findex.m3u8"
-    },
-    {
-        "id": "tv-314",
-        "title": "ConstanzaTV",
-        "url": "https://live20.bozztv.com/akamaissh101/ssh101/ctv8hd/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-314.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-314&mediaUrl=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Fctv8hd%2Fplaylist.m3u8"
     },
     {
         "id": "tv-315",
         "title": "Contivision (720p)",
         "url": "https://unlimited6-cl.dps.live/cm/cm.smil/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-315.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777547315016_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-315&mediaUrl=https%3A%2F%2Funlimited6-cl.dps.live%2Fcm%2Fcm.smil%2Fplaylist.m3u8"
     },
     {
         "id": "tv-316",
         "title": "Controversia TV (720p)",
         "url": "https://live.obslivestream.com/controversiatv/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-316.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777547380293_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-316&mediaUrl=https%3A%2F%2Flive.obslivestream.com%2Fcontroversiatv%2Findex.m3u8"
-    },
-    {
-        "id": "tv-321",
-        "title": "CreaLaTV (1080p)",
-        "url": "https://stream8.mexiserver.com:2000/hls/crealatv/crealatv.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-321.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-321&mediaUrl=https%3A%2F%2Fstream8.mexiserver.com%3A2000%2Fhls%2Fcrealatv%2Fcrealatv.m3u8"
     },
     {
         "id": "tv-323",
         "title": "Cruz TV",
         "url": "https://reflect-communitytv.cablecast.tv/live-4/live/stream-2/live.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-323.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777547918014_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-323&mediaUrl=https%3A%2F%2Freflect-communitytv.cablecast.tv%2Flive-4%2Flive%2Fstream-2%2Flive.m3u8"
     },
     {
         "id": "tv-326",
         "title": "Cáritas TV (1080p)",
         "url": "https://rds3.desdeparaguay.net/caritastv/caritastv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
+        "genre": "Cristianos",
+        "logo": "/logos_canales/1777547825998_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-326&mediaUrl=https%3A%2F%2Frds3.desdeparaguay.net%2Fcaritastv%2Fcaritastv%2Fplaylist.m3u8"
     },
     {
         "id": "tv-327",
         "title": "Cúcuta Retro TV",
         "url": "https://mist01.homestream.fun/hls/ntvlive/0_1/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-327.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777548050149_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-327&mediaUrl=https%3A%2F%2Fmist01.homestream.fun%2Fhls%2Fntvlive%2F0_1%2Findex.m3u8"
     },
     {
         "id": "tv-329",
         "title": "DNJ TV (720p)",
         "url": "https://cloud2.streaminglivehd.com:1936/dnjv2/dnjv2/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-329.png",
+        "genre": "Cristianos",
+        "logo": "/logos_canales/1777548109226_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-329&mediaUrl=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2Fdnjv2%2Fdnjv2%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-334",
-        "title": "Diez TV Las Villas (1080p)",
-        "url": "https://streaming.cloud.innovasur.es/mmj2/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-334.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-334&mediaUrl=https%3A%2F%2Fstreaming.cloud.innovasur.es%2Fmmj2%2Findex.m3u8"
-    },
-    {
-        "id": "tv-335",
-        "title": "Diez TV Úbeda (1080p)",
-        "url": "https://streaming.cloud.innovasur.es/mmj/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-335.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-335&mediaUrl=https%3A%2F%2Fstreaming.cloud.innovasur.es%2Fmmj%2Findex.m3u8"
-    },
-    {
-        "id": "tv-336",
-        "title": "Digital 15 (1080p)",
-        "url": "http://190.122.104.210:5080/LiveApp/streams/Di15.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-336&mediaUrl=http%3A%2F%2F190.122.104.210%3A5080%2FLiveApp%2Fstreams%2FDi15.m3u8"
-    },
-    {
-        "id": "tv-337",
-        "title": "Digital Vision 63 (720p) [Geo-blocked]",
-        "url": "https://ss2.tvrdomi.com:1936/digitalvision/digitalvision/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-337.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-337&mediaUrl=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fdigitalvision%2Fdigitalvision%2Fplaylist.m3u8"
     },
     {
         "id": "tv-338",
         "title": "Digital809 TV (720p)",
         "url": "https://inliveserver.com:1936/digital809tv/digital809tv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-338.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777548221108_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-338&mediaUrl=https%3A%2F%2Finliveserver.com%3A1936%2Fdigital809tv%2Fdigital809tv%2Fplaylist.m3u8"
     },
     {
         "id": "tv-341",
         "title": "Distrito TV (1080p)",
         "url": "https://nlb2-live.emitstream.com/hls/3mn7wpcv7hbmxmdzaxap/master.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-341.png",
+        "genre": "Noticias",
+        "logo": "/logos_canales/1777548269972_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-341&mediaUrl=https%3A%2F%2Fnlb2-live.emitstream.com%2Fhls%2F3mn7wpcv7hbmxmdzaxap%2Fmaster.m3u8"
-    },
-    {
-        "id": "tv-342",
-        "title": "Décima TV (Ancud) (720p)",
-        "url": "https://unlimited2-cl-isp.dps.live/decimatv/decimatv.smil/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-342.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-342&mediaUrl=https%3A%2F%2Funlimited2-cl-isp.dps.live%2Fdecimatv%2Fdecimatv.smil%2Fplaylist.m3u8"
     },
     {
         "id": "tv-346",
         "title": "ENT Channel (720p)",
         "url": "https://cdn.global.elektamedia.com/live/c7eds/ENT_Channel/SA_LIVE_hls_enc/master.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-346.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777548455215_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-346&mediaUrl=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FENT_Channel%2FSA_LIVE_hls_enc%2Fmaster.m3u8"
     },
     {
         "id": "tv-347",
         "title": "ENT Family (720p)",
         "url": "https://cdn.global.elektamedia.com/live/c7eds/ENT_Family/SA_LIVE_hls_enc/master.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-347.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777548507078_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-347&mediaUrl=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FENT_Family%2FSA_LIVE_hls_enc%2Fmaster.m3u8"
-    },
-    {
-        "id": "tv-348",
-        "title": "ETB Events 1 (1080p)",
-        "url": "https://cdn1.etbon.eus/oc1/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-348.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-348&mediaUrl=https%3A%2F%2Fcdn1.etbon.eus%2Foc1%2Findex.m3u8"
     },
     {
         "id": "tv-349",
         "title": "EWTN Espana",
         "url": "https://cdn3.wowza.com/1/SmVrQmZCUXZhVDgz/b3J3MFJv/hls/q6xkg9py/480/chunklist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-349.png",
+        "genre": "Cristianos",
+        "logo": "/logos_canales/1777548636185_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-349&mediaUrl=https%3A%2F%2Fcdn3.wowza.com%2F1%2FSmVrQmZCUXZhVDgz%2Fb3J3MFJv%2Fhls%2Fq6xkg9py%2F480%2Fchunklist.m3u8"
-    },
-    {
-        "id": "tv-350",
-        "title": "EWTN Spain & Latin America (720p)",
-        "url": "https://cdn3.wowza.com/1/SmVrQmZCUXZhVDgz/b3J3MFJv/hls/live/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-350.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-350&mediaUrl=https%3A%2F%2Fcdn3.wowza.com%2F1%2FSmVrQmZCUXZhVDgz%2Fb3J3MFJv%2Fhls%2Flive%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-352",
-        "title": "Eclipse TV (720p)",
-        "url": "https://vdo6.instainternet.com:3272/live/jobetalborezlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-352.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-352&mediaUrl=https%3A%2F%2Fvdo6.instainternet.com%3A3272%2Flive%2Fjobetalborezlive.m3u8"
     },
     {
         "id": "tv-353",
         "title": "Ecotel TV (720p)",
         "url": "https://ecoteltv.streamseguro.com:5443/LiveApp/streams/streaming.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-353.png",
+        "genre": "Documentales",
+        "logo": "/logos_canales/1777548870113_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-353&mediaUrl=https%3A%2F%2Fecoteltv.streamseguro.com%3A5443%2FLiveApp%2Fstreams%2Fstreaming.m3u8"
     },
     {
         "id": "tv-355",
         "title": "Ecuador TV (720p)",
         "url": "https://samson.streamerr.co:8081/shogun/index.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-355.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-355&mediaUrl=https%3A%2F%2Fsamson.streamerr.co%3A8081%2Fshogun%2Findex.m3u8"
-    },
-    {
-        "id": "tv-357",
-        "title": "Eduvision (1080p)",
-        "url": "https://stmv3.voxtvhd.com.br/conex2/conex2/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-357&mediaUrl=https%3A%2F%2Fstmv3.voxtvhd.com.br%2Fconex2%2Fconex2%2Fplaylist.m3u8"
     },
     {
         "id": "tv-358",
         "title": "El Camino TV (480p)",
         "url": "https://5d32e2b9b7eed.streamlock.net:4443/ectv/ectv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-358.png",
+        "genre": "Cristianos",
+        "logo": "/logos_canales/1777548983935_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-358&mediaUrl=https%3A%2F%2F5d32e2b9b7eed.streamlock.net%3A4443%2Fectv%2Fectv%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-359",
-        "title": "El Nuevo Diario TV (480p)",
-        "url": "https://nuevodiario01.streamprolive.com/hls/live.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-359.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-359&mediaUrl=https%3A%2F%2Fnuevodiario01.streamprolive.com%2Fhls%2Flive.m3u8"
     },
     {
         "id": "tv-360",
         "title": "El Pituco TV (720p)",
         "url": "https://imagenuniversaltv.net:3439/live/elpitucolive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-360.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777549067326_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-360&mediaUrl=https%3A%2F%2Fimagenuniversaltv.net%3A3439%2Flive%2Felpitucolive.m3u8"
     },
     {
         "id": "tv-364",
         "title": "Elias Pina TV (720p)",
         "url": "https://cloud2.streaminglivehd.com:1936/8078/8078/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-364.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777549125446_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-364&mediaUrl=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2F8078%2F8078%2Fplaylist.m3u8"
     },
     {
         "id": "tv-365",
         "title": "EnerGeek (720p)",
         "url": "https://backend.energeek.cl/webtv/egretroweb/index.m3u8?token=ZZDemoIPTVGH",
-        "genre": "Internacionales",
+        "genre": "Infantil",
         "logo": "/logos_canales/tv-365.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-365&mediaUrl=https%3A%2F%2Fbackend.energeek.cl%2Fwebtv%2Fegretroweb%2Findex.m3u8%3Ftoken%3DZZDemoIPTVGH"
     },
@@ -3529,7 +3323,7 @@ export const canalesTV = [
         "id": "tv-367",
         "title": "Enterate RD",
         "url": "https://5790d294af2dc.streamlock.net/enteraterd/enteraterd/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Documentales",
         "logo": "/logos_canales/tv-367.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-367&mediaUrl=https%3A%2F%2F5790d294af2dc.streamlock.net%2Fenteraterd%2Fenteraterd%2Fplaylist.m3u8"
     },
@@ -3537,7 +3331,7 @@ export const canalesTV = [
         "id": "tv-368",
         "title": "EsTuTele (720p)",
         "url": "https://cloud.streamingconnect.tv/hls/estutele/estutele.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-368.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-368&mediaUrl=https%3A%2F%2Fcloud.streamingconnect.tv%2Fhls%2Festutele%2Festutele.m3u8"
     },
@@ -3545,183 +3339,63 @@ export const canalesTV = [
         "id": "tv-369",
         "title": "Espíritu Santo Y Fuego TV (480p)",
         "url": "https://inliveserver.com:1936/8392/8392/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-369.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777549377260_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-369&mediaUrl=https%3A%2F%2Finliveserver.com%3A1936%2F8392%2F8392%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-371",
-        "title": "Estrella Games (1080p)",
-        "url": "https://estrella-games-oando.amagi.tv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-371.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-371&mediaUrl=https%3A%2F%2Festrella-games-oando.amagi.tv%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-375",
-        "title": "Extrema TV (720p)",
-        "url": "https://627bb251f23c7.streamlock.net:444/ExtremaTV/ExtremaTV/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-375.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-375&mediaUrl=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FExtremaTV%2FExtremaTV%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-377",
-        "title": "FAP TV (480p)",
-        "url": "https://nd106.republicaservers.com/hls/c7284/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-377.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-377&mediaUrl=https%3A%2F%2Fnd106.republicaservers.com%2Fhls%2Fc7284%2Findex.m3u8"
     },
     {
         "id": "tv-379",
         "title": "FTV",
         "url": "https://master.tucableip.com/ftvhd/index.m3u8",
-        "genre": "Internacionales",
+        "genre": "Deportes",
         "logo": "/logos_canales/tv-379.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-379&mediaUrl=https%3A%2F%2Fmaster.tucableip.com%2Fftvhd%2Findex.m3u8"
-    },
-    {
-        "id": "tv-380",
-        "title": "Familia Visión HD",
-        "url": "https://584097344c1f0.streamlock.net/29/stream/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-380.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-380&mediaUrl=https%3A%2F%2F584097344c1f0.streamlock.net%2F29%2Fstream%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-383",
-        "title": "Farra Play (720p)",
-        "url": "http://159.203.148.226/live/farra.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-383.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-383&mediaUrl=http%3A%2F%2F159.203.148.226%2Flive%2Ffarra.m3u8"
     },
     {
         "id": "tv-384",
         "title": "Fibwi (1080p)",
         "url": "https://hostcdn3.fibwi.com/fibwi_diario/index.fmp4.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-384.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-384&mediaUrl=https%3A%2F%2Fhostcdn3.fibwi.com%2Ffibwi_diario%2Findex.fmp4.m3u8"
-    },
-    {
-        "id": "tv-390",
-        "title": "GO TV (720p)",
-        "url": "https://rds3.desdeparaguay.net/gotv/gotv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-390.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-390&mediaUrl=https%3A%2F%2Frds3.desdeparaguay.net%2Fgotv%2Fgotv%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-392",
-        "title": "Garage TV Latin America",
-        "url": "https://stream1.sersat.com/hls/garagetv.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-392.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-392&mediaUrl=https%3A%2F%2Fstream1.sersat.com%2Fhls%2Fgaragetv.m3u8"
     },
     {
         "id": "tv-394",
         "title": "Girovisual (720p)",
         "url": "https://unlimited1-cl-isp.dps.live/girovisual2/girovisual2.smil/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-394.png",
+        "genre": "Documentales",
+        "logo": "/logos_canales/1777549809271_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-394&mediaUrl=https%3A%2F%2Funlimited1-cl-isp.dps.live%2Fgirovisual2%2Fgirovisual2.smil%2Fplaylist.m3u8"
     },
     {
         "id": "tv-395",
         "title": "Global TV (720p)",
         "url": "https://stmv4.voxtvhd.com.br/globaltv/globaltv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-395.png",
+        "genre": "Documentales",
+        "logo": "/logos_canales/1777549872699_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-395&mediaUrl=https%3A%2F%2Fstmv4.voxtvhd.com.br%2Fglobaltv%2Fglobaltv%2Fplaylist.m3u8"
     },
     {
         "id": "tv-396",
         "title": "Goiena Eus (720p)",
         "url": "https://zuzenean.goienamedia.eus/goiena-telebista.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-396.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777549959930_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-396&mediaUrl=https%3A%2F%2Fzuzenean.goienamedia.eus%2Fgoiena-telebista.m3u8"
-    },
-    {
-        "id": "tv-398",
-        "title": "Golden TV (240p)",
-        "url": "https://rpn.bozztv.com/gusa/gusa-goldentv/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-398.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-398&mediaUrl=https%3A%2F%2Frpn.bozztv.com%2Fgusa%2Fgusa-goldentv%2Findex.m3u8"
-    },
-    {
-        "id": "tv-399",
-        "title": "Grande TV",
-        "url": "https://live20.bozztv.com/akamaissh101/ssh101/grandetv2240/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-399&mediaUrl=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Fgrandetv2240%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-400",
-        "title": "Guada TV (720p)",
-        "url": "https://cloud.streamingconnect.tv/hls/guadatv/guadatv.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-400.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-400&mediaUrl=https%3A%2F%2Fcloud.streamingconnect.tv%2Fhls%2Fguadatv%2Fguadatv.m3u8"
-    },
-    {
-        "id": "tv-402",
-        "title": "Guaymate TV (720p)",
-        "url": "https://live20.bozztv.com/akamaissh101/ssh101/guaymatetv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-402.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-402&mediaUrl=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Fguaymatetv%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-404",
-        "title": "Haina Vision (720p)",
-        "url": "https://cdn.streamingcpanel.com:3447/live/hainavisionlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-404.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-404&mediaUrl=https%3A%2F%2Fcdn.streamingcpanel.com%3A3447%2Flive%2Fhainavisionlive.m3u8"
-    },
-    {
-        "id": "tv-405",
-        "title": "Hamaika Telebista (1080p)",
-        "url": "https://cdn3.wowza.com/1/RERMR282dnU5eE5Z/OHY0dVFs/hls/live/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-405.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-405&mediaUrl=https%3A%2F%2Fcdn3.wowza.com%2F1%2FRERMR282dnU5eE5Z%2FOHY0dVFs%2Fhls%2Flive%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-407",
-        "title": "Hispania TV",
-        "url": "https://www.streaming507.net:19360/hispaniamediatv/hispaniamediatv.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-407.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-407&mediaUrl=https%3A%2F%2Fwww.streaming507.net%3A19360%2Fhispaniamediatv%2Fhispaniamediatv.m3u8"
     },
     {
         "id": "tv-408",
         "title": "Holvoet TV (Copiapó) (720p)",
         "url": "https://unlimited1-us.dps.live/holvoettv/holvoettv.smil/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-408.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777550229970_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-408&mediaUrl=https%3A%2F%2Funlimited1-us.dps.live%2Fholvoettv%2Fholvoettv.smil%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-409",
-        "title": "Hope Channel Inter-America",
-        "url": "https://jstre.am/live/jsl:EC0Mq0i6HJU.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-409.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-409&mediaUrl=https%3A%2F%2Fjstre.am%2Flive%2Fjsl%3AEC0Mq0i6HJU.m3u8"
     },
     {
         "id": "tv-415",
         "title": "ITV Patagonia (720p)",
         "url": "https://unlimited1-us.dps.live/itv/itv.smil/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Noticias",
         "logo": "/logos_canales/tv-415.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-415&mediaUrl=https%3A%2F%2Funlimited1-us.dps.live%2Fitv%2Fitv.smil%2Fplaylist.m3u8"
     },
@@ -3729,39 +3403,39 @@ export const canalesTV = [
         "id": "tv-418",
         "title": "Imagen Universal TV",
         "url": "https://imagenuniversaltv.net:3771/live/iutvlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-418.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777550354246_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-418&mediaUrl=https%3A%2F%2Fimagenuniversaltv.net%3A3771%2Flive%2Fiutvlive.m3u8"
     },
     {
         "id": "tv-422",
         "title": "Interalmeria TV (1080p)",
         "url": "https://interalmeria.tv/directo/live.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777550425999_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-422&mediaUrl=https%3A%2F%2Finteralmeria.tv%2Fdirecto%2Flive.m3u8"
     },
     {
         "id": "tv-425",
         "title": "Isla TV (480p)",
         "url": "https://59d39900ebfb8.streamlock.net/islatv/islatv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-425.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777550483844_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-425&mediaUrl=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Fislatv%2Fislatv%2Fplaylist.m3u8"
     },
     {
         "id": "tv-426",
         "title": "JN19 (1080p)",
         "url": "https://servilive.com:3028/live/jntv19live.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
+        "genre": "Cristianos",
+        "logo": "/logos_canales/1777550556668_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-426&mediaUrl=https%3A%2F%2Fservilive.com%3A3028%2Flive%2Fjntv19live.m3u8"
     },
     {
         "id": "tv-429",
         "title": "Jimani TV (360p) [Geo-blocked]",
         "url": "https://cloud2.streaminglivehd.com:1936/8246/8246/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Peliculas",
         "logo": "/logos_canales/tv-429.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-429&mediaUrl=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2F8246%2F8246%2Fplaylist.m3u8"
     },
@@ -3769,39 +3443,23 @@ export const canalesTV = [
         "id": "tv-431",
         "title": "Kanade (1080p)",
         "url": "https://backend.energeek.cl/webtv/kanadeweb/index.m3u8?token=ZZDemoIPTVGH",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-431.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777550658316_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-431&mediaUrl=https%3A%2F%2Fbackend.energeek.cl%2Fwebtv%2Fkanadeweb%2Findex.m3u8%3Ftoken%3DZZDemoIPTVGH"
-    },
-    {
-        "id": "tv-433",
-        "title": "Kerusso TV (720p)",
-        "url": "https://s.emisoras.tv:8081/kerussotv/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-433.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-433&mediaUrl=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fkerussotv%2Findex.m3u8"
     },
     {
         "id": "tv-434",
         "title": "LA MIA TV (720p) [Geo-blocked]",
         "url": "https://ss2.tvrdomi.com:1936/lamiatv/lamiatv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-434.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777550713260_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-434&mediaUrl=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Flamiatv%2Flamiatv%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-443",
-        "title": "La Hermandad Salsera (1080p)",
-        "url": "https://streamlov.alsolnet.com/hermandadsalsera/live/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-443.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-443&mediaUrl=https%3A%2F%2Fstreamlov.alsolnet.com%2Fhermandadsalsera%2Flive%2Fplaylist.m3u8"
     },
     {
         "id": "tv-444",
         "title": "La Kalle (720p)",
         "url": "https://mdstrm.com/live-stream-playlist/58d191f07290fbb058025843.m3u8",
-        "genre": "Internacionales",
+        "genre": "Musica",
         "logo": "/logos_canales/tv-444.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-444&mediaUrl=https%3A%2F%2Fmdstrm.com%2Flive-stream-playlist%2F58d191f07290fbb058025843.m3u8"
     },
@@ -3809,23 +3467,15 @@ export const canalesTV = [
         "id": "tv-445",
         "title": "La Que Buena Atlanta",
         "url": "https://streamyes.alsolnet.com/quebuenaatlanta/live/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-445.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777550805532_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-445&mediaUrl=https%3A%2F%2Fstreamyes.alsolnet.com%2Fquebuenaatlanta%2Flive%2Findex.m3u8"
-    },
-    {
-        "id": "tv-446",
-        "title": "La Red (720p)",
-        "url": "https://alba-cl-lared-lared.stream.mediatiquestream.com/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-446.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-446&mediaUrl=https%3A%2F%2Falba-cl-lared-lared.stream.mediatiquestream.com%2Findex.m3u8"
     },
     {
         "id": "tv-447",
         "title": "La Reina TV [Geo-blocked]",
         "url": "https://cloud2.streaminglivehd.com:1936/lareinatv/lareinatv/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Peliculas",
         "logo": "/logos_canales/tv-447.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-447&mediaUrl=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2Flareinatv%2Flareinatv%2Fplaylist.m3u8"
     },
@@ -3833,63 +3483,55 @@ export const canalesTV = [
         "id": "tv-448",
         "title": "La Ruta TV",
         "url": "https://streamunoapp.com:3983/live/larutatvlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-448.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777552656819_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-448&mediaUrl=https%3A%2F%2Fstreamunoapp.com%3A3983%2Flive%2Flarutatvlive.m3u8"
     },
     {
         "id": "tv-449",
         "title": "La Top 102.9 (720p)",
         "url": "https://59d39900ebfb8.streamlock.net/top102/top102/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-449.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777552734678_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-449&mediaUrl=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Ftop102%2Ftop102%2Fplaylist.m3u8"
     },
     {
         "id": "tv-450",
         "title": "La Top 107.7 (720p)",
         "url": "https://59d39900ebfb8.streamlock.net/top107/top107/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-450.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777552777493_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-450&mediaUrl=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Ftop107%2Ftop107%2Fplaylist.m3u8"
     },
     {
         "id": "tv-452",
         "title": "La Voz de Maria (720p)",
         "url": "https://live.lavozdemaria.com:3436/live/lavozdemarialive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-452.png",
+        "genre": "Cristianos",
+        "logo": "/logos_canales/1777552825568_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-452&mediaUrl=https%3A%2F%2Flive.lavozdemaria.com%3A3436%2Flive%2Flavozdemarialive.m3u8"
-    },
-    {
-        "id": "tv-453",
-        "title": "La Voz del Tropico (480p) [Geo-blocked]",
-        "url": "https://ss2.tvrdomi.com:1936/lavozdeltropico/lavozdeltropico/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-453.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-453&mediaUrl=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Flavozdeltropico%2Flavozdeltropico%2Fplaylist.m3u8"
     },
     {
         "id": "tv-454",
         "title": "La-X (720p)",
         "url": "https://stream.eleden.com/livelax/ngrp:livelax_all/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-454.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777552936404_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-454&mediaUrl=https%3A%2F%2Fstream.eleden.com%2Flivelax%2Fngrp%3Alivelax_all%2Fplaylist.m3u8"
     },
     {
         "id": "tv-457",
         "title": "Latacunga TV (360p)",
         "url": "https://stmv1.voxtvhd.com.br/latacungatv/latacungatv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-457.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777552988944_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-457&mediaUrl=https%3A%2F%2Fstmv1.voxtvhd.com.br%2Flatacungatv%2Flatacungatv%2Fplaylist.m3u8"
     },
     {
         "id": "tv-458",
         "title": "Latin Zone TV (720p)",
         "url": "https://cdn.streamingcpanel.com:3784/live/latinzonetvlive.m3u8",
-        "genre": "Internacionales",
+        "genre": "Musica",
         "logo": "/logos_canales/tv-458.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-458&mediaUrl=https%3A%2F%2Fcdn.streamingcpanel.com%3A3784%2Flive%2Flatinzonetvlive.m3u8"
     },
@@ -3897,111 +3539,63 @@ export const canalesTV = [
         "id": "tv-462",
         "title": "Latina TV Internacional (720p)",
         "url": "https://5790d294af2dc.streamlock.net/latinatv/latinatv/chunklist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-462.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777553057981_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-462&mediaUrl=https%3A%2F%2F5790d294af2dc.streamlock.net%2Flatinatv%2Flatinatv%2Fchunklist.m3u8"
     },
     {
         "id": "tv-463",
         "title": "Lena TV",
         "url": "https://5790d294af2dc.streamlock.net/lenaratv/lenaratv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
+        "genre": "Musica",
+        "logo": "/logos_canales/1777553134942_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-463&mediaUrl=https%3A%2F%2F5790d294af2dc.streamlock.net%2Flenaratv%2Flenaratv%2Fplaylist.m3u8"
     },
     {
         "id": "tv-466",
         "title": "Litoral Atlántico HD (720p)",
         "url": "https://cdn4.streamgato.us:3595/live/litoralhdlive.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777553231354_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-466&mediaUrl=https%3A%2F%2Fcdn4.streamgato.us%3A3595%2Flive%2Flitoralhdlive.m3u8"
     },
     {
         "id": "tv-467",
         "title": "Litus TV (720p)",
         "url": "https://stream.arcast.com.ar/litustv/ngrp:litustv_all/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Documentales",
         "logo": "/logos_canales/tv-467.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-467&mediaUrl=https%3A%2F%2Fstream.arcast.com.ar%2Flitustv%2Fngrp%3Alitustv_all%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-469",
-        "title": "Logos TV (1080p)",
-        "url": "https://streamer1.streamhost.org/salive/logosH/master.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-469.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-469&mediaUrl=https%3A%2F%2Fstreamer1.streamhost.org%2Fsalive%2FlogosH%2Fmaster.m3u8"
     },
     {
         "id": "tv-470",
         "title": "Logos TV Salud (720p)",
         "url": "https://streamer1.streamhost.org/salive/logossaludH/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-470.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777553324992_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-470&mediaUrl=https%3A%2F%2Fstreamer1.streamhost.org%2Fsalive%2FlogossaludH%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-473",
-        "title": "M95 Televisión Marbella (1080p)",
-        "url": "https://limited2.todostreaming.es/live/m95-livestream.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-473.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-473&mediaUrl=https%3A%2F%2Flimited2.todostreaming.es%2Flive%2Fm95-livestream.m3u8"
     },
     {
         "id": "tv-475",
         "title": "MTNA TV",
         "url": "https://live.mtna.tv/hls/mtna/mtna.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
+        "genre": "Musica",
+        "logo": "/logos_canales/1777553398391_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-475&mediaUrl=https%3A%2F%2Flive.mtna.tv%2Fhls%2Fmtna%2Fmtna.m3u8"
-    },
-    {
-        "id": "tv-476",
-        "title": "Majestad Televisión (480p)",
-        "url": "https://livetv.305streamhd.com:3667/live/majestadtvlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-476.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-476&mediaUrl=https%3A%2F%2Flivetv.305streamhd.com%3A3667%2Flive%2Fmajestadtvlive.m3u8"
-    },
-    {
-        "id": "tv-478",
-        "title": "Makao TV (360p)",
-        "url": "https://live.obslivestream.com/makaomux/tracks-v2a1/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-478.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-478&mediaUrl=https%3A%2F%2Flive.obslivestream.com%2Fmakaomux%2Ftracks-v2a1%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-481",
-        "title": "Manavisión (480p)",
-        "url": "https://play.once.net.ec/play/Ily2oYdd3E1fi9wK2zORoRovFU9P5xM0g3CNVK2MT0M/.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-481&mediaUrl=https%3A%2F%2Fplay.once.net.ec%2Fplay%2FIly2oYdd3E1fi9wK2zORoRovFU9P5xM0g3CNVK2MT0M%2F.m3u8"
     },
     {
         "id": "tv-482",
         "title": "Marca TV (1080p)",
         "url": "http://200.7.219.221:8088/live/livetv/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-482.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777553654250_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-482&mediaUrl=http%3A%2F%2F200.7.219.221%3A8088%2Flive%2Flivetv%2Findex.m3u8"
-    },
-    {
-        "id": "tv-483",
-        "title": "María Visión Mexico (360p)",
-        "url": "https://1601580044.rsc.cdn77.org/live/_jcn_/amlst:Mariavision/master.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-483.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-483&mediaUrl=https%3A%2F%2F1601580044.rsc.cdn77.org%2Flive%2F_jcn_%2Famlst%3AMariavision%2Fmaster.m3u8"
     },
     {
         "id": "tv-486",
         "title": "Mega TV (720p)",
         "url": "https://ott3.streann.com/loadbalancer/services/public/channels-secure/5e62b96e2cdcfac2dd8885dd/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-486.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-486&mediaUrl=https%3A%2F%2Fott3.streann.com%2Floadbalancer%2Fservices%2Fpublic%2Fchannels-secure%2F5e62b96e2cdcfac2dd8885dd%2Fplaylist.m3u8"
     },
@@ -4009,49 +3603,17 @@ export const canalesTV = [
         "id": "tv-487",
         "title": "Mega TV Jaen (720p)",
         "url": "https://7.innovatestream.pe:19360/megatvjaen/megatvjaen.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-487.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777553785929_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-487&mediaUrl=https%3A%2F%2F7.innovatestream.pe%3A19360%2Fmegatvjaen%2Fmegatvjaen.m3u8"
     },
     {
         "id": "tv-497",
         "title": "Metro TV (720p)",
         "url": "https://s.emisoras.tv:8081/metrotv/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-497.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777553860067_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-497&mediaUrl=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fmetrotv%2Findex.m3u8"
-    },
-    {
-        "id": "tv-500",
-        "title": "MiTV (720p)",
-        "url": "https://rds3.desdeparaguay.net/mitv/mitv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-500.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-500&mediaUrl=https%3A%2F%2Frds3.desdeparaguay.net%2Fmitv%2Fmitv%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-501",
-        "title": "Microvision 10 (720p)",
-        "url": "https://streaming.telecablecentral.com.do/live/MicroHD/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-501&mediaUrl=https%3A%2F%2Fstreaming.telecablecentral.com.do%2Flive%2FMicroHD%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-502",
-        "title": "Miel TV (720p)",
-        "url": "https://7.innovatestream.pe:19360/mieltv/mieltv.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-502.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-502&mediaUrl=https%3A%2F%2F7.innovatestream.pe%3A19360%2Fmieltv%2Fmieltv.m3u8"
-    },
-    {
-        "id": "tv-508",
-        "title": "Monterrico TV (1080p)",
-        "url": "https://www.opencaster.com/resources/hls_stream/hipodromojcp2.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-508.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-508&mediaUrl=https%3A%2F%2Fwww.opencaster.com%2Fresources%2Fhls_stream%2Fhipodromojcp2.m3u8"
     },
     {
         "id": "tv-512",
@@ -4062,34 +3624,26 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-512&mediaUrl=https%3A%2F%2Fcdn-ue1-prod.tsv2.amagi.tv%2Flinear%2Famg01255-secomcofites-my-myzen-en-plex%2Fplaylist.m3u8"
     },
     {
-        "id": "tv-514",
-        "title": "NBC Universo West (720p)",
-        "url": "http://190.11.225.124:5000/live/universo_hd/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-514.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-514&mediaUrl=http%3A%2F%2F190.11.225.124%3A5000%2Flive%2Funiverso_hd%2Fplaylist.m3u8"
-    },
-    {
         "id": "tv-516",
         "title": "NET TV (720p)",
         "url": "https://unlimited1-us.dps.live/nettv/nettv.smil/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-516.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777553980466_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-516&mediaUrl=https%3A%2F%2Funlimited1-us.dps.live%2Fnettv%2Fnettv.smil%2Fplaylist.m3u8"
     },
     {
         "id": "tv-518",
         "title": "NSTV (1080p)",
         "url": "https://sistemastr.tropicalmoonmedia.com/live/2C7CA6CECC9B8F8C3A07315FDA110936/21.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-518.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777554044402_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-518&mediaUrl=https%3A%2F%2Fsistemastr.tropicalmoonmedia.com%2Flive%2F2C7CA6CECC9B8F8C3A07315FDA110936%2F21.m3u8"
     },
     {
         "id": "tv-519",
         "title": "Nativa (720p)",
         "url": "https://oneplay.iptvperu.tv:1936/static/nativa1.stream/chunks.m3u8",
-        "genre": "Internacionales",
+        "genre": "Documentales",
         "logo": "/logos_canales/tv-519.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-519&mediaUrl=https%3A%2F%2Foneplay.iptvperu.tv%3A1936%2Fstatic%2Fnativa1.stream%2Fchunks.m3u8"
     },
@@ -4097,41 +3651,17 @@ export const canalesTV = [
         "id": "tv-520",
         "title": "NatureTime (1080p)",
         "url": "https://amg00090-blueantllc-lovenature-au-samsungau-wggcn.amagi.tv/playlist/amg00090-blueantllc-lovenature-au-samsungau/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
+        "genre": "Documentales",
+        "logo": "/logos_canales/1777554145180_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-520&mediaUrl=https%3A%2F%2Famg00090-blueantllc-lovenature-au-samsungau-wggcn.amagi.tv%2Fplaylist%2Famg00090-blueantllc-lovenature-au-samsungau%2Fplaylist.m3u8"
     },
     {
         "id": "tv-522",
         "title": "Nexxo TV (720p)",
         "url": "https://cdn3.streamgato.us:3938/live/nexxotvlive.m3u8",
-        "genre": "Internacionales",
+        "genre": "Peliculas",
         "logo": "/logos_canales/tv-522.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-522&mediaUrl=https%3A%2F%2Fcdn3.streamgato.us%3A3938%2Flive%2Fnexxotvlive.m3u8"
-    },
-    {
-        "id": "tv-525",
-        "title": "Notigram TV (XHFGL-TDT) (1080p)",
-        "url": "https://stream.ontvmx.com/ontv/Wn3jgo4UYNSmwRDIev/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-525.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-525&mediaUrl=https%3A%2F%2Fstream.ontvmx.com%2Fontv%2FWn3jgo4UYNSmwRDIev%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-526",
-        "title": "Nublevision (720p)",
-        "url": "https://tv.arkeo.cl:1936/nublevision/nublevision/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-526.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-526&mediaUrl=https%3A%2F%2Ftv.arkeo.cl%3A1936%2Fnublevision%2Fnublevision%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-528",
-        "title": "Nueva Vision 14",
-        "url": "https://live20.bozztv.com/akamaissh101/ssh101/nuevavisionhd/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-528.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-528&mediaUrl=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Fnuevavisionhd%2Fplaylist.m3u8"
     },
     {
         "id": "tv-530",
@@ -4145,41 +3675,25 @@ export const canalesTV = [
         "id": "tv-531",
         "title": "ONDA DIGITAL (720p)",
         "url": "https://tv.ondadigital.pe/ondadigital/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-531.png",
+        "genre": "Noticias",
+        "logo": "/logos_canales/1777554277062_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-531&mediaUrl=https%3A%2F%2Ftv.ondadigital.pe%2Fondadigital%2Findex.m3u8"
     },
     {
         "id": "tv-533",
         "title": "Oasis TV (720p)",
         "url": "https://5e85d90130e77.streamlock.net/6020/6020/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-533.png",
+        "genre": "Cristianos",
+        "logo": "/logos_canales/1777554394853_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-533&mediaUrl=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6020%2F6020%2Fplaylist.m3u8"
     },
     {
         "id": "tv-534",
         "title": "Olam Metro TV (720p)",
         "url": "https://netzerstreaming.com:4433/hls/olammetro/index.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-534.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-534&mediaUrl=https%3A%2F%2Fnetzerstreaming.com%3A4433%2Fhls%2Folammetro%2Findex.m3u8"
-    },
-    {
-        "id": "tv-543",
-        "title": "Ovacion TV (720p)",
-        "url": "http://cdn2.ujjina.com:1935/iptvovacion1/liveovacion1tv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-543.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-543&mediaUrl=http%3A%2F%2Fcdn2.ujjina.com%3A1935%2Fiptvovacion1%2Fliveovacion1tv%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-545",
-        "title": "P3TV",
-        "url": "https://5790d294af2dc.streamlock.net/8042/8042/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-545.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-545&mediaUrl=https%3A%2F%2F5790d294af2dc.streamlock.net%2F8042%2F8042%2Fplaylist.m3u8"
     },
     {
         "id": "tv-546",
@@ -4190,14 +3704,6 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-546&mediaUrl=https%3A%2F%2Fcdn3.wowza.com%2F5%2FbGZUOHp2TnhudnM2%2Fphoenix%2FG1498_006%2Fplaylist.m3u8"
     },
     {
-        "id": "tv-548",
-        "title": "PSN (288p)",
-        "url": "https://srspsn.live/live/livestream.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-548.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-548&mediaUrl=https%3A%2F%2Fsrspsn.live%2Flive%2Flivestream.m3u8"
-    },
-    {
         "id": "tv-550",
         "title": "Pacific Coast TV MWSD Channel 26 (720p)",
         "url": "https://livestream.telvue.com/pacificaca2/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8",
@@ -4206,34 +3712,18 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-550&mediaUrl=https%3A%2F%2Flivestream.telvue.com%2Fpacificaca2%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8"
     },
     {
-        "id": "tv-552",
-        "title": "Paraíso TV (720p)",
-        "url": "https://stream.eleden.com/livewtpm/ngrp:livewtpm_all/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-552.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-552&mediaUrl=https%3A%2F%2Fstream.eleden.com%2Flivewtpm%2Fngrp%3Alivewtpm_all%2Fplaylist.m3u8"
-    },
-    {
         "id": "tv-553",
         "title": "Parranda Vallenata (720p)",
         "url": "https://backupmaxmedia.hvmultiplay.com/hls/stream3/parrandavallenata.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-553.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777554642427_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-553&mediaUrl=https%3A%2F%2Fbackupmaxmedia.hvmultiplay.com%2Fhls%2Fstream3%2Fparrandavallenata.m3u8"
-    },
-    {
-        "id": "tv-555",
-        "title": "Pichilemu TV (1080p)",
-        "url": "https://5ff3d9babae13.streamlock.net/8028/8028/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-555.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-555&mediaUrl=https%3A%2F%2F5ff3d9babae13.streamlock.net%2F8028%2F8028%2Fplaylist.m3u8"
     },
     {
         "id": "tv-556",
         "title": "Platzi TV (1080p)",
         "url": "https://mdstrm.com/live-stream-playlist/629a63ae8df27c082901f78b.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-556.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-556&mediaUrl=https%3A%2F%2Fmdstrm.com%2Flive-stream-playlist%2F629a63ae8df27c082901f78b.m3u8"
     },
@@ -4241,55 +3731,31 @@ export const canalesTV = [
         "id": "tv-557",
         "title": "Plous TV (1080p)",
         "url": "https://vcp.myplaytv.com/glowtv/glowtv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777554728704_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-557&mediaUrl=https%3A%2F%2Fvcp.myplaytv.com%2Fglowtv%2Fglowtv%2Fplaylist.m3u8"
     },
     {
         "id": "tv-558",
         "title": "Plus TV (720p)",
         "url": "https://plustv.streamseguro.com:5443/LiveApp/streams/streaming.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-558.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777554788513_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-558&mediaUrl=https%3A%2F%2Fplustv.streamseguro.com%3A5443%2FLiveApp%2Fstreams%2Fstreaming.m3u8"
     },
     {
         "id": "tv-562",
         "title": "Prensa Latina TV (1080p)",
         "url": "https://eu1.servers10.com:8081/8192/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-562.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777554895860_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-562&mediaUrl=https%3A%2F%2Feu1.servers10.com%3A8081%2F8192%2Findex.m3u8"
-    },
-    {
-        "id": "tv-563",
-        "title": "Presumiendo México (720p)",
-        "url": "https://60417ddeaf0d9.streamlock.net/telemetrika/smil:telemetrika.smil/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-563.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-563&mediaUrl=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Ftelemetrika%2Fsmil%3Atelemetrika.smil%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-567",
-        "title": "Punt 3 Vall Uixó (1080p)",
-        "url": "https://bit.controlstreams.com:5443/LiveApp/streams/punt3.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-567.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-567&mediaUrl=https%3A%2F%2Fbit.controlstreams.com%3A5443%2FLiveApp%2Fstreams%2Fpunt3.m3u8"
-    },
-    {
-        "id": "tv-569",
-        "title": "Punto TV Digital 40 [Geo-blocked]",
-        "url": "https://ss2.tvrdomi.com:1936/puntotvdigital/puntotvdigital/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-569.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-569&mediaUrl=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fpuntotvdigital%2Fpuntotvdigital%2Fplaylist.m3u8"
     },
     {
         "id": "tv-570",
         "title": "Pura Palabra (718p)",
         "url": "https://59825a54e4454.streamlock.net:8443/william233/william233/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Cristianos",
         "logo": "/logos_canales/tv-570.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-570&mediaUrl=https%3A%2F%2F59825a54e4454.streamlock.net%3A8443%2Fwilliam233%2Fwilliam233%2Fplaylist.m3u8"
     },
@@ -4297,7 +3763,7 @@ export const canalesTV = [
         "id": "tv-572",
         "title": "Puruwa TV (1080p)",
         "url": "https://live.tvcontrolcp.com:1936/puruwatv/puruwatv/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Cristianos",
         "logo": "/logos_canales/tv-572.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-572&mediaUrl=https%3A%2F%2Flive.tvcontrolcp.com%3A1936%2Fpuruwatv%2Fpuruwatv%2Fplaylist.m3u8"
     },
@@ -4305,111 +3771,39 @@ export const canalesTV = [
         "id": "tv-576",
         "title": "RCV TV (712p)",
         "url": "https://59d39900ebfb8.streamlock.net/rcv/rcv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-576.png",
+        "genre": "Noticias",
+        "logo": "/logos_canales/1777555144860_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-576&mediaUrl=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Frcv%2Frcv%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-589",
-        "title": "Rancho Cucamonga RCTV3 (Rancho Cucamonga CA) (480p)",
-        "url": "https://vod.cityofrc.us/live-6/live/stream-1/live.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-589.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-589&mediaUrl=https%3A%2F%2Fvod.cityofrc.us%2Flive-6%2Flive%2Fstream-1%2Flive.m3u8"
-    },
-    {
-        "id": "tv-590",
-        "title": "Red ADvenir TV (360p)",
-        "url": "http://streamer1.streamhost.org:1935/salive/GMIredadvenirm/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-590.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-590&mediaUrl=http%3A%2F%2Fstreamer1.streamhost.org%3A1935%2Fsalive%2FGMIredadvenirm%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-591",
-        "title": "Red TVE Ventanas (432p)",
-        "url": "https://s2.tvdatta.com:3825/live/redtvelive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-591.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-591&mediaUrl=https%3A%2F%2Fs2.tvdatta.com%3A3825%2Flive%2Fredtvelive.m3u8"
-    },
-    {
-        "id": "tv-594",
-        "title": "República TV (720p)",
-        "url": "https://rds3.desdeparaguay.net/republicatv/republicatv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-594.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-594&mediaUrl=https%3A%2F%2Frds3.desdeparaguay.net%2Frepublicatv%2Frepublicatv%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-595",
-        "title": "Reyali (614p)",
-        "url": "https://eu1.servers10.com:8081/8090/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-595.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-595&mediaUrl=https%3A%2F%2Feu1.servers10.com%3A8081%2F8090%2Findex.m3u8"
     },
     {
         "id": "tv-596",
         "title": "Rhema TV (720p)",
         "url": "https://5e85d90130e77.streamlock.net/6006/6006/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Cristianos",
         "logo": "/logos_canales/tv-596.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-596&mediaUrl=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6006%2F6006%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-597",
-        "title": "Ribera TV (576p)",
-        "url": "https://common01.todostreaming.es/live/ribera-livestream.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-597.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-597&mediaUrl=https%3A%2F%2Fcommon01.todostreaming.es%2Flive%2Fribera-livestream.m3u8"
-    },
-    {
-        "id": "tv-598",
-        "title": "Rocavision TV",
-        "url": "https://streamunoapp.com:3331/live/rocavisiontvlive.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-598&mediaUrl=https%3A%2F%2Fstreamunoapp.com%3A3331%2Flive%2Frocavisiontvlive.m3u8"
     },
     {
         "id": "tv-700",
         "title": "TVR (1080p)",
         "url": "https://unlimited1-us.dps.live/tvr/tvr.smil/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-700.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-700&mediaUrl=https%3A%2F%2Funlimited1-us.dps.live%2Ftvr%2Ftvr.smil%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-701",
-        "title": "TVS (540p)",
-        "url": "https://imagenuniversaltv.net:3741/live/tvslive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-701.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-701&mediaUrl=https%3A%2F%2Fimagenuniversaltv.net%3A3741%2Flive%2Ftvslive.m3u8"
-    },
-    {
-        "id": "tv-702",
-        "title": "TVS (720p)",
-        "url": "https://vcp10.myplaytv.com/tvs/tvs/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-702.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-702&mediaUrl=https%3A%2F%2Fvcp10.myplaytv.com%2Ftvs%2Ftvs%2Fplaylist.m3u8"
     },
     {
         "id": "tv-703",
         "title": "TVS Retro (720p)",
         "url": "https://cdn.streamhispanatv.net:3531/live/tvsretrogtlive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-703.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777557094815_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-703&mediaUrl=https%3A%2F%2Fcdn.streamhispanatv.net%3A3531%2Flive%2Ftvsretrogtlive.m3u8"
     },
     {
         "id": "tv-704",
         "title": "TVU Concepción (1080p)",
         "url": "https://unlimited1-cl-isp.dps.live/tvu/tvu.smil/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-704.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-704&mediaUrl=https%3A%2F%2Funlimited1-cl-isp.dps.live%2Ftvu%2Ftvu.smil%2Fplaylist.m3u8"
     },
@@ -4417,105 +3811,41 @@ export const canalesTV = [
         "id": "tv-707",
         "title": "Tarotéame (576p)",
         "url": "https://5d2733224ac48.streamlock.net/taroteame/tarot_web/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/tv-707.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-707&mediaUrl=https%3A%2F%2F5d2733224ac48.streamlock.net%2Ftaroteame%2Ftarot_web%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-708",
-        "title": "Tele Elx (1080p)",
-        "url": "https://tvdirecto.teleelx.es/stream/teleelx.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-708.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-708&mediaUrl=https%3A%2F%2Ftvdirecto.teleelx.es%2Fstream%2Fteleelx.m3u8"
-    },
-    {
-        "id": "tv-710",
-        "title": "Tele Saltillo",
-        "url": "https://servilive.com:3879/live/telesaltillolive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-710.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-710&mediaUrl=https%3A%2F%2Fservilive.com%3A3879%2Flive%2Ftelesaltillolive.m3u8"
     },
     {
         "id": "tv-712",
         "title": "TeleAragua (480p)",
         "url": "http://45.173.198.59:8080/hls/nginx3.m3u8?tla=",
-        "genre": "Internacionales",
-        "logo": null,
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777556952608_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-712&mediaUrl=http%3A%2F%2F45.173.198.59%3A8080%2Fhls%2Fnginx3.m3u8%3Ftla%3D"
-    },
-    {
-        "id": "tv-714",
-        "title": "TeleFórmula (720p)",
-        "url": "https://mdstrm.com/live-stream-playlist/62f2c855f7981b5a5a2d8763.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-714.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-714&mediaUrl=https%3A%2F%2Fmdstrm.com%2Flive-stream-playlist%2F62f2c855f7981b5a5a2d8763.m3u8"
-    },
-    {
-        "id": "tv-715",
-        "title": "TeleMas (480p) [Geo-blocked]",
-        "url": "https://mist01.homestream.fun/hls/tlmas904/0_1/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-715.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-715&mediaUrl=https%3A%2F%2Fmist01.homestream.fun%2Fhls%2Ftlmas904%2F0_1%2Findex.m3u8"
-    },
-    {
-        "id": "tv-717",
-        "title": "TeleVigo (1080p)",
-        "url": "https://cloud.fastchannel.es/mic/manifiest/hls/televigo/televigo.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-717.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-717&mediaUrl=https%3A%2F%2Fcloud.fastchannel.es%2Fmic%2Fmanifiest%2Fhls%2Ftelevigo%2Ftelevigo.m3u8"
-    },
-    {
-        "id": "tv-718",
-        "title": "Telearuba (1080p)",
-        "url": "https://backend-server-dot-telearuba-app.appspot.com/media/livestream13/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-718.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-718&mediaUrl=https%3A%2F%2Fbackend-server-dot-telearuba-app.appspot.com%2Fmedia%2Flivestream13%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-719",
-        "title": "Telecolor (480p)",
-        "url": "https://cloud.livescast.com:19360/telecolor/telecolor.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-719.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-719&mediaUrl=https%3A%2F%2Fcloud.livescast.com%3A19360%2Ftelecolor%2Ftelecolor.m3u8"
     },
     {
         "id": "tv-720",
         "title": "Telecolor Yurimaguas (720p)",
         "url": "https://live.obslivestream.com/telecolormux/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-720.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777556693844_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-720&mediaUrl=https%3A%2F%2Flive.obslivestream.com%2Ftelecolormux%2Findex.m3u8"
     },
     {
         "id": "tv-723",
         "title": "Telecosta (720p)",
         "url": "https://tv91.hostingnuclear.com:19360/telecosta/telecosta.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-723.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777556611870_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-723&mediaUrl=https%3A%2F%2Ftv91.hostingnuclear.com%3A19360%2Ftelecosta%2Ftelecosta.m3u8"
     },
     {
         "id": "tv-724",
         "title": "Teleganés (720p)",
         "url": "https://nlb2-live.emitstream.com/hls/5z6oj7ziwxzfnj78vg2m/master.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-724.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777556501809_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-724&mediaUrl=https%3A%2F%2Fnlb2-live.emitstream.com%2Fhls%2F5z6oj7ziwxzfnj78vg2m%2Fmaster.m3u8"
-    },
-    {
-        "id": "tv-725",
-        "title": "Teleimpacto (720p)",
-        "url": "https://vpss2003.streamprolive.com/hls/live.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-725.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-725&mediaUrl=https%3A%2F%2Fvpss2003.streamprolive.com%2Fhls%2Flive.m3u8"
     },
     {
         "id": "tv-726",
@@ -4526,100 +3856,36 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-726&mediaUrl=https%3A%2F%2F5ab772334c39c.streamlock.net%2Flive-teleislas%2Fteleislas%2Fplaylist.m3u8"
     },
     {
-        "id": "tv-729",
-        "title": "Telemetro TV",
-        "url": "https://streamunoapp.com:3366/live/telemetrolive.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-729&mediaUrl=https%3A%2F%2Fstreamunoapp.com%3A3366%2Flive%2Ftelemetrolive.m3u8"
-    },
-    {
-        "id": "tv-730",
-        "title": "Telemicro (1080i)",
-        "url": "http://190.122.104.210:5080/LiveApp/streams/telemicrolocal5.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-730.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-730&mediaUrl=http%3A%2F%2F190.122.104.210%3A5080%2FLiveApp%2Fstreams%2Ftelemicrolocal5.m3u8"
-    },
-    {
-        "id": "tv-732",
-        "title": "Telemás (720p)",
-        "url": "https://viewhn.com/telemas/live/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-732.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-732&mediaUrl=https%3A%2F%2Fviewhn.com%2Ftelemas%2Flive%2Fplaylist.m3u8"
-    },
-    {
         "id": "tv-738",
         "title": "Telepacífico (1080p) [Geo-blocked]",
         "url": "https://play.cdn.enetres.net/6E5C615AA5FF4123ACAF0DAB57B7B8DC021/022/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-738.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777556353495_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-738&mediaUrl=https%3A%2F%2Fplay.cdn.enetres.net%2F6E5C615AA5FF4123ACAF0DAB57B7B8DC021%2F022%2Fplaylist.m3u8"
     },
     {
         "id": "tv-739",
         "title": "Teleplay Sureste (720p)",
         "url": "https://player.tvstream.mx/livestream/teleplay/livehd/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-739.png",
+        "genre": "Entretenimiento",
+        "logo": "/logos_canales/1777556301442_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-739&mediaUrl=https%3A%2F%2Fplayer.tvstream.mx%2Flivestream%2Fteleplay%2Flivehd%2Fplaylist.m3u8"
     },
     {
         "id": "tv-740",
         "title": "Telerama (240p)",
         "url": "https://play.once.net.ec/telerama/live.tv/538.m3u8",
-        "genre": "Internacionales",
+        "genre": "Documentales",
         "logo": "/logos_canales/tv-740.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-740&mediaUrl=https%3A%2F%2Fplay.once.net.ec%2Ftelerama%2Flive.tv%2F538.m3u8"
-    },
-    {
-        "id": "tv-741",
-        "title": "Telerayo (1080p)",
-        "url": "https://s.emisoras.tv:8081/telerayo/index.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-741&mediaUrl=https%3A%2F%2Fs.emisoras.tv%3A8081%2Ftelerayo%2Findex.m3u8"
-    },
-    {
-        "id": "tv-743",
-        "title": "Teleritmo (720p)",
-        "url": "https://mdstrm.com/live-stream-playlist/57b4dc126338448314449d0c.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-743.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-743&mediaUrl=https%3A%2F%2Fmdstrm.com%2Flive-stream-playlist%2F57b4dc126338448314449d0c.m3u8"
     },
     {
         "id": "tv-744",
         "title": "Telerumba TV (720p)",
         "url": "https://inliveserver.com:1936/18506/18506/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-744.png",
+        "genre": "Musica",
+        "logo": "/logos_canales/1777556182652_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-744&mediaUrl=https%3A%2F%2Finliveserver.com%3A1936%2F18506%2F18506%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-745",
-        "title": "Telesantodomingo (720p)",
-        "url": "https://vdopanel.jlahozconsulting.com:3769/live/santodomingolive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-745.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-745&mediaUrl=https%3A%2F%2Fvdopanel.jlahozconsulting.com%3A3769%2Flive%2Fsantodomingolive.m3u8"
-    },
-    {
-        "id": "tv-751",
-        "title": "Teleunion (1080p)",
-        "url": "http://server2grupocam.com:1945/teleunion/TU/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": null,
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-751&mediaUrl=http%3A%2F%2Fserver2grupocam.com%3A1945%2Fteleunion%2FTU%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-755",
-        "title": "Televisión Aranda (720p)",
-        "url": "https://cloud.streamingconnect.tv/hls/telearanda/telearanda.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-755.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-755&mediaUrl=https%3A%2F%2Fcloud.streamingconnect.tv%2Fhls%2Ftelearanda%2Ftelearanda.m3u8"
     },
     {
         "id": "tv-756",
@@ -4658,7 +3924,7 @@ export const canalesTV = [
         "title": "The Pet Collective",
         "url": "https://the-pet-collective-international-es.samsung.wurl.tv/playlist.m3u8",
         "genre": "Internacionales",
-        "logo": "/logos_canales/tv-761.png",
+        "logo": "/logos_canales/1777556091590_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-761&mediaUrl=https%3A%2F%2Fthe-pet-collective-international-es.samsung.wurl.tv%2Fplaylist.m3u8"
     },
     {
@@ -4718,28 +3984,12 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-776&mediaUrl=https%3A%2F%2Flive.enhdtv.com%3A8081%2F8190%2Ftracks-v1a1%2Fmono.m3u8"
     },
     {
-        "id": "tv-781",
-        "title": "UTV (720p)",
-        "url": "https://v2.tustreaming.cl/utv/index.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-781.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-781&mediaUrl=https%3A%2F%2Fv2.tustreaming.cl%2Futv%2Findex.m3u8"
-    },
-    {
         "id": "tv-782",
         "title": "Ultra Casanare TV (1080p)",
         "url": "https://eu1.servers10.com:8081/8072/index.m3u8",
         "genre": "Entretenimiento",
         "logo": "/logos_canales/UIC.jpg",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-782&mediaUrl=https%3A%2F%2Feu1.servers10.com%3A8081%2F8072%2Findex.m3u8"
-    },
-    {
-        "id": "tv-783",
-        "title": "Ultra TV Puebla (720p)",
-        "url": "https://5e50264bd6766.streamlock.net/telemetrika2/smil:telemetrika2.smil/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-783.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-783&mediaUrl=https%3A%2F%2F5e50264bd6766.streamlock.net%2Ftelemetrika2%2Fsmil%3Atelemetrika2.smil%2Fplaylist.m3u8"
     },
     {
         "id": "tv-785",
@@ -4750,28 +4000,12 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-785&mediaUrl=https%3A%2F%2Fvcp6.myplaytv.com%2Funitv%2Funitv%2Fplaylist.m3u8"
     },
     {
-        "id": "tv-788",
-        "title": "UnionTV",
-        "url": "https://tigocloud.desdeparaguay.net/800tv/800tv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-788.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-788&mediaUrl=https%3A%2F%2Ftigocloud.desdeparaguay.net%2F800tv%2F800tv%2Fplaylist.m3u8"
-    },
-    {
         "id": "tv-789",
         "title": "Uniteve (720p)",
         "url": "https://vivo.solumedia.com:19360/uniteve/uniteve.m3u8",
         "genre": "Documentales",
         "logo": "/logos_canales/tv-789.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-789&mediaUrl=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Funiteve%2Funiteve.m3u8"
-    },
-    {
-        "id": "tv-790",
-        "title": "Univalle Televisión (1080p)",
-        "url": "https://master.tucableip.com/univalletv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-790.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-790&mediaUrl=https%3A%2F%2Fmaster.tucableip.com%2Funivalletv%2Fplaylist.m3u8"
     },
     {
         "id": "tv-791",
@@ -4801,7 +4035,7 @@ export const canalesTV = [
         "id": "tv-797",
         "title": "VC Online (720p)",
         "url": "https://panel.tvstream.cl:1936/8024/8024/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Musica",
         "logo": "/logos_canales/tv-797.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-797&mediaUrl=https%3A%2F%2Fpanel.tvstream.cl%3A1936%2F8024%2F8024%2Fplaylist.m3u8"
     },
@@ -4838,14 +4072,6 @@ export const canalesTV = [
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-804&mediaUrl=https%3A%2F%2F59a564764e2b6.streamlock.net%2Fvallenato%2Fvallenatom%2Fplaylist.m3u8"
     },
     {
-        "id": "tv-806",
-        "title": "VegaTeve (1080p)",
-        "url": "https://cloud6.livescast.com:3797/live/vegatevelive.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-806.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-806&mediaUrl=https%3A%2F%2Fcloud6.livescast.com%3A3797%2Flive%2Fvegatevelive.m3u8"
-    },
-    {
         "id": "tv-809",
         "title": "Vepaco TV (480p)",
         "url": "https://cloud.fastchannel.es/manifiest/hls/prog9/vepacotv.m3u8",
@@ -4857,7 +4083,7 @@ export const canalesTV = [
         "id": "tv-813",
         "title": "VillaAltagracia TV",
         "url": "https://inliveserver.com:1936/10016/10016/playlist.m3u8",
-        "genre": "Internacionales",
+        "genre": "Entretenimiento",
         "logo": "/logos_canales/VILLATV.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-813&mediaUrl=https%3A%2F%2Finliveserver.com%3A1936%2F10016%2F10016%2Fplaylist.m3u8"
     },
@@ -4873,8 +4099,8 @@ export const canalesTV = [
         "id": "tv-818",
         "title": "Vive Kanal D Drama (1080p)",
         "url": "https://thema-vivekanald-rakuten.amagi.tv/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-818.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777555669768_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-818&mediaUrl=https%3A%2F%2Fthema-vivekanald-rakuten.amagi.tv%2Fplaylist.m3u8"
     },
     {
@@ -4906,7 +4132,7 @@ export const canalesTV = [
         "title": "WeatherSpy (720p)",
         "url": "https://jukin-weatherspy-2-mx.samsung.wurl.tv/playlist.m3u8",
         "genre": "Internacionales",
-        "logo": null,
+        "logo": "/logos_canales/1777555824415_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-829&mediaUrl=https%3A%2F%2Fjukin-weatherspy-2-mx.samsung.wurl.tv%2Fplaylist.m3u8"
     },
     {
@@ -4916,14 +4142,6 @@ export const canalesTV = [
         "genre": "Peliculas",
         "logo": "/logos_canales/XTREMO.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-833&mediaUrl=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fxtremochannel%2Fxtremochannel%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-834",
-        "title": "YouDotGov",
-        "url": "https://reflect-communitytv.cablecast.tv/live-3/live/stream-1/live.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-834.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-834&mediaUrl=https%3A%2F%2Freflect-communitytv.cablecast.tv%2Flive-3%2Flive%2Fstream-1%2Flive.m3u8"
     },
     {
         "id": "tv-835",
@@ -4940,14 +4158,6 @@ export const canalesTV = [
         "genre": "Internacionales",
         "logo": "/logos_canales/tv-836.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-836&mediaUrl=https%3A%2F%2Flivestream.telvue.com%2Fyumaaz2%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8"
-    },
-    {
-        "id": "tv-837",
-        "title": "Yuma77",
-        "url": "https://securestream10.champds.com/LIVE/YumaCoAZLIVE/YumaCoAZLIVE.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-837.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-837&mediaUrl=https%3A%2F%2Fsecurestream10.champds.com%2FLIVE%2FYumaCoAZLIVE%2FYumaCoAZLIVE.m3u8"
     },
     {
         "id": "tv-842",
@@ -4977,7 +4187,7 @@ export const canalesTV = [
         "id": "tv-861",
         "title": "Más FM 95.9 (720p)",
         "url": "https://vivo.solumedia.com:19360/masfm/masfm.m3u8",
-        "genre": "Internacionales",
+        "genre": "Musica",
         "logo": "/logos_canales/tv-861.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-861&mediaUrl=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Fmasfm%2Fmasfm.m3u8"
     },
@@ -5169,8 +4379,8 @@ export const canalesTV = [
         "id": "tv-541",
         "title": "Ondas Quevedeñas TV (720p)",
         "url": "https://stmv6.voxtvhd.com.br/radiosuprema/radiosuprema/playlist.m3u8",
-        "genre": "Internacionales",
-        "logo": "/logos_canales/tv-541.png",
+        "genre": "Peliculas",
+        "logo": "/logos_canales/1777555485687_logo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-541&mediaUrl=https%3A%2F%2Fstmv6.voxtvhd.com.br%2Fradiosuprema%2Fradiosuprema%2Fplaylist.m3u8"
     },
     {
