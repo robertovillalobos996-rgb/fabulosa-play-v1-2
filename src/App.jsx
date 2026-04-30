@@ -2,11 +2,11 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-// 1. IMPORTACIÓN DE PÁGINAS[cite: 8, 9]
+// 1. IMPORTACIÓN DE PÁGINAS (Verificadas según sus archivos)[cite: 8, 9, 10]
 import Home from './pages/Home';
-import PremiumHub from './pages/PremiumHub'; // Card 1: Mundo VIP
-import RadioPremium from './pages/RadioPremium'; // Los canales internos de VIP
-import Radio from './pages/Radio'; // Card 6: Radios de Costa Rica
+import PremiumHub from './pages/PremiumHub';
+import RadioPremium from './pages/RadioPremium'; 
+import Radio from './pages/Radio'; // El archivo que filtra Costa Rica
 import Movies from './pages/Movies';
 import Channels from './pages/Channels';
 import FabulosaTube from './pages/FabulosaTube';
@@ -22,19 +22,19 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* PANTALLA PRINCIPAL CON LAS 12 CARDS */}
+        {/* PANTALLA PRINCIPAL (12 CARDS) */}
         <Route path="/" element={<Home />} />
 
-        {/* CARD 1: PREMIUM HUB (Mundo VIP) */}
+        {/* CARD 1: MUNDO VIP Y SUS SEÑALES[cite: 8, 10] */}
         <Route path="/premium" element={<PremiumHub />} />
-        {/* Rutas internas para los 2 canales de Premium Hub */}
+        {/* Estas rutas ahora sí abrirán el reproductor VIP */}
         <Route path="/premium/voice-over" element={<RadioPremium />} />
         <Route path="/premium/fabulosa-radio" element={<RadioPremium />} />
 
-        {/* CARD 6: RADIOS DE COSTA RICA */}
+        {/* CARD 6: RADIOS DE COSTA RICA (Corregida)[cite: 8, 9] */}
         <Route path="/radios-cr" element={<Radio />} />
 
-        {/* RESTO DE LAS CARDS ORIGINALES */}
+        {/* RESTO DE LAS CARDS[cite: 8] */}
         <Route path="/fabulosa-tube" element={<FabulosaTube />} />
         <Route path="/tv-1" element={<FabulosaTV />} />
         <Route path="/ranchera" element={<RancheraPlay />} />
