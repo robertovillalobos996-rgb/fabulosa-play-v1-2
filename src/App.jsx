@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // 🏠 PÁGINAS PRINCIPALES
 import Home from './pages/Home';
-import RadiosPlay from './pages/Radio'; 
+import RadiosPlay from './pages/RadiosPlay'; // 🔴 ¡CIRUGÍA AQUÍ! Ahora apunta al archivo correcto
 import RadiosMundo from './pages/RadioPremium'; 
 import RancheraPlay from './pages/RancheraPlay'; 
 import Karaoke from './pages/Karaoke';
