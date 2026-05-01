@@ -195,7 +195,7 @@ export const canalesTV = [
         "url": "https://627bb251f23c7.streamlock.net:444/ExtremaTV/ExtremaTV/playlist.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/extrema.jpg",
-        "iframe_url": "https
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=extrema-tv&mediaUrl=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FExtremaTV%2FExtremaTV%2Fplaylist.m3u8"
     },
     {
         "id": "garavito-tv",
