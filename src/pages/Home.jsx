@@ -25,7 +25,7 @@ const Home = () => {
     { id: 'premium', path: '/premium', img: '/fabulosa_premiun.webp' },
     { id: 'noticias', isExternal: true, path: 'https://psc-informa.vercel.app', img: '/psc_imforma.webp' },
     { id: 'fabulosa', path: '/fabulosa-tube', img: '/fabulosa_play.webp' },
-    { id: 'kids', path: '/tv-1', img: '/fabulosito_kids.webp' },
+    { id: 'kids', path: '/tv', img: '/fabulosito_kids.webp' },
     { id: 'ranchera', path: '/ranchera', img: '/borrachos_play.webp' },
     { id: 'radioscr', path: '/radios-cr', img: '/card-radios.webp' },
     { id: 'movies', path: '/cine-play', img: '/cine_play.png' },

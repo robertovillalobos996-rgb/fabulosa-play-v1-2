@@ -41,7 +41,7 @@ function App() {
           <Route path="/mercadeo" element={<CentroMercadeo />} />
           <Route path="/camaras" element={<Camaras />} />
           <Route path="/tube" element={<FabulosaTube />} />
-          <Route path="/tv" element={<FabulositKids />} />
+          <Route path="/tv" element={<FabulositoKids />} />
           <Route path="/admin" element={<AdminPanel />} />
           
           {/* 💎 SECCIÓN VIP PREMIUM */}
