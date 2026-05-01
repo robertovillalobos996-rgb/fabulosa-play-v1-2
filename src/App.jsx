@@ -4,8 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // 🏠 PÁGINAS PRINCIPALES
 import Home from './pages/Home';
-import RadiosPlay from './pages/RadiosPlay'; // 🔴 ¡CIRUGÍA AQUÍ! Ahora apunta al archivo correcto
-import RadiosMundo from './pages/RadioPremium'; 
+import RadiosPlay from './pages/RadiosPlay'; 
 import RancheraPlay from './pages/RancheraPlay'; 
 import Karaoke from './pages/Karaoke';
 import CinePlay from './pages/Movies'; 
@@ -32,7 +31,6 @@ function App() {
           {/* MENÚ PRINCIPAL */}
           <Route path="/" element={<Home />} />
           <Route path="/radios-cr" element={<RadiosPlay />} />
-          <Route path="/radio-premium" element={<RadiosMundo />} />
           <Route path="/ranchera" element={<RancheraPlay />} />
           <Route path="/karaoke" element={<Karaoke />} />
           <Route path="/cine-play" element={<CinePlay />} />
