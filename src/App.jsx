@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // 🏠 PÁGINAS PRINCIPALES
 import Home from './pages/Home';
-import RadiosPlay from './pages/Radio'; // Tu Archivo 1 (Radios de Costa Rica)
+import RadiosPlay from './pages/Radio'; 
 import RadiosMundo from './pages/RadioPremium'; 
 import RancheraPlay from './pages/RancheraPlay'; 
 import Karaoke from './pages/Karaoke';
@@ -17,8 +17,8 @@ import FabulosaTube from './pages/FabulosaTube';
 import FabulositoKids from './pages/FabulosaTV';
 import AdminPanel from './pages/Admin';
 
-// 💎 MUNDO PREMIUM VIP (Conectado a tu Archivo 2)
-import PremiumHub from './pages/PremiumHub'; // Tu Archivo 2
+// 💎 MUNDO PREMIUM VIP 
+import PremiumHub from './pages/PremiumHub'; 
 import VoiceOverVIP from './pages/vip/VoiceOverVIP';
 import FabulosaRadioVIP from './pages/vip/FabulosaRadioVIP';
 
@@ -31,21 +31,20 @@ function App() {
         <Routes>
           {/* MENÚ PRINCIPAL */}
           <Route path="/" element={<Home />} />
-          <Route path="/radio" element={<RadiosPlay />} />
+          <Route path="/radios-cr" element={<RadiosPlay />} />
           <Route path="/radio-premium" element={<RadiosMundo />} />
           <Route path="/ranchera" element={<RancheraPlay />} />
           <Route path="/karaoke" element={<Karaoke />} />
-          <Route path="/movies" element={<CinePlay />} />
+          <Route path="/cine-play" element={<CinePlay />} />
           <Route path="/canales-play" element={<CanalesPlay />} />
           <Route path="/alabanza" element={<FabulosaAlabanza />} />
-          <Route path="/mercadeo" element={<CentroMercadeo />} />
+          <Route path="/centro-mercadeo" element={<CentroMercadeo />} />
           <Route path="/camaras" element={<Camaras />} />
-          <Route path="/tube" element={<FabulosaTube />} />
+          <Route path="/fabulosa-tube" element={<FabulosaTube />} />
           <Route path="/tv" element={<FabulositoKids />} />
           <Route path="/admin" element={<AdminPanel />} />
           
           {/* 💎 SECCIÓN VIP PREMIUM */}
-          {/* La ruta /premium abre tu PremiumHub con los 2 clientes VIP */}
           <Route path="/premium" element={<PremiumHub />} /> 
           <Route path="/premium/voice-over" element={<VoiceOverVIP />} />
           <Route path="/premium/fabulosa-radio" element={<FabulosaRadioVIP />} />
