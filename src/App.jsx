@@ -2,24 +2,25 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// 🏠 PÁGINAS PRINCIPALES (Corregido a la carpeta 'page')
-import Home from './page/Home';
-import RadioRomantica from './page/Radio'; 
-import RadiosMundo from './page/RadioPremium'; 
-import RancheraPlay from './page/RancheraPlay'; 
-import Karaoke from './page/Karaoke';
-import CinePlay from './page/Movies'; 
-import CanalesPlay from './page/Channels'; 
-import FabulosaAlabanza from './page/FabulosaAlabanza';
-import CentroMercadeo from './page/CentroMercadeo';
-import Camaras from './page/Camaras'; 
-import FabulosaTube from './page/FabulosaTube'; // 🔥 EL NUEVO GIGANTE DE VIDEOS
-import FabulositoKids from './page/FabulosaTV';
+// 🏠 PÁGINAS PRINCIPALES
+import Home from './pages/Home';
+import RadiosPlay from './pages/Radio'; // Tu Archivo 1 (Radios de Costa Rica)
+import RadiosMundo from './pages/RadioPremium'; 
+import RancheraPlay from './pages/RancheraPlay'; 
+import Karaoke from './pages/Karaoke';
+import CinePlay from './pages/Movies'; 
+import CanalesPlay from './pages/Channels'; 
+import FabulosaAlabanza from './pages/FabulosaAlabanza';
+import CentroMercadeo from './pages/CentroMercadeo';
+import Camaras from './pages/Camaras'; 
+import FabulosaTube from './pages/FabulosaTube'; 
+import FabulositoKids from './pages/FabulosaTV';
+import AdminPanel from './pages/Admin';
 
-// 💎 MUNDO PREMIUM VIP (Corregido a la carpeta 'page')
-import PremiumHub from './page/PremiumHub';
-import VoiceOverVIP from './page/vip/VoiceOverVIP';
-import FabulosaRadioVIP from './page/vip/FabulosaRadioVIP';
+// 💎 MUNDO PREMIUM VIP (Conectado a tu Archivo 2)
+import PremiumHub from './pages/PremiumHub'; // Tu Archivo 2
+import VoiceOverVIP from './pages/vip/VoiceOverVIP';
+import FabulosaRadioVIP from './pages/vip/FabulosaRadioVIP';
 
 const queryClient = new QueryClient();
 
@@ -30,7 +31,7 @@ function App() {
         <Routes>
           {/* MENÚ PRINCIPAL */}
           <Route path="/" element={<Home />} />
-          <Route path="/radio" element={<RadioRomantica />} />
+          <Route path="/radio" element={<RadiosPlay />} />
           <Route path="/radio-premium" element={<RadiosMundo />} />
           <Route path="/ranchera" element={<RancheraPlay />} />
           <Route path="/karaoke" element={<Karaoke />} />
@@ -40,10 +41,12 @@ function App() {
           <Route path="/mercadeo" element={<CentroMercadeo />} />
           <Route path="/camaras" element={<Camaras />} />
           <Route path="/tube" element={<FabulosaTube />} />
-          <Route path="/tv" element={<FabulositoKids />} />
+          <Route path="/tv" element={<FabulositKids />} />
+          <Route path="/admin" element={<AdminPanel />} />
           
           {/* 💎 SECCIÓN VIP PREMIUM */}
-          <Route path="/premium" element={<PremiumHub />} />
+          {/* La ruta /premium abre tu PremiumHub con los 2 clientes VIP */}
+          <Route path="/premium" element={<PremiumHub />} /> 
           <Route path="/premium/voice-over" element={<VoiceOverVIP />} />
           <Route path="/premium/fabulosa-radio" element={<FabulosaRadioVIP />} />
         </Routes>
