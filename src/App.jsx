@@ -20,7 +20,7 @@ import AdminPanel from './pages/Admin';
 import PremiumHub from './pages/PremiumHub'; 
 import VoiceOverVIP from './pages/vip/VoiceOverVIP';
 import FabulosaRadioVIP from './pages/vip/FabulosaRadioVIP';
-import MultimediaVIP from './pages/vip/MultimediaVIP'; // Nueva Radio Multimedia[cite: 3]
+import MultimediaVIP from './pages/vip/MultimediaVIP'; 
 
 const queryClient = new QueryClient();
 
@@ -47,7 +47,7 @@ function App() {
           <Route path="/premium" element={<PremiumHub />} /> 
           <Route path="/premium/voice-over" element={<VoiceOverVIP />} />
           <Route path="/premium/fabulosa-radio" element={<FabulosaRadioVIP />} />
-          <Route path="/premium/multimedia" element={<MultimediaVIP />} /> 
+          <Route path="/premium/multimedia" element={<MultimediaVIP />} />
         </Routes>
       </Router>
     </QueryClientProvider>
