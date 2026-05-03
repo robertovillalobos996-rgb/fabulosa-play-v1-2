@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// 🏠 PÁGINAS PRINCIPALES[cite: 3]
 import Home from './pages/Home';
 import RadiosPlay from './pages/RadiosPlay'; 
 import RancheraPlay from './pages/RancheraPlay'; 
@@ -15,13 +14,12 @@ import Camaras from './pages/Camaras';
 import FabulosaTube from './pages/FabulosaTube'; 
 import FabulositoKids from './pages/FabulosaTV';
 import AdminPanel from './pages/Admin';
-import PSCInforma from './pages/PSCInforma'; // 📰 Noticias[cite: 3]
+import PSCInforma from './pages/PSCInforma';
 
-// 💎 MUNDO PREMIUM VIP[cite: 3]
 import PremiumHub from './pages/PremiumHub'; 
 import VoiceOverVIP from './pages/vip/VoiceOverVIP';
 import FabulosaRadioVIP from './pages/vip/FabulosaRadioVIP';
-import MultimediaVIP from './pages/vip/MultimediaVIP'; 
+import MultimediaVIP from './pages/vip/MultimediaVIP';
 
 const queryClient = new QueryClient();
 
@@ -30,7 +28,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
-          {/* MENÚ PRINCIPAL[cite: 3] */}
           <Route path="/" element={<Home />} />
           <Route path="/radios-cr" element={<RadiosPlay />} />
           <Route path="/ranchera" element={<RancheraPlay />} />
@@ -45,7 +42,6 @@ function App() {
           <Route path="/admin" element={<AdminPanel />} />
           <Route path="/noticias" element={<PSCInforma />} />
           
-          {/* 💎 SECCIÓN VIP PREMIUM[cite: 3] */}
           <Route path="/premium" element={<PremiumHub />} /> 
           <Route path="/premium/voice-over" element={<VoiceOverVIP />} />
           <Route path="/premium/fabulosa-radio" element={<FabulosaRadioVIP />} />
