@@ -4,7 +4,7 @@ import { ArrowLeft, Crown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const PremiumHub = () => {
-  // 💎 LISTA DE CLIENTES VIP (Actualizado a .jpeg para Voice Over)
+  // 💎 LISTA DE CLIENTES VIP (Incluye la nueva Radio Multimedia)[cite: 1]
   const vipClients = [
     { 
       id: 'voice-over', 
@@ -17,6 +17,12 @@ const PremiumHub = () => {
       name: 'Fabulosa Radio VIP', 
       logo: '/logo-fabulosa.png', 
       path: '/premium/fabulosa-radio' 
+    },
+    { 
+      id: 'multimedia-vip', 
+      name: 'Radio Multimedia HD', 
+      logo: '/logo-fabulosa.png', // Usando el logo de Fabulosa para la nueva señal multimedia[cite: 1]
+      path: '/premium/multimedia' 
     }
   ];
 
@@ -30,7 +36,6 @@ const PremiumHub = () => {
           src="https://www.youtube.com/embed/JQczw3V7St8?autoplay=1&mute=1&loop=1&playlist=JQczw3V7St8&controls=0&modestbranding=1&rel=0"
           frameBorder="0" allow="autoplay; encrypted-media"
         />
-        {/* Sin filtro oscuro, para que se vea el video en todo su esplendor */}
       </div>
 
       <div className="relative z-50 p-6 flex items-center justify-between border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-0">
@@ -48,7 +53,6 @@ const PremiumHub = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {vipClients.map((client) => (
             <Link key={client.id} to={client.path} className="group">
-              {/* Tarjetas Gigantes sin padding para que el logo cubra todo */}
               <motion.div 
                 whileHover={{ scale: 1.05 }} 
                 className="aspect-video bg-black/80 rounded-[2rem] border-4 border-white/10 group-hover:border-yellow-500 flex items-center justify-center p-4 shadow-[0_0_50px_rgba(0,0,0,0.8)] relative overflow-hidden backdrop-blur-md"
