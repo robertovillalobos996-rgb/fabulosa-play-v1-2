@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// 🏠 PÁGINAS PRINCIPALES
 import Home from './pages/Home';
 import RadiosPlay from './pages/RadiosPlay'; 
 import RancheraPlay from './pages/RancheraPlay'; 
@@ -16,11 +15,10 @@ import FabulosaTube from './pages/FabulosaTube';
 import FabulositoKids from './pages/FabulosaTV';
 import AdminPanel from './pages/Admin';
 
-// 💎 MUNDO PREMIUM VIP 
 import PremiumHub from './pages/PremiumHub'; 
 import VoiceOverVIP from './pages/vip/VoiceOverVIP';
 import FabulosaRadioVIP from './pages/vip/FabulosaRadioVIP';
-import MultimediaVIP from './pages/vip/MultimediaVIP'; // Importación de la nueva radio multimedia[cite: 3]
+import MultimediaVIP from './pages/vip/MultimediaVIP'; // Importación limpia[cite: 3]
 
 const queryClient = new QueryClient();
 
@@ -29,7 +27,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
-          {/* MENÚ PRINCIPAL */}
           <Route path="/" element={<Home />} />
           <Route path="/radios-cr" element={<RadiosPlay />} />
           <Route path="/ranchera" element={<RancheraPlay />} />
@@ -43,11 +40,10 @@ function App() {
           <Route path="/tv" element={<FabulositoKids />} />
           <Route path="/admin" element={<AdminPanel />} />
           
-          {/* 💎 SECCIÓN VIP PREMIUM */}
           <Route path="/premium" element={<PremiumHub />} /> 
           <Route path="/premium/voice-over" element={<VoiceOverVIP />} />
           <Route path="/premium/fabulosa-radio" element={<FabulosaRadioVIP />} />
-          <Route path="/premium/multimedia" element={<MultimediaVIP />} /> {/* Nueva ruta configurada[cite: 3] */}
+          <Route path="/premium/multimedia" element={<MultimediaVIP />} />
         </Routes>
       </Router>
     </QueryClientProvider>

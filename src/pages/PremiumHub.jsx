@@ -4,7 +4,6 @@ import { ArrowLeft, Crown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const PremiumHub = () => {
-  // 💎 LISTA DE CLIENTES VIP (Incluye la nueva Radio Multimedia)[cite: 1]
   const vipClients = [
     { 
       id: 'voice-over', 
@@ -21,15 +20,13 @@ const PremiumHub = () => {
     { 
       id: 'multimedia-vip', 
       name: 'Radio Multimedia HD', 
-      logo: '/logo-fabulosa.png', // Usando el logo de Fabulosa para la nueva señal multimedia[cite: 1]
+      logo: '/logo-fabulosa.png', 
       path: '/premium/multimedia' 
     }
   ];
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden relative">
-      
-      {/* 🎬 FONDO YOUTUBE NUEVO (Sin Filtros, Pantalla Completa) */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <iframe 
           className="w-[300%] h-[300%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
