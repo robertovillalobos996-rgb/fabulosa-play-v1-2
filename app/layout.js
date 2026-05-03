@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Fabulosa Play",
-  description: "Streaming de canales y medios regionales",
+  description: "Plataforma de streaming regional y canales internacionales",
   manifest: "/manifest.json",
   themeColor: "#000000",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
