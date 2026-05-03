@@ -15,6 +15,7 @@ import Camaras from './pages/Camaras';
 import FabulosaTube from './pages/FabulosaTube'; 
 import FabulositoKids from './pages/FabulosaTV';
 import AdminPanel from './pages/Admin';
+import PSCInforma from './pages/PSCInforma'; // 📰 Noticias[cite: 3]
 
 // 💎 MUNDO PREMIUM VIP[cite: 3]
 import PremiumHub from './pages/PremiumHub'; 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/fabulosa-tube" element={<FabulosaTube />} />
           <Route path="/tv" element={<FabulositoKids />} />
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/noticias" element={<PSCInforma />} />
           
           {/* 💎 SECCIÓN VIP PREMIUM[cite: 3] */}
           <Route path="/premium" element={<PremiumHub />} /> 
