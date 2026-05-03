@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// 🏠 PÁGINAS PRINCIPALES (Sincronizadas con tu Home.jsx)[cite: 5]
+// 🏠 PÁGINAS PRINCIPALES (Sincronizadas con tu Home)[cite: 5]
 import Home from './pages/Home';
 import RadiosPlay from './pages/RadiosPlay'; 
 import RancheraPlay from './pages/RancheraPlay'; 
@@ -15,7 +15,7 @@ import Camaras from './pages/Camaras';
 import FabulosaTube from './pages/FabulosaTube'; 
 import FabulositoKids from './pages/FabulosaTV';
 import AdminPanel from './pages/Admin';
-import PSCAlertas from './pages/PSCAlertas'; // ✅ Nombre real del archivo de noticias[cite: 3]
+import PSCAlertas from './pages/PSCAlertas'; // ✅ Nombre exacto confirmado[cite: 3]
 
 // 💎 MUNDO PREMIUM VIP[cite: 3]
 import PremiumHub from './pages/PremiumHub'; 
@@ -30,7 +30,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
-          {/* CONFIGURACIÓN DE RUTAS SEGÚN TU MENÚ[cite: 5] */}
+          {/* CONFIGURACIÓN SEGÚN TU MENÚ DE INICIO[cite: 3, 5] */}
           <Route path="/" element={<Home />} />
           <Route path="/radios-cr" element={<RadiosPlay />} />
           <Route path="/ranchera" element={<RancheraPlay />} />
@@ -43,7 +43,7 @@ function App() {
           <Route path="/fabulosa-tube" element={<FabulosaTube />} />
           <Route path="/tv" element={<FabulositoKids />} />
           <Route path="/admin" element={<AdminPanel />} />
-          <Route path="/noticias" element={<PSCAlertas />} /> {/* ✅ Nombre de ruta solicitado */}
+          <Route path="/noticias" element={<PSCAlertas />} /> {/* ✅ Ruta solicitada[cite: 3] */}
           
           {/* SECCIÓN VIP[cite: 3] */}
           <Route path="/premium" element={<PremiumHub />} /> 

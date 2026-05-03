@@ -14,7 +14,7 @@ const MultimediaVIP = () => {
     "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
   ];
 
-  // 📺 LISTA DE VIDEOS HD[cite: 4]
+  // 📺 VIDEOS DE FONDO HD[cite: 4]
   const videoIds = ["0qEOlwW3MjU", "aCXa4Iwxigo", "Uh5eZgjtv0s", "OJv49ohWsnQ"];
   const [index, setIndex] = useState(0);
 
@@ -28,7 +28,7 @@ const MultimediaVIP = () => {
 
   return (
     <div className="relative min-h-screen bg-black overflow-hidden flex flex-col">
-      {/* FONDO YOUTUBE[cite: 4] */}
+      {/* 🎬 FONDO YOUTUBE DINÁMICO[cite: 4] */}
       <div className="absolute inset-0 z-0 pointer-events-none scale-150">
         <iframe
           key={videoIds[index]}
@@ -40,9 +40,10 @@ const MultimediaVIP = () => {
         ></iframe>
       </div>
 
-      {/* AUDIO RADIOBOSS */}
+      {/* 🎧 AUDIO RADIOBOSS[cite: 2] */}
       <audio autoPlay src="http://s5.azurahosting.com:8660/radio.mp3"></audio>
 
+      {/* HEADER SUPERIOR */}
       <div className="relative z-50 p-6 flex items-center gap-4 bg-gradient-to-b from-black/90 to-transparent">
         <Link to="/premium" className="p-3 bg-zinc-900/90 rounded-full hover:bg-yellow-500 transition-all border border-white/10 shadow-2xl">
           <ArrowLeft size={24} className="text-white" />
@@ -50,7 +51,7 @@ const MultimediaVIP = () => {
         <h1 className="text-white font-black uppercase text-2xl drop-shadow-lg">Multimedia VIP</h1>
       </div>
 
-      {/* 🟢 LOGO CHROMA KEY[cite: 4] */}
+      {/* 🟢 LOGO CON FILTRO CHROMA KEY (Abajo Centrado)[cite: 2, 4] */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-[100] w-64 md:w-96">
         <video 
           autoPlay loop muted playsInline 
