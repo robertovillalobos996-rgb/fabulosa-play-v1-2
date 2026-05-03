@@ -4,6 +4,7 @@ import { ArrowLeft, Crown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const PremiumHub = () => {
+  // 💎 LISTA DE CLIENTES VIP ACTUALIZADA[cite: 1]
   const vipClients = [
     { 
       id: 'voice-over', 
@@ -27,6 +28,8 @@ const PremiumHub = () => {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden relative">
+      
+      {/* 🎬 FONDO YOUTUBE (Sin Filtros)[cite: 1] */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <iframe 
           className="w-[300%] h-[300%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
