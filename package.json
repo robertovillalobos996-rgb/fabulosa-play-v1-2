@@ -32,6 +32,7 @@
     "http": "^0.0.1-security",
     "lucide-react": "^0.563.0",
     "m3u8-file-parser": "^0.2.4",
+    "next-pwa": "^5.6.0",
     "node-fetch": "^3.3.2",
     "postcss": "^8.4.31",
     "react": "^19.2.0",
