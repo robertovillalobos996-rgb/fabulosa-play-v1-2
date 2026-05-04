@@ -3,6 +3,9 @@ import { ArrowLeft, Play, Pause, Volume2, Maximize } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// 📻 URL SEGURA EXTRAÍDA DEL CORREO DE AZURACAST (HTTPS)
+const RADIO_STREAM_URL = "https://a5.asurahosting.com/listen/fabulosa_play/radio.mp3"; 
+
 const FabulosaMixVIP = () => {
   // 📺 ROTACIÓN DE VIDEOS
   const videoIds = ["0qEOlwW3MjU", "aCXa4Iwxigo", "Uh5eZgjtv0s", "OJv49ohWsnQ"];
@@ -36,7 +39,7 @@ const FabulosaMixVIP = () => {
   };
 
   useEffect(() => {
-    handleUserActivity(); // Iniciar el temporizador al cargar
+    handleUserActivity(); 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
@@ -46,10 +49,14 @@ const FabulosaMixVIP = () => {
   const togglePlay = () => {
     if (isPlaying) {
       audioRef.current.pause();
+      setIsPlaying(false);
     } else {
-      audioRef.current.play();
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch((error) => {
+        console.error("Error al reproducir. Revisa la conexión:", error);
+      });
     }
-    setIsPlaying(!isPlaying);
   };
 
   // 🔊 CONTROL DE VOLUMEN
@@ -88,7 +95,7 @@ const FabulosaMixVIP = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }} // Efecto de difuminado suave
+          transition={{ duration: 1.5, ease: "easeInOut" }} 
           className="absolute inset-0 z-0 pointer-events-none scale-150"
         >
           <iframe
@@ -99,10 +106,10 @@ const FabulosaMixVIP = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* 🎧 AUDIO OCULTO (Con la 's' de HTTPS para Vercel) */}
+      {/* 🎧 AUDIO OCULTO CON HTTPS */}
       <audio 
         ref={audioRef} 
-        src="https://s5.azurahosting.com:8660/radio.mp3" 
+        src={RADIO_STREAM_URL} 
         preload="none"
       ></audio>
 
@@ -125,7 +132,7 @@ const FabulosaMixVIP = () => {
         />
       </div>
 
-      {/* 🎛️ BARRA DE CONTROLES INFERIOR (Se oculta deslizando hacia abajo) */}
+      {/* 🎛️ BARRA DE CONTROLES INFERIOR */}
       <div 
         className={`absolute bottom-12 left-1/2 -translate-x-1/2 z-[150] flex items-center gap-4 md:gap-8 bg-black/80 backdrop-blur-xl px-8 py-4 rounded-full border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.8)] transition-all duration-700 ease-in-out ${showControls ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
       >
@@ -140,7 +147,7 @@ const FabulosaMixVIP = () => {
         {/* Control de Volumen */}
         <div 
           className="flex items-center gap-3 border-l border-white/20 pl-4 md:pl-8"
-          onClick={(e) => e.stopPropagation()} // Evita que un click aquí cierre algo
+          onClick={(e) => e.stopPropagation()} 
         >
           <Volume2 size={24} className="text-gray-400" />
           <input 
