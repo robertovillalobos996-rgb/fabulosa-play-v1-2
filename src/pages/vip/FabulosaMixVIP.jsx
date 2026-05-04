@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowLeft, Play, Pause, Volume2, Maximize } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const FabulosaMixVIP = () => {
-  // 🔑 API KEYS SOLICITADAS
-  const YOUTUBE_API_KEYS = [
-    "AIzaSyDxLD8PviKQwlHBs7rmRm3GoyIKk-aQpww", "AIzaSyACeTldeUs5tbn2Lwr6o_6Lc48rF1nINY0",
-    "AIzaSyBUk0oq1zjA6BKx5HK8DEQc1TxQqreqGtk", "AIzaSyBys-0J3T5Ou_fdPGxqYC5LWDMgppwD0Y4",
-    "AIzaSyDHdkSo4WSHjYL4nHFU9wKmXW5D9PScO4g", "AIzaSyDJqDMnZsYHyJtzahtvv1r55Z-JfgLk5TU",
-    "AIzaSyCruj7UZTEmElS3ZUeUBmYPecbsAA667U8", "AIzaSyBfMNrgQESeymMQ9srVBHKjXB3_WeRfkXE",
-    "AIzaSyB1e_YSB74yAelvAhapDWu11VPLz2wBkUg", "AIzaSyCsvViGGiPJxx8-FkSwQvHE2T_U8d2UO5E",
-    "AIzaSyBRvdUqolryjMRustJUyqN_HtkjRCbHLfI", "AIzaSyCdmCZW6J49Onl-QAf3cTsNu0im84EBVZc",
-    "AIzaSyCeref7W3di_9o6W3YnEtqgvCQyvyQ5a5Q", "AIzaSyAwtE19mD7rpv1pu5nB4R8Q0HmEX9OkgJI"
-  ];
-
-  // 📺 ROTACIÓN DE VIDEOS CADA 2 MINUTOS
+  // 📺 ROTACIÓN DE VIDEOS
   const videoIds = ["0qEOlwW3MjU", "aCXa4Iwxigo", "Uh5eZgjtv0s", "OJv49ohWsnQ"];
   const [index, setIndex] = useState(0);
 
+  // 🎛️ ESTADOS DEL REPRODUCTOR
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const audioRef = useRef(null);
+  const containerRef = useRef(null);
+
+  // 🔄 ROTACIÓN DE FONDO CADA 2 MINUTOS
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % videoIds.length);
@@ -25,10 +22,41 @@ const FabulosaMixVIP = () => {
     return () => clearInterval(timer);
   }, [videoIds.length]);
 
+  // ▶️ CONTROL DE PLAY/PAUSE
+  const togglePlay = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  // 🔊 CONTROL DE VOLUMEN
+  const handleVolumeChange = (e) => {
+    const newVolume = parseFloat(e.target.value);
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
+  };
+
+  // 🖥️ CONTROL DE PANTALLA COMPLETA
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      containerRef.current.requestFullscreen().catch(err => {
+        console.error("Error intentando pantalla completa:", err);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  };
+
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden flex flex-col">
+    <div ref={containerRef} className="relative min-h-screen bg-black overflow-hidden flex flex-col">
+      
       {/* 🎬 FONDO YOUTUBE */}
-      <div className="absolute inset-0 z-0 pointer-events-none scale-150 opacity-80">
+      <div className="absolute inset-0 z-0 pointer-events-none scale-150 opacity-60">
         <iframe
           key={videoIds[index]}
           className="w-full h-full"
@@ -37,25 +65,67 @@ const FabulosaMixVIP = () => {
         ></iframe>
       </div>
 
-      {/* 🎧 AUDIO RADIOBOSS */}
-      <audio autoPlay src="http://s5.azurahosting.com:8660/radio.mp3"></audio>
+      {/* 🎧 AUDIO OCULTO (Controlado por los botones) */}
+      <audio 
+        ref={audioRef} 
+        src="http://s5.azurahosting.com:8660/radio.mp3" 
+        preload="none"
+      ></audio>
 
       {/* CABECERA */}
       <div className="relative z-50 p-6 flex items-center gap-4 bg-gradient-to-b from-black/90 to-transparent">
         <Link to="/premium" className="p-3 bg-zinc-900/90 rounded-full hover:bg-yellow-500 transition-all border border-white/10 shadow-2xl">
           <ArrowLeft size={24} className="text-white" />
         </Link>
-        <h1 className="text-white font-black uppercase text-2xl drop-shadow-lg">Fabulosa Mix</h1>
+        <h1 className="text-white font-black uppercase tracking-widest text-2xl drop-shadow-lg">Fabulosa Mix</h1>
       </div>
 
-      {/* 🟢 REPRODUCTOR GIGANTE EN PANTALLA (LOGO) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] w-11/12 md:w-1/2 flex justify-center items-center pointer-events-none">
-        <img 
+      {/* 🟢 REPRODUCTOR GIGANTE EN PANTALLA (LOGO ANIMADO) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] w-10/12 md:w-5/12 flex justify-center items-center pointer-events-none">
+        <motion.img 
           src="/logo-fabulosamix.png" 
           alt="Fabulosa Mix Gigante" 
-          className="w-full h-auto object-contain drop-shadow-[0_0_60px_rgba(255,255,255,0.4)]"
+          className="w-full h-auto object-contain drop-shadow-[0_0_80px_rgba(234,179,8,0.3)]"
+          // 🔥 Aquí ocurre la magia: Si está en Play, palpita como parlante. Si está en Pausa, se queda quieto.
+          animate={isPlaying ? { scale: [1, 1.08, 1] } : { scale: 1 }}
+          transition={{ repeat: Infinity, duration: 0.45, ease: "easeInOut" }}
         />
       </div>
+
+      {/* 🎛️ BARRA DE CONTROLES INFERIOR */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-[150] flex items-center gap-4 md:gap-8 bg-black/80 backdrop-blur-xl px-8 py-4 rounded-full border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+        
+        {/* Botón Play / Pause */}
+        <button 
+          onClick={togglePlay} 
+          className="w-14 h-14 flex items-center justify-center bg-yellow-500 text-black rounded-full hover:bg-yellow-400 hover:scale-105 transition-all shadow-[0_0_20px_rgba(234,179,8,0.4)]"
+        >
+          {isPlaying ? <Pause size={28} className="fill-black" /> : <Play size={28} className="fill-black ml-1" />}
+        </button>
+
+        {/* Control de Volumen */}
+        <div className="flex items-center gap-3 border-l border-white/20 pl-4 md:pl-8">
+          <Volume2 size={24} className="text-gray-400" />
+          <input 
+            type="range" 
+            min="0" 
+            max="1" 
+            step="0.01" 
+            value={volume} 
+            onChange={handleVolumeChange} 
+            className="w-24 md:w-32 accent-yellow-500 cursor-pointer"
+          />
+        </div>
+
+        {/* Pantalla Completa */}
+        <button 
+          onClick={toggleFullscreen} 
+          className="text-gray-400 hover:text-white hover:scale-110 transition-all border-l border-white/20 pl-4 md:pl-8"
+        >
+          <Maximize size={24} />
+        </button>
+      </div>
+
     </div>
   );
 };
