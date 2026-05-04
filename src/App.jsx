@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-// 🏠 PÁGINAS PRINCIPALES (Todas intactas)[cite: 2]
+// 🏠 PÁGINAS PRINCIPALES
 import Home from './pages/Home';
 import RadiosPlay from './pages/RadiosPlay'; 
 import RancheraPlay from './pages/RancheraPlay'; 
@@ -15,13 +15,13 @@ import Camaras from './pages/Camaras';
 import FabulosaTube from './pages/FabulosaTube'; 
 import FabulositoKids from './pages/FabulosaTV';
 import AdminPanel from './pages/Admin';
-import PSCAlertas from './pages/PSCAlertas'; 
+import Noticias from './pages/Noticias'; // ✅ CORREGIDO: Importa el archivo real "Noticias"
 
-// 💎 MUNDO PREMIUM VIP (Con la nueva Fabulosa Mix limpia)[cite: 2]
+// 💎 MUNDO PREMIUM VIP 
 import PremiumHub from './pages/PremiumHub'; 
 import VoiceOverVIP from './pages/vip/VoiceOverVIP';
 import FabulosaRadioVIP from './pages/vip/FabulosaRadioVIP';
-import FabulosaMixVIP from './pages/vip/FabulosaMixVIP'; // ✅ Nueva emisora agregada, Multimedia eliminada
+import FabulosaMixVIP from './pages/vip/FabulosaMixVIP'; 
 
 const queryClient = new QueryClient();
 
@@ -30,7 +30,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <Routes>
-          {/* 📺 RUTAS DEL MENÚ INICIO[cite: 2] */}
+          {/* 📺 RUTAS DEL MENÚ INICIO */}
           <Route path="/" element={<Home />} />
           <Route path="/radios-cr" element={<RadiosPlay />} />
           <Route path="/ranchera" element={<RancheraPlay />} />
@@ -43,13 +43,13 @@ function App() {
           <Route path="/fabulosa-tube" element={<FabulosaTube />} />
           <Route path="/tv" element={<FabulositoKids />} />
           <Route path="/admin" element={<AdminPanel />} />
-          <Route path="/noticias" element={<PSCAlertas />} /> 
+          <Route path="/noticias" element={<Noticias />} /> {/* ✅ Ruta activada apuntando a Noticias */}
           
-          {/* 💎 RUTAS SECCIÓN VIP PREMIUM[cite: 2] */}
+          {/* 💎 RUTAS SECCIÓN VIP PREMIUM */}
           <Route path="/premium" element={<PremiumHub />} /> 
           <Route path="/premium/voice-over" element={<VoiceOverVIP />} />
           <Route path="/premium/fabulosa-radio" element={<FabulosaRadioVIP />} />
-          <Route path="/premium/fabulosa-mix" element={<FabulosaMixVIP />} /> {/* ✅ Ruta activada para el reproductor gigante */}
+          <Route path="/premium/fabulosa-mix" element={<FabulosaMixVIP />} /> 
         </Routes>
       </Router>
     </QueryClientProvider>
