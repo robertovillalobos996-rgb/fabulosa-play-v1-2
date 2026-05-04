@@ -3,11 +3,11 @@ import { ArrowLeft, Play, Pause, Volume2, Maximize } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// 📻 URL SEGURA EXTRAÍDA DEL CORREO DE AZURACAST (HTTPS)
+// 📻 URL SEGURA (HTTPS)
 const RADIO_STREAM_URL = "https://a5.asurahosting.com/listen/fabulosa_play/radio.mp3"; 
 
 const FabulosaMixVIP = () => {
-  // 📺 ROTACIÓN DE VIDEOS
+  // 📺 ROTACIÓN DE VIDEOS (Culpable eliminado, solo videos limpios)
   const videoIds = ["0qEOlwW3MjU", "aCXa4Iwxigo", "Uh5eZgjtv0s", "OJv49ohWsnQ"];
   const [index, setIndex] = useState(0);
 
@@ -88,19 +88,20 @@ const FabulosaMixVIP = () => {
       onClick={handleUserActivity}
     >
       
-      {/* 🎬 FONDO YOUTUBE CON TRANSICIÓN "PRO" (Fade In/Out) */}
+      {/* 🎬 FONDO YOUTUBE EN 4K (Sin filtros, 100% de claridad) */}
       <AnimatePresence mode="wait">
         <motion.div
           key={videoIds[index]}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
+          animate={{ opacity: 1 }} // 🔥 100% de opacidad = Sin filtro oscuro
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: "easeInOut" }} 
           className="absolute inset-0 z-0 pointer-events-none scale-150"
         >
+          {/* Parámetro vq=hd2160 añadido para forzar la máxima resolución (4K) */}
           <iframe
             className="w-full h-full"
-            src={"https://www.youtube.com/embed/" + videoIds[index] + "?autoplay=1&mute=1&loop=1&playlist=" + videoIds[index] + "&controls=0&modestbranding=1&rel=0&vq=hd1080"}
+            src={"https://www.youtube.com/embed/" + videoIds[index] + "?autoplay=1&mute=1&loop=1&playlist=" + videoIds[index] + "&controls=0&modestbranding=1&rel=0&vq=hd2160"}
             frameBorder="0" allow="autoplay; encrypted-media" title="Fondo Mix"
           ></iframe>
         </motion.div>
