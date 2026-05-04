@@ -4,7 +4,7 @@ import { ArrowLeft, Crown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const PremiumHub = () => {
-  // 💎 LISTA DE CLIENTES VIP (Incluye la nueva Multimedia VIP)[cite: 1]
+  // 💎 LISTA DE CLIENTES VIP (Eliminada la multimedia de ayer, agregada Fabulosa Mix)
   const vipClients = [
     { 
       id: 'voice-over', 
@@ -19,17 +19,17 @@ const PremiumHub = () => {
       path: '/premium/fabulosa-radio' 
     },
     { 
-      id: 'multimedia-vip', 
-      name: 'Radio Multimedia HD', 
-      logo: '/logo-fabulosa.png', 
-      path: '/premium/multimedia' 
+      id: 'fabulosa-mix', 
+      name: 'Fabulosa Mix', 
+      logo: '/logo-fabulosamix.png', 
+      path: '/premium/fabulosa-mix' 
     }
   ];
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden relative">
       
-      {/* 🎬 FONDO YOUTUBE[cite: 1] */}
+      {/* 🎬 FONDO YOUTUBE */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <iframe 
           className="w-[300%] h-[300%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -50,6 +50,8 @@ const PremiumHub = () => {
 
       <div className="relative z-10 p-8 md:p-16">
         <h2 className="text-white font-black uppercase tracking-widest mb-8 drop-shadow-md bg-black/40 inline-block px-4 py-2 rounded-xl backdrop-blur-sm">Seleccione su Señal</h2>
+        
+        {/* Restaurada la cuadrícula a 3 columnas para que queden centrados y gigantes */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {vipClients.map((client) => (
             <Link key={client.id} to={client.path} className="group">
