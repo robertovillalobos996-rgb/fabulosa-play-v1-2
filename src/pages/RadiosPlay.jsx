@@ -15,22 +15,26 @@ const RadiosPlay = () => {
 
   const audioRef = useRef(null);
   const hlsRef = useRef(null);
-  const scrollRef = useRef(null);
 
-  // 1. Filtrado: Solo Costa Rica (Manteniendo su base de datos)
+  // 1. Filtrado: Solo Costa Rica[cite: 3]
   const stations = useMemo(() => {
     return radiosMundo.filter(r => r.country === "Costa Rica");
   }, []);
 
-  // Reloj
+  // Reloj[cite: 3]
   useEffect(() => {
     const timer = setInterval(() => setFecha(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  // Motor de Audio HLS / Standard
+  // 🛡️ MOTOR DE AUDIO BLINDADO (Anti-Crash)
   useEffect(() => {
-    if (!currentStation) return;
+    // Si no hay emisora seleccionada, o si la emisora NO tiene URL, detenemos todo para evitar la pantalla negra.
+    if (!currentStation || !currentStation.url) {
+        setIsPlaying(false);
+        return;
+    }
+
     const audio = audioRef.current;
     setIsPlaying(false);
 
@@ -39,25 +43,27 @@ const RadiosPlay = () => {
       hlsRef.current = null;
     }
 
-    if (currentStation.url.includes(".m3u8") || currentStation.isHls) {
+    // Le agregamos el signo de interrogación (?.) para que sea a prueba de fallos.
+    if (currentStation.url?.includes(".m3u8") || currentStation.isHls) {
       if (Hls.isSupported()) {
         const hls = new Hls();
         hls.loadSource(currentStation.url);
         hls.attachMedia(audio);
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          audio.play();
+          audio.play().catch(e => console.error("Error reproduciendo HLS:", e));
           setIsPlaying(true);
         });
         hlsRef.current = hls;
       }
     } else {
       audio.src = currentStation.url;
-      audio.play();
-      setIsPlaying(true);
+      audio.play().then(() => {
+        setIsPlaying(true);
+      }).catch(err => console.error("Error reproduciendo audio normal:", err));
     }
   }, [currentStation]);
 
-  // Control Remoto y Teclado
+  // Control Remoto y Teclado[cite: 3]
   useEffect(() => {
     const handleKeyDown = (e) => {
       const cols = window.innerWidth < 640 ? 2 : window.innerWidth < 1024 ? 4 : 6;
@@ -82,7 +88,7 @@ const RadiosPlay = () => {
   return (
     <div className="relative w-full h-screen bg-[#050505] text-white font-sans overflow-hidden">
       
-      {/* Fondo con Blur dinámico basado en la radio actual */}
+      {/* Fondo con Blur dinámico basado en la radio actual[cite: 3] */}
       <div 
         className="absolute inset-0 transition-all duration-1000 opacity-20 scale-110"
         style={{ 
@@ -95,7 +101,7 @@ const RadiosPlay = () => {
 
       <audio ref={audioRef} />
 
-      {/* Header Info (Igual al Home) */}
+      {/* Header Info[cite: 3] */}
       <header className="relative z-50 p-6 md:p-10 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent">
         <div className="flex items-center gap-4 md:gap-8">
             <button 
@@ -115,7 +121,7 @@ const RadiosPlay = () => {
         </div>
       </header>
 
-      {/* Reproductor en Vivo (Barra Superior) */}
+      {/* Reproductor en Vivo (Barra Superior)[cite: 3] */}
       <div className="relative z-50 px-6 md:px-10 mb-6">
         <div className="bg-white/5 border border-white/10 rounded-[2rem] p-4 md:p-6 backdrop-blur-xl flex items-center justify-between shadow-2xl">
            <div className="flex items-center gap-4 md:gap-6">
@@ -141,7 +147,7 @@ const RadiosPlay = () => {
         </div>
       </div>
 
-      {/* Grilla de Emisoras (Scrollable y Adaptable) */}
+      {/* Grilla de Emisoras[cite: 3] */}
       <div className="relative z-40 h-full pb-64 overflow-y-auto no-scrollbar px-6 md:px-10">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-8 pb-32">
           {stations.map((station, idx) => {
@@ -157,22 +163,16 @@ const RadiosPlay = () => {
                 }}
                 className={`
                   relative aspect-square flex flex-col items-center justify-center transition-all duration-500 cursor-pointer
-                  ${isFocused 
-                    ? 'z-50 scale-105' 
-                    : 'scale-100 opacity-60'
-                  }
+                  ${isFocused ? 'z-50 scale-105' : 'scale-100 opacity-60'}
                 `}
               >
-                {/* Logo de Radio - Sin Caja */}
+                {/* Logo de Radio */}
                 <div className="w-full h-full p-4 flex items-center justify-center">
                     <img 
                         src={station.logo} 
                         className={`
                             w-full h-full object-contain transition-all duration-500
-                            ${isFocused 
-                                ? 'drop-shadow-[0_0_30px_rgba(34,211,238,0.8)] brightness-110' 
-                                : 'drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]'
-                            }
+                            ${isFocused ? 'drop-shadow-[0_0_30px_rgba(34,211,238,0.8)] brightness-110' : 'drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]'}
                         `}
                         alt={station.title} 
                     />
