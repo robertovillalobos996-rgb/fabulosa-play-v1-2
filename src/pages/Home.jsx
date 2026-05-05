@@ -8,7 +8,7 @@ const Home = () => {
   const navigate = useNavigate();
   const scrollRef = useRef(null);
 
-  // LISTA ÚNICA (Sin duplicados para no saturar la RAM del TV)
+  // LISTA DE CARTAS (Sin duplicados para máxima velocidad)
   const cards = [
     { id: 'premium', path: '/premium', img: '/fabulosa_premiun.webp' },
     { id: 'noticias', isExternal: true, path: 'https://psc-informa.vercel.app', img: '/psc_imforma.webp' },
@@ -26,12 +26,12 @@ const Home = () => {
 
   useEffect(() => {
     const timer = setInterval(() => setFecha(new Date()), 1000);
-    // Posicionar al inicio al cargar
-    setTimeout(() => scrollToIndex(0, 'auto'), 100);
+    // Centrar la primera carta al iniciar
+    setTimeout(() => scrollToIndex(0, 'auto'), 150);
     return () => clearInterval(timer);
   }, []);
 
-  // NAVEGACIÓN ESPACIAL PURA (Como Disney+)
+  // NAVEGACIÓN CONTROLADA PARA EVITAR SALTOS MÚLTIPLES
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight') {
@@ -61,7 +61,7 @@ const Home = () => {
     const container = scrollRef.current;
     const item = container.childNodes[index];
     if (item) {
-      // CÁLCULO DE CENTRADO EXACTO: Evita que la carta se vaya al final o se corte
+      // Cálculo de centrado exacto
       const scrollLeft = item.offsetLeft - (container.offsetWidth / 2) + (item.offsetWidth / 2);
       container.scrollTo({ left: scrollLeft, behavior });
     }
@@ -70,42 +70,47 @@ const Home = () => {
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black text-white font-sans">
       
-      {/* FONDO ESTÁTICO (Elimina la rotación que causa la pegazón y el color rosado) */}
+      {/* FONDO ÚNICO ESTÁTICO (Optimizado para no colapsar la RAM) */}
       <div 
-        className="absolute inset-0 opacity-20"
-        style={{ backgroundImage: 'url(/tv_1.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+        className="absolute inset-0"
+        style={{ 
+          backgroundImage: 'url(/fondo_fabulosa_play.png)', 
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center' 
+        }}
       />
 
-      <header className="absolute top-6 left-10 md:left-16 z-50 flex items-center gap-6">
+      <header className="absolute top-6 left-10 md:left-16 z-50 flex items-center gap-6 pointer-events-none">
         <img src={logoFabulosa} alt="Logo" className="h-10 md:h-16 object-contain" />
-        <div className="border-l-2 border-red-600 pl-6">
-          <span className="text-3xl md:text-5xl font-black italic text-white drop-shadow-md">
+        <div className="border-l-2 border-white/20 pl-6">
+          <span className="text-3xl md:text-5xl font-black italic text-white">
             {fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
           </span>
         </div>
       </header>
 
-      <div className="absolute bottom-10 w-full z-[100]">
+      {/* CONTENEDOR PEGADO AL BORDE INFERIOR */}
+      <div className="absolute bottom-0 w-full z-[100]">
         <div 
           ref={scrollRef} 
-          className="flex items-center overflow-x-hidden no-scrollbar px-[40vw] h-[50vh] gap-4"
+          className="flex items-end overflow-x-hidden no-scrollbar px-[45vw] h-[40vh] gap-2"
         >
           {cards.map((card, idx) => {
             const focused = idx === activeIndex;
             return (
               <div
                 key={card.id}
-                className={`relative flex-shrink-0 transition-all duration-300 ease-out border-4 ${focused ? 'border-red-600 z-50 scale-110 shadow-[0_0_40px_rgba(220,38,38,0.5)]' : 'border-transparent opacity-40 scale-90'}`}
+                className={`relative flex-shrink-0 transition-all duration-300 ease-out ${focused ? 'z-50 scale-110 opacity-100' : 'z-10 opacity-40 scale-90'}`}
                 style={{
-                  width: '280px', // Tamaño fijo para que no se corte en teles de 32"
-                  aspectRatio: '16/10',
-                  transform: focused ? 'translateY(-20px)' : 'translateY(0)'
+                  width: '260px', // Tamaño optimizado para 32"[cite: 3]
+                  aspectRatio: '16/9'
                 }}
               >
+                {/* SOLAMENTE LA IMAGEN, SIN MARCOS NI FONDOS NEGROS[cite: 3, 4] */}
                 <img 
                   src={card.img} 
-                  loading="eager" 
-                  className="w-full h-full object-contain rounded-xl bg-[#111]" 
+                  className="w-full h-full object-contain" 
+                  alt={card.id}
                 />
               </div>
             );
