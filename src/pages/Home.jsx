@@ -2,16 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logoFabulosa from '../assets/logo_fabulosa.png';
 
-// HBO UI
 import TopNav from '../components/hbo/TopNav';
 import HeroSlider from '../components/hbo/HeroSlider';
 
 const Home = () => {
-  const [fecha, setFecha] = useState(new Date());
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
 
   const navigate = useNavigate();
+
+  const [fecha, setFecha] = useState(new Date());
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [focusZone, setFocusZone] = useState('hero');
+  const [scrolled, setScrolled] = useState(false);
+
   const scrollRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -36,7 +38,7 @@ const Home = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // scroll nav HBO
+  // scroll nav
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -45,105 +47,123 @@ const Home = () => {
     return () => el.removeEventListener("scroll", fn);
   }, []);
 
-  // CONTROL REMOTO (TUYO)
+  // scroll horizontal
+  const scrollToCard = (index) => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const item = container.children[index];
+    if (!item) return;
+
+    const scrollLeft = item.offsetLeft - (container.offsetWidth / 2) + (item.offsetWidth / 2);
+    container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+  };
+
+  // CONTROL REMOTO + TECLADO
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKey = (e) => {
 
-      if (e.key === 'ArrowRight') {
-        setActiveIndex((p) => {
-          const next = (p + 1) % cards.length;
-          scrollToCard(next);
-          return next;
-        });
-      }
+      if (e.key === 'ArrowDown') setFocusZone('cards');
+      if (e.key === 'ArrowUp') setFocusZone('hero');
 
-      if (e.key === 'ArrowLeft') {
-        setActiveIndex((p) => {
-          const next = (p - 1 + cards.length) % cards.length;
-          scrollToCard(next);
-          return next;
-        });
-      }
+      if (focusZone === 'cards') {
 
-      if (e.key === 'Enter' || e.keyCode === 13) {
-        const card = cards[activeIndex];
-        if (card.isExternal) window.location.href = card.path;
-        else navigate(card.path);
+        if (e.key === 'ArrowRight') {
+          setActiveIndex((prev) => {
+            const next = (prev + 1) % cards.length;
+            scrollToCard(next);
+            return next;
+          });
+        }
+
+        if (e.key === 'ArrowLeft') {
+          setActiveIndex((prev) => {
+            const next = (prev - 1 + cards.length) % cards.length;
+            scrollToCard(next);
+            return next;
+          });
+        }
+
+        if (e.key === 'Enter') {
+          const card = cards[activeIndex];
+          if (card.isExternal) window.location.href = card.path;
+          else navigate(card.path);
+        }
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeIndex, navigate]);
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
 
-  const scrollToCard = (index) => {
-    if (scrollRef.current) {
-      const container = scrollRef.current;
-      const item = container.childNodes[index];
-      if (item) {
-        const scrollLeft = item.offsetLeft - (container.offsetWidth / 2) + (item.offsetWidth / 2);
-        container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-      }
-    }
-  };
+  }, [focusZone, activeIndex]);
 
   return (
     <div className="fixed inset-0 bg-black text-white overflow-hidden">
 
-      {/* NAV HBO */}
       <TopNav scrolled={scrolled} />
 
       <div ref={containerRef} className="h-full overflow-y-auto">
 
-        {/* HERO HBO */}
         <HeroSlider />
 
-        {/* TU HOME ORIGINAL */}
-        <div className="relative h-[40vh]">
+        {/* CARDS */}
+        <div className="relative min-h-[40vh] bg-gradient-to-t from-black via-black/90 to-transparent">
 
-          {/* reloj */}
-          <div className="absolute top-6 left-10 z-50 flex items-center gap-6">
-            <img src={logoFabulosa} className="h-10" />
-            <span className="text-3xl font-bold">
+          {/* HEADER */}
+          <div className="absolute top-4 left-4 md:left-10 z-50 flex items-center gap-4">
+            <img src={logoFabulosa} className="h-8 md:h-10 opacity-80" />
+            <span className="text-lg md:text-2xl font-bold text-white/80">
               {fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
             </span>
           </div>
 
-          {/* nombre de card */}
-          <div className="absolute bottom-[20vh] w-full text-center">
-            <h2 className="text-3xl font-bold text-cyan-400">
+          {/* TITULO */}
+          <div className="absolute top-[30%] w-full text-center">
+            <h2 className={`text-2xl md:text-4xl font-black tracking-widest transition-all
+              ${focusZone === 'cards' ? 'text-cyan-400 scale-110' : 'text-white/40'}`}>
               {cards[activeIndex].name}
             </h2>
           </div>
 
-          {/* carrusel */}
-          <div className="absolute bottom-0 w-full h-[22vh] flex items-center">
+          {/* CARRUSEL */}
+          <div className="absolute bottom-0 w-full h-[26vh] flex items-center">
+
             <div
               ref={scrollRef}
-              className="flex gap-6 px-[40vw] w-full"
+              className="flex items-center gap-4 md:gap-8 px-[20vw] md:px-[35vw] w-full overflow-hidden"
             >
               {cards.map((card, idx) => {
-                const focused = idx === activeIndex;
+                const focused = idx === activeIndex && focusZone === 'cards';
 
                 return (
                   <div
                     key={card.id}
-                    className={`transition-all duration-300 ${
-                      focused
-                        ? 'scale-125 border-4 border-white'
-                        : 'scale-90 opacity-40'
-                    }`}
+                    onClick={() => {
+                      if (card.isExternal) window.location.href = card.path;
+                      else navigate(card.path);
+                    }}
+                    className={`relative flex-shrink-0 transition-all duration-300 cursor-pointer
+                      ${focused ? 'scale-125 z-50' : 'scale-90 opacity-40'}`}
                     style={{
-                      width: '220px',
-                      height: '130px',
-                      borderRadius: '12px',
-                      overflow: 'hidden'
+                      width: 'clamp(140px, 20vw, 260px)',
+                      height: 'clamp(80px, 12vw, 150px)',
+                      borderRadius: '16px',
+                      overflow: 'hidden',
+                      background: 'rgba(0,0,0,0.6)'
                     }}
                   >
+
+                    {focused && (
+                      <div className="absolute inset-0 border-[3px] border-white rounded-[16px]
+                        shadow-[0_0_40px_rgba(34,211,238,0.8)] z-10" />
+                    )}
+
                     <img
                       src={card.img}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-cover"
                     />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+
                   </div>
                 );
               })}
