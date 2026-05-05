@@ -1,146 +1,97 @@
 import { useEffect, useRef, useState } from "react";
-import TopNav from "@/components/hbo/TopNav";
-import HeroSlider from "@/components/hbo/HeroSlider";
+import TopNav from "../components/hbo/TopNav";
+import HeroSlider from "../components/hbo/HeroSlider";
 import { useNavigate } from "react-router-dom";
-
-// 👇 TUS COMPONENTES REALES (NO SE TOCAN)
-import CardNoticias from "@/components/CardNoticias";
-import FabulosaVipPlayer from "@/components/FabulosaVipPlayer";
-import SecurityLock from "@/components/SecurityLock";
-
-// 👇 AQUÍ VAN TUS CARDS REALES
-import { sections } from "@/lib/sections";
 
 export default function Home() {
   const navigate = useNavigate();
-  const containerRef = useRef(null);
-
-  // 🔥 CONTROL REMOTO / TECLADO
-  const [focusedIndex, setFocusedIndex] = useState(0);
   const rowRef = useRef(null);
 
+  // 🔥 TUS 12 CARDS REALES (RUTAS DE TU APP)
+  const cards = [
+    { name: "Radios", path: "/radios-cr", image: "/images/radios.jpg" },
+    { name: "Ranchera", path: "/ranchera", image: "/images/ranchera.jpg" },
+    { name: "Karaoke", path: "/karaoke", image: "/images/karaoke.jpg" },
+    { name: "Cine Play", path: "/cine-play", image: "/images/cine.jpg" },
+    { name: "Canales", path: "/canales-play", image: "/images/tv.jpg" },
+    { name: "Alabanza", path: "/alabanza", image: "/images/alabanza.jpg" },
+    { name: "Mercadeo", path: "/centro-mercadeo", image: "/images/mercadeo.jpg" },
+    { name: "Cámaras", path: "/camaras", image: "/images/camaras.jpg" },
+    { name: "Fabulosa Tube", path: "/fabulosa-tube", image: "/images/tube.jpg" },
+    { name: "Kids", path: "/tv", image: "/images/kids.jpg" },
+    { name: "Noticias", path: "/noticias", image: "/images/noticias.jpg" },
+    { name: "Premium", path: "/premium", image: "/images/premium.jpg" },
+  ];
+
+  const [focus, setFocus] = useState(0);
+
+  // 🎮 CONTROL REMOTO
   useEffect(() => {
     const handleKey = (e) => {
-      if (!sections || sections.length === 0) return;
-
       if (e.key === "ArrowRight") {
-        setFocusedIndex((prev) =>
-          Math.min(prev + 1, sections.length - 1)
-        );
+        setFocus((p) => Math.min(p + 1, cards.length - 1));
       }
-
       if (e.key === "ArrowLeft") {
-        setFocusedIndex((prev) => Math.max(prev - 1, 0));
+        setFocus((p) => Math.max(p - 1, 0));
       }
-
       if (e.key === "Enter") {
-        const item = sections[focusedIndex];
-        if (!item) return;
-
-        if (item.external) window.open(item.path, "_blank");
-        else navigate(item.path);
+        navigate(cards[focus].path);
       }
     };
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [focusedIndex, navigate]);
+  }, [focus]);
 
-  // 🔥 CENTRAR CARD ACTIVA AUTOMÁTICAMENTE
+  // 🎯 CENTRAR CARD
   useEffect(() => {
-    if (!rowRef.current) return;
-
-    const el = rowRef.current.children[focusedIndex];
-    if (!el) return;
-
-    el.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest",
-    });
-  }, [focusedIndex]);
+    const el = rowRef.current?.children[focus];
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", inline: "center" });
+    }
+  }, [focus]);
 
   return (
-    <div className="bg-black text-white min-h-screen overflow-hidden">
+    <div className="bg-black text-white min-h-screen">
 
-      {/* NAV HBO */}
-      <TopNav scrolled={true} />
+      <TopNav />
 
-      <div
-        ref={containerRef}
-        className="overflow-y-auto h-screen pt-14"
-      >
-
-        {/* 🎬 HERO GRANDE HBO */}
+      <div className="pt-14">
         <HeroSlider />
 
-        {/* 🔥 CONTENIDO PRINCIPAL */}
-        <div className="px-4 md:px-10 lg:px-16 mt-6">
+        {/* 🎬 FILA HBO */}
+        <div className="px-4 md:px-10 mt-6">
 
-          {/* 🎯 FILA PRINCIPAL GRANDE (SIN DESTACADOS) */}
-          <div className="mb-10">
+          <h2 className="text-lg mb-4">Explorar</h2>
 
-            <h2 className="text-lg md:text-xl font-bold mb-4">
-              Explorar
-            </h2>
+          <div
+            ref={rowRef}
+            className="flex gap-2 overflow-x-auto pb-6"
+          >
+            {cards.map((item, i) => (
+              <div
+                key={i}
+                onClick={() => navigate(item.path)}
+                className="cursor-pointer flex-shrink-0 transition-all duration-300"
+                style={{
+                  width: "240px",
+                  height: "140px",
+                  transform: i === focus ? "scale(1.25)" : "scale(1)",
+                  zIndex: i === focus ? 10 : 1,
+                }}
+              >
+                <img
+                  src={item.image}
+                  className="w-full h-full object-cover rounded-lg"
+                />
 
-            <div
-              ref={rowRef}
-              className="flex gap-3 overflow-x-auto scroll-smooth pb-4"
-            >
-              {sections.map((item, index) => (
-                <div
-                  key={item.id}
-                  onClick={() =>
-                    item.external
-                      ? window.open(item.path, "_blank")
-                      : navigate(item.path)
-                  }
-                  className={`
-                    relative cursor-pointer flex-shrink-0
-                    transition-all duration-300
-                  `}
-                  style={{
-                    width: "clamp(180px, 20vw, 260px)",
-                    height: "clamp(110px, 12vw, 160px)",
-                    transform:
-                      index === focusedIndex
-                        ? "scale(1.25)"
-                        : "scale(1)",
-                    zIndex: index === focusedIndex ? 20 : 1,
-                  }}
-                >
-                  {/* IMAGEN REAL */}
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-
-                  {/* 🔥 EFECTO FOCO */}
-                  {index === focusedIndex && (
-                    <div
-                      className="absolute inset-0 rounded-lg"
-                      style={{
-                        boxShadow:
-                          "0 0 25px rgba(255,255,255,0.4)",
-                        border: "2px solid rgba(255,255,255,0.6)",
-                      }}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
+                {/* 🔥 EFECTO FOCO */}
+                {i === focus && (
+                  <div className="absolute inset-0 border-2 border-white rounded-lg pointer-events-none" />
+                )}
+              </div>
+            ))}
           </div>
-
-          {/* 🔥 PLAYER VIP (SI EXISTE) */}
-          <FabulosaVipPlayer />
-
-          {/* 🔒 SEGURIDAD */}
-          <SecurityLock />
-
-          {/* 📰 NOTICIAS */}
-          <CardNoticias />
 
         </div>
       </div>
