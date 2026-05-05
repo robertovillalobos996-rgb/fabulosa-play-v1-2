@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
-  Search, Play, Pause, Volume2, Loader2, Trash2, UploadCloud, 
-  Save, X, Maximize, VolumeX
+  Search, Play, Pause, Volume2, Loader2, Maximize, VolumeX, ArrowLeft
 } from "lucide-react";
 import Hls from "hls.js";
 
@@ -16,6 +15,10 @@ const Channels = () => {
   const [channels, setChannels] = useState(initialCanales || []);
   const [currentChannel, setCurrentChannel] = useState(initialCanales[0]);
   
+  // ESTADOS DE NAVEGACIÓN PRO
+  const [focusedSection, setFocusedSection] = useState("grid"); // "sidebar", "grid", "player"
+  const [focusedIndex, setFocusedIndex] = useState(0);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [volume, setVolume] = useState(1);
@@ -25,7 +28,7 @@ const Channels = () => {
   const videoRef = useRef(null);
   const hlsRef = useRef(null);
   const containerRef = useRef(null);
-  const controlsTimeout = useRef(null);
+  const gridRef = useRef(null);
 
   const categories = useMemo(() => {
     return ["Todos", ...new Set(channels.map((c) => c.genre || "Varios"))];
@@ -39,70 +42,71 @@ const Channels = () => {
     });
   }, [channels, activeCategory, searchTerm]);
 
-  const togglePlay = () => {
-    if(!videoRef.current) return;
-    if (videoRef.current.paused) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    } else {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
+  // CIRUGÍA: MOTOR DE CONTROL REMOTO PARA CANALES
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (focusedSection === "grid") {
+        const columns = 8; // Basado en tu grid xl:grid-cols-8
+        if (e.key === "ArrowRight") setFocusedIndex(prev => Math.min(prev + 1, filteredChannels.length - 1));
+        if (e.key === "ArrowLeft") {
+          if (focusedIndex % columns === 0) setFocusedSection("sidebar");
+          else setFocusedIndex(prev => Math.max(prev - 1, 0));
+        }
+        if (e.key === "ArrowDown") setFocusedIndex(prev => Math.min(prev + columns, filteredChannels.length - 1));
+        if (e.key === "ArrowUp") {
+          if (focusedIndex < columns) setFocusedSection("player");
+          else setFocusedIndex(prev => Math.max(prev - columns, 0));
+        }
+        if (e.key === "Enter") handleChannelSelect(filteredChannels[focusedIndex]);
+      } 
+      else if (focusedSection === "sidebar") {
+        if (e.key === "ArrowDown") setFocusedIndex(prev => Math.min(prev + 1, categories.length - 1));
+        if (e.key === "ArrowUp") setFocusedIndex(prev => Math.max(prev - 1, 0));
+        if (e.key === "ArrowRight") setFocusedSection("grid");
+        if (e.key === "Enter") setActiveCategory(categories[focusedIndex]);
+      }
+    };
 
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      containerRef.current.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-  };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [focusedSection, focusedIndex, filteredChannels, categories]);
 
-  const handleMouseMove = () => {
-    setShowControls(true);
-    clearTimeout(controlsTimeout.current);
-    controlsTimeout.current = setTimeout(() => setShowControls(false), 3000);
-  };
-
-  // 🚀 CIRUGÍA: Función para cambiar de canal limpiando el historial
   const handleChannelSelect = (channel) => {
     setCurrentChannel(channel);
-    navigate(".", { replace: true });
-    if (window.history.length > 1) {
-       window.history.replaceState(null, '', window.location.href);
-    }
+    setIsLoading(true);
   };
 
   useEffect(() => {
     if (!currentChannel?.url && !currentChannel?.iframe_url) return;
-    
-    if(currentChannel.iframe_url) {
-      setIsLoading(false);
-      if (hlsRef.current) hlsRef.current.destroy();
-      return; 
-    }
-
-    setIsLoading(true);
     if (hlsRef.current) hlsRef.current.destroy();
-    const video = videoRef.current;
     
-    if (video && Hls.isSupported()) {
+    if(!currentChannel.iframe_url && Hls.isSupported()) {
       const hls = new Hls();
       hls.loadSource(currentChannel.url);
-      hls.attachMedia(video);
+      hls.attachMedia(videoRef.current);
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        video.play().then(() => setIsPlaying(true)).catch(() => setIsPlaying(false));
+        videoRef.current.play();
         setIsLoading(false);
       });
       hlsRef.current = hls;
+    } else {
+        setIsLoading(false);
     }
   }, [currentChannel]);
 
   return (
     <div className="flex flex-col lg:flex-row h-screen w-full bg-black text-white font-sans overflow-hidden">
       
-      <aside className="w-full lg:w-64 bg-[#0a0a0a] border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col shrink-0">
-        <div className="p-4 flex items-center justify-between lg:block">
+      {/* BOTÓN DE VOLVER PROFESIONAL CON GIRO */}
+      <button 
+        onClick={() => navigate('/')}
+        className="absolute top-6 left-6 z-[1000] bg-red-600 p-3 rounded-full shadow-2xl hover:rotate-[360ms] transition-transform duration-700 group focus:ring-4 focus:ring-white outline-none"
+      >
+        <ArrowLeft className="group-hover:rotate-[-360deg] transition-transform duration-700" size={24} />
+      </button>
+
+      <aside className="w-full lg:w-64 bg-[#0a0a0a] border-b lg:border-b-0 lg:border-r border-white/5 flex flex-col shrink-0 z-50">
+        <div className="p-4 pt-20 flex items-center justify-between lg:block">
           <img src={logoFabulosa} className="h-8 lg:h-10 object-contain lg:mb-8" />
           <div className="relative lg:w-full w-48">
             <input 
@@ -114,11 +118,10 @@ const Channels = () => {
         </div>
         
         <div className="flex lg:flex-col overflow-x-auto lg:overflow-y-auto no-scrollbar p-2 lg:p-4 gap-2">
-          {categories.map((cat) => (
+          {categories.map((cat, idx) => (
             <button
               key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 lg:px-6 py-2 lg:py-4 rounded-xl flex items-center gap-3 transition-all shrink-0 lg:shrink ${activeCategory === cat ? 'bg-red-600 text-white font-black' : 'bg-white/5 text-white/40 hover:bg-white/10'}`}
+              className={`px-4 lg:px-6 py-2 lg:py-4 rounded-xl flex items-center gap-3 transition-all shrink-0 lg:shrink outline-none ${activeCategory === cat ? 'bg-red-600 text-white' : 'bg-white/5 text-white/40'} ${(focusedSection === "sidebar" && focusedIndex === idx) ? 'ring-4 ring-white scale-105 bg-red-500' : ''}`}
             >
               <span className="text-[10px] lg:text-xs uppercase truncate tracking-tighter">{cat}</span>
             </button>
@@ -128,89 +131,23 @@ const Channels = () => {
 
       <main className="flex-1 flex flex-col overflow-hidden bg-[#050505]">
         
-        <div 
-          ref={containerRef}
-          onMouseMove={handleMouseMove}
-          className="relative w-full aspect-video lg:h-[50%] bg-black group shrink-0"
-        >
+        <div ref={containerRef} className="relative w-full aspect-video lg:h-[50%] bg-black group shrink-0">
           {isLoading && <div className="absolute inset-0 flex items-center justify-center z-50 bg-black"><Loader2 className="animate-spin text-red-600" size={50} /></div>}
           
           {currentChannel?.iframe_url ? (
-            <div className="w-full h-full bg-black">
-              <iframe 
-                key={currentChannel.id || currentChannel.iframe_url} // 🚀 CIRUGÍA: Esto evita que el iframe secuestre el historial
-                src={currentChannel.iframe_url} 
-                className="w-full h-full border-none"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
-                title={currentChannel.name || currentChannel.title}
-              ></iframe>
-            </div>
+            <iframe src={currentChannel.iframe_url} className="w-full h-full border-none" allow="autoplay" title="Canal" />
           ) : (
-            <>
-              <video 
-                ref={videoRef} 
-                onClick={togglePlay}
-                className="w-full h-full object-contain cursor-pointer" 
-              />
-              
-              <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40 transition-opacity duration-300 flex flex-col justify-between p-4 pointer-events-none ${showControls ? 'opacity-100' : 'opacity-0'}`}>
-                
-                <div className="flex justify-between items-start pointer-events-auto">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 bg-white rounded-lg p-1.5"><img src={currentChannel?.logo} className="w-full h-full object-contain" /></div>
-                    <h2 className="text-xl font-black uppercase italic drop-shadow-lg">{currentChannel?.name || currentChannel?.title}</h2>
-                  </div>
-                  <button onClick={() => navigate('/')} className="bg-white/10 p-2 rounded-full hover:bg-red-600"><X size={20}/></button>
-                </div>
-
-                <div className="flex justify-center items-center pointer-events-auto">
-                   {!isPlaying && <button onClick={togglePlay} className="bg-red-600/80 p-6 rounded-full scale-110"><Play size={40} fill="white"/></button>}
-                </div>
-
-                <div className="space-y-3 pointer-events-auto">
-                  <div className="h-1 w-full bg-white/20 rounded-full overflow-hidden">
-                     <div className="h-full bg-red-600 w-full animate-pulse" />
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-6">
-                      <button onClick={togglePlay} className="hover:text-red-600 transition-colors">
-                        {isPlaying ? <Pause size={28} fill="currentColor"/> : <Play size={28} fill="currentColor"/>}
-                      </button>
-                      
-                      <div className="flex items-center gap-2 group/vol">
-                        <button onClick={() => setIsMuted(!isMuted)}>
-                          {isMuted || volume === 0 ? <VolumeX size={24}/> : <Volume2 size={24}/>}
-                        </button>
-                        <input 
-                          type="range" min="0" max="1" step="0.1" 
-                          value={volume} onChange={e => {setVolume(e.target.value); if(videoRef.current) videoRef.current.volume = e.target.value;}}
-                          className="w-0 group-hover/vol:w-20 transition-all accent-red-600"
-                        />
-                      </div>
-                      
-                      <span className="text-[10px] font-bold text-red-600 flex items-center gap-2">
-                        <div className="w-2 h-2 bg-red-600 rounded-full animate-ping" /> EN VIVO
-                      </span>
-                    </div>
-
-                    <button onClick={toggleFullscreen} className="hover:scale-110 transition-transform"><Maximize size={24}/></button>
-                  </div>
-                </div>
-              </div>
-            </>
+            <video ref={videoRef} className="w-full h-full object-contain" />
           )}
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 md:p-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 no-scrollbar">
-          {filteredChannels.map((channel) => (
+        <div ref={gridRef} className="flex-1 overflow-y-auto p-4 md:p-8 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 no-scrollbar pb-20">
+          {filteredChannels.map((channel, idx) => (
             <div
               key={channel.id}
-              className={`relative group cursor-pointer aspect-square rounded-[2rem] transition-all flex flex-col items-center justify-center p-4 bg-[#121212] border-4 ${currentChannel?.id === channel.id ? 'border-red-600' : 'border-transparent'} hover:scale-105`}
-              onClick={() => handleChannelSelect(channel)} // 🚀 CIRUGÍA: Llamamos a la función segura aquí
+              className={`relative group cursor-pointer aspect-square rounded-[2rem] transition-all flex flex-col items-center justify-center p-4 bg-[#121212] border-4 outline-none ${currentChannel?.id === channel.id ? 'border-red-600' : 'border-transparent'} ${(focusedSection === "grid" && focusedIndex === idx) ? 'scale-110 border-white ring-4 ring-red-600 z-10' : ''}`}
             >
-              <img src={channel.logo} className="max-w-full max-h-full object-contain" alt="Logo" />
+              <img src={channel.logo} loading="lazy" className="max-w-full max-h-full object-contain" alt="Logo" />
               <div className="absolute -bottom-2 bg-red-600 text-white px-3 py-1 rounded-full text-[8px] font-black uppercase shadow-xl truncate max-w-[90%]">
                 {channel.name || channel.title}
               </div>

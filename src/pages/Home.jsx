@@ -1,19 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import logoFabulosa from '../assets/logo_fabulosa.png';
 
 const Home = () => {
   const [fecha, setFecha] = useState(new Date());
   const [bgIndex, setBgIndex] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
-  
-  // NUEVO: Detector exclusivo para iPhone
   const [isIPhone, setIsIPhone] = useState(false);
 
   const navigate = useNavigate();
   const scrollRef = useRef(null);
-  const scrollTimeoutRef = useRef(null); 
+  const scrollTimeoutRef = useRef(null);
 
   const backgrounds = [
     '/tv_1.webp', '/tv_2.webp', '/tv_3.webp', '/tv_4.webp', 
@@ -38,33 +35,75 @@ const Home = () => {
 
   const cards = [...originalCards, ...originalCards, ...originalCards];
 
-  useEffect(() => {
-    // Activamos el detector exclusivo de iPhone
-    setIsIPhone(/iPhone/i.test(navigator.userAgent));
+  // Función de desplazamiento suave controlada
+  const scrollToIndex = (index, behavior = 'smooth') => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const item = container.childNodes[index];
+    if (item) {
+      const scrollLeft = item.offsetLeft - (container.offsetWidth / 2) + (item.offsetWidth / 2);
+      container.scrollTo({ left: scrollLeft, behavior });
+    }
+  };
 
+  useEffect(() => {
+    setIsIPhone(/iPhone/i.test(navigator.userAgent));
     const timer = setInterval(() => setFecha(new Date()), 1000);
     const bgTimer = setInterval(() => setBgIndex((prev) => (prev + 1) % backgrounds.length), 15000);
     
-    if (scrollRef.current) {
-      const mid = originalCards.length;
-      setActiveIndex(mid);
-      setTimeout(() => {
-        const container = scrollRef.current;
-        const activeItem = container.childNodes[mid];
-        container.scrollLeft = activeItem.offsetLeft - (container.offsetWidth / 2) + (activeItem.offsetWidth / 2);
-      }, 50);
-    }
+    // Posición inicial: bloque central para permitir loop infinito
+    const mid = originalCards.length;
+    setActiveIndex(mid);
+    setTimeout(() => scrollToIndex(mid, 'auto'), 100);
+
     return () => { clearInterval(timer); clearInterval(bgTimer); };
   }, []);
+
+  // MOTOR DE CONTROL REMOTO (Keydown Management)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowRight') {
+        setActiveIndex((prev) => {
+          const next = prev + 1;
+          // Salto infinito invisible al llegar al bloque final
+          if (next >= cards.length - 2) {
+            const reset = originalCards.length + (next % originalCards.length);
+            scrollToIndex(reset, 'auto');
+            return reset;
+          }
+          scrollToIndex(next);
+          return next;
+        });
+      } else if (e.key === 'ArrowLeft') {
+        setActiveIndex((prev) => {
+          const next = prev - 1;
+          // Salto infinito invisible al llegar al bloque inicial
+          if (next <= 2) {
+            const reset = originalCards.length + (next % originalCards.length);
+            scrollToIndex(reset, 'auto');
+            return reset;
+          }
+          scrollToIndex(next);
+          return next;
+        });
+      } else if (e.key === 'Enter' || e.key === 'OK') {
+        const card = cards[activeIndex];
+        if (card.isExternal) window.location.href = card.path;
+        else navigate(card.path);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeIndex, cards, navigate]);
 
   const handleScroll = () => {
     const container = scrollRef.current;
     if (!container) return;
-
+    // Mantiene compatibilidad con Touch/Mouse para celulares
     const center = container.scrollLeft + container.offsetWidth / 2;
     let closestIndex = 0;
     let minDistance = Infinity;
-
     container.childNodes.forEach((child, index) => {
       const childCenter = child.offsetLeft + child.offsetWidth / 2;
       const distance = Math.abs(center - childCenter);
@@ -73,40 +112,11 @@ const Home = () => {
         closestIndex = index;
       }
     });
-
-    if (closestIndex !== activeIndex) {
-      setActiveIndex(closestIndex);
-    }
-
-    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-    
-    scrollTimeoutRef.current = setTimeout(() => {
-      if (!container) return;
-      const scrollWidth = container.scrollWidth / 3;
-      
-      if (container.scrollLeft < 50) {
-        container.scrollLeft = scrollWidth + container.scrollLeft;
-      } else if (container.scrollLeft > scrollWidth * 2) {
-        container.scrollLeft = container.scrollLeft - scrollWidth;
-      }
-    }, 150); 
-  };
-
-  const onCardClick = (idx, card) => {
-    if (idx === activeIndex) {
-      if (card.isExternal) window.location.href = card.path;
-      else navigate(card.path);
-    } else {
-      setActiveIndex(idx);
-      const container = scrollRef.current;
-      const activeItem = container.childNodes[idx];
-      const scrollLeft = activeItem.offsetLeft - (container.offsetWidth / 2) + (activeItem.offsetWidth / 2);
-      container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-    }
+    if (closestIndex !== activeIndex) setActiveIndex(closestIndex);
   };
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-black text-white font-sans">
+    <div className="relative h-screen w-screen overflow-hidden bg-black text-white font-sans app-container-4k">
       
       {backgrounds.map((bg, i) => (
         <div
@@ -115,12 +125,12 @@ const Home = () => {
           style={{ backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         />
       ))}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-0 bg-film-grain" />
 
       <header className="absolute top-8 left-10 md:left-16 z-10 flex items-center gap-8 pointer-events-none">
         <img src={logoFabulosa} alt="Logo" className="h-12 md:h-20 object-contain drop-shadow-2xl" />
         <div className="flex flex-col border-l-2 border-cyan-400/30 pl-6">
-          <span className="text-4xl md:text-6xl font-black italic text-cyan-400 drop-shadow-lg leading-none">
+          <span className="text-4xl md:text-6xl font-black italic text-cyan-400 drop-shadow-lg leading-none text-hdr-4k">
             {fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
           </span>
           <span className="text-sm md:text-lg font-bold uppercase tracking-widest opacity-70">
@@ -134,31 +144,30 @@ const Home = () => {
           ref={scrollRef}
           onScroll={handleScroll}
           className="flex items-end overflow-x-auto no-scrollbar px-[40vw] h-[55vh] gap-4 md:gap-10 snap-x snap-mandatory pointer-events-auto"
-          style={{ WebkitOverflowScrolling: 'touch' }}
         >
           {cards.map((card, idx) => {
             const focused = idx === activeIndex;
             return (
               <div
                 key={`${card.id}-${idx}`}
-                onClick={() => onCardClick(idx, card)}
-                // CIRUGÍA DE CLASES: Si es iPhone, usamos w-[55vw] en vez de w-[75vw] para evitar cortes
+                onClick={() => { setActiveIndex(idx); scrollToIndex(idx); }}
+                tabIndex={0}
                 className={`
-                  snap-center snap-always relative flex-shrink-0 cursor-pointer transition-all duration-500 ease-out will-change-transform
+                  snap-center snap-always relative flex-shrink-0 cursor-pointer transition-all duration-500 ease-out will-change-transform outline-none
                   ${focused 
                     ? `${isIPhone ? 'w-[55vw]' : 'w-[75vw]'} sm:w-[320px] lg:w-[450px] z-[1000] opacity-100` 
                     : `${isIPhone ? 'w-[20vw]' : 'w-[28vw]'} sm:w-[160px] lg:w-[240px] z-10 opacity-30 blur-[0.5px]`}
                 `}
-                // CIRUGÍA DE ESTILOS: Si es iPhone, la escala máxima es 1.05 en vez de 1.2
                 style={{
                   transform: focused 
                     ? (isIPhone ? 'scale(1.05) translateY(-50px)' : 'scale(1.2) translateY(-70px)')
                     : 'scale(0.95) translateY(0px)'
                 }}
               >
-                <div className="relative w-full aspect-[16/10] flex items-center justify-center p-2 pointer-events-none">
+                <div className="relative w-full aspect-[16/10] flex items-center justify-center p-2 pointer-events-none lens-flare-effect">
                   <img 
                     src={card.img} 
+                    loading="lazy"
                     className={`
                       max-w-full max-h-full object-contain transition-all duration-500
                       ${focused 
