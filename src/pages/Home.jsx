@@ -1,99 +1,90 @@
-import { useEffect, useRef, useState } from "react";
-import TopNav from "../components/hbo/TopNav";
-import HeroSlider from "../components/hbo/HeroSlider";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import TopNav from "@/components/hbo/TopNav";
+import HeroSlider from "@/components/hbo/HeroSlider";
 
 export default function Home() {
   const navigate = useNavigate();
-  const rowRef = useRef(null);
+  const [active, setActive] = useState(0);
 
-  // 🔥 TUS 12 CARDS REALES (RUTAS DE TU APP)
-  const cards = [
-    { name: "Radios", path: "/radios-cr", image: "/images/radios.jpg" },
-    { name: "Ranchera", path: "/ranchera", image: "/images/ranchera.jpg" },
-    { name: "Karaoke", path: "/karaoke", image: "/images/karaoke.jpg" },
-    { name: "Cine Play", path: "/cine-play", image: "/images/cine.jpg" },
-    { name: "Canales", path: "/canales-play", image: "/images/tv.jpg" },
-    { name: "Alabanza", path: "/alabanza", image: "/images/alabanza.jpg" },
-    { name: "Mercadeo", path: "/centro-mercadeo", image: "/images/mercadeo.jpg" },
-    { name: "Cámaras", path: "/camaras", image: "/images/camaras.jpg" },
-    { name: "Fabulosa Tube", path: "/fabulosa-tube", image: "/images/tube.jpg" },
-    { name: "Kids", path: "/tv", image: "/images/kids.jpg" },
-    { name: "Noticias", path: "/noticias", image: "/images/noticias.jpg" },
-    { name: "Premium", path: "/premium", image: "/images/premium.jpg" },
+  // ✅ SUS CARDS REALES CON IMÁGENES DE /public
+  const ITEMS = [
+    { id: 1, path: "/karaoke", image: "/card-fabulosa-karaoke.webp" },
+    { id: 2, path: "/centro-mercadeo", image: "/mercadeo.webp" },
+    { id: 3, path: "/canales-play", image: "/canales_play.png" },
+    { id: 4, path: "/cine-play", image: "/cine_play.png" },
+    { id: 5, path: "/", image: "/fabulosa_play.png" },
+    { id: 6, path: "/premium", image: "/fabulosa_premiun.png" },
+    { id: 7, path: "/tv", image: "/fabulosito_kids.png" },
+    { id: 8, path: "/noticias", image: "/psc_imforma.png" },
+    { id: 9, path: "/alabanza", image: "/card-alabanza.webp" },
+    { id: 10, path: "/camaras", image: "/card-camaras.webp" },
+    { id: 11, path: "/fabulosa-tube", image: "/borrachos_play.png" },
+    { id: 12, path: "/radios-cr", image: "/borrachos_play.webp" },
   ];
 
-  const [focus, setFocus] = useState(0);
-
-  // 🎮 CONTROL REMOTO
+  // 🎮 CONTROL REMOTO / TECLADO
   useEffect(() => {
-    const handleKey = (e) => {
+    const handle = (e) => {
       if (e.key === "ArrowRight") {
-        setFocus((p) => Math.min(p + 1, cards.length - 1));
+        setActive((prev) => Math.min(prev + 1, ITEMS.length - 1));
       }
       if (e.key === "ArrowLeft") {
-        setFocus((p) => Math.max(p - 1, 0));
+        setActive((prev) => Math.max(prev - 1, 0));
       }
       if (e.key === "Enter") {
-        navigate(cards[focus].path);
+        navigate(ITEMS[active].path);
       }
     };
 
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [focus]);
-
-  // 🎯 CENTRAR CARD
-  useEffect(() => {
-    const el = rowRef.current?.children[focus];
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", inline: "center" });
-    }
-  }, [focus]);
+    window.addEventListener("keydown", handle);
+    return () => window.removeEventListener("keydown", handle);
+  }, [active]);
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black min-h-screen text-white">
 
+      {/* NAV */}
       <TopNav />
 
-      <div className="pt-14">
-        <HeroSlider />
+      {/* HERO */}
+      <HeroSlider />
 
-        {/* 🎬 FILA HBO */}
-        <div className="px-4 md:px-10 mt-6">
+      {/* 🎬 GRID PRO (tipo Netflix/HBO) */}
+      <div className="px-4 md:px-10 lg:px-16 mt-[-120px] relative z-20">
 
-          <h2 className="text-lg mb-4">Explorar</h2>
+        <div className="
+          grid
+          grid-cols-2
+          sm:grid-cols-3
+          md:grid-cols-4
+          lg:grid-cols-6
+          gap-3
+        ">
 
-          <div
-            ref={rowRef}
-            className="flex gap-2 overflow-x-auto pb-6"
-          >
-            {cards.map((item, i) => (
-              <div
-                key={i}
-                onClick={() => navigate(item.path)}
-                className="cursor-pointer flex-shrink-0 transition-all duration-300"
-                style={{
-                  width: "240px",
-                  height: "140px",
-                  transform: i === focus ? "scale(1.25)" : "scale(1)",
-                  zIndex: i === focus ? 10 : 1,
-                }}
-              >
-                <img
-                  src={item.image}
-                  className="w-full h-full object-cover rounded-lg"
-                />
-
-                {/* 🔥 EFECTO FOCO */}
-                {i === focus && (
-                  <div className="absolute inset-0 border-2 border-white rounded-lg pointer-events-none" />
-                )}
-              </div>
-            ))}
-          </div>
+          {ITEMS.map((item, i) => (
+            <div
+              key={item.id}
+              onClick={() => navigate(item.path)}
+              className={`
+                relative rounded-xl overflow-hidden cursor-pointer
+                transition-all duration-300
+                ${i === active
+                  ? "scale-110 z-20 ring-2 ring-purple-500"
+                  : "scale-95 opacity-90"}
+              `}
+              style={{ aspectRatio: "2/3" }} // 🔥 vertical PRO
+            >
+              <img
+                src={item.image}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
 
         </div>
+
       </div>
     </div>
   );
