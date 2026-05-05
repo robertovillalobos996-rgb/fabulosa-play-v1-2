@@ -2,6 +2,14 @@ export const radiosMundo = [
     // ==========================================
     // 🇨🇷 COSTA RICA - LISTA DEFINITIVA (LIMPIA)
     // ==========================================
+{
+      id: "fabulosa-mix",
+      title: "Fabulosa Mix",
+      frequency: "Premium HD",
+      url: "https://a5.asurahosting.com/listen/fabulosa_play/radio.mp3", 
+      genre: "Urbano / Variado",
+      logo: "/logo-fabulosamix.png" 
+    },
     { id: "cr-1", title: "Radio Omega", frequency: "105.1 FM", genre: "Variedades", country: "Costa Rica", url: "https://centova.hostingtico.com:7008/stream/1/", logo: "https://cdn.instant.audio/images/logos/radios-co-cr/radio-omega-estereo.png" },
     { id: "cr-2", title: "Radio Musical", frequency: "97.5 FM", genre: "Romántica", country: "Costa Rica", url: "https://live.turadio.stream:7005/;", logo: "https://cdn.instant.audio/images/logos/radios-co-cr/radio-musical-97-5-fm.png" },
     { id: "cr-3", title: "Columbia Estéreo", frequency: "92.7 FM", genre: "Romántica", country: "Costa Rica", url: "https://s5.radio.co/sca838cc60/listen", logo: "https://cdn.instant.audio/images/logos/radios-co-cr/columbia-estereo.png" },
