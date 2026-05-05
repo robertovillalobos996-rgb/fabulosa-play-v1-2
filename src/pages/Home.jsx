@@ -9,18 +9,18 @@ const Home = () => {
   const scrollRef = useRef(null);
 
   const cards = [
-    { id: 'premium', path: '/premium', img: '/fabulosa_premiun.webp' },
-    { id: 'noticias', isExternal: true, path: 'https://psc-informa.vercel.app', img: '/psc_imforma.webp' },
-    { id: 'fabulosa', path: '/fabulosa-tube', img: '/fabulosa_play.webp' },
-    { id: 'kids', path: '/tv', img: '/fabulosito_kids.webp' },
-    { id: 'ranchera', path: '/ranchera', img: '/borrachos_play.webp' },
-    { id: 'radioscr', path: '/radios-cr', img: '/card-radios.webp' },
-    { id: 'movies', path: '/cine-play', img: '/cine_play.png' },
-    { id: 'tv', path: '/canales-play', img: '/canales_play.png' },
-    { id: 'karaoke', path: '/karaoke', img: '/card-fabulosa-karaoke.webp' },
-    { id: 'alabanza', path: '/alabanza', img: '/card-alabanza.webp' },
-    { id: 'camaras', path: '/camaras', img: '/card-camaras.webp' },
-    { id: 'mercadeo', path: '/centro-mercadeo', img: '/mercadeo.webp' },
+    { id: 'premium', name: 'Mundo VIP', path: '/premium', img: '/fabulosa_premiun.webp' },
+    { id: 'noticias', name: 'Noticias', isExternal: true, path: 'https://psc-informa.vercel.app', img: '/psc_imforma.webp' },
+    { id: 'fabulosa', name: 'Fabulosa Tube', path: '/fabulosa-tube', img: '/fabulosa_play.webp' },
+    { id: 'kids', name: 'Fabulosito Kids', path: '/tv', img: '/fabulosito_kids.webp' },
+    { id: 'ranchera', name: 'Borrachos Play', path: '/ranchera', img: '/borrachos_play.webp' },
+    { id: 'radioscr', name: 'Radios CR', path: '/radios-cr', img: '/card-radios.webp' },
+    { id: 'movies', name: 'Cine Play', path: '/cine-play', img: '/cine_play.png' },
+    { id: 'tv', name: 'Canales Play', path: '/canales-play', img: '/canales_play.png' },
+    { id: 'karaoke', name: 'Fabulosa Karaoke', path: '/karaoke', img: '/card-fabulosa-karaoke.webp' },
+    { id: 'alabanza', name: 'Fabulosa Alabanza', path: '/alabanza', img: '/card-alabanza.webp' },
+    { id: 'camaras', name: 'Cámaras', path: '/camaras', img: '/card-camaras.webp' },
+    { id: 'mercadeo', name: 'Centro de Mercadeo', path: '/centro-mercadeo', img: '/mercadeo.webp' },
   ];
 
   useEffect(() => {
@@ -28,10 +28,8 @@ const Home = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // MOTOR DE NAVEGACIÓN Y ACCIÓN DE "ENTRAR"
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Capturamos flechas y botones de selección de diversos controles remotos
       if (e.key === 'ArrowRight') {
         setActiveIndex((p) => {
           const next = (p + 1) % cards.length;
@@ -45,13 +43,9 @@ const Home = () => {
           return next;
         });
       } else if (e.key === 'Enter' || e.key === 'OK' || e.keyCode === 13) {
-        // CIRUGÍA: Forzamos la navegación inmediata
         const card = cards[activeIndex];
-        if (card.isExternal) {
-          window.location.href = card.path;
-        } else {
-          navigate(card.path);
-        }
+        if (card.isExternal) window.location.href = card.path;
+        else navigate(card.path);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -63,7 +57,6 @@ const Home = () => {
       const container = scrollRef.current;
       const item = container.childNodes[index];
       if (item) {
-        // Centrado exacto en pantalla
         const scrollLeft = item.offsetLeft - (container.offsetWidth / 2) + (item.offsetWidth / 2);
         container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
       }
@@ -73,57 +66,57 @@ const Home = () => {
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black text-white font-sans">
       
-      {/* FONDO PRINCIPAL FABULOSA */}
+      {/* FONDO SOLICITADO: fondo_fabulosa_play.webp */}
       <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url(/fondo_fabulosa_play.png)' }}
+        className="absolute inset-0 bg-cover bg-center transition-all duration-700"
+        style={{ backgroundImage: 'url(/fondo_fabulosa_play.webp)' }}
       />
 
       <header className="absolute top-8 left-10 z-50 flex items-center gap-6">
-        <img src={logoFabulosa} alt="Logo" className="h-12 md:h-16 object-contain" />
+        <img src={logoFabulosa} alt="Logo" className="h-12 md:h-16 object-contain drop-shadow-2xl" />
         <div className="border-l-2 border-white/20 pl-6">
-          <span className="text-4xl md:text-5xl font-black italic">
+          <span className="text-4xl md:text-5xl font-black italic text-white drop-shadow-lg">
             {fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
           </span>
         </div>
       </header>
 
-      {/* 🎬 LA BARRA ESTILO TV (Igual a tu foto de referencia) */}
-      <div className="absolute bottom-0 w-full h-[25vh] bg-gradient-to-t from-black/90 via-black/60 to-transparent flex items-center z-[100]">
-        
-        {/* Contenedor con scroll centrado */}
+      {/* INDICADOR DE SECCIÓN (Para no perderse) */}
+      <div className="absolute bottom-[30vh] w-full text-center z-[150] pointer-events-none">
+        <h2 className="text-2xl md:text-4xl font-black uppercase italic tracking-widest text-cyan-400 drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">
+          {cards[activeIndex].name}
+        </h2>
+      </div>
+
+      <div className="absolute bottom-0 w-full h-[28vh] bg-gradient-to-t from-black via-black/40 to-transparent flex items-center z-[100]">
         <div 
           ref={scrollRef}
-          className="flex items-center overflow-x-hidden no-scrollbar px-[40vw] gap-4 w-full h-full"
+          className="flex items-center overflow-x-hidden no-scrollbar px-[40vw] gap-6 w-full h-full pb-6"
         >
           {cards.map((card, idx) => {
             const focused = idx === activeIndex;
             return (
               <div
                 key={card.id}
-                onClick={() => { setActiveIndex(idx); scrollToCard(idx); }}
                 className={`relative flex-shrink-0 transition-all duration-300 transform outline-none
                   ${focused 
-                    ? 'scale-125 z-50 border-[6px] border-white ring-8 ring-cyan-500/30' 
-                    : 'scale-90 opacity-50 border-2 border-white/10'}
+                    ? 'scale-125 z-50 border-[6px] border-white ring-8 ring-cyan-500/40 shadow-[0_0_50px_rgba(34,211,238,0.4)]' 
+                    : 'scale-90 opacity-40 border-2 border-white/10'}
                 `}
                 style={{
-                  width: '200px', // Tamaño balanceado para TV
+                  width: '240px', // Tamaño correcto balanceado
                   aspectRatio: '16/10',
-                  borderRadius: '1.5rem',
-                  overflow: 'hidden'
+                  borderRadius: '1.2rem',
+                  overflow: 'hidden',
+                  backgroundColor: 'rgba(0,0,0,0.5)'
                 }}
               >
+                {/* CIRUGÍA: object-contain para que la imagen se vea entera sin recortes */}
                 <img 
                   src={card.img} 
-                  className="w-full h-full object-cover" 
+                  className="w-full h-full object-contain p-2" 
                   alt={card.id}
                 />
-                
-                {/* Indicador de foco inferior (Solo cuando está seleccionado) */}
-                {focused && (
-                  <div className="absolute bottom-0 w-full h-2 bg-cyan-400 animate-pulse" />
-                )}
               </div>
             );
           })}
