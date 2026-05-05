@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { 
-  Search, ArrowLeft, Loader2
-} from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import Hls from "hls.js";
 
 import logoFabulosa from "../assets/logo_fabulosa.png";
@@ -10,12 +8,12 @@ import { canalesTV as initialCanales } from "../data/canales_finales.js";
 
 const Channels = () => {
   const navigate = useNavigate();
+
   const [searchTerm, setSearchTerm] = useState("");
   const [activeCategory, setActiveCategory] = useState("Todos");
-  const [channels, setChannels] = useState(initialCanales || []);
-  const [currentChannel, setCurrentChannel] = useState(initialCanales[0]);
+  const [channels] = useState(initialCanales || []);
+  const [currentChannel, setCurrentChannel] = useState(initialCanales?.[0] || null);
 
-  // CONTROL REMOTO
   const [focusedSection, setFocusedSection] = useState("grid");
   const [focusedIndex, setFocusedIndex] = useState(0);
 
@@ -24,44 +22,81 @@ const Channels = () => {
   const videoRef = useRef(null);
   const hlsRef = useRef(null);
 
+  /* CATEGORÍAS */
   const categories = useMemo(() => {
     return ["Todos", ...new Set(channels.map((c) => c.genre || "Varios"))];
   }, [channels]);
 
+  /* FILTRO */
   const filteredChannels = useMemo(() => {
     return channels.filter((c) => {
-      const matchCat = activeCategory === "Todos" || c.genre === activeCategory;
+      const matchCat =
+        activeCategory === "Todos" || c.genre === activeCategory;
       const nombre = c.name || c.title || "";
       return matchCat && nombre.toLowerCase().includes(searchTerm.toLowerCase());
     });
   }, [channels, activeCategory, searchTerm]);
 
-  // 🎮 CONTROL REMOTO MEJORADO
+  /* CONTROL REMOTO */
   useEffect(() => {
     const handleKeyDown = (e) => {
-      const columns = 8;
+      const isMobile = window.innerWidth < 768;
+      const columns = isMobile ? 2 : window.innerWidth < 1024 ? 4 : 8;
 
       if (focusedSection === "grid") {
-        if (e.key === "ArrowRight") setFocusedIndex(i => Math.min(i + 1, filteredChannels.length - 1));
+        if (e.key === "ArrowRight")
+          setFocusedIndex((i) => Math.min(i + 1, filteredChannels.length - 1));
+
         if (e.key === "ArrowLeft") {
-          if (focusedIndex % columns === 0) setFocusedSection("sidebar");
-          else setFocusedIndex(i => Math.max(i - 1, 0));
+          if (focusedIndex % columns === 0) {
+            setFocusedSection("sidebar");
+            setFocusedIndex(0);
+          } else {
+            setFocusedIndex((i) => Math.max(i - 1, 0));
+          }
         }
-        if (e.key === "ArrowDown") setFocusedIndex(i => Math.min(i + columns, filteredChannels.length - 1));
+
+        if (e.key === "ArrowDown")
+          setFocusedIndex((i) =>
+            Math.min(i + columns, filteredChannels.length - 1)
+          );
+
         if (e.key === "ArrowUp") {
-          if (focusedIndex < columns) setFocusedSection("player");
-          else setFocusedIndex(i => Math.max(i - columns, 0));
+          if (focusedIndex < columns) {
+            setFocusedSection("player");
+          } else {
+            setFocusedIndex((i) => Math.max(i - columns, 0));
+          }
         }
-        if (e.key === "Enter" && filteredChannels[focusedIndex]) {
-          handleChannelSelect(filteredChannels[focusedIndex]);
+
+        if (e.key === "Enter") {
+          const ch = filteredChannels[focusedIndex];
+          if (ch) handleChannelSelect(ch);
         }
       }
 
       if (focusedSection === "sidebar") {
-        if (e.key === "ArrowDown") setFocusedIndex(i => Math.min(i + 1, categories.length - 1));
-        if (e.key === "ArrowUp") setFocusedIndex(i => Math.max(i - 1, 0));
-        if (e.key === "ArrowRight") setFocusedSection("grid");
-        if (e.key === "Enter") setActiveCategory(categories[focusedIndex]);
+        if (e.key === "ArrowDown")
+          setFocusedIndex((i) => Math.min(i + 1, categories.length - 1));
+
+        if (e.key === "ArrowUp")
+          setFocusedIndex((i) => Math.max(i - 1, 0));
+
+        if (e.key === "ArrowRight") {
+          setFocusedSection("grid");
+          setFocusedIndex(0);
+        }
+
+        if (e.key === "Enter") {
+          setActiveCategory(categories[focusedIndex]);
+        }
+      }
+
+      if (focusedSection === "player") {
+        if (e.key === "ArrowDown") {
+          setFocusedSection("grid");
+          setFocusedIndex(0);
+        }
       }
     };
 
@@ -74,13 +109,12 @@ const Channels = () => {
     setIsLoading(true);
   };
 
-  // 🎬 PLAYER FIX COMPLETO
+  /* PLAYER */
   useEffect(() => {
-    if (!currentChannel?.url && !currentChannel?.iframe_url) return;
+    if (!currentChannel) return;
 
     const video = videoRef.current;
 
-    // limpiar instancia previa
     if (hlsRef.current) {
       hlsRef.current.destroy();
       hlsRef.current = null;
@@ -88,21 +122,14 @@ const Channels = () => {
 
     setIsLoading(true);
 
-    // 👉 iframe
     if (currentChannel.iframe_url) {
       setIsLoading(false);
       return;
     }
 
-    // 👉 HLS (.m3u8)
-    if (currentChannel.url.includes(".m3u8")) {
-
+    if (currentChannel.url?.includes(".m3u8")) {
       if (Hls.isSupported()) {
-        const hls = new Hls({
-          enableWorker: true,
-          lowLatencyMode: true,
-        });
-
+        const hls = new Hls({ lowLatencyMode: true });
         hls.loadSource(currentChannel.url);
         hls.attachMedia(video);
 
@@ -111,53 +138,45 @@ const Channels = () => {
           setIsLoading(false);
         });
 
-        hls.on(Hls.Events.ERROR, (event, data) => {
-          console.error("HLS error:", data);
-        });
-
         hlsRef.current = hls;
-
-      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      } else {
         video.src = currentChannel.url;
-        video.addEventListener("loadedmetadata", () => {
+        video.onloadedmetadata = () => {
           video.play().catch(() => {});
           setIsLoading(false);
-        });
+        };
       }
-
     } else {
-      // 👉 MP4 u otros
       video.src = currentChannel.url;
       video.onloadeddata = () => {
         video.play().catch(() => {});
         setIsLoading(false);
       };
     }
-
   }, [currentChannel]);
 
   return (
     <div className="flex flex-col lg:flex-row h-screen w-full bg-black text-white overflow-hidden">
 
       {/* BOTÓN VOLVER */}
-      <button 
-        onClick={() => navigate('/')}
-        className="absolute top-6 left-6 z-50 bg-red-600 p-3 rounded-full"
+      <button
+        onClick={() => navigate("/")}
+        className="absolute top-4 left-4 z-50 bg-red-600 p-3 rounded-full"
       >
-        <ArrowLeft size={24} />
+        <ArrowLeft size={20} />
       </button>
 
       {/* SIDEBAR */}
       <aside className="w-full lg:w-64 bg-[#0a0a0a] border-r border-white/5">
-        <div className="p-4 pt-20">
+        <div className="p-4 pt-16">
           <img src={logoFabulosa} className="h-10 mb-6" />
 
-          <input 
+          <input
             type="text"
-            placeholder="BUSCAR..."
-            className="w-full bg-white/10 p-3 rounded-xl text-xs"
+            placeholder="Buscar..."
+            className="w-full bg-white/10 p-3 rounded-xl text-sm"
             value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
@@ -168,7 +187,11 @@ const Channels = () => {
               onClick={() => setActiveCategory(cat)}
               className={`w-full p-3 rounded-xl text-left ${
                 activeCategory === cat ? "bg-red-600" : "bg-white/5"
-              } ${(focusedSection === "sidebar" && focusedIndex === idx) ? "ring-2 ring-white" : ""}`}
+              } ${
+                focusedSection === "sidebar" && focusedIndex === idx
+                  ? "ring-2 ring-white"
+                  : ""
+              }`}
             >
               {cat}
             </button>
@@ -188,7 +211,11 @@ const Channels = () => {
           )}
 
           {currentChannel?.iframe_url ? (
-            <iframe src={currentChannel.iframe_url} className="w-full h-full border-none" allow="autoplay" />
+            <iframe
+              src={currentChannel.iframe_url}
+              className="w-full h-full border-none"
+              allow="autoplay"
+            />
           ) : (
             <video ref={videoRef} className="w-full h-full" controls />
           )}
@@ -196,22 +223,25 @@ const Channels = () => {
 
         {/* GRID */}
         <div className="flex-1 overflow-y-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 p-4">
-
           {filteredChannels.map((channel, idx) => (
             <div
               key={channel.id}
               onClick={() => handleChannelSelect(channel)}
-              className={`cursor-pointer p-4 bg-[#111] rounded-xl flex flex-col items-center justify-center ${
-                (focusedSection === "grid" && focusedIndex === idx) ? "ring-4 ring-red-600 scale-110" : ""
+              className={`cursor-pointer p-4 bg-[#111] rounded-xl flex flex-col items-center justify-center transition ${
+                focusedSection === "grid" && focusedIndex === idx
+                  ? "ring-4 ring-red-600 scale-110"
+                  : ""
               }`}
             >
-              <img src={channel.logo} className="max-h-16 object-contain" />
+              <img
+                src={channel.logo}
+                className="max-h-16 object-contain"
+              />
               <span className="text-xs mt-2 text-center">
                 {channel.name || channel.title}
               </span>
             </div>
           ))}
-
         </div>
       </main>
     </div>
