@@ -1,22 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-// ✅ RUTAS RELATIVAS (SIN @)
 import { TVNavigationProvider } from "../lib/tv-navigation-context";
-import TopNav from "../components/streaming/TopNav";
-import HeroSlider from "../components/streaming/HeroSlider";
-import ContentRow from "../components/streaming/ContentRow";
-import FocusIndicator from "../components/streaming/FocusIndicator";
-
 import logoFabulosa from "../assets/logo_fabulosa.png";
 
 const HomeContent = () => {
   const navigate = useNavigate();
-  const containerRef = useRef(null);
-  const [scrolled, setScrolled] = useState(false);
+  const scrollRef = useRef(null);
   const [fecha, setFecha] = useState(new Date());
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // 🔥 CARDS REALES
+  // 🔥 TUS CARDS REALES (SIN DEPENDER DE OTROS COMPONENTES)
   const cards = [
     { id: 'premium', name: 'Mundo VIP', path: '/premium', img: '/fabulosa_premiun.webp' },
     { id: 'noticias', name: 'Noticias', isExternal: true, path: 'https://psc-informa.vercel.app', img: '/psc_imforma.webp' },
@@ -32,94 +25,93 @@ const HomeContent = () => {
     { id: 'mercadeo', name: 'Centro de Mercadeo', path: '/centro-mercadeo', img: '/mercadeo.webp' },
   ];
 
-  // 🔥 MAPEO PARA FILAS HBO
-  const mappedCards = cards.map((c, i) => ({
-    id: i + 1,
-    title: c.name,
-    image: c.img,
-    badge: null,
-    path: c.path,
-    isExternal: c.isExternal
-  }));
-
   // ⏱ RELOJ
   useEffect(() => {
     const timer = setInterval(() => setFecha(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  // 📜 SCROLL NAV
+  // 🎮 CONTROL REMOTO (DIRECTO Y SEGURO)
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const fn = () => setScrolled(el.scrollTop > 30);
-    el.addEventListener("scroll", fn);
-    return () => el.removeEventListener("scroll", fn);
-  }, []);
+    const handleKey = (e) => {
+      if (e.key === "ArrowRight") {
+        setActiveIndex((prev) => (prev + 1) % cards.length);
+      }
+      if (e.key === "ArrowLeft") {
+        setActiveIndex((prev) => (prev - 1 + cards.length) % cards.length);
+      }
+      if (e.key === "Enter") {
+        const item = cards[activeIndex];
+        if (item.isExternal) window.location.href = item.path;
+        else navigate(item.path);
+      }
+    };
 
-  // 🎬 CLICK
-  const handleItemClick = (item) => {
-    if (item.isExternal) window.location.href = item.path;
-    else navigate(item.path);
-  };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [activeIndex, navigate]);
+
+  // 📜 SCROLL AUTO
+  useEffect(() => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const item = container.children[activeIndex];
+    if (item) {
+      const scrollLeft =
+        item.offsetLeft - container.offsetWidth / 2 + item.offsetWidth / 2;
+      container.scrollTo({ left: scrollLeft, behavior: "smooth" });
+    }
+  }, [activeIndex]);
 
   return (
-    <div className="fixed inset-0 overflow-hidden bg-[#0D0D0D] text-white">
+    <div className="h-screen w-screen bg-black text-white overflow-hidden">
 
-      {/* NAV */}
-      <TopNav scrolled={scrolled} />
+      {/* FONDO */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url(/fondo_fabulosa_play.webp)" }}
+      />
 
-      {/* SCROLL PRINCIPAL */}
-      <div ref={containerRef} className="h-full overflow-y-auto">
-
-        {/* HERO */}
-        <HeroSlider />
-
-        {/* LOGO + HORA */}
-        <div className="absolute top-6 left-10 z-50 flex items-center gap-6">
-          <img src={logoFabulosa} className="h-12 md:h-16" alt="logo" />
-          <span className="text-3xl font-bold">
-            {fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-          </span>
-        </div>
-
-        {/* CONTENIDO */}
-        <div className="pb-20">
-
-          {/* MENÚ PRINCIPAL */}
-          <ContentRow
-            title="🔥 Fabulosa Play"
-            items={mappedCards}
-            rowIndex={1}
-            onItemClick={handleItemClick}
-          />
-
-          {/* EN VIVO */}
-          <ContentRow
-            title="🔴 En Vivo"
-            items={mappedCards.slice(0, 6)}
-            rowIndex={2}
-            onItemClick={handleItemClick}
-          />
-
-          {/* DESTACADOS */}
-          <ContentRow
-            title="⭐ Destacados"
-            items={mappedCards.slice(6, 12)}
-            rowIndex={3}
-            onItemClick={handleItemClick}
-          />
-
-          {/* FOOTER */}
-          <div className="mt-10 px-10 text-center text-white/30 text-xs">
-            © 2026 Fabulosa Play · Smart TV · Web · Mobile
-          </div>
-
-        </div>
+      {/* HEADER */}
+      <div className="absolute top-8 left-10 flex items-center gap-6 z-50">
+        <img src={logoFabulosa} className="h-16" />
+        <span className="text-4xl font-bold">
+          {fecha.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+        </span>
       </div>
 
-      {/* FOCO */}
-      <FocusIndicator />
+      {/* NOMBRE */}
+      <div className="absolute bottom-[30vh] w-full text-center z-50">
+        <h2 className="text-4xl font-black text-cyan-400">
+          {cards[activeIndex].name}
+        </h2>
+      </div>
+
+      {/* CARDS */}
+      <div className="absolute bottom-0 w-full h-[28vh] flex items-center">
+        <div
+          ref={scrollRef}
+          className="flex gap-6 px-[40vw] overflow-x-hidden w-full"
+        >
+          {cards.map((card, i) => {
+            const active = i === activeIndex;
+            return (
+              <div
+                key={card.id}
+                className={`transition-all duration-300 ${
+                  active ? "scale-125 border-4 border-white" : "scale-90 opacity-40"
+                }`}
+                style={{ width: 240 }}
+              >
+                <img
+                  src={card.img}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
