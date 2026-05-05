@@ -1,143 +1,100 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import TopNav from "../components/hbo/TopNav";
+import HeroSlider from "../components/hbo/HeroSlider";
+import ContentRow from "../components/hbo/ContentRow";
 
-const Home = () => {
+/* 🔥 TUS CARDS REALES convertidas a formato HBO */
+const sections = [
+  { id: 1, title: "Mundo VIP", path: "/premium", image: "/fabulosa_premiun.webp" },
+  { id: 2, title: "Noticias", path: "https://psc-informa.vercel.app", image: "/psc_imforma.webp", external: true },
+  { id: 3, title: "Fabulosa Tube", path: "/fabulosa-tube", image: "/fabulosa_play.webp" },
+  { id: 4, title: "Fabulosito Kids", path: "/tv", image: "/fabulosito_kids.webp" },
+  { id: 5, title: "Borrachos Play", path: "/ranchera", image: "/borrachos_play.webp" },
+  { id: 6, title: "Radios CR", path: "/radios-cr", image: "/card-radios.webp" },
+  { id: 7, title: "Cine Play", path: "/cine-play", image: "/cine_play.png" },
+  { id: 8, title: "Canales Play", path: "/canales-play", image: "/canales_play.png" },
+  { id: 9, title: "Karaoke", path: "/karaoke", image: "/card-fabulosa-karaoke.webp" },
+  { id: 10, title: "Alabanza", path: "/alabanza", image: "/card-alabanza.webp" },
+  { id: 11, title: "Cámaras", path: "/camaras", image: "/card-camaras.webp" },
+  { id: 12, title: "Mercadeo", path: "/centro-mercadeo", image: "/mercadeo.webp" },
+];
+
+export default function Home() {
   const navigate = useNavigate();
-  const scrollRef = useRef(null);
+  const containerRef = useRef(null);
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  /* 🔥 CONTROL REMOTO */
+  const [rowIndex, setRowIndex] = useState(0);
+  const [colIndex, setColIndex] = useState(0);
 
-  const cards = [
-    { id: 'premium', path: '/premium', img: '/fabulosa_premiun.webp' },
-    { id: 'noticias', path: 'https://psc-informa.vercel.app', external: true, img: '/psc_imforma.webp' },
-    { id: 'fabulosa', path: '/fabulosa-tube', img: '/fabulosa_play.webp' },
-    { id: 'kids', path: '/tv', img: '/fabulosito_kids.webp' },
-    { id: 'ranchera', path: '/ranchera', img: '/borrachos_play.webp' },
-    { id: 'radioscr', path: '/radios-cr', img: '/card-radios.webp' },
-    { id: 'movies', path: '/cine-play', img: '/cine_play.png' },
-    { id: 'tv', path: '/canales-play', img: '/canales_play.png' },
-    { id: 'karaoke', path: '/karaoke', img: '/card-fabulosa-karaoke.webp' },
-    { id: 'alabanza', path: '/alabanza', img: '/card-alabanza.webp' },
-    { id: 'camaras', path: '/camaras', img: '/card-camaras.webp' },
-    { id: 'mercadeo', path: '/centro-mercadeo', img: '/mercadeo.webp' },
+  const rows = [
+    { title: "🔥 Destacados", items: sections.slice(0, 6) },
+    { title: "📺 Explorar", items: sections },
   ];
 
-  /* =========================
-     CONTROL REMOTO / TECLADO
-  ========================= */
   useEffect(() => {
-    const handleKey = (e) => {
+    const onKey = (e) => {
       if (e.key === "ArrowRight") {
-        setActiveIndex((prev) => Math.min(prev + 1, cards.length - 1));
+        setColIndex((p) => Math.min(p + 1, rows[rowIndex].items.length - 1));
       }
 
       if (e.key === "ArrowLeft") {
-        setActiveIndex((prev) => Math.max(prev - 1, 0));
+        setColIndex((p) => Math.max(p - 1, 0));
+      }
+
+      if (e.key === "ArrowDown") {
+        setRowIndex((p) => Math.min(p + 1, rows.length - 1));
+        setColIndex(0);
+      }
+
+      if (e.key === "ArrowUp") {
+        setRowIndex((p) => Math.max(p - 1, 0));
+        setColIndex(0);
       }
 
       if (e.key === "Enter") {
-        const item = cards[activeIndex];
+        const item = rows[rowIndex].items[colIndex];
         if (item.external) window.open(item.path, "_blank");
         else navigate(item.path);
       }
     };
 
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [activeIndex, navigate]);
-
-  /* =========================
-     SCROLL INTELIGENTE
-  ========================= */
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const item = container.children[activeIndex];
-    if (!item) return;
-
-    const containerWidth = container.offsetWidth;
-    const itemLeft = item.offsetLeft;
-    const itemWidth = item.offsetWidth;
-
-    const scrollTo =
-      itemLeft - containerWidth / 2 + itemWidth / 2;
-
-    container.scrollTo({
-      left: scrollTo,
-      behavior: "smooth",
-    });
-  }, [activeIndex]);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [rowIndex, colIndex, rows, navigate]);
 
   return (
-    <div className="fixed inset-0 bg-[#0D0D0D] text-white overflow-hidden">
+    <div className="fixed inset-0 bg-[#0D0D0D]">
 
       {/* NAV HBO */}
       <TopNav />
 
-      {/* HERO SIMPLE (no rompe nada) */}
+      {/* HERO REAL HBO */}
+      <HeroSlider />
+
+      {/* FILAS HBO */}
       <div
-        className="w-full h-[45vh] md:h-[60vh] bg-cover bg-center"
-        style={{ backgroundImage: "url(/fondo_fabulosa_play.webp)" }}
-      />
-
-      {/* CARRUSEL */}
-      <div className="absolute bottom-0 w-full pb-10">
-
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto px-6 md:px-20 scrollbar-hide"
-        >
-          {cards.map((card, index) => {
-            const active = index === activeIndex;
-
-            return (
-              <div
-                key={card.id}
-                onClick={() => {
-                  if (card.external) window.open(card.path, "_blank");
-                  else navigate(card.path);
-                }}
-                className={`flex-shrink-0 transition-all duration-300 cursor-pointer
-                  ${active
-                    ? "scale-110 z-50"
-                    : "scale-95 opacity-80"
-                  }
-                `}
-                style={{
-                  width: "clamp(140px, 18vw, 240px)",
-                  aspectRatio: "16/10",
-                }}
-              >
-                <div
-                  className={`w-full h-full rounded-xl overflow-hidden
-                    ${active
-                      ? "ring-4 ring-cyan-400 shadow-[0_0_25px_rgba(34,211,238,0.7)]"
-                      : "border border-white/10"
-                    }
-                  `}
-                >
-                  <img
-                    src={card.img}
-                    alt=""
-                    className="w-full h-full object-contain bg-black"
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        ref={containerRef}
+        className="pb-20"
+        style={{ background: "#0D0D0D" }}
+      >
+        {rows.map((row, rIndex) => (
+          <ContentRow
+            key={rIndex}
+            title={row.title}
+            items={row.items}
+            size="wide"
+            onItemClick={(item) =>
+              item.external
+                ? window.open(item.path, "_blank")
+                : navigate(item.path)
+            }
+            focusedRow={rowIndex === rIndex}
+            focusedCol={colIndex}
+          />
+        ))}
       </div>
-
-      {/* CSS GLOBAL */}
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </div>
   );
-};
-
-export default Home;
+}
