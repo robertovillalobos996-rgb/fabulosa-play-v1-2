@@ -2,11 +2,12 @@ export const radiosMundo = [
     // ==========================================
     // 🇨🇷 COSTA RICA - LISTA DEFINITIVA (LIMPIA)
     // ==========================================
-{
+    {
       id: "fabulosa-mix",
       title: "Fabulosa Mix",
       frequency: "Premium HD",
-      country: "Costa Rica", //       url: "https://a5.asurahosting.com/listen/fabulosa_play/radio.mp3", 
+      country: "Costa Rica", 
+      url: "https://a5.asurahosting.com/listen/fabulosa_play/radio.mp3", 
       genre: "Urbano / Variado",
       logo: "/logo-fabulosamix.png" 
     },
