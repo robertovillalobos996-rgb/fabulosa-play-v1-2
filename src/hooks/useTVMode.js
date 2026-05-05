@@ -5,38 +5,30 @@ export function useTVMode() {
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    if (isMobile) {
-      document.body.style.cursor = 'default';
-      return;
-    }
+    if (isMobile) return;
 
     let timer;
 
-    const hide = () => {
+    const hideCursor = () => {
       document.body.style.cursor = 'none';
     };
 
-    const show = () => {
-      document.body.style.cursor = 'default';
+    const showCursor = () => {
+      document.body.style.cursor = '';
       clearTimeout(timer);
-      timer = setTimeout(hide, 2000);
+      timer = setTimeout(hideCursor, 2000);
     };
 
-    hide();
+    timer = setTimeout(hideCursor, 2000);
 
-    window.addEventListener('mousemove', show);
-    window.addEventListener('mousedown', show);
+    window.addEventListener('mousemove', showCursor);
+    window.addEventListener('mousedown', showCursor);
 
     return () => {
       clearTimeout(timer);
-      document.body.style.cursor = 'default';
-      window.removeEventListener('mousemove', show);
-      window.removeEventListener('mousedown', show);
+      document.body.style.cursor = '';
+      window.removeEventListener('mousemove', showCursor);
+      window.removeEventListener('mousedown', showCursor);
     };
   }, [isMobile]);
-
-  return {
-    isTV: !isMobile,
-    isMobile
-  };
 }
