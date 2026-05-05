@@ -1,7 +1,16 @@
 // src/data/radios-cr.js
 
 export const radiosCR = [
-    {
+
+{
+      id: "fabulosa-mix",
+      title: "Fabulosa Mix",
+      frequency: "Premium HD",
+      url: "https://a5.asurahosting.com/listen/fabulosa_play/radio.mp3", 
+      genre: "Urbano / Variado",
+      logo: "/logo-fabulosamix.png" 
+    },
+ {
       id: 1,
       title: "Radio Omega",
       frequency: "105.1 FM",
