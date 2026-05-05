@@ -2,269 +2,187 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Volume2, VolumeX, ArrowLeft, Smartphone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Hls from 'hls.js'; 
+import Hls from 'hls.js';
 import logoImage from '../assets/logo_fabulosa.png';
 
 const AUDIO_RADIO_URL = "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8";
 
 const YOUTUBE_CAMS = [
-    "rnXIjl_Rzy4", "EO_1LWqsCNE", "gFRtAAmiFbE", "loHbMM9JfCs", 
-    "uV3wWHSvkfs", "nFozEhYTEMo", "8Rw-tZTeBjU", "rqBfiegG5qU"
+  "rnXIjl_Rzy4","EO_1LWqsCNE","gFRtAAmiFbE","loHbMM9JfCs",
+  "uV3wWHSvkfs","nFozEhYTEMo","8Rw-tZTeBjU","rqBfiegG5qU"
 ];
 
-// SOLO QUEDAN LAS IMÁGENES
 const ADS_IMAGES = [
-    '/publicidad_vertical/mexicana_1.png',
-    '/publicidad_vertical/mexicana_2.png',
-    '/publicidad_vertical/unas_yendry.png',
-    '/publicidad_vertical/anunciete_1.png',
-    '/publicidad_vertical/chinito_express.png'
+  '/publicidad_vertical/mexicana_1.png',
+  '/publicidad_vertical/mexicana_2.png',
+  '/publicidad_vertical/unas_yendry.png',
+  '/publicidad_vertical/anunciete_1.png',
+  '/publicidad_vertical/chinito_express.png'
 ];
 
 const Camaras = () => {
-    const navigate = useNavigate();
-    
-    // ESTADOS DEL AUDIO Y CONTROLES
-    const [volume, setVolume] = useState(0.5);
-    const [isMuted, setIsMuted] = useState(false);
-    const [isControlsVisible, setIsControlsVisible] = useState(true);
-    const audioRef = useRef(null);
-    const controlsTimeoutRef = useRef(null);
+  const navigate = useNavigate();
 
-    // ESTADOS DE CÁMARAS
-    const [currentCamIndex, setCurrentCamIndex] = useState(0);
-    
-    // ESTADOS DE PUBLICIDAD (SOLO IMÁGENES)
-    const [adPhase, setAdPhase] = useState('IDLE'); 
-    const [currentAdIndex, setCurrentAdIndex] = useState(0);
-    const timerRef = useRef(null);
+  const [volume, setVolume] = useState(0.5);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isControlsVisible, setIsControlsVisible] = useState(true);
 
-    const isAdMode = adPhase !== 'IDLE';
+  const [currentCamIndex, setCurrentCamIndex] = useState(0);
+  const [camError, setCamError] = useState(false);
 
-    // 1. INICIAR AUDIO RADIO
-    useEffect(() => {
-        if (audioRef.current) {
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(AUDIO_RADIO_URL);
-                hls.attachMedia(audioRef.current);
-            } else if (audioRef.current.canPlayType('application/vnd.apple.mpegurl')) {
-                audioRef.current.src = AUDIO_RADIO_URL;
-            }
-            audioRef.current.volume = volume;
-        }
-    }, []);
+  const audioRef = useRef(null);
+  const controlsTimeoutRef = useRef(null);
 
-    useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.volume = isMuted ? 0 : volume;
-        }
-    }, [volume, isMuted]);
+  /* 🔊 AUDIO HLS */
+  useEffect(() => {
+    if (!audioRef.current) return;
 
-    // 2. CONTROLES ESTILO YOUTUBE
-    useEffect(() => {
-        const handleActivity = () => {
-            setIsControlsVisible(true);
-            if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
-            controlsTimeoutRef.current = setTimeout(() => {
-                setIsControlsVisible(false);
-            }, 3000); 
-        };
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(AUDIO_RADIO_URL);
+      hls.attachMedia(audioRef.current);
+    } else {
+      audioRef.current.src = AUDIO_RADIO_URL;
+    }
 
-        window.addEventListener('mousemove', handleActivity);
-        window.addEventListener('touchstart', handleActivity);
-        window.addEventListener('click', handleActivity);
+    audioRef.current.volume = volume;
+  }, []);
 
-        handleActivity(); 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = isMuted ? 0 : volume;
+    }
+  }, [volume, isMuted]);
 
-        return () => {
-            window.removeEventListener('mousemove', handleActivity);
-            window.removeEventListener('touchstart', handleActivity);
-            window.removeEventListener('click', handleActivity);
-            if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
-        };
-    }, []);
-
-    // 3. CAMBIO DE CÁMARA CADA 2 MINUTOS CON EFECTO CROSSFADE
-    useEffect(() => {
-        const camTimer = setInterval(() => {
-            setCurrentCamIndex((prev) => (prev + 1) % YOUTUBE_CAMS.length);
-        }, 120000); 
-        return () => clearInterval(camTimer);
-    }, []);
-
-    // 4. LÓGICA DE TIEMPOS DE PUBLICIDAD (SOLO IMÁGENES)
-    useEffect(() => {
-        timerRef.current = setTimeout(() => {
-            setAdPhase('IMAGES');
-            setCurrentAdIndex(0);
-        }, 15000); // 15 Segundos iniciales
-
-        return () => clearTimeout(timerRef.current);
-    }, []);
-
-    const nextAdPhase = () => {
-        setAdPhase('IDLE');
-        // Después de las imágenes, espera 6 minutos para volver a mostrarlas
-        timerRef.current = setTimeout(() => {
-            setAdPhase('IMAGES');
-            setCurrentAdIndex(0);
-        }, 6 * 60 * 1000); 
+  /* 🎮 CONTROL REMOTO */
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "ArrowRight") {
+        nextCam();
+      }
+      if (e.key === "ArrowLeft") {
+        prevCam();
+      }
+      if (e.key === "Enter") {
+        setIsMuted(m => !m);
+      }
+      if (e.key === "Escape") {
+        navigate('/');
+      }
     };
 
-    // 5. REPRODUCCIÓN AUTOMÁTICA DE IMÁGENES
-    useEffect(() => {
-        if (adPhase === 'IMAGES') {
-            const imgTimer = setTimeout(() => {
-                if (currentAdIndex + 1 < ADS_IMAGES.length) {
-                    setCurrentAdIndex(prev => prev + 1);
-                } else {
-                    nextAdPhase();
-                }
-            }, 10000); 
-            return () => clearTimeout(imgTimer);
-        }
-    }, [adPhase, currentAdIndex]);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
 
-    return (
-        <>
-            {/* PANTALLA DE BLOQUEO (GIRE EL TELÉFONO) */}
-            <div className="landscape-lock-overlay">
-                <motion.div animate={{ rotate: 90 }} transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}>
-                    <Smartphone size={80} className="text-yellow-500 mb-8" />
-                </motion.div>
-                <h1 className="text-3xl font-black tracking-widest uppercase mb-4 text-center text-white">Gire su teléfono</h1>
-                <p className="text-gray-400 text-center text-base max-w-xs leading-relaxed">
-                    Esta transmisión en vivo está diseñada para disfrutarse en pantalla completa horizontal.
-                </p>
-                <button onClick={() => navigate('/')} className="mt-12 px-8 py-4 bg-white/10 hover:bg-white/20 transition-colors rounded-full font-bold uppercase tracking-widest text-xs text-white">
-                    Volver al Inicio
-                </button>
-            </div>
+  /* 📱 TOUCH (SWIPE) */
+  useEffect(() => {
+    let startX = 0;
 
-            {/* SISTEMA DE TRANSMISIÓN PRINCIPAL */}
-            <div className="broadcast-master bg-black h-screen w-screen overflow-hidden relative flex">
-                
-                <audio ref={audioRef} autoPlay loop />
+    const start = (e) => startX = e.touches[0].clientX;
+    const end = (e) => {
+      let endX = e.changedTouches[0].clientX;
 
-                {/* LOGO SUPERIOR */}
-                <div className="absolute top-6 left-6 z-[80] pointer-events-none">
-                    <img src={logoImage} alt="Fabulosa Logo" className="h-16 md:h-24 drop-shadow-[0_0_20px_rgba(0,0,0,1)]" />
-                </div>
+      if (startX - endX > 50) nextCam();
+      if (endX - startX > 50) prevCam();
+    };
 
-                {/* SECCIÓN 1: PANTALLA DE CÁMARAS (IZQUIERDA) */}
-                <motion.div 
-                    className="h-full relative flex items-center justify-center bg-black overflow-hidden"
-                    animate={{ width: isAdMode ? '60vw' : '100vw' }}
-                    transition={{ duration: 1.2, ease: "easeInOut" }}
-                >
-                    <div className="absolute inset-0 z-40 bg-transparent cursor-default"></div>
+    window.addEventListener("touchstart", start);
+    window.addEventListener("touchend", end);
 
-                    <AnimatePresence>
-                        <motion.div
-                            key={currentCamIndex}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.8 }} 
-                            className="absolute inset-0 w-full h-full"
-                        >
-                            <iframe 
-                                src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[currentCamIndex]}?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&playsinline=1&vq=hd1080`}
-                                className="w-full h-full pointer-events-none"
-                                style={{ transform: 'scale(1.3)' }}
-                                frameBorder="0"
-                                allow="autoplay; encrypted-media; picture-in-picture"
-                            ></iframe>
-                        </motion.div>
-                    </AnimatePresence>
-                </motion.div>
+    return () => {
+      window.removeEventListener("touchstart", start);
+      window.removeEventListener("touchend", end);
+    };
+  }, []);
 
-                {/* SECCIÓN 2: CAJA DE COMERCIALES (DERECHA - SOLO IMÁGENES) */}
-                <motion.div 
-                    className="h-full bg-black border-l-2 border-neutral-800 flex items-center justify-center relative overflow-hidden"
-                    animate={{ width: isAdMode ? '40vw' : '0vw' }}
-                    transition={{ duration: 1.2, ease: "easeInOut" }}
-                >
-                    <AnimatePresence mode="wait">
-                        {isAdMode && adPhase === 'IMAGES' && ADS_IMAGES[currentAdIndex] && (
-                            <motion.div 
-                                key={`img-${currentAdIndex}`}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 1.05 }}
-                                transition={{ duration: 0.8 }}
-                                className="absolute inset-0 flex items-center justify-center p-4 bg-black"
-                            >
-                                <img 
-                                    src={ADS_IMAGES[currentAdIndex]} 
-                                    alt="Fabulosa Publicidad" 
-                                    className="max-w-full max-h-full object-contain drop-shadow-2xl rounded-xl"
-                                />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </motion.div>
+  /* 🔁 AUTO CAMBIO */
+  useEffect(() => {
+    const t = setInterval(nextCam, 120000);
+    return () => clearInterval(t);
+  }, []);
 
-                {/* PANEL DE CONTROL ESTILO YOUTUBE */}
-                <div 
-                    className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 z-[200] flex items-center bg-black/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 transition-opacity duration-700 ${isControlsVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-                >
-                    <button onClick={() => navigate('/')} className="text-gray-400 hover:text-white transition font-bold flex items-center gap-2 text-sm uppercase tracking-widest mr-6">
-                        <ArrowLeft size={18} /> Salir
-                    </button>
+  const nextCam = () => {
+    setCamError(false);
+    setCurrentCamIndex(i => (i + 1) % YOUTUBE_CAMS.length);
+  };
 
-                    <div className="w-px h-6 bg-white/20 mr-6"></div>
+  const prevCam = () => {
+    setCamError(false);
+    setCurrentCamIndex(i => (i - 1 + YOUTUBE_CAMS.length) % YOUTUBE_CAMS.length);
+  };
 
-                    <div className="flex items-center gap-2 mr-6">
-                        <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
-                        <span className="text-white text-xs font-black tracking-[0.2em]">EN VIVO</span>
-                    </div>
+  /* 👁 CONTROLES AUTO HIDE */
+  useEffect(() => {
+    const show = () => {
+      setIsControlsVisible(true);
+      clearTimeout(controlsTimeoutRef.current);
 
-                    <div className="w-px h-6 bg-white/20"></div>
+      controlsTimeoutRef.current = setTimeout(() => {
+        setIsControlsVisible(false);
+      }, 3000);
+    };
 
-                    <div className="flex items-center ml-4 gap-4">
-                        <button 
-                            onClick={() => setIsMuted(!isMuted)} 
-                            className={`transition ${isMuted ? 'text-red-500' : 'text-green-400'}`}
-                        >
-                            {isMuted || volume === 0 ? <VolumeX size={24} /> : <Volume2 size={24} />}
-                        </button>
-                        
-                        <input 
-                            type="range" 
-                            min="0" 
-                            max="1" 
-                            step="0.01" 
-                            value={isMuted ? 0 : volume}
-                            onChange={(e) => {
-                                setVolume(parseFloat(e.target.value));
-                                setIsMuted(false);
-                            }}
-                            className="w-24 accent-green-400 h-1 bg-gray-600 rounded-lg outline-none cursor-pointer"
-                        />
-                    </div>
-                </div>
-            </div>
+    window.addEventListener("mousemove", show);
+    window.addEventListener("touchstart", show);
+    show();
 
-            <style jsx global>{`
-                .landscape-lock-overlay {
-                    position: fixed;
-                    inset: 0;
-                    z-index: 9999;
-                    background: #000;
-                    display: none;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                }
-                @media screen and (max-width: 850px) and (orientation: portrait) {
-                    .landscape-lock-overlay { display: flex !important; }
-                    .broadcast-master { display: none !important; }
-                }
-            `}</style>
-        </>
-    );
+    return () => {
+      window.removeEventListener("mousemove", show);
+      window.removeEventListener("touchstart", show);
+    };
+  }, []);
+
+  /* 🚨 FALLBACK SI VIDEO FALLA */
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setCamError(true);
+      nextCam();
+    }, 8000);
+
+    return () => clearTimeout(timeout);
+  }, [currentCamIndex]);
+
+  return (
+    <>
+      <audio ref={audioRef} autoPlay loop />
+
+      <div className="bg-black h-screen w-screen relative overflow-hidden">
+
+        {/* VIDEO */}
+        <AnimatePresence mode="wait">
+          <motion.iframe
+            key={currentCamIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            src={`https://www.youtube.com/embed/${YOUTUBE_CAMS[currentCamIndex]}?autoplay=1&mute=1&playsinline=1&controls=0&rel=0&modestbranding=1`}
+            className="absolute inset-0 w-full h-full"
+            allow="autoplay; encrypted-media"
+          />
+        </AnimatePresence>
+
+        {/* LOGO */}
+        <div className="absolute top-6 left-6 z-50">
+          <img src={logoImage} className="h-16" />
+        </div>
+
+        {/* CONTROLES */}
+        <div className={`absolute bottom-10 left-1/2 -translate-x-1/2 bg-black/80 px-6 py-3 rounded-full flex gap-6 transition ${isControlsVisible ? 'opacity-100' : 'opacity-0'}`}>
+
+          <button onClick={() => navigate('/')}>
+            <ArrowLeft />
+          </button>
+
+          <button onClick={() => setIsMuted(!isMuted)}>
+            {isMuted ? <VolumeX /> : <Volume2 />}
+          </button>
+
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Camaras;
