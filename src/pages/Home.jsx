@@ -1,16 +1,19 @@
-import { useTVMode } from '../hooks/useTVMode';
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import logoFabulosa from '../assets/logo_fabulosa.png';
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { TVNavigationProvider } from "@/lib/tv-navigation-context";
+import TopNav from "@/components/streaming/TopNav";
+import HeroSlider from "@/components/streaming/HeroSlider";
+import ContentRow from "@/components/streaming/ContentRow";
+import FocusIndicator from "@/components/streaming/FocusIndicator";
+import logoFabulosa from "../assets/logo_fabulosa.png";
 
-const Home = () => {
-  useTVMode(); // 👈 ACTIVA MODO TV (cursor oculto, etc.)
-
-  const [fecha, setFecha] = useState(new Date());
-  const [activeIndex, setActiveIndex] = useState(0);
+const HomeContent = () => {
   const navigate = useNavigate();
-  const scrollRef = useRef(null);
+  const containerRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [fecha, setFecha] = useState(new Date());
 
+  // 🔥 TUS CARDS REALES (NO SE TOCAN)
   const cards = [
     { id: 'premium', name: 'Mundo VIP', path: '/premium', img: '/fabulosa_premiun.webp' },
     { id: 'noticias', name: 'Noticias', isExternal: true, path: 'https://psc-informa.vercel.app', img: '/psc_imforma.webp' },
@@ -26,170 +29,102 @@ const Home = () => {
     { id: 'mercadeo', name: 'Centro de Mercadeo', path: '/centro-mercadeo', img: '/mercadeo.webp' },
   ];
 
-  // ⏰ RELOJ EN TIEMPO REAL
+  // 🔥 CONVERTIMOS CARDS A FORMATO HBO ROW
+  const mappedCards = cards.map((c, i) => ({
+    id: i + 1,
+    title: c.name,
+    image: c.img,
+    badge: null,
+    path: c.path,
+    isExternal: c.isExternal
+  }));
+
+  // ⏱ RELOJ
   useEffect(() => {
     const timer = setInterval(() => setFecha(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  // 🎮 CONTROL REMOTO (MEJORADO)
+  // 📜 SCROLL DETECTION (HBO STYLE)
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      const key = e.key;
-      const keyCode = e.keyCode;
-
-      if (['ArrowRight', 'ArrowLeft', 'Enter'].includes(key) || keyCode === 13) {
-        e.preventDefault();
-      }
-
-      if (key === 'ArrowRight' || keyCode === 39) {
-        setActiveIndex((prev) => {
-          const next = (prev + 1) % cards.length;
-          scrollToCard(next);
-          return next;
-        });
-      }
-
-      if (key === 'ArrowLeft' || keyCode === 37) {
-        setActiveIndex((prev) => {
-          const next = (prev - 1 + cards.length) % cards.length;
-          scrollToCard(next);
-          return next;
-        });
-      }
-
-      if (key === 'Enter' || keyCode === 13) {
-        const card = cards[activeIndex];
-
-        // 🔊 Sonido suave (opcional si ya tiene sounds.js)
-        try {
-          const audio = new Audio();
-          audio.src = '';
-          audio.play().catch(() => {});
-        } catch {}
-
-        if (card.isExternal) {
-          window.location.href = card.path;
-        } else {
-          navigate(card.path);
-        }
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeIndex, navigate]);
-
-  // 🎯 SCROLL CENTRADO PRO
-  const scrollToCard = (index) => {
-    if (!scrollRef.current) return;
-
-    const container = scrollRef.current;
-    const item = container.children[index];
-
-    if (!item) return;
-
-    const offset =
-      item.offsetLeft -
-      container.offsetWidth / 2 +
-      item.offsetWidth / 2;
-
-    container.scrollTo({
-      left: offset,
-      behavior: 'smooth',
-    });
-  };
-
-  // 📺 AUTO-CENTER AL INICIAR
-  useEffect(() => {
-    scrollToCard(activeIndex);
+    const el = containerRef.current;
+    if (!el) return;
+    const fn = () => setScrolled(el.scrollTop > 30);
+    el.addEventListener("scroll", fn);
+    return () => el.removeEventListener("scroll", fn);
   }, []);
 
+  // 🎬 CLICK HANDLER (RUTAS REALES)
+  const handleItemClick = (item) => {
+    if (item.isExternal) window.location.href = item.path;
+    else navigate(item.path);
+  };
+
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-black text-white font-sans">
+    <div className="fixed inset-0 overflow-hidden bg-[#0D0D0D] text-white">
 
-      {/* 🌌 FONDO */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-all duration-700"
-        style={{ backgroundImage: 'url(/fondo_fabulosa_play.webp)' }}
-      />
+      {/* NAV */}
+      <TopNav scrolled={scrolled} />
 
-      {/* 🧭 HEADER */}
-      <header className="absolute top-8 left-10 z-50 flex items-center gap-6">
-        <img
-          src={logoFabulosa}
-          alt="Logo"
-          className="h-12 md:h-16 object-contain drop-shadow-2xl"
-        />
+      {/* SCROLL */}
+      <div ref={containerRef} className="h-full overflow-y-auto">
 
-        <div className="border-l-2 border-white/20 pl-6">
-          <span className="text-4xl md:text-5xl font-black italic text-white drop-shadow-lg">
-            {fecha.toLocaleTimeString([], {
-              hour: '2-digit',
-              minute: '2-digit',
-              hour12: true,
-            })}
+        {/* HERO */}
+        <HeroSlider />
+
+        {/* INFO SUPERIOR (RELOJ + LOGO) */}
+        <div className="absolute top-6 left-10 z-50 flex items-center gap-6">
+          <img src={logoFabulosa} className="h-12 md:h-16" />
+          <span className="text-3xl font-bold">
+            {fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </span>
         </div>
-      </header>
 
-      {/* 🔥 NOMBRE ACTIVO */}
-      <div className="absolute bottom-[30vh] w-full text-center z-[150] pointer-events-none">
-        <h2 className="text-2xl md:text-4xl font-black uppercase italic tracking-widest text-cyan-400 drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]">
-          {cards[activeIndex].name}
-        </h2>
-      </div>
+        {/* CONTENIDO HBO */}
+        <div className="pb-20">
 
-      {/* 🎬 CARRUSEL */}
-      <div className="absolute bottom-0 w-full h-[28vh] bg-gradient-to-t from-black via-black/40 to-transparent flex items-center z-[100]">
-        <div
-          ref={scrollRef}
-          className="flex items-center overflow-x-hidden no-scrollbar px-[40vw] gap-6 w-full h-full pb-6"
-        >
-          {cards.map((card, idx) => {
-            const focused = idx === activeIndex;
+          {/* 🔥 TU MENÚ PRINCIPAL */}
+          <ContentRow
+            title="🔥 Fabulosa Play"
+            items={mappedCards}
+            rowIndex={1}
+            onItemClick={handleItemClick}
+          />
 
-            return (
-              <div
-                key={card.id}
-                className={`relative flex-shrink-0 transition-all duration-300 transform
-                ${
-                  focused
-                    ? 'scale-125 z-50 border-[6px] border-white ring-8 ring-cyan-500/40 shadow-[0_0_50px_rgba(34,211,238,0.4)]'
-                    : 'scale-90 opacity-40 border-2 border-white/10'
-                }`}
-                style={{
-                  width: '240px',
-                  aspectRatio: '16/10',
-                  borderRadius: '1.2rem',
-                  overflow: 'hidden',
-                  backgroundColor: 'rgba(0,0,0,0.5)',
-                }}
-              >
-                <img
-                  src={card.img}
-                  className="w-full h-full object-contain p-2"
-                  alt={card.id}
-                />
-              </div>
-            );
-          })}
+          {/* 🔴 EN VIVO */}
+          <ContentRow
+            title="🔴 En Vivo"
+            items={mappedCards.slice(0, 6)}
+            rowIndex={2}
+            onItemClick={handleItemClick}
+          />
+
+          {/* ⭐ DESTACADOS */}
+          <ContentRow
+            title="⭐ Destacados"
+            items={mappedCards.slice(6, 12)}
+            rowIndex={3}
+            onItemClick={handleItemClick}
+          />
+
+          {/* FOOTER HBO */}
+          <div className="mt-10 px-10 text-center text-white/30 text-xs">
+            © 2026 Fabulosa Play · Smart TV · Web · Mobile
+          </div>
+
         </div>
       </div>
 
-      {/* 🧼 FIX GLOBAL */}
-      <style jsx global>{`
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        body {
-          background-color: black;
-          margin: 0;
-          overflow: hidden;
-        }
-      `}</style>
+      {/* INDICADOR FOCO */}
+      <FocusIndicator />
     </div>
   );
 };
 
-export default Home;
+export default function Home() {
+  return (
+    <TVNavigationProvider>
+      <HomeContent />
+    </TVNavigationProvider>
+  );
+}
