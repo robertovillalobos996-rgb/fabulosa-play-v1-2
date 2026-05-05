@@ -39,7 +39,7 @@ const Channels = () => {
     });
   }, [channels, activeCategory, searchTerm]);
 
-  /* 🎮 CONTROL REMOTO PRO */
+  /* 🎮 CONTROL REMOTO + DOBLE ENTER */
   useEffect(() => {
     const handleKeyDown = (e) => {
       const columns = isMobile ? 2 : window.innerWidth < 1024 ? 4 : 8;
@@ -62,7 +62,7 @@ const Channels = () => {
         const ch = filteredChannels[focusedIndex];
         if (!ch) return;
 
-        // 👉 SI ES EL MISMO → PLAY / PAUSE
+        // 🔥 MISMO CANAL → PLAY / PAUSE
         if (lastSelected === ch.id) {
           const video = videoRef.current;
           if (video) {
@@ -138,7 +138,7 @@ const Channels = () => {
         <ArrowLeft size={20} />
       </button>
 
-      {/* 🔥 CATEGORÍAS (MOBILE TOP) */}
+      {/* MOBILE CATEGORÍAS */}
       <div className="lg:hidden flex overflow-x-auto gap-2 p-3 mt-14">
         {categories.map((cat) => (
           <button
@@ -155,7 +155,7 @@ const Channels = () => {
 
       <div className="flex flex-1 overflow-hidden">
 
-        {/* SIDEBAR (DESKTOP) */}
+        {/* SIDEBAR */}
         <aside className="hidden lg:block w-64 bg-[#0a0a0a] border-r border-white/5">
           <div className="p-4 pt-16">
             <img src={logoFabulosa} className="h-10 mb-6" />
@@ -212,9 +212,20 @@ const Channels = () => {
               <div
                 key={channel.id}
                 onClick={() => {
-                  setCurrentChannel(channel);
-                  setLastSelected(channel.id);
+                  setFocusedIndex(idx); // 🔥 sigue el mouse/dedo
+                  if (lastSelected === channel.id) {
+                    const video = videoRef.current;
+                    if (video) {
+                      if (video.paused) video.play();
+                      else video.pause();
+                    }
+                  } else {
+                    setCurrentChannel(channel);
+                    setLastSelected(channel.id);
+                  }
                 }}
+                onMouseEnter={() => setFocusedIndex(idx)} // 🔥 HOVER
+                onTouchStart={() => setFocusedIndex(idx)} // 🔥 TOUCH
                 className={`cursor-pointer p-3 bg-[#111] rounded-xl flex flex-col items-center justify-center transition ${
                   focusedIndex === idx
                     ? "ring-4 ring-red-600 scale-110"
