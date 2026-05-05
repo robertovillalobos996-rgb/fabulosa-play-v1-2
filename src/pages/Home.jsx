@@ -28,8 +28,10 @@ const Home = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // MOTOR DE NAVEGACIÓN Y ACCIÓN DE "ENTRAR"
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // Capturamos flechas y botones de selección de diversos controles remotos
       if (e.key === 'ArrowRight') {
         setActiveIndex((p) => {
           const next = (p + 1) % cards.length;
@@ -42,50 +44,57 @@ const Home = () => {
           scrollToCard(next);
           return next;
         });
-      } else if (e.key === 'Enter' || e.key === 'OK') {
+      } else if (e.key === 'Enter' || e.key === 'OK' || e.keyCode === 13) {
+        // CIRUGÍA: Forzamos la navegación inmediata
         const card = cards[activeIndex];
-        if (card.isExternal) window.location.href = card.path;
-        else navigate(card.path);
+        if (card.isExternal) {
+          window.location.href = card.path;
+        } else {
+          navigate(card.path);
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeIndex]);
+  }, [activeIndex, navigate]);
 
   const scrollToCard = (index) => {
     if (scrollRef.current) {
-      const cardWidth = scrollRef.current.scrollWidth / cards.length;
-      scrollRef.current.scrollTo({
-        left: index * cardWidth - (scrollRef.current.offsetWidth / 2) + (cardWidth / 2),
-        behavior: 'smooth'
-      });
+      const container = scrollRef.current;
+      const item = container.childNodes[index];
+      if (item) {
+        // Centrado exacto en pantalla
+        const scrollLeft = item.offsetLeft - (container.offsetWidth / 2) + (item.offsetWidth / 2);
+        container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+      }
     }
   };
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black text-white font-sans">
       
-      {/* FONDO ÚNICO: No se recorta y llena la pantalla perfectamente */}
+      {/* FONDO PRINCIPAL FABULOSA */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: 'url(/fondo_fabulosa_play.png)' }}
       />
 
-      {/* CABECERA LIMPIA: Sin rayas ni botones innecesarios */}
-      <header className="absolute top-6 left-6 md:top-10 md:left-12 z-50 flex items-center gap-4">
-        <img src={logoFabulosa} alt="Logo" className="h-10 md:h-20 object-contain drop-shadow-2xl" />
-        <div className="border-l-2 border-white/20 pl-4 md:pl-6">
-          <span className="text-2xl md:text-5xl font-black italic text-white drop-shadow-lg">
+      <header className="absolute top-8 left-10 z-50 flex items-center gap-6">
+        <img src={logoFabulosa} alt="Logo" className="h-12 md:h-16 object-contain" />
+        <div className="border-l-2 border-white/20 pl-6">
+          <span className="text-4xl md:text-5xl font-black italic">
             {fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
           </span>
         </div>
       </header>
 
-      {/* CONTENEDOR DE CARTAS: Fila única que no se rompe */}
-      <div className="absolute bottom-0 w-full z-[100] pb-4 md:pb-8">
+      {/* 🎬 LA BARRA ESTILO TV (Igual a tu foto de referencia) */}
+      <div className="absolute bottom-0 w-full h-[25vh] bg-gradient-to-t from-black/90 via-black/60 to-transparent flex items-center z-[100]">
+        
+        {/* Contenedor con scroll centrado */}
         <div 
           ref={scrollRef}
-          className="flex items-end overflow-x-auto no-scrollbar px-[10vw] md:px-[40vw] gap-2 md:gap-4 flex-nowrap"
+          className="flex items-center overflow-x-hidden no-scrollbar px-[40vw] gap-4 w-full h-full"
         >
           {cards.map((card, idx) => {
             const focused = idx === activeIndex;
@@ -93,20 +102,28 @@ const Home = () => {
               <div
                 key={card.id}
                 onClick={() => { setActiveIndex(idx); scrollToCard(idx); }}
-                className={`relative flex-shrink-0 transition-all duration-200 cursor-pointer ${focused ? 'z-50 scale-125 opacity-100' : 'z-10 opacity-60 scale-100'}`}
+                className={`relative flex-shrink-0 transition-all duration-300 transform outline-none
+                  ${focused 
+                    ? 'scale-125 z-50 border-[6px] border-white ring-8 ring-cyan-500/30' 
+                    : 'scale-90 opacity-50 border-2 border-white/10'}
+                `}
                 style={{
-                  // En celular (ancho < 768px) las cartas son grandes y se deslizan. 
-                  // En TV/PC se ajustan para caber mejor.
-                  width: window.innerWidth < 768 ? '120px' : 'calc(100vw / 14)',
-                  maxWidth: '180px',
-                  aspectRatio: '10/16'
+                  width: '200px', // Tamaño balanceado para TV
+                  aspectRatio: '16/10',
+                  borderRadius: '1.5rem',
+                  overflow: 'hidden'
                 }}
               >
                 <img 
                   src={card.img} 
-                  className="w-full h-full object-contain" 
+                  className="w-full h-full object-cover" 
                   alt={card.id}
                 />
+                
+                {/* Indicador de foco inferior (Solo cuando está seleccionado) */}
+                {focused && (
+                  <div className="absolute bottom-0 w-full h-2 bg-cyan-400 animate-pulse" />
+                )}
               </div>
             );
           })}
@@ -115,7 +132,6 @@ const Home = () => {
 
       <style jsx global>{`
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         body { background-color: black; margin: 0; overflow: hidden; }
       `}</style>
     </div>
