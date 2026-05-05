@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TVNavigationProvider } from "@/lib/tv-navigation-context";
-import TopNav from "@/components/streaming/TopNav";
-import HeroSlider from "@/components/streaming/HeroSlider";
-import ContentRow from "@/components/streaming/ContentRow";
-import FocusIndicator from "@/components/streaming/FocusIndicator";
+
+// ✅ RUTAS RELATIVAS (SIN @)
+import { TVNavigationProvider } from "../lib/tv-navigation-context";
+import TopNav from "../components/streaming/TopNav";
+import HeroSlider from "../components/streaming/HeroSlider";
+import ContentRow from "../components/streaming/ContentRow";
+import FocusIndicator from "../components/streaming/FocusIndicator";
+
 import logoFabulosa from "../assets/logo_fabulosa.png";
 
 const HomeContent = () => {
@@ -13,7 +16,7 @@ const HomeContent = () => {
   const [scrolled, setScrolled] = useState(false);
   const [fecha, setFecha] = useState(new Date());
 
-  // 🔥 TUS CARDS REALES (NO SE TOCAN)
+  // 🔥 CARDS REALES
   const cards = [
     { id: 'premium', name: 'Mundo VIP', path: '/premium', img: '/fabulosa_premiun.webp' },
     { id: 'noticias', name: 'Noticias', isExternal: true, path: 'https://psc-informa.vercel.app', img: '/psc_imforma.webp' },
@@ -29,7 +32,7 @@ const HomeContent = () => {
     { id: 'mercadeo', name: 'Centro de Mercadeo', path: '/centro-mercadeo', img: '/mercadeo.webp' },
   ];
 
-  // 🔥 CONVERTIMOS CARDS A FORMATO HBO ROW
+  // 🔥 MAPEO PARA FILAS HBO
   const mappedCards = cards.map((c, i) => ({
     id: i + 1,
     title: c.name,
@@ -45,7 +48,7 @@ const HomeContent = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // 📜 SCROLL DETECTION (HBO STYLE)
+  // 📜 SCROLL NAV
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -54,7 +57,7 @@ const HomeContent = () => {
     return () => el.removeEventListener("scroll", fn);
   }, []);
 
-  // 🎬 CLICK HANDLER (RUTAS REALES)
+  // 🎬 CLICK
   const handleItemClick = (item) => {
     if (item.isExternal) window.location.href = item.path;
     else navigate(item.path);
@@ -66,24 +69,24 @@ const HomeContent = () => {
       {/* NAV */}
       <TopNav scrolled={scrolled} />
 
-      {/* SCROLL */}
+      {/* SCROLL PRINCIPAL */}
       <div ref={containerRef} className="h-full overflow-y-auto">
 
         {/* HERO */}
         <HeroSlider />
 
-        {/* INFO SUPERIOR (RELOJ + LOGO) */}
+        {/* LOGO + HORA */}
         <div className="absolute top-6 left-10 z-50 flex items-center gap-6">
-          <img src={logoFabulosa} className="h-12 md:h-16" />
+          <img src={logoFabulosa} className="h-12 md:h-16" alt="logo" />
           <span className="text-3xl font-bold">
             {fecha.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </span>
         </div>
 
-        {/* CONTENIDO HBO */}
+        {/* CONTENIDO */}
         <div className="pb-20">
 
-          {/* 🔥 TU MENÚ PRINCIPAL */}
+          {/* MENÚ PRINCIPAL */}
           <ContentRow
             title="🔥 Fabulosa Play"
             items={mappedCards}
@@ -91,7 +94,7 @@ const HomeContent = () => {
             onItemClick={handleItemClick}
           />
 
-          {/* 🔴 EN VIVO */}
+          {/* EN VIVO */}
           <ContentRow
             title="🔴 En Vivo"
             items={mappedCards.slice(0, 6)}
@@ -99,7 +102,7 @@ const HomeContent = () => {
             onItemClick={handleItemClick}
           />
 
-          {/* ⭐ DESTACADOS */}
+          {/* DESTACADOS */}
           <ContentRow
             title="⭐ Destacados"
             items={mappedCards.slice(6, 12)}
@@ -107,7 +110,7 @@ const HomeContent = () => {
             onItemClick={handleItemClick}
           />
 
-          {/* FOOTER HBO */}
+          {/* FOOTER */}
           <div className="mt-10 px-10 text-center text-white/30 text-xs">
             © 2026 Fabulosa Play · Smart TV · Web · Mobile
           </div>
@@ -115,7 +118,7 @@ const HomeContent = () => {
         </div>
       </div>
 
-      {/* INDICADOR FOCO */}
+      {/* FOCO */}
       <FocusIndicator />
     </div>
   );
