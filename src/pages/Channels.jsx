@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, Loader2, Maximize } from "lucide-react";
 import Hls from "hls.js";
 
 import logoFabulosa from "../assets/logo_fabulosa.png";
@@ -16,7 +16,6 @@ const Channels = () => {
 
   const [focusedIndex, setFocusedIndex] = useState(0);
   const [lastSelected, setLastSelected] = useState(null);
-
   const [isLoading, setIsLoading] = useState(true);
 
   const videoRef = useRef(null);
@@ -39,7 +38,7 @@ const Channels = () => {
     });
   }, [channels, activeCategory, searchTerm]);
 
-  /* 🎮 CONTROL REMOTO + DOBLE ENTER */
+  /* 🎮 CONTROL REMOTO */
   useEffect(() => {
     const handleKeyDown = (e) => {
       const columns = isMobile ? 2 : window.innerWidth < 1024 ? 4 : 8;
@@ -62,7 +61,6 @@ const Channels = () => {
         const ch = filteredChannels[focusedIndex];
         if (!ch) return;
 
-        // 🔥 MISMO CANAL → PLAY / PAUSE
         if (lastSelected === ch.id) {
           const video = videoRef.current;
           if (video) {
@@ -72,7 +70,6 @@ const Channels = () => {
         } else {
           setCurrentChannel(ch);
           setLastSelected(ch.id);
-          setIsLoading(true);
         }
       }
     };
@@ -81,7 +78,7 @@ const Channels = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [focusedIndex, filteredChannels, lastSelected]);
 
-  /* PLAYER */
+  /* 🚀 PLAYER OPTIMIZADO */
   useEffect(() => {
     if (!currentChannel) return;
 
@@ -101,11 +98,17 @@ const Channels = () => {
 
     if (currentChannel.url?.includes(".m3u8")) {
       if (Hls.isSupported()) {
-        const hls = new Hls({ lowLatencyMode: true });
+        const hls = new Hls({
+          lowLatencyMode: true,
+          maxBufferLength: 5,
+          maxMaxBufferLength: 10,
+        });
+
         hls.loadSource(currentChannel.url);
         hls.attachMedia(video);
 
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          video.muted = true;
           video.play().catch(() => {});
           setIsLoading(false);
         });
@@ -114,6 +117,7 @@ const Channels = () => {
       } else {
         video.src = currentChannel.url;
         video.onloadedmetadata = () => {
+          video.muted = true;
           video.play().catch(() => {});
           setIsLoading(false);
         };
@@ -121,11 +125,22 @@ const Channels = () => {
     } else {
       video.src = currentChannel.url;
       video.onloadeddata = () => {
+        video.muted = true;
         video.play().catch(() => {});
         setIsLoading(false);
       };
     }
   }, [currentChannel]);
+
+  /* 🔥 FULLSCREEN */
+  const handleFullscreen = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.requestFullscreen) video.requestFullscreen();
+    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+    else if (video.msRequestFullscreen) video.msRequestFullscreen();
+  };
 
   return (
     <div className="flex flex-col h-screen w-full bg-black text-white">
@@ -138,109 +153,71 @@ const Channels = () => {
         <ArrowLeft size={20} />
       </button>
 
-      {/* MOBILE CATEGORÍAS */}
-      <div className="lg:hidden flex overflow-x-auto gap-2 p-3 mt-14">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`px-4 py-2 rounded-full text-sm ${
-              activeCategory === cat ? "bg-red-600" : "bg-white/10"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
+      {/* PLAYER */}
+      <div className="relative w-full h-[35%] bg-black">
+
+        {/* FULLSCREEN BTN */}
+        <button
+          onClick={handleFullscreen}
+          className="absolute top-4 right-4 z-50 bg-black/60 p-2 rounded-full"
+        >
+          <Maximize size={20} />
+        </button>
+
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Loader2 className="animate-spin text-red-600" size={40} />
+          </div>
+        )}
+
+        {currentChannel?.iframe_url ? (
+          <iframe
+            src={currentChannel.iframe_url}
+            className="w-full h-full border-none"
+            allow="autoplay"
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            className="w-full h-full"
+            playsInline
+            preload="auto"
+          />
+        )}
       </div>
 
-      <div className="flex flex-1 overflow-hidden">
-
-        {/* SIDEBAR */}
-        <aside className="hidden lg:block w-64 bg-[#0a0a0a] border-r border-white/5">
-          <div className="p-4 pt-16">
-            <img src={logoFabulosa} className="h-10 mb-6" />
-
-            <input
-              type="text"
-              placeholder="Buscar..."
-              className="w-full bg-white/10 p-3 rounded-xl text-sm"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+      {/* GRID SIN SCROLL FEO */}
+      <div className="flex-1 overflow-y-auto scrollbar-hide grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 p-3">
+        {filteredChannels.map((channel, idx) => (
+          <div
+            key={channel.id}
+            onClick={() => {
+              setFocusedIndex(idx);
+              if (lastSelected === channel.id) {
+                const video = videoRef.current;
+                if (video) {
+                  if (video.paused) video.play();
+                  else video.pause();
+                }
+              } else {
+                setCurrentChannel(channel);
+                setLastSelected(channel.id);
+              }
+            }}
+            onMouseEnter={() => setFocusedIndex(idx)}
+            onTouchStart={() => setFocusedIndex(idx)}
+            className={`cursor-pointer p-3 bg-[#111] rounded-xl flex flex-col items-center justify-center transition ${
+              focusedIndex === idx
+                ? "ring-4 ring-red-600 scale-110"
+                : ""
+            }`}
+          >
+            <img src={channel.logo} className="max-h-14 object-contain" />
+            <span className="text-xs mt-2 text-center">
+              {channel.name || channel.title}
+            </span>
           </div>
-
-          <div className="p-4 space-y-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`w-full p-3 rounded-xl text-left ${
-                  activeCategory === cat ? "bg-red-600" : "bg-white/5"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </aside>
-
-        {/* MAIN */}
-        <main className="flex-1 flex flex-col">
-
-          {/* PLAYER */}
-          <div className="relative w-full h-[35%] bg-black">
-            {isLoading && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Loader2 className="animate-spin text-red-600" size={40} />
-              </div>
-            )}
-
-            {currentChannel?.iframe_url ? (
-              <iframe
-                src={currentChannel.iframe_url}
-                className="w-full h-full border-none"
-                allow="autoplay"
-              />
-            ) : (
-              <video ref={videoRef} className="w-full h-full" />
-            )}
-          </div>
-
-          {/* GRID */}
-          <div className="flex-1 overflow-y-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 p-3">
-            {filteredChannels.map((channel, idx) => (
-              <div
-                key={channel.id}
-                onClick={() => {
-                  setFocusedIndex(idx); // 🔥 sigue el mouse/dedo
-                  if (lastSelected === channel.id) {
-                    const video = videoRef.current;
-                    if (video) {
-                      if (video.paused) video.play();
-                      else video.pause();
-                    }
-                  } else {
-                    setCurrentChannel(channel);
-                    setLastSelected(channel.id);
-                  }
-                }}
-                onMouseEnter={() => setFocusedIndex(idx)} // 🔥 HOVER
-                onTouchStart={() => setFocusedIndex(idx)} // 🔥 TOUCH
-                className={`cursor-pointer p-3 bg-[#111] rounded-xl flex flex-col items-center justify-center transition ${
-                  focusedIndex === idx
-                    ? "ring-4 ring-red-600 scale-110"
-                    : ""
-                }`}
-              >
-                <img src={channel.logo} className="max-h-14 object-contain" />
-                <span className="text-xs mt-2 text-center">
-                  {channel.name || channel.title}
-                </span>
-              </div>
-            ))}
-          </div>
-
-        </main>
+        ))}
       </div>
     </div>
   );
