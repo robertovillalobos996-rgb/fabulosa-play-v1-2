@@ -6,19 +6,31 @@ export default function Home() {
   const [selected, setSelected] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
+  // 🔥 NUEVO: FONDOS
+  const backgrounds = [
+    "/centro-de-publicidad.png",
+    "/canales_play.png",
+    "/tv_7.webp",
+    "/fondo_fabulosa_play.webp",
+    "/movie-peter-pan.jpg"
+  ];
+
+  const [bgIndex, setBgIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
   const categories = [
-    { name: "TV EN VIVO", path: "/canales-play" },
-    { name: "RADIOS", path: "/radios-cr" },
-    { name: "RANCHERA", path: "/ranchera" },
-    { name: "KARAOKE", path: "/karaoke" },
-    { name: "PELÍCULAS", path: "/cine-play" },
-    { name: "KIDS", path: "/tv" },
-    { name: "NOTICIAS", path: "/noticias" },
-    { name: "CÁMARAS", path: "/camaras" },
-    { name: "ALABANZA", path: "/alabanza" },
-    { name: "MERCADEO", path: "/centro-mercadeo" },
-    { name: "FABULOSA TUBE", path: "/fabulosa-tube" },
-    { name: "PREMIUM", path: "/premium" },
+    { name: "CANALES PLAY", path: "/canales-play" },
+    { name: "RADIOS PLAY", path: "/radios-cr" },
+    { name: "RANCHERA PLAY", path: "/ranchera" },
+    { name: "KARAOKE PLAY", path: "/karaoke" },
+    { name: "CINE PLAY", path: "/cine-play" },
+    { name: "KIDS PLAY", path: "/tv" },
+    { name: "PSC INFORMA PLAY", path: "/noticias" },
+    { name: "CÁMARAS PLAY", path: "/camaras" },
+    { name: "ALABANZA PLAY", path: "/alabanza" },
+    { name: "CONTACTO PLAY", path: "/centro-mercadeo" },
+    { name: "FABULOSA PLAY", path: "/fabulosa-tube" },
+    { name: "VIP PLAY", path: "/premium" },
   ];
 
   // 📱 DETECTAR MOBILE
@@ -50,11 +62,33 @@ export default function Home() {
     return () => window.removeEventListener("keydown", handleKey);
   }, [selected, navigate]);
 
+  // 🔁 NUEVO: CAMBIO DE FONDO
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+
+      setTimeout(() => {
+        setBgIndex((prev) => (prev + 1) % backgrounds.length);
+        setFade(true);
+      }, 300);
+
+    }, 20000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div style={styles.container}>
       
       {/* 🎬 FONDO */}
-      <div style={styles.background} />
+      <div
+        style={{
+          ...styles.background,
+          backgroundImage: `url(${backgrounds[bgIndex]})`,
+          transition: "opacity 0.8s ease-in-out",
+          opacity: fade ? 1 : 0.6,
+        }}
+      />
       <div style={styles.overlay} />
 
       {/* 📂 MENÚ */}
@@ -102,7 +136,7 @@ export default function Home() {
         </button>
       </div>
 
-      {/* 🔥 LOGO */}
+      {/* 🔥 LOGO (NO TOCADO) */}
       <img
         src="/icon-512x512.png"
         style={{
@@ -111,6 +145,22 @@ export default function Home() {
         }}
         alt="logo"
       />
+
+      {/* 📱 NUEVO: QR */}
+      <img
+        src="/qr.jpeg"
+        alt="Descargar App"
+        style={{
+          position: "absolute",
+          top: "25px",
+          right: "25px",
+          width: isMobile ? "80px" : "110px",
+          borderRadius: "12px",
+          boxShadow: "0 0 15px rgba(0,0,0,0.5)",
+          zIndex: 5
+        }}
+      />
+
     </div>
   );
 }
