@@ -15,7 +15,6 @@ const Channels = () => {
   const [currentChannel, setCurrentChannel] = useState(initialCanales?.[0] || null);
 
   const [focusedIndex, setFocusedIndex] = useState(0);
-  const [lastSelected, setLastSelected] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const videoRef = useRef(null);
@@ -31,12 +30,17 @@ const Channels = () => {
   /* FILTRO */
   const filteredChannels = useMemo(() => {
     return channels.filter((c) => {
-      const matchCat =
+      const match =
         activeCategory === "Todos" || c.genre === activeCategory;
-      const nombre = c.name || c.title || "";
-      return matchCat && nombre.toLowerCase().includes(searchTerm.toLowerCase());
+      const name = c.name || c.title || "";
+      return match && name.toLowerCase().includes(searchTerm.toLowerCase());
     });
   }, [channels, activeCategory, searchTerm]);
+
+  /* 🔥 FIX CRÍTICO */
+  useEffect(() => {
+    setFocusedIndex(0);
+  }, [activeCategory, searchTerm]);
 
   /* 🎮 CONTROL REMOTO */
   useEffect(() => {
@@ -60,37 +64,29 @@ const Channels = () => {
       if (e.key === "Enter") {
         const ch = filteredChannels[focusedIndex];
         if (!ch) return;
-
-        if (lastSelected === ch.id) {
-          const video = videoRef.current;
-          if (video) {
-            if (video.paused) video.play();
-            else video.pause();
-          }
-        } else {
-          setCurrentChannel(ch);
-          setLastSelected(ch.id);
-        }
+        setCurrentChannel(ch);
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [focusedIndex, filteredChannels, lastSelected]);
+  }, [filteredChannels, focusedIndex]);
 
-  /* 🚀 PLAYER OPTIMIZADO */
+  /* 🚀 PLAYER ULTRA ESTABLE */
   useEffect(() => {
     if (!currentChannel) return;
 
-    const video = videoRef.current;
+    setIsLoading(true);
 
+    // limpiar HLS anterior
     if (hlsRef.current) {
       hlsRef.current.destroy();
       hlsRef.current = null;
     }
 
-    setIsLoading(true);
+    const video = videoRef.current;
 
+    // 🔒 CANALES 7 y 13 (iframe)
     if (currentChannel.iframe_url) {
       setIsLoading(false);
       return;
@@ -100,15 +96,13 @@ const Channels = () => {
       if (Hls.isSupported()) {
         const hls = new Hls({
           lowLatencyMode: true,
-          maxBufferLength: 5,
-          maxMaxBufferLength: 10,
+          maxBufferLength: 10,
         });
 
         hls.loadSource(currentChannel.url);
         hls.attachMedia(video);
 
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          video.muted = true;
           video.play().catch(() => {});
           setIsLoading(false);
         });
@@ -117,7 +111,6 @@ const Channels = () => {
       } else {
         video.src = currentChannel.url;
         video.onloadedmetadata = () => {
-          video.muted = true;
           video.play().catch(() => {});
           setIsLoading(false);
         };
@@ -125,44 +118,31 @@ const Channels = () => {
     } else {
       video.src = currentChannel.url;
       video.onloadeddata = () => {
-        video.muted = true;
         video.play().catch(() => {});
         setIsLoading(false);
       };
     }
   }, [currentChannel]);
 
-  /* 🔥 FULLSCREEN */
+  /* FULLSCREEN */
   const handleFullscreen = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (video.requestFullscreen) video.requestFullscreen();
-    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-    else if (video.msRequestFullscreen) video.msRequestFullscreen();
+    const el = videoRef.current;
+    if (el.requestFullscreen) el.requestFullscreen();
   };
 
   return (
     <div className="flex flex-col h-screen w-full bg-black text-white">
 
-      {/* VOLVER */}
-      <button
-        onClick={() => navigate("/")}
-        className="absolute top-4 left-4 z-50 bg-red-600 p-3 rounded-full"
-      >
+      <button onClick={() => navigate("/")} className="absolute top-4 left-4 z-50 bg-red-600 p-3 rounded-full">
         <ArrowLeft size={20} />
       </button>
 
-      {/* PLAYER */}
-      <div className="relative w-full h-[35%] bg-black">
+      <button onClick={handleFullscreen} className="absolute top-4 right-4 z-50 bg-black/70 p-3 rounded-full">
+        <Maximize size={20} />
+      </button>
 
-        {/* FULLSCREEN BTN */}
-        <button
-          onClick={handleFullscreen}
-          className="absolute top-4 right-4 z-50 bg-black/60 p-2 rounded-full"
-        >
-          <Maximize size={20} />
-        </button>
+      {/* PLAYER FIJO */}
+      <div className="relative w-full h-[35%] bg-black">
 
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
@@ -174,42 +154,42 @@ const Channels = () => {
           <iframe
             src={currentChannel.iframe_url}
             className="w-full h-full border-none"
-            allow="autoplay"
+            allow="autoplay; fullscreen"
           />
         ) : (
-          <video
-            ref={videoRef}
-            className="w-full h-full"
-            playsInline
-            preload="auto"
-          />
+          <video ref={videoRef} className="w-full h-full" />
         )}
       </div>
 
-      {/* GRID SIN SCROLL FEO */}
-      <div className="flex-1 overflow-y-auto scrollbar-hide grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 p-3">
+      {/* CATEGORÍAS */}
+      <div className="flex overflow-x-auto gap-2 p-3">
+        {categories.map((cat) => (
+          <button
+            key={`cat-${cat}`}  // 🔥 KEY ARREGLADA
+            onClick={() => setActiveCategory(cat)}
+            className={`px-4 py-2 rounded-full text-sm ${
+              activeCategory === cat ? "bg-red-600" : "bg-white/10"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* GRID */}
+      <div className="flex-1 overflow-y-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3 p-3">
+
         {filteredChannels.map((channel, idx) => (
           <div
-            key={channel.id}
+            key={`${channel.id}-${idx}`}  // 🔥 FIX DEFINITIVO
             onClick={() => {
               setFocusedIndex(idx);
-              if (lastSelected === channel.id) {
-                const video = videoRef.current;
-                if (video) {
-                  if (video.paused) video.play();
-                  else video.pause();
-                }
-              } else {
-                setCurrentChannel(channel);
-                setLastSelected(channel.id);
-              }
+              setCurrentChannel(channel);
             }}
             onMouseEnter={() => setFocusedIndex(idx)}
             onTouchStart={() => setFocusedIndex(idx)}
             className={`cursor-pointer p-3 bg-[#111] rounded-xl flex flex-col items-center justify-center transition ${
-              focusedIndex === idx
-                ? "ring-4 ring-red-600 scale-110"
-                : ""
+              focusedIndex === idx ? "ring-4 ring-red-600 scale-110" : ""
             }`}
           >
             <img src={channel.logo} className="max-h-14 object-contain" />
@@ -218,6 +198,7 @@ const Channels = () => {
             </span>
           </div>
         ))}
+
       </div>
     </div>
   );
