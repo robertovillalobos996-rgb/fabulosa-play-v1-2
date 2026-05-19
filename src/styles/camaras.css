@@ -4,21 +4,21 @@
   box-sizing:border-box;
 }
 
-.camaras-page{
+.camaras-container{
   width:100%;
   height:100vh;
   overflow:hidden;
   position:relative;
   background:black;
-  font-family:Arial, Helvetica, sans-serif;
 }
 
-.video-fondo{
+.video-bg{
   position:absolute;
-  inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
+  top:0;
+  left:0;
 }
 
 .overlay{
@@ -31,101 +31,100 @@
   position:absolute;
   top:20px;
   right:30px;
-  width:220px;
-  z-index:30;
+  width:140px;
+  z-index:20;
 }
 
 .reloj-box{
   position:absolute;
-  top:170px;
-  right:40px;
-  z-index:30;
+  top:120px;
+  right:30px;
+  z-index:20;
   text-align:right;
 }
 
 .hora{
   color:white;
-  font-size:82px;
+  font-size:72px;
   font-weight:900;
   line-height:1;
   text-shadow:0 0 20px black;
 }
 
 .fecha{
+  margin-top:10px;
   color:white;
-  font-size:28px;
-  margin-top:12px;
+  font-size:26px;
+  text-transform:capitalize;
 }
 
 .dia{
-  color:#ff00aa;
-  font-size:42px;
   margin-top:10px;
+  color:#ff00aa;
+  font-size:38px;
   font-weight:bold;
   text-transform:capitalize;
 }
 
-.overlay-play{
+.camara-titulo{
+  margin-top:15px;
+  color:#00eaff;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.inicio-overlay{
   position:absolute;
   inset:0;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   z-index:100;
 }
 
-.play-btn{
-  border:none;
+.boton-play{
   background:#ff008c;
+  border:none;
   color:white;
-  font-size:42px;
+  font-size:38px;
   font-weight:900;
-  padding:32px 90px;
-  border-radius:24px;
+  padding:30px 80px;
+  border-radius:20px;
   cursor:pointer;
   box-shadow:0 0 40px #ff008c;
-  transition:0.3s;
 }
 
-.play-btn:hover{
-  transform:scale(1.05);
+.volumen-box{
+  position:absolute;
+  right:30px;
+  bottom:150px;
+  z-index:40;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:rgba(0,0,0,0.7);
+  padding:10px 18px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
 }
 
-.ads-bar{
+.volumen-box input{
+  width:140px;
+  accent-color:#ff008c;
+}
+
+.banner-bottom{
   position:absolute;
   bottom:0;
   left:0;
   width:100%;
   height:120px;
-  background:rgba(0,0,0,0.75);
   overflow:hidden;
-  z-index:50;
-  display:flex;
-  align-items:center;
+  z-index:30;
 }
 
-.ads-track{
-  display:flex;
-  gap:30px;
-  animation:mover 40s linear infinite;
-}
-
-.ads-track img{
-  width:360px;
-  height:90px;
+.banner-bottom img{
+  width:100%;
+  height:100%;
   object-fit:cover;
-  border-radius:14px;
-  border:3px solid #ff008c;
-}
-
-@keyframes mover{
-
-  0%{
-    transform:translateX(100%);
-  }
-
-  100%{
-    transform:translateX(-100%);
-  }
-
 }
