@@ -37,13 +37,13 @@ export const canalesTV = [
         "logo": "/logos_canales/88_Stereo.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-2&mediaUrl=https%3A%2F%2Fs1.tvdatta.com%3A3972%2Flive%2F88stereolive.m3u8"
     },
-    {
+   {
         "id": "tv-949",
         "title": "Retrox",
         "url": "https://lbgo.bozztv.com/ssh101/ssh101/retyroxtv/playlist.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/retrox.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-949&mediaUrl=https%3A%2F%2Ftvservices.fullhd-streaming.com%3A3963%2Flive%2Ftvgroupretroxtvlive.m3u8"
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-949&mediaUrl=https%3A%2F%2Flbgo.bozztv.com%2Fssh101%2Fssh101%2Fretyroxtv%2Fplaylist.m3u8"
     },
     {
         "id": "tv-950",
@@ -51,7 +51,7 @@ export const canalesTV = [
         "url": "https://lbgo.bozztv.com/ssh101/ssh101/retp/playlist.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/retro x plus.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-950&mediaUrl=https%3A%2F%2Ftvservices.fullhd-streaming.com%3A3100%2Flive%2Ftvgroupretroxtvpluslive.m3u8"
+        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-950&mediaUrl=https%3A%2F%2Flbgo.bozztv.com%2Fssh101%2Fssh101%2Fretp%2Fplaylist.m3u8"
     },
     {
         "id": "tv-3",
