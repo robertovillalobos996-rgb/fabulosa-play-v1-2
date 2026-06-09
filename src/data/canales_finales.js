@@ -4765,5 +4765,13 @@ export const canalesTV = [
     "url": "https://s1.tvdatta.com:3072/live/cotobrustvlive.m3u8",
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs1.tvdatta.com%3A3072%2Flive%2Fcotobrustvlive.m3u8",
     "logo": "https://cotobrustv.com/wp-content/uploads/2024/06/CBTV-FULLCOLOR-2-1-300x150.png"
+ },
+{
+    "id": "tv-954",
+    "title": "Trivision 36",
+    "genre": "General",
+    "url": "https://liveingesta118.cdnmedia.tv/trivisionlive/rtmp01-900/chunklist.m3u8?DVR=",
+    "iframe_url": "/reproductor.html?src=https%3A%2F%2Fliveingesta118.cdnmedia.tv%2Ftrivisionlive%2Frtmp01-900%2Fchunklist.m3u8%3FDVR%3D",
+    "logo": "https://www.trivision36.cr/logo.png" 
   }
 ]

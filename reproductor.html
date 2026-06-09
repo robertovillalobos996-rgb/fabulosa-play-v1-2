@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Fabulosa Player Pro</title>
+    <title>Fabulosa Player</title>
     <style>
         body { margin: 0; background: black; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
         video { width: 100%; height: 100%; }
@@ -13,17 +13,15 @@
     <video id="video" controls autoplay></video>
     <script>
         const params = new URLSearchParams(window.location.search);
-        const src = decodeURIComponent(params.get('src'));
+        let src = decodeURIComponent(params.get('src'));
         const video = document.getElementById('video');
 
+        // Usamos un proxy público de CORS para evitar el bloqueo del navegador
+        const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(src);
+
         if (Hls.isSupported()) {
-            const hls = new Hls({
-                xhrSetup: function(xhr, url) {
-                    xhr.setRequestHeader('Referer', 'https://player.instantvideocloud.net/');
-                    xhr.setRequestHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36');
-                }
-            });
-            hls.loadSource(src);
+            const hls = new Hls();
+            hls.loadSource(proxyUrl);
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
         }
