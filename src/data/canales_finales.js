@@ -24,7 +24,7 @@ export const canalesTV = [
     {
         "id": "tv-36",
         "title": "stv",
-        "url": "https://acceso.mediosdecostarica.com:3422/hybrid/play.m3u8",
+        "url": "https://stream.lamegatv.com/hls/sanvitotelevision/index.m3u8",
         "genre": "Costa Rica",
         "logo": "/logos_canales/stv.png",
         "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-36&mediaUrl=https%3A%2F%2Facceso.mediosdecostarica.com%3A3422%2Fhybrid%2Fplay.m3u8"
@@ -4678,12 +4678,68 @@ export const canalesTV = [
         "genre": "varios",
         "logo": "/logos_canales/TV Migrante.png"
     },
-{
-        "id": "tv-945",
-        "title": "Dios Te Ve Kids (720p)",
-        "url": "https://s.emisoras.tv:8081/diostevekids/index.m3u8",
-        "genre": "Cristianos",
-        "logo": "/logos_canales/dios_kids.png",
-        "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-945&mediaUrl=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fdiostevekids%2Findex.m3u8"
-    }
-];
+  {
+    "id": "tv-945",
+    "title": "Dios Te Ve Kids (720p)",
+    "url": "https://s.emisoras.tv:8081/diostevekids/index.m3u8",
+    "genre": "Cristianos",
+    "logo": "/logos_canales/dios_kids.png",
+    "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-945&mediaUrl=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fdiostevekids%2Findex.m3u8"
+  },
+  {
+    "id": "tv-946",
+    "title": "FOX-TUBI 4K",
+    "iframe_url": "https://aegis-fastly.tubi.video/0766b02e-3d69-43a9-a52e-0a1c53619e0b/playlist720p.m3u8",
+    "genre": "Deportes",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRX8rcOAOt6IbzCycyAerH1wWUZiDRn8eOjw&s"
+  },
+  {
+    "id": "tv-947",
+    "title": "XPRESSO JOVEN RADIO",
+    "iframe_url": "https://vivo.solumedia.com:19360/xpressojoven/xpressojoven.m3u8",
+    "genre": "Musica",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsm0Ev2qNXoAYRo9x2dv8slOcg4sRWqCorBQ&s"
+  },
+  {
+    "id": "tv-948",
+    "title": "Comunicaciones Jiménez TV",
+    "iframe_url": "https://live20.bozztv.com/giatv/giatv-megahits/megahits/chunks.m3u8",
+    "genre": "General",
+    "logo": "https://scontent.fsjo10-1.fna.fbcdn.net/v/t39.30808-6/460182102_514302754640667_6646386571660886241_n.jpg?stp=dst-jpg_tt6&cstp=mx960x958&ctp=s960x958&_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=V5b27nyXGOoQ7kNvwEU-ylN&_nc_oc=AdqKMeiaSa5zZWC7FbP14iozUli3_bOzmpfw6U8kW3-lBV-5VFVkeiA82mn6f27GBD4&_nc_zt=23&_nc_ht=scontent.fsjo10-1.fna&_nc_gid=VY2yrMT1sNgkYnl2LHw49Q&_nc_ss=7b2a8&oh=00_Af9ZSxBGygC42JbEVuYp-Pup0atNvZOVtbs2n3ebB9CGMA&oe=6A2E1FD9"
+  },
+  {
+    "id": "tv-949",
+    "title": "DEMO 1 TV ZONAHOSTING 4K",
+    "iframe_url": "https://servertv.online:3882/live/demolive.m3u8",
+    "genre": "Peliculas",
+    "logo": "https://scontent.fsjo10-1.fna.fbcdn.net/v/t39.30808-6/277727585_138584415369921_3467620868230264794_n.jpg?stp=dst-jpg_tt6&cstp=mx1920x1920&ctp=s1920x1920&_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=V_Mr62Nc3kkQ7kNvwExA5-2&_nc_oc=AdosEruunko4Ze95qlXw9qSLKBG5G7opngQW-JAiwOpeBqVqrSEUFmsKIPBX0XtbVq8&_nc_zt=23&_nc_ht=scontent.fsjo10-1.fna&_nc_gid=PPr8K3WgUEcIeycn2vNsfw&_nc_ss=7b2a8&oh=00_Af9Gy7C8e0m2bX4xO8PlteAsTGzPq1_cWzk8z3mps52pAA&oe=6A2E1512"
+  },
+  {
+    "id": "tv-950",
+    "title": "MUNDO DEL CAMPO HD",
+    "iframe_url": "https://movil.ejeserver.com/live/elmundodelcampo.m3u8",
+    "genre": "Documentales",
+    "logo": "https://media.licdn.com/dms/image/v2/D4E0BAQFglOY-y1IDUQ/company-logo_200_200/B4EZjUcatCGwAI-/0/1755910876947/el_mundo_del_campo_tv_logo?e=2147483647&v=beta&t=-gw35E5dVWbwm3fhfWFPdXPWnEYVGVTM6MySejCH49k"
+  },
+  {
+    "id": "tv-951",
+    "title": "TELECLASICA HD",
+    "iframe_url": "https://stmv7.voxtvhd.com.br/teleclasica/teleclasica/playlist.m3u8",
+    "genre": "Peliculas",
+    "logo": "http://teleclasica.com/wp-content/uploads/2025/01/OTHER.png"
+  },
+  {
+    "id": "tv-952",
+    "title": "TELESUR HD",
+    "iframe_url": "https://s1.tvdatta.com:3582/live/telesurlive.m3u8",
+    "genre": "Peliculas",
+    "logo": "https://cdn.aptoide.com/imgs/6/e/8/6e84bf30a6a374967a74e9106395c7d9_screen.png"
+  },
+  {
+    "id": "tv-953",
+    "title": "CANAL CBTV CANAL 12 HD",
+    "iframe_url": "https://s1.tvdatta.com:3072/live/cotobrustvlive.m3u8",
+    "genre": "Peliculas",
+    "logo": "https://cotobrustv.com/wp-content/uploads/2024/06/CBTV-FULLCOLOR-2-1-300x150.png"
+  }
+]
