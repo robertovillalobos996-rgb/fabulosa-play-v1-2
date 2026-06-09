@@ -83,7 +83,7 @@ export const canalesTV = [
     "url": "https://5fc584f3f19c9.streamlock.net/genteopa/videogenteopa/chunklist_w215971633.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/opa.png",
-    "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-7&mediaUrl=https%3A%2F%2F5fc584f3f19c9.streamlock.net%2Fgenteopa%2Fvideogenteopa%2Fchunklist_w215971633.m3u8"
+    "iframe_url": "/reproductor.html?src=https%3A%2F%2F5fc584f3f19c9.streamlock.net%2Fgenteopa%2Fvideogenteopa%2Fchunklist_w215971633.m3u8"
   },
   {
     "id": "tv-8",
@@ -179,7 +179,7 @@ export const canalesTV = [
     "url": "https://stream.radiosmundiales.com:19360/sanluismas/sanluismas.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/13_san luis.jpg",
-    "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-23&mediaUrl=https%3A%2F%2Fstream.radiosmundiales.com%3A19360%2Fsanluismas%2Fsanluismas.m3u8"
+    "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.radiosmundiales.com%3A19360%2Fsanluismas%2Fsanluismas.m3u8"
   },
   {
     "id": "nosara-tv",
@@ -1364,7 +1364,7 @@ export const canalesTV = [
     "url": "https://streamconex.com:19360/puan/puan.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-251.png",
-    "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-251&mediaUrl=https%3A%2F%2Fstreamconex.com%3A19360%2Fpuan%2Fpuan.m3u8"
+    "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamconex.com%3A19360%2Fpuan%2Fpuan.m3u8"
   },
   {
     "id": "tv-252",
@@ -1372,7 +1372,7 @@ export const canalesTV = [
     "url": "https://streamconex.com:19360/santaclara-1/santaclara-1.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-252.png",
-    "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-252&mediaUrl=https%3A%2F%2Fstreamconex.com%3A19360%2Fsantaclara-1%2Fsantaclara-1.m3u8"
+    "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamconex.com%3A19360%2Fsantaclara-1%2Fsantaclara-1.m3u8"
   },
   {
     "id": "tv-465",
@@ -2427,7 +2427,7 @@ export const canalesTV = [
     "url": "https://stream.arcast.live/canal7jujuy/ngrp:canal7jujuy_all/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/7..png",
-    "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-246&mediaUrl=https%3A%2F%2Fstream.arcast.live%2Fcanal7jujuy%2Fngrp%3Acanal7jujuy_all%2Fplaylist.m3u8"
+    "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.arcast.live%2Fcanal7jujuy%2Fngrp%3Acanal7jujuy_all%2Fplaylist.m3u8"
   },
   {
     "id": "tv-247",
@@ -2435,7 +2435,7 @@ export const canalesTV = [
     "url": "https://stream.arcast.com.ar/c7nq/ngrp:c7nq_all/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-247.png",
-    "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-247&mediaUrl=https%3A%2F%2Fstream.arcast.com.ar%2Fc7nq%2Fngrp%3Ac7nq_all%2Fplaylist.m3u8"
+    "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Fc7nq%2Fngrp%3Ac7nq_all%2Fplaylist.m3u8"
   },
   {
     "id": "tv-248",
@@ -2443,7 +2443,7 @@ export const canalesTV = [
     "url": "https://vivo.solumedia.com:19360/cooperativa/cooperativa.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-248.png",
-    "iframe_url": "https://bradmax.com/client/embed-player/c7c83ebb46fa89529a7383d933e2038729f8e4c9_13428?id=tv-248&mediaUrl=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Fcooperativa%2Fcooperativa.m3u8"
+    "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Fcooperativa%2Fcooperativa.m3u8"
   },
   {
     "id": "tv-254",

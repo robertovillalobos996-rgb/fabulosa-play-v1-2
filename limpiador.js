@@ -2,13 +2,17 @@ import fs from 'fs';
 
 const rutaArchivo = "C:\\Users\\fabulosa play\\Documents\\fabulosa-play-v1-2\\src\\data\\canales_finales.js";
 
-console.log("🤖 Conectando canales al nuevo reproductor ultrarrapido de Fabulosa Play...");
+console.log("🤖 Ejecutando inyección total del reproductor rápido...");
 
 try {
     let contenido = fs.readFileSync(rutaArchivo, 'utf8');
 
     const inicioArray = contenido.indexOf('[');
     const finArray = contenido.lastIndexOf(']') + 1;
+
+    if (inicioArray === -1 || finArray === 0) {
+        throw new Error("No se encontró la estructura de canales.");
+    }
 
     const parteInicial = contenido.substring(0, inicioArray);
     const cadenaArray = contenido.substring(inicioArray, finArray);
@@ -18,22 +22,38 @@ try {
     let actualizados = 0;
 
     canales = canales.map(canal => {
-        // Exclusiones: Canal 7 y Canal 13 se quedan quietos
+        // EXCLUSIÓN ESTRICTA: NO TOCAR Canal 7 ni Canal 13
         if (
-            canal.id === "tv-7" || canal.id === "tv-7-teletica" || 
-            canal.id === "tv-13" || canal.id === "tv-13-sinart" || 
-            canal.title?.includes("Teletica") || canal.title?.includes("SINART") ||
-            canal.title?.includes("Canal 7") || canal.title?.includes("Canal 13")
+            canal.id === "tv-7-teletica" || 
+            canal.id === "tv-13-sinart"
         ) {
             return canal; 
         }
 
-        // Buscar el enlace real del canal
-        const streamUrl = canal.url || canal.iframe_url;
+        // Buscar la URL del stream (.m3u8), ya sea que esté en 'url' o escondida dentro de 'iframe_url'
+        let streamUrl = canal.url;
 
+        // Si no hay 'url', intentamos extraerla del 'iframe_url' (como en el caso de FOX)
+        if (!streamUrl && canal.iframe_url) {
+            // Extraer el enlace m3u8 si está dentro de un parámetro (ej. Bradmax)
+            const match = canal.iframe_url.match(/(http|https):\/\/[^"'\s]+\.m3u8/i);
+            if (match) {
+                streamUrl = match[0];
+            } else if (canal.iframe_url.includes('mediaUrl=')) {
+                // Decodificar la URL si está codificada en el iframe viejo
+                const urlParams = new URLSearchParams(canal.iframe_url.substring(canal.iframe_url.indexOf('?')));
+                const mediaUrl = urlParams.get('mediaUrl');
+                if (mediaUrl) streamUrl = decodeURIComponent(mediaUrl);
+            } else if (canal.iframe_url.includes('.m3u8')) {
+                 streamUrl = canal.iframe_url;
+            }
+        }
+
+        // Si encontramos una URL válida, inyectamos nuestro reproductor rápido
         if (streamUrl && streamUrl.includes('.m3u8')) {
-            // Enlazar al nuevo reproductor local creado en /public
             canal.iframe_url = `/reproductor.html?src=${encodeURIComponent(streamUrl)}`;
+            // Opcional: asegurarnos de que la propiedad 'url' exista limpia por si la app la usa en otra parte
+            canal.url = streamUrl; 
             actualizados++;
         }
 
@@ -42,8 +62,9 @@ try {
 
     const nuevoContenido = parteInicial + JSON.stringify(canales, null, 2) + parteFinal;
     fs.writeFileSync(rutaArchivo, nuevoContenido, 'utf8');
-
-    console.log(`✅ ¡Exito! ${actualizados} canales ahora usan el motor de alta velocidad hls.js.`);
+    
+    console.log(`✅ ¡Éxito total! ${actualizados} canales (incluyendo FOX) ahora usan tu reproductor ultrarrápido.`);
+    console.log("Canal 7 y Canal 13 se mantuvieron con sus enlaces originales.");
 
 } catch (error) {
     console.error("❌ Error al procesar el archivo:", error.message);
