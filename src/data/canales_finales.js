@@ -19,7 +19,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/logo_fabulosa.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Ffabulosa%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Ffabulosa%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-36",
@@ -27,7 +31,11 @@ export const canalesTV = [
     "url": "https://stream.lamegatv.com/hls/sanvitotelevision/index.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/stv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.lamegatv.com%2Fhls%2Fsanvitotelevision%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.lamegatv.com%2Fhls%2Fsanvitotelevision%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-2",
@@ -35,7 +43,11 @@ export const canalesTV = [
     "url": "https://s1.tvdatta.com:3972/live/88stereolive.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/88_Stereo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs1.tvdatta.com%3A3972%2Flive%2F88stereolive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs1.tvdatta.com%3A3972%2Flive%2F88stereolive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-949",
@@ -43,7 +55,11 @@ export const canalesTV = [
     "url": "https://lbgo.bozztv.com/ssh101/ssh101/retyroxtv/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/retrox.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flbgo.bozztv.com%2Fssh101%2Fssh101%2Fretyroxtv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flbgo.bozztv.com%2Fssh101%2Fssh101%2Fretyroxtv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-950",
@@ -51,7 +67,11 @@ export const canalesTV = [
     "url": "https://lbgo.bozztv.com/ssh101/ssh101/retp/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/retro x plus.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flbgo.bozztv.com%2Fssh101%2Fssh101%2Fretp%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flbgo.bozztv.com%2Fssh101%2Fssh101%2Fretp%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-3",
@@ -59,7 +79,11 @@ export const canalesTV = [
     "url": "https://5eac7b031d945.streamlock.net/canal3/canal3/chunklist_w1141438584.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/colosal_canal_3.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5eac7b031d945.streamlock.net%2Fcanal3%2Fcanal3%2Fchunklist_w1141438584.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5eac7b031d945.streamlock.net%2Fcanal3%2Fcanal3%2Fchunklist_w1141438584.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-4",
@@ -67,7 +91,11 @@ export const canalesTV = [
     "url": "https://5eac7b031d945.streamlock.net/COLOSAL/COLOSAL/chunklist_w539710567.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/colosal.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5eac7b031d945.streamlock.net%2FCOLOSAL%2FCOLOSAL%2Fchunklist_w539710567.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5eac7b031d945.streamlock.net%2FCOLOSAL%2FCOLOSAL%2Fchunklist_w539710567.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-8-",
@@ -75,7 +103,11 @@ export const canalesTV = [
     "url": "https://5bf8041cb3fed.streamlock.net/AlcanceTV/AlcanceTV/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/Alcance TV.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2FAlcanceTV%2FAlcanceTV%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2FAlcanceTV%2FAlcanceTV%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-7",
@@ -91,7 +123,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/akamaissh101/ssh101/gextvaccess/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/gex_tv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Fgextvaccess%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Fgextvaccess%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-9",
@@ -99,7 +135,11 @@ export const canalesTV = [
     "url": "https://lstv.duckdns.org:449/hls/lstv.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/lstv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flstv.duckdns.org%3A449%2Fhls%2Flstv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flstv.duckdns.org%3A449%2Fhls%2Flstv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-10",
@@ -107,7 +147,11 @@ export const canalesTV = [
     "url": "https://5cf4a2c2512a2.streamlock.net/8164/8164/chunklist_w1278582418.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/limon-tv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5cf4a2c2512a2.streamlock.net%2F8164%2F8164%2Fchunklist_w1278582418.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5cf4a2c2512a2.streamlock.net%2F8164%2F8164%2Fchunklist_w1278582418.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-11",
@@ -115,7 +159,11 @@ export const canalesTV = [
     "url": "https://59ef525c24caa.streamlock.net/nicoyatv/nicoyatv/chunklist_w1674958038.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/nicoya_tv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Fnicoyatv%2Fnicoyatv%2Fchunklist_w1674958038.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Fnicoyatv%2Fnicoyatv%2Fchunklist_w1674958038.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-16",
@@ -123,7 +171,11 @@ export const canalesTV = [
     "url": "https://acceso.mediosdecostarica.com:3638/live/360rftvcrlive.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/360.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Facceso.mediosdecostarica.com%3A3638%2Flive%2F360rftvcrlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Facceso.mediosdecostarica.com%3A3638%2Flive%2F360rftvcrlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-17",
@@ -131,7 +183,11 @@ export const canalesTV = [
     "url": "https://vid.canal1cr.com:3424/multi_live/play_720.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/1.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvid.canal1cr.com%3A3424%2Fmulti_live%2Fplay_720.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvid.canal1cr.com%3A3424%2Fmulti_live%2Fplay_720.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-19",
@@ -139,7 +195,11 @@ export const canalesTV = [
     "url": "https://redirector.rudo.video/hls-video/c54ac2799874375c81c1672abb700870537c5223/canal11hn/canal11hn.smil/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/canal_11.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fredirector.rudo.video%2Fhls-video%2Fc54ac2799874375c81c1672abb700870537c5223%2Fcanal11hn%2Fcanal11hn.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fredirector.rudo.video%2Fhls-video%2Fc54ac2799874375c81c1672abb700870537c5223%2Fcanal11hn%2Fcanal11hn.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-21",
@@ -147,7 +207,11 @@ export const canalesTV = [
     "url": "https://vivo.solumedia.com:19360/dadaproductora/dadaproductora.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/canal_11_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Fdadaproductora%2Fdadaproductora.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Fdadaproductora%2Fdadaproductora.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "best-clasicos",
@@ -155,7 +219,11 @@ export const canalesTV = [
     "url": "https://acceso.mediosdecostarica.com:3873/hybrid/play.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/best_clásicos_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Facceso.mediosdecostarica.com%3A3873%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Facceso.mediosdecostarica.com%3A3873%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "10-cr",
@@ -163,7 +231,11 @@ export const canalesTV = [
     "url": "https://acceso.mediosdecostarica.com:3606/hybrid/play.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/10 _costa_rica.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Facceso.mediosdecostarica.com%3A3606%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Facceso.mediosdecostarica.com%3A3606%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tele-plus",
@@ -171,7 +243,11 @@ export const canalesTV = [
     "url": "https://acceso.mediosdecostarica.com:3192/hybrid/play.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/tele_+.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Facceso.mediosdecostarica.com%3A3192%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Facceso.mediosdecostarica.com%3A3192%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-23",
@@ -187,7 +263,11 @@ export const canalesTV = [
     "url": "https://latamvdo.com:3870/hybrid/play.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/nosara_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flatamvdo.com%3A3870%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flatamvdo.com%3A3870%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "extrema-tv",
@@ -195,7 +275,11 @@ export const canalesTV = [
     "url": "https://627bb251f23c7.streamlock.net:444/ExtremaTV/ExtremaTV/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/extrema.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FExtremaTV%2FExtremaTV%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FExtremaTV%2FExtremaTV%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "garavito-tv",
@@ -203,7 +287,11 @@ export const canalesTV = [
     "url": "https://59ef525c24caa.streamlock.net/garabitoTV/garabitotv/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/garavito_tv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2FgarabitoTV%2Fgarabitotv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2FgarabitoTV%2Fgarabitotv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "norte-info",
@@ -211,7 +299,11 @@ export const canalesTV = [
     "url": "https://videohd.live:19360/8076/8076.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/norte_informativo.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideohd.live%3A19360%2F8076%2F8076.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideohd.live%3A19360%2F8076%2F8076.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "soy-plancha",
@@ -219,7 +311,11 @@ export const canalesTV = [
     "url": "https://59ef525c24caa.streamlock.net/vmtv/soyplancha/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/soy_plancha.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Fvmtv%2Fsoyplancha%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Fvmtv%2Fsoyplancha%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tele-brunca",
@@ -227,7 +323,11 @@ export const canalesTV = [
     "url": "https://59ef525c24caa.streamlock.net/telebrunca/telebrunca/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/tele_brunca.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Ftelebrunca%2Ftelebrunca%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Ftelebrunca%2Ftelebrunca%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "video-tour",
@@ -235,7 +335,11 @@ export const canalesTV = [
     "url": "https://59ef525c24caa.streamlock.net/videotour/videotour/chunklist_w868169864.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/video.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Fvideotour%2Fvideotour%2Fchunklist_w868169864.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Fvideotour%2Fvideotour%2Fchunklist_w868169864.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "cristo-vision-31",
@@ -243,7 +347,11 @@ export const canalesTV = [
     "url": "https://3a310f6ec721e6b362fcd22772b57f36a2fe6bb2.tabeelcr.com:8080/cristovision31/iptv.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/Cristo_Visión.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F3a310f6ec721e6b362fcd22772b57f36a2fe6bb2.tabeelcr.com%3A8080%2Fcristovision31%2Fiptv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F3a310f6ec721e6b362fcd22772b57f36a2fe6bb2.tabeelcr.com%3A8080%2Fcristovision31%2Fiptv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "sarapiqui-tv",
@@ -251,7 +359,11 @@ export const canalesTV = [
     "url": "https://lstv.duckdns.org:449/hls/stv.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/SARAPIQUI TV.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flstv.duckdns.org%3A449%2Fhls%2Fstv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flstv.duckdns.org%3A449%2Fhls%2Fstv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "anime-station",
@@ -259,7 +371,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/akamaissh101/ssh101/livestreamingtv/chunks.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/CANAL ANIME STATION.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Flivestreamingtv%2Fchunks.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Flivestreamingtv%2Fchunks.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "telesistema",
@@ -267,7 +383,11 @@ export const canalesTV = [
     "url": "https://k20.usastreams.com:8081/telesistema/tracks-v1a1/mono.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/TELESISTEMA.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fk20.usastreams.com%3A8081%2Ftelesistema%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fk20.usastreams.com%3A8081%2Ftelesistema%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "wow",
@@ -275,7 +395,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/giatv/giatv-wowmovies/wowmovies/chunks.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/WOW.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatv%2Fgiatv-wowmovies%2Fwowmovies%2Fchunks.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatv%2Fgiatv-wowmovies%2Fwowmovies%2Fchunks.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "retro-musi-tv",
@@ -283,7 +407,11 @@ export const canalesTV = [
     "url": "https://stream.enlineatv.net/hls/retromusic/1_2/index.m3u8?tkn=2333110130",
     "genre": "Costa Rica",
     "logo": "/logos_canales/RETRO MUSI TV.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.enlineatv.net%2Fhls%2Fretromusic%2F1_2%2Findex.m3u8%3Ftkn%3D2333110130"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.enlineatv.net%2Fhls%2Fretromusic%2F1_2%2Findex.m3u8%3Ftkn%3D2333110130&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tele-uno",
@@ -291,7 +419,11 @@ export const canalesTV = [
     "url": "https://5eac7b031d945.streamlock.net/TVUNO/TVUNO/chunklist_w605186919.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/TELE UNO.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5eac7b031d945.streamlock.net%2FTVUNO%2FTVUNO%2Fchunklist_w605186919.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5eac7b031d945.streamlock.net%2FTVUNO%2FTVUNO%2Fchunklist_w605186919.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "clasicos-animados",
@@ -299,7 +431,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/giatvplayout7/giatv-209599/tracks-v1a1/mono.ts.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/CLASICOS ANIMADOS.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatvplayout7%2Fgiatv-209599%2Ftracks-v1a1%2Fmono.ts.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatvplayout7%2Fgiatv-209599%2Ftracks-v1a1%2Fmono.ts.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "cedros-tv",
@@ -307,7 +443,11 @@ export const canalesTV = [
     "url": "https://eu1.servers10.com:8081/cedrostv/tracks-v1a1/mono.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/CEDROS TV.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2Fcedrostv%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2Fcedrostv%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "ejtv",
@@ -315,7 +455,11 @@ export const canalesTV = [
     "url": "https://livecdn.enlace.plus/ejtv/smil:ejtv-hd.smil/chunklist_b1712000_sleng.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/EJTV.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flivecdn.enlace.plus%2Fejtv%2Fsmil%3Aejtv-hd.smil%2Fchunklist_b1712000_sleng.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flivecdn.enlace.plus%2Fejtv%2Fsmil%3Aejtv-hd.smil%2Fchunklist_b1712000_sleng.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "retro-tv-online",
@@ -323,7 +467,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/akamaissh101/ssh101/retrotvcr2025/chunks.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/RETRO TV ONLINE.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Fretrotvcr2025%2Fchunks.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Fretrotvcr2025%2Fchunks.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "dragon-ball",
@@ -331,7 +479,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/giatv/giatv-dball/dball/chunks.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/DRAGON BALL.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatv%2Fgiatv-dball%2Fdball%2Fchunks.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatv%2Fgiatv-dball%2Fdball%2Fchunks.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "vm-latino",
@@ -339,7 +491,11 @@ export const canalesTV = [
     "url": "https://59ef525c24caa.streamlock.net/vmtv/vmlatino/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/vm_latino.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Fvmtv%2Fvmlatino%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Fvmtv%2Fvmlatino%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-25",
@@ -347,7 +503,11 @@ export const canalesTV = [
     "url": "https://iptv.ixfo.com.ar:30443/live/C4POS/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/tv-25.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fiptv.ixfo.com.ar%3A30443%2Flive%2FC4POS%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fiptv.ixfo.com.ar%3A30443%2Flive%2FC4POS%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-28",
@@ -355,7 +515,11 @@ export const canalesTV = [
     "url": "https://5e50264bd6766.streamlock.net/canal44/videocanal44/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/tv-28.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5e50264bd6766.streamlock.net%2Fcanal44%2Fvideocanal44%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5e50264bd6766.streamlock.net%2Fcanal44%2Fvideocanal44%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-32",
@@ -363,7 +527,11 @@ export const canalesTV = [
     "url": "https://videoserver.tmcreativos.com:19360/abbftuhxxs/abbftuhxxs.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/josue_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fabbftuhxxs%2Fabbftuhxxs.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fabbftuhxxs%2Fabbftuhxxs.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-33",
@@ -371,7 +539,11 @@ export const canalesTV = [
     "url": "https://lencatelevision.com/hls/stream.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/lenca.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flencatelevision.com%2Fhls%2Fstream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flencatelevision.com%2Fhls%2Fstream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-41",
@@ -379,7 +551,11 @@ export const canalesTV = [
     "url": "https://srspsn2.live/live/livestream.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/tv-41.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fsrspsn2.live%2Flive%2Flivestream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fsrspsn2.live%2Flive%2Flivestream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-43",
@@ -387,7 +563,11 @@ export const canalesTV = [
     "url": "https://videoserver.tmcreativos.com:19360/cvmhbyrcat/cvmhbyrcat.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/romana.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fcvmhbyrcat%2Fcvmhbyrcat.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fcvmhbyrcat%2Fcvmhbyrcat.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-44",
@@ -395,7 +575,11 @@ export const canalesTV = [
     "url": "https://video0.rogohosting.com:19360/4982/4982.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/tv-44.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo0.rogohosting.com%3A19360%2F4982%2F4982.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo0.rogohosting.com%3A19360%2F4982%2F4982.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-46",
@@ -403,7 +587,11 @@ export const canalesTV = [
     "url": "https://k20.usastreams.com:8081/tvsur/index.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/tv_sur.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fk20.usastreams.com%3A8081%2Ftvsur%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fk20.usastreams.com%3A8081%2Ftvsur%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-47",
@@ -411,7 +599,11 @@ export const canalesTV = [
     "url": "https://5790d294af2dc.streamlock.net/Teleproyecto/Teleproyecto/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/tp.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2FTeleproyecto%2FTeleproyecto%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2FTeleproyecto%2FTeleproyecto%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-49",
@@ -419,7 +611,11 @@ export const canalesTV = [
     "url": "https://5eac7b031d945.streamlock.net/TICAVISION/TICAVISION/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/tica_vision.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5eac7b031d945.streamlock.net%2FTICAVISION%2FTICAVISION%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5eac7b031d945.streamlock.net%2FTICAVISION%2FTICAVISION%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-50",
@@ -427,7 +623,11 @@ export const canalesTV = [
     "url": "https://59ef525c24caa.streamlock.net/tvurbano/tvurbano/playlist.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/urbano.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Ftvurbano%2Ftvurbano%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59ef525c24caa.streamlock.net%2Ftvurbano%2Ftvurbano%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-51",
@@ -435,7 +635,11 @@ export const canalesTV = [
     "url": "https://videoserver.tmcreativos.com:19360/visionnoticias/visionnoticias.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/tv-51.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fvisionnoticias%2Fvisionnoticias.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fvisionnoticias%2Fvisionnoticias.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-52",
@@ -443,7 +647,11 @@ export const canalesTV = [
     "url": "https://videoserver.tmcreativos.com:19360/cablerasvia/cablerasvia.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/via_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fcablerasvia%2Fcablerasvia.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fcablerasvia%2Fcablerasvia.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-53",
@@ -451,7 +659,11 @@ export const canalesTV = [
     "url": "https://videoserver.tmcreativos.com:19360/gesfnvpamn/gesfnvpamn.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/zurqui.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fgesfnvpamn%2Fgesfnvpamn.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fgesfnvpamn%2Fgesfnvpamn.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-319",
@@ -459,7 +671,11 @@ export const canalesTV = [
     "url": "https://video0.rogohosting.com:19360/8006/8006.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/1777557317956_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo0.rogohosting.com%3A19360%2F8006%2F8006.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo0.rogohosting.com%3A19360%2F8006%2F8006.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-147",
@@ -467,7 +683,11 @@ export const canalesTV = [
     "url": "https://streamtv.as3sport.online:3394/hybrid/play.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/AS3 Sport TV.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv.as3sport.online%3A3394%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv.as3sport.online%3A3394%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-777",
@@ -475,7 +695,11 @@ export const canalesTV = [
     "url": "https://60417ddeaf0d9.streamlock.net/montemorelos/videomontemorelos/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/um.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Fmontemorelos%2Fvideomontemorelos%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Fmontemorelos%2Fvideomontemorelos%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-853",
@@ -483,7 +707,11 @@ export const canalesTV = [
     "url": "https://www.streaming507.net:19360/videofabulosa/videofabulosa.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/fabulosa.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fwww.streaming507.net%3A19360%2Fvideofabulosa%2Fvideofabulosa.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fwww.streaming507.net%3A19360%2Fvideofabulosa%2Fvideofabulosa.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-854",
@@ -491,7 +719,11 @@ export const canalesTV = [
     "url": "https://s2.tvdatta.com:3307/hybrid/play.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/frecuencia.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs2.tvdatta.com%3A3307%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs2.tvdatta.com%3A3307%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-860",
@@ -499,7 +731,11 @@ export const canalesTV = [
     "url": "https://cloudvideo.servers10.com:8081/8032/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/granada.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8032%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8032%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-941",
@@ -507,7 +743,11 @@ export const canalesTV = [
     "url": "https://627bb251f23c7.streamlock.net:444/ExtremaKids/ExtremaKids/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/extrema_kids.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FExtremaKids%2FExtremaKids%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FExtremaKids%2FExtremaKids%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-942",
@@ -515,7 +755,11 @@ export const canalesTV = [
     "url": "https://stream-us-east-1.getpublica.com/playlist.m3u8?network_id=50",
     "genre": "Internacionales",
     "logo": "/logos_canales/flix.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream-us-east-1.getpublica.com%2Fplaylist.m3u8%3Fnetwork_id%3D50"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream-us-east-1.getpublica.com%2Fplaylist.m3u8%3Fnetwork_id%3D50&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-946",
@@ -523,7 +767,11 @@ export const canalesTV = [
     "url": "https://streamer1.streamhost.org/salive/logoskidsH/playlist.m3u8",
     "genre": "Infantil",
     "logo": "/logos_canales/kids_tv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamer1.streamhost.org%2Fsalive%2FlogoskidsH%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamer1.streamhost.org%2Fsalive%2FlogoskidsH%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-947",
@@ -531,7 +779,11 @@ export const canalesTV = [
     "url": "https://s.emisoras.tv:8081/penielkids/index.m3u8",
     "genre": "Infantil",
     "logo": "/logos_canales/peniel.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fpenielkids%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fpenielkids%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-125",
@@ -539,7 +791,11 @@ export const canalesTV = [
     "url": "https://60417ddeaf0d9.streamlock.net/ntv/videontv/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/8NTV.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Fntv%2Fvideontv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Fntv%2Fvideontv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-134",
@@ -547,7 +803,11 @@ export const canalesTV = [
     "url": "https://5e50264bd6766.streamlock.net/mexiquense2/videomexiquense2/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/mexicanensi.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5e50264bd6766.streamlock.net%2Fmexiquense2%2Fvideomexiquense2%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5e50264bd6766.streamlock.net%2Fmexiquense2%2Fvideomexiquense2%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-156",
@@ -555,7 +815,11 @@ export const canalesTV = [
     "url": "https://streamtv.intervenhosting.net:3040/hybrid/play.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/aguacate.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3040%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3040%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-165",
@@ -563,7 +827,11 @@ export const canalesTV = [
     "url": "https://live.gideo.video/americateve2/master.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/a.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.gideo.video%2Famericateve2%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.gideo.video%2Famericateve2%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-168",
@@ -571,7 +839,11 @@ export const canalesTV = [
     "url": "https://cloudpro.servidoresdestream.com:8081/8010/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/impacto.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudpro.servidoresdestream.com%3A8081%2F8010%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudpro.servidoresdestream.com%3A8081%2F8010%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-169",
@@ -579,7 +851,11 @@ export const canalesTV = [
     "url": "https://video1.azulstream.com:8081/antenaseistv/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-169.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo1.azulstream.com%3A8081%2Fantenaseistv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo1.azulstream.com%3A8081%2Fantenaseistv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-179",
@@ -587,7 +863,11 @@ export const canalesTV = [
     "url": "https://s5.mexside.net:1936/lsac/lsac/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/b15.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs5.mexside.net%3A1936%2Flsac%2Flsac%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs5.mexside.net%3A1936%2Flsac%2Flsac%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-180",
@@ -595,7 +875,11 @@ export const canalesTV = [
     "url": "https://s5.mexside.net:1936/envio2/envio2/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/b.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs5.mexside.net%3A1936%2Fenvio2%2Fenvio2%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs5.mexside.net%3A1936%2Fenvio2%2Fenvio2%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-184",
@@ -603,7 +887,11 @@ export const canalesTV = [
     "url": "https://sc1.wasidata.com/Bhtv/index.fmp4.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/bh.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fsc1.wasidata.com%2FBhtv%2Findex.fmp4.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fsc1.wasidata.com%2FBhtv%2Findex.fmp4.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-197",
@@ -611,7 +899,11 @@ export const canalesTV = [
     "url": "https://redirector.rudo.video/hls-video/c54ac2799874375c81c1672abb700870537c5223/bravo/bravo.smil/playlist.m3u8?did=b2201035844768f58630b7eef",
     "genre": "Documentales",
     "logo": "/logos_canales/tv-197.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fredirector.rudo.video%2Fhls-video%2Fc54ac2799874375c81c1672abb700870537c5223%2Fbravo%2Fbravo.smil%2Fplaylist.m3u8%3Fdid%3Db2201035844768f58630b7eef"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fredirector.rudo.video%2Fhls-video%2Fc54ac2799874375c81c1672abb700870537c5223%2Fbravo%2Fbravo.smil%2Fplaylist.m3u8%3Fdid%3Db2201035844768f58630b7eef&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-206",
@@ -619,7 +911,11 @@ export const canalesTV = [
     "url": "https://video1.getstreamhosting.com:1936/8226/8226/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/ctni.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo1.getstreamhosting.com%3A1936%2F8226%2F8226%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo1.getstreamhosting.com%3A1936%2F8226%2F8226%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-211",
@@ -627,7 +923,11 @@ export const canalesTV = [
     "url": "https://cloudvideo.servers10.com:8081/8004/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/cadena.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8004%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8004%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-218",
@@ -635,7 +935,11 @@ export const canalesTV = [
     "url": "https://5ca3e84a76d30.streamlock.net/tves/videotves/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/c10.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5ca3e84a76d30.streamlock.net%2Ftves%2Fvideotves%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5ca3e84a76d30.streamlock.net%2Ftves%2Fvideotves%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-219",
@@ -643,7 +947,11 @@ export const canalesTV = [
     "url": "https://5ca9af4645e15.streamlock.net/chiapas/videochiapas/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/10.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5ca9af4645e15.streamlock.net%2Fchiapas%2Fvideochiapas%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5ca9af4645e15.streamlock.net%2Fchiapas%2Fvideochiapas%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-239",
@@ -651,7 +959,11 @@ export const canalesTV = [
     "url": "https://media2.streambrothers.com:1936/8140/8140/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/madrid.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmedia2.streambrothers.com%3A1936%2F8140%2F8140%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmedia2.streambrothers.com%3A1936%2F8140%2F8140%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-240",
@@ -659,7 +971,11 @@ export const canalesTV = [
     "url": "https://5f2c1b0d880e5.streamlock.net/canal33tijuana/videocanal33tijuana/playlist.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/tv-240.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5f2c1b0d880e5.streamlock.net%2Fcanal33tijuana%2Fvideocanal33tijuana%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5f2c1b0d880e5.streamlock.net%2Fcanal33tijuana%2Fvideocanal33tijuana%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-299",
@@ -667,7 +983,11 @@ export const canalesTV = [
     "url": "https://streaming.servervideo.net:1936/cielotv/cielotv/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/cris.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreaming.servervideo.net%3A1936%2Fcielotv%2Fcielotv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreaming.servervideo.net%3A1936%2Fcielotv%2Fcielotv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-317",
@@ -675,7 +995,11 @@ export const canalesTV = [
     "url": "https://video.hostingcaaguazu.com:19360/cosmostv/cosmostv.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/cosmos.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo.hostingcaaguazu.com%3A19360%2Fcosmostv%2Fcosmostv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo.hostingcaaguazu.com%3A19360%2Fcosmostv%2Fcosmostv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-320",
@@ -683,7 +1007,11 @@ export const canalesTV = [
     "url": "https://host.streamingnation.live/p/3588/hybrid/play.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/movie.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fhost.streamingnation.live%2Fp%2F3588%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fhost.streamingnation.live%2Fp%2F3588%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-325",
@@ -691,7 +1019,11 @@ export const canalesTV = [
     "url": "https://video2.lhdserver.es/pjtv/live.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/curi.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo2.lhdserver.es%2Fpjtv%2Flive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo2.lhdserver.es%2Fpjtv%2Flive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-345",
@@ -699,7 +1031,11 @@ export const canalesTV = [
     "url": "https://60417ddeaf0d9.streamlock.net/edntv/videoedntv/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/edn.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Fedntv%2Fvideoedntv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Fedntv%2Fvideoedntv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-356",
@@ -707,7 +1043,11 @@ export const canalesTV = [
     "url": "https://redirector.dps.live/hls-video/c54ac2799874375c81c1672abb700870537c5223/ecuavisa/ecuavisa.smil/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-356.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fredirector.dps.live%2Fhls-video%2Fc54ac2799874375c81c1672abb700870537c5223%2Fecuavisa%2Fecuavisa.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fredirector.dps.live%2Fhls-video%2Fc54ac2799874375c81c1672abb700870537c5223%2Fecuavisa%2Fecuavisa.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-372",
@@ -715,7 +1055,11 @@ export const canalesTV = [
     "url": "https://luna-4-video.mediaserver.digital/exitosatv_233b-4b49-a726-5a451262/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/exitosa.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fluna-4-video.mediaserver.digital%2Fexitosatv_233b-4b49-a726-5a451262%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fluna-4-video.mediaserver.digital%2Fexitosatv_233b-4b49-a726-5a451262%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-381",
@@ -723,7 +1067,11 @@ export const canalesTV = [
     "url": "https://5dbcd1053301e.streamlock.net:4443/farodesantidad/farodesantidad/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/vigilia.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5dbcd1053301e.streamlock.net%3A4443%2Ffarodesantidad%2Ffarodesantidad%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5dbcd1053301e.streamlock.net%3A4443%2Ffarodesantidad%2Ffarodesantidad%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-411",
@@ -731,7 +1079,11 @@ export const canalesTV = [
     "url": "https://s5.mexside.net:1936/xhbzc81/xhbzc81/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/30.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs5.mexside.net%3A1936%2Fxhbzc81%2Fxhbzc81%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs5.mexside.net%3A1936%2Fxhbzc81%2Fxhbzc81%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-419",
@@ -739,7 +1091,11 @@ export const canalesTV = [
     "url": "https://cloudvideo.servers10.com:8081/impactotv/index.m3u8",
     "genre": "Infantil",
     "logo": "/logos_canales/1777557841111_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2Fimpactotv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2Fimpactotv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-421",
@@ -747,7 +1103,11 @@ export const canalesTV = [
     "url": "https://s2.tvdatta.com:3753/hybrid/play.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-421.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs2.tvdatta.com%3A3753%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs2.tvdatta.com%3A3753%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-424",
@@ -755,7 +1115,11 @@ export const canalesTV = [
     "url": "https://video2.lhdserver.es/cableperu/live.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/cpn.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo2.lhdserver.es%2Fcableperu%2Flive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo2.lhdserver.es%2Fcableperu%2Flive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-428",
@@ -763,7 +1127,11 @@ export const canalesTV = [
     "url": "https://video0.rogohosting.com:19360/sisjalisciense/sisjalisciense.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/jalisco_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo0.rogohosting.com%3A19360%2Fsisjalisciense%2Fsisjalisciense.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo0.rogohosting.com%3A19360%2Fsisjalisciense%2Fsisjalisciense.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-430",
@@ -771,7 +1139,11 @@ export const canalesTV = [
     "url": "https://2-fss-2.streamhoster.com/pl_120/200226-1449024-1/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/via_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F2-fss-2.streamhoster.com%2Fpl_120%2F200226-1449024-1%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F2-fss-2.streamhoster.com%2Fpl_120%2F200226-1449024-1%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-435",
@@ -779,7 +1151,11 @@ export const canalesTV = [
     "url": "https://streamtv.intervenhosting.net:3403/hybrid/play.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/2.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3403%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3403%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-442",
@@ -787,7 +1163,11 @@ export const canalesTV = [
     "url": "https://video.udwn.net:19360/ladescargatv/ladescargatv.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/descarga_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo.udwn.net%3A19360%2Fladescargatv%2Fladescargatv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo.udwn.net%3A19360%2Fladescargatv%2Fladescargatv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-460",
@@ -795,7 +1175,11 @@ export const canalesTV = [
     "url": "https://redirector.rudo.video/hls-video/plus226/latina2/latina2.smil/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/I.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fredirector.rudo.video%2Fhls-video%2Fplus226%2Flatina2%2Flatina2.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fredirector.rudo.video%2Fhls-video%2Fplus226%2Flatina2%2Flatina2.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-468",
@@ -803,7 +1187,11 @@ export const canalesTV = [
     "url": "https://5ca3e84a76d30.streamlock.net/tvlobo/videotvlobo/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/MU.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5ca3e84a76d30.streamlock.net%2Ftvlobo%2Fvideotvlobo%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5ca3e84a76d30.streamlock.net%2Ftvlobo%2Fvideotvlobo%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-477",
@@ -811,7 +1199,11 @@ export const canalesTV = [
     "url": "https://videoserver.tmcreativos.com:19360/majestadtv/majestadtv.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-477.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fmajestadtv%2Fmajestadtv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fmajestadtv%2Fmajestadtv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-485",
@@ -819,7 +1211,11 @@ export const canalesTV = [
     "url": "https://video03.logicahost.com.br/maxivisiontv/maxivisiontv/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/MAXI.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo03.logicahost.com.br%2Fmaxivisiontv%2Fmaxivisiontv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo03.logicahost.com.br%2Fmaxivisiontv%2Fmaxivisiontv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-490",
@@ -827,7 +1223,11 @@ export const canalesTV = [
     "url": "https://video.xtrematv.com:3576/live/memoriasclassiclive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/MEMORIAS.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3576%2Flive%2Fmemoriasclassiclive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3576%2Flive%2Fmemoriasclassiclive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-491",
@@ -835,7 +1235,11 @@ export const canalesTV = [
     "url": "https://video.xtrematv.com:3725/live/memoriasfilmlive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/MEMORIASFILM.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3725%2Flive%2Fmemoriasfilmlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3725%2Flive%2Fmemoriasfilmlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-492",
@@ -843,7 +1247,11 @@ export const canalesTV = [
     "url": "https://video.xtrematv.com:3633/live/memoriasserieslive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/MEMORIAS_SERIES.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3633%2Flive%2Fmemoriasserieslive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3633%2Flive%2Fmemoriasserieslive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-493",
@@ -851,7 +1259,11 @@ export const canalesTV = [
     "url": "https://video.xtrematv.com:3812/live/memoriastoonslive.m3u8",
     "genre": "Infantil",
     "logo": "/logos_canales/MEMORIAS_TONS.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3812%2Flive%2Fmemoriastoonslive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3812%2Flive%2Fmemoriastoonslive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-494",
@@ -859,7 +1271,11 @@ export const canalesTV = [
     "url": "https://video.xtrematv.com:3361/live/memoriastropicallive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/MEMORIAS_TROPICAL.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3361%2Flive%2Fmemoriastropicallive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3361%2Flive%2Fmemoriastropicallive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-495",
@@ -867,7 +1283,11 @@ export const canalesTV = [
     "url": "https://video.xtrematv.com:3401/live/grupomemoriaslive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/MEMORIAS_CORAZON.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3401%2Flive%2Fgrupomemoriaslive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo.xtrematv.com%3A3401%2Flive%2Fgrupomemoriaslive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-499",
@@ -875,7 +1295,11 @@ export const canalesTV = [
     "url": "https://5e50264bd6766.streamlock.net/mexiquense/videomexiquense/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777558115395_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5e50264bd6766.streamlock.net%2Fmexiquense%2Fvideomexiquense%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5e50264bd6766.streamlock.net%2Fmexiquense%2Fvideomexiquense%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-503",
@@ -883,7 +1307,11 @@ export const canalesTV = [
     "url": "https://streaming004.gestec-video.com/hls/MIJAS.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777558179964_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreaming004.gestec-video.com%2Fhls%2FMIJAS.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreaming004.gestec-video.com%2Fhls%2FMIJAS.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-506",
@@ -891,7 +1319,11 @@ export const canalesTV = [
     "url": "https://5ca9af4645e15.streamlock.net/montemaria/videomontemaria/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/MARIA.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5ca9af4645e15.streamlock.net%2Fmontemaria%2Fvideomontemaria%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5ca9af4645e15.streamlock.net%2Fmontemaria%2Fvideomontemaria%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-521",
@@ -899,7 +1331,11 @@ export const canalesTV = [
     "url": "https://streaming013.gestec-video.com/hls/negociostv.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/NEGOCIOS.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreaming013.gestec-video.com%2Fhls%2Fnegociostv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreaming013.gestec-video.com%2Fhls%2Fnegociostv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-523",
@@ -907,7 +1343,11 @@ export const canalesTV = [
     "url": "https://vs20.live.opencaster.com/bznudxxdtppv/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/N.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvs20.live.opencaster.com%2Fbznudxxdtppv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvs20.live.opencaster.com%2Fbznudxxdtppv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-524",
@@ -915,7 +1355,11 @@ export const canalesTV = [
     "url": "https://videohd.live:19360/8076/8076.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/N.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideohd.live%3A19360%2F8076%2F8076.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideohd.live%3A19360%2F8076%2F8076.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-527",
@@ -923,7 +1367,11 @@ export const canalesTV = [
     "url": "https://stream.nuevavidafm.net:3937/live/nuevavidalive.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/CIELO.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.nuevavidafm.net%3A3937%2Flive%2Fnuevavidalive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.nuevavidafm.net%3A3937%2Flive%2Fnuevavidalive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-529",
@@ -931,7 +1379,11 @@ export const canalesTV = [
     "url": "https://5ca9af4645e15.streamlock.net/nuevetv/videonuevetv/.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/NUEVE_TV.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5ca9af4645e15.streamlock.net%2Fnuevetv%2Fvideonuevetv%2F.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5ca9af4645e15.streamlock.net%2Fnuevetv%2Fvideonuevetv%2F.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-536",
@@ -939,7 +1391,11 @@ export const canalesTV = [
     "url": "https://cloudvideo.servers10.com:8081/8034/index.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/tv-536.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8034%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8034%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-537",
@@ -947,7 +1403,11 @@ export const canalesTV = [
     "url": "https://cloudtv.provideo.es/live/algecirastv-livestream.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-537.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudtv.provideo.es%2Flive%2Falgecirastv-livestream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudtv.provideo.es%2Flive%2Falgecirastv-livestream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-539",
@@ -955,7 +1415,11 @@ export const canalesTV = [
     "url": "https://cloudvideo.servers10.com:8081/8116/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-539.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8116%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8116%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-547",
@@ -963,7 +1427,11 @@ export const canalesTV = [
     "url": "https://backend.energeek.cl/webtv/pridetvweb/index.m3u8?token=ZZDemoIPTVGH",
     "genre": "Peliculas",
     "logo": "/logos_canales/PRIDE.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fbackend.energeek.cl%2Fwebtv%2Fpridetvweb%2Findex.m3u8%3Ftoken%3DZZDemoIPTVGH"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fbackend.energeek.cl%2Fwebtv%2Fpridetvweb%2Findex.m3u8%3Ftoken%3DZZDemoIPTVGH&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-549",
@@ -972,7 +1440,11 @@ export const canalesTV = [
     "genre": "Internacionales",
     "logo": "/logos_canales/1777543229511_logo.png",
     "name": "PCT",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flivestream.telvue.com%2Fpacificaca1%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flivestream.telvue.com%2Fpacificaca1%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-573",
@@ -980,7 +1452,11 @@ export const canalesTV = [
     "url": "https://vdopanel.jlahozconsulting.com/p/3142/hybrid/play.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/RTB.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvdopanel.jlahozconsulting.com%2Fp%2F3142%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvdopanel.jlahozconsulting.com%2Fp%2F3142%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-575",
@@ -988,7 +1464,11 @@ export const canalesTV = [
     "url": "https://video1.getstreamhosting.com:1936/8172/8172/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-575.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo1.getstreamhosting.com%3A1936%2F8172%2F8172%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo1.getstreamhosting.com%3A1936%2F8172%2F8172%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-584",
@@ -996,7 +1476,11 @@ export const canalesTV = [
     "url": "https://video1.makrodigital.com/rtu/rtu/chunks.m3u8?nimblesessionid=",
     "genre": "Musica",
     "logo": "/logos_canales/RTW.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo1.makrodigital.com%2Frtu%2Frtu%2Fchunks.m3u8%3Fnimblesessionid%3D"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo1.makrodigital.com%2Frtu%2Frtu%2Fchunks.m3u8%3Fnimblesessionid%3D&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-586",
@@ -1004,7 +1488,11 @@ export const canalesTV = [
     "url": "https://vidartv2.todostreaming.es/live/radiovida-emisiontvhd.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-586.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvidartv2.todostreaming.es%2Flive%2Fradiovida-emisiontvhd.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvidartv2.todostreaming.es%2Flive%2Fradiovida-emisiontvhd.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-587",
@@ -1012,7 +1500,11 @@ export const canalesTV = [
     "url": "https://newidco-rakutenviki-2-eu.xiaomi.wurl.tv/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/tv-587.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fnewidco-rakutenviki-2-eu.xiaomi.wurl.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fnewidco-rakutenviki-2-eu.xiaomi.wurl.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-588",
@@ -1020,7 +1512,11 @@ export const canalesTV = [
     "url": "https://cloudvideo.servers10.com:8081/8072/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-588.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8072%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8072%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-706",
@@ -1028,7 +1524,11 @@ export const canalesTV = [
     "url": "https://5fc584f3f19c9.streamlock.net/tabertv/videotabertv/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/1777558236747_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5fc584f3f19c9.streamlock.net%2Ftabertv%2Fvideotabertv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5fc584f3f19c9.streamlock.net%2Ftabertv%2Fvideotabertv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-709",
@@ -1036,7 +1536,11 @@ export const canalesTV = [
     "url": "https://video.telesafor.com/hls/video.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-709.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo.telesafor.com%2Fhls%2Fvideo.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo.telesafor.com%2Fhls%2Fvideo.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-711",
@@ -1044,7 +1548,11 @@ export const canalesTV = [
     "url": "https://5ca3e84a76d30.streamlock.net/teleyucatan/videoteleyucatan/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/yucatan.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5ca3e84a76d30.streamlock.net%2Fteleyucatan%2Fvideoteleyucatan%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5ca3e84a76d30.streamlock.net%2Fteleyucatan%2Fvideoteleyucatan%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-713",
@@ -1052,7 +1560,11 @@ export const canalesTV = [
     "url": "https://videohd.live:19360/8016/8016.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-713.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideohd.live%3A19360%2F8016%2F8016.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideohd.live%3A19360%2F8016%2F8016.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-727",
@@ -1060,7 +1572,11 @@ export const canalesTV = [
     "url": "https://cloudpro.servidoresdestream.com:8081/8020/index.m3u8",
     "genre": "Infantil",
     "logo": "/logos_canales/tv-727.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudpro.servidoresdestream.com%3A8081%2F8020%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudpro.servidoresdestream.com%3A8081%2F8020%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-728",
@@ -1068,7 +1584,11 @@ export const canalesTV = [
     "url": "https://s5.mexside.net:1936/telemax/telemax/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-728.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs5.mexside.net%3A1936%2Ftelemax%2Ftelemax%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs5.mexside.net%3A1936%2Ftelemax%2Ftelemax%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-752",
@@ -1076,7 +1596,11 @@ export const canalesTV = [
     "url": "https://videoserver.tmcreativos.com:19360/kptjeckkaa/kptjeckkaa.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-752.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fkptjeckkaa%2Fkptjeckkaa.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fkptjeckkaa%2Fkptjeckkaa.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-753",
@@ -1084,7 +1608,11 @@ export const canalesTV = [
     "url": "https://tls-cl.cdnz.cl/televida/live/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-753.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftls-cl.cdnz.cl%2Ftelevida%2Flive%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftls-cl.cdnz.cl%2Ftelevida%2Flive%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-754",
@@ -1092,7 +1620,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/televida/tracks-v1a1/mono.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-754.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Ftelevida%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Ftelevida%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-766",
@@ -1100,7 +1632,11 @@ export const canalesTV = [
     "url": "https://www.chasquirouter.com/salida/sd/trivu.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/tv-766.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fwww.chasquirouter.com%2Fsalida%2Fsd%2Ftrivu.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fwww.chasquirouter.com%2Fsalida%2Fsd%2Ftrivu.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-778",
@@ -1108,7 +1644,11 @@ export const canalesTV = [
     "url": "https://video.compuwebecuador.com:3323/live/uniandeslive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/uni.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo.compuwebecuador.com%3A3323%2Flive%2Funiandeslive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo.compuwebecuador.com%3A3323%2Flive%2Funiandeslive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-812",
@@ -1116,7 +1656,11 @@ export const canalesTV = [
     "url": "http://k4.usastreams.com/videotour/videotour/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/video.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2Fk4.usastreams.com%2Fvideotour%2Fvideotour%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2Fk4.usastreams.com%2Fvideotour%2Fvideotour%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-814",
@@ -1124,7 +1668,11 @@ export const canalesTV = [
     "url": "https://vdopanel.jlahozconsulting.com:3407/hybrid/play.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/vision.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvdopanel.jlahozconsulting.com%3A3407%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvdopanel.jlahozconsulting.com%3A3407%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-817",
@@ -1132,7 +1680,11 @@ export const canalesTV = [
     "url": "https://cloudvideo.servers10.com:8081/8016/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-817.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8016%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8016%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-830",
@@ -1140,7 +1692,11 @@ export const canalesTV = [
     "url": "https://tuvideoonline.com.ar:3332/live/xlevelmedialive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/wox.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftuvideoonline.com.ar%3A3332%2Flive%2Fxlevelmedialive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftuvideoonline.com.ar%3A3332%2Flive%2Fxlevelmedialive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-839",
@@ -1148,7 +1704,11 @@ export const canalesTV = [
     "url": "https://video2.makrodigital.com/zaracay/zaracay/playlist.m3u8",
     "genre": "Peliculas",
     "logo": null,
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo2.makrodigital.com%2Fzaracay%2Fzaracay%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo2.makrodigital.com%2Fzaracay%2Fzaracay%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-840",
@@ -1156,7 +1716,11 @@ export const canalesTV = [
     "url": "https://streamtv.intervenhosting.net:3439/hybrid/play.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/I.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3439%2Fhybrid%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3439%2Fhybrid%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-843",
@@ -1164,7 +1728,11 @@ export const canalesTV = [
     "url": "https://cloudvideo.servers10.com:8081/8030/index.m3u8",
     "genre": "Musica",
     "logo": "radio-visual.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8030%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8030%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-846",
@@ -1172,7 +1740,11 @@ export const canalesTV = [
     "url": "https://videostream.shockmedia.com.ar:19360/beatsradio/beatsradio.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-846.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideostream.shockmedia.com.ar%3A19360%2Fbeatsradio%2Fbeatsradio.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideostream.shockmedia.com.ar%3A19360%2Fbeatsradio%2Fbeatsradio.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-852",
@@ -1180,7 +1752,11 @@ export const canalesTV = [
     "url": "https://video2.makrodigital.com/fmmundo/fmmundo/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/FM_MUNDO.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideo2.makrodigital.com%2Ffmmundo%2Ffmmundo%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideo2.makrodigital.com%2Ffmmundo%2Ffmmundo%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-866",
@@ -1188,7 +1764,11 @@ export const canalesTV = [
     "url": "https://videostream.shockmedia.com.ar:19360/radio1045/radio1045.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/power.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideostream.shockmedia.com.ar%3A19360%2Fradio1045%2Fradio1045.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideostream.shockmedia.com.ar%3A19360%2Fradio1045%2Fradio1045.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-867",
@@ -1196,7 +1776,11 @@ export const canalesTV = [
     "url": "https://www.streaming507.net:19360/anconvideo/anconvideo.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/proyecto.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fwww.streaming507.net%3A19360%2Fanconvideo%2Fanconvideo.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fwww.streaming507.net%3A19360%2Fanconvideo%2Fanconvideo.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-869",
@@ -1204,7 +1788,11 @@ export const canalesTV = [
     "url": "https://tuvideoonline.com.ar:3391/live/radioconexionlive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777558681864_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftuvideoonline.com.ar%3A3391%2Flive%2Fradioconexionlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftuvideoonline.com.ar%3A3391%2Flive%2Fradioconexionlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-875",
@@ -1212,7 +1800,11 @@ export const canalesTV = [
     "url": "https://videoserver.tmcreativos.com:19360/radiomaster/radiomaster.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/master.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fradiomaster%2Fradiomaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvideoserver.tmcreativos.com%3A19360%2Fradiomaster%2Fradiomaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-896",
@@ -1220,7 +1812,11 @@ export const canalesTV = [
     "url": "https://www.streaming507.net:19360/videotropiq/videotropiq.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tropiq.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fwww.streaming507.net%3A19360%2Fvideotropiq%2Fvideotropiq.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fwww.streaming507.net%3A19360%2Fvideotropiq%2Fvideotropiq.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-900",
@@ -1228,7 +1824,11 @@ export const canalesTV = [
     "url": "https://cloudvideo.servers10.com:8081/8198/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-900.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8198%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloudvideo.servers10.com%3A8081%2F8198%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-905",
@@ -1236,7 +1836,11 @@ export const canalesTV = [
     "url": "https://live.15plusmg.ru/memfs/b389173a-df4e-4171-8904-e249893e71eb.m3u8",
     "genre": "Internacionales",
     "logo": "https://i.imgur.com/146OgfU.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.15plusmg.ru%2Fmemfs%2Fb389173a-df4e-4171-8904-e249893e71eb.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.15plusmg.ru%2Fmemfs%2Fb389173a-df4e-4171-8904-e249893e71eb.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-911",
@@ -1244,7 +1848,11 @@ export const canalesTV = [
     "url": "https://a-cdn.klowdtv.com/live1/cine_720p/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "https://i.imgur.com/bZWoDTg.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fa-cdn.klowdtv.com%2Flive1%2Fcine_720p%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fa-cdn.klowdtv.com%2Flive1%2Fcine_720p%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-924",
@@ -1252,7 +1860,11 @@ export const canalesTV = [
     "url": "https://maverick-maverick-black-cinema-3-us.roku.wurl.tv/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "https://images.fubo.tv/station_logos/maverick_black_cinema_c.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmaverick-maverick-black-cinema-3-us.roku.wurl.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmaverick-maverick-black-cinema-3-us.roku.wurl.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-928",
@@ -1260,7 +1872,11 @@ export const canalesTV = [
     "url": "https://bozztv.com/dvrfl03/hdirect/hdirect-ovair1-movies!/index.m3u8",
     "genre": "Internacionales",
     "logo": "https://i.imgur.com/gAGn3mK.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fbozztv.com%2Fdvrfl03%2Fhdirect%2Fhdirect-ovair1-movies!%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fbozztv.com%2Fdvrfl03%2Fhdirect%2Fhdirect-ovair1-movies!%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-930",
@@ -1268,7 +1884,11 @@ export const canalesTV = [
     "url": "https://appletree-mytime-samsungbrazil.amagi.tv/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/1777543412091_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fappletree-mytime-samsungbrazil.amagi.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fappletree-mytime-samsungbrazil.amagi.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-932",
@@ -1276,7 +1896,11 @@ export const canalesTV = [
     "url": "https://appletree-mytimespain-rakuten.amagi.tv/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777559176189_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fappletree-mytimespain-rakuten.amagi.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fappletree-mytimespain-rakuten.amagi.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-934",
@@ -1284,7 +1908,11 @@ export const canalesTV = [
     "url": "https://mumt04.tangotv.in/PUBLICMOVIES/index.m3u8",
     "genre": "Internacionales",
     "logo": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_PUBLIC_MOVIES/images/LOGO_HD/image.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmumt04.tangotv.in%2FPUBLICMOVIES%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmumt04.tangotv.in%2FPUBLICMOVIES%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-70",
@@ -1292,7 +1920,11 @@ export const canalesTV = [
     "url": "https://cdn.streamhispanatv.net:3417/live/auroramflive.m3u8",
     "genre": "Peliculas",
     "logo": "https://i.imgur.com/DVC5w6H.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.streamhispanatv.net%3A3417%2Flive%2Fauroramflive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.streamhispanatv.net%3A3417%2Flive%2Fauroramflive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-74",
@@ -1300,7 +1932,11 @@ export const canalesTV = [
     "url": "https://discoverfilm-discoverfilm-1-nl.samsung.wurl.tv/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "https://i.imgur.com/oMnpsQ5.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fdiscoverfilm-discoverfilm-1-nl.samsung.wurl.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fdiscoverfilm-discoverfilm-1-nl.samsung.wurl.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-86",
@@ -1308,7 +1944,11 @@ export const canalesTV = [
     "url": "https://connection3-ent-nz.samsung.wurl.tv/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "https://i.imgur.com/p16HNIM.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fconnection3-ent-nz.samsung.wurl.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fconnection3-ent-nz.samsung.wurl.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-92",
@@ -1316,7 +1956,11 @@ export const canalesTV = [
     "url": "https://run-rt-uh-roku.otteravision.com/run/rt_uh/rt_uh.m3u8",
     "genre": "Peliculas",
     "logo": "https://i.imgur.com/OMQq19N.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Frun-rt-uh-roku.otteravision.com%2Frun%2Frt_uh%2Frt_uh.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Frun-rt-uh-roku.otteravision.com%2Frun%2Frt_uh%2Frt_uh.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-100",
@@ -1324,7 +1968,11 @@ export const canalesTV = [
     "url": "https://zylo-cinenanar-rakuten.amagi.tv/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "https://i.imgur.com/YnUZd3W.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fzylo-cinenanar-rakuten.amagi.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fzylo-cinenanar-rakuten.amagi.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-101",
@@ -1332,7 +1980,11 @@ export const canalesTV = [
     "url": "https://amg00711-zylo-amg00711c8-rakuten-uk-2686.playouts.now.amagi.tv/playlist/amg00711-zylofast-cinewestern-rakutenuk/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "https://i.imgur.com/tteOFkL.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Famg00711-zylo-amg00711c8-rakuten-uk-2686.playouts.now.amagi.tv%2Fplaylist%2Famg00711-zylofast-cinewestern-rakutenuk%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Famg00711-zylo-amg00711c8-rakuten-uk-2686.playouts.now.amagi.tv%2Fplaylist%2Famg00711-zylofast-cinewestern-rakutenuk%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-104",
@@ -1340,7 +1992,11 @@ export const canalesTV = [
     "url": "https://live.presstv.ir/hls/ifilm2.m3u8",
     "genre": "Internacionales",
     "logo": "https://upload.wikimedia.org/wikipedia/fa/c/ce/Ifilm2logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.presstv.ir%2Fhls%2Fifilm2.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.presstv.ir%2Fhls%2Fifilm2.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-105",
@@ -1348,7 +2004,11 @@ export const canalesTV = [
     "url": "https://live.presstv.ir/hls/ifilmen.m3u8",
     "genre": "Internacionales",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/b/b9/IFILM.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.presstv.ir%2Fhls%2Fifilmen.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.presstv.ir%2Fhls%2Fifilmen.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-216",
@@ -1356,7 +2016,11 @@ export const canalesTV = [
     "url": "https://pantera1-100gb-cl-movistar.dps.live/campustv/campustv.smil/playlist.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/utalca.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fpantera1-100gb-cl-movistar.dps.live%2Fcampustv%2Fcampustv.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fpantera1-100gb-cl-movistar.dps.live%2Fcampustv%2Fcampustv.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-251",
@@ -1380,7 +2044,11 @@ export const canalesTV = [
     "url": "https://brightstar-latino-pull-secure.akamaized.net/brightstarlatino/stream.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-465.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fbrightstar-latino-pull-secure.akamaized.net%2Fbrightstarlatino%2Fstream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fbrightstar-latino-pull-secure.akamaized.net%2Fbrightstarlatino%2Fstream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-515",
@@ -1388,7 +2056,11 @@ export const canalesTV = [
     "url": "https://pantera1-100gb-cl-movistar.dps.live/nctv/nctv.smil/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/nctv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fpantera1-100gb-cl-movistar.dps.live%2Fnctv%2Fnctv.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fpantera1-100gb-cl-movistar.dps.live%2Fnctv%2Fnctv.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-841",
@@ -1396,7 +2068,11 @@ export const canalesTV = [
     "url": "https://ml-pull-hwc.myco.io/MixTV/hls/index.m3u8",
     "genre": "Internacionales",
     "logo": "https://i.imgur.com/1ENdbZn.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fml-pull-hwc.myco.io%2FMixTV%2Fhls%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fml-pull-hwc.myco.io%2FMixTV%2Fhls%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-902",
@@ -1404,7 +2080,11 @@ export const canalesTV = [
     "url": "http://actionlive.siliconweb.com/actionabr/actiontv/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/8/88/Action24-logo-small.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2Factionlive.siliconweb.com%2Factionabr%2Factiontv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2Factionlive.siliconweb.com%2Factionabr%2Factiontv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-414",
@@ -1412,7 +2092,11 @@ export const canalesTV = [
     "url": "https://thm-it-roku.otteravision.com/thm/it/it.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/tv-414.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fthm-it-roku.otteravision.com%2Fthm%2Fit%2Fit.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fthm-it-roku.otteravision.com%2Fthm%2Fit%2Fit.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-510",
@@ -1420,7 +2104,11 @@ export const canalesTV = [
     "url": "https://stream.digitalgt.com:3605/live/multivisionsportslive.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/multi_sport.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.digitalgt.com%3A3605%2Flive%2Fmultivisionsportslive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.digitalgt.com%3A3605%2Flive%2Fmultivisionsportslive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-322",
@@ -1428,7 +2116,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/cromtv/tracks-v1a1/mono.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/crom.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fcromtv%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fcromtv%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-155",
@@ -1436,7 +2128,11 @@ export const canalesTV = [
     "url": "https://5fc584f3f19c9.streamlock.net/agape/smil:agape.smil/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/agape.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5fc584f3f19c9.streamlock.net%2Fagape%2Fsmil%3Aagape.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5fc584f3f19c9.streamlock.net%2Fagape%2Fsmil%3Aagape.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-188",
@@ -1444,7 +2140,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/bajotechotv/tracks-v1a1/mono.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/bajotecho.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fbajotechotv%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fbajotechotv%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-190",
@@ -1452,7 +2152,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/bellavision8hd/tracks-v1a1/mono.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/Bellavision.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fbellavision8hd%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fbellavision8hd%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-193",
@@ -1460,7 +2164,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/bocachicatv/tracks-v1a1/mono.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-193.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fbocachicatv%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fbocachicatv%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-333",
@@ -1468,7 +2176,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/deltatv50/tracks-v1a1/mono.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/delta.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fdeltatv50%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fdeltatv50%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-376",
@@ -1476,7 +2188,11 @@ export const canalesTV = [
     "url": "https://tv2.bitstreaming.net:3235/multi_live/play.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/f10.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv2.bitstreaming.net%3A3235%2Fmulti_live%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv2.bitstreaming.net%3A3235%2Fmulti_live%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-389",
@@ -1484,7 +2200,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/ghtelevision/tracks-v1a1/mono.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/gh.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fghtelevision%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fghtelevision%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-403",
@@ -1492,7 +2212,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/canalhtv/tracks-v1a1/mono.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-403.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fcanalhtv%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fcanalhtv%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-566",
@@ -1500,7 +2224,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/pulatv/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/pula.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fpulatv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fpulatv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-568",
@@ -1508,7 +2236,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/puntacanatv/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/puntacana.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fpuntacanatv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fpuntacanatv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-733",
@@ -1516,7 +2248,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/telenord10/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/telenort.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Ftelenord10%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Ftelenord10%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-734",
@@ -1524,7 +2260,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/telenord12/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/telenort_12.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Ftelenord12%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Ftelenord12%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-735",
@@ -1532,7 +2272,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/telenord8/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/telenort_8.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Ftelenord8%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Ftelenord8%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-737",
@@ -1540,7 +2284,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/telenonisa43/tracks-v1a1/mono.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/telenovisa.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Ftelenonisa43%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Ftelenonisa43%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-749",
@@ -1548,7 +2296,11 @@ export const canalesTV = [
     "url": "https://unlimited6-cl.dps.live/sportinghd/sportinghd.smil/playlist.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/teletrak.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited6-cl.dps.live%2Fsportinghd%2Fsportinghd.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited6-cl.dps.live%2Fsportinghd%2Fsportinghd.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-750",
@@ -1556,7 +2308,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/teleturtv/tracks-v1a1/mono.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/teletur.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fteleturtv%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fteleturtv%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-807",
@@ -1564,7 +2320,11 @@ export const canalesTV = [
     "url": "https://fox.hostlagarto.com:8081/canal26/tracks-v1a1/mono.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/cd.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fcanal26%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffox.hostlagarto.com%3A8081%2Fcanal26%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-862",
@@ -1572,7 +2332,11 @@ export const canalesTV = [
     "url": "https://67acccf130420.streamlock.net/ngradiotv/ngradiotv/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/ng.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F67acccf130420.streamlock.net%2Fngradiotv%2Fngradiotv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F67acccf130420.streamlock.net%2Fngradiotv%2Fngradiotv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-856",
@@ -1580,7 +2344,11 @@ export const canalesTV = [
     "url": "https://eu1.servers10.com:8081/8004/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/la_fabulosa.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8004%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8004%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-864",
@@ -1588,7 +2356,11 @@ export const canalesTV = [
     "url": "https://s.emisoras.tv:8081/penielmusical/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/peniel_musical.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fpenielmusical%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fpenielmusical%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-890",
@@ -1596,7 +2368,11 @@ export const canalesTV = [
     "url": "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic/SA_LIVE_hls_enc/master.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/total_music.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FTotalmusic%2FSA_LIVE_hls_enc%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FTotalmusic%2FSA_LIVE_hls_enc%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-891",
@@ -1604,7 +2380,11 @@ export const canalesTV = [
     "url": "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_00s/SA_LIVE_hls_enc/master.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/total.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FTotalmusic_00s%2FSA_LIVE_hls_enc%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FTotalmusic_00s%2FSA_LIVE_hls_enc%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-892",
@@ -1612,7 +2392,11 @@ export const canalesTV = [
     "url": "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_80s/SA_LIVE_hls_enc/master.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/80.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FTotalmusic_80s%2FSA_LIVE_hls_enc%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FTotalmusic_80s%2FSA_LIVE_hls_enc%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-893",
@@ -1620,7 +2404,11 @@ export const canalesTV = [
     "url": "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_Concerts/SA_LIVE_hls_enc/master.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tota.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FTotalmusic_Concerts%2FSA_LIVE_hls_enc%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FTotalmusic_Concerts%2FSA_LIVE_hls_enc%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-894",
@@ -1628,7 +2416,11 @@ export const canalesTV = [
     "url": "https://cdn.global.elektamedia.com/live/c7eds/Totalmusic_Dance/SA_LIVE_hls_enc/master.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/dance.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FTotalmusic_Dance%2FSA_LIVE_hls_enc%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FTotalmusic_Dance%2FSA_LIVE_hls_enc%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-897",
@@ -1636,7 +2428,11 @@ export const canalesTV = [
     "url": "https://59a564764e2b6.streamlock.net/vallenato/tropical/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tropical.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59a564764e2b6.streamlock.net%2Fvallenato%2Ftropical%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59a564764e2b6.streamlock.net%2Fvallenato%2Ftropical%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-121",
@@ -1644,7 +2440,11 @@ export const canalesTV = [
     "url": "http://web.onair-radio.eu:1935/groovytv/groovytv/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/groovy.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2Fweb.onair-radio.eu%3A1935%2Fgroovytv%2Fgroovytv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2Fweb.onair-radio.eu%3A1935%2Fgroovytv%2Fgroovytv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-153",
@@ -1652,7 +2452,11 @@ export const canalesTV = [
     "url": "https://streamtv.mediasector.es/hls/activatv/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/activa.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv.mediasector.es%2Fhls%2Factivatv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv.mediasector.es%2Fhls%2Factivatv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-281",
@@ -1660,7 +2464,11 @@ export const canalesTV = [
     "url": "https://canalda.rgradio.net:3084/live/canaldalive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/canalda.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcanalda.rgradio.net%3A3084%2Flive%2Fcanaldalive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcanalda.rgradio.net%3A3084%2Flive%2Fcanaldalive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-373",
@@ -1668,7 +2476,11 @@ export const canalesTV = [
     "url": "https://5ca9af4645e15.streamlock.net/teleradio/smil:teleradio.smil/playlist.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/expresa.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5ca9af4645e15.streamlock.net%2Fteleradio%2Fsmil%3Ateleradio.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5ca9af4645e15.streamlock.net%2Fteleradio%2Fsmil%3Ateleradio.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-385",
@@ -1676,7 +2488,11 @@ export const canalesTV = [
     "url": "https://streamtv.intervenhosting.net:3355/live/fortunatvlive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/ftv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3355%2Flive%2Ffortunatvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3355%2Flive%2Ffortunatvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-387",
@@ -1684,7 +2500,11 @@ export const canalesTV = [
     "url": "https://streamunoapp.com:3553/live/cromtvlive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/fuego.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamunoapp.com%3A3553%2Flive%2Fcromtvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamunoapp.com%3A3553%2Flive%2Fcromtvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-397",
@@ -1692,7 +2512,11 @@ export const canalesTV = [
     "url": "https://d71gqtnep83vb.cloudfront.net/gol_classics/gol_classics.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/gol.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fd71gqtnep83vb.cloudfront.net%2Fgol_classics%2Fgol_classics.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fd71gqtnep83vb.cloudfront.net%2Fgol_classics%2Fgol_classics.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-401",
@@ -1700,7 +2524,11 @@ export const canalesTV = [
     "url": "https://streamtv.intervenhosting.net:3592/stream/play.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/planet.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3592%2Fstream%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3592%2Fstream%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-496",
@@ -1708,7 +2536,11 @@ export const canalesTV = [
     "url": "https://streamtv12.ddns.net:5443/LiveApp/streams/193945633734205616732920.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/metro.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv12.ddns.net%3A5443%2FLiveApp%2Fstreams%2F193945633734205616732920.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv12.ddns.net%3A5443%2FLiveApp%2Fstreams%2F193945633734205616732920.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-540",
@@ -1716,7 +2548,11 @@ export const canalesTV = [
     "url": "https://stmv4.voxtvhd.com.br/ondastereo/ondastereo/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/onda.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv4.voxtvhd.com.br%2Fondastereo%2Fondastereo%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv4.voxtvhd.com.br%2Fondastereo%2Fondastereo%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-559",
@@ -1724,7 +2560,11 @@ export const canalesTV = [
     "url": "http://5940924978228.streamlock.net:1935/8009/8009/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/mellilla.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2F5940924978228.streamlock.net%3A1935%2F8009%2F8009%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2F5940924978228.streamlock.net%3A1935%2F8009%2F8009%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-705",
@@ -1732,7 +2572,11 @@ export const canalesTV = [
     "url": "https://streamtv.onliv3.online:1936/karibtv/karibtv/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/uno.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv.onliv3.online%3A1936%2Fkaribtv%2Fkaribtv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv.onliv3.online%3A1936%2Fkaribtv%2Fkaribtv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-736",
@@ -1740,7 +2584,11 @@ export const canalesTV = [
     "url": "https://627bb251f23c7.streamlock.net:444/TopRadioTV/TopRadioTV/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/norte.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FTopRadioTV%2FTopRadioTV%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FTopRadioTV%2FTopRadioTV%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-844",
@@ -1748,7 +2596,11 @@ export const canalesTV = [
     "url": "https://tls-cl.cdnz.cl/aeradio/live/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/ae.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftls-cl.cdnz.cl%2Faeradio%2Flive%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftls-cl.cdnz.cl%2Faeradio%2Flive%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-845",
@@ -1756,7 +2608,11 @@ export const canalesTV = [
     "url": "https://streamyes.alsolnet.com/azaharesfm/live/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/azares.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamyes.alsolnet.com%2Fazaharesfm%2Flive%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamyes.alsolnet.com%2Fazaharesfm%2Flive%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-847",
@@ -1764,7 +2620,11 @@ export const canalesTV = [
     "url": "https://host.streamingnation.live:3940/live/caobatvlive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/caoba.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fhost.streamingnation.live%3A3940%2Flive%2Fcaobatvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fhost.streamingnation.live%3A3940%2Flive%2Fcaobatvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-850",
@@ -1772,7 +2632,11 @@ export const canalesTV = [
     "url": "https://rds3.desdeparaguay.net/dismartv/dismartv/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-850.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Frds3.desdeparaguay.net%2Fdismartv%2Fdismartv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Frds3.desdeparaguay.net%2Fdismartv%2Fdismartv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-851",
@@ -1780,7 +2644,11 @@ export const canalesTV = [
     "url": "https://stmv1.transmissaodigital.com/pedro9800/pedro9800/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/escuchame.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv1.transmissaodigital.com%2Fpedro9800%2Fpedro9800%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv1.transmissaodigital.com%2Fpedro9800%2Fpedro9800%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-855",
@@ -1788,7 +2656,11 @@ export const canalesTV = [
     "url": "https://cloud.tvomix.com/KPOPMIX/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-855.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud.tvomix.com%2FKPOPMIX%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud.tvomix.com%2FKPOPMIX%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-857",
@@ -1796,7 +2668,11 @@ export const canalesTV = [
     "url": "https://movil.ejeserver.com/live/lamoradatv.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/la_morada.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Flamoradatv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Flamoradatv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-858",
@@ -1804,7 +2680,11 @@ export const canalesTV = [
     "url": "https://eu1.servers10.com:8081/8068/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/peerla.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8068%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8068%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-859",
@@ -1812,7 +2692,11 @@ export const canalesTV = [
     "url": "https://eu1.servers10.com:8081/8334/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/mi.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8334%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8334%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-865",
@@ -1820,7 +2704,11 @@ export const canalesTV = [
     "url": "https://canadaremar2.todostreaming.es/live/peque-pequetv.m3u8",
     "genre": "Infantil",
     "logo": "/logos_canales/pequeradio.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcanadaremar2.todostreaming.es%2Flive%2Fpeque-pequetv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcanadaremar2.todostreaming.es%2Flive%2Fpeque-pequetv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-870",
@@ -1828,7 +2716,11 @@ export const canalesTV = [
     "url": "https://eu1.servers10.com:8081/8074/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/cuenca.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8074%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8074%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-873",
@@ -1836,7 +2728,11 @@ export const canalesTV = [
     "url": "https://streaming.imagenfm105-1.com/hls/stream.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/imagen.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreaming.imagenfm105-1.com%2Fhls%2Fstream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreaming.imagenfm105-1.com%2Fhls%2Fstream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-874",
@@ -1844,7 +2740,11 @@ export const canalesTV = [
     "url": "https://59a564764e2b6.streamlock.net/palestra/palestra/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-874.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59a564764e2b6.streamlock.net%2Fpalestra%2Fpalestra%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59a564764e2b6.streamlock.net%2Fpalestra%2Fpalestra%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-877",
@@ -1852,7 +2752,11 @@ export const canalesTV = [
     "url": "https://vivo.solumedia.com:19360/realpolitik/realpolitik.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-877.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Frealpolitik%2Frealpolitik.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Frealpolitik%2Frealpolitik.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-878",
@@ -1860,7 +2764,11 @@ export const canalesTV = [
     "url": "https://panel.tvstream.cl:1936/8046/8046/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-878.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fpanel.tvstream.cl%3A1936%2F8046%2F8046%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fpanel.tvstream.cl%3A1936%2F8046%2F8046%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-879",
@@ -1868,7 +2776,11 @@ export const canalesTV = [
     "url": "https://5f700d5b2c46f.streamlock.net/sublime/sublime/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-879.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5f700d5b2c46f.streamlock.net%2Fsublime%2Fsublime%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5f700d5b2c46f.streamlock.net%2Fsublime%2Fsublime%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-880",
@@ -1876,7 +2788,11 @@ export const canalesTV = [
     "url": "https://media.neuquen.gov.ar/rtn/television/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-880.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmedia.neuquen.gov.ar%2Frtn%2Ftelevision%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmedia.neuquen.gov.ar%2Frtn%2Ftelevision%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-882",
@@ -1884,7 +2800,11 @@ export const canalesTV = [
     "url": "https://ocb-ingest.akamaized.net/hls/live/2037032/tvmc01/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/marti.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Focb-ingest.akamaized.net%2Fhls%2Flive%2F2037032%2Ftvmc01%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Focb-ingest.akamaized.net%2Fhls%2Flive%2F2037032%2Ftvmc01%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-883",
@@ -1892,7 +2812,11 @@ export const canalesTV = [
     "url": "https://eu1.servers10.com:8081/8230/index.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-883.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8230%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8230%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-884",
@@ -1900,7 +2824,11 @@ export const canalesTV = [
     "url": "https://live.obslivestream.com/tvoriente/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/oriente.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.obslivestream.com%2Ftvoriente%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.obslivestream.com%2Ftvoriente%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-885",
@@ -1908,7 +2836,11 @@ export const canalesTV = [
     "url": "http://204.199.3.2/.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/radiocanal.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2F204.199.3.2%2F.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2F204.199.3.2%2F.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-898",
@@ -1916,7 +2848,11 @@ export const canalesTV = [
     "url": "https://7.innovatestream.pe:19360/turbomixoficial/turbomixoficial.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-898.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F7.innovatestream.pe%3A19360%2Fturbomixoficial%2Fturbomixoficial.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F7.innovatestream.pe%3A19360%2Fturbomixoficial%2Fturbomixoficial.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-948",
@@ -1924,7 +2860,11 @@ export const canalesTV = [
     "url": "https://stmv6.voxtvhd.com.br/xtremacartoons/xtremacartoons/playlist.m3u8",
     "genre": "Infantil",
     "logo": "/logos_canales/tv-948.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv6.voxtvhd.com.br%2Fxtremacartoons%2Fxtremacartoons%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv6.voxtvhd.com.br%2Fxtremacartoons%2Fxtremacartoons%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-55",
@@ -1932,7 +2872,11 @@ export const canalesTV = [
     "url": "https://mdstrm.com/live-stream-playlist/60b578b060947317de7b57ac.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/adn.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmdstrm.com%2Flive-stream-playlist%2F60b578b060947317de7b57ac.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmdstrm.com%2Flive-stream-playlist%2F60b578b060947317de7b57ac.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-56",
@@ -1940,7 +2884,11 @@ export const canalesTV = [
     "url": "https://estrella-news-oando.amagi.tv/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/extrella news.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Festrella-news-oando.amagi.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Festrella-news-oando.amagi.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-57",
@@ -1948,7 +2896,11 @@ export const canalesTV = [
     "url": "https://panel.host-live.com:19360/cn247tv/cn247tv.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/247.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fpanel.host-live.com%3A19360%2Fcn247tv%2Fcn247tv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fpanel.host-live.com%3A19360%2Fcn247tv%2Fcn247tv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-58",
@@ -1956,7 +2908,11 @@ export const canalesTV = [
     "url": "https://v2.tustreaming.cl/atacamanoticias/index.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-58.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fv2.tustreaming.cl%2Fatacamanoticias%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fv2.tustreaming.cl%2Fatacamanoticias%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-59",
@@ -1964,7 +2920,11 @@ export const canalesTV = [
     "url": "https://ztnr.rtve.es/ztnr/5473142.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-59.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fztnr.rtve.es%2Fztnr%2F5473142.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fztnr.rtve.es%2Fztnr%2F5473142.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-137",
@@ -1972,7 +2932,11 @@ export const canalesTV = [
     "url": "https://ztnr.rtve.es/ztnr/1694255.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/24.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fztnr.rtve.es%2Fztnr%2F1694255.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fztnr.rtve.es%2Fztnr%2F1694255.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-538",
@@ -1980,7 +2944,11 @@ export const canalesTV = [
     "url": "https://ondacadiztv.es:30443/octv/24h/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/onda_cadiz.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fondacadiztv.es%3A30443%2Foctv%2F24h%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fondacadiztv.es%3A30443%2Foctv%2F24h%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-97",
@@ -1988,7 +2956,11 @@ export const canalesTV = [
     "url": "https://airtelapp.shemaroo.com/shemarooChumbakTV/smil:shemarooChumbakTVadp.smil/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "https://xstreamcp-assets-msp.streamready.in/assets/LIVETV/LIVECHANNEL/LIVETV_LIVETVCHANNEL_CHUMBAK_TV/images/LOGO_HD/image.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fairtelapp.shemaroo.com%2FshemarooChumbakTV%2Fsmil%3AshemarooChumbakTVadp.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fairtelapp.shemaroo.com%2FshemarooChumbakTV%2Fsmil%3AshemarooChumbakTVadp.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-130",
@@ -1996,7 +2968,11 @@ export const canalesTV = [
     "url": "https://dwamdstream104.akamaized.net/hls/live/2015530/dwstream104/stream04/streamPlaylist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/dw.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fdwamdstream104.akamaized.net%2Fhls%2Flive%2F2015530%2Fdwstream104%2Fstream04%2FstreamPlaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fdwamdstream104.akamaized.net%2Fhls%2Flive%2F2015530%2Fdwstream104%2Fstream04%2FstreamPlaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-138",
@@ -2004,7 +2980,11 @@ export const canalesTV = [
     "url": "https://cf-lbs.suprememastertv.com/origin/720p/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/tv-138.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcf-lbs.suprememastertv.com%2Forigin%2F720p%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcf-lbs.suprememastertv.com%2Forigin%2F720p%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-182",
@@ -2012,7 +2992,11 @@ export const canalesTV = [
     "url": "https://amg00793-amg00793c40-rakuten-es-5444.playouts.now.amagi.tv/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/bbc.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Famg00793-amg00793c40-rakuten-es-5444.playouts.now.amagi.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Famg00793-amg00793c40-rakuten-es-5444.playouts.now.amagi.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-200",
@@ -2020,7 +3004,11 @@ export const canalesTV = [
     "url": "https://fastly.live.brightcove.com/6383462549112/us-east-1/734546207001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiczFpM3ZpLmVncmVzcy50N2M3emwiLCJhY2NvdW50X2lkIjoiNzM0NTQ2MjA3MDAxIiwiZWhuIjoiZmFzdGx5LmxpdmUuYnJpZ2h0Y292ZS5jb20iLCJpc3MiOiJibGl2ZS1wbGF5YmFjay1zb3VyY2UtYXBpIiwic3ViIjoicGF0aG1hcHRva2VuIiwiYXVkIjpbIjczNDU0NjIwNzAwMSJdLCJqdGkiOiI2MzgzNDYyNTQ5MTEyIn0.g04lznsvgqgIXQt2ZH0H_tWtIeTsMgGjVORsjOJ0T6U/playlist-hls.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/cvn.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffastly.live.brightcove.com%2F6383462549112%2Fus-east-1%2F734546207001%2FeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiczFpM3ZpLmVncmVzcy50N2M3emwiLCJhY2NvdW50X2lkIjoiNzM0NTQ2MjA3MDAxIiwiZWhuIjoiZmFzdGx5LmxpdmUuYnJpZ2h0Y292ZS5jb20iLCJpc3MiOiJibGl2ZS1wbGF5YmFjay1zb3VyY2UtYXBpIiwic3ViIjoicGF0aG1hcHRva2VuIiwiYXVkIjpbIjczNDU0NjIwNzAwMSJdLCJqdGkiOiI2MzgzNDYyNTQ5MTEyIn0.g04lznsvgqgIXQt2ZH0H_tWtIeTsMgGjVORsjOJ0T6U%2Fplaylist-hls.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffastly.live.brightcove.com%2F6383462549112%2Fus-east-1%2F734546207001%2FeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiczFpM3ZpLmVncmVzcy50N2M3emwiLCJhY2NvdW50X2lkIjoiNzM0NTQ2MjA3MDAxIiwiZWhuIjoiZmFzdGx5LmxpdmUuYnJpZ2h0Y292ZS5jb20iLCJpc3MiOiJibGl2ZS1wbGF5YmFjay1zb3VyY2UtYXBpIiwic3ViIjoicGF0aG1hcHRva2VuIiwiYXVkIjpbIjczNDU0NjIwNzAwMSJdLCJqdGkiOiI2MzgzNDYyNTQ5MTEyIn0.g04lznsvgqgIXQt2ZH0H_tWtIeTsMgGjVORsjOJ0T6U%2Fplaylist-hls.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-258",
@@ -2028,7 +3016,11 @@ export const canalesTV = [
     "url": "http://coninfo.net:1935/9linklivert/smil:9linkmultibr.smil/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/9.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2Fconinfo.net%3A1935%2F9linklivert%2Fsmil%3A9linkmultibr.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2Fconinfo.net%3A1935%2F9linklivert%2Fsmil%3A9linkmultibr.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-268",
@@ -2036,7 +3028,11 @@ export const canalesTV = [
     "url": "https://canalmalaga-tv-live.flumotion.com/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/malaga.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcanalmalaga-tv-live.flumotion.com%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcanalmalaga-tv-live.flumotion.com%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-275",
@@ -2044,7 +3040,11 @@ export const canalesTV = [
     "url": "https://60417ddeaf0d9.streamlock.net/srtc/smil:srtc.smil/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-275.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Fsrtc%2Fsmil%3Asrtc.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Fsrtc%2Fsmil%3Asrtc.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-278",
@@ -2052,7 +3052,11 @@ export const canalesTV = [
     "url": "https://cdnlive.codev8.net/rtvalive/smil:channel22.smil/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/canalsur.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdnlive.codev8.net%2Frtvalive%2Fsmil%3Achannel22.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdnlive.codev8.net%2Frtvalive%2Fsmil%3Achannel22.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-304",
@@ -2060,7 +3064,11 @@ export const canalesTV = [
     "url": "https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/clan_int_main_1080.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/clan.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Frtvelivestream-rtveplayplus.rtve.es%2Frtvesec%2Fint%2Fclan_int_main_1080.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Frtvelivestream-rtveplayplus.rtve.es%2Frtvesec%2Fint%2Fclan_int_main_1080.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-306",
@@ -2068,7 +3076,11 @@ export const canalesTV = [
     "url": "https://cnn.livestreaminggroup.info:3132/live/colimdotvlive.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/colidot.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcnn.livestreaminggroup.info%3A3132%2Flive%2Fcolimdotvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcnn.livestreaminggroup.info%3A3132%2Flive%2Fcolimdotvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-324",
@@ -2076,7 +3088,11 @@ export const canalesTV = [
     "url": "https://cdn3.wowza.com/5/dk84U1p2UUdoMGxT/cupertino/G0067_003/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/tv-324.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn3.wowza.com%2F5%2Fdk84U1p2UUdoMGxT%2Fcupertino%2FG0067_003%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn3.wowza.com%2F5%2Fdk84U1p2UUdoMGxT%2Fcupertino%2FG0067_003%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-328",
@@ -2084,7 +3100,11 @@ export const canalesTV = [
     "url": "https://cnn.hostlagarto.com/telesiglo/tracks-v1a1/mono.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/telesiglo.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcnn.hostlagarto.com%2Ftelesiglo%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcnn.hostlagarto.com%2Ftelesiglo%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-332",
@@ -2092,7 +3112,11 @@ export const canalesTV = [
     "url": "https://soportedvb.click:3620/live/deultimominutomedialive.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/minuto.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fsoportedvb.click%3A3620%2Flive%2Fdeultimominutomedialive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fsoportedvb.click%3A3620%2Flive%2Fdeultimominutomedialive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-388",
@@ -2100,7 +3124,11 @@ export const canalesTV = [
     "url": "https://5c0956165db0b.streamlock.net/ftv/directo/.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/ftv_1.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5c0956165db0b.streamlock.net%2Fftv%2Fdirecto%2F.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5c0956165db0b.streamlock.net%2Fftv%2Fdirecto%2F.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-413",
@@ -2108,7 +3136,11 @@ export const canalesTV = [
     "url": "https://rtmp.info/iqtv/envivo/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/iq.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Frtmp.info%2Fiqtv%2Fenvivo%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Frtmp.info%2Fiqtv%2Fenvivo%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-427",
@@ -2116,7 +3148,11 @@ export const canalesTV = [
     "url": "https://imagenuniversaltv.net:3026/live/juanpabloduartetvlive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/jpd.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fimagenuniversaltv.net%3A3026%2Flive%2Fjuanpabloduartetvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fimagenuniversaltv.net%3A3026%2Flive%2Fjuanpabloduartetvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-439",
@@ -2124,7 +3160,11 @@ export const canalesTV = [
     "url": "https://ztnr.rtve.es/ztnr/5190066.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/canal_1.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fztnr.rtve.es%2Fztnr%2F5190066.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fztnr.rtve.es%2Fztnr%2F5190066.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-440",
@@ -2132,7 +3172,11 @@ export const canalesTV = [
     "url": "https://ztnr.rtve.es/ztnr/5468585.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/2.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fztnr.rtve.es%2Fztnr%2F5468585.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fztnr.rtve.es%2Fztnr%2F5468585.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-507",
@@ -2140,7 +3184,11 @@ export const canalesTV = [
     "url": "https://soportedvb.click:3400/live/montecristitvlive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/montecristo.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fsoportedvb.click%3A3400%2Flive%2Fmontecristitvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fsoportedvb.click%3A3400%2Flive%2Fmontecristitvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-511",
@@ -2148,7 +3196,11 @@ export const canalesTV = [
     "url": "https://cnn.hostlagarto.com/musavisiontv/tracks-v1a1/mono.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/musa.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcnn.hostlagarto.com%2Fmusavisiontv%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcnn.hostlagarto.com%2Fmusavisiontv%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-532",
@@ -2156,7 +3208,11 @@ export const canalesTV = [
     "url": "https://cnn.hostlagarto.com/orbittv/tracks-v1a1/mono.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-532.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcnn.hostlagarto.com%2Forbittv%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcnn.hostlagarto.com%2Forbittv%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-542",
@@ -2164,7 +3220,11 @@ export const canalesTV = [
     "url": "https://stream.oromar.tv/hls/oromartv_hi/index.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-542.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.oromar.tv%2Fhls%2Foromartv_hi%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.oromar.tv%2Fhls%2Foromartv_hi%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-551",
@@ -2172,7 +3232,11 @@ export const canalesTV = [
     "url": "https://streamunoapp.com:3255/live/palmartvlive.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/palmar_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamunoapp.com%3A3255%2Flive%2Fpalmartvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamunoapp.com%3A3255%2Flive%2Fpalmartvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-564",
@@ -2180,7 +3244,11 @@ export const canalesTV = [
     "url": "http://vcp1.myplaytv.com:1935/promar/promar/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/promar.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2Fvcp1.myplaytv.com%3A1935%2Fpromar%2Fpromar%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2Fvcp1.myplaytv.com%3A1935%2Fpromar%2Fpromar%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-577",
@@ -2188,7 +3256,11 @@ export const canalesTV = [
     "url": "https://rt-esp.rttv.com/dvr/rtesp/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/rt.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Frt-esp.rttv.com%2Fdvr%2Frtesp%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Frt-esp.rttv.com%2Fdvr%2Frtesp%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-579",
@@ -2196,7 +3268,11 @@ export const canalesTV = [
     "url": "https://media.neuquen.gov.ar/rtn/television/media.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/rtn.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmedia.neuquen.gov.ar%2Frtn%2Ftelevision%2Fmedia.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmedia.neuquen.gov.ar%2Frtn%2Ftelevision%2Fmedia.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-580",
@@ -2204,7 +3280,11 @@ export const canalesTV = [
     "url": "https://rtp.noxun.net/hls/stream.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/rtp.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Frtp.noxun.net%2Fhls%2Fstream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Frtp.noxun.net%2Fhls%2Fstream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-581",
@@ -2212,7 +3292,11 @@ export const canalesTV = [
     "url": "https://59d39900ebfb8.streamlock.net/rytqrolive/rytqrolive/chunklist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/rtq.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Frytqrolive%2Frytqrolive%2Fchunklist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Frytqrolive%2Frytqrolive%2Fchunklist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-582",
@@ -2220,7 +3304,11 @@ export const canalesTV = [
     "url": "https://tv3ecuador.site/hls/stream/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/peli.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv3ecuador.site%2Fhls%2Fstream%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv3ecuador.site%2Fhls%2Fstream%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-585",
@@ -2228,7 +3316,11 @@ export const canalesTV = [
     "url": "https://stream.giostreaming.app/rtvcanal57/rtvcanal57.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/57.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.giostreaming.app%2Frtvcanal57%2Frtvcanal57.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.giostreaming.app%2Frtvcanal57%2Frtvcanal57.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-593",
@@ -2236,7 +3328,11 @@ export const canalesTV = [
     "url": "https://streamrd.cloud:5443/LiveApp/streams/J3E3REmLNBzirS9A10575071547538.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/reportero.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamrd.cloud%3A5443%2FLiveApp%2Fstreams%2FJ3E3REmLNBzirS9A10575071547538.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamrd.cloud%3A5443%2FLiveApp%2Fstreams%2FJ3E3REmLNBzirS9A10575071547538.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-599",
@@ -2244,7 +3340,11 @@ export const canalesTV = [
     "url": "https://cnn.livestreaminggroup.info:3796/live/ruta66tvlive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/ruta_66.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcnn.livestreaminggroup.info%3A3796%2Flive%2Fruta66tvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcnn.livestreaminggroup.info%3A3796%2Flive%2Fruta66tvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-746",
@@ -2252,7 +3352,11 @@ export const canalesTV = [
     "url": "https://7.innovatestream.pe:19360/tvnoticiassatipo/tvnoticiassatipo.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tls.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F7.innovatestream.pe%3A19360%2Ftvnoticiassatipo%2Ftvnoticiassatipo.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F7.innovatestream.pe%3A19360%2Ftvnoticiassatipo%2Ftvnoticiassatipo.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-748",
@@ -2260,7 +3364,11 @@ export const canalesTV = [
     "url": "https://mblesmain01.telesur.ultrabase.net/mbliveMain/hd/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/telesur.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmblesmain01.telesur.ultrabase.net%2FmbliveMain%2Fhd%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmblesmain01.telesur.ultrabase.net%2FmbliveMain%2Fhd%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-774",
@@ -2268,7 +3376,11 @@ export const canalesTV = [
     "url": "https://streaming5.globalhostla.com/rtplive/unamirad/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-774.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreaming5.globalhostla.com%2Frtplive%2Funamirad%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreaming5.globalhostla.com%2Frtplive%2Funamirad%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-793",
@@ -2276,7 +3388,11 @@ export const canalesTV = [
     "url": "http://provedores.unsion.tv:8081/srt/1/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-793.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2Fprovedores.unsion.tv%3A8081%2Fsrt%2F1%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2Fprovedores.unsion.tv%3A8081%2Fsrt%2F1%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-800",
@@ -2284,7 +3400,11 @@ export const canalesTV = [
     "url": "https://cnn.livestreaminggroup.info:3507/live/vtv32live.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-800.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcnn.livestreaminggroup.info%3A3507%2Flive%2Fvtv32live.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcnn.livestreaminggroup.info%3A3507%2Flive%2Fvtv32live.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-810",
@@ -2292,7 +3412,11 @@ export const canalesTV = [
     "url": "https://5f700d5b2c46f.streamlock.net/vertv/vertv/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-810.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5f700d5b2c46f.streamlock.net%2Fvertv%2Fvertv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5f700d5b2c46f.streamlock.net%2Fvertv%2Fvertv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-823",
@@ -2300,7 +3424,11 @@ export const canalesTV = [
     "url": "https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream1/master.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-823.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fnbculocallive.akamaized.net%2Fhls%2Flive%2F2037499%2Fpuertorico%2Fstream1%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fnbculocallive.akamaized.net%2Fhls%2Flive%2F2037499%2Fpuertorico%2Fstream1%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-824",
@@ -2308,7 +3436,11 @@ export const canalesTV = [
     "url": "https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream2/master.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-824.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fnbculocallive.akamaized.net%2Fhls%2Flive%2F2037499%2Fpuertorico%2Fstream2%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fnbculocallive.akamaized.net%2Fhls%2Flive%2F2037499%2Fpuertorico%2Fstream2%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-127",
@@ -2316,7 +3448,11 @@ export const canalesTV = [
     "url": "http://217.182.77.27/live/alcarriatv-livestream.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/Alcarria TV.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2F217.182.77.27%2Flive%2Falcarriatv-livestream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2F217.182.77.27%2Flive%2Falcarriatv-livestream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-128",
@@ -2331,7 +3467,11 @@ export const canalesTV = [
     "url": "https://estrellatv-oando.amagi.tv/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/ESTRELLA.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Festrellatv-oando.amagi.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Festrellatv-oando.amagi.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-140",
@@ -2339,7 +3479,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/akamaissh101/ssh101/fabulosa/playlist.m3u8",
     "genre": "Musica",
     "logo": "logo-fabulosa.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Ffabulosa%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fakamaissh101%2Fssh101%2Ffabulosa%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-154",
@@ -2347,7 +3491,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/giatv/giatv-adoram/adoram/chunks.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/AD.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatv%2Fgiatv-adoram%2Fadoram%2Fchunks.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatv%2Fgiatv-adoram%2Fadoram%2Fchunks.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-157",
@@ -2355,7 +3503,11 @@ export const canalesTV = [
     "url": "https://tv.livestreaminggroup.info:3513/live/canal35live.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/3.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv.livestreaminggroup.info%3A3513%2Flive%2Fcanal35live.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv.livestreaminggroup.info%3A3513%2Flive%2Fcanal35live.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-220",
@@ -2363,7 +3515,11 @@ export const canalesTV = [
     "url": "https://stream.arcast.net:4443/canal10/ngrp:canal10_all/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-220.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.arcast.net%3A4443%2Fcanal10%2Fngrp%3Acanal10_all%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.arcast.net%3A4443%2Fcanal10%2Fngrp%3Acanal10_all%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-232",
@@ -2371,7 +3527,11 @@ export const canalesTV = [
     "url": "https://limited49.todostreaming.es/live/tvbarbastro-livestream.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/C25.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flimited49.todostreaming.es%2Flive%2Ftvbarbastro-livestream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flimited49.todostreaming.es%2Flive%2Ftvbarbastro-livestream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-233",
@@ -2379,7 +3539,11 @@ export const canalesTV = [
     "url": "https://60417ddeaf0d9.streamlock.net/telemetrika3/smil:telemetrika3.smil/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-233.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Ftelemetrika3%2Fsmil%3Atelemetrika3.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F60417ddeaf0d9.streamlock.net%2Ftelemetrika3%2Fsmil%3Atelemetrika3.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-234",
@@ -2387,7 +3551,11 @@ export const canalesTV = [
     "url": "https://vdo.tecnoservix.stream:3899/live/canal26tvlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-234.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvdo.tecnoservix.stream%3A3899%2Flive%2Fcanal26tvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvdo.tecnoservix.stream%3A3899%2Flive%2Fcanal26tvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-235",
@@ -2395,7 +3563,11 @@ export const canalesTV = [
     "url": "https://cloud2.streaminglivehd.com:2020/hls/8036/8036.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/3..png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A2020%2Fhls%2F8036%2F8036.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A2020%2Fhls%2F8036%2F8036.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-236",
@@ -2403,7 +3575,11 @@ export const canalesTV = [
     "url": "https://stream.arcast.com.ar/c3lapampa/ngrp:c3lapampa_all/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-236.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Fc3lapampa%2Fngrp%3Ac3lapampa_all%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Fc3lapampa%2Fngrp%3Ac3lapampa_all%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-237",
@@ -2411,7 +3587,11 @@ export const canalesTV = [
     "url": "https://stream.arcast.com.ar/canal3/canal3/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/3...jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Fcanal3%2Fcanal3%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Fcanal3%2Fcanal3%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-242",
@@ -2419,7 +3599,11 @@ export const canalesTV = [
     "url": "https://stmv4.voxtvhd.com.br/canal5pueblo/canal5pueblo/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/5.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv4.voxtvhd.com.br%2Fcanal5pueblo%2Fcanal5pueblo%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv4.voxtvhd.com.br%2Fcanal5pueblo%2Fcanal5pueblo%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-246",
@@ -2451,7 +3635,11 @@ export const canalesTV = [
     "url": "https://movil.ejeserver.com/live/canal8tv.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/8.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fcanal8tv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fcanal8tv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-257",
@@ -2459,7 +3647,11 @@ export const canalesTV = [
     "url": "https://stream.arcast.live/ahora/ahora/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/9..jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.arcast.live%2Fahora%2Fahora%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.arcast.live%2Fahora%2Fahora%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-259",
@@ -2467,7 +3659,11 @@ export const canalesTV = [
     "url": "https://tv.livestreaminggroup.info:3052/live/catorcetvlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-259.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv.livestreaminggroup.info%3A3052%2Flive%2Fcatorcetvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv.livestreaminggroup.info%3A3052%2Flive%2Fcatorcetvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-261",
@@ -2475,7 +3671,11 @@ export const canalesTV = [
     "url": "https://nlb2-live.emitstream.com/hls/5i3pxfuz4az356yu22ij/master.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-261.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fnlb2-live.emitstream.com%2Fhls%2F5i3pxfuz4az356yu22ij%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fnlb2-live.emitstream.com%2Fhls%2F5i3pxfuz4az356yu22ij%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-263",
@@ -2483,7 +3683,11 @@ export const canalesTV = [
     "url": "https://unlimited1-us.dps.live/perfiltv/perfiltv.smil/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/E.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fperfiltv%2Fperfiltv.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fperfiltv%2Fperfiltv.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-267",
@@ -2491,7 +3695,11 @@ export const canalesTV = [
     "url": "https://movil.ejeserver.com/live/mundovisiontv.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/M.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fmundovisiontv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fmundovisiontv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-270",
@@ -2499,7 +3707,11 @@ export const canalesTV = [
     "url": "https://movil.ejeserver.com/live/nets.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/NETS.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fnets.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fnets.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-277",
@@ -2507,7 +3719,11 @@ export const canalesTV = [
     "url": "https://s.emisoras.tv:8081/sierradecadiz/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/8...jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fsierradecadiz%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fsierradecadiz%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-280",
@@ -2515,7 +3731,11 @@ export const canalesTV = [
     "url": "https://stmv2.voxtvhd.com.br/telefamilia/telefamilia/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/TELEFAMILIA.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv2.voxtvhd.com.br%2Ftelefamilia%2Ftelefamilia%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv2.voxtvhd.com.br%2Ftelefamilia%2Ftelefamilia%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-287",
@@ -2523,7 +3743,11 @@ export const canalesTV = [
     "url": "https://stream.arcast.com.ar/canal7catamarca/ngrp:canal7catamarca_all/playlist.m3u8?DVR=",
     "genre": "Musica",
     "logo": "/logos_canales/CATAMARCA.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Fcanal7catamarca%2Fngrp%3Acanal7catamarca_all%2Fplaylist.m3u8%3FDVR%3D"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Fcanal7catamarca%2Fngrp%3Acanal7catamarca_all%2Fplaylist.m3u8%3FDVR%3D&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-296",
@@ -2531,7 +3755,11 @@ export const canalesTV = [
     "url": "https://tv.wracanal10.com:3300/live/chinolatvlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-296.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv.wracanal10.com%3A3300%2Flive%2Fchinolatvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv.wracanal10.com%3A3300%2Flive%2Fchinolatvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-302",
@@ -2539,7 +3767,11 @@ export const canalesTV = [
     "url": "https://live-01-07-ciudad.vodgc.net/live-01-07-ciudad.vodgc.net/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-302.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive-01-07-ciudad.vodgc.net%2Flive-01-07-ciudad.vodgc.net%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive-01-07-ciudad.vodgc.net%2Flive-01-07-ciudad.vodgc.net%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-318",
@@ -2547,7 +3779,11 @@ export const canalesTV = [
     "url": "https://limited31.todostreaming.es/live/noroestetv-livestream.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-318.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flimited31.todostreaming.es%2Flive%2Fnoroestetv-livestream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flimited31.todostreaming.es%2Flive%2Fnoroestetv-livestream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-344",
@@ -2555,7 +3791,11 @@ export const canalesTV = [
     "url": "https://stream.ecoperu.tv/ECOTV/tracks-v1a1/mono.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/EE.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.ecoperu.tv%2FECOTV%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.ecoperu.tv%2FECOTV%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-362",
@@ -2563,7 +3803,11 @@ export const canalesTV = [
     "url": "https://tv.wracanal10.com:3025/live/elsoltvlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-362.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv.wracanal10.com%3A3025%2Flive%2Felsoltvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv.wracanal10.com%3A3025%2Flive%2Felsoltvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-366",
@@ -2571,7 +3815,11 @@ export const canalesTV = [
     "url": "https://tv.livestreaminggroup.info:3985/live/entelevisionlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-366.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv.livestreaminggroup.info%3A3985%2Flive%2Fentelevisionlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv.livestreaminggroup.info%3A3985%2Flive%2Fentelevisionlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-374",
@@ -2579,7 +3827,11 @@ export const canalesTV = [
     "url": "https://samson.streamerr.co:8081/xtelevisionrd/tracks-v1a1/mono.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/X.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fsamson.streamerr.co%3A8081%2Fxtelevisionrd%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fsamson.streamerr.co%3A8081%2Fxtelevisionrd%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-393",
@@ -2587,7 +3839,11 @@ export const canalesTV = [
     "url": "https://canal.gitelevisionserver.com/live/DIEEFIh506fL8huspvl0f0c2PZF3/index.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/GI.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcanal.gitelevisionserver.com%2Flive%2FDIEEFIh506fL8huspvl0f0c2PZF3%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcanal.gitelevisionserver.com%2Flive%2FDIEEFIh506fL8huspvl0f0c2PZF3%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-406",
@@ -2595,7 +3851,11 @@ export const canalesTV = [
     "url": "https://hilandofinotv.essastream.com:3606/live/canalhilandofinotvlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-406.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fhilandofinotv.essastream.com%3A3606%2Flive%2Fcanalhilandofinotvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fhilandofinotv.essastream.com%3A3606%2Flive%2Fcanalhilandofinotvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-451",
@@ -2603,7 +3863,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/giatvplayout7/giatv-208429/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-451.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatvplayout7%2Fgiatv-208429%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatvplayout7%2Fgiatv-208429%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-455",
@@ -2611,7 +3875,11 @@ export const canalesTV = [
     "url": "https://5c0956165db0b.streamlock.net:8090/directo/_definst_/lancelot.television/master.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/LNT.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5c0956165db0b.streamlock.net%3A8090%2Fdirecto%2F_definst_%2Flancelot.television%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5c0956165db0b.streamlock.net%3A8090%2Fdirecto%2F_definst_%2Flancelot.television%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-456",
@@ -2619,7 +3887,11 @@ export const canalesTV = [
     "url": "https://channel01-onlymex.akamaized.net/hls/live/2022749/event01/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/ESTRELLAS.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fchannel01-onlymex.akamaized.net%2Fhls%2Flive%2F2022749%2Fevent01%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fchannel01-onlymex.akamaized.net%2Fhls%2Flive%2F2022749%2Fevent01%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-471",
@@ -2627,7 +3899,11 @@ export const canalesTV = [
     "url": "https://tv.wracanal10.com:3671/live/lunatvcanal53live.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/LUNA.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv.wracanal10.com%3A3671%2Flive%2Flunatvcanal53live.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv.wracanal10.com%3A3671%2Flive%2Flunatvcanal53live.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-472",
@@ -2635,7 +3911,11 @@ export const canalesTV = [
     "url": "https://tv.wracanal10.com:3776/live/luzdivinatvlive.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/LUZ.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv.wracanal10.com%3A3776%2Flive%2Fluzdivinatvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv.wracanal10.com%3A3776%2Flive%2Fluzdivinatvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-479",
@@ -2643,7 +3923,11 @@ export const canalesTV = [
     "url": "https://makrodigitaltv.makrodigital.com/makrodigitaltelevision/iptv/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/MD.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmakrodigitaltv.makrodigital.com%2Fmakrodigitaltelevision%2Fiptv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmakrodigitaltv.makrodigital.com%2Fmakrodigitaltelevision%2Fiptv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-480",
@@ -2651,7 +3935,11 @@ export const canalesTV = [
     "url": "https://5790d294af2dc.streamlock.net/manaclar/manaclar/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-480.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2Fmanaclar%2Fmanaclar%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2Fmanaclar%2Fmanaclar%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-488",
@@ -2659,7 +3947,11 @@ export const canalesTV = [
     "url": "https://mgvchannel19-ioriver-cdn.encoders.immergo.tv/master.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/19.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmgvchannel19-ioriver-cdn.encoders.immergo.tv%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmgvchannel19-ioriver-cdn.encoders.immergo.tv%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-489",
@@ -2667,7 +3959,11 @@ export const canalesTV = [
     "url": "https://mgvchannel21-ioriver-cdn.encoders.immergo.tv/master.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-489.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmgvchannel21-ioriver-cdn.encoders.immergo.tv%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmgvchannel21-ioriver-cdn.encoders.immergo.tv%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-509",
@@ -2675,7 +3971,11 @@ export const canalesTV = [
     "url": "https://stream.digitalgt.com:3136/live/multivisionlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-509.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.digitalgt.com%3A3136%2Flive%2Fmultivisionlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.digitalgt.com%3A3136%2Flive%2Fmultivisionlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-535",
@@ -2683,7 +3983,11 @@ export const canalesTV = [
     "url": "https://vivo.canaloncelive.tv/securepkgr3/oncemexico/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-535.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvivo.canaloncelive.tv%2Fsecurepkgr3%2Foncemexico%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvivo.canaloncelive.tv%2Fsecurepkgr3%2Foncemexico%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-544",
@@ -2691,7 +3995,11 @@ export const canalesTV = [
     "url": "https://streamunoapp.com:3520/live/oxitvcanal36live.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/O.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamunoapp.com%3A3520%2Flive%2Foxitvcanal36live.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamunoapp.com%3A3520%2Flive%2Foxitvcanal36live.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-742",
@@ -2699,7 +4007,11 @@ export const canalesTV = [
     "url": "https://k20.usastreams.com:8081/telered/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/+..jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fk20.usastreams.com%3A8081%2Ftelered%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fk20.usastreams.com%3A8081%2Ftelered%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-768",
@@ -2707,7 +4019,11 @@ export const canalesTV = [
     "url": "https://live20.bozztv.com/giatvplayout7/giatv-208343/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-768.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatvplayout7%2Fgiatv-208343%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive20.bozztv.com%2Fgiatvplayout7%2Fgiatv-208343%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-772",
@@ -2715,7 +4031,11 @@ export const canalesTV = [
     "url": "https://livedelta.cdn.antel.net.uy/out/u/url_canalu.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/UCL.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flivedelta.cdn.antel.net.uy%2Fout%2Fu%2Furl_canalu.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flivedelta.cdn.antel.net.uy%2Fout%2Fu%2Furl_canalu.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-805",
@@ -2723,7 +4043,11 @@ export const canalesTV = [
     "url": "https://streaming.telecablecentral.com.do/Vallevision/ValleHD/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/VALLE.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreaming.telecablecentral.com.do%2FVallevision%2FValleHD%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreaming.telecablecentral.com.do%2FVallevision%2FValleHD%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-826",
@@ -2731,7 +4055,11 @@ export const canalesTV = [
     "url": "https://cootv.cootel.com.ni:8095/Canal40_WTV/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-826.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcootv.cootel.com.ni%3A8095%2FCanal40_WTV%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcootv.cootel.com.ni%3A8095%2FCanal40_WTV%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-571",
@@ -2739,7 +4067,11 @@ export const canalesTV = [
     "url": "https://pnt.janusmedia.tv/hls/pnt.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/pura_noticia.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fpnt.janusmedia.tv%2Fhls%2Fpnt.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fpnt.janusmedia.tv%2Fhls%2Fpnt.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-73",
@@ -2747,7 +4079,11 @@ export const canalesTV = [
     "url": "https://fast-channels.sinclairstoryline.com/CHARGE/index.m3u8",
     "genre": "Internacionales",
     "logo": "https://i.imgur.com/1rxmu2u.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffast-channels.sinclairstoryline.com%2FCHARGE%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffast-channels.sinclairstoryline.com%2FCHARGE%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-79",
@@ -2755,7 +4091,11 @@ export const canalesTV = [
     "url": "https://icchls.wns.live/hls/stream.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/icc.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ficchls.wns.live%2Fhls%2Fstream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ficchls.wns.live%2Fhls%2Fstream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-98",
@@ -2763,7 +4103,11 @@ export const canalesTV = [
     "url": "https://shls-live-enc.edgenextcdn.net/out/v1/18cffab0757d448ca6c1a686d330b346/index.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/depo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fshls-live-enc.edgenextcdn.net%2Fout%2Fv1%2F18cffab0757d448ca6c1a686d330b346%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fshls-live-enc.edgenextcdn.net%2Fout%2Fv1%2F18cffab0757d448ca6c1a686d330b346%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-99",
@@ -2771,7 +4115,11 @@ export const canalesTV = [
     "url": "https://cdn-1.pishow.tv/live/276/master.m3u8",
     "genre": "",
     "logo": "https://i.imgur.com/yOPB7JB.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn-1.pishow.tv%2Flive%2F276%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn-1.pishow.tv%2Flive%2F276%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-103",
@@ -2779,7 +4127,11 @@ export const canalesTV = [
     "url": "https://rakutenaa-zylo-screamin-rakuten-p11ej.amagi.tv/playlist/rakutenAA-zylo-screamin-rakuten/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "https://i.imgur.com/tGmKbil.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Frakutenaa-zylo-screamin-rakuten-p11ej.amagi.tv%2Fplaylist%2FrakutenAA-zylo-screamin-rakuten%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Frakutenaa-zylo-screamin-rakuten-p11ej.amagi.tv%2Fplaylist%2FrakutenAA-zylo-screamin-rakuten%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-120",
@@ -2787,7 +4139,11 @@ export const canalesTV = [
     "url": "https://stmv1.srvif.com/classique/classique/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "https://i.imgur.com/rHxcraT.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv1.srvif.com%2Fclassique%2Fclassique%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv1.srvif.com%2Fclassique%2Fclassique%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-126",
@@ -2795,7 +4151,11 @@ export const canalesTV = [
     "url": "https://azt-mun.otteravision.com/azt/mun/mun.m3u8",
     "genre": "Costa Rica",
     "logo": "/logos_canales/Azteca Internaciona.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fazt-mun.otteravision.com%2Fazt%2Fmun%2Fmun.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fazt-mun.otteravision.com%2Fazt%2Fmun%2Fmun.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-129",
@@ -2803,7 +4163,11 @@ export const canalesTV = [
     "url": "https://stream8.mexiserver.com:19360/conectatvx/conectatvx.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/conecta.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream8.mexiserver.com%3A19360%2Fconectatvx%2Fconectatvx.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream8.mexiserver.com%3A19360%2Fconectatvx%2Fconectatvx.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-132",
@@ -2811,7 +4175,11 @@ export const canalesTV = [
     "url": "https://1206618505.rsc.cdn77.org/LS-ATL-59020-1/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/hosana.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F1206618505.rsc.cdn77.org%2FLS-ATL-59020-1%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F1206618505.rsc.cdn77.org%2FLS-ATL-59020-1%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-135",
@@ -2819,7 +4187,11 @@ export const canalesTV = [
     "url": "https://unlimited1-us.dps.live/nctv/nctv.smil/nctv/livestream1/chunks.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/nctv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fnctv%2Fnctv.smil%2Fnctv%2Flivestream1%2Fchunks.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fnctv%2Fnctv.smil%2Fnctv%2Flivestream1%2Fchunks.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-136",
@@ -2827,7 +4199,11 @@ export const canalesTV = [
     "url": "https://live-scjn.ovp-vivaro.digital/ovp-origin/638a22b47746d/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/pluraltv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive-scjn.ovp-vivaro.digital%2Fovp-origin%2F638a22b47746d%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive-scjn.ovp-vivaro.digital%2Fovp-origin%2F638a22b47746d%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-142",
@@ -2835,7 +4211,11 @@ export const canalesTV = [
     "url": "https://3abn.bozztv.com/3abn2/Lat_live/smil:Lat_live.smil/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/3ABN Latino.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F3abn.bozztv.com%2F3abn2%2FLat_live%2Fsmil%3ALat_live.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F3abn.bozztv.com%2F3abn2%2FLat_live%2Fsmil%3ALat_live.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-143",
@@ -2843,7 +4223,11 @@ export const canalesTV = [
     "url": "http://www.coninfo.net:1935/tvcinco/live1/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/5tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2Fwww.coninfo.net%3A1935%2Ftvcinco%2Flive1%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2Fwww.coninfo.net%3A1935%2Ftvcinco%2Flive1%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-144",
@@ -2851,7 +4235,11 @@ export const canalesTV = [
     "url": "https://live.enhdtv.com:8081/8150/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/6 Wise Tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.enhdtv.com%3A8081%2F8150%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.enhdtv.com%3A8081%2F8150%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-145",
@@ -2859,7 +4247,11 @@ export const canalesTV = [
     "url": "https://play.cdn.enetres.net/9E9557EFCEBB43A89CEC8FBD3C500247022/028/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/valencia.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fplay.cdn.enetres.net%2F9E9557EFCEBB43A89CEC8FBD3C500247022%2F028%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fplay.cdn.enetres.net%2F9E9557EFCEBB43A89CEC8FBD3C500247022%2F028%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-160",
@@ -2867,7 +4259,11 @@ export const canalesTV = [
     "url": "https://streamunoapp.com:3149/live/alegretvlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/alegre.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamunoapp.com%3A3149%2Flive%2Falegretvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamunoapp.com%3A3149%2Flive%2Falegretvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-161",
@@ -2875,7 +4271,11 @@ export const canalesTV = [
     "url": "https://627bb251f23c7.streamlock.net:444/Alientoenvivo/Alientoenvivo/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-161.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FAlientoenvivo%2FAlientoenvivo%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FAlientoenvivo%2FAlientoenvivo%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-162",
@@ -2883,7 +4283,11 @@ export const canalesTV = [
     "url": "https://ss2.tvrdomi.com:1936/ame47/ame47/playlist.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/ametv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fame47%2Fame47%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fame47%2Fame47%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-164",
@@ -2891,7 +4295,11 @@ export const canalesTV = [
     "url": "https://antmedia.cablevisionrobles.com:5443/LiveApp/streams/CqwAgRagMvBNYN8c1731608980342.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/amigos_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fantmedia.cablevisionrobles.com%3A5443%2FLiveApp%2Fstreams%2FCqwAgRagMvBNYN8c1731608980342.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fantmedia.cablevisionrobles.com%3A5443%2FLiveApp%2Fstreams%2FCqwAgRagMvBNYN8c1731608980342.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-170",
@@ -2899,7 +4307,11 @@ export const canalesTV = [
     "url": "https://unlimited6-cl.dps.live/atv/atv.smil/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-170.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited6-cl.dps.live%2Fatv%2Fatv.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited6-cl.dps.live%2Fatv%2Fatv.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-171",
@@ -2907,7 +4319,11 @@ export const canalesTV = [
     "url": "https://stream1.sersat.com/hls/argentinisima.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/argentin.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream1.sersat.com%2Fhls%2Fargentinisima.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream1.sersat.com%2Fhls%2Fargentinisima.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-174",
@@ -2915,7 +4331,11 @@ export const canalesTV = [
     "url": "https://asomatv.cloud-ip.cc/livestream/stream.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/asoma_vision.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fasomatv.cloud-ip.cc%2Flivestream%2Fstream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fasomatv.cloud-ip.cc%2Flivestream%2Fstream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-175",
@@ -2923,7 +4343,11 @@ export const canalesTV = [
     "url": "https://stmv3.voxtvhd.com.br/australtv/australtv/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/austral.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv3.voxtvhd.com.br%2Faustraltv%2Faustraltv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv3.voxtvhd.com.br%2Faustraltv%2Faustraltv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-176",
@@ -2931,7 +4355,11 @@ export const canalesTV = [
     "url": "https://live.obslivestream.com/autenticatvmux/index.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/autentica.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.obslivestream.com%2Fautenticatvmux%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.obslivestream.com%2Fautenticatvmux%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-178",
@@ -2939,7 +4367,11 @@ export const canalesTV = [
     "url": "https://v1.tustreaming.cl/aysentv/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/aysen.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fv1.tustreaming.cl%2Faysentv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fv1.tustreaming.cl%2Faysentv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-183",
@@ -2947,7 +4379,11 @@ export const canalesTV = [
     "url": "https://live1.ovalcast.com:3641/live/bcngospeltvlive.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/BCN Gospel TV.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive1.ovalcast.com%3A3641%2Flive%2Fbcngospeltvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive1.ovalcast.com%3A3641%2Flive%2Fbcngospeltvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-185",
@@ -2955,7 +4391,11 @@ export const canalesTV = [
     "url": "https://cloud.fastchannel.es/manifiest/hls/prog9/btatv.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/bta.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud.fastchannel.es%2Fmanifiest%2Fhls%2Fprog9%2Fbtatv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud.fastchannel.es%2Fmanifiest%2Fhls%2Fprog9%2Fbtatv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-186",
@@ -2963,7 +4403,11 @@ export const canalesTV = [
     "url": "https://movil.ejeserver.com/live/visiondorada.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/bum.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fvisiondorada.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fvisiondorada.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-187",
@@ -2971,7 +4415,11 @@ export const canalesTV = [
     "url": "https://stmv6.voxtvhd.com.br/vacantveo2/vacantveo2/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/Bacán Te Veo.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv6.voxtvhd.com.br%2Fvacantveo2%2Fvacantveo2%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv6.voxtvhd.com.br%2Fvacantveo2%2Fvacantveo2%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-191",
@@ -2979,7 +4427,11 @@ export const canalesTV = [
     "url": "https://s.emisoras.tv:8081/bendicionchannel/index.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/Bendicion Channel.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fbendicionchannel%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fbendicionchannel%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-198",
@@ -2987,7 +4439,11 @@ export const canalesTV = [
     "url": "https://rds3.desdeparaguay.net/brunomasitv/brunomasitv/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/bruno.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Frds3.desdeparaguay.net%2Fbrunomasitv%2Fbrunomasitv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Frds3.desdeparaguay.net%2Fbrunomasitv%2Fbrunomasitv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-199",
@@ -2995,7 +4451,11 @@ export const canalesTV = [
     "url": "https://59825a54e4454.streamlock.net:8443/papo351/papo351/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/buena.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59825a54e4454.streamlock.net%3A8443%2Fpapo351%2Fpapo351%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59825a54e4454.streamlock.net%3A8443%2Fpapo351%2Fpapo351%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-201",
@@ -3003,7 +4463,11 @@ export const canalesTV = [
     "url": "https://627bb251f23c7.streamlock.net:444/CDMInternacional/CDMInternacional/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/CDM Internaciona.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FCDMInternacional%2FCDMInternacional%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F627bb251f23c7.streamlock.net%3A444%2FCDMInternacional%2FCDMInternacional%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-202",
@@ -3011,7 +4475,11 @@ export const canalesTV = [
     "url": "https://dash4.antik.sk/live/test_cgtn_esp_tizen/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/cgtn.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fdash4.antik.sk%2Flive%2Ftest_cgtn_esp_tizen%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fdash4.antik.sk%2Flive%2Ftest_cgtn_esp_tizen%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-203",
@@ -3019,7 +4487,11 @@ export const canalesTV = [
     "url": "https://viewhn.com/chtv/live/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/chtv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fviewhn.com%2Fchtv%2Flive%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fviewhn.com%2Fchtv%2Flive%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-204",
@@ -3027,7 +4499,11 @@ export const canalesTV = [
     "url": "https://movil.ejeserver.com/live/cncbuga.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/cnc.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fcncbuga.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fcncbuga.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-205",
@@ -3035,7 +4511,11 @@ export const canalesTV = [
     "url": "https://movil.ejeserver.com/live/cncsantander.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/cnc_s.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fcncsantander.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmovil.ejeserver.com%2Flive%2Fcncsantander.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-208",
@@ -3043,7 +4523,11 @@ export const canalesTV = [
     "url": "https://eu1.servers10.com:8081/8128/index.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/cv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8128%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8128%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-209",
@@ -3051,7 +4535,11 @@ export const canalesTV = [
     "url": "https://stream.arcast.com.ar/casse/casse/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-209.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Fcasse%2Fcasse%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Fcasse%2Fcasse%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-210",
@@ -3059,7 +4547,11 @@ export const canalesTV = [
     "url": "http://arcast.net:1935/cadena103/cadena103/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/cadena103.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2Farcast.net%3A1935%2Fcadena103%2Fcadena103%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2Farcast.net%3A1935%2Fcadena103%2Fcadena103%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-212",
@@ -3067,7 +4559,11 @@ export const canalesTV = [
     "url": "https://tv.bitstreaming.net:3789/live/cdntvlive.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/cadena.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv.bitstreaming.net%3A3789%2Flive%2Fcdntvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv.bitstreaming.net%3A3789%2Flive%2Fcdntvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-214",
@@ -3075,7 +4571,11 @@ export const canalesTV = [
     "url": "https://5ab772334c39c.streamlock.net/live-calitv/calitv1/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/cali_tv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5ab772334c39c.streamlock.net%2Flive-calitv%2Fcalitv1%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5ab772334c39c.streamlock.net%2Flive-calitv%2Fcalitv1%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-215",
@@ -3083,7 +4583,11 @@ export const canalesTV = [
     "url": "https://5e85d90130e77.streamlock.net/6052/6052/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/campus.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6052%2F6052%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6052%2F6052%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-217",
@@ -3091,7 +4595,11 @@ export const canalesTV = [
     "url": "https://stream.hostuis.com:19360/canatvdigital/canatvdigital.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/cana.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.hostuis.com%3A19360%2Fcanatvdigital%2Fcanatvdigital.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.hostuis.com%3A19360%2Fcanatvdigital%2Fcanatvdigital.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-282",
@@ -3099,7 +4607,11 @@ export const canalesTV = [
     "url": "https://cdn.streamingcpanel.com:3545/live/canangatlive.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/cananga.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.streamingcpanel.com%3A3545%2Flive%2Fcanangatlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.streamingcpanel.com%3A3545%2Flive%2Fcanangatlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-283",
@@ -3107,7 +4619,11 @@ export const canalesTV = [
     "url": "https://6110f70ea8d0e.streamlock.net/1689/1689/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/candelita.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F6110f70ea8d0e.streamlock.net%2F1689%2F1689%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F6110f70ea8d0e.streamlock.net%2F1689%2F1689%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-286",
@@ -3116,7 +4632,11 @@ export const canalesTV = [
     "genre": "Peliculas",
     "logo": "/logos_canales/1777546184381_logo.png",
     "name": "CASCARA TV",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fcascaratv%2Fcascaratv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fcascaratv%2Fcascaratv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-288",
@@ -3124,7 +4644,11 @@ export const canalesTV = [
     "url": "https://cloud.fastchannel.es/manifiest/hls/prog9/catatumbotv.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-288.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud.fastchannel.es%2Fmanifiest%2Fhls%2Fprog9%2Fcatatumbotv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud.fastchannel.es%2Fmanifiest%2Fhls%2Fprog9%2Fcatatumbotv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-289",
@@ -3132,7 +4656,11 @@ export const canalesTV = [
     "url": "https://vivo.solumedia.com:19360/celta/celta.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/1777547701490_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Fcelta%2Fcelta.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Fcelta%2Fcelta.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-290",
@@ -3140,7 +4668,11 @@ export const canalesTV = [
     "url": "https://5790d294af2dc.streamlock.net/cenovision/cenovision/playlist.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/1777546563972_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2Fcenovision%2Fcenovision%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2Fcenovision%2Fcenovision%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-293",
@@ -3148,7 +4680,11 @@ export const canalesTV = [
     "url": "https://v2.tustreaming.cl/chilechannel/index.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/1777546832055_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fv2.tustreaming.cl%2Fchilechannel%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fv2.tustreaming.cl%2Fchilechannel%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-298",
@@ -3156,7 +4692,11 @@ export const canalesTV = [
     "url": "https://streamunoapp.com:3958/live/cibaenatvlive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777547008288_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamunoapp.com%3A3958%2Flive%2Fcibaenatvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamunoapp.com%3A3958%2Flive%2Fcibaenatvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-305",
@@ -3164,7 +4704,11 @@ export const canalesTV = [
     "url": "https://v2.tustreaming.cl/clicktv/playlist.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/1777547114300_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fv2.tustreaming.cl%2Fclicktv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fv2.tustreaming.cl%2Fclicktv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-307",
@@ -3172,7 +4716,11 @@ export const canalesTV = [
     "url": "https://ss2.tvrdomi.com:1936/colometv/colometv/playlist.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/tv-307.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fcolometv%2Fcolometv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fcolometv%2Fcolometv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-308",
@@ -3180,7 +4728,11 @@ export const canalesTV = [
     "url": "https://live.obslivestream.com/conecta2/index.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/1777547220295_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.obslivestream.com%2Fconecta2%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.obslivestream.com%2Fconecta2%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-315",
@@ -3188,7 +4740,11 @@ export const canalesTV = [
     "url": "https://unlimited6-cl.dps.live/cm/cm.smil/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777547315016_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited6-cl.dps.live%2Fcm%2Fcm.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited6-cl.dps.live%2Fcm%2Fcm.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-316",
@@ -3196,7 +4752,11 @@ export const canalesTV = [
     "url": "https://live.obslivestream.com/controversiatv/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777547380293_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.obslivestream.com%2Fcontroversiatv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.obslivestream.com%2Fcontroversiatv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-323",
@@ -3204,7 +4764,11 @@ export const canalesTV = [
     "url": "https://reflect-communitytv.cablecast.tv/live-4/live/stream-2/live.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777547918014_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Freflect-communitytv.cablecast.tv%2Flive-4%2Flive%2Fstream-2%2Flive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Freflect-communitytv.cablecast.tv%2Flive-4%2Flive%2Fstream-2%2Flive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-326",
@@ -3212,7 +4776,11 @@ export const canalesTV = [
     "url": "https://rds3.desdeparaguay.net/caritastv/caritastv/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/1777547825998_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Frds3.desdeparaguay.net%2Fcaritastv%2Fcaritastv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Frds3.desdeparaguay.net%2Fcaritastv%2Fcaritastv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-327",
@@ -3220,7 +4788,11 @@ export const canalesTV = [
     "url": "https://mist01.homestream.fun/hls/ntvlive/0_1/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777548050149_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmist01.homestream.fun%2Fhls%2Fntvlive%2F0_1%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmist01.homestream.fun%2Fhls%2Fntvlive%2F0_1%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-329",
@@ -3228,7 +4800,11 @@ export const canalesTV = [
     "url": "https://cloud2.streaminglivehd.com:1936/dnjv2/dnjv2/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/1777548109226_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2Fdnjv2%2Fdnjv2%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2Fdnjv2%2Fdnjv2%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-338",
@@ -3236,7 +4812,11 @@ export const canalesTV = [
     "url": "https://inliveserver.com:1936/digital809tv/digital809tv/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777548221108_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Finliveserver.com%3A1936%2Fdigital809tv%2Fdigital809tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Finliveserver.com%3A1936%2Fdigital809tv%2Fdigital809tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-341",
@@ -3244,7 +4824,11 @@ export const canalesTV = [
     "url": "https://nlb2-live.emitstream.com/hls/3mn7wpcv7hbmxmdzaxap/master.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/1777548269972_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fnlb2-live.emitstream.com%2Fhls%2F3mn7wpcv7hbmxmdzaxap%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fnlb2-live.emitstream.com%2Fhls%2F3mn7wpcv7hbmxmdzaxap%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-346",
@@ -3252,7 +4836,11 @@ export const canalesTV = [
     "url": "https://cdn.global.elektamedia.com/live/c7eds/ENT_Channel/SA_LIVE_hls_enc/master.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777548455215_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FENT_Channel%2FSA_LIVE_hls_enc%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FENT_Channel%2FSA_LIVE_hls_enc%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-347",
@@ -3260,7 +4848,11 @@ export const canalesTV = [
     "url": "https://cdn.global.elektamedia.com/live/c7eds/ENT_Family/SA_LIVE_hls_enc/master.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777548507078_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FENT_Family%2FSA_LIVE_hls_enc%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.global.elektamedia.com%2Flive%2Fc7eds%2FENT_Family%2FSA_LIVE_hls_enc%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-349",
@@ -3268,7 +4860,11 @@ export const canalesTV = [
     "url": "https://cdn3.wowza.com/1/SmVrQmZCUXZhVDgz/b3J3MFJv/hls/q6xkg9py/480/chunklist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/1777548636185_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn3.wowza.com%2F1%2FSmVrQmZCUXZhVDgz%2Fb3J3MFJv%2Fhls%2Fq6xkg9py%2F480%2Fchunklist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn3.wowza.com%2F1%2FSmVrQmZCUXZhVDgz%2Fb3J3MFJv%2Fhls%2Fq6xkg9py%2F480%2Fchunklist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-353",
@@ -3276,7 +4872,11 @@ export const canalesTV = [
     "url": "https://ecoteltv.streamseguro.com:5443/LiveApp/streams/streaming.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/1777548870113_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fecoteltv.streamseguro.com%3A5443%2FLiveApp%2Fstreams%2Fstreaming.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fecoteltv.streamseguro.com%3A5443%2FLiveApp%2Fstreams%2Fstreaming.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-355",
@@ -3284,7 +4884,11 @@ export const canalesTV = [
     "url": "https://samson.streamerr.co:8081/shogun/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-355.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fsamson.streamerr.co%3A8081%2Fshogun%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fsamson.streamerr.co%3A8081%2Fshogun%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-358",
@@ -3292,7 +4896,11 @@ export const canalesTV = [
     "url": "https://5d32e2b9b7eed.streamlock.net:4443/ectv/ectv/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/1777548983935_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5d32e2b9b7eed.streamlock.net%3A4443%2Fectv%2Fectv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5d32e2b9b7eed.streamlock.net%3A4443%2Fectv%2Fectv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-360",
@@ -3300,7 +4908,11 @@ export const canalesTV = [
     "url": "https://imagenuniversaltv.net:3439/live/elpitucolive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777549067326_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fimagenuniversaltv.net%3A3439%2Flive%2Felpitucolive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fimagenuniversaltv.net%3A3439%2Flive%2Felpitucolive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-364",
@@ -3308,7 +4920,11 @@ export const canalesTV = [
     "url": "https://cloud2.streaminglivehd.com:1936/8078/8078/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777549125446_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2F8078%2F8078%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2F8078%2F8078%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-365",
@@ -3316,7 +4932,11 @@ export const canalesTV = [
     "url": "https://backend.energeek.cl/webtv/egretroweb/index.m3u8?token=ZZDemoIPTVGH",
     "genre": "Infantil",
     "logo": "/logos_canales/tv-365.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fbackend.energeek.cl%2Fwebtv%2Fegretroweb%2Findex.m3u8%3Ftoken%3DZZDemoIPTVGH"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fbackend.energeek.cl%2Fwebtv%2Fegretroweb%2Findex.m3u8%3Ftoken%3DZZDemoIPTVGH&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-367",
@@ -3324,7 +4944,11 @@ export const canalesTV = [
     "url": "https://5790d294af2dc.streamlock.net/enteraterd/enteraterd/playlist.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/tv-367.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2Fenteraterd%2Fenteraterd%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2Fenteraterd%2Fenteraterd%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-368",
@@ -3332,7 +4956,11 @@ export const canalesTV = [
     "url": "https://cloud.streamingconnect.tv/hls/estutele/estutele.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-368.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud.streamingconnect.tv%2Fhls%2Festutele%2Festutele.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud.streamingconnect.tv%2Fhls%2Festutele%2Festutele.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-369",
@@ -3340,7 +4968,11 @@ export const canalesTV = [
     "url": "https://inliveserver.com:1936/8392/8392/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777549377260_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Finliveserver.com%3A1936%2F8392%2F8392%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Finliveserver.com%3A1936%2F8392%2F8392%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-379",
@@ -3348,7 +4980,11 @@ export const canalesTV = [
     "url": "https://master.tucableip.com/ftvhd/index.m3u8",
     "genre": "Deportes",
     "logo": "/logos_canales/tv-379.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmaster.tucableip.com%2Fftvhd%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmaster.tucableip.com%2Fftvhd%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-384",
@@ -3356,7 +4992,11 @@ export const canalesTV = [
     "url": "https://hostcdn3.fibwi.com/fibwi_diario/index.fmp4.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-384.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fhostcdn3.fibwi.com%2Ffibwi_diario%2Findex.fmp4.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fhostcdn3.fibwi.com%2Ffibwi_diario%2Findex.fmp4.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-394",
@@ -3364,7 +5004,11 @@ export const canalesTV = [
     "url": "https://unlimited1-cl-isp.dps.live/girovisual2/girovisual2.smil/playlist.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/1777549809271_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-cl-isp.dps.live%2Fgirovisual2%2Fgirovisual2.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-cl-isp.dps.live%2Fgirovisual2%2Fgirovisual2.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-395",
@@ -3372,7 +5016,11 @@ export const canalesTV = [
     "url": "https://stmv4.voxtvhd.com.br/globaltv/globaltv/playlist.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/1777549872699_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv4.voxtvhd.com.br%2Fglobaltv%2Fglobaltv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv4.voxtvhd.com.br%2Fglobaltv%2Fglobaltv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-396",
@@ -3380,7 +5028,11 @@ export const canalesTV = [
     "url": "https://zuzenean.goienamedia.eus/goiena-telebista.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777549959930_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fzuzenean.goienamedia.eus%2Fgoiena-telebista.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fzuzenean.goienamedia.eus%2Fgoiena-telebista.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-408",
@@ -3388,7 +5040,11 @@ export const canalesTV = [
     "url": "https://unlimited1-us.dps.live/holvoettv/holvoettv.smil/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777550229970_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fholvoettv%2Fholvoettv.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fholvoettv%2Fholvoettv.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-415",
@@ -3396,7 +5052,11 @@ export const canalesTV = [
     "url": "https://unlimited1-us.dps.live/itv/itv.smil/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/tv-415.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fitv%2Fitv.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fitv%2Fitv.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-418",
@@ -3404,7 +5064,11 @@ export const canalesTV = [
     "url": "https://imagenuniversaltv.net:3771/live/iutvlive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777550354246_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fimagenuniversaltv.net%3A3771%2Flive%2Fiutvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fimagenuniversaltv.net%3A3771%2Flive%2Fiutvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-422",
@@ -3412,7 +5076,11 @@ export const canalesTV = [
     "url": "https://interalmeria.tv/directo/live.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777550425999_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Finteralmeria.tv%2Fdirecto%2Flive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Finteralmeria.tv%2Fdirecto%2Flive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-425",
@@ -3420,7 +5088,11 @@ export const canalesTV = [
     "url": "https://59d39900ebfb8.streamlock.net/islatv/islatv/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777550483844_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Fislatv%2Fislatv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Fislatv%2Fislatv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-426",
@@ -3428,7 +5100,11 @@ export const canalesTV = [
     "url": "https://servilive.com:3028/live/jntv19live.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/1777550556668_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fservilive.com%3A3028%2Flive%2Fjntv19live.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fservilive.com%3A3028%2Flive%2Fjntv19live.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-429",
@@ -3436,7 +5112,11 @@ export const canalesTV = [
     "url": "https://cloud2.streaminglivehd.com:1936/8246/8246/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-429.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2F8246%2F8246%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2F8246%2F8246%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-431",
@@ -3444,7 +5124,11 @@ export const canalesTV = [
     "url": "https://backend.energeek.cl/webtv/kanadeweb/index.m3u8?token=ZZDemoIPTVGH",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777550658316_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fbackend.energeek.cl%2Fwebtv%2Fkanadeweb%2Findex.m3u8%3Ftoken%3DZZDemoIPTVGH"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fbackend.energeek.cl%2Fwebtv%2Fkanadeweb%2Findex.m3u8%3Ftoken%3DZZDemoIPTVGH&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-434",
@@ -3452,7 +5136,11 @@ export const canalesTV = [
     "url": "https://ss2.tvrdomi.com:1936/lamiatv/lamiatv/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777550713260_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Flamiatv%2Flamiatv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Flamiatv%2Flamiatv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-444",
@@ -3460,7 +5148,11 @@ export const canalesTV = [
     "url": "https://mdstrm.com/live-stream-playlist/58d191f07290fbb058025843.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-444.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmdstrm.com%2Flive-stream-playlist%2F58d191f07290fbb058025843.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmdstrm.com%2Flive-stream-playlist%2F58d191f07290fbb058025843.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-445",
@@ -3468,7 +5160,11 @@ export const canalesTV = [
     "url": "https://streamyes.alsolnet.com/quebuenaatlanta/live/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777550805532_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamyes.alsolnet.com%2Fquebuenaatlanta%2Flive%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamyes.alsolnet.com%2Fquebuenaatlanta%2Flive%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-447",
@@ -3476,7 +5172,11 @@ export const canalesTV = [
     "url": "https://cloud2.streaminglivehd.com:1936/lareinatv/lareinatv/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-447.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2Flareinatv%2Flareinatv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2Flareinatv%2Flareinatv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-448",
@@ -3484,7 +5184,11 @@ export const canalesTV = [
     "url": "https://streamunoapp.com:3983/live/larutatvlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777552656819_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamunoapp.com%3A3983%2Flive%2Flarutatvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamunoapp.com%3A3983%2Flive%2Flarutatvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-449",
@@ -3492,7 +5196,11 @@ export const canalesTV = [
     "url": "https://59d39900ebfb8.streamlock.net/top102/top102/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777552734678_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Ftop102%2Ftop102%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Ftop102%2Ftop102%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-450",
@@ -3500,7 +5208,11 @@ export const canalesTV = [
     "url": "https://59d39900ebfb8.streamlock.net/top107/top107/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777552777493_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Ftop107%2Ftop107%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Ftop107%2Ftop107%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-452",
@@ -3508,7 +5220,11 @@ export const canalesTV = [
     "url": "https://live.lavozdemaria.com:3436/live/lavozdemarialive.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/1777552825568_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.lavozdemaria.com%3A3436%2Flive%2Flavozdemarialive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.lavozdemaria.com%3A3436%2Flive%2Flavozdemarialive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-454",
@@ -3516,7 +5232,11 @@ export const canalesTV = [
     "url": "https://stream.eleden.com/livelax/ngrp:livelax_all/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777552936404_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.eleden.com%2Flivelax%2Fngrp%3Alivelax_all%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.eleden.com%2Flivelax%2Fngrp%3Alivelax_all%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-457",
@@ -3524,7 +5244,11 @@ export const canalesTV = [
     "url": "https://stmv1.voxtvhd.com.br/latacungatv/latacungatv/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777552988944_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv1.voxtvhd.com.br%2Flatacungatv%2Flatacungatv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv1.voxtvhd.com.br%2Flatacungatv%2Flatacungatv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-458",
@@ -3532,7 +5256,11 @@ export const canalesTV = [
     "url": "https://cdn.streamingcpanel.com:3784/live/latinzonetvlive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-458.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.streamingcpanel.com%3A3784%2Flive%2Flatinzonetvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.streamingcpanel.com%3A3784%2Flive%2Flatinzonetvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-462",
@@ -3540,7 +5268,11 @@ export const canalesTV = [
     "url": "https://5790d294af2dc.streamlock.net/latinatv/latinatv/chunklist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777553057981_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2Flatinatv%2Flatinatv%2Fchunklist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2Flatinatv%2Flatinatv%2Fchunklist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-463",
@@ -3548,7 +5280,11 @@ export const canalesTV = [
     "url": "https://5790d294af2dc.streamlock.net/lenaratv/lenaratv/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777553134942_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2Flenaratv%2Flenaratv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5790d294af2dc.streamlock.net%2Flenaratv%2Flenaratv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-466",
@@ -3556,7 +5292,11 @@ export const canalesTV = [
     "url": "https://cdn4.streamgato.us:3595/live/litoralhdlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777553231354_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn4.streamgato.us%3A3595%2Flive%2Flitoralhdlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn4.streamgato.us%3A3595%2Flive%2Flitoralhdlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-467",
@@ -3564,7 +5304,11 @@ export const canalesTV = [
     "url": "https://stream.arcast.com.ar/litustv/ngrp:litustv_all/playlist.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/tv-467.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Flitustv%2Fngrp%3Alitustv_all%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.arcast.com.ar%2Flitustv%2Fngrp%3Alitustv_all%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-470",
@@ -3572,7 +5316,11 @@ export const canalesTV = [
     "url": "https://streamer1.streamhost.org/salive/logossaludH/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777553324992_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamer1.streamhost.org%2Fsalive%2FlogossaludH%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamer1.streamhost.org%2Fsalive%2FlogossaludH%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-475",
@@ -3580,7 +5328,11 @@ export const canalesTV = [
     "url": "https://live.mtna.tv/hls/mtna/mtna.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777553398391_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.mtna.tv%2Fhls%2Fmtna%2Fmtna.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.mtna.tv%2Fhls%2Fmtna%2Fmtna.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-482",
@@ -3588,7 +5340,11 @@ export const canalesTV = [
     "url": "http://200.7.219.221:8088/live/livetv/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777553654250_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2F200.7.219.221%3A8088%2Flive%2Flivetv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2F200.7.219.221%3A8088%2Flive%2Flivetv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-486",
@@ -3596,7 +5352,11 @@ export const canalesTV = [
     "url": "https://ott3.streann.com/loadbalancer/services/public/channels-secure/5e62b96e2cdcfac2dd8885dd/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-486.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fott3.streann.com%2Floadbalancer%2Fservices%2Fpublic%2Fchannels-secure%2F5e62b96e2cdcfac2dd8885dd%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fott3.streann.com%2Floadbalancer%2Fservices%2Fpublic%2Fchannels-secure%2F5e62b96e2cdcfac2dd8885dd%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-487",
@@ -3604,7 +5364,11 @@ export const canalesTV = [
     "url": "https://7.innovatestream.pe:19360/megatvjaen/megatvjaen.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777553785929_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F7.innovatestream.pe%3A19360%2Fmegatvjaen%2Fmegatvjaen.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F7.innovatestream.pe%3A19360%2Fmegatvjaen%2Fmegatvjaen.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-497",
@@ -3612,7 +5376,11 @@ export const canalesTV = [
     "url": "https://s.emisoras.tv:8081/metrotv/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777553860067_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fmetrotv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fmetrotv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-512",
@@ -3620,7 +5388,11 @@ export const canalesTV = [
     "url": "https://cdn-ue1-prod.tsv2.amagi.tv/linear/amg01255-secomcofites-my-myzen-en-plex/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/tv-512.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn-ue1-prod.tsv2.amagi.tv%2Flinear%2Famg01255-secomcofites-my-myzen-en-plex%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn-ue1-prod.tsv2.amagi.tv%2Flinear%2Famg01255-secomcofites-my-myzen-en-plex%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-516",
@@ -3628,7 +5400,11 @@ export const canalesTV = [
     "url": "https://unlimited1-us.dps.live/nettv/nettv.smil/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777553980466_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fnettv%2Fnettv.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fnettv%2Fnettv.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-518",
@@ -3636,7 +5412,11 @@ export const canalesTV = [
     "url": "https://sistemastr.tropicalmoonmedia.com/live/2C7CA6CECC9B8F8C3A07315FDA110936/21.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777554044402_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fsistemastr.tropicalmoonmedia.com%2Flive%2F2C7CA6CECC9B8F8C3A07315FDA110936%2F21.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fsistemastr.tropicalmoonmedia.com%2Flive%2F2C7CA6CECC9B8F8C3A07315FDA110936%2F21.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-519",
@@ -3644,7 +5424,11 @@ export const canalesTV = [
     "url": "https://oneplay.iptvperu.tv:1936/static/nativa1.stream/chunks.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/tv-519.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Foneplay.iptvperu.tv%3A1936%2Fstatic%2Fnativa1.stream%2Fchunks.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Foneplay.iptvperu.tv%3A1936%2Fstatic%2Fnativa1.stream%2Fchunks.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-520",
@@ -3652,7 +5436,11 @@ export const canalesTV = [
     "url": "https://amg00090-blueantllc-lovenature-au-samsungau-wggcn.amagi.tv/playlist/amg00090-blueantllc-lovenature-au-samsungau/playlist.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/1777554145180_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Famg00090-blueantllc-lovenature-au-samsungau-wggcn.amagi.tv%2Fplaylist%2Famg00090-blueantllc-lovenature-au-samsungau%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Famg00090-blueantllc-lovenature-au-samsungau-wggcn.amagi.tv%2Fplaylist%2Famg00090-blueantllc-lovenature-au-samsungau%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-522",
@@ -3660,7 +5448,11 @@ export const canalesTV = [
     "url": "https://cdn3.streamgato.us:3938/live/nexxotvlive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-522.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn3.streamgato.us%3A3938%2Flive%2Fnexxotvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn3.streamgato.us%3A3938%2Flive%2Fnexxotvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-530",
@@ -3668,7 +5460,11 @@ export const canalesTV = [
     "url": "https://stream.live.novotempo.com/tv/smil:tvnuevotiempo.smil/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-530.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.live.novotempo.com%2Ftv%2Fsmil%3Atvnuevotiempo.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.live.novotempo.com%2Ftv%2Fsmil%3Atvnuevotiempo.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-531",
@@ -3676,7 +5472,11 @@ export const canalesTV = [
     "url": "https://tv.ondadigital.pe/ondadigital/index.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/1777554277062_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv.ondadigital.pe%2Fondadigital%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv.ondadigital.pe%2Fondadigital%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-533",
@@ -3684,7 +5484,11 @@ export const canalesTV = [
     "url": "https://5e85d90130e77.streamlock.net/6020/6020/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/1777554394853_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6020%2F6020%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6020%2F6020%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-534",
@@ -3692,7 +5496,11 @@ export const canalesTV = [
     "url": "https://netzerstreaming.com:4433/hls/olammetro/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-534.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fnetzerstreaming.com%3A4433%2Fhls%2Folammetro%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fnetzerstreaming.com%3A4433%2Fhls%2Folammetro%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-546",
@@ -3700,7 +5508,11 @@ export const canalesTV = [
     "url": "https://cdn3.wowza.com/5/bGZUOHp2TnhudnM2/phoenix/G1498_006/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/tv-546.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn3.wowza.com%2F5%2FbGZUOHp2TnhudnM2%2Fphoenix%2FG1498_006%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn3.wowza.com%2F5%2FbGZUOHp2TnhudnM2%2Fphoenix%2FG1498_006%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-550",
@@ -3708,7 +5520,11 @@ export const canalesTV = [
     "url": "https://livestream.telvue.com/pacificaca2/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/tv-550.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flivestream.telvue.com%2Fpacificaca2%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flivestream.telvue.com%2Fpacificaca2%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-553",
@@ -3716,7 +5532,11 @@ export const canalesTV = [
     "url": "https://backupmaxmedia.hvmultiplay.com/hls/stream3/parrandavallenata.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777554642427_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fbackupmaxmedia.hvmultiplay.com%2Fhls%2Fstream3%2Fparrandavallenata.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fbackupmaxmedia.hvmultiplay.com%2Fhls%2Fstream3%2Fparrandavallenata.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-556",
@@ -3724,7 +5544,11 @@ export const canalesTV = [
     "url": "https://mdstrm.com/live-stream-playlist/629a63ae8df27c082901f78b.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-556.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fmdstrm.com%2Flive-stream-playlist%2F629a63ae8df27c082901f78b.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fmdstrm.com%2Flive-stream-playlist%2F629a63ae8df27c082901f78b.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-557",
@@ -3732,7 +5556,11 @@ export const canalesTV = [
     "url": "https://vcp.myplaytv.com/glowtv/glowtv/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777554728704_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvcp.myplaytv.com%2Fglowtv%2Fglowtv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvcp.myplaytv.com%2Fglowtv%2Fglowtv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-558",
@@ -3740,7 +5568,11 @@ export const canalesTV = [
     "url": "https://plustv.streamseguro.com:5443/LiveApp/streams/streaming.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777554788513_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fplustv.streamseguro.com%3A5443%2FLiveApp%2Fstreams%2Fstreaming.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fplustv.streamseguro.com%3A5443%2FLiveApp%2Fstreams%2Fstreaming.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-562",
@@ -3748,7 +5580,11 @@ export const canalesTV = [
     "url": "https://eu1.servers10.com:8081/8192/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777554895860_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8192%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8192%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-570",
@@ -3756,7 +5592,11 @@ export const canalesTV = [
     "url": "https://59825a54e4454.streamlock.net:8443/william233/william233/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-570.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59825a54e4454.streamlock.net%3A8443%2Fwilliam233%2Fwilliam233%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59825a54e4454.streamlock.net%3A8443%2Fwilliam233%2Fwilliam233%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-572",
@@ -3764,7 +5604,11 @@ export const canalesTV = [
     "url": "https://live.tvcontrolcp.com:1936/puruwatv/puruwatv/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-572.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.tvcontrolcp.com%3A1936%2Fpuruwatv%2Fpuruwatv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.tvcontrolcp.com%3A1936%2Fpuruwatv%2Fpuruwatv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-576",
@@ -3772,7 +5616,11 @@ export const canalesTV = [
     "url": "https://59d39900ebfb8.streamlock.net/rcv/rcv/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/1777555144860_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Frcv%2Frcv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Frcv%2Frcv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-596",
@@ -3780,7 +5628,11 @@ export const canalesTV = [
     "url": "https://5e85d90130e77.streamlock.net/6006/6006/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-596.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6006%2F6006%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6006%2F6006%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-700",
@@ -3788,7 +5640,11 @@ export const canalesTV = [
     "url": "https://unlimited1-us.dps.live/tvr/tvr.smil/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-700.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Ftvr%2Ftvr.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Ftvr%2Ftvr.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-703",
@@ -3796,7 +5652,11 @@ export const canalesTV = [
     "url": "https://cdn.streamhispanatv.net:3531/live/tvsretrogtlive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777557094815_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.streamhispanatv.net%3A3531%2Flive%2Ftvsretrogtlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.streamhispanatv.net%3A3531%2Flive%2Ftvsretrogtlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-704",
@@ -3804,7 +5664,11 @@ export const canalesTV = [
     "url": "https://unlimited1-cl-isp.dps.live/tvu/tvu.smil/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-704.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-cl-isp.dps.live%2Ftvu%2Ftvu.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-cl-isp.dps.live%2Ftvu%2Ftvu.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-707",
@@ -3812,7 +5676,11 @@ export const canalesTV = [
     "url": "https://5d2733224ac48.streamlock.net/taroteame/tarot_web/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-707.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5d2733224ac48.streamlock.net%2Ftaroteame%2Ftarot_web%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5d2733224ac48.streamlock.net%2Ftaroteame%2Ftarot_web%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-712",
@@ -3820,7 +5688,11 @@ export const canalesTV = [
     "url": "http://45.173.198.59:8080/hls/nginx3.m3u8?tla=",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777556952608_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2F45.173.198.59%3A8080%2Fhls%2Fnginx3.m3u8%3Ftla%3D"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2F45.173.198.59%3A8080%2Fhls%2Fnginx3.m3u8%3Ftla%3D&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-720",
@@ -3828,7 +5700,11 @@ export const canalesTV = [
     "url": "https://live.obslivestream.com/telecolormux/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777556693844_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.obslivestream.com%2Ftelecolormux%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.obslivestream.com%2Ftelecolormux%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-723",
@@ -3836,7 +5712,11 @@ export const canalesTV = [
     "url": "https://tv91.hostingnuclear.com:19360/telecosta/telecosta.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777556611870_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv91.hostingnuclear.com%3A19360%2Ftelecosta%2Ftelecosta.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv91.hostingnuclear.com%3A19360%2Ftelecosta%2Ftelecosta.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-724",
@@ -3844,7 +5724,11 @@ export const canalesTV = [
     "url": "https://nlb2-live.emitstream.com/hls/5z6oj7ziwxzfnj78vg2m/master.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777556501809_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fnlb2-live.emitstream.com%2Fhls%2F5z6oj7ziwxzfnj78vg2m%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fnlb2-live.emitstream.com%2Fhls%2F5z6oj7ziwxzfnj78vg2m%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-726",
@@ -3852,7 +5736,11 @@ export const canalesTV = [
     "url": "https://5ab772334c39c.streamlock.net/live-teleislas/teleislas/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/tv-726.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5ab772334c39c.streamlock.net%2Flive-teleislas%2Fteleislas%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5ab772334c39c.streamlock.net%2Flive-teleislas%2Fteleislas%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-738",
@@ -3860,7 +5748,11 @@ export const canalesTV = [
     "url": "https://play.cdn.enetres.net/6E5C615AA5FF4123ACAF0DAB57B7B8DC021/022/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777556353495_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fplay.cdn.enetres.net%2F6E5C615AA5FF4123ACAF0DAB57B7B8DC021%2F022%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fplay.cdn.enetres.net%2F6E5C615AA5FF4123ACAF0DAB57B7B8DC021%2F022%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-739",
@@ -3868,7 +5760,11 @@ export const canalesTV = [
     "url": "https://player.tvstream.mx/livestream/teleplay/livehd/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/1777556301442_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fplayer.tvstream.mx%2Flivestream%2Fteleplay%2Flivehd%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fplayer.tvstream.mx%2Flivestream%2Fteleplay%2Flivehd%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-740",
@@ -3876,7 +5772,11 @@ export const canalesTV = [
     "url": "https://play.once.net.ec/telerama/live.tv/538.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/tv-740.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fplay.once.net.ec%2Ftelerama%2Flive.tv%2F538.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fplay.once.net.ec%2Ftelerama%2Flive.tv%2F538.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-744",
@@ -3884,7 +5784,11 @@ export const canalesTV = [
     "url": "https://inliveserver.com:1936/18506/18506/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/1777556182652_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Finliveserver.com%3A1936%2F18506%2F18506%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Finliveserver.com%3A1936%2F18506%2F18506%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-756",
@@ -3892,7 +5796,11 @@ export const canalesTV = [
     "url": "https://cdn318.fractalmedia.es/318/live/hls/tvc/master.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/tv-756.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn318.fractalmedia.es%2F318%2Flive%2Fhls%2Ftvc%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn318.fractalmedia.es%2F318%2Flive%2Fhls%2Ftvc%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-757",
@@ -3900,7 +5808,11 @@ export const canalesTV = [
     "url": "https://5e85d90130e77.streamlock.net/6014/6014/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/191.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6014%2F6014%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6014%2F6014%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-758",
@@ -3908,7 +5820,11 @@ export const canalesTV = [
     "url": "https://ott1.hdlatam.tv/live_abr/webtvTarapotoPe/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-758.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fott1.hdlatam.tv%2Flive_abr%2FwebtvTarapotoPe%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fott1.hdlatam.tv%2Flive_abr%2FwebtvTarapotoPe%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-759",
@@ -3916,7 +5832,11 @@ export const canalesTV = [
     "url": "https://cloud.fastchannel.es/manifiest/hls/prog9/tvo.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/TVO.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud.fastchannel.es%2Fmanifiest%2Fhls%2Fprog9%2Ftvo.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud.fastchannel.es%2Fmanifiest%2Fhls%2Fprog9%2Ftvo.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-761",
@@ -3924,7 +5844,11 @@ export const canalesTV = [
     "url": "https://the-pet-collective-international-es.samsung.wurl.tv/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/1777556091590_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fthe-pet-collective-international-es.samsung.wurl.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fthe-pet-collective-international-es.samsung.wurl.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-762",
@@ -3932,7 +5856,11 @@ export const canalesTV = [
     "url": "https://unlimited1-us.dps.live/thema/thema.smil/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-762.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fthema%2Fthema.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fthema%2Fthema.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-763",
@@ -3940,7 +5868,11 @@ export const canalesTV = [
     "url": "https://ss2.tvrdomi.com:1936/tigueritostv/tigueritostv/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/RETR.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Ftigueritostv%2Ftigueritostv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Ftigueritostv%2Ftigueritostv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-764",
@@ -3948,7 +5880,11 @@ export const canalesTV = [
     "url": "https://sistemastr.tropicalmoonmedia.com/live/56BE17DB16EB76C9F2DDB8346F4DFA4E/30.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-764.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fsistemastr.tropicalmoonmedia.com%2Flive%2F56BE17DB16EB76C9F2DDB8346F4DFA4E%2F30.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fsistemastr.tropicalmoonmedia.com%2Flive%2F56BE17DB16EB76C9F2DDB8346F4DFA4E%2F30.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-769",
@@ -3956,7 +5892,11 @@ export const canalesTV = [
     "url": "https://streamunoapp.com:3086/live/telemileniolive.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/tv-769.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamunoapp.com%3A3086%2Flive%2Ftelemileniolive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamunoapp.com%3A3086%2Flive%2Ftelemileniolive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-770",
@@ -3964,7 +5904,11 @@ export const canalesTV = [
     "url": "https://cdn1.cef-technology.com/stream_web/turistik/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-770.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn1.cef-technology.com%2Fstream_web%2Fturistik%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn1.cef-technology.com%2Fstream_web%2Fturistik%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-773",
@@ -3972,7 +5916,11 @@ export const canalesTV = [
     "url": "https://unlimited2-cl-isp.dps.live/ucvtv2/ucvtv2.smil/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/UCV.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited2-cl-isp.dps.live%2Fucvtv2%2Fucvtv2.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited2-cl-isp.dps.live%2Fucvtv2%2Fucvtv2.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-776",
@@ -3980,7 +5928,11 @@ export const canalesTV = [
     "url": "https://live.enhdtv.com:8081/8190/tracks-v1a1/mono.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/RU.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.enhdtv.com%3A8081%2F8190%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.enhdtv.com%3A8081%2F8190%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-782",
@@ -3988,7 +5940,11 @@ export const canalesTV = [
     "url": "https://eu1.servers10.com:8081/8072/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/UIC.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8072%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8072%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-785",
@@ -3996,7 +5952,11 @@ export const canalesTV = [
     "url": "https://vcp6.myplaytv.com/unitv/unitv/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/UNITV.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvcp6.myplaytv.com%2Funitv%2Funitv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvcp6.myplaytv.com%2Funitv%2Funitv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-789",
@@ -4004,7 +5964,11 @@ export const canalesTV = [
     "url": "https://vivo.solumedia.com:19360/uniteve/uniteve.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/tv-789.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Funiteve%2Funiteve.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Funiteve%2Funiteve.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-791",
@@ -4012,7 +5976,11 @@ export const canalesTV = [
     "url": "https://cloud2.streaminglivehd.com:1936/universfaller/universfaller/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/UNIVERSAL.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2Funiversfaller%2Funiversfaller%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud2.streaminglivehd.com%3A1936%2Funiversfaller%2Funiversfaller%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-794",
@@ -4020,7 +5988,11 @@ export const canalesTV = [
     "url": "https://live.obslivestream.com/uraniotv/index.m3u8",
     "genre": "Peliculas",
     "logo": null,
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.obslivestream.com%2Furaniotv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.obslivestream.com%2Furaniotv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-796",
@@ -4028,7 +6000,11 @@ export const canalesTV = [
     "url": "https://capomo01-enitv.eninetworks.com/locales_vbmedia_publico/index.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-796.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcapomo01-enitv.eninetworks.com%2Flocales_vbmedia_publico%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcapomo01-enitv.eninetworks.com%2Flocales_vbmedia_publico%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-797",
@@ -4036,7 +6012,11 @@ export const canalesTV = [
     "url": "https://panel.tvstream.cl:1936/8024/8024/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-797.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fpanel.tvstream.cl%3A1936%2F8024%2F8024%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fpanel.tvstream.cl%3A1936%2F8024%2F8024%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-801",
@@ -4044,7 +6024,11 @@ export const canalesTV = [
     "url": "https://unlimited1-us.dps.live/vtv/vtv.smil/playlist.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/VTV.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fvtv%2Fvtv.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fvtv%2Fvtv.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-802",
@@ -4052,7 +6036,11 @@ export const canalesTV = [
     "url": "https://59d39900ebfb8.streamlock.net/valetv_480/valetv_480/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/VALE.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Fvaletv_480%2Fvaletv_480%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59d39900ebfb8.streamlock.net%2Fvaletv_480%2Fvaletv_480%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-803",
@@ -4060,7 +6048,11 @@ export const canalesTV = [
     "url": "https://stmv6.voxtvhd.com.br/vallenuevotv/vallenuevotv/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-803.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv6.voxtvhd.com.br%2Fvallenuevotv%2Fvallenuevotv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv6.voxtvhd.com.br%2Fvallenuevotv%2Fvallenuevotv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-804",
@@ -4068,7 +6060,11 @@ export const canalesTV = [
     "url": "https://59a564764e2b6.streamlock.net/vallenato/vallenatom/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-804.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59a564764e2b6.streamlock.net%2Fvallenato%2Fvallenatom%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59a564764e2b6.streamlock.net%2Fvallenato%2Fvallenatom%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-809",
@@ -4076,7 +6072,11 @@ export const canalesTV = [
     "url": "https://cloud.fastchannel.es/manifiest/hls/prog9/vepacotv.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-809.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud.fastchannel.es%2Fmanifiest%2Fhls%2Fprog9%2Fvepacotv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud.fastchannel.es%2Fmanifiest%2Fhls%2Fprog9%2Fvepacotv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-813",
@@ -4084,7 +6084,11 @@ export const canalesTV = [
     "url": "https://inliveserver.com:1936/10016/10016/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/VILLATV.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Finliveserver.com%3A1936%2F10016%2F10016%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Finliveserver.com%3A1936%2F10016%2F10016%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-816",
@@ -4092,7 +6096,11 @@ export const canalesTV = [
     "url": "https://cdn.streamhispanatv.net:3076/live/visiontvlive.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/VISIONTV.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.streamhispanatv.net%3A3076%2Flive%2Fvisiontvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.streamhispanatv.net%3A3076%2Flive%2Fvisiontvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-818",
@@ -4100,7 +6108,11 @@ export const canalesTV = [
     "url": "https://thema-vivekanald-rakuten.amagi.tv/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777555669768_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fthema-vivekanald-rakuten.amagi.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fthema-vivekanald-rakuten.amagi.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-819",
@@ -4108,7 +6120,11 @@ export const canalesTV = [
     "url": "http://192.144.113.132:1935/live/ViveTV/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-819.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2F192.144.113.132%3A1935%2Flive%2FViveTV%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2F192.144.113.132%3A1935%2Flive%2FViveTV%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-820",
@@ -4116,7 +6132,11 @@ export const canalesTV = [
     "url": "https://live.obslivestream.com/viaaltomayomux/index.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/tv-820.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.obslivestream.com%2Fviaaltomayomux%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.obslivestream.com%2Fviaaltomayomux%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-825",
@@ -4124,7 +6144,11 @@ export const canalesTV = [
     "url": "https://fl496518-exthls-p1.flovp.com/fl496518/live/live.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-825.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ffl496518-exthls-p1.flovp.com%2Ffl496518%2Flive%2Flive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ffl496518-exthls-p1.flovp.com%2Ffl496518%2Flive%2Flive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-829",
@@ -4132,7 +6156,11 @@ export const canalesTV = [
     "url": "https://jukin-weatherspy-2-mx.samsung.wurl.tv/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/1777555824415_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fjukin-weatherspy-2-mx.samsung.wurl.tv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fjukin-weatherspy-2-mx.samsung.wurl.tv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-833",
@@ -4140,7 +6168,11 @@ export const canalesTV = [
     "url": "https://ss2.tvrdomi.com:1936/xtremochannel/xtremochannel/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/XTREMO.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fxtremochannel%2Fxtremochannel%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fss2.tvrdomi.com%3A1936%2Fxtremochannel%2Fxtremochannel%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-835",
@@ -4148,7 +6180,11 @@ export const canalesTV = [
     "url": "https://livestream.telvue.com/yumaaz1/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-835.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flivestream.telvue.com%2Fyumaaz1%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flivestream.telvue.com%2Fyumaaz1%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-836",
@@ -4156,7 +6192,11 @@ export const canalesTV = [
     "url": "https://livestream.telvue.com/yumaaz2/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/tv-836.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flivestream.telvue.com%2Fyumaaz2%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flivestream.telvue.com%2Fyumaaz2%2Ff7b44cfafd5c52223d5498196c8a2e7b.sdp%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-842",
@@ -4164,7 +6204,11 @@ export const canalesTV = [
     "url": "https://streamlov.alsolnet.com/planet1009fm/live/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/planet_radio.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamlov.alsolnet.com%2Fplanet1009fm%2Flive%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamlov.alsolnet.com%2Fplanet1009fm%2Flive%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-848",
@@ -4172,7 +6216,11 @@ export const canalesTV = [
     "url": "https://cloud.tvomix.com/CUMBIAMIX/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-848.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud.tvomix.com%2FCUMBIAMIX%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud.tvomix.com%2FCUMBIAMIX%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-849",
@@ -4180,7 +6228,11 @@ export const canalesTV = [
     "url": "https://5eaccbab48461.streamlock.net:1936/dancefm_1/dancefm_1/playlist.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-849.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5eaccbab48461.streamlock.net%3A1936%2Fdancefm_1%2Fdancefm_1%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5eaccbab48461.streamlock.net%3A1936%2Fdancefm_1%2Fdancefm_1%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-861",
@@ -4188,7 +6240,11 @@ export const canalesTV = [
     "url": "https://vivo.solumedia.com:19360/masfm/masfm.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-861.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Fmasfm%2Fmasfm.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvivo.solumedia.com%3A19360%2Fmasfm%2Fmasfm.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-887",
@@ -4196,7 +6252,11 @@ export const canalesTV = [
     "url": "https://cloud.tvomix.com/TVOMIX/index.m3u8",
     "genre": "Musica",
     "logo": null,
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud.tvomix.com%2FTVOMIX%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud.tvomix.com%2FTVOMIX%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-889",
@@ -4204,7 +6264,11 @@ export const canalesTV = [
     "url": "https://tvdatta.com:3084/live/toptvaguaytialive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/top.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftvdatta.com%3A3084%2Flive%2Ftoptvaguaytialive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftvdatta.com%3A3084%2Flive%2Ftoptvaguaytialive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-895",
@@ -4212,7 +6276,11 @@ export const canalesTV = [
     "url": "https://59825a54e4454.streamlock.net:8443/william652/william652/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-895.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59825a54e4454.streamlock.net%3A8443%2Fwilliam652%2Fwilliam652%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59825a54e4454.streamlock.net%3A8443%2Fwilliam652%2Fwilliam652%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-899",
@@ -4220,7 +6288,11 @@ export const canalesTV = [
     "url": "https://cloud.tvomix.com/URBANMIX/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/urban.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud.tvomix.com%2FURBANMIX%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud.tvomix.com%2FURBANMIX%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-146",
@@ -4228,7 +6300,11 @@ export const canalesTV = [
     "url": "http://51.222.9.192:3589/stream/play.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/A&R Canal Adventista.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2F51.222.9.192%3A3589%2Fstream%2Fplay.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2F51.222.9.192%3A3589%2Fstream%2Fplay.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-158",
@@ -4236,7 +6312,11 @@ export const canalesTV = [
     "url": "https://unlimited1-us.dps.live/airedesantafetv/airedesantafetv.smil/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/Aire de Santa Fe.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fairedesantafetv%2Fairedesantafetv.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fairedesantafetv%2Fairedesantafetv.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-192",
@@ -4244,7 +6324,11 @@ export const canalesTV = [
     "url": "https://alfa.betheltv.tv/srt/3_abr/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/bethel.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Falfa.betheltv.tv%2Fsrt%2F3_abr%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Falfa.betheltv.tv%2Fsrt%2F3_abr%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-224",
@@ -4252,7 +6336,11 @@ export const canalesTV = [
     "url": "https://protvradiostream.com:1936/rtvd17/ngrp:rtvd17_all/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/rtvd.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fprotvradiostream.com%3A1936%2Frtvd17%2Fngrp%3Artvd17_all%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fprotvradiostream.com%3A1936%2Frtvd17%2Fngrp%3Artvd17_all%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-238",
@@ -4260,7 +6348,11 @@ export const canalesTV = [
     "url": "https://s.emisoras.tv:8081/canal30tvbethel/index.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-238.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fcanal30tvbethel%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fcanal30tvbethel%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-272",
@@ -4268,7 +6360,11 @@ export const canalesTV = [
     "url": "https://canal.mediaserver.com.co/live/oracionconson.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/oracion.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcanal.mediaserver.com.co%2Flive%2Foracionconson.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcanal.mediaserver.com.co%2Flive%2Foracionconson.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-300",
@@ -4276,7 +6372,11 @@ export const canalesTV = [
     "url": "https://cloud37.ecuatel.com/ciracutv/live/manifest.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/ciracu.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud37.ecuatel.com%2Fciracutv%2Flive%2Fmanifest.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud37.ecuatel.com%2Fciracutv%2Flive%2Fmanifest.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-331",
@@ -4284,7 +6384,11 @@ export const canalesTV = [
     "url": "https://live-mcl.cdn01.net/smarttv/64wj6m6d8/playlist.m3u8?ads.vf=58GrEFelNTK",
     "genre": "Noticias",
     "logo": "/logos_canales/daystar.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive-mcl.cdn01.net%2Fsmarttv%2F64wj6m6d8%2Fplaylist.m3u8%3Fads.vf%3D58GrEFelNTK"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive-mcl.cdn01.net%2Fsmarttv%2F64wj6m6d8%2Fplaylist.m3u8%3Fads.vf%3D58GrEFelNTK&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-354",
@@ -4292,7 +6396,11 @@ export const canalesTV = [
     "url": "https://streaming.grupomediosdelnorte.com:19360/ecovision/ecovision.m3u8",
     "genre": "Documentales",
     "logo": "/logos_canales/eco.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreaming.grupomediosdelnorte.com%3A19360%2Fecovision%2Fecovision.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreaming.grupomediosdelnorte.com%3A19360%2Fecovision%2Fecovision.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-361",
@@ -4300,7 +6408,11 @@ export const canalesTV = [
     "url": "https://5bf8041cb3fed.streamlock.net/PuertoTV/PuertoTV/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/puerto.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2FPuertoTV%2FPuertoTV%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2FPuertoTV%2FPuertoTV%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-391",
@@ -4308,7 +6420,11 @@ export const canalesTV = [
     "url": "https://streaming.grupomediosdelnorte.com:19360/galaxiateve/galaxiateve.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/galaxia.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreaming.grupomediosdelnorte.com%3A19360%2Fgalaxiateve%2Fgalaxiateve.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreaming.grupomediosdelnorte.com%3A19360%2Fgalaxiateve%2Fgalaxiateve.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-416",
@@ -4316,7 +6432,11 @@ export const canalesTV = [
     "url": "https://cloud37.ecuatel.com/iglesia2020/Stream1/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-416.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud37.ecuatel.com%2Figlesia2020%2FStream1%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud37.ecuatel.com%2Figlesia2020%2FStream1%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-432",
@@ -4324,7 +6444,11 @@ export const canalesTV = [
     "url": "https://streamtv.intervenhosting.net:3718/live/kandelamedioslive.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/ktv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3718%2Flive%2Fkandelamedioslive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv.intervenhosting.net%3A3718%2Flive%2Fkandelamedioslive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-436",
@@ -4332,7 +6456,11 @@ export const canalesTV = [
     "url": "https://2-fss-1.streamhoster.com/pl_122/200226-1427780-1/playlist.m3u8",
     "genre": "Internacionales",
     "logo": "/logos_canales/times_tv.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F2-fss-1.streamhoster.com%2Fpl_122%2F200226-1427780-1%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F2-fss-1.streamhoster.com%2Fpl_122%2F200226-1427780-1%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-459",
@@ -4340,7 +6468,11 @@ export const canalesTV = [
     "url": "https://redirector.rudo.video/hls-video/567ffde3fa319fadf3419efda25619456231dfea/latina/latina.smil/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/latina_2.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fredirector.rudo.video%2Fhls-video%2F567ffde3fa319fadf3419efda25619456231dfea%2Flatina%2Flatina.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fredirector.rudo.video%2Fhls-video%2F567ffde3fa319fadf3419efda25619456231dfea%2Flatina%2Flatina.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-461",
@@ -4348,7 +6480,11 @@ export const canalesTV = [
     "url": "https://streamtv.latinamedios.com:3413/live/latinatvlive.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-461.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreamtv.latinamedios.com%3A3413%2Flive%2Flatinatvlive.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreamtv.latinamedios.com%3A3413%2Flive%2Flatinatvlive.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-464",
@@ -4356,7 +6492,11 @@ export const canalesTV = [
     "url": "https://2-fss-2.streamhoster.com/pl_138/200226-1359204-1/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-464.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F2-fss-2.streamhoster.com%2Fpl_138%2F200226-1359204-1%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F2-fss-2.streamhoster.com%2Fpl_138%2F200226-1359204-1%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-513",
@@ -4364,7 +6504,11 @@ export const canalesTV = [
     "url": "https://vod2live.univtec.com/manifest/89290956-94ab-4950-accb-a54bbd7e176f.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/kandela.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvod2live.univtec.com%2Fmanifest%2F89290956-94ab-4950-accb-a54bbd7e176f.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvod2live.univtec.com%2Fmanifest%2F89290956-94ab-4950-accb-a54bbd7e176f.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-517",
@@ -4372,7 +6516,11 @@ export const canalesTV = [
     "url": "http://www.coninfo.net:1935/tvlink/live/playlist.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/ng_federal.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2Fwww.coninfo.net%3A1935%2Ftvlink%2Flive%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2Fwww.coninfo.net%3A1935%2Ftvlink%2Flive%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-541",
@@ -4380,7 +6528,11 @@ export const canalesTV = [
     "url": "https://stmv6.voxtvhd.com.br/radiosuprema/radiosuprema/playlist.m3u8",
     "genre": "Peliculas",
     "logo": "/logos_canales/1777555485687_logo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstmv6.voxtvhd.com.br%2Fradiosuprema%2Fradiosuprema%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstmv6.voxtvhd.com.br%2Fradiosuprema%2Fradiosuprema%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-592",
@@ -4388,7 +6540,11 @@ export const canalesTV = [
     "url": "https://5bf8041cb3fed.streamlock.net/ReformaTV/ReformaTV/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/reforma.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2FReformaTV%2FReformaTV%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2FReformaTV%2FReformaTV%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-716",
@@ -4396,7 +6552,11 @@ export const canalesTV = [
     "url": "https://live.11-cdn.com/TeleOnce/3fc63fe00050c646635f16b071cd33e2.sdp/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-716.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.11-cdn.com%2FTeleOnce%2F3fc63fe00050c646635f16b071cd33e2.sdp%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.11-cdn.com%2FTeleOnce%2F3fc63fe00050c646635f16b071cd33e2.sdp%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-721",
@@ -4404,7 +6564,11 @@ export const canalesTV = [
     "url": "https://streaming.grupomediosdelnorte.com:19360/telecomerciotv/telecomerciotv.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/comercio.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreaming.grupomediosdelnorte.com%3A19360%2Ftelecomerciotv%2Ftelecomerciotv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreaming.grupomediosdelnorte.com%3A19360%2Ftelecomerciotv%2Ftelecomerciotv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-722",
@@ -4412,7 +6576,11 @@ export const canalesTV = [
     "url": "https://streaming.grupomediosdelnorte.com:19360/telecontacto/telecontacto.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/contacto.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstreaming.grupomediosdelnorte.com%3A19360%2Ftelecontacto%2Ftelecontacto.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstreaming.grupomediosdelnorte.com%3A19360%2Ftelecontacto%2Ftelecontacto.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-760",
@@ -4420,7 +6588,11 @@ export const canalesTV = [
     "url": "https://5bf8041cb3fed.streamlock.net/Tevevida/Tevevida/.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/vida.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2FTevevida%2FTevevida%2F.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2FTevevida%2FTevevida%2F.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-767",
@@ -4428,7 +6600,11 @@ export const canalesTV = [
     "url": "https://5bf8041cb3fed.streamlock.net/TUUNIVERSOTV/TUUNIVERSOTV/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/universo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2FTUUNIVERSOTV%2FTUUNIVERSOTV%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2FTUUNIVERSOTV%2FTUUNIVERSOTV%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-786",
@@ -4436,7 +6612,11 @@ export const canalesTV = [
     "url": "https://5dcabf026b188.streamlock.net/StreamUnife/livestream/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/tv-786.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5dcabf026b188.streamlock.net%2FStreamUnife%2Flivestream%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5dcabf026b188.streamlock.net%2FStreamUnife%2Flivestream%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-787",
@@ -4444,7 +6624,11 @@ export const canalesTV = [
     "url": "https://cdn.mycloudstream.io/hls/live/broadcast/ic1frrzz/index.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-787.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcdn.mycloudstream.io%2Fhls%2Flive%2Fbroadcast%2Fic1frrzz%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcdn.mycloudstream.io%2Fhls%2Flive%2Fbroadcast%2Fic1frrzz%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-808",
@@ -4452,7 +6636,11 @@ export const canalesTV = [
     "url": "https://vod2live.univtec.com/manifest/4c41c0d8-e2e4-43cc-bd43-79afe715e1b3.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/vene.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvod2live.univtec.com%2Fmanifest%2F4c41c0d8-e2e4-43cc-bd43-79afe715e1b3.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvod2live.univtec.com%2Fmanifest%2F4c41c0d8-e2e4-43cc-bd43-79afe715e1b3.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-811",
@@ -4460,7 +6648,11 @@ export const canalesTV = [
     "url": "https://tgn.bozztv.com/betterlife/bettervida/bettervida/index.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/vida_mejor.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftgn.bozztv.com%2Fbetterlife%2Fbettervida%2Fbettervida%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftgn.bozztv.com%2Fbetterlife%2Fbettervida%2Fbettervida%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-822",
@@ -4468,7 +6660,11 @@ export const canalesTV = [
     "url": "https://59825a54e4454.streamlock.net:8443/pastorairisn394/pastorairisn394/chunklist_w239411719.m3u8",
     "genre": "Noticias",
     "logo": "/logos_canales/france_24.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F59825a54e4454.streamlock.net%3A8443%2Fpastorairisn394%2Fpastorairisn394%2Fchunklist_w239411719.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F59825a54e4454.streamlock.net%3A8443%2Fpastorairisn394%2Fpastorairisn394%2Fchunklist_w239411719.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-828",
@@ -4476,7 +6672,11 @@ export const canalesTV = [
     "url": "https://5bf8041cb3fed.streamlock.net/mastvpr/mastvpr/playlist.m3u8",
     "genre": "Entretenimiento",
     "logo": "/logos_canales/mas_tv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2Fmastvpr%2Fmastvpr%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5bf8041cb3fed.streamlock.net%2Fmastvpr%2Fmastvpr%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-872",
@@ -4484,7 +6684,11 @@ export const canalesTV = [
     "url": "https://www.idealfm104-7.com/hls/0/stream.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/radio_ideal.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fwww.idealfm104-7.com%2Fhls%2F0%2Fstream.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fwww.idealfm104-7.com%2Fhls%2F0%2Fstream.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-876",
@@ -4492,7 +6696,11 @@ export const canalesTV = [
     "url": "https://cloud37.ecuatel.com/monumentaltv/live/manifest.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/tv-876.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud37.ecuatel.com%2Fmonumentaltv%2Flive%2Fmanifest.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud37.ecuatel.com%2Fmonumentaltv%2Flive%2Fmanifest.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-265",
@@ -4500,7 +6708,11 @@ export const canalesTV = [
     "url": "https://unlimited1-us.dps.live/isb/isb.smil/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/isb.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fisb%2Fisb.smil%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Funlimited1-us.dps.live%2Fisb%2Fisb.smil%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-339",
@@ -4508,7 +6720,11 @@ export const canalesTV = [
     "url": "https://s.emisoras.tv:8081/diostevetv/index.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/dios_tv.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fdiostevetv%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fdiostevetv%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-340",
@@ -4516,7 +6732,11 @@ export const canalesTV = [
     "url": "https://tv.webmedialive.com/unciontv/live/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/dios_tv_2.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Ftv.webmedialive.com%2Funciontv%2Flive%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Ftv.webmedialive.com%2Funciontv%2Flive%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-351",
@@ -4524,7 +6744,11 @@ export const canalesTV = [
     "url": "https://5e85d90130e77.streamlock.net/6010/ngrp:6010_all/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/ebenezer.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6010%2Fngrp%3A6010_all%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F5e85d90130e77.streamlock.net%2F6010%2Fngrp%3A6010_all%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-417",
@@ -4532,7 +6756,11 @@ export const canalesTV = [
     "url": "http://streamingcontrol.com:1935/ectv/ectv/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/el_camino.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=http%3A%2F%2Fstreamingcontrol.com%3A1935%2Fectv%2Fectv%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=http%3A%2F%2Fstreamingcontrol.com%3A1935%2Fectv%2Fectv%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-498",
@@ -4540,7 +6768,11 @@ export const canalesTV = [
     "url": "https://eu1.servers10.com:8081/8214/index.m3u8",
     "genre": "Musica",
     "logo": "/logos_canales/metropolis.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8214%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Feu1.servers10.com%3A8081%2F8214%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-554",
@@ -4548,7 +6780,11 @@ export const canalesTV = [
     "url": "https://s.emisoras.tv:8081/penielbibliaabierta/index.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/tv-554.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fpenielbibliaabierta%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fpenielbibliaabierta%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-821",
@@ -4556,7 +6792,11 @@ export const canalesTV = [
     "url": "https://67acccf130420.streamlock.net/enlacepr1/enlacepr1/playlist.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/enlace.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2F67acccf130420.streamlock.net%2Fenlacepr1%2Fenlacepr1%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2F67acccf130420.streamlock.net%2Fenlacepr1%2Fenlacepr1%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "punto-2-pr",
@@ -4564,7 +6804,11 @@ export const canalesTV = [
     "url": "https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream2/master.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/punto 2.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fnbculocallive.akamaized.net%2Fhls%2Flive%2F2037499%2Fpuertorico%2Fstream2%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fnbculocallive.akamaized.net%2Fhls%2Flive%2F2037499%2Fpuertorico%2Fstream2%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "al-jazeera-en",
@@ -4572,7 +6816,11 @@ export const canalesTV = [
     "url": "https://live-hls-web-aje-fa.getaj.net/AJE/03.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/AL JAZEERA.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive-hls-web-aje-fa.getaj.net%2FAJE%2F03.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive-hls-web-aje-fa.getaj.net%2FAJE%2F03.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "claro-sports",
@@ -4580,7 +6828,11 @@ export const canalesTV = [
     "url": "https://dai.google.com/linear/hls/event/yINISWAPQ0CPhPixe-40wQ/master.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/CLARO SPORTS.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fdai.google.com%2Flinear%2Fhls%2Fevent%2FyINISWAPQ0CPhPixe-40wQ%2Fmaster.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fdai.google.com%2Flinear%2Fhls%2Fevent%2FyINISWAPQ0CPhPixe-40wQ%2Fmaster.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "france-24-uhd",
@@ -4588,7 +6840,11 @@ export const canalesTV = [
     "url": "https://live.france24.com/hls/live/2037220/F24_ES_HI_HLS/master_5000.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/FRANCE24.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.france24.com%2Fhls%2Flive%2F2037220%2FF24_ES_HI_HLS%2Fmaster_5000.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.france24.com%2Fhls%2Flive%2F2037220%2FF24_ES_HI_HLS%2Fmaster_5000.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "hispan-tv",
@@ -4596,7 +6852,11 @@ export const canalesTV = [
     "url": "https://live.presstv.ir/hls/hispantv.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/HISPAN TV.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flive.presstv.ir%2Fhls%2Fhispantv.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flive.presstv.ir%2Fhls%2Fhispantv.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-brics",
@@ -4604,7 +6864,11 @@ export const canalesTV = [
     "url": "https://espbrics.mediacdn.ru:443/cdn/brics/spanish/tracks-v1a1/mono.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/TV BRICS.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fespbrics.mediacdn.ru%3A443%2Fcdn%2Fbrics%2Fspanish%2Ftracks-v1a1%2Fmono.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fespbrics.mediacdn.ru%3A443%2Fcdn%2Fbrics%2Fspanish%2Ftracks-v1a1%2Fmono.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "univision-24-7",
@@ -4612,7 +6876,11 @@ export const canalesTV = [
     "url": "https://linear-254.frequency.stream:443/mt/studio/254/hls/master/playlist_1280x720.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/UNIVISION 24.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Flinear-254.frequency.stream%3A443%2Fmt%2Fstudio%2F254%2Fhls%2Fmaster%2Fplaylist_1280x720.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Flinear-254.frequency.stream%3A443%2Fmt%2Fstudio%2F254%2Fhls%2Fmaster%2Fplaylist_1280x720.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "once-digital",
@@ -4620,7 +6888,11 @@ export const canalesTV = [
     "url": "https://vivo.canaloncelive.tv/oncedos/ngrp:pruebachunks_all/playlist.m3u8?",
     "genre": "varios",
     "logo": "/logos_canales/ONCE.3 Señal Digital.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fvivo.canaloncelive.tv%2Foncedos%2Fngrp%3Apruebachunks_all%2Fplaylist.m3u8%3F"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fvivo.canaloncelive.tv%2Foncedos%2Fngrp%3Apruebachunks_all%2Fplaylist.m3u8%3F&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "881-tr-rodeo",
@@ -4628,7 +6900,11 @@ export const canalesTV = [
     "url": "https://amg17292-amg17292c1-distrotv-us-4170.playouts.now.amagi.tv/playlist/amg17292-tetonridgellc-tetonridgefast-distrotvus/cb513e1e7b6c638d84ce3b78d2d3d391a65928d80b6c852a6ab454876dbd4607c0f4fad39c15bb2a03c64bce600966415f64cb1bd61e70c1de06b82371254b2085fcc91ad887100bb3d90e2e34b37a1f5aee4953c9352262c9e51f3f803f9e70115cbd5a391861dbfd41d60e36b8fc169b2370d0f8cd166c2e0100864d3bb0e21dfaa0bf4241c66cb1c2440aca7210f88340c1ca1ca586d25a9d5d8772f704e0cda2d28f4592e5c035f815eb7b5c0b7533cad63bd79f0db58f98393dcd3c7f471c57abf2c2fb487184154758b5fb99ba31fd4b98d873833231e140f23a85349925af19aef241a4a898de56443eabd6526434d282caefd21411ec31a1dc83b772788ab8166d49cd61dd505b52fec2f435b4f32ab4830da1984c22079aee2ff79cb690a1a399458e20dfd5f8ea5228235c3b31b27290bf52ee1bf1479794664b3b4c40bed459c592ab345a0a1edfce0a874749e981f4e9a70f3fd92e1f5ffe69da5e2663c23a697ff124f6940875992378e65f5ca90240ea29fdbc3fbbb4d3ea1104bcdab524950bbae45f8aac7ac3003d5d11fdf12351514973c4e7627f5713a617b78292b12d4c6a83f6c9ed8e543c172b345d0298e7e964e9fcaa592229e67716524b3338b837f347eb3f765a76a370d2a81a3a86092f39e3a92b484860e48edbc58fc2de54a6259c80ea2e38755d6aae27172920c7a0c255f42e4e316e4fcd1d6b47b80815189cffa1e49d9320c09d69af4a087e0be1f904551b5d475550e0fa02d461f28112bd8ec959de9de0782eb139b70e1edee2d568ffe8dba8256891ae44576092dc55a1194fea2f8e59e2bb71dca31b1115385440b0eb3e9c0ce08cc0bb41eb2da95c4d7bfa71a893e7b6e46742ee9f4d4154633023491f460b56c3b0b8650468a2af2fe94af2e241a5472659552feab0406c89ec7213c644140aa4a4d8c5a4d90f19dc6b8616a30152fc156741e0c82ba482a2e3d9867b5107d6a4b23ed4cbe584c2c2cf346a0a653e96c451412d904c9d8d03f2e31979f98088e0fe40a307955fcebb8902cd1189ff832f8aafa9ccda543c777470c3feadab7ebcbd0e56f57ad2495f5ef6ceb4a530a28abd052ea75bb8815223fa672b0f84aaf900c966ebb6697bb0d330588c2060c0ba934c79cb2bb730330f92a7e03e61b8a961924988dbf30a5a850b1bc9465564de1990e4886c6dbbab796c50e9184987729ddfd64e5d61dc950c2018020810069d534c23f62a26b60abdf6f6a224178b129e0a2db13598c744b3ee0fe1e4c6fcb7a93b6ab0f00504fe43e404b433cbcd86ec31ab5d2db86d90166bb2c690f2c1eac2a4dbc6125f54b7499e1bc1759bc8e5b078031873dd0e774927e913d7191009e1ae3bcba35e2293cdc213d10f4244010d42ac73dfcc4f052f408def79ef9b0026393d65b19307b545f9435380023ae9433a4052065045a3da9e4b8e788b23e8f50054b784edf04c8ead3bcdd281e3b45b0db0174c0d7b89b89d85c30d07f99586982171c1df53f93c7c3f2e91cebb4b3e8ee02a24f4ab9e7ce1cf09ed19321921da89a735c56bf057803c0d886a8b8e270acc890f7a298b3be4a91925f657b41d5ee8789a3379c6527d594a398273d658027c3be26986fba829436fe1548205397cf1a487f7a62941530b42112368750fc55023a26b4321a80e2fac9092c286859e1d6026e742a9d0f5e63426c5ddf0b3b86fe815d4d6add0fa93d596350252d1483dea78d20211dbf70bde1ce99291983964dff446cf0f2309cc111e7fcf9b1c69082217919ef343ab7a8841ebf6a5c3fe43e7f4d24a7c5ca2acfc21a51fed464b326dbe18d3a1556ba9f3bc56bb5174c9aded9d97b93aca86f25e9f9c5809b7a4c804d4c88b0ed036682b7d5833618c0ef171268c3ef249e775387f23ae5bda143d4fe8acc27abbb60d796a7a23df40837f3a489010754d577ae4a13091f4e5764b123b6e2191bb78bd7532f3676469c2d77ff79ab950af45acd790e050295f7235ac222e3e7a9a6a3c1f5aaaa3f2de4c69b056ed2975d081fccf455a2891980c9ba7046aedfacf61f730da009f22a867652d6de7181406e84e4307256914739f4920ef98accbfd7dbe6aa55d25d937d82075ebc7676489b93c979c0cd5297ba335a2e2fc9c7ae45239a8abdfeb27176bc0766cfd82daa07074dbb3450e991f46909013b956701ccfca04ed80d17d27e6768f1e21f5ccd3f9295b1d0df9be46baa763dd224b42078adea525dcc837f5a58fb5fbe190f2cead2e69fe26c1ab11d0e6c07e5feaac7698f4845446fbd93c8932d1126f8f5588262481677ec529350adb2fa41ccbb49342cbb651b54d1190ff693fce33394e91c1870498254b2c3daa6f3d41450d14e3ac4af5d9d7cc465a6a1f014045b072a6fc4dc6539f7fea8d2617fd0d7cadb0ee8c74bc8f3825124bd05e005a7af82763d69d7a7d67c09cf3567ab843cc2dffb2c9c2b6b035da9a10acf93838d1d4a233960d66328cb779ab0b8e42174d1ecd877ae57f9b311ad601844878c06e09edeb64f1dbec1778ac3bb876b325dd7310b3c48710111f018473712dc0a5f0b1fa1078d16e4396a05110ce87f8f422f471a93b662d95165bfca58fc9cca90ef0c4a98d7a8098fa0b8b3d73f0158638aeff23793fe67feaaf6e59e7e9dccfeb7a85037ab2270f4c08256183d46e56e487d5dbb6e91f6a19d7dcb868827b2f8ce924d7f5994ace05d403f32da5677b5e08b6ed07f639f5af51b2a82816212c62ab1b1089ef7314ce6091767511c6a5550777e23fffce8bf84312346b09ead9052d6f68cec868997d364854895785cfbfa94348666a2dabaed1b21335d07a046e5a44ea5937cf61b54e2ff4357e26fe351b13b91af4b7857899576ea28e7d09fe2b32eda7a35334865b3989b4c5b56ffa04c21a6b3e74e9cd1ef0fa6506087451e37bf7094cd2e92436478af86c5b98c63ac37e9ec5c2a1d80283b0c140349a87214597ca7aee9dbd1bc200d09a4d5388de6732b9c47d3c59803bec4f76b0b035fedc189eac8241859001bd4ca8dc569ae10c03e8f8233a5bb78f43a9972256ca050edae6589139cd0a75448e2fe037f86f807f0ce802317e70b343385769096762bae377b92359318afdcd24395857151247d1b7369350c0621d3598351b84768ffac159ec58ef3b8601b797d11d73e08823da6176d16ca384c345ce2affb8aadd621f32834f74f28116ea11268bb12a5debc5877c2dcbf0ab1d82d0ea343d401de19cb0af74ef7305c0947671f6189dac58998448488e331db6199413febca516757c3949e32914279d9853d99e893e9feb20e5214530ce5e06fe9622d19297bca6b8ee22f2067731783c55f0f243f3f32c4dd756975110c9484fba523a98b724978412c04a264b9c5e0f102ab0d416e04f3c86121cd891a5765f3582564128cec77d622ad93f635c51b301db162b3fb5a9e0e6c0bb8a118aceb765f988660d982245218d56a32d22ae8fa3b2edb8383b1a6c571971d40c9f42f3aa9e06d376b70e71f78f8f2ca1a15d6dce0fec5c0d240a83a7b662968a0f80a805bea4cc28342f2bb1d7e3aa486681466a10a08ef831edd648dac14fc12a87a7a5982523ae5dc12852ba80d254ace2a6dbfdc72b093025317bb0a00b3eb3f62e8fa9c0bda6eec90b1d62e96d9d610800e8bfcebe03aadfcca729d5e14a0e6d68bf9ea48cbc430a8e1b1b135cb45c824593546dd37c5925a5171d21d4ace0040a3e4de5f8fa6c024912118abc7d0b82f0532c7d814a54e4b47c4ed5c3e0e25190b5f15a697f211c6e7fbf74267d888d3de081eaff0de59e410e07521c699d34864b10b8aa3880134efe21604b4937b64628f30810745a62ea7f9d5b271570089b75680f7b39a4db27f0bf051f44e5278ec40a32de7487d7c11b3071a92ee260f4f51fe825395e9875559ec109d4846189ac5a9a43fd1296852dd0e9bb6d49d79a755952f2ce5f439c9aa5cbc03c4a670a201366d603fcfcfc84e7c790a74f985095ff0cf56b97773b356d1db09d6b630c889407bd22a5f8664f329e7df5aeb4c5ecf874d4d0d17ee5687a9fa989477e5586f79dfd26381eda431f60a70e70791a2e655544619e40fd1a6582113b9455d9b61226e7955e7ae65aab27e1c3d4ca63407af80085433300cf5ffda92710d6ae0633b73ba506bdca0c3830546bcee1a8622420f0ff590fb7632afc0a197b8ab78085a9a9d29ac08edcf40672371c0ea6fb8a5dc6d11809632d949de6443838a5712404692b8b8e03fcbef282cf45cc0246e79de4c3fc7e9dcc2d5571de69336caf656df758c368f053e97e0ad73c273dff72b13eed46b3ff4479f87f2dee4e98387e18779ce44be74fb520f85afe3acfebf7c4cc303c5fb91eb1f9fdce0cecb88282e9a7d8e0aaa35ddf8eec31a03a09c4401d90e2d066e4b1cef65b5f8e9bf837d5967852330238d913457632feb1ee7b3e326bce92fb06d96f1c7517e09d32709f76bebccfce15780018d5ab81b31d89ada3f991abf7cedfb2ad8261b9df319d8994236688c400b5c74f2e49573c263af030ead30743dc55228308427e8b5342fb0ff8009f6e71e479310426971e1953f1478abce046ed9aa712171daf30201243d9f2e830754258daf7db00f6cfada55d8a131a12d3a50b442ab305f2096fed4c77665de374fb2d07441d938cdf23fde36656c18e10976523afa7414abff95b6449ad56016e48c8350e68abd9bcd174fa2f1bd1f9e5f97d725c7584a722fda4bd17f4350a3f43471e70b412e6bca3dc62302caad78c88b5eca290490a85a3c867d7807d7b384e197cd2ff7727dfb64d4e8ec9fdd2fcd627cd5a895676deb7061be10aea652b68f45f25eb488370fee8a2a9573a81adabbdac59b4aa322f0835614ae3a43ddc263f258dbf9214/52/1280x720_3329040/index.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/881 TR Rodeo.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Famg17292-amg17292c1-distrotv-us-4170.playouts.now.amagi.tv%2Fplaylist%2Famg17292-tetonridgellc-tetonridgefast-distrotvus%2Fcb513e1e7b6c638d84ce3b78d2d3d391a65928d80b6c852a6ab454876dbd4607c0f4fad39c15bb2a03c64bce600966415f64cb1bd61e70c1de06b82371254b2085fcc91ad887100bb3d90e2e34b37a1f5aee4953c9352262c9e51f3f803f9e70115cbd5a391861dbfd41d60e36b8fc169b2370d0f8cd166c2e0100864d3bb0e21dfaa0bf4241c66cb1c2440aca7210f88340c1ca1ca586d25a9d5d8772f704e0cda2d28f4592e5c035f815eb7b5c0b7533cad63bd79f0db58f98393dcd3c7f471c57abf2c2fb487184154758b5fb99ba31fd4b98d873833231e140f23a85349925af19aef241a4a898de56443eabd6526434d282caefd21411ec31a1dc83b772788ab8166d49cd61dd505b52fec2f435b4f32ab4830da1984c22079aee2ff79cb690a1a399458e20dfd5f8ea5228235c3b31b27290bf52ee1bf1479794664b3b4c40bed459c592ab345a0a1edfce0a874749e981f4e9a70f3fd92e1f5ffe69da5e2663c23a697ff124f6940875992378e65f5ca90240ea29fdbc3fbbb4d3ea1104bcdab524950bbae45f8aac7ac3003d5d11fdf12351514973c4e7627f5713a617b78292b12d4c6a83f6c9ed8e543c172b345d0298e7e964e9fcaa592229e67716524b3338b837f347eb3f765a76a370d2a81a3a86092f39e3a92b484860e48edbc58fc2de54a6259c80ea2e38755d6aae27172920c7a0c255f42e4e316e4fcd1d6b47b80815189cffa1e49d9320c09d69af4a087e0be1f904551b5d475550e0fa02d461f28112bd8ec959de9de0782eb139b70e1edee2d568ffe8dba8256891ae44576092dc55a1194fea2f8e59e2bb71dca31b1115385440b0eb3e9c0ce08cc0bb41eb2da95c4d7bfa71a893e7b6e46742ee9f4d4154633023491f460b56c3b0b8650468a2af2fe94af2e241a5472659552feab0406c89ec7213c644140aa4a4d8c5a4d90f19dc6b8616a30152fc156741e0c82ba482a2e3d9867b5107d6a4b23ed4cbe584c2c2cf346a0a653e96c451412d904c9d8d03f2e31979f98088e0fe40a307955fcebb8902cd1189ff832f8aafa9ccda543c777470c3feadab7ebcbd0e56f57ad2495f5ef6ceb4a530a28abd052ea75bb8815223fa672b0f84aaf900c966ebb6697bb0d330588c2060c0ba934c79cb2bb730330f92a7e03e61b8a961924988dbf30a5a850b1bc9465564de1990e4886c6dbbab796c50e9184987729ddfd64e5d61dc950c2018020810069d534c23f62a26b60abdf6f6a224178b129e0a2db13598c744b3ee0fe1e4c6fcb7a93b6ab0f00504fe43e404b433cbcd86ec31ab5d2db86d90166bb2c690f2c1eac2a4dbc6125f54b7499e1bc1759bc8e5b078031873dd0e774927e913d7191009e1ae3bcba35e2293cdc213d10f4244010d42ac73dfcc4f052f408def79ef9b0026393d65b19307b545f9435380023ae9433a4052065045a3da9e4b8e788b23e8f50054b784edf04c8ead3bcdd281e3b45b0db0174c0d7b89b89d85c30d07f99586982171c1df53f93c7c3f2e91cebb4b3e8ee02a24f4ab9e7ce1cf09ed19321921da89a735c56bf057803c0d886a8b8e270acc890f7a298b3be4a91925f657b41d5ee8789a3379c6527d594a398273d658027c3be26986fba829436fe1548205397cf1a487f7a62941530b42112368750fc55023a26b4321a80e2fac9092c286859e1d6026e742a9d0f5e63426c5ddf0b3b86fe815d4d6add0fa93d596350252d1483dea78d20211dbf70bde1ce99291983964dff446cf0f2309cc111e7fcf9b1c69082217919ef343ab7a8841ebf6a5c3fe43e7f4d24a7c5ca2acfc21a51fed464b326dbe18d3a1556ba9f3bc56bb5174c9aded9d97b93aca86f25e9f9c5809b7a4c804d4c88b0ed036682b7d5833618c0ef171268c3ef249e775387f23ae5bda143d4fe8acc27abbb60d796a7a23df40837f3a489010754d577ae4a13091f4e5764b123b6e2191bb78bd7532f3676469c2d77ff79ab950af45acd790e050295f7235ac222e3e7a9a6a3c1f5aaaa3f2de4c69b056ed2975d081fccf455a2891980c9ba7046aedfacf61f730da009f22a867652d6de7181406e84e4307256914739f4920ef98accbfd7dbe6aa55d25d937d82075ebc7676489b93c979c0cd5297ba335a2e2fc9c7ae45239a8abdfeb27176bc0766cfd82daa07074dbb3450e991f46909013b956701ccfca04ed80d17d27e6768f1e21f5ccd3f9295b1d0df9be46baa763dd224b42078adea525dcc837f5a58fb5fbe190f2cead2e69fe26c1ab11d0e6c07e5feaac7698f4845446fbd93c8932d1126f8f5588262481677ec529350adb2fa41ccbb49342cbb651b54d1190ff693fce33394e91c1870498254b2c3daa6f3d41450d14e3ac4af5d9d7cc465a6a1f014045b072a6fc4dc6539f7fea8d2617fd0d7cadb0ee8c74bc8f3825124bd05e005a7af82763d69d7a7d67c09cf3567ab843cc2dffb2c9c2b6b035da9a10acf93838d1d4a233960d66328cb779ab0b8e42174d1ecd877ae57f9b311ad601844878c06e09edeb64f1dbec1778ac3bb876b325dd7310b3c48710111f018473712dc0a5f0b1fa1078d16e4396a05110ce87f8f422f471a93b662d95165bfca58fc9cca90ef0c4a98d7a8098fa0b8b3d73f0158638aeff23793fe67feaaf6e59e7e9dccfeb7a85037ab2270f4c08256183d46e56e487d5dbb6e91f6a19d7dcb868827b2f8ce924d7f5994ace05d403f32da5677b5e08b6ed07f639f5af51b2a82816212c62ab1b1089ef7314ce6091767511c6a5550777e23fffce8bf84312346b09ead9052d6f68cec868997d364854895785cfbfa94348666a2dabaed1b21335d07a046e5a44ea5937cf61b54e2ff4357e26fe351b13b91af4b7857899576ea28e7d09fe2b32eda7a35334865b3989b4c5b56ffa04c21a6b3e74e9cd1ef0fa6506087451e37bf7094cd2e92436478af86c5b98c63ac37e9ec5c2a1d80283b0c140349a87214597ca7aee9dbd1bc200d09a4d5388de6732b9c47d3c59803bec4f76b0b035fedc189eac8241859001bd4ca8dc569ae10c03e8f8233a5bb78f43a9972256ca050edae6589139cd0a75448e2fe037f86f807f0ce802317e70b343385769096762bae377b92359318afdcd24395857151247d1b7369350c0621d3598351b84768ffac159ec58ef3b8601b797d11d73e08823da6176d16ca384c345ce2affb8aadd621f32834f74f28116ea11268bb12a5debc5877c2dcbf0ab1d82d0ea343d401de19cb0af74ef7305c0947671f6189dac58998448488e331db6199413febca516757c3949e32914279d9853d99e893e9feb20e5214530ce5e06fe9622d19297bca6b8ee22f2067731783c55f0f243f3f32c4dd756975110c9484fba523a98b724978412c04a264b9c5e0f102ab0d416e04f3c86121cd891a5765f3582564128cec77d622ad93f635c51b301db162b3fb5a9e0e6c0bb8a118aceb765f988660d982245218d56a32d22ae8fa3b2edb8383b1a6c571971d40c9f42f3aa9e06d376b70e71f78f8f2ca1a15d6dce0fec5c0d240a83a7b662968a0f80a805bea4cc28342f2bb1d7e3aa486681466a10a08ef831edd648dac14fc12a87a7a5982523ae5dc12852ba80d254ace2a6dbfdc72b093025317bb0a00b3eb3f62e8fa9c0bda6eec90b1d62e96d9d610800e8bfcebe03aadfcca729d5e14a0e6d68bf9ea48cbc430a8e1b1b135cb45c824593546dd37c5925a5171d21d4ace0040a3e4de5f8fa6c024912118abc7d0b82f0532c7d814a54e4b47c4ed5c3e0e25190b5f15a697f211c6e7fbf74267d888d3de081eaff0de59e410e07521c699d34864b10b8aa3880134efe21604b4937b64628f30810745a62ea7f9d5b271570089b75680f7b39a4db27f0bf051f44e5278ec40a32de7487d7c11b3071a92ee260f4f51fe825395e9875559ec109d4846189ac5a9a43fd1296852dd0e9bb6d49d79a755952f2ce5f439c9aa5cbc03c4a670a201366d603fcfcfc84e7c790a74f985095ff0cf56b97773b356d1db09d6b630c889407bd22a5f8664f329e7df5aeb4c5ecf874d4d0d17ee5687a9fa989477e5586f79dfd26381eda431f60a70e70791a2e655544619e40fd1a6582113b9455d9b61226e7955e7ae65aab27e1c3d4ca63407af80085433300cf5ffda92710d6ae0633b73ba506bdca0c3830546bcee1a8622420f0ff590fb7632afc0a197b8ab78085a9a9d29ac08edcf40672371c0ea6fb8a5dc6d11809632d949de6443838a5712404692b8b8e03fcbef282cf45cc0246e79de4c3fc7e9dcc2d5571de69336caf656df758c368f053e97e0ad73c273dff72b13eed46b3ff4479f87f2dee4e98387e18779ce44be74fb520f85afe3acfebf7c4cc303c5fb91eb1f9fdce0cecb88282e9a7d8e0aaa35ddf8eec31a03a09c4401d90e2d066e4b1cef65b5f8e9bf837d5967852330238d913457632feb1ee7b3e326bce92fb06d96f1c7517e09d32709f76bebccfce15780018d5ab81b31d89ada3f991abf7cedfb2ad8261b9df319d8994236688c400b5c74f2e49573c263af030ead30743dc55228308427e8b5342fb0ff8009f6e71e479310426971e1953f1478abce046ed9aa712171daf30201243d9f2e830754258daf7db00f6cfada55d8a131a12d3a50b442ab305f2096fed4c77665de374fb2d07441d938cdf23fde36656c18e10976523afa7414abff95b6449ad56016e48c8350e68abd9bcd174fa2f1bd1f9e5f97d725c7584a722fda4bd17f4350a3f43471e70b412e6bca3dc62302caad78c88b5eca290490a85a3c867d7807d7b384e197cd2ff7727dfb64d4e8ec9fdd2fcd627cd5a895676deb7061be10aea652b68f45f25eb488370fee8a2a9573a81adabbdac59b4aa322f0835614ae3a43ddc263f258dbf9214%2F52%2F1280x720_3329040%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Famg17292-amg17292c1-distrotv-us-4170.playouts.now.amagi.tv%2Fplaylist%2Famg17292-tetonridgellc-tetonridgefast-distrotvus%2Fcb513e1e7b6c638d84ce3b78d2d3d391a65928d80b6c852a6ab454876dbd4607c0f4fad39c15bb2a03c64bce600966415f64cb1bd61e70c1de06b82371254b2085fcc91ad887100bb3d90e2e34b37a1f5aee4953c9352262c9e51f3f803f9e70115cbd5a391861dbfd41d60e36b8fc169b2370d0f8cd166c2e0100864d3bb0e21dfaa0bf4241c66cb1c2440aca7210f88340c1ca1ca586d25a9d5d8772f704e0cda2d28f4592e5c035f815eb7b5c0b7533cad63bd79f0db58f98393dcd3c7f471c57abf2c2fb487184154758b5fb99ba31fd4b98d873833231e140f23a85349925af19aef241a4a898de56443eabd6526434d282caefd21411ec31a1dc83b772788ab8166d49cd61dd505b52fec2f435b4f32ab4830da1984c22079aee2ff79cb690a1a399458e20dfd5f8ea5228235c3b31b27290bf52ee1bf1479794664b3b4c40bed459c592ab345a0a1edfce0a874749e981f4e9a70f3fd92e1f5ffe69da5e2663c23a697ff124f6940875992378e65f5ca90240ea29fdbc3fbbb4d3ea1104bcdab524950bbae45f8aac7ac3003d5d11fdf12351514973c4e7627f5713a617b78292b12d4c6a83f6c9ed8e543c172b345d0298e7e964e9fcaa592229e67716524b3338b837f347eb3f765a76a370d2a81a3a86092f39e3a92b484860e48edbc58fc2de54a6259c80ea2e38755d6aae27172920c7a0c255f42e4e316e4fcd1d6b47b80815189cffa1e49d9320c09d69af4a087e0be1f904551b5d475550e0fa02d461f28112bd8ec959de9de0782eb139b70e1edee2d568ffe8dba8256891ae44576092dc55a1194fea2f8e59e2bb71dca31b1115385440b0eb3e9c0ce08cc0bb41eb2da95c4d7bfa71a893e7b6e46742ee9f4d4154633023491f460b56c3b0b8650468a2af2fe94af2e241a5472659552feab0406c89ec7213c644140aa4a4d8c5a4d90f19dc6b8616a30152fc156741e0c82ba482a2e3d9867b5107d6a4b23ed4cbe584c2c2cf346a0a653e96c451412d904c9d8d03f2e31979f98088e0fe40a307955fcebb8902cd1189ff832f8aafa9ccda543c777470c3feadab7ebcbd0e56f57ad2495f5ef6ceb4a530a28abd052ea75bb8815223fa672b0f84aaf900c966ebb6697bb0d330588c2060c0ba934c79cb2bb730330f92a7e03e61b8a961924988dbf30a5a850b1bc9465564de1990e4886c6dbbab796c50e9184987729ddfd64e5d61dc950c2018020810069d534c23f62a26b60abdf6f6a224178b129e0a2db13598c744b3ee0fe1e4c6fcb7a93b6ab0f00504fe43e404b433cbcd86ec31ab5d2db86d90166bb2c690f2c1eac2a4dbc6125f54b7499e1bc1759bc8e5b078031873dd0e774927e913d7191009e1ae3bcba35e2293cdc213d10f4244010d42ac73dfcc4f052f408def79ef9b0026393d65b19307b545f9435380023ae9433a4052065045a3da9e4b8e788b23e8f50054b784edf04c8ead3bcdd281e3b45b0db0174c0d7b89b89d85c30d07f99586982171c1df53f93c7c3f2e91cebb4b3e8ee02a24f4ab9e7ce1cf09ed19321921da89a735c56bf057803c0d886a8b8e270acc890f7a298b3be4a91925f657b41d5ee8789a3379c6527d594a398273d658027c3be26986fba829436fe1548205397cf1a487f7a62941530b42112368750fc55023a26b4321a80e2fac9092c286859e1d6026e742a9d0f5e63426c5ddf0b3b86fe815d4d6add0fa93d596350252d1483dea78d20211dbf70bde1ce99291983964dff446cf0f2309cc111e7fcf9b1c69082217919ef343ab7a8841ebf6a5c3fe43e7f4d24a7c5ca2acfc21a51fed464b326dbe18d3a1556ba9f3bc56bb5174c9aded9d97b93aca86f25e9f9c5809b7a4c804d4c88b0ed036682b7d5833618c0ef171268c3ef249e775387f23ae5bda143d4fe8acc27abbb60d796a7a23df40837f3a489010754d577ae4a13091f4e5764b123b6e2191bb78bd7532f3676469c2d77ff79ab950af45acd790e050295f7235ac222e3e7a9a6a3c1f5aaaa3f2de4c69b056ed2975d081fccf455a2891980c9ba7046aedfacf61f730da009f22a867652d6de7181406e84e4307256914739f4920ef98accbfd7dbe6aa55d25d937d82075ebc7676489b93c979c0cd5297ba335a2e2fc9c7ae45239a8abdfeb27176bc0766cfd82daa07074dbb3450e991f46909013b956701ccfca04ed80d17d27e6768f1e21f5ccd3f9295b1d0df9be46baa763dd224b42078adea525dcc837f5a58fb5fbe190f2cead2e69fe26c1ab11d0e6c07e5feaac7698f4845446fbd93c8932d1126f8f5588262481677ec529350adb2fa41ccbb49342cbb651b54d1190ff693fce33394e91c1870498254b2c3daa6f3d41450d14e3ac4af5d9d7cc465a6a1f014045b072a6fc4dc6539f7fea8d2617fd0d7cadb0ee8c74bc8f3825124bd05e005a7af82763d69d7a7d67c09cf3567ab843cc2dffb2c9c2b6b035da9a10acf93838d1d4a233960d66328cb779ab0b8e42174d1ecd877ae57f9b311ad601844878c06e09edeb64f1dbec1778ac3bb876b325dd7310b3c48710111f018473712dc0a5f0b1fa1078d16e4396a05110ce87f8f422f471a93b662d95165bfca58fc9cca90ef0c4a98d7a8098fa0b8b3d73f0158638aeff23793fe67feaaf6e59e7e9dccfeb7a85037ab2270f4c08256183d46e56e487d5dbb6e91f6a19d7dcb868827b2f8ce924d7f5994ace05d403f32da5677b5e08b6ed07f639f5af51b2a82816212c62ab1b1089ef7314ce6091767511c6a5550777e23fffce8bf84312346b09ead9052d6f68cec868997d364854895785cfbfa94348666a2dabaed1b21335d07a046e5a44ea5937cf61b54e2ff4357e26fe351b13b91af4b7857899576ea28e7d09fe2b32eda7a35334865b3989b4c5b56ffa04c21a6b3e74e9cd1ef0fa6506087451e37bf7094cd2e92436478af86c5b98c63ac37e9ec5c2a1d80283b0c140349a87214597ca7aee9dbd1bc200d09a4d5388de6732b9c47d3c59803bec4f76b0b035fedc189eac8241859001bd4ca8dc569ae10c03e8f8233a5bb78f43a9972256ca050edae6589139cd0a75448e2fe037f86f807f0ce802317e70b343385769096762bae377b92359318afdcd24395857151247d1b7369350c0621d3598351b84768ffac159ec58ef3b8601b797d11d73e08823da6176d16ca384c345ce2affb8aadd621f32834f74f28116ea11268bb12a5debc5877c2dcbf0ab1d82d0ea343d401de19cb0af74ef7305c0947671f6189dac58998448488e331db6199413febca516757c3949e32914279d9853d99e893e9feb20e5214530ce5e06fe9622d19297bca6b8ee22f2067731783c55f0f243f3f32c4dd756975110c9484fba523a98b724978412c04a264b9c5e0f102ab0d416e04f3c86121cd891a5765f3582564128cec77d622ad93f635c51b301db162b3fb5a9e0e6c0bb8a118aceb765f988660d982245218d56a32d22ae8fa3b2edb8383b1a6c571971d40c9f42f3aa9e06d376b70e71f78f8f2ca1a15d6dce0fec5c0d240a83a7b662968a0f80a805bea4cc28342f2bb1d7e3aa486681466a10a08ef831edd648dac14fc12a87a7a5982523ae5dc12852ba80d254ace2a6dbfdc72b093025317bb0a00b3eb3f62e8fa9c0bda6eec90b1d62e96d9d610800e8bfcebe03aadfcca729d5e14a0e6d68bf9ea48cbc430a8e1b1b135cb45c824593546dd37c5925a5171d21d4ace0040a3e4de5f8fa6c024912118abc7d0b82f0532c7d814a54e4b47c4ed5c3e0e25190b5f15a697f211c6e7fbf74267d888d3de081eaff0de59e410e07521c699d34864b10b8aa3880134efe21604b4937b64628f30810745a62ea7f9d5b271570089b75680f7b39a4db27f0bf051f44e5278ec40a32de7487d7c11b3071a92ee260f4f51fe825395e9875559ec109d4846189ac5a9a43fd1296852dd0e9bb6d49d79a755952f2ce5f439c9aa5cbc03c4a670a201366d603fcfcfc84e7c790a74f985095ff0cf56b97773b356d1db09d6b630c889407bd22a5f8664f329e7df5aeb4c5ecf874d4d0d17ee5687a9fa989477e5586f79dfd26381eda431f60a70e70791a2e655544619e40fd1a6582113b9455d9b61226e7955e7ae65aab27e1c3d4ca63407af80085433300cf5ffda92710d6ae0633b73ba506bdca0c3830546bcee1a8622420f0ff590fb7632afc0a197b8ab78085a9a9d29ac08edcf40672371c0ea6fb8a5dc6d11809632d949de6443838a5712404692b8b8e03fcbef282cf45cc0246e79de4c3fc7e9dcc2d5571de69336caf656df758c368f053e97e0ad73c273dff72b13eed46b3ff4479f87f2dee4e98387e18779ce44be74fb520f85afe3acfebf7c4cc303c5fb91eb1f9fdce0cecb88282e9a7d8e0aaa35ddf8eec31a03a09c4401d90e2d066e4b1cef65b5f8e9bf837d5967852330238d913457632feb1ee7b3e326bce92fb06d96f1c7517e09d32709f76bebccfce15780018d5ab81b31d89ada3f991abf7cedfb2ad8261b9df319d8994236688c400b5c74f2e49573c263af030ead30743dc55228308427e8b5342fb0ff8009f6e71e479310426971e1953f1478abce046ed9aa712171daf30201243d9f2e830754258daf7db00f6cfada55d8a131a12d3a50b442ab305f2096fed4c77665de374fb2d07441d938cdf23fde36656c18e10976523afa7414abff95b6449ad56016e48c8350e68abd9bcd174fa2f1bd1f9e5f97d725c7584a722fda4bd17f4350a3f43471e70b412e6bca3dc62302caad78c88b5eca290490a85a3c867d7807d7b384e197cd2ff7727dfb64d4e8ec9fdd2fcd627cd5a895676deb7061be10aea652b68f45f25eb488370fee8a2a9573a81adabbdac59b4aa322f0835614ae3a43ddc263f258dbf9214%2F52%2F1280x720_3329040%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "runtime-crimen",
@@ -4636,7 +6912,11 @@ export const canalesTV = [
     "url": "https://stream.ads.ottera.tv/playlist.m3u8?network_id=6129",
     "genre": "varios",
     "logo": "/logos_canales/Runtime Crimen.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.ads.ottera.tv%2Fplaylist.m3u8%3Fnetwork_id%3D6129"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.ads.ottera.tv%2Fplaylist.m3u8%3Fnetwork_id%3D6129&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "runtime-accion",
@@ -4644,7 +6924,11 @@ export const canalesTV = [
     "url": "https://stream.ads.ottera.tv/playlist.m3u8?network_id=2550",
     "genre": "varios",
     "logo": "/logos_canales/Runtime Acción.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.ads.ottera.tv%2Fplaylist.m3u8%3Fnetwork_id%3D2550"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.ads.ottera.tv%2Fplaylist.m3u8%3Fnetwork_id%3D2550&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "runtime-tv",
@@ -4652,7 +6936,11 @@ export const canalesTV = [
     "url": "https://stream.ads.ottera.tv/playlist.m3u8?network_id=2154",
     "genre": "varios",
     "logo": "/logos_canales/Runtime TV.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.ads.ottera.tv%2Fplaylist.m3u8%3Fnetwork_id%3D2154"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.ads.ottera.tv%2Fplaylist.m3u8%3Fnetwork_id%3D2154&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "sangre-fria",
@@ -4660,7 +6948,11 @@ export const canalesTV = [
     "url": "https://stream.ads.ottera.tv/playlist.m3u8?network_id=6130",
     "genre": "varios",
     "logo": "/logos_canales/391 Sangre fría.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.ads.ottera.tv%2Fplaylist.m3u8%3Fnetwork_id%3D6130"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.ads.ottera.tv%2Fplaylist.m3u8%3Fnetwork_id%3D6130&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "ideas-en-5-minutos",
@@ -4668,7 +6960,11 @@ export const canalesTV = [
     "url": "https://d1vhgfbxsl1eqy.cloudfront.net/playlist/amg02051-admecyltd-5minutecraftsspanish-samsunges/playlist.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/Ideas en 5 Minutos.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fd1vhgfbxsl1eqy.cloudfront.net%2Fplaylist%2Famg02051-admecyltd-5minutecraftsspanish-samsunges%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fd1vhgfbxsl1eqy.cloudfront.net%2Fplaylist%2Famg02051-admecyltd-5minutecraftsspanish-samsunges%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "cooking-panda",
@@ -4676,7 +6972,11 @@ export const canalesTV = [
     "url": "https://stream.ads.ottera.tv/playlist.m3u8?network_id=47",
     "genre": "varios",
     "logo": "/logos_canales/Cooking Panda.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fstream.ads.ottera.tv%2Fplaylist.m3u8%3Fnetwork_id%3D47"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fstream.ads.ottera.tv%2Fplaylist.m3u8%3Fnetwork_id%3D47&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "andalucia-cocina",
@@ -4684,7 +6984,11 @@ export const canalesTV = [
     "url": "https://cloud.fastchannel.es/mic/manifiest/hls/acocina/acocina.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/Andalucía Cocina.jpg",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fcloud.fastchannel.es%2Fmic%2Fmanifiest%2Fhls%2Facocina%2Facocina.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fcloud.fastchannel.es%2Fmic%2Fmanifiest%2Fhls%2Facocina%2Facocina.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-migrante",
@@ -4692,7 +6996,11 @@ export const canalesTV = [
     "url": "https://s5.mexside.net:1936/tvmigrante/tvmigrante/playlist.m3u8",
     "genre": "varios",
     "logo": "/logos_canales/TV Migrante.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs5.mexside.net%3A1936%2Ftvmigrante%2Ftvmigrante%2Fplaylist.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs5.mexside.net%3A1936%2Ftvmigrante%2Ftvmigrante%2Fplaylist.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
   {
     "id": "tv-945",
@@ -4700,7 +7008,11 @@ export const canalesTV = [
     "url": "https://s.emisoras.tv:8081/diostevekids/index.m3u8",
     "genre": "Cristianos",
     "logo": "/logos_canales/dios_kids.png",
+<<<<<<< HEAD
     "iframe_url": "/reproductor.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fdiostevekids%2Findex.m3u8"
+=======
+    "iframe_url": "https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.html?src=https%3A%2F%2Fs.emisoras.tv%3A8081%2Fdiostevekids%2Findex.m3u8&autoPlay=true"
+>>>>>>> f5ef384 (Inyectado reproductor universal HLS ultra rapido con reintento automatico)
   },
  {
     "id": "tv-946",
