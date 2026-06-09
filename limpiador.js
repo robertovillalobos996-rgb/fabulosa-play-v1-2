@@ -2,7 +2,7 @@ import fs from 'fs';
 
 const rutaArchivo = "C:\\Users\\fabulosa play\\Documents\\fabulosa-play-v1-2\\src\\data\\canales_finales.js";
 
-console.log("🤖 Robot de emergencia activado: Eliminando reproductor roto...");
+console.log("🤖 Conectando canales al nuevo reproductor ultrarrapido de Fabulosa Play...");
 
 try {
     let contenido = fs.readFileSync(rutaArchivo, 'utf8');
@@ -15,22 +15,36 @@ try {
     const parteFinal = contenido.substring(finArray);
 
     let canales = JSON.parse(cadenaArray);
-    let arreglados = 0;
+    let actualizados = 0;
 
     canales = canales.map(canal => {
-        // Si el canal tiene el enlace malo que te di, lo borramos
-        if (canal.iframe_url && canal.iframe_url.includes('@clappr')) {
-            delete canal.iframe_url;
-            arreglados++;
+        // Exclusiones: Canal 7 y Canal 13 se quedan quietos
+        if (
+            canal.id === "tv-7" || canal.id === "tv-7-teletica" || 
+            canal.id === "tv-13" || canal.id === "tv-13-sinart" || 
+            canal.title?.includes("Teletica") || canal.title?.includes("SINART") ||
+            canal.title?.includes("Canal 7") || canal.title?.includes("Canal 13")
+        ) {
+            return canal; 
         }
+
+        // Buscar el enlace real del canal
+        const streamUrl = canal.url || canal.iframe_url;
+
+        if (streamUrl && streamUrl.includes('.m3u8')) {
+            // Enlazar al nuevo reproductor local creado en /public
+            canal.iframe_url = `/reproductor.html?src=${encodeURIComponent(streamUrl)}`;
+            actualizados++;
+        }
+
         return canal;
     });
 
     const nuevoContenido = parteInicial + JSON.stringify(canales, null, 2) + parteFinal;
     fs.writeFileSync(rutaArchivo, nuevoContenido, 'utf8');
 
-    console.log(`✅ ¡Emergencia resuelta! Se quito el enlace roto de ${arreglados} canales.`);
+    console.log(`✅ ¡Exito! ${actualizados} canales ahora usan el motor de alta velocidad hls.js.`);
 
 } catch (error) {
-    console.error("❌ Error al reparar el archivo:", error.message);
+    console.error("❌ Error al procesar el archivo:", error.message);
 }
