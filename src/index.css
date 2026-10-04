@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #f8fafc;
+  background: #030914;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #030914; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: #030914; }
+button, input, textarea, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+img { display: block; }
+
+::selection { background: rgba(14, 165, 233, .42); color: white; }
+::-webkit-scrollbar { width: 10px; height: 8px; }
+::-webkit-scrollbar-track { background: #080a10; }
+::-webkit-scrollbar-thumb { background: #303444; border-radius: 999px; border: 2px solid #080a10; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.glass { background: rgba(3, 10, 22, .88); backdrop-filter: blur(20px); }
+.page-shell { width: min(100% - 2rem, 1660px); margin-inline: auto; }
+.focus-ring { @apply focus:outline-none focus:ring-2 focus:ring-sky-400/80 focus:ring-offset-2 focus:ring-offset-[#030914]; }
+.card-surface { @apply border border-white/10 bg-white/[0.045] shadow-2xl shadow-black/20; }
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+.contact-action {
+  @apply flex items-center gap-3 rounded-2xl border px-3 py-3.5 text-white transition duration-300 hover:-translate-y-0.5;
+}
+.contact-action-icon {
+  @apply grid h-12 w-12 shrink-0 place-items-center rounded-xl;
+}
+.contact-input {
+  @apply mt-2 w-full rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-white placeholder:text-white/25 focus:outline-none focus:ring-2 focus:ring-fuchsia-400/70 focus:ring-offset-2 focus:ring-offset-[#030914];
+}
+
+.hero-stage { height: clamp(300px, 31.25vw, 600px); background: #06101d; }
+.hero-slide { animation: hero-fade .7s ease-out; }
+.youtube-banner-frame { overflow: hidden; background: #000; pointer-events: none; }
+.youtube-banner-frame iframe {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100vw;
+  height: 56.25vw;
+  min-width: 177.78vh;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  border: 0;
+}
+.media-circle { width: clamp(5.7rem, 7vw, 7.8rem); }
+.movie-home-card { width: clamp(7.6rem, 9.5vw, 9.8rem); }
+
+.density-compact .stream-row { padding-block: .65rem; }
+.density-compact .media-circle { width: clamp(5rem, 6.1vw, 6.7rem); }
+.density-compact .movie-home-card { width: clamp(6.8rem, 8.3vw, 8.5rem); }
+
+@keyframes hero-fade {
+  from { opacity: .35; transform: scale(1.015); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  animation-duration: .01ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: .01ms !important;
+}
+
+@media (max-width: 639px) {
+  .page-shell { width: min(100% - 1.25rem, 1660px); }
+  .hero-stage { height: clamp(260px, 70vw, 360px); }
+}
