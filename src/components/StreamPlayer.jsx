@@ -13,12 +13,12 @@ function timeLabel(value) {
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
 }
 
-export default function StreamPlayer({ channel, source, onWatching, fullscreenTarget }) {
+export default function StreamPlayer({ channel, source, onWatching, fullscreenTarget, covered = false }) {
   const videoRef = useRef(null), rootRef = useRef(null), hideTimer = useRef(null);
   const target = fullscreenTarget || rootRef;
   const [audio, setAudio] = useState(audioPreferences), [shown, setShown] = useState(true);
   const [time, setTime] = useState(0), [duration, setDuration] = useState(0);
-  useEffect(() => { const video = videoRef.current; video.volume = audio.volume; video.muted = audio.muted; try { localStorage.setItem("fabulosa-player-audio-v1", JSON.stringify(audio)); } catch { /* Private browsing. */ } }, [audio]);
+  useEffect(() => { const video = videoRef.current; video.volume = audio.volume; video.muted = covered || audio.muted; try { localStorage.setItem("fabulosa-player-audio-v1", JSON.stringify(audio)); } catch { /* Private browsing. */ } }, [audio, covered]);
   const player = useChannelPlayback({ source, videoRef, onWatching });
   useEffect(() => {
     window.clearTimeout(hideTimer.current);
@@ -47,7 +47,7 @@ export default function StreamPlayer({ channel, source, onWatching, fullscreenTa
   const unavailable = ["offline", "unavailable", "unsupported"].includes(player.status);
   const controlsVisible = shown || player.status !== "playing";
   return <div ref={rootRef} tabIndex={0} role="region" aria-label={`Reproductor de ${channel.title}`} onKeyDown={keyDown} onPointerMove={reveal} onPointerDown={reveal} onFocus={reveal} className={`stream-player relative h-full w-full overflow-hidden bg-black outline-none ${controlsVisible ? "" : "stream-controls-hidden"}`}>
-    <video ref={videoRef} playsInline preload="auto" onClick={() => { if (paused) player.play(); reveal(); }} onDoubleClick={toggleFullscreen} onTimeUpdate={() => setTime(videoRef.current.currentTime)} onDurationChange={() => setDuration(videoRef.current.duration)} onVolumeChange={() => setAudio((current) => { const next = { volume: videoRef.current.volume, muted: videoRef.current.muted }; return next.volume === current.volume && next.muted === current.muted ? current : next; })} className="h-full w-full object-contain" />
+    <video ref={videoRef} playsInline preload="auto" onClick={() => { if (paused) player.play(); reveal(); }} onDoubleClick={toggleFullscreen} onTimeUpdate={() => setTime(videoRef.current.currentTime)} onDurationChange={() => setDuration(videoRef.current.duration)} onVolumeChange={() => setAudio((current) => { const next = { volume: videoRef.current.volume, muted: covered ? current.muted : videoRef.current.muted }; return next.volume === current.volume && next.muted === current.muted ? current : next; })} className="h-full w-full object-contain" />
     <div className="stream-chrome pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center gap-3 bg-gradient-to-b from-black/85 to-transparent p-4 pb-12"><span className={`h-2 w-2 rounded-full ${unavailable ? "bg-white/35" : "bg-red-500 shadow-[0_0_12px_rgba(239,68,68,.6)]"}`} /><strong className="min-w-0 truncate text-sm font-bold text-white">{channel.title}</strong><span className="ml-auto shrink-0 rounded-md border border-white/20 bg-black/40 px-2 py-1 text-[10px] font-black tracking-wider text-white/85">{player.live ? "EN VIVO" : "VIDEO"}</span></div>
     {(buffering || unavailable) && <div className="pointer-events-none absolute inset-0 grid place-items-center"><div className="max-w-xs px-5 text-center">{buffering ? <><LoaderCircle size={36} className="mx-auto animate-spin text-sky-400" /><p className="mt-3 text-xs font-medium text-white/65">{player.status === "connecting" ? "Conectando…" : "Ajustando la señal…"}</p></> : <><Radio size={30} className="mx-auto text-white/35" /><p className="mt-3 text-sm text-white/65">{player.status === "unsupported" ? "Esta señal necesita un navegador compatible." : "La señal del canal no está disponible en este momento."}</p></>}</div></div>}
     {paused && <button type="button" onClick={player.play} aria-label="Reproducir canal" className="focus-ring absolute left-1/2 top-1/2 z-20 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/20 bg-sky-500/90 text-white shadow-lg shadow-sky-950/50"><Play size={28} fill="currentColor" /></button>}

@@ -63,7 +63,11 @@ export default function Channels() {
       {selected && (
         <section className="mt-8 grid overflow-hidden rounded-3xl border border-white/10 bg-[#0c0f18] shadow-2xl shadow-black/40 lg:grid-cols-[1.55fr_.45fr]">
           <div ref={fullscreenTarget} className="channel-screen relative aspect-video min-h-[230px] bg-black">
-            {commercial ? <ChannelCommercial key={`${commercial.id}-${commercial.queueIndex}`} commercial={commercial} onFinish={finish} fullscreenTarget={fullscreenTarget} /> : <ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} fullscreenTarget={fullscreenTarget} />}
+            {/* Keep the channel mounted: the commercial only covers the existing player. */}
+            <div className="h-full w-full" inert={Boolean(commercial)} aria-hidden={commercial ? true : undefined}>
+              <ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} fullscreenTarget={fullscreenTarget} covered={Boolean(commercial)} />
+            </div>
+            {commercial && <ChannelCommercial key={`${commercial.id}-${commercial.queueIndex}`} commercial={commercial} onFinish={finish} fullscreenTarget={fullscreenTarget} />}
           </div>
           <div className="flex flex-col justify-between p-6">
             <div><div className="mb-5 grid h-20 w-20 place-items-center overflow-hidden rounded-full border border-white/10 bg-white p-2"><img src={selected.logo || FALLBACK} onError={(e) => { e.currentTarget.src = FALLBACK; }} alt="" className="h-full w-full rounded-full object-contain" /></div><p className="text-xs font-black uppercase tracking-[.18em] text-fuchsia-400">{selected.genre || "En vivo"}</p><h2 className="mt-2 text-2xl font-black">{selected.title}</h2></div>
