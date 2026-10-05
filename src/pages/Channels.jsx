@@ -2,6 +2,7 @@ import { AlertTriangle, Play, Search, Tv } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import useCatalog from "../hooks/useCatalog";
+import { channelCategory, groupChannels, matchesChannelSearch } from "../utils/channelCategories";
 import useChannelCommercials from "../hooks/useChannelCommercials";
 import ChannelCommercial from "../components/ChannelCommercial";
 import { closePlayerFullscreen } from "../utils/commercials";
@@ -15,7 +16,7 @@ export default function Channels() {
   const [params] = useSearchParams();
   const requestedSearch = params.get("search") || "";
   const [search, setSearch] = useState(requestedSearch);
-  const [genre, setGenre] = useState("Todos");
+  const [genre, setGenre] = useState(null);
   const [selected, setSelected] = useState(null);
   const [watching, setWatching] = useState(false);
   const fullscreenTarget = useRef(null);
@@ -27,10 +28,12 @@ export default function Channels() {
     const element = fullscreenTarget.current;
     return () => { closePlayerFullscreen(element); };
   }, [hasSelected]);
-  const genres = useMemo(() => ["Todos", ...new Set(channels.map((item) => item.genre).filter(Boolean))], [channels]);
+  const genres = useMemo(() => [{ key: null, title: "Todos" }, ...groupChannels(channels)], [channels]);
+  useEffect(() => {
+    if (genre !== null && !genres.some((item) => item.key === genre)) setGenre(null);
+  }, [genre, genres]);
   const filtered = useMemo(() => channels.filter((item) => {
-    const matchesText = `${item.title} ${item.genre || ""}`.toLowerCase().includes(search.toLowerCase());
-    return matchesText && (genre === "Todos" || item.genre === genre);
+    return matchesChannelSearch(item, search) && (genre === null || channelCategory(item) === genre);
   }), [channels, genre, search]);
 
   useEffect(() => {
@@ -74,7 +77,7 @@ export default function Channels() {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="relative w-full lg:max-w-md"><Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/35" size={19} /><input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Buscar canal o categoría" className="focus-ring w-full rounded-2xl border border-white/10 bg-white/[0.05] py-3.5 pl-11 pr-4 text-sm text-white placeholder:text-white/35" /></div>
           <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
-            {genres.map((item) => <button type="button" key={item} onClick={() => setGenre(item)} className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition ${genre === item ? "bg-fuchsia-600 text-white" : "bg-white/[0.06] text-white/55 hover:bg-white/10"}`}>{item}</button>)}
+            {genres.map((item) => <button type="button" key={item.key === null ? "all" : `category:${item.key}`} onClick={() => setGenre(item.key)} className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition ${genre === item.key ? "bg-fuchsia-600 text-white" : "bg-white/[0.06] text-white/55 hover:bg-white/10"}`}>{item.title}</button>)}
           </div>
         </div>
 
