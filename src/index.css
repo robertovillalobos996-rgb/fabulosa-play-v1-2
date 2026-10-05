@@ -79,3 +79,5 @@ html[data-motion="reduced"] *::after {
   .page-shell { width: min(100% - 1.25rem, 1660px); }
   .hero-stage { height: clamp(260px, 70vw, 360px); }
 }
+
+@media (min-width: 1025px) { .hero-stage > img.hero-slide { object-fit: contain; object-position: center; } }
