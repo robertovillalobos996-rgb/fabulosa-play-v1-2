@@ -1,10 +1,11 @@
+
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { ArrowLeft, BarChart3, Clapperboard, Image, LogOut, Megaphone, Pencil, Radio, Save, Search, Trash2, Tv, Upload, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import useCatalog from "../hooks/useCatalog";
 import { auth, saveCatalog } from "../lib/firebase";
-import { getYouTubeVideoId, uploadCloudinaryImage } from "../utils/media";
+import { getYouTubeVideoId } from "../utils/media";
 
 const ADMIN_EMAIL = "fabulosaplay@gmail.com";
 
@@ -19,7 +20,7 @@ const tabs = [
 
 const schemas = {
   banners: [
-    { key: "mediaType", label: "Tipo de contenido", type: "select", defaultValue: "image", options: [{ value: "image", label: "Imagen desde la computadora" }, { value: "youtube", label: "Video de YouTube" }] },
+    { key: "mediaType", label: "Tipo de contenido", type: "select", defaultValue: "image", options: [{ value: "image", label: "Imagen de la carpeta Portadas" }, { value: "youtube", label: "Video de YouTube" }] },
     { key: "image", label: "Archivo o enlace", media: true, required: true },
     { key: "showContent", label: "Mostrar texto y botón sobre la publicidad", type: "checkbox", defaultValue: true },
     { key: "title", label: "Título (opcional)" }, { key: "subtitle", label: "Descripción (opcional)" },
@@ -115,61 +116,37 @@ function BannerPreview({ source, mediaType }) {
   const youtubeId = getYouTubeVideoId(source);
   if (youtubeId) return <iframe src={`https://www.youtube-nocookie.com/embed/${youtubeId}`} title="Vista previa de YouTube" allow="autoplay; encrypted-media" className="mt-3 aspect-video w-full rounded-xl bg-black" />;
   if (mediaType === "video") return <video src={source} muted playsInline controls className="mt-3 aspect-video w-full rounded-xl bg-black object-cover" />;
-  return <img src={source} alt="Vista previa" className="mt-3 aspect-[3/1] w-full rounded-xl bg-black object-cover" />;
+  return <img src={source} onError={(e) => { e.currentTarget.alt = "No se encontro el archivo. Revise su nombre y extension."; }} alt="Vista previa" className="mt-3 aspect-[3/1] w-full rounded-xl bg-black object-cover" />;
 }
 
-function CatalogMedia({ item, catalogKey }) {
+function verifyPortadaFile(source) { return new Promise((resolve, reject) => { const image = new window.Image(); const finish = (error) => { window.clearTimeout(timer); image.onload = null; image.onerror = null; error ? reject(error) : resolve(); }; const timer = window.setTimeout(() => finish(new Error('No se pudo abrir la imagen. Revise el archivo y su conexion.')), 10000); image.onload = () => finish(); image.onerror = () => finish(new Error('No se encontro una imagen valida. Revise public/portadas, el nombre y la extension del archivo.')); image.src = source; }); } function CatalogMedia({ item, catalogKey }) {
   const youtubeId = catalogKey === "banners" ? getYouTubeVideoId(item.image) : "";
   if (youtubeId) return <img src={`https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg`} alt="" className="h-12 w-16 shrink-0 rounded-lg bg-black object-cover" />;
   if (catalogKey === "banners" && item.mediaType === "video") return <video src={item.image} muted playsInline className="h-12 w-16 shrink-0 rounded-lg bg-black object-cover" />;
   return <img src={item.logo || item.poster || item.image || "/logo-fabulosa.png"} onError={(e) => { e.currentTarget.src = "/logo-fabulosa.png"; }} alt="" className="h-12 w-12 shrink-0 rounded-full bg-white object-contain p-1" />;
 }
 
-function CatalogEditor({ catalogKey, items, setItems, uploadConfig, onOpenSettings }) {
+function CatalogEditor({ catalogKey, items, setItems }) {
   const schema = schemas[catalogKey];
   const empty = useMemo(() => Object.fromEntries(schema.map((field) => [field.key, field.defaultValue ?? (field.type === "checkbox" ? false : "")])), [schema]);
   const [form, setForm] = useState(empty);
   const [editingId, setEditingId] = useState("");
   const [search, setSearch] = useState("");
   const [busy, setBusy] = useState(false);
-  const [uploading, setUploading] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState(0);
   const [message, setMessage] = useState("");
   const visible = useMemo(() => items.filter((item) => `${item.title || ""} ${item.genre || item.category || ""}`.toLowerCase().includes(search.toLowerCase())).slice(0, 120), [items, search]);
 
   function startEdit(item) { setEditingId(item.id); setForm({ ...empty, ...item }); setMessage(""); window.scrollTo({ top: 0, behavior: "smooth" }); }
-  function reset() { setEditingId(""); setForm(empty); setUploadProgress(0); }
-
-  async function uploadImage(event) {
-    const file = event.target.files?.[0];
-    event.target.value = "";
-    if (!file) return;
-    if (!file.type.startsWith("image/")) { setMessage("Seleccione un archivo de imagen."); return; }
-    if (file.size > 15 * 1024 * 1024) { setMessage("La imagen supera 15 MB. Comprímala antes de subirla."); return; }
-    if (!uploadConfig?.cloudName || !uploadConfig?.uploadPreset) {
-      setMessage("Primero configure la carga gratuita de imágenes en la sección Publicidad."); return;
-    }
-    setUploading(true); setUploadProgress(0); setMessage("Subiendo imagen…");
-    try {
-      const url = await uploadCloudinaryImage(file, uploadConfig, setUploadProgress);
-      setForm((current) => ({ ...current, image: url, mediaType: "image" }));
-      setMessage("Imagen cargada correctamente. Ahora pulse Agregar y publicar.");
-    } catch (error) {
-      setMessage(`No se pudo subir la imagen: ${error.message}`);
-    } finally {
-      setUploading(false);
-    }
-  }
+  function reset() { setEditingId(""); setForm(empty);  }
 
   async function submit(event) {
-    event.preventDefault(); setBusy(true); setMessage("");
-    if (catalogKey === "banners" && !editingId && items.length >= 20) {
+    event.preventDefault(); if (catalogKey === "banners" && !form.image?.trim()) { setMessage("Escriba el nombre de una imagen antes de publicar."); return; } setBusy(true); setMessage("");     if (catalogKey === "banners" && !editingId && items.length >= 20) {
       setBusy(false); setMessage("El carrusel admite un máximo de 20 anuncios. Elimine uno antes de agregar otro."); return;
     }
     const id = editingId || `${catalogKey.slice(0, -1)}-${Date.now()}`;
     const nextItem = { ...form, id };
     const next = editingId ? items.map((item) => item.id === editingId ? nextItem : item) : [nextItem, ...items];
-    try { await saveCatalog(catalogKey, next); setItems(next); reset(); setMessage("Cambio publicado correctamente."); }
+    try { if (catalogKey === "banners" && form.mediaType === "image") await verifyPortadaFile(form.image); await saveCatalog(catalogKey, next); setItems(next); reset(); setMessage("Cambio publicado correctamente."); }
     catch (error) { setMessage(`No se pudo guardar: ${error.message}`); }
     finally { setBusy(false); }
   }
@@ -188,10 +165,10 @@ function CatalogEditor({ catalogKey, items, setItems, uploadConfig, onOpenSettin
       <form onSubmit={submit} className="h-fit rounded-3xl border border-white/10 bg-white/[0.04] p-6 xl:sticky xl:top-6">
         <div className="flex items-center justify-between"><h2 className="text-xl font-black">{editingId ? "Editar registro" : "Agregar registro"}</h2>{editingId && <button type="button" onClick={reset} className="grid h-9 w-9 place-items-center rounded-full bg-white/10"><X size={17} /></button>}</div>
         {catalogKey === "banners" && <p className="mt-2 text-xs leading-5 text-white/40">Carrusel principal: {items.length}/20 anuncios. Las imágenes duran 10 segundos y cada video se reproduce completo.</p>}
-        {catalogKey === "banners" && <div className="mt-5 rounded-xl border border-sky-400/20 bg-sky-400/[0.06] p-4 text-xs leading-5 text-white/55"><strong className="block text-sm text-sky-200">Imágenes y videos gratuitos</strong><span className="mt-1 block">Las imágenes se seleccionan desde la computadora. Para los videos solamente debe pegar un enlace de YouTube.</span>{(!uploadConfig?.cloudName || !uploadConfig?.uploadPreset) && <button type="button" onClick={onOpenSettings} className="mt-3 font-black text-amber-300 hover:text-amber-200">Configurar carga de imágenes →</button>}</div>}
+        {catalogKey === "banners" && <div className='mt-5 rounded-xl border border-sky-400/20 p-4 text-xs text-white/65'>Imagenes: copie los archivos en public/portadas y escriba su nombre abajo. Videos: pegue el enlace de YouTube.</div>}
         <div className="mt-6 space-y-4">
           {schema.map((field) => field.media && catalogKey === "banners" ? (
-            form.mediaType === "youtube" ? <label key={field.key} className="block text-sm font-bold text-white/65">Enlace del video de YouTube<input required value={form[field.key] || ""} placeholder="https://youtu.be/..." onChange={(e) => setForm({ ...form, [field.key]: e.target.value })} className="focus-ring mt-2 w-full rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 text-sm text-white" />{form[field.key] && <BannerPreview source={form[field.key]} mediaType="youtube" />}</label> : <div key={field.key}><span className="block text-sm font-bold text-white/65">Imagen publicitaria</span><label className="mt-2 flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-sky-400/35 bg-sky-400/[0.06] px-4 py-4 text-sm font-black text-sky-200 transition hover:bg-sky-400/10"><Upload size={18} /> {uploading ? `Subiendo… ${uploadProgress}%` : form[field.key] ? "Cambiar imagen" : "Seleccionar imagen de la computadora"}<input type="file" accept="image/jpeg,image/png,image/webp" disabled={uploading} onChange={uploadImage} className="sr-only" /></label>{form[field.key] && <BannerPreview source={form[field.key]} mediaType="image" />}</div>
+            form.mediaType === "youtube" ? <label key={field.key} className="block text-sm font-bold text-white/65">Enlace del video de YouTube<input required value={form[field.key] || ""} placeholder="https://youtu.be/..." onChange={(e) => setForm({ ...form, [field.key]: e.target.value })} className="focus-ring mt-2 w-full rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 text-sm text-white" />{form[field.key] && <BannerPreview source={form[field.key]} mediaType="youtube" />}</label> : <div key={field.key}><label className='block text-sm font-bold text-white/65'>Nombre del archivo o enlace directo<input required value={(form[field.key] || '').replace(/^\/portadas\//, '')} placeholder='portada-01.jpg' onChange={(e) => { const value = e.target.value; setForm({ ...form, [field.key]: !value || value.startsWith('/') || /^https?:\/\//i.test(value) ? value : '/portadas/' + value }); }} className='focus-ring mt-2 w-full rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 text-sm text-white' /></label><p className='mt-2 text-xs text-white/60'>Copie la imagen en public/portadas y escriba aqui su nombre completo, incluida la extension.</p>{form[field.key] && <BannerPreview source={form[field.key]} mediaType='image' />}</div>
           ) : field.type === "checkbox" ? (
             <label key={field.key} className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/20 p-3 text-sm font-bold text-white/70"><input type="checkbox" checked={Boolean(form[field.key])} onChange={(e) => setForm({ ...form, [field.key]: e.target.checked })} className="h-4 w-4 accent-fuchsia-500" /> {field.label}</label>
           ) : field.type === "select" ? (
@@ -200,7 +177,7 @@ function CatalogEditor({ catalogKey, items, setItems, uploadConfig, onOpenSettin
             <label key={field.key} className="block text-sm font-bold text-white/65">{field.label}{field.type === "textarea" ? <textarea required={field.required} rows="3" value={form[field.key] || ""} onChange={(e) => setForm({ ...form, [field.key]: e.target.value })} className="focus-ring mt-2 w-full resize-none rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 text-sm text-white" /> : <input required={field.required} value={form[field.key] || ""} placeholder={field.placeholder || (field.image ? "https://.../imagen.jpg" : field.media ? "Pegue aquí el enlace" : "")} onChange={(e) => setForm({ ...form, [field.key]: e.target.value })} className="focus-ring mt-2 w-full rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 text-sm text-white" />}{field.image && form[field.key] && <img src={form[field.key]} alt="Vista previa" className="mt-2 h-12 w-12 rounded-lg bg-white object-contain p-1" />}{field.media && form[field.key] && <BannerPreview source={form[field.key]} mediaType={form.mediaType} />}</label>
           ))}
         </div>
-        <button disabled={busy || uploading} className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-fuchsia-600 px-5 py-3 font-black hover:bg-fuchsia-500 disabled:opacity-50"><Save size={18} /> {busy ? "Guardando…" : editingId ? "Guardar cambios" : "Agregar y publicar"}</button>
+        <button disabled={busy} className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-fuchsia-600 px-5 py-3 font-black hover:bg-fuchsia-500 disabled:opacity-50"><Save size={18} /> {busy ? "Guardando…" : editingId ? "Guardar cambios" : "Agregar y publicar"}</button>
         {message && <p className="mt-4 rounded-xl bg-white/[0.06] p-3 text-xs leading-5 text-white/65">{message}</p>}
       </form>
 
@@ -220,10 +197,9 @@ function SettingsEditor({ settings, setSettings }) {
   async function submit(event) { event.preventDefault(); setBusy(true); setMessage(""); try { await saveCatalog("settings", form); setSettings(form); setMessage("Información publicada correctamente."); } catch (error) { setMessage(`No se pudo guardar: ${error.message}`); } finally { setBusy(false); } }
   const fields = [
     ["contactEmail", "Correo de contacto"], ["whatsapp", "WhatsApp con código de país"], ["website", "Página web"], ["facebook", "Enlace de Facebook"],
-    ["instagram", "Enlace de Instagram"], ["businessHours", "Horario de atención"], ["cloudinaryCloudName", "Cloudinary: Cloud name"],
-    ["cloudinaryUploadPreset", "Cloudinary: Upload preset"], ["contactIntro", "Texto de presentación"],
+    ["instagram", "Enlace de Instagram"], ["businessHours", "Horario de atención"], ["contactIntro", "Texto de presentación"],
   ];
-  return <form onSubmit={submit} className="max-w-3xl rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8"><h2 className="text-2xl font-black">Contacto y publicidad</h2><p className="mt-2 text-sm text-white/45">Esta información aparece en la página pública para anunciantes.</p><div className="mt-6 rounded-2xl border border-sky-400/15 bg-sky-400/[0.05] p-4 text-xs leading-5 text-white/50"><strong className="block text-sm text-sky-200">Carga gratuita de imágenes</strong><span className="mt-1 block">Cloud name y Upload preset permiten seleccionar imágenes desde la computadora. No escriba aquí el API Secret ni ninguna contraseña.</span></div><div className="mt-7 grid gap-5 sm:grid-cols-2">{fields.map(([key, label]) => <label key={key} className={`text-sm font-bold text-white/65 ${key === "contactIntro" ? "sm:col-span-2" : ""}`}>{label}{key === "contactIntro" ? <textarea rows="4" value={form[key] || ""} onChange={(e) => setForm({ ...form, [key]: e.target.value })} className="focus-ring mt-2 w-full resize-none rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-white" /> : <input value={form[key] || ""} onChange={(e) => setForm({ ...form, [key]: e.target.value })} className="focus-ring mt-2 w-full rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-white" />}</label>)}</div><button disabled={busy} className="mt-6 inline-flex items-center gap-2 rounded-xl bg-fuchsia-600 px-5 py-3 font-black disabled:opacity-50"><Save size={18} /> {busy ? "Guardando…" : "Guardar información"}</button>{message && <p className="mt-4 text-sm text-white/60">{message}</p>}</form>;
+  return <form onSubmit={submit} className="max-w-3xl rounded-3xl border border-white/10 bg-white/[0.04] p-6 sm:p-8"><h2 className="text-2xl font-black">Contacto y publicidad</h2><p className="mt-2 text-sm text-white/45">Esta información aparece en la página pública para anunciantes.</p><div className="mt-7 grid gap-5 sm:grid-cols-2">{fields.map(([key, label]) => <label key={key} className={`text-sm font-bold text-white/65 ${key === "contactIntro" ? "sm:col-span-2" : ""}`}>{label}{key === "contactIntro" ? <textarea rows="4" value={form[key] || ""} onChange={(e) => setForm({ ...form, [key]: e.target.value })} className="focus-ring mt-2 w-full resize-none rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-white" /> : <input value={form[key] || ""} onChange={(e) => setForm({ ...form, [key]: e.target.value })} className="focus-ring mt-2 w-full rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-white" />}</label>)}</div><button disabled={busy} className="mt-6 inline-flex items-center gap-2 rounded-xl bg-fuchsia-600 px-5 py-3 font-black disabled:opacity-50"><Save size={18} /> {busy ? "Guardando…" : "Guardar información"}</button>{message && <p className="mt-4 text-sm text-white/60">{message}</p>}</form>;
 }
 
 export default function Admin() {
@@ -251,7 +227,7 @@ export default function Admin() {
         {active === "channels" && <CatalogEditor catalogKey="channels" items={channels} setItems={setChannels} />}
         {active === "radios" && <CatalogEditor catalogKey="radios" items={radios} setItems={setRadios} />}
         {active === "movies" && <CatalogEditor catalogKey="movies" items={movies} setItems={setMovies} />}
-        {active === "banners" && <CatalogEditor catalogKey="banners" items={banners} setItems={setBanners} uploadConfig={{ cloudName: settings.cloudinaryCloudName, uploadPreset: settings.cloudinaryUploadPreset }} onOpenSettings={() => setActive("settings")} />}
+        {active === "banners" && <CatalogEditor catalogKey="banners" items={banners} setItems={setBanners}  />}
         {active === "settings" && <SettingsEditor settings={settings} setSettings={setSettings} />}
       </main>
     </div>
