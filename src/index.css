@@ -78,3 +78,8 @@ html[data-motion="reduced"] *::after {
 .channel-commercial { height: 100dvh; width: 100vw; }
 .commercial-top { padding-top: max(1rem, env(safe-area-inset-top)); }
 .commercial-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+
+/* Pantalla completa del reproductor */
+.channel-screen:fullscreen, .channel-screen:-webkit-full-screen { width: 100%; height: 100%; min-height: 0; aspect-ratio: auto; background: #000; }
+.channel-screen.player-expanded { position: fixed; inset: 0; z-index: 90; width: 100vw; height: 100dvh; min-height: 0; aspect-ratio: auto; border-radius: 0; }
+body.player-fullscreen-open { overflow: hidden; }

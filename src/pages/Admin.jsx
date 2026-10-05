@@ -1,9 +1,10 @@
 
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { ArrowLeft, BarChart3, Clapperboard, Image, LogOut, Megaphone, Pencil, Radio, Save, Search, Trash2, Tv, Upload, X } from "lucide-react";
+import { ArrowLeft, BarChart3, Clapperboard, Image, LogOut, Megaphone, Pencil, Radio, Save, Search, Settings, Trash2, Tv, Upload, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import useCatalog from "../hooks/useCatalog";
+import SitePreferencesEditor from "../components/SitePreferencesEditor";
 import { auth, saveCatalog } from "../lib/firebase";
 import { getYouTubeVideoId } from "../utils/media";
 
@@ -16,6 +17,7 @@ const tabs = [
   { id: "radios", label: "Radios", icon: Radio },
   { id: "movies", label: "Movies", icon: Clapperboard },
   { id: "settings", label: "Publicidad", icon: Megaphone },
+  { id: "configuration", label: "Configuración", icon: Settings },
 ];
 
 const schemas = {
@@ -229,6 +231,7 @@ export default function Admin() {
         {active === "movies" && <CatalogEditor catalogKey="movies" items={movies} setItems={setMovies} />}
         {active === "banners" && <CatalogEditor catalogKey="banners" items={banners} setItems={setBanners}  />}
         {active === "settings" && <SettingsEditor settings={settings} setSettings={setSettings} />}
+        {active === "configuration" && <SitePreferencesEditor settings={settings} setSettings={setSettings} />}
       </main>
     </div>
   );

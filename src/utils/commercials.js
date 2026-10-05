@@ -47,13 +47,36 @@ export function createWatchClock() {
   };
 }
 
+export function isPlayerFullscreen(element) {
+  const current = document.fullscreenElement || document.webkitFullscreenElement;
+  return Boolean(element && (element.classList.contains("player-expanded") || current === element || (current && element.contains(current))));
+}
+
+export async function closePlayerFullscreen(element) {
+  element?.classList.remove("player-expanded");
+  document.body.classList.remove("player-fullscreen-open");
+  const current = document.fullscreenElement || document.webkitFullscreenElement;
+  if (current && (current === element || element?.contains(current))) {
+    try { const exit = document.exitFullscreen || document.webkitExitFullscreen; await exit?.call(document); } catch { /* The element may already have left fullscreen. */ }
+  }
+  try { window.screen.orientation?.unlock?.(); } catch { /* Device-managed rotation. */ }
+  element?.dispatchEvent(new Event("playerfullscreenchange"));
+}
+
 export async function landscapeFullscreen(element) {
-  try {
-    if (!document.fullscreenElement) {
-      if (!element?.requestFullscreen) return false;
-      await element.requestFullscreen();
+  if (!element) return false;
+  const current = document.fullscreenElement || document.webkitFullscreenElement;
+  if (current !== element) {
+    const request = element.requestFullscreen || element.webkitRequestFullscreen || element.webkitRequestFullScreen;
+    try {
+      if (!request) throw new Error("Fullscreen unavailable");
+      await request.call(element);
+    } catch {
+      element.classList.add("player-expanded");
+      document.body.classList.add("player-fullscreen-open");
     }
-    try { await window.screen.orientation?.lock?.("landscape"); } catch { /* Rotation depends on the device. */ }
-    return true;
-  } catch { return false; }
+  }
+  try { await window.screen.orientation?.lock?.("landscape"); } catch { /* Rotation depends on the device. */ }
+  element.dispatchEvent(new Event("playerfullscreenchange"));
+  return true;
 }

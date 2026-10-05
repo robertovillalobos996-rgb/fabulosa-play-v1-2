@@ -1,8 +1,9 @@
-import { Clapperboard, Clock3, Home, Megaphone, Radio, RotateCcw, Search, Settings, Tv, X } from "lucide-react";
+import { Clapperboard, Clock3, Home, Megaphone, Radio, Search, Tv, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import logo from "../assets/logo_fabulosa.png";
 import useCatalog from "../hooks/useCatalog";
+import { getDisplayPreferences } from "../utils/sitePreferences";
 
 const links = [
   { to: "/", label: "Inicio", icon: Home, end: true },
@@ -11,20 +12,6 @@ const links = [
   { to: "/cine-play", label: "Películas", icon: Clapperboard },
   { to: "/anunciate", label: "Contacto", icon: Megaphone },
 ];
-
-const defaultPreferences = {
-  compact: false,
-  reducedMotion: false,
-  clock24: false,
-};
-
-function readPreferences() {
-  try {
-    return { ...defaultPreferences, ...JSON.parse(localStorage.getItem("fabulosa-preferences") || "{}") };
-  } catch {
-    return defaultPreferences;
-  }
-}
 
 function DesktopLink({ item }) {
   return (
@@ -110,60 +97,23 @@ function GlobalSearch({ open, onClose }) {
   );
 }
 
-function Toggle({ checked, onChange, label, copy }) {
-  return (
-    <label className="flex cursor-pointer items-center justify-between gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.035] p-4">
-      <span><strong className="block text-sm">{label}</strong><small className="mt-1 block leading-5 text-white/40">{copy}</small></span>
-      <input type="checkbox" checked={checked} onChange={(event) => onChange(event.target.checked)} className="h-5 w-5 shrink-0 accent-sky-500" />
-    </label>
-  );
-}
-
-function SettingsPanel({ open, onClose, preferences, updatePreference, resetPreferences }) {
-  if (!open) return null;
-  return (
-    <div className="fixed inset-0 z-[90] bg-black/65 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Configuración">
-      <button type="button" onClick={onClose} className="absolute inset-0 h-full w-full cursor-default" aria-label="Cerrar configuración" />
-      <aside className="absolute inset-y-0 right-0 w-full max-w-md overflow-y-auto border-l border-white/10 bg-[#07101b] p-6 shadow-2xl">
-        <div className="relative flex items-center justify-between"><div><p className="text-xs font-black uppercase tracking-[.2em] text-sky-400">Preferencias</p><h2 className="mt-1 text-2xl font-black">Configuración</h2></div><button type="button" onClick={onClose} className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.07] text-white/60 hover:text-white" aria-label="Cerrar"><X /></button></div>
-        <div className="relative mt-8 space-y-4">
-          <div className="rounded-2xl border border-sky-400/15 bg-sky-400/[0.045] p-4"><strong className="block text-sm">Carrusel publicitario inteligente</strong><small className="mt-1 block leading-5 text-white/40">Las imágenes duran 10 segundos. Los videos cambian solamente cuando terminan.</small></div>
-          <Toggle checked={preferences.compact} onChange={(value) => updatePreference("compact", value)} label="Vista compacta" copy="Muestra más canales y emisoras al mismo tiempo." />
-          <Toggle checked={preferences.reducedMotion} onChange={(value) => updatePreference("reducedMotion", value)} label="Reducir movimiento" copy="Pausa el cambio automático y las animaciones." />
-          <Toggle checked={preferences.clock24} onChange={(value) => updatePreference("clock24", value)} label="Reloj de 24 horas" copy="Cambia el formato de la hora en la barra superior." />
-          <button type="button" onClick={resetPreferences} className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm font-black text-white/55 hover:bg-white/[0.05] hover:text-white"><RotateCcw size={17} /> Restablecer configuración</button>
-          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-4 text-xs leading-5 text-white/35">
-            <img src="https://www.themoviedb.org/assets/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" alt="The Movie Database (TMDB)" className="h-5 w-auto" />
-            <p className="mt-3 font-bold text-white/55">Créditos del catálogo</p>
-            <p className="mt-2">Este producto utiliza la API de TMDB, pero no está respaldado ni certificado por TMDB.</p>
-            <a href="https://www.themoviedb.org" target="_blank" rel="noreferrer" className="mt-2 inline-block font-bold text-sky-300 hover:text-sky-200">The Movie Database (TMDB)</a>
-          </div>
-        </div>
-      </aside>
-    </div>
-  );
-}
-
 export default function AppShell() {
   const [searchOpen, setSearchOpen] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [preferences, setPreferences] = useState(readPreferences);
+  const { data: settings } = useCatalog("settings");
+  const preferences = getDisplayPreferences(settings);
 
   useEffect(() => {
-    localStorage.setItem("fabulosa-preferences", JSON.stringify(preferences));
     document.documentElement.dataset.motion = preferences.reducedMotion ? "reduced" : "full";
-  }, [preferences]);
+  }, [preferences.reducedMotion]);
 
   useEffect(() => {
     const handleKey = (event) => {
       if (event.key === "/" && !["INPUT", "TEXTAREA"].includes(document.activeElement?.tagName)) { event.preventDefault(); setSearchOpen(true); }
-      if (event.key === "Escape") { setSearchOpen(false); setSettingsOpen(false); }
+      if (event.key === "Escape") { setSearchOpen(false); }
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
-
-  const updatePreference = (key, value) => setPreferences((current) => ({ ...current, [key]: value }));
 
   return (
     <div className={`min-h-screen bg-[#030914] text-white ${preferences.compact ? "density-compact" : ""}`}>
@@ -177,7 +127,6 @@ export default function AppShell() {
           </nav>
           <div className="ml-auto flex items-center gap-1.5 border-l border-white/10 pl-3 lg:ml-4">
             <button type="button" onClick={() => setSearchOpen(true)} className="focus-ring grid h-10 w-10 place-items-center rounded-xl text-white/65 transition hover:bg-white/[0.07] hover:text-white" aria-label="Buscar"><Search size={21} /></button>
-            <button type="button" onClick={() => setSettingsOpen(true)} className="focus-ring grid h-10 w-10 place-items-center rounded-xl text-white/65 transition hover:bg-white/[0.07] hover:text-white" aria-label="Configuración"><Settings size={21} /></button>
             <Clock clock24={preferences.clock24} />
           </div>
         </div>
@@ -194,7 +143,6 @@ export default function AppShell() {
       </nav>
 
       <GlobalSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
-      <SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} preferences={preferences} updatePreference={updatePreference} resetPreferences={() => setPreferences(defaultPreferences)} />
     </div>
   );
 }

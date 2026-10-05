@@ -63,6 +63,7 @@ export default function Movies() {
           <section className="mt-8 grid min-h-[320px] place-items-center rounded-3xl border border-dashed border-white/15 bg-white/[0.025] p-8 text-center"><div><Clapperboard className="mx-auto text-amber-400" size={42} /><h2 className="mt-5 text-2xl font-black">El catálogo está listo para recibir películas</h2><p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-white/50">Agregue el título, portada y una URL directa HTTPS del archivo MP4 desde el panel administrativo. No se requieren plataformas externas.</p></div></section>
         )}
       </div>
+      <div className="page-shell pb-8 text-xs leading-5 text-white/35"><img src="https://www.themoviedb.org/assets/v4/logos/v2/blue_long_2-9665a76b1ae401a510ec1e0ca40ddcb3b0cfe45f1d51b77a308fea0845885648.svg" alt="The Movie Database (TMDB)" className="mb-3 h-5 w-auto" /><p>Este producto utiliza la API de TMDB, pero no está respaldado ni certificado por TMDB.</p></div>
       {watching && <MovieModal movie={watching} onClose={() => setWatching(null)} />}
     </div>
   );

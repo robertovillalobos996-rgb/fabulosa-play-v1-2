@@ -1,52 +1,14 @@
-import { AlertTriangle, Maximize, Play, Search, Tv } from "lucide-react";
+import { AlertTriangle, Play, Search, Tv } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import useCatalog from "../hooks/useCatalog";
 import useChannelCommercials from "../hooks/useChannelCommercials";
 import ChannelCommercial from "../components/ChannelCommercial";
-import { landscapeFullscreen } from "../utils/commercials";
+import { closePlayerFullscreen } from "../utils/commercials";
+import ChannelPlayer from "../components/ChannelPlayer";
+import FullscreenButton from "../components/FullscreenButton";
 
 const FALLBACK = "/logo-fabulosa.png";
-
-function VideoPlayer({ channel, onWatching }) {
-  const videoRef = useRef(null);
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    if (!channel?.url || channel.iframe_url) return undefined;
-    const video = videoRef.current;
-    let hls;
-    let active = true;
-    onWatching(false);
-    setMessage("");
-
-    async function start() {
-      if (channel.url.includes(".m3u8")) {
-        if (video.canPlayType("application/vnd.apple.mpegurl")) video.src = channel.url;
-        else {
-          const { default: Hls } = await import("hls.js");
-          if (!active) return;
-          if (!Hls.isSupported()) return setMessage("Este navegador no admite la señal HLS.");
-          hls = new Hls({ enableWorker: true, lowLatencyMode: true });
-          hls.loadSource(channel.url);
-          hls.attachMedia(video);
-          hls.on(Hls.Events.ERROR, (_event, data) => { if (active && data.fatal) { onWatching(false); setMessage("La señal no respondió. Pruebe otro canal o inténtelo más tarde."); } });
-        }
-      } else video.src = channel.url;
-      if (active) video.play().catch(() => {});
-    }
-    start().catch(() => { if (active) setMessage("No fue posible abrir esta señal."); });
-    return () => { active = false; onWatching(false); hls?.destroy(); if (video) { video.pause(); video.removeAttribute("src"); video.load(); } };
-  }, [channel, onWatching]);
-
-  if (channel?.iframe_url) return <iframe title={channel.title} src={channel.iframe_url} onLoad={() => onWatching(true)} allow="autoplay; encrypted-media" className="h-full w-full border-0" />;
-  return (
-    <div className="relative h-full w-full bg-black">
-      <video ref={videoRef} controls controlsList="nofullscreen nodownload noremoteplayback" disablePictureInPicture playsInline onPlaying={() => onWatching(true)} onPause={() => onWatching(false)} onWaiting={() => onWatching(false)} onEnded={() => onWatching(false)} onError={() => onWatching(false)} className="h-full w-full object-contain" poster={channel?.logo || FALLBACK} />
-      {message && <div className="absolute inset-x-4 bottom-4 rounded-xl bg-red-950/90 p-3 text-center text-sm font-semibold text-red-100">{message}</div>}
-    </div>
-  );
-}
 
 export default function Channels() {
   const { data: channels, loading, remote, error } = useCatalog("channels");
@@ -59,6 +21,12 @@ export default function Channels() {
   const fullscreenTarget = useRef(null);
   const { data: banners, loading: bannersLoading } = useCatalog("banners");
   const { commercial, finish } = useChannelCommercials({ banners, watching, ready: !bannersLoading });
+  const hasSelected = Boolean(selected);
+  useEffect(() => {
+    if (!hasSelected) return undefined;
+    const element = fullscreenTarget.current;
+    return () => { closePlayerFullscreen(element); };
+  }, [hasSelected]);
   const genres = useMemo(() => ["Todos", ...new Set(channels.map((item) => item.genre).filter(Boolean))], [channels]);
   const filtered = useMemo(() => channels.filter((item) => {
     const matchesText = `${item.title} ${item.genre || ""}`.toLowerCase().includes(search.toLowerCase());
@@ -66,10 +34,21 @@ export default function Channels() {
   }), [channels, genre, search]);
 
   useEffect(() => {
-    if (!selected && channels.length) setSelected(channels[0]);
-  }, [channels, selected]);
+    setSelected((current) => {
+      const refreshed = channels.find((item) => item.id === current?.id);
+      if (refreshed) return refreshed;
+      const request = requestedSearch.trim().toLowerCase();
+      return (request && channels.find((item) => item.title?.trim().toLowerCase() === request)) || channels[0] || null;
+    });
+  }, [channels, requestedSearch]);
 
-  useEffect(() => setSearch(requestedSearch), [requestedSearch]);
+  useEffect(() => {
+    setSearch(requestedSearch);
+    if (!requestedSearch) return;
+    const request = requestedSearch.trim().toLowerCase();
+    const match = channels.find((item) => item.title?.trim().toLowerCase() === request);
+    if (match) setSelected(match);
+  }, [requestedSearch, channels]);
 
   return (
     <div className="page-shell py-10">
@@ -81,8 +60,8 @@ export default function Channels() {
       {selected && (
         <section className="mt-8 grid overflow-hidden rounded-3xl border border-white/10 bg-[#0c0f18] shadow-2xl shadow-black/40 lg:grid-cols-[1.55fr_.45fr]">
           <div ref={fullscreenTarget} className="channel-screen relative aspect-video min-h-[230px] bg-black">
-            {commercial ? <ChannelCommercial key={`${commercial.id}-${commercial.queueIndex}`} commercial={commercial} onFinish={finish} fullscreenTarget={fullscreenTarget} /> : <VideoPlayer channel={selected} onWatching={setWatching} />}
-            {!commercial && <button type="button" onClick={() => landscapeFullscreen(fullscreenTarget.current)} aria-label="Pantalla completa" className="focus-ring absolute right-3 top-3 rounded-full bg-black/70 p-3 text-white"><Maximize size={20} /></button>}
+            {commercial ? <ChannelCommercial key={`${commercial.id}-${commercial.queueIndex}`} commercial={commercial} onFinish={finish} fullscreenTarget={fullscreenTarget} /> : <ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} />}
+            {!commercial && <FullscreenButton targetRef={fullscreenTarget} />}
           </div>
           <div className="flex flex-col justify-between p-6">
             <div><div className="mb-5 grid h-20 w-20 place-items-center overflow-hidden rounded-full border border-white/10 bg-white p-2"><img src={selected.logo || FALLBACK} onError={(e) => { e.currentTarget.src = FALLBACK; }} alt="" className="h-full w-full rounded-full object-contain" /></div><p className="text-xs font-black uppercase tracking-[.18em] text-fuchsia-400">{selected.genre || "En vivo"}</p><h2 className="mt-2 text-2xl font-black">{selected.title}</h2></div>
