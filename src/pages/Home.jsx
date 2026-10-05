@@ -1,77 +1,13 @@
 import { ChevronRight, Clapperboard, Megaphone, Play, Radio, Tv, Volume2, VolumeX } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import CircleRail from "../components/CircleRail";
 import useCatalog from "../hooks/useCatalog";
-import { getYouTubeVideoId } from "../utils/media";
+import BannerVideo from "../components/BannerVideo";
+import { isBannerVideo } from "../utils/commercials";
 
 const FALLBACK = "/logo-fabulosa.png";
 const IMAGE_DURATION_MS = 10000;
-let youtubeApiPromise;
-
-function loadYouTubeApi() {
-  if (window.YT?.Player) return Promise.resolve(window.YT);
-  if (youtubeApiPromise) return youtubeApiPromise;
-  youtubeApiPromise = new Promise((resolve) => {
-    const previousReady = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = () => {
-      previousReady?.();
-      resolve(window.YT);
-    };
-    if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
-      const script = document.createElement("script");
-      script.src = "https://www.youtube.com/iframe_api";
-      script.async = true;
-      document.head.appendChild(script);
-    }
-  });
-  return youtubeApiPromise;
-}
-
-function YouTubeBanner({ videoId, muted, reducedMotion, loop, onEnded }) {
-  const targetRef = useRef(null);
-  const playerRef = useRef(null);
-  const onEndedRef = useRef(onEnded);
-
-  useEffect(() => { onEndedRef.current = onEnded; }, [onEnded]);
-
-  useEffect(() => {
-    let active = true;
-    loadYouTubeApi().then((YT) => {
-      if (!active || !targetRef.current) return;
-      playerRef.current = new YT.Player(targetRef.current, {
-        videoId,
-        playerVars: { autoplay: reducedMotion ? 0 : 1, controls: 0, disablekb: 1, playsinline: 1, rel: 0 },
-        events: {
-          onReady: (event) => {
-            event.target.mute();
-            if (!reducedMotion) event.target.playVideo();
-          },
-          onStateChange: (event) => {
-            if (event.data !== YT.PlayerState.ENDED) return;
-            if (loop) { event.target.seekTo(0); event.target.playVideo(); }
-            else onEndedRef.current?.();
-          },
-          onError: () => onEndedRef.current?.(),
-        },
-      });
-    });
-    return () => {
-      active = false;
-      playerRef.current?.destroy?.();
-      playerRef.current = null;
-    };
-  }, [loop, reducedMotion, videoId]);
-
-  useEffect(() => {
-    const player = playerRef.current;
-    if (!player?.mute) return;
-    if (muted) player.mute(); else player.unMute();
-  }, [muted]);
-
-  return <div className="youtube-banner-frame hero-slide absolute inset-0"><div ref={targetRef} /></div>;
-}
-
 function BannerDestination({ url, label }) {
   if (!url) return null;
   const className = "absolute inset-0 z-10 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-sky-300";
@@ -127,8 +63,7 @@ export default function Home() {
   const safeBanners = banners.slice(0, 20);
   const bannerCount = safeBanners.length;
   const banner = safeBanners[active % Math.max(safeBanners.length, 1)];
-  const youtubeId = getYouTubeVideoId(banner?.image);
-  const isVideo = Boolean(youtubeId) || banner?.mediaType === "video" || banner?.mediaType === "youtube" || /\.(mp4|webm|ogg)(?:\?|#|$)/i.test(banner?.image || "");
+  const isVideo = isBannerVideo(banner);
   const showContent = banner?.showContent !== false && Boolean(banner?.title || banner?.subtitle || banner?.actionLabel);
   function advance() {
     if (bannerCount > 1) setActive((value) => (value + 1) % bannerCount);
@@ -147,26 +82,15 @@ export default function Home() {
   return (
     <div className="pb-6">
       <section className="hero-stage relative overflow-hidden border-b border-white/[0.06]">
-        {banner && (youtubeId ? (
-          <YouTubeBanner key={banner.id} videoId={youtubeId} muted={videoMuted} reducedMotion={preferences.reducedMotion} loop={bannerCount === 1} onEnded={advance} />
-        ) : isVideo ? (
-          <video
-            key={banner.id}
-            src={banner.image}
-            poster={banner.poster || ""}
-            autoPlay={!preferences.reducedMotion}
-            muted={videoMuted}
-            playsInline
-            preload="metadata"
-            loop={safeBanners.length === 1}
-            onEnded={advance}
-            className="hero-slide absolute inset-0 h-full w-full object-cover"
-          />
+        {banner && (isVideo ? (
+          <div key={`${banner.id}-${banner.image}`} className="hero-slide absolute inset-0">
+            <BannerVideo source={banner.image} muted={videoMuted} autoPlay={!preferences.reducedMotion} loop={bannerCount === 1 && !preferences.reducedMotion} onEnded={advance} onError={advance} className="h-full w-full" />
+          </div>
         ) : (
           <img key={banner.id} src={banner.image} onError={(event) => { event.currentTarget.src = "/fondo_fabulosa_play.webp"; }} alt={banner.title || "Publicidad en Fabulosa Play"} className="hero-slide absolute inset-0 h-full w-full object-cover" />
         ))}
 
-        {!showContent && <BannerDestination url={banner?.actionUrl} label={banner?.actionLabel || banner?.title || "Abrir publicidad"} />}
+        {!showContent && !isVideo && <BannerDestination url={banner?.actionUrl} label={banner?.actionLabel || banner?.title || "Abrir publicidad"} />}
 
         {showContent && (
           <div className="page-shell pointer-events-none relative z-20 flex h-full items-end py-7 sm:items-center sm:py-10">

@@ -42,18 +42,6 @@ img { display: block; }
 
 .hero-stage { height: clamp(300px, 31.25vw, 600px); background: #06101d; }
 .hero-slide { animation: hero-fade .7s ease-out; }
-.youtube-banner-frame { overflow: hidden; background: #000; pointer-events: none; }
-.youtube-banner-frame iframe {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 100vw;
-  height: 56.25vw;
-  min-width: 177.78vh;
-  min-height: 100%;
-  transform: translate(-50%, -50%);
-  border: 0;
-}
 .media-circle { width: clamp(5.7rem, 7vw, 7.8rem); }
 .movie-home-card { width: clamp(7.6rem, 9.5vw, 9.8rem); }
 
@@ -81,3 +69,12 @@ html[data-motion="reduced"] *::after {
 }
 
 @media (min-width: 1025px) { .hero-stage > img.hero-slide { object-fit: contain; object-position: center; } }
+
+/* Videos completos y comerciales en TV */
+.media-youtube { position: relative; overflow: hidden; }
+.media-youtube iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.commercial-media { top: 64px; bottom: 80px; }
+.channel-screen:fullscreen { width: 100%; height: 100%; min-height: 0; aspect-ratio: auto; }
+.channel-commercial { height: 100dvh; width: 100vw; }
+.commercial-top { padding-top: max(1rem, env(safe-area-inset-top)); }
+.commercial-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
