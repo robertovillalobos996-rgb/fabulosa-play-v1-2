@@ -7,7 +7,7 @@ import useChannelCommercials from "../hooks/useChannelCommercials";
 import ChannelCommercial from "../components/ChannelCommercial";
 import { closePlayerFullscreen } from "../utils/commercials";
 import ChannelPlayer from "../components/ChannelPlayer";
-import FullscreenButton from "../components/FullscreenButton";
+import { prepareChannelPlayback } from "../utils/channelPlayback";
 
 const FALLBACK = "/logo-fabulosa.png";
 
@@ -63,8 +63,7 @@ export default function Channels() {
       {selected && (
         <section className="mt-8 grid overflow-hidden rounded-3xl border border-white/10 bg-[#0c0f18] shadow-2xl shadow-black/40 lg:grid-cols-[1.55fr_.45fr]">
           <div ref={fullscreenTarget} className="channel-screen relative aspect-video min-h-[230px] bg-black">
-            {commercial ? <ChannelCommercial key={`${commercial.id}-${commercial.queueIndex}`} commercial={commercial} onFinish={finish} fullscreenTarget={fullscreenTarget} /> : <ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} />}
-            {!commercial && <FullscreenButton targetRef={fullscreenTarget} />}
+            {commercial ? <ChannelCommercial key={`${commercial.id}-${commercial.queueIndex}`} commercial={commercial} onFinish={finish} fullscreenTarget={fullscreenTarget} /> : <ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} fullscreenTarget={fullscreenTarget} />}
           </div>
           <div className="flex flex-col justify-between p-6">
             <div><div className="mb-5 grid h-20 w-20 place-items-center overflow-hidden rounded-full border border-white/10 bg-white p-2"><img src={selected.logo || FALLBACK} onError={(e) => { e.currentTarget.src = FALLBACK; }} alt="" className="h-full w-full rounded-full object-contain" /></div><p className="text-xs font-black uppercase tracking-[.18em] text-fuchsia-400">{selected.genre || "En vivo"}</p><h2 className="mt-2 text-2xl font-black">{selected.title}</h2></div>
@@ -86,7 +85,7 @@ export default function Channels() {
         {loading ? <div className="py-20 text-center text-white/45">Cargando canales…</div> : filtered.length ? (
           <div className="mt-7 grid grid-cols-3 gap-x-3 gap-y-7 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10">
             {filtered.map((channel) => (
-              <button type="button" key={channel.id} onClick={() => { setSelected(channel); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="group min-w-0 text-center">
+              <button type="button" key={channel.id} onPointerEnter={() => prepareChannelPlayback(channel)} onFocus={() => prepareChannelPlayback(channel)} onPointerDown={() => prepareChannelPlayback(channel)} onClick={() => { setSelected(channel); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="group min-w-0 text-center">
                 <div className={`relative mx-auto aspect-square overflow-hidden rounded-full border bg-white/[0.055] p-2.5 transition duration-300 group-hover:-translate-y-1 ${selected?.id === channel.id ? "border-fuchsia-400 ring-4 ring-fuchsia-500/15" : "border-white/10 group-hover:border-white/30"}`}>
                   <img src={channel.logo || FALLBACK} onError={(e) => { e.currentTarget.src = FALLBACK; }} alt="" loading="lazy" className="h-full w-full rounded-full object-contain" />
                   <span className="absolute inset-0 grid place-items-center rounded-full bg-black/55 opacity-0 transition group-hover:opacity-100"><Play size={22} fill="white" /></span>
