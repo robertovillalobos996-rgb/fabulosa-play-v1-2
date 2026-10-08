@@ -16,3 +16,6 @@
 @media (prefers-reduced-motion: reduce) { .home-ad-current { animation: none; } }
 html[data-motion="reduced"] .home-ad-current { animation: none; }
 @keyframes home-ad-dissolve { from { opacity: 0; } to { opacity: 1; } }
+
+/* Publicidad sin controles visibles */
+.home-ad-controls { display: none; }
