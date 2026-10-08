@@ -1,13 +1,13 @@
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import { auth } from "../lib/firebase";
-import { uploadFirebaseBanner } from "./firebase-banner";
+import { saveAdvertisingImage } from "./advertisingImages";
 
 export async function uploadHomeAdvertising(file, onProgress) {
   if (auth.currentUser?.email?.toLowerCase() !== "fabulosaplay@gmail.com") throw new Error("Inicie sesión con la cuenta administradora.");
   const video = /^video\/(mp4|webm)$/.test(file.type);
   const image = /^image\/(jpeg|png|webp|gif|avif)$/.test(file.type);
   if (!image && !video) throw new Error("Seleccione una imagen JPG, PNG, WebP, GIF o AVIF, o un video MP4/WebM.");
-  if (image) return { source: await uploadFirebaseBanner(file, onProgress), mediaType: "image" };
+  if (image) return { source: await saveAdvertisingImage(file, onProgress), mediaType: "image" };
   if (file.size >= 250 * 1024 * 1024) throw new Error("El video debe pesar menos de 250 MB.");
   const storage = getStorage(auth.app);
   storage.maxUploadRetryTime = 90000;

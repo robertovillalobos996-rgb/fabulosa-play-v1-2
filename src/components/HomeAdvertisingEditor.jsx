@@ -4,6 +4,7 @@ import { saveCatalog } from "../lib/firebase";
 import { homeAdSeconds, safeAdDestination } from "../utils/homeAdvertising";
 import { uploadHomeAdvertising } from "../utils/uploadHomeAdvertising";
 import HomeAdvertising from "./HomeAdvertising";
+import { deleteAdvertisingImage, isStoredAdvertisingImage } from "../utils/advertisingImages";
 
 const EMPTY = { title: "", source: "", mediaType: "image", seconds: 10, actionUrl: "", enabled: true };
 const INPUT = "focus-ring mt-2 w-full rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 text-sm text-white";
@@ -17,14 +18,15 @@ export default function HomeAdvertisingEditor({ items = [], setItems, loading, e
   const [progress, setProgress] = useState(0);
   const [message, setMessage] = useState("");
   const [inputKey, setInputKey] = useState(0);
+  const [linkMode, setLinkMode] = useState(false);
   useEffect(() => () => { if (preview) URL.revokeObjectURL(preview); }, [preview]);
 
   function clearPreview() { if (preview) URL.revokeObjectURL(preview); setPreview(""); }
-  function reset() { clearPreview(); setFile(null); setForm(EMPTY); setEditing(""); setInputKey((value) => value + 1); }
+  function reset() { clearPreview(); setFile(null); setLinkMode(false); setForm(EMPTY); setEditing(""); setInputKey((value) => value + 1); }
   function chooseFile(event) {
     const next = event.target.files?.[0];
     if (!next) return;
-    clearPreview(); setFile(next); setPreview(URL.createObjectURL(next));
+    clearPreview(); setFile(next); setLinkMode(false); setPreview(URL.createObjectURL(next));
     setForm((value) => ({ ...value, mediaType: next.type.startsWith("video/") ? "video" : "image" }));
     setMessage("");
   }
@@ -38,21 +40,33 @@ export default function HomeAdvertisingEditor({ items = [], setItems, loading, e
     event.preventDefault();
     if (busy || loading || error) return;
     if (!file && !form.source) { setMessage("Seleccione una imagen o un video para publicar."); return; }
-    if (!file && !/^https:\/\//i.test(form.source)) { setMessage("Use un enlace directo HTTPS para el archivo alojado."); return; }
+    if (!file && !/^https:\/\//i.test(form.source) && !isStoredAdvertisingImage(form.source)) { setMessage("Use un enlace directo HTTPS para el archivo alojado."); return; }
     if (form.actionUrl && !safeAdDestination(form.actionUrl)) { setMessage("El destino debe ser un enlace HTTPS o una ruta del sitio que empiece con /."); return; }
     setBusy(true); setMessage(""); setProgress(0);
+    let uploadedSource = "";
     try {
       const media = file ? await uploadHomeAdvertising(file, setProgress) : { source: form.source, mediaType: form.mediaType };
+      if (file) uploadedSource = media.source;
       const item = { ...form, ...media, id: editing || `home-ad-${crypto.randomUUID()}`, seconds: homeAdSeconds(form), actionUrl: safeAdDestination(form.actionUrl) };
       const next = editing ? items.map((entry) => entry.id === editing ? item : entry) : [...items, item];
-      await publish(next, "Anuncio publicado en la franja debajo de Películas."); reset();
-    } catch (reason) { setMessage(reason.message || "No se pudo publicar el anuncio."); }
+      await publish(next, "Anuncio publicado en la franja debajo de Películas.");
+      uploadedSource = "";
+      if (editing && form.source !== media.source && !next.some((entry) => entry.source === form.source)) await deleteAdvertisingImage(form.source).catch(() => {});
+      reset();
+    } catch (reason) {
+      if (uploadedSource) await deleteAdvertisingImage(uploadedSource).catch(() => {});
+      setMessage(reason.message || "No se pudo publicar el anuncio.");
+    }
     finally { setBusy(false); }
   }
   async function change(next, success) {
     if (busy || loading || error) return;
     setBusy(true); setMessage("");
-    try { await publish(next, success); }
+    try {
+      await publish(next, success);
+      const removed = items.filter((item) => !next.some((entry) => entry.source === item.source));
+      for (const item of removed) await deleteAdvertisingImage(item.source).catch(() => {});
+    }
     catch (reason) { setMessage(`No se pudo guardar: ${reason.message}`); }
     finally { setBusy(false); }
   }
@@ -79,12 +93,14 @@ export default function HomeAdvertisingEditor({ items = [], setItems, loading, e
           <fieldset disabled={disabled} className="mt-5 space-y-4 disabled:opacity-50">
             <label className="block text-sm font-bold text-white/65">Nombre del anuncio<input value={form.title} onChange={(event) => setForm({ ...form, title: event.target.value })} className={INPUT} placeholder="Nombre del negocio o campaña" /></label>
             <label className="block cursor-pointer rounded-xl border border-dashed border-sky-300/30 bg-sky-400/[0.04] p-4 text-sm font-bold text-sky-200"><span className="flex items-center gap-2"><Upload size={18} /> Cargar imagen o video desde mi computadora</span><input key={inputKey} type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/avif,video/mp4,video/webm" onChange={chooseFile} className="mt-3 block w-full text-xs font-normal text-white/60 file:mr-3 file:rounded-lg file:border-0 file:bg-white/10 file:px-3 file:py-2 file:text-white" /><span className="mt-3 block text-xs font-normal leading-5 text-white/45">Recomendado: 1920 × 240 px (8:1). Imagen: hasta 5 MB. Video MP4 o WebM: menos de 250 MB. Otros tamaños se ajustan sin recortes.</span></label>
-            <details className="text-xs text-white/50"><summary className="cursor-pointer">Usar un archivo ya alojado</summary><label className="mt-3 block">Tipo de archivo<select value={form.mediaType} onChange={(event) => { clearPreview(); setFile(null); setForm({ ...form, mediaType: event.target.value }); }} className={INPUT}><option value="image">Imagen</option><option value="video">Video MP4 / WebM</option></select></label><label className="mt-3 block">Enlace directo HTTPS<input type="url" value={form.source} onChange={(event) => { clearPreview(); setFile(null); setForm({ ...form, source: event.target.value }); }} className={INPUT} placeholder="https://…" /></label></details>
+            {(previewItem.source || file) && <div><p className="text-xs font-bold text-white/65">{file ? `${file.name} · seleccionado. Pulse Publicar anuncio para guardarlo.` : "Imagen o video del anuncio guardado"}</p><HomeAdvertising key={previewItem.source} items={previewItem.source ? [previewItem] : []} /></div>}
+            <button type="button" onClick={() => { clearPreview(); setFile(null); setLinkMode((value) => !value); setForm((value) => ({ ...value, source: "" })); setInputKey((value) => value + 1); }} className="text-xs font-bold text-sky-200 underline">{linkMode ? "Volver a cargar desde mi computadora" : "Usar un enlace de imagen o video ya alojado"}</button>
+            {linkMode && <div className="rounded-xl border border-white/10 p-3 text-xs text-white/50"><label className="block">Tipo de archivo<select value={form.mediaType} onChange={(event) => setForm({ ...form, mediaType: event.target.value })} className={INPUT}><option value="image">Imagen</option><option value="video">Video MP4 / WebM</option></select></label><label className="mt-3 block">Enlace directo HTTPS<input type="url" value={form.source} onChange={(event) => setForm({ ...form, source: event.target.value })} className={INPUT} placeholder="https://…" /></label></div>}
             {form.mediaType === "image" && <label className="block text-sm font-bold text-white/65">Segundos en pantalla<input type="number" min="3" max="120" value={form.seconds} onChange={(event) => setForm({ ...form, seconds: event.target.value })} className={INPUT} /></label>}
             <label className="block text-sm font-bold text-white/65">Destino al tocar el anuncio (opcional)<input value={form.actionUrl} onChange={(event) => setForm({ ...form, actionUrl: event.target.value })} placeholder="https://… o /anunciate" className={INPUT} /></label>
+            <p className="text-xs leading-5 text-white/40">Enlace de la página o WhatsApp del cliente. Si lo deja vacío, el anuncio se muestra sin abrir otra página.</p>
             <label className="flex items-center gap-3 text-sm text-white/65"><input type="checkbox" checked={form.enabled} onChange={(event) => setForm({ ...form, enabled: event.target.checked })} className="accent-sky-400" /> Anuncio activo</label>
           </fieldset>
-          <p className="mt-5 text-xs font-bold text-white/45">Vista previa del marco</p><HomeAdvertising key={previewItem.source} items={previewItem.source ? [previewItem] : []} />
           <button disabled={disabled} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-fuchsia-600 px-5 py-3 font-black disabled:opacity-50"><Save size={18} /> {busy ? file && progress < 100 ? `Cargando ${progress}%…` : "Guardando…" : editing ? "Guardar cambios" : "Publicar anuncio"}</button>
           {busy && file && <progress max="100" value={progress} className="mt-3 w-full accent-sky-400" aria-label="Progreso de carga" />}
           {message && <p role="status" className="mt-4 rounded-xl bg-white/[0.06] p-3 text-sm leading-5 text-white/70">{message}</p>}

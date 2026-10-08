@@ -2,6 +2,8 @@ import { ChevronLeft, ChevronRight, Pause, Play, Volume2, VolumeX } from "lucide
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { AD_STRIP_RATIO, homeAdSeconds, safeAdDestination, visibleHomeAds } from "../utils/homeAdvertising";
+import useAdvertisingImage from "../hooks/useAdvertisingImage";
+import { loadAdvertisingImage } from "../utils/advertisingImages";
 import "./homeAdvertising.css";
 
 export default function HomeAdvertising({ items = [], reducedMotion = false }) {
@@ -20,7 +22,7 @@ export default function HomeAdvertising({ items = [], reducedMotion = false }) {
   const ad = ads[index % Math.max(ads.length, 1)];
   const video = ad?.mediaType === "video";
   const destination = safeAdDestination(ad?.actionUrl);
-  const source = ad?.source;
+  const { source, error: imageError } = useAdvertisingImage(ad?.source);
   const stopped = paused || (reducedMotion && !motionOverride);
   const running = visible && !stopped;
 
@@ -37,17 +39,30 @@ export default function HomeAdvertising({ items = [], reducedMotion = false }) {
   useEffect(() => {
     setFailed(false);
     setBlocked(false);
-    setPrevious(lastImage.current);
-    lastImage.current = video ? null : ad;
-    const timer = window.setTimeout(() => setPrevious(null), 650);
-    return () => window.clearTimeout(timer);
-  }, [ad, video]);
+  }, [ad]);
 
   useEffect(() => {
-    if (!ad || video || ads.length < 2 || !running) return undefined;
+    if (imageError) setFailed(true);
+  }, [imageError]);
+
+  useEffect(() => {
+    if (!source) return undefined;
+    setPrevious(lastImage.current);
+    lastImage.current = video ? null : { ...ad, source };
+    const timer = window.setTimeout(() => setPrevious(null), 650);
+    return () => window.clearTimeout(timer);
+  }, [ad, video, source]);
+
+  useEffect(() => {
+    const next = ads[(index + 1) % Math.max(ads.length, 1)];
+    if (next?.mediaType !== "video" && next?.source) loadAdvertisingImage(next.source).catch(() => {});
+  }, [ads, index]);
+
+  useEffect(() => {
+    if (!ad || !source || video || ads.length < 2 || !running) return undefined;
     const timer = window.setTimeout(() => setIndex((value) => (value + 1) % ads.length), homeAdSeconds(ad) * 1000);
     return () => window.clearTimeout(timer);
-  }, [ad, video, ads.length, running]);
+  }, [ad, source, video, ads.length, running]);
 
   useEffect(() => {
     const element = videoRef.current;
@@ -80,7 +95,7 @@ export default function HomeAdvertising({ items = [], reducedMotion = false }) {
       <div className="home-ad-frame" style={{ aspectRatio: AD_STRIP_RATIO }}>
         <div className="home-ad-placeholder" aria-hidden="true"><img src="/logo-fabulosa.png" alt="" /><span>Canales · Radios · Películas</span></div>
         {previous?.source && previous.source !== source && <img src={previous.source} alt="" className="home-ad-media home-ad-previous" />}
-        {ad && !failed && (video ? (
+        {ad && source && !failed && (video ? (
           <video key={`${ad.id}-${source}`} ref={videoRef} src={source} muted={muted} playsInline preload="metadata" loop={ads.length === 1} onEnded={() => advance()} onError={() => setFailed(true)} onPlaying={() => setBlocked(false)} aria-label={label} className="home-ad-media home-ad-current" />
         ) : <img key={`${ad.id}-${source}`} src={source} alt={label} onError={() => setFailed(true)} className="home-ad-media home-ad-current" />)}
         {destination && !failed && (/^https?:/i.test(destination)
