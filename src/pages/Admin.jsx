@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import useCatalog from "../hooks/useCatalog";
 import ChannelCatalogEditor from "../components/ChannelCatalogEditor";
+import HomeAdvertisingEditor from "../components/HomeAdvertisingEditor";
 import SitePreferencesEditor from "../components/SitePreferencesEditor";
 import { auth, saveCatalog } from "../lib/firebase";
 import { getYouTubeVideoId } from "../utils/media";
@@ -19,6 +20,7 @@ const tabs = [
   { id: "movies", label: "Movies", icon: Clapperboard },
   { id: "settings", label: "Publicidad", icon: Megaphone },
   { id: "configuration", label: "Configuración", icon: Settings },
+  { id: "homeAdvertising", label: "Franja de publicidad", icon: Image },
 ];
 
 const schemas = {
@@ -207,6 +209,9 @@ function SettingsEditor({ settings, setSettings }) {
 
 export default function Admin() {
   const channelData = useCatalog("channels"); const radioData = useCatalog("radios"); const movieData = useCatalog("movies"); const bannerData = useCatalog("banners"); const settingsData = useCatalog("settings");
+  const homeAdvertisingData = useCatalog("homeAdvertising");
+  const [homeAdvertising, setHomeAdvertising] = useState(homeAdvertisingData.data);
+  useEffect(() => setHomeAdvertising(homeAdvertisingData.data), [homeAdvertisingData.data]);
   const [user, setUser] = useState(null); const [checking, setChecking] = useState(true); const [active, setActive] = useState("dashboard");
   const [accessError, setAccessError] = useState("");
   const [channels, setChannels] = useState(channelData.data); const [radios, setRadios] = useState(radioData.data); const [movies, setMovies] = useState(movieData.data); const [banners, setBanners] = useState(bannerData.data); const [settings, setSettings] = useState(settingsData.data);
@@ -226,6 +231,7 @@ export default function Admin() {
     <div className="min-h-screen bg-[#07090f] text-white lg:grid lg:grid-cols-[250px_minmax(0,1fr)]">
       <aside className="border-b border-white/10 bg-[#0b0e16] p-4 lg:min-h-screen lg:border-b-0 lg:border-r lg:p-5"><div className="flex items-center justify-between lg:block"><Link to="/" className="flex items-center gap-3"><img src="/logo-fabulosa.png" alt="" className="h-10 w-10 rounded-xl object-contain" /><span className="font-black">Fabulosa <span className="text-fuchsia-400">Admin</span></span></Link><button type="button" onClick={() => signOut(auth)} className="grid h-10 w-10 place-items-center rounded-xl bg-white/[0.06] text-white/55 lg:hidden"><LogOut size={18} /></button></div><nav className="no-scrollbar mt-4 flex gap-2 overflow-x-auto lg:mt-10 lg:block lg:space-y-1">{tabs.map(({ id, label, icon: Icon }) => <button type="button" key={id} onClick={() => setActive(id)} className={`flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold transition lg:w-full ${active === id ? "bg-fuchsia-600 text-white" : "text-white/50 hover:bg-white/[0.06] hover:text-white"}`}><Icon size={18} /> {label}</button>)}</nav><div className="mt-auto hidden pt-10 lg:block"><p className="truncate text-xs text-white/35">{user.email}</p><button type="button" onClick={() => signOut(auth)} className="mt-3 flex w-full items-center gap-2 rounded-xl bg-white/[0.06] px-4 py-3 text-sm font-bold text-white/55 hover:text-white"><LogOut size={17} /> Cerrar sesión</button></div></aside>
       <main className="min-w-0 p-4 sm:p-7 lg:p-9"><header className="mb-8 flex items-center justify-between"><div><p className="text-xs font-black uppercase tracking-[.2em] text-fuchsia-400">Panel de control</p><h1 className="mt-1 text-3xl font-black">{tabs.find((tab) => tab.id === active)?.label}</h1></div><Link to="/" className="hidden items-center gap-2 rounded-xl bg-white/[0.06] px-4 py-2.5 text-sm font-bold text-white/60 hover:text-white sm:flex"><ArrowLeft size={17} /> Ver sitio</Link></header>
+        {active === "homeAdvertising" && <HomeAdvertisingEditor items={homeAdvertising} setItems={setHomeAdvertising} loading={homeAdvertisingData.loading} error={homeAdvertisingData.error} />}
         {active === "dashboard" && <Dashboard catalogs={catalogs} onMigrate={migrate} />}
         {active === "channels" && <ChannelCatalogEditor items={channels} setItems={setChannels} loading={channelData.loading} error={channelData.error} remote={channelData.remote} />}
         {active === "radios" && <CatalogEditor catalogKey="radios" items={radios} setItems={setRadios} />}

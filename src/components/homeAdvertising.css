@@ -1,0 +1,18 @@
+.home-ad-section { margin: 1.25rem 0 .5rem; min-width: 0; }
+.home-ad-heading { display: flex; justify-content: space-between; margin-bottom: .5rem; color: rgba(255,255,255,.38); font-size: 9px; font-weight: 700; letter-spacing: .16em; }
+.home-ad-frame { position: relative; width: 100%; overflow: hidden; isolation: isolate; border-radius: 10px; background: #070e18; box-shadow: 0 0 0 1px rgba(255,255,255,.1); }
+.home-ad-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #070e18; }
+.home-ad-current { z-index: 2; animation: home-ad-dissolve .6s ease-out both; }
+.home-ad-previous { z-index: 1; }
+.home-ad-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: clamp(8px,2vw,24px); background: radial-gradient(ellipse at 15% 50%,rgba(14,165,233,.12),transparent 65%),#070e18; }
+.home-ad-placeholder img { height: 65%; width: auto; max-width: 22%; object-fit: contain; }
+.home-ad-placeholder span { font-weight: 700; font-size: clamp(8px,1.4vw,18px); color: rgba(255,255,255,.55); }
+.home-ad-link { position: absolute; inset: 0; z-index: 3; }
+.home-ad-controls { position: absolute; right: 6px; bottom: 5px; z-index: 4; display: flex; gap: 3px; opacity: 0; transition: opacity .2s; }
+.home-ad-frame:hover .home-ad-controls, .home-ad-frame:focus-within .home-ad-controls { opacity: 1; }
+.home-ad-controls button { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; color: white; background: rgba(0,0,0,.65); backdrop-filter: blur(8px); }
+.home-ad-controls button:focus-visible { outline: 2px solid #7dd3fc; outline-offset: 2px; }
+@media (hover: none) { .home-ad-controls { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .home-ad-current { animation: none; } }
+html[data-motion="reduced"] .home-ad-current { animation: none; }
+@keyframes home-ad-dissolve { from { opacity: 0; } to { opacity: 1; } }

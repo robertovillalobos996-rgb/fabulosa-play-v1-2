@@ -42,6 +42,7 @@ export const defaultSettings = {
 };
 
 export const catalogDefaults = {
+  homeAdvertising: [],
   channels: defaultChannels,
   radios: defaultRadios,
   movies: defaultMovies,

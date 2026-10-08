@@ -2,6 +2,7 @@ import { ChevronRight, Clapperboard, Megaphone, Play, Radio, Tv, Volume2, Volume
 import { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import CircleRail from "../components/CircleRail";
+import HomeAdvertising from "../components/HomeAdvertising";
 import useCatalog from "../hooks/useCatalog";
 import BannerVideo from "../components/BannerVideo";
 import { isBannerVideo } from "../utils/commercials";
@@ -58,6 +59,7 @@ export default function Home() {
   const { data: channels } = useCatalog("channels");
   const { data: radios } = useCatalog("radios");
   const { data: movies } = useCatalog("movies");
+  const { data: homeAdvertising } = useCatalog("homeAdvertising");
   const [active, setActive] = useState(0);
   const [videoMuted, setVideoMuted] = useState(true);
   const safeBanners = banners.slice(0, 20);
@@ -114,6 +116,7 @@ export default function Home() {
         <CircleRail title="TV en vivo" icon={Tv} items={channels.slice(0, preferences.compact ? 16 : 12)} to="/canales-play" />
         <CircleRail title="Emisoras de radio" icon={Radio} items={radios.slice(0, preferences.compact ? 16 : 12)} to="/radios-cr" accent="cyan" />
         <div className="grid min-w-0 xl:grid-cols-[minmax(0,1fr)_230px] xl:gap-5"><MovieRail movies={movies} /><ContactCard /></div>
+        <HomeAdvertising items={homeAdvertising} reducedMotion={preferences.reducedMotion} />
       </div>
     </div>
   );
