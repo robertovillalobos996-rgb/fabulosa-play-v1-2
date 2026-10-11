@@ -1,4 +1,4 @@
-import { ChevronRight, Clapperboard, Megaphone, Play, Radio, Tv, Volume2, VolumeX } from "lucide-react";
+import { ChevronRight, Clapperboard, Megaphone, Play, Radio, Tv } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import CircleRail from "../components/CircleRail";
@@ -86,7 +86,7 @@ export default function Home() {
       <section className="hero-stage relative overflow-hidden border-b border-white/[0.06]">
         {banner && (isVideo ? (
           <div key={`${banner.id}-${banner.image}`} className="hero-slide absolute inset-0">
-            <BannerVideo source={banner.image} muted={videoMuted} autoPlay={!preferences.reducedMotion} loop={bannerCount === 1 && !preferences.reducedMotion} onEnded={advance} onError={advance} className="h-full w-full" />
+            <BannerVideo source={banner.image} muted={videoMuted} onMutedChange={setVideoMuted} viewOnly autoPlay={!preferences.reducedMotion} loop={bannerCount === 1 && !preferences.reducedMotion} onEnded={advance} onError={advance} className="h-full w-full" />
           </div>
         ) : (
           <img key={banner.id} src={banner.image} onError={(event) => { event.currentTarget.src = "/fondo_fabulosa_play.webp"; }} alt={banner.title || "Publicidad en Fabulosa Play"} className="hero-slide absolute inset-0 h-full w-full object-cover" />
@@ -94,7 +94,7 @@ export default function Home() {
 
         {!showContent && !isVideo && <BannerDestination url={banner?.actionUrl} label={banner?.actionLabel || banner?.title || "Abrir publicidad"} />}
 
-        {showContent && (
+        {showContent && !isVideo && (
           <div className="page-shell pointer-events-none relative z-20 flex h-full items-end py-7 sm:items-center sm:py-10">
             <div className="pointer-events-auto max-w-xl rounded-2xl border border-white/15 bg-[#020711]/72 p-5 shadow-2xl backdrop-blur-md sm:p-7 lg:max-w-2xl">
               {banner.title && <h1 className="max-w-xl text-3xl font-black leading-[.98] tracking-[-.04em] sm:text-5xl lg:text-6xl">{banner.title}</h1>}
@@ -108,8 +108,6 @@ export default function Home() {
           </div>
         )}
 
-        {isVideo && <button type="button" onClick={() => setVideoMuted((value) => !value)} className="focus-ring absolute right-4 top-4 z-30 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-md hover:bg-black/65" aria-label={videoMuted ? "Activar sonido" : "Silenciar video"}>{videoMuted ? <VolumeX size={19} /> : <Volume2 size={19} />}</button>}
-        {safeBanners.length > 1 && <div className="absolute bottom-4 right-4 z-30 flex gap-2 rounded-full border border-white/15 bg-black/35 px-3 py-2 backdrop-blur-md sm:right-8">{safeBanners.map((item, index) => <button key={item.id} type="button" onClick={() => setActive(index)} aria-label={`Mostrar anuncio ${index + 1}`} className={`h-2 rounded-full border border-white/20 transition-all ${index === active ? "w-7 bg-white" : "w-2 bg-white/40 hover:bg-white/70"}`} />)}</div>}
       </section>
 
       <div className="page-shell pt-2">

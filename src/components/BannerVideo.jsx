@@ -1,10 +1,10 @@
-import { Play } from "lucide-react";
+import { Play, Volume2, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { getYouTubeVideoId } from "../utils/media";
 import { createWatchClock } from "../utils/commercials";
 import { loadYouTubeApi } from "../utils/youtube";
 
-export default function BannerVideo({ source, muted = true, autoPlay = true, loop = false, onEnded, onError, onProgress, onStatus, className = "" }) {
+export default function BannerVideo({ source, muted = true, autoPlay = true, loop = false, viewOnly = false, onMutedChange, onEnded, onError, onProgress, onStatus, className = "" }) {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const playerRef = useRef(null);
@@ -42,6 +42,7 @@ export default function BannerVideo({ source, muted = true, autoPlay = true, loo
               readyAt = performance.now();
               event.target.getIframe().setAttribute("allow", "autoplay; encrypted-media; fullscreen");
               event.target.getIframe().setAttribute("title", "Video publicitario");
+              if (viewOnly) event.target.getIframe().setAttribute("tabindex", "-1");
               if (options.current.muted) event.target.mute(); else event.target.unMute();
               if (options.current.autoPlay) event.target.playVideo(); else blocked();
             },
@@ -91,7 +92,7 @@ export default function BannerVideo({ source, muted = true, autoPlay = true, loo
       playerRef.current?.destroy?.();
       playerRef.current = null;
     };
-  }, [videoId, source, loop]);
+  }, [videoId, source, loop, viewOnly]);
 
   useEffect(() => {
     const player = playerRef.current;
@@ -103,10 +104,25 @@ export default function BannerVideo({ source, muted = true, autoPlay = true, loo
     else videoRef.current?.play().catch(() => setNeedsPlay(true));
   }
 
+  function toggleSound() {
+    const nextMuted = !muted;
+    // Keep these calls inside the user's gesture, including when autoplay was blocked.
+    const player = playerRef.current;
+    if (player?.mute) {
+      if (nextMuted) player.mute(); else player.unMute();
+    } else if (videoRef.current) videoRef.current.muted = nextMuted;
+    onMutedChange?.(nextMuted);
+    play();
+  }
+
   return (
     <div className={`relative bg-black ${className}`}>
-      {videoId ? <div ref={containerRef} className="media-youtube h-full w-full" /> : <video ref={videoRef} src={source} muted={muted} playsInline preload="auto" loop={loop} onEnded={() => options.current.onEnded?.()} onError={() => options.current.onError?.()} onPlaying={() => { setNeedsPlay(false); options.current.onStatus?.("playing"); }} onPause={() => { setNeedsPlay(true); options.current.onStatus?.("paused"); }} className="h-full w-full object-contain" />}
-      {needsPlay && <button type="button" onClick={play} className="focus-ring absolute left-1/2 top-1/2 z-40 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-black text-slate-950"><Play size={18} fill="currentColor" /> Reproducir video</button>}
+      <div className={`h-full w-full ${viewOnly ? "pointer-events-none" : ""}`} inert={viewOnly ? true : undefined}>
+        {videoId ? <div ref={containerRef} className="media-youtube h-full w-full" /> : <video ref={videoRef} src={source} muted={muted} playsInline preload="auto" loop={loop} disablePictureInPicture={viewOnly} disableRemotePlayback={viewOnly} onEnded={() => options.current.onEnded?.()} onError={() => options.current.onError?.()} onPlaying={() => { setNeedsPlay(false); options.current.onStatus?.("playing"); }} onPause={() => { setNeedsPlay(true); options.current.onStatus?.("paused"); }} className="h-full w-full object-contain" />}
+      </div>
+      {viewOnly && <div className="absolute inset-0 z-10" aria-hidden="true" />}
+      {viewOnly && <button type="button" onClick={toggleSound} className="focus-ring absolute right-4 top-4 z-30 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur-md hover:bg-black/65" aria-label={muted ? "Activar sonido" : "Silenciar video"} aria-pressed={!muted}>{muted ? <VolumeX size={19} /> : <Volume2 size={19} />}</button>}
+      {needsPlay && !viewOnly && <button type="button" onClick={play} className="focus-ring absolute left-1/2 top-1/2 z-40 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-black text-slate-950"><Play size={18} fill="currentColor" /> Reproducir video</button>}
     </div>
   );
 }

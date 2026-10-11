@@ -1,11 +1,14 @@
 import { AlertTriangle, Pause, Play, Radio, Search, Volume2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import useCatalog from "../hooks/useCatalog";
+import HomeAdvertising from "../components/HomeAdvertising";
 
 const FALLBACK = "/logo-fabulosa.png";
 
 export default function RadiosPlay() {
+  const { preferences } = useOutletContext();
+  const { data: homeAdvertising } = useCatalog("homeAdvertising");
   const { data: radios, loading, remote, error: catalogError } = useCatalog("radios");
   const [params] = useSearchParams();
   const requestedSearch = params.get("search") || "";
@@ -67,6 +70,8 @@ export default function RadiosPlay() {
         <div><p className="text-xs font-black uppercase tracking-[.22em] text-cyan-400">Sonido que te acompaña</p><h1 className="mt-2 text-4xl font-black tracking-tight sm:text-5xl">Radios en vivo</h1><p className="mt-3 max-w-2xl text-white/55">Música, noticias y programación desde Costa Rica y otros países.</p></div>
         <div className="flex items-center gap-2 text-sm text-white/50"><span className={`h-2 w-2 rounded-full ${remote ? "bg-emerald-400" : "bg-amber-400"}`} /> {radios.length} emisoras</div>
       </header>
+
+      <HomeAdvertising items={homeAdvertising} reducedMotion={preferences.reducedMotion} />
 
       <section className="mt-8">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_260px]">

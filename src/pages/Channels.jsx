@@ -1,17 +1,20 @@
 import { AlertTriangle, Play, Search, Tv } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useOutletContext, useSearchParams } from "react-router-dom";
 import useCatalog from "../hooks/useCatalog";
 import { channelCategory, groupChannels, matchesChannelSearch } from "../utils/channelCategories";
 import useChannelCommercials from "../hooks/useChannelCommercials";
 import ChannelCommercial from "../components/ChannelCommercial";
 import { closePlayerFullscreen } from "../utils/commercials";
 import ChannelPlayer from "../components/ChannelPlayer";
+import HomeAdvertising from "../components/HomeAdvertising";
 import { prepareChannelPlayback } from "../utils/channelPlayback";
 
 const FALLBACK = "/logo-fabulosa.png";
 
 export default function Channels() {
+  const { preferences } = useOutletContext();
+  const { data: homeAdvertising } = useCatalog("homeAdvertising");
   const { data: channels, loading, remote, error } = useCatalog("channels");
   const [params] = useSearchParams();
   const requestedSearch = params.get("search") || "";
@@ -75,6 +78,8 @@ export default function Channels() {
           </div>
         </section>
       )}
+
+      <HomeAdvertising items={homeAdvertising} reducedMotion={preferences.reducedMotion} />
 
       <section className="mt-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
