@@ -1,0 +1,8 @@
+#EXTM3U
+#EXT-X-VERSION:7
+# FABULOSA PLAY: RPC TV AUDIO + VIDEO
+# Prueba con URLs temporales del proveedor; no es una fuente permanente.
+# BANDWIDTH es una estimacion conservadora para esta unica variante.
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="rpc-audio",NAME="Audio",DEFAULT=YES,AUTOSELECT=YES,URI="https://live2.eu-north-1a.cf.dmcdn.net/sec2(_GSUtXP9axHv4Q4f2G4idC2HlhKS0ivRZGQZjyh0wnqYSW5HhT2MRe3ZkxcJyRw_7dw94zTe-XiIGrHc8OsACSxBTpRoC-1HNrh1-BJ3h_TLQcNjgWhN0Qaf1WqPQUDeW7aRmZyxAkR3MW6TjvLyzdA7oli5005tQZPMGC8nWeYSqzQivgDgrDUZSOpyrEEJtyV_OXlmW72Klk7LNpvvvA)/cloud/4/xaf8dja/live-aac-128.m3u8"
+#EXT-X-STREAM-INF:BANDWIDTH=5000000,AUDIO="rpc-audio"
+https://live2.eu-north-1a.cf.dmcdn.net/sec2(_GSUtXP9axHv4Q4f2G4idC2HlhKS0ivRZGQZjyh0wnqYSW5HhT2MRe3ZkxcJyRw_7dw94zTe-XiIGrHc8OsACSxBTpRoC-1HNrh1-BJ3h_TLQcNjgWhN0Qaf1WqPQUDeW7aRmZyxAkR3MW6TjvLyzdA7oli5005tQZPMGC8nWeYSqzQivgDgrDUZSOpyrEEJtyV_OXlmW72Klk7LNpvvvA)/cloud/4/xaf8dja/live-h264-480.m3u8
