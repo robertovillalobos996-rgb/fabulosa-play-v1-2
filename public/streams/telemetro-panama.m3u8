@@ -1,0 +1,8 @@
+#EXTM3U
+#EXT-X-VERSION:7
+# FABULOSA PLAY: TELEMETRO PANAMA AUDIO + VIDEO
+# Prueba con URLs temporales del proveedor; no es una fuente permanente.
+# BANDWIDTH es una estimacion conservadora para esta unica variante.
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="telemetro-audio",NAME="Audio",DEFAULT=YES,AUTOSELECT=YES,URI="https://live2.eu-north-1a.cf.dmcdn.net/sec2(Dok2yZCpzxWTmvcYp3-l2cDK3uFCDNoaKGJJGA3uUE7dcyGU4StTTfIAu2IzcFiL_UaQvySEq99tvdERpDi6Ye_-DK2opzVcL-TlPWTI2EGnUNV5B_-kSNxc1o9EPf3UfVOqf-4CnV4x_Q8wG7p2ddAJlPZDGlXOX2exMUt7J_5m0a5zolZ2DWYERL5ZnW8q)/cloud/4/x8nlwwo/live-aac-128.m3u8"
+#EXT-X-STREAM-INF:BANDWIDTH=5000000,AUDIO="telemetro-audio"
+https://live2.eu-north-1a.cf.dmcdn.net/sec2(Dok2yZCpzxWTmvcYp3-l2cDK3uFCDNoaKGJJGA3uUE7dcyGU4StTTfIAu2IzcFiL_UaQvySEq99tvdERpDi6Ye_-DK2opzVcL-TlPWTI2EGnUNV5B_-kSNxc1o9EPf3UfVOqf-4CnV4x_Q8wG7p2ddAJlPZDGlXOX2exMUt7J_5m0a5zolZ2DWYERL5ZnW8q)/cloud/4/x8nlwwo/live-h264-480.m3u8
