@@ -52,8 +52,8 @@ export default function CameraExperience({ channels, advertising, reducedMotion,
     const hour = new Intl.DateTimeFormat("es-CR", { timeZone: "America/Costa_Rica", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date(item.publishedAt));
     return `${item.region}: ${item.title} — ${item.source} (${hour})`;
   });
-  const tickerText = [String(config.tickerText || "").replace(/\s+/g, " ").trim(), ...newsText].filter(Boolean).join("   •   ");
-  const tickerVisible = config.tickerEnabled !== false && Boolean(tickerText);
+  const tickerItems = [String(config.tickerText || "").replace(/\s+/g, " ").trim(), ...newsText].filter(Boolean);
+  const tickerVisible = config.tickerEnabled !== false && tickerItems.length > 0;
   const label = config.cameraLabels?.[current?.id] || current?.title || "Cámara en vivo";
   const scale = (value) => Math.min(2.5, Math.max(.5, Number(value) || 1));
   return <div className={`camera-experience ${controls ? "camera-controls-visible" : ""} ${tickerVisible ? "camera-has-ticker" : ""}`} onPointerMove={reveal} onPointerDown={reveal} onFocusCapture={reveal} style={{ "--camera-logo-scale": scale(config.logoScale), "--camera-clock-scale": scale(config.clockScale) }}>
@@ -61,7 +61,7 @@ export default function CameraExperience({ channels, advertising, reducedMotion,
     {current && <div className="camera-native-glass" aria-hidden="true" />}
     <div className="camera-channel-brand"><img src={config.channelLogo || "/logo-fabulosa.png"} alt={config.channelName || "Fabulosa Cámaras"} onError={(event) => { if (!event.currentTarget.src.endsWith("/logo-fabulosa.png")) event.currentTarget.src = "/logo-fabulosa.png"; }} /><time>{costaRicaClock(new Date(now))}</time></div>
     {config.cameraLabelsEnabled !== false && <div className="camera-location"><span className="camera-live-dot" /><span>{label}</span><small>EN VIVO</small></div>}
-    {tickerVisible && <CameraNewsTicker text={tickerText} speed={config.tickerSpeed} reducedMotion={reducedMotion} />}
+    {tickerVisible && <CameraNewsTicker items={tickerItems} speed={config.tickerSpeed} reducedMotion={reducedMotion} />}
     <CameraRadio url={config.liveAudioUrl} enabled={config.liveAudioEnabled !== false} />
     <FullscreenButton targetRef={fullscreenTarget} compact className="focus-ring camera-channel-fullscreen" />
     {config.advertisingEnabled !== false && <div className="camera-ad-break" inert><HomeAdvertising items={advertising} reducedMotion={reducedMotion} forceMuted /></div>}

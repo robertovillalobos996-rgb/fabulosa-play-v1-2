@@ -8,11 +8,11 @@ export default function useCameraNews(enabled) {
       controller?.abort(); controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 10000);
       try {
-        const response = await fetch("/api/camera-news", { signal: controller.signal });
+        const response = await fetch(`/api/camera-news?t=${Date.now()}`, { cache: "no-store", signal: controller.signal });
         if (!response.ok) throw new Error("Noticias no disponibles");
         const body = await response.json();
         if (active) setHeadlines(Array.isArray(body.headlines) ? body.headlines : []);
-      } catch { if (active) setHeadlines([]); } finally { clearTimeout(timeout); }
+      } catch { /* Keep the last successful headlines; stale entries are filtered below. */ } finally { clearTimeout(timeout); }
     };
     refresh(); const timer = setInterval(refresh, 300000);
     const visible = () => { if (document.visibilityState === "visible") refresh(); };

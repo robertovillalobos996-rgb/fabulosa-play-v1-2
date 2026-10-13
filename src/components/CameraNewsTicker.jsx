@@ -1,5 +1,26 @@
 import { useEffect, useRef, useState } from "react";
-export default function CameraNewsTicker({ text, speed = 40, reducedMotion }) {
+export default function CameraNewsTicker({ items = [], speed = 40, reducedMotion }) {
+  const latest = useRef(items);
+  latest.current = items;
+  const position = useRef(0);
+  const [text, setText] = useState(items[0] || "");
+  const advance = () => {
+    const queue = latest.current;
+    if (!queue.length) return;
+    position.current = (position.current + 1) % queue.length;
+    setText(queue[position.current]);
+  };
+  useEffect(() => {
+    if (!text && items.length) setText(items[0]);
+  }, [items, text]);
+  useEffect(() => {
+    if (!reducedMotion) return undefined;
+    const timer = setInterval(() => {
+      const queue = latest.current;
+      if (queue.length) { position.current = (position.current + 1) % queue.length; setText(queue[position.current]); }
+    }, 20000);
+    return () => clearInterval(timer);
+  }, [reducedMotion]);
   const viewport = useRef(null), content = useRef(null);
   const [sizes, setSizes] = useState({ viewport: 0, text: 0 });
   useEffect(() => {
@@ -11,6 +32,6 @@ export default function CameraNewsTicker({ text, speed = 40, reducedMotion }) {
   const pixelsPerSecond = Math.max(20, Math.min(80, Number(speed) || 40));
   const duration = Math.max(10, (sizes.viewport + sizes.text) / pixelsPerSecond);
   return <div className={`camera-news-ticker ${reducedMotion ? "camera-ticker-static" : ""}`} role="region" aria-label="Noticias e información" style={{ "--ticker-start": `${sizes.viewport}px`, "--ticker-end": `${-sizes.text}px`, "--ticker-duration": `${duration}s` }}>
-    <span className="camera-news-badge">PSC INFORMA</span><div ref={viewport} className="camera-news-viewport"><span key={text} ref={content} className="camera-news-text">{text}</span></div>
+    <span className="camera-news-badge">PSC INFORMA</span><div ref={viewport} className="camera-news-viewport"><span key={text} onAnimationIteration={advance} ref={content} className="camera-news-text">{text}</span></div>
   </div>;
 }
