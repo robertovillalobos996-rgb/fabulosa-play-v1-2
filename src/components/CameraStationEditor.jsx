@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import useCameraChannel from "../hooks/useCameraChannel";
+import useCatalog from "../hooks/useCatalog";
+import { isCameraChannel } from "../utils/cameraStation";
 import { validChannelUrl } from "../utils/cameraChannel";
 const inputClass = "focus-ring mt-2 w-full rounded-xl border border-white/15 bg-[#0c101a] px-3 py-2.5 text-sm text-white";
 export default function CameraStationEditor() {
   const { config, error } = useCameraChannel();
+  const { data: channels } = useCatalog("channels");
   const [form, setForm] = useState(config), [busy, setBusy] = useState(false), [message, setMessage] = useState("");
   useEffect(() => setForm(config), [config]);
   const change = (key, value) => setForm((current) => ({ ...current, [key]: value }));
@@ -14,7 +17,7 @@ export default function CameraStationEditor() {
     try {
       if (!validChannelUrl(form.liveAudioUrl)) throw new Error("El audio debe tener una URL HTTPS directa.");
       if (!validChannelUrl(form.channelLogo, true)) throw new Error("Use un enlace HTTPS para el logo.");
-      await setDoc(doc(db, "catalog", "camera-radio-config"), { channelName: form.channelName.trim(), channelCategory: form.channelCategory.trim() || "Cámaras", channelLogo: form.channelLogo.trim(), liveAudioUrl: form.liveAudioUrl.trim(), liveAudioEnabled: form.liveAudioEnabled !== false, advertisingEnabled: form.advertisingEnabled !== false, updatedAt: serverTimestamp() }, { merge: true });
+      await setDoc(doc(db, "catalog", "camera-radio-config"), { channelName: form.channelName.trim(), channelCategory: form.channelCategory.trim() || "Cámaras", channelLogo: form.channelLogo.trim(), liveAudioUrl: form.liveAudioUrl.trim(), liveAudioEnabled: form.liveAudioEnabled !== false, advertisingEnabled: form.advertisingEnabled !== false, logoScale: Number(form.logoScale), clockScale: Number(form.clockScale), cameraLabelsEnabled: form.cameraLabelsEnabled !== false, cameraLabels: form.cameraLabels || {}, updatedAt: serverTimestamp() }, { merge: true });
       setMessage("Canal guardado. Audio de RadioBOSS y publicidad aplicados a todas las cámaras.");
     } catch (reason) { setMessage(reason.message); } finally { setBusy(false); }
   }
@@ -25,6 +28,9 @@ export default function CameraStationEditor() {
       <label>Nombre del canal<input required maxLength={100} className={inputClass} value={form.channelName} onChange={(event) => change("channelName", event.target.value)} /></label>
       <label>Categoría del canal único<input required className={inputClass} value={form.channelCategory} onChange={(event) => change("channelCategory", event.target.value)} /></label>
       <label>Logo: enlace HTTPS o ruta del sitio<input required className={inputClass} value={form.channelLogo} onChange={(event) => change("channelLogo", event.target.value)} /></label>
+      {[["logoScale", "Tamaño del logo"], ["clockScale", "Tamaño del reloj"]].map(([key, label]) => <label key={key}>{label}: {Math.round((Number(form[key]) || 1) * 100)}%<input aria-label={label} className="mt-3 w-full accent-cyan-400" type="range" min="0.5" max="2.5" step="0.05" value={form[key]} onChange={(event) => change(key, Number(event.target.value))} /></label>)}
+      <label className="sm:col-span-2"><input type="checkbox" checked={form.cameraLabelsEnabled !== false} onChange={(event) => change("cameraLabelsEnabled", event.target.checked)} /> Mostrar ubicación y distintivo EN VIVO</label>
+      {channels.filter(isCameraChannel).map((camera) => <label key={camera.id}>Nombre en pantalla · {camera.title}<input maxLength={80} className={inputClass} value={form.cameraLabels?.[camera.id] || ""} placeholder={camera.title} onChange={(event) => change("cameraLabels", { ...form.cameraLabels, [camera.id]: event.target.value })} /></label>)}
       <label className="sm:col-span-2">Audio en vivo · enlace HTTPS<input required type="url" className={inputClass} value={form.liveAudioUrl} onChange={(event) => change("liveAudioUrl", event.target.value)} /></label>
       <label><input type="checkbox" checked={form.liveAudioEnabled !== false} onChange={(event) => change("liveAudioEnabled", event.target.checked)} /> Audio de RadioBOSS activo</label>
       <label><input type="checkbox" checked={form.advertisingEnabled !== false} onChange={(event) => change("advertisingEnabled", event.target.checked)} /> Publicidad fija activa</label>

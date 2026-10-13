@@ -1,6 +1,7 @@
 export const CAMERA_CHANNEL_DEFAULTS = {
   channelName: "Fabulosa Cámaras",
   channelCategory: "Cámaras",
+  logoScale: 1, clockScale: 1, cameraLabels: {}, cameraLabelsEnabled: true,
   channelLogo: "/logo-fabulosa.png",
   liveAudioUrl: "https://ny1.radio.serverroom.net/4437/stream",
   liveAudioEnabled: true,

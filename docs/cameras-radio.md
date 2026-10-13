@@ -16,3 +16,10 @@ El servidor debe permanecer recibiendo RadioBOSS; el reproductor intenta reconec
 Los registros anteriores de audios no se borran.
 
 La categoría del canal único se cambia en Admin > Emisora de Cámaras. Las fuentes conservan la categoría Cámaras para pertenecer a la mezcla.
+
+## Presentación del canal
+El panel permite definir el nombre de cada cámara, mostrar EN VIVO y ajustar logo/reloj entre 50% y 250%.
+Los controles se muestran durante 2.5 segundos al mover el puntero o tocar la pantalla; siguen accesibles al enfocar con teclado.
+Las señales nativas HLS/MP4 se precargan 20 segundos antes. Si no están reproduciendo, se conserva la anterior. Tras 20 segundos adicionales se intenta otra fuente disponible.
+Las cámaras YouTube no se precargan ocultas ni llevan una capa que bloquee sus enlaces. Sus transiciones siguen sujetas al inicio del reproductor externo.
+La capa transparente solamente cubre cámaras nativas. No bloquea volumen ni pantalla completa.
