@@ -1,6 +1,7 @@
 import { AlertTriangle, Pause, Play, Radio, Search, Volume2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useOutletContext, useSearchParams } from "react-router-dom";
+import useLiveAudience from "../hooks/useLiveAudience";
 import useCatalog from "../hooks/useCatalog";
 import HomeAdvertising from "../components/HomeAdvertising";
 
@@ -20,6 +21,14 @@ export default function RadiosPlay() {
   const audioRef = useRef(null);
   const hlsRef = useRef(null);
 
+  const [listening, setListening] = useState(false);
+  useLiveAudience(selected ? { kind: "radio", channelId: selected.id, channelName: selected.title, verified: true, audioPlaying: listening } : null);
+  useEffect(() => {
+    let last = audioRef.current?.currentTime || 0;
+    const timer = setInterval(() => { const audio = audioRef.current; const next = audio?.currentTime || 0; setListening(Boolean(audio && next > last && !audio.paused && !audio.muted && audio.volume > 0)); last = next; }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
   const countries = useMemo(() => ["Todos", ...new Set(radios.map((item) => item.country).filter(Boolean))], [radios]);
   const filtered = useMemo(() => radios.filter((item) => {
     const text = `${item.title} ${item.genre || ""} ${item.frequency || ""} ${item.country || ""}`.toLowerCase();
@@ -35,6 +44,7 @@ export default function RadiosPlay() {
     hlsRef.current = null;
     audio.pause();
     audio.removeAttribute("src");
+    setListening(false); setPlaying(false);
     setSelected(station);
     setPlayerError("");
     try {

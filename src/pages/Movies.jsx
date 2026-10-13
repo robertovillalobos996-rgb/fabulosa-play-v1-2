@@ -1,11 +1,14 @@
 import { Clapperboard, Play, Search, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import useLiveAudience from "../hooks/useLiveAudience";
 import useCatalog from "../hooks/useCatalog";
 
 const FALLBACK = "/logo-fabulosa.png";
 
 function MovieModal({ movie, onClose }) {
+  const [playing, setPlaying] = useState(false);
+  useLiveAudience({ kind: "movie", channelId: movie.id, channelName: movie.title, verified: true, videoPlaying: playing });
   useEffect(() => {
     const close = (event) => event.key === "Escape" && onClose();
     window.addEventListener("keydown", close);
@@ -17,7 +20,7 @@ function MovieModal({ movie, onClose }) {
     <div className="fixed inset-0 z-[100] grid place-items-center bg-black/90 p-3 sm:p-8" role="dialog" aria-modal="true" aria-label={movie.title}>
       <button type="button" onClick={onClose} className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20" aria-label="Cerrar"><X /></button>
       <div className="w-full max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-[#0b0d13] shadow-2xl">
-        <video src={movie.url} poster={movie.backdrop || movie.poster} controls autoPlay playsInline className="aspect-video w-full bg-black object-contain">Su navegador no puede reproducir este video.</video>
+        <video onPlaying={() => setPlaying(true)} onPause={() => setPlaying(false)} onWaiting={() => setPlaying(false)} onEnded={() => setPlaying(false)} onError={() => setPlaying(false)} src={movie.url} poster={movie.backdrop || movie.poster} controls autoPlay playsInline className="aspect-video w-full bg-black object-contain">Su navegador no puede reproducir este video.</video>
         <div className="p-5"><h2 className="text-xl font-black">{movie.title}</h2><p className="mt-1 text-sm text-white/50">{[movie.year, movie.category].filter(Boolean).join(" · ")}</p></div>
       </div>
     </div>

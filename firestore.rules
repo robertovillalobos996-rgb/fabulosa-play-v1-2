@@ -14,7 +14,7 @@ service cloud.firestore {
       function validPresence() {
         let data = request.resource.data;
         return request.auth != null
-          && data.keys().hasOnly(['owner', 'channelId', 'channelName', 'camera', 'cameraName', 'videoPlaying', 'audioPlaying', 'verified', 'visible', 'lastSeen'])
+          && data.keys().hasOnly(['owner', 'channelId', 'channelName', 'camera', 'cameraName', 'videoPlaying', 'audioPlaying', 'verified', 'visible', 'lastSeen', 'kind', 'country'])
           && data.owner == request.auth.uid
           && session.matches(request.auth.uid + '_[a-f0-9-]{36}')
           && data.channelId is string && data.channelId.size() > 0 && data.channelId.size() <= 160
@@ -22,12 +22,37 @@ service cloud.firestore {
           && data.cameraName is string && data.cameraName.size() <= 160
           && data.camera is bool && data.videoPlaying is bool && data.audioPlaying is bool
           && data.verified is bool && data.visible is bool
+          && data.get('kind', 'tv') in ['tv', 'radio', 'movie']
+          && data.get('country', 'ZZ') is string && data.get('country', 'ZZ').matches('[A-Z]{2}')
           && data.lastSeen == request.time;
       }
       allow read: if isFabulosaAdmin();
       allow create: if validPresence();
       allow update: if validPresence() && resource.data.owner == request.auth.uid;
       allow delete: if request.auth != null && (resource.data.owner == request.auth.uid || isFabulosaAdmin());
+    }
+    function dayKey(day) {
+      return string(day.year()) + '-' + (day.month() < 10 ? '0' : '') + string(day.month()) + '-' + (day.day() < 10 ? '0' : '') + string(day.day());
+    }
+    function validVisit() {
+      let data = request.resource.data;
+      return request.auth != null && data.keys().hasOnly(['owner', 'dayStart', 'country', 'createdAt'])
+        && data.owner == request.auth.uid && data.dayStart is timestamp
+        && data.dayStart.hours() == 6 && data.dayStart.minutes() == 0 && data.dayStart.seconds() == 0
+        && data.dayStart <= request.time && request.time < data.dayStart + duration.value(1, 'd')
+        && data.country is string && data.country.matches('[A-Z]{2}') && data.createdAt == request.time;
+    }
+    match /audienceDaily/{visit} {
+      allow get: if request.auth != null && (isFabulosaAdmin() || visit.matches(request.auth.uid + '_[0-9]{4}-[0-9]{2}-[0-9]{2}'));
+      allow list: if isFabulosaAdmin();
+      allow create: if validVisit() && visit == request.auth.uid + '_' + dayKey(request.resource.data.dayStart);
+      allow delete: if isFabulosaAdmin();
+    }
+    match /audienceVisits/{visit} {
+      allow get: if request.auth != null && (isFabulosaAdmin() || visit.matches(request.auth.uid + '_[0-9]{4}-[0-9]{2}-[0-9]{2}_[a-f0-9-]{36}'));
+      allow list: if isFabulosaAdmin();
+      allow create: if validVisit() && visit.matches(request.auth.uid + '_' + dayKey(request.resource.data.dayStart) + '_[a-f0-9-]{36}');
+      allow delete: if isFabulosaAdmin();
     }
     match /{document=**} {
       allow read, write: if false;

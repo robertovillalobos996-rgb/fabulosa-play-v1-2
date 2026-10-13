@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth, signInAnonymously } from "firebase/auth";
 import { deleteDoc, doc, getFirestore, serverTimestamp, setDoc } from "firebase/firestore";
+import { audienceProfile } from "../utils/audienceVisits";
 import { auth } from "../lib/firebase";
 let guestPromise;
 export async function ensureAudienceUser() {
@@ -18,7 +19,7 @@ export default function useLiveAudience(value) {
   const current = useRef(value);
   current.current = value;
   const session = useRef(crypto.randomUUID());
-  const channel = value?.channelId || "";
+  const channel = value?.channelId ? `${value.kind || "tv"}:${value.channelId}` : "";
   useEffect(() => {
     if (!channel || auth.currentUser?.email?.toLowerCase() === "fabulosaplay@gmail.com") return undefined;
     let active = true, reference, busy = false;
@@ -29,13 +30,14 @@ export default function useLiveAudience(value) {
         await auth.authStateReady();
         if (auth.currentUser?.email?.toLowerCase() === "fabulosaplay@gmail.com") return;
         const user = await ensureAudienceUser();
+        const profile = await audienceProfile();
         if (!active) return;
         // Use the guest app's Firestore instance so the write carries its own token.
         reference = doc(getFirestore(getApp("audience")), "liveAudience", `${user.uid}_${session.current}`);
         const data = current.current;
-        if (!data || data.channelId !== channel) return;
+        if (!data || `${data.kind || "tv"}:${data.channelId}` !== channel) return;
         await setDoc(reference, {
-          owner: user.uid, channelId: String(data.channelId).slice(0, 160),
+          owner: user.uid, kind: data.kind || "tv", country: profile.country, channelId: String(data.channelId).slice(0, 160),
           channelName: String(data.channelName || "Canal").slice(0, 160), camera: Boolean(data.camera),
           cameraName: String(data.cameraName || "").slice(0, 160),
           videoPlaying: Boolean(data.videoPlaying), audioPlaying: Boolean(data.audioPlaying),

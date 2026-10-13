@@ -2,6 +2,7 @@ import { Clapperboard, Clock3, Home, Megaphone, Radio, Search, Tv, X } from "luc
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import logo from "../assets/logo_fabulosa.png";
+import useSiteVisits from "../hooks/useSiteVisits";
 import useCatalog from "../hooks/useCatalog";
 import { getDisplayPreferences } from "../utils/sitePreferences";
 
@@ -98,6 +99,7 @@ function GlobalSearch({ open, onClose }) {
 }
 
 export default function AppShell() {
+  useSiteVisits();
   const [searchOpen, setSearchOpen] = useState(false);
   const { data: settings } = useCatalog("settings");
   const preferences = getDisplayPreferences(settings);

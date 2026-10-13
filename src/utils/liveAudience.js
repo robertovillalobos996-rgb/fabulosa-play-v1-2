@@ -6,11 +6,12 @@ export function summarizeAudience(records, now = Date.now()) {
   });
   const groups = new Map();
   for (const item of active) {
-    const id = item.camera ? "fabulosa-camera-channel" : item.channelId;
-    if (!groups.has(id)) groups.set(id, { id, name: item.channelName, camera: item.camera, connected: 0, watching: 0, listening: 0, unverified: 0, sources: {} });
+    const kind = item.kind || "tv";
+    const id = item.camera ? "tv:fabulosa-camera-channel" : `${kind}:${item.channelId}`;
+    if (!groups.has(id)) groups.set(id, { id, kind, name: item.channelName, camera: item.camera, connected: 0, watching: 0, listening: 0, unverified: 0, sources: {} });
     const group = groups.get(id);
-    group.connected++; group.watching += Number(item.videoPlaying && item.visible && item.verified);
-    group.listening += Number(item.audioPlaying); group.unverified += Number(!item.verified);
+    group.connected++; group.watching += Number(Boolean(item.videoPlaying && item.visible && item.verified));
+    group.listening += Number(Boolean(item.audioPlaying)); group.unverified += Number(!item.verified);
     if (item.cameraName) group.sources[item.cameraName] = (group.sources[item.cameraName] || 0) + 1;
   }
   const rows = [...groups.values()].sort((a, b) => Number(b.camera) - Number(a.camera) || b.connected - a.connected);
