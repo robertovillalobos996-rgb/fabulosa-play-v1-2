@@ -1,5 +1,6 @@
 import { Pencil, Plus, Save, Search, Trash2, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { isCameraChannel } from "../utils/cameraStation";
 import { saveCatalog } from "../lib/firebase";
 import { getChannelSource, normalizeChannelUrl } from "../utils/channelMedia";
 import { channelCategory, deleteChannelCategory, groupChannels, matchesChannelSearch, renameChannelCategory } from "../utils/channelCategories";
@@ -13,6 +14,7 @@ function channelForm(channel, category = "") {
     ...channel,
     title: channel?.title || "",
     genre: channel ? channelCategory(channel) : category,
+    cameraSource: channel ? isCameraChannel(channel) : undefined,
     logo: channel?.logo || "",
     sourceMode: source.type === "iframe" ? "iframe" : "direct",
     sourceUrl: normalizeChannelUrl(channel?.iframe_url || channel?.url),
@@ -57,7 +59,7 @@ export default function ChannelCatalogEditor({ items, setItems, loading, error, 
   async function publish(next, text) {
     if (busy || blocked) return false;
     setBusy(true); setMessage("");
-    try { await saveCatalog("channels", next); setItems(next); setMessage(text); return true; }
+    try { next = next.map((channel) => isCameraChannel(channel) ? { ...channel, cameraSource: true } : channel); await saveCatalog("channels", next); setItems(next); setMessage(text); return true; }
     catch (reason) { setMessage(`No se pudo guardar: ${reason.message}`); return false; }
     finally { setBusy(false); }
   }
@@ -73,6 +75,7 @@ export default function ChannelCatalogEditor({ items, setItems, loading, error, 
     }
     const { sourceMode, sourceUrl: _sourceUrl, ...fields } = form;
     const entry = { ...fields, id: editingId || `channel-${crypto.randomUUID()}`, title: form.title.trim(), genre, logo: form.logo.trim(), url: sourceMode === "direct" ? sourceUrl : "", iframe_url: sourceMode === "iframe" ? sourceUrl : "" };
+    if (entry.cameraSource === undefined) { delete entry.cameraSource; if (isCameraChannel(entry)) entry.cameraSource = true; }
     if (!entry.title) { setMessage("Escriba el nombre del canal."); return; }
     const next = editingId ? items.map((item) => item.id === editingId ? entry : item) : [entry, ...items];
     if (await publish(next, `Canal publicado en ${genre || "Sin categoría"}.`)) reset();
@@ -123,6 +126,7 @@ export default function ChannelCatalogEditor({ items, setItems, loading, error, 
             <label className="block text-sm font-bold text-white/70">Nombre del canal<input required value={form.title} onChange={(event) => setForm({ ...form, title: event.target.value })} className={inputClass} /></label>
             <label className="block text-sm font-bold text-white/70">Categoría del canal<select aria-label="Categoría del canal" value={newCategory ? NEW_CATEGORY : `category:${form.genre}`} onChange={(event) => { const value = event.target.value; setNewCategory(value === NEW_CATEGORY); if (value !== NEW_CATEGORY) setForm({ ...form, genre: value.slice(9) }); }} className={inputClass}><option value="category:">Sin categoría</option>{assignedGroups.map((group) => <option key={group.key} value={`category:${group.key}`}>{group.title}</option>)}{form.genre && !assignedGroups.some((group) => group.key === form.genre) && <option value={`category:${form.genre}`}>{form.genre}</option>}<option value={NEW_CATEGORY}>Crear otra categoría…</option></select></label>
             {newCategory && <label className="block text-sm font-bold text-white/70">Nombre de la nueva categoría<input required value={newCategoryName} onChange={(event) => setNewCategoryName(event.target.value)} className={inputClass} /></label>}
+            <label className="flex items-center gap-3 text-sm text-cyan-200"><input type="checkbox" checked={form.cameraSource === undefined ? isCameraChannel({ genre: newCategory ? newCategoryName : form.genre }) : form.cameraSource} onChange={(event) => setForm({ ...form, cameraSource: event.target.checked })} /> Fuente del canal de cámaras: mezclar este video, con audio de RadioBOSS</label>
             <label className="block text-sm font-bold text-white/70">Logo del canal<input value={form.logo} onChange={(event) => setForm({ ...form, logo: event.target.value })} placeholder="https://.../logo.png o /logos_canales/archivo.png" className={inputClass} /></label>
             {form.logo && <img key={form.logo} src={form.logo} onError={(event) => { event.currentTarget.src = FALLBACK; }} alt="Vista previa del logo" className="h-16 w-16 rounded-full bg-white p-1 object-contain" />}
             <label className="block text-sm font-bold text-white/70">Tipo de enlace<select aria-label="Tipo de enlace" value={form.sourceMode} onChange={(event) => setForm({ ...form, sourceMode: event.target.value })} className={inputClass}><option value="direct">Señal directa (HLS / MP4)</option><option value="iframe">Reproductor del proveedor / YouTube</option></select></label>

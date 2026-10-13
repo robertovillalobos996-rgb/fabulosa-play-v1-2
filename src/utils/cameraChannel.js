@@ -22,5 +22,6 @@ export function combinedCameraCatalog(channels, config, isCamera) {
   const sources = channels.filter(isCamera);
   const others = channels.filter((channel) => !isCamera(channel));
   if (!sources.length) return others;
-  return [{ id: "fabulosa-camera-channel", title: config.channelName || "Fabulosa Cámaras", genre: config.channelCategory || "Cámaras", logo: config.channelLogo || "/logo-fabulosa.png", combinedCameras: true }, ...others];
+  const categories = [...new Set(String(config.channelCategory || "Cámaras").split(/[,;\n]+/).map((name) => name.trim()).filter(Boolean))];
+  return [...(categories.length ? categories : ["Cámaras"]).map((genre, index) => ({ id: index === 0 ? "fabulosa-camera-channel" : `fabulosa-camera-channel-${encodeURIComponent(genre)}`, title: config.channelName || "Fabulosa Cámaras", genre, logo: config.channelLogo || "/logo-fabulosa.png", combinedCameras: true })), ...others];
 }

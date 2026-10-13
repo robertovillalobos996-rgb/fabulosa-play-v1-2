@@ -1,3 +1,4 @@
+import { isCameraChannel } from "./cameraStation.js";
 export function channelCategory(channel) {
   return typeof channel?.genre === "string" ? channel.genre.trim() : "";
 }
@@ -23,11 +24,11 @@ export function matchesChannelSearch(channel, search) {
 export function renameChannelCategory(channels, category, name) {
   const nextName = name.trim();
   if (!nextName) throw new Error("Escriba el nombre de la categoría.");
-  return channels.map((channel) => channelCategory(channel) === category ? { ...channel, genre: nextName } : channel);
+  return channels.map((channel) => channelCategory(channel) === category ? { ...channel, ...(isCameraChannel(channel) ? { cameraSource: true } : {}), genre: nextName } : channel);
 }
 
 export function deleteChannelCategory(channels, category, deleteChannels = false) {
   return deleteChannels
     ? channels.filter((channel) => channelCategory(channel) !== category)
-    : channels.map((channel) => channelCategory(channel) === category ? { ...channel, genre: "" } : channel);
+    : channels.map((channel) => channelCategory(channel) === category ? { ...channel, ...(isCameraChannel(channel) ? { cameraSource: true } : {}), genre: "" } : channel);
 }

@@ -8,7 +8,8 @@ export const CAMERA_STATION_DEFAULTS = {
 export const CAMERA_AUDIO_KINDS = { music: "Música y mixes", id: "IDs y sellos", commercial: "Comerciales", voice: "Voces del locutor" };
 
 export function isCameraChannel(channel) {
-  return String(channel?.genre || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase() === "camaras";
+  if (typeof channel?.cameraSource === "boolean") return channel.cameraSource;
+  return /^camaras(?:\s|$)/.test(String(channel?.genre || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim().toLowerCase());
 }
 
 export function safeAudioUrl(value) {
