@@ -10,7 +10,7 @@ Admin > Emisora de Cámaras permite cambiar nombre, logo por URL y enlace de aud
 El logo inicial es el de Fabulosa Play ya incluido en el sitio.
 Los canales fuera de Cámaras conservan su reproducción habitual.
 La programación visual corre en cada navegador, no crea un stream de video central compartido.
-YouTube conserva sus marcas y enlaces del proveedor; no se cubren sus controles con un vidrio.
+YouTube conserva sus marcas visuales; la capa transparente impide tocar el reproductor de fondo.
 Si el navegador bloquea audio automático, toque el botón de volumen para habilitarlo.
 El servidor debe permanecer recibiendo RadioBOSS; el reproductor intenta reconectar después de errores.
 Los registros anteriores de audios no se borran.
@@ -21,5 +21,5 @@ La categoría del canal único se cambia en Admin > Emisora de Cámaras. Las fue
 El panel permite definir el nombre de cada cámara, mostrar EN VIVO y ajustar logo/reloj entre 50% y 250%.
 Los controles se muestran durante 2.5 segundos al mover el puntero o tocar la pantalla; siguen accesibles al enfocar con teclado.
 Las señales nativas HLS/MP4 se precargan 20 segundos antes. Si no están reproduciendo, se conserva la anterior. Tras 20 segundos adicionales se intenta otra fuente disponible.
-Las cámaras YouTube no se precargan ocultas ni llevan una capa que bloquee sus enlaces. Sus transiciones siguen sujetas al inicio del reproductor externo.
-La capa transparente solamente cubre cámaras nativas. No bloquea volumen ni pantalla completa.
+Las cámaras YouTube no se precargan ocultas. Sus transiciones siguen sujetas al inicio del reproductor externo.
+La capa transparente cubre todas las fuentes del canal combinado, incluidas YouTube. Impide interacción con el reproductor de fondo, manteniendo accesibles volumen y pantalla completa.

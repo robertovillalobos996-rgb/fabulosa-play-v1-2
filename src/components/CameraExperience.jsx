@@ -10,7 +10,7 @@ import HomeAdvertising from "./HomeAdvertising";
 import "./cameraExperience.css";
 function CameraLayer({ camera, mode, onReady, fullscreenTarget, reducedMotion }) {
   const ready = useCallback((playing) => onReady(camera.id, playing), [camera.id, onReady]);
-  return <div inert={["hls", "video"].includes(getChannelSource(camera).type)} className={`camera-video-layer ${["hls", "video"].includes(getChannelSource(camera).type) ? "camera-layer-native" : ""} camera-layer-${mode} ${mode === "current" && !reducedMotion ? "camera-video-enter" : ""}`} aria-hidden={mode !== "current" || undefined}><ChannelPlayer channel={camera} onWatching={ready} fullscreenTarget={fullscreenTarget} /></div>;
+  return <div inert className={`camera-video-layer ${["hls", "video"].includes(getChannelSource(camera).type) ? "camera-layer-native" : ""} camera-layer-${mode} ${mode === "current" && !reducedMotion ? "camera-video-enter" : ""}`} aria-hidden={mode !== "current" || undefined}><ChannelPlayer channel={camera} onWatching={ready} fullscreenTarget={fullscreenTarget} /></div>;
 }
 export default function CameraExperience({ channels, advertising, reducedMotion, fullscreenTarget }) {
   const { config } = useCameraChannel();
@@ -49,7 +49,7 @@ export default function CameraExperience({ channels, advertising, reducedMotion,
   const scale = (value) => Math.min(2.5, Math.max(.5, Number(value) || 1));
   return <div className={`camera-experience ${controls ? "camera-controls-visible" : ""}`} onPointerMove={reveal} onPointerDown={reveal} onFocusCapture={reveal} style={{ "--camera-logo-scale": scale(config.logoScale), "--camera-clock-scale": scale(config.clockScale) }}>
     <div className="camera-video-area">{layers.map((camera) => <CameraLayer key={camera.id} camera={camera} mode={camera.id === current?.id ? "current" : camera.id === outgoingId ? "outgoing" : "preload"} onReady={markReady} fullscreenTarget={fullscreenTarget} reducedMotion={reducedMotion} />)}</div>
-    {current && ["hls", "video"].includes(getChannelSource(current).type) && <div className="camera-native-glass" aria-hidden="true" />}
+    {current && <div className="camera-native-glass" aria-hidden="true" />}
     <div className="camera-channel-brand"><img src={config.channelLogo || "/logo-fabulosa.png"} alt={config.channelName || "Fabulosa Cámaras"} onError={(event) => { if (!event.currentTarget.src.endsWith("/logo-fabulosa.png")) event.currentTarget.src = "/logo-fabulosa.png"; }} /><time>{costaRicaClock(new Date(now))}</time></div>
     {config.cameraLabelsEnabled !== false && <div className="camera-location"><span className="camera-live-dot" /><span>{label}</span><small>EN VIVO</small></div>}
     <CameraRadio url={config.liveAudioUrl} enabled={config.liveAudioEnabled !== false} />

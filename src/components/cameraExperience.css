@@ -28,3 +28,8 @@
 .camera-controls-visible .camera-live-volume,.camera-controls-visible .camera-channel-fullscreen{opacity:1;pointer-events:auto}
 
 .camera-video-area .camera-layer-native button{display:none}
+
+/* Only the channel volume and fullscreen remain interactive above this shield. */
+.camera-native-glass{touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.camera-video-area iframe,.camera-video-area video{pointer-events:none}
+.camera-video-area button,.camera-video-area select,.camera-video-area input{display:none}
