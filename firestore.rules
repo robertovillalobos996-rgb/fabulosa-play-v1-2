@@ -10,6 +10,25 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isFabulosaAdmin();
     }
+    match /liveAudience/{session} {
+      function validPresence() {
+        let data = request.resource.data;
+        return request.auth != null
+          && data.keys().hasOnly(['owner', 'channelId', 'channelName', 'camera', 'cameraName', 'videoPlaying', 'audioPlaying', 'verified', 'visible', 'lastSeen'])
+          && data.owner == request.auth.uid
+          && session.matches(request.auth.uid + '_[a-f0-9-]{36}')
+          && data.channelId is string && data.channelId.size() > 0 && data.channelId.size() <= 160
+          && data.channelName is string && data.channelName.size() <= 160
+          && data.cameraName is string && data.cameraName.size() <= 160
+          && data.camera is bool && data.videoPlaying is bool && data.audioPlaying is bool
+          && data.verified is bool && data.visible is bool
+          && data.lastSeen == request.time;
+      }
+      allow read: if isFabulosaAdmin();
+      allow create: if validPresence();
+      allow update: if validPresence() && resource.data.owner == request.auth.uid;
+      allow delete: if request.auth != null && (resource.data.owner == request.auth.uid || isFabulosaAdmin());
+    }
     match /{document=**} {
       allow read, write: if false;
     }

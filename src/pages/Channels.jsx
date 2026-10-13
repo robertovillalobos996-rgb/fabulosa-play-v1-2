@@ -1,5 +1,5 @@
 import { AlertTriangle, Play, Search, Tv } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useOutletContext, useSearchParams } from "react-router-dom";
 import useCatalog from "../hooks/useCatalog";
 import { channelCategory, groupChannels, matchesChannelSearch } from "../utils/channelCategories";
@@ -11,6 +11,8 @@ import HomeAdvertising from "../components/HomeAdvertising";
 import { prepareChannelPlayback } from "../utils/channelPlayback";
 
 import CameraExperience from "../components/CameraExperience";
+import useLiveAudience from "../hooks/useLiveAudience";
+import { getChannelSource } from "../utils/channelMedia";
 import useCameraChannel from "../hooks/useCameraChannel";
 import { combinedCameraCatalog } from "../utils/cameraChannel";
 import { isCameraChannel } from "../utils/cameraStation";
@@ -28,10 +30,13 @@ export default function Channels() {
   const [search, setSearch] = useState(requestedSearch);
   const [genre, setGenre] = useState(null);
   const [selected, setSelected] = useState(null);
-  const [watching, setWatching] = useState(false);
+  const [playback, setPlayback] = useState({ channelId: "", playing: false });
+  const watching = playback.channelId === selected?.id && playback.playing;
+  const setWatching = useCallback((playing) => setPlayback({ channelId: selected?.id || "", playing }), [selected?.id]);
   const fullscreenTarget = useRef(null);
   const { data: banners, loading: bannersLoading } = useCatalog("banners");
   const cameraSelected = selected?.combinedCameras === true;
+  useLiveAudience(selected && !cameraSelected ? { channelId: selected.id, channelName: selected.title, videoPlaying: watching, verified: ["hls", "video"].includes(getChannelSource(selected).type) } : null);
   const scheduled = useChannelCommercials({ banners, watching: watching && !cameraSelected, ready: !bannersLoading });
   const commercial = cameraSelected ? null : scheduled.commercial;
   const finish = scheduled.finish;

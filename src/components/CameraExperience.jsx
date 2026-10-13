@@ -6,6 +6,7 @@ import { getChannelSource } from "../utils/channelMedia";
 import ChannelPlayer from "./ChannelPlayer";
 import CameraRadio from "./CameraRadio";
 import CameraNewsTicker from "./CameraNewsTicker";
+import useLiveAudience from "../hooks/useLiveAudience";
 import useCameraNews from "../hooks/useCameraNews";
 import FullscreenButton from "./FullscreenButton";
 import HomeAdvertising from "./HomeAdvertising";
@@ -15,6 +16,7 @@ function CameraLayer({ camera, mode, onReady, fullscreenTarget, reducedMotion })
   return <div inert className={`camera-video-layer ${["hls", "video"].includes(getChannelSource(camera).type) ? "camera-layer-native" : ""} camera-layer-${mode} ${mode === "current" && !reducedMotion ? "camera-video-enter" : ""}`} aria-hidden={mode !== "current" || undefined}><ChannelPlayer channel={camera} onWatching={ready} fullscreenTarget={fullscreenTarget} /></div>;
 }
 export default function CameraExperience({ channels, advertising, reducedMotion, fullscreenTarget }) {
+  const [audioPlaying, setAudioPlaying] = useState(false);
   const { config } = useCameraChannel();
   const cameras = useMemo(() => channels.filter(isCameraChannel), [channels]);
   const [currentId, setCurrentId] = useState("");
@@ -55,6 +57,7 @@ export default function CameraExperience({ channels, advertising, reducedMotion,
   const tickerItems = [String(config.tickerText || "").replace(/\s+/g, " ").trim(), ...newsText].filter(Boolean);
   const tickerVisible = config.tickerEnabled !== false && tickerItems.length > 0;
   const label = config.cameraLabels?.[current?.id] || current?.title || "Cámara en vivo";
+  useLiveAudience(current ? { channelId: "fabulosa-camera-channel", channelName: config.channelName || "Fabulosa Cámaras", camera: true, cameraName: label, audioPlaying, videoPlaying: ready.current.has(current.id), verified: ["hls", "video"].includes(getChannelSource(current).type) || /youtube/.test(getChannelSource(current).src) } : null);
   const scale = (value) => Math.min(2.5, Math.max(.5, Number(value) || 1));
   return <div className={`camera-experience ${controls ? "camera-controls-visible" : ""} ${tickerVisible ? "camera-has-ticker" : ""}`} onPointerMove={reveal} onPointerDown={reveal} onFocusCapture={reveal} style={{ "--camera-logo-scale": scale(config.logoScale), "--camera-clock-scale": scale(config.clockScale) }}>
     <div className="camera-video-area">{layers.map((camera) => <CameraLayer key={camera.id} camera={camera} mode={camera.id === current?.id ? "current" : camera.id === outgoingId ? "outgoing" : "preload"} onReady={markReady} fullscreenTarget={fullscreenTarget} reducedMotion={reducedMotion} />)}</div>
@@ -62,7 +65,7 @@ export default function CameraExperience({ channels, advertising, reducedMotion,
     <div className="camera-channel-brand"><img src={config.channelLogo || "/logo-fabulosa.png"} alt={config.channelName || "Fabulosa Cámaras"} onError={(event) => { if (!event.currentTarget.src.endsWith("/logo-fabulosa.png")) event.currentTarget.src = "/logo-fabulosa.png"; }} /><time>{costaRicaClock(new Date(now))}</time></div>
     {config.cameraLabelsEnabled !== false && <div className="camera-location"><span className="camera-live-dot" /><span>{label}</span><small>EN VIVO</small></div>}
     {tickerVisible && <CameraNewsTicker items={tickerItems} speed={config.tickerSpeed} reducedMotion={reducedMotion} />}
-    <CameraRadio url={config.liveAudioUrl} enabled={config.liveAudioEnabled !== false} />
+    <CameraRadio onListening={setAudioPlaying} url={config.liveAudioUrl} enabled={config.liveAudioEnabled !== false} />
     <FullscreenButton targetRef={fullscreenTarget} compact className="focus-ring camera-channel-fullscreen" />
     {config.advertisingEnabled !== false && <div className="camera-ad-break" inert><HomeAdvertising items={advertising} reducedMotion={reducedMotion} forceMuted /></div>}
   </div>;

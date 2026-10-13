@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
-export default function CameraRadio({ url, enabled }) {
+export default function CameraRadio({ url, enabled, onListening }) {
   const audio = useRef(null);
   const [volume, setVolume] = useState(.8);
   const [muted, setMuted] = useState(false);
@@ -25,6 +25,17 @@ export default function CameraRadio({ url, enabled }) {
     return () => { active = false; clearTimeout(retry.current); media.removeEventListener("playing", playing); media.removeEventListener("error", reconnect); media.removeEventListener("ended", reconnect); media.removeEventListener("stalled", reconnect); media.pause(); media.removeAttribute("src"); media.load(); };
   }, [url, enabled]);
   useEffect(() => { if (audio.current) { audio.current.volume = volume; audio.current.muted = muted; } }, [volume, muted]);
+  useEffect(() => {
+    let previousTime = audio.current?.currentTime || 0;
+    const check = () => {
+      const media = audio.current;
+      const progressed = media && media.currentTime > previousTime;
+      previousTime = media?.currentTime || 0;
+      onListening?.(Boolean(enabled && progressed && !media.paused && !media.muted && media.volume > 0));
+    };
+    const timer = setInterval(check, 2000);
+    return () => { clearInterval(timer); onListening?.(false); };
+  }, [enabled, onListening]);
   if (!enabled) return null;
   const activate = () => { setMuted(false); audio.current.play().catch(() => setStatus("error")); };
   return <div className="camera-live-volume">
