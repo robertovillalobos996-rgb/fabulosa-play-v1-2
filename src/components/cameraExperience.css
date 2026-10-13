@@ -1,0 +1,11 @@
+.camera-experience { position: relative; width: 100%; height: 100%; isolation: isolate; }
+.camera-radio { position: absolute; top: 12px; left: 12px; z-index: 32; width: min(390px,calc(100% - 140px)); min-width: 200px; display: flex; gap: 8px; align-items: center; padding: 10px 12px; border: 1px solid rgba(255,255,255,.17); border-radius: 14px; background: rgba(5,10,20,.82); backdrop-filter: blur(16px); color: white; box-shadow: 0 4px 25px rgba(0,0,0,.25); }
+.camera-radio-button { display: grid; place-items: center; border-radius: 50%; width: 30px; height: 30px; flex-shrink: 0; background: rgba(255,255,255,.1); }
+.camera-radio-button:disabled { opacity: .4; }
+.camera-radio input[type=range] { width: 55px; height: 3px; accent-color: #67e8f9; }
+.camera-ad-break { position: absolute; inset: auto 0 0; z-index: 35; background: #070e18; box-shadow: 0 -8px 30px rgba(0,0,0,.25); }
+.camera-ad-break .home-ad-section { margin: 0; }
+.camera-ad-break .home-ad-heading { display: none; }
+.camera-ad-break .home-ad-frame { border-radius: 0; }
+.camera-ad-break .home-ad-media { object-fit: cover; }
+@media (max-width: 480px) { .camera-radio { top: 8px; left: 8px; min-width: 0; width: calc(100% - 105px); gap: 5px; padding: 7px 8px; } .camera-radio input[type=range] { display: none; } }

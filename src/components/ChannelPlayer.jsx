@@ -2,6 +2,8 @@ import { useEffect, useMemo } from "react";
 import { getChannelSource, normalizeChannelUrl } from "../utils/channelMedia";
 import { isProviderChannel } from "../utils/channelPlayback";
 import FullscreenButton from "./FullscreenButton";
+import CameraPlayer from "./CameraPlayer";
+import { isCameraChannel } from "../utils/cameraStation";
 import StreamPlayer from "./StreamPlayer";
 
 function ProviderPlayer({ channel, source, onWatching, fullscreenTarget }) {
@@ -11,6 +13,7 @@ function ProviderPlayer({ channel, source, onWatching, fullscreenTarget }) {
 
 export default function ChannelPlayer({ channel, onWatching, fullscreenTarget, covered = false }) {
   const source = useMemo(() => getChannelSource(channel), [channel]);
+  if (isCameraChannel(channel)) return <CameraPlayer channel={channel} source={source} onWatching={onWatching} fullscreenTarget={fullscreenTarget} />;
   // Canal 7 and Canal 13 retain their original provider URL and playback attributes.
   if (isProviderChannel(channel)) return <ProviderPlayer channel={channel} source={normalizeChannelUrl(channel.iframe_url || channel.url)} onWatching={onWatching} fullscreenTarget={fullscreenTarget} />;
   if (source.type === "iframe") return <ProviderPlayer channel={channel} source={source.src} onWatching={onWatching} fullscreenTarget={fullscreenTarget} />;

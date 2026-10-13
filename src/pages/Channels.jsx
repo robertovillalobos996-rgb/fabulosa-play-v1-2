@@ -10,6 +10,9 @@ import ChannelPlayer from "../components/ChannelPlayer";
 import HomeAdvertising from "../components/HomeAdvertising";
 import { prepareChannelPlayback } from "../utils/channelPlayback";
 
+import CameraExperience from "../components/CameraExperience";
+import { isCameraChannel } from "../utils/cameraStation";
+
 const FALLBACK = "/logo-fabulosa.png";
 
 export default function Channels() {
@@ -24,7 +27,10 @@ export default function Channels() {
   const [watching, setWatching] = useState(false);
   const fullscreenTarget = useRef(null);
   const { data: banners, loading: bannersLoading } = useCatalog("banners");
-  const { commercial, finish } = useChannelCommercials({ banners, watching, ready: !bannersLoading });
+  const cameraSelected = isCameraChannel(selected);
+  const scheduled = useChannelCommercials({ banners, watching: watching && !cameraSelected, ready: !bannersLoading });
+  const commercial = cameraSelected ? null : scheduled.commercial;
+  const finish = scheduled.finish;
   const hasSelected = Boolean(selected);
   useEffect(() => {
     if (!hasSelected) return undefined;
@@ -65,10 +71,10 @@ export default function Channels() {
 
       {selected && (
         <section className="mt-8 grid overflow-hidden rounded-3xl border border-white/10 bg-[#0c0f18] shadow-2xl shadow-black/40 lg:grid-cols-[1.55fr_.45fr]">
-          <div ref={fullscreenTarget} className="channel-screen relative aspect-video min-h-[230px] bg-black">
+          <div ref={fullscreenTarget} className={`channel-screen relative aspect-video min-h-[230px] bg-black ${cameraSelected ? "min-w-0 w-full" : ""}`}>
             {/* Keep the channel mounted: the commercial only covers the existing player. */}
             <div className="h-full w-full" inert={Boolean(commercial)} aria-hidden={commercial ? true : undefined}>
-              <ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} fullscreenTarget={fullscreenTarget} covered={Boolean(commercial)} />
+              {cameraSelected ? <CameraExperience advertising={homeAdvertising} reducedMotion={preferences.reducedMotion}><ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} fullscreenTarget={fullscreenTarget} /></CameraExperience> : <ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} fullscreenTarget={fullscreenTarget} covered={Boolean(commercial)} />}
             </div>
             {commercial && <ChannelCommercial key={`${commercial.id}-${commercial.queueIndex}`} commercial={commercial} onFinish={finish} fullscreenTarget={fullscreenTarget} />}
           </div>
@@ -79,7 +85,7 @@ export default function Channels() {
         </section>
       )}
 
-      <HomeAdvertising items={homeAdvertising} reducedMotion={preferences.reducedMotion} />
+      {!cameraSelected && <HomeAdvertising items={homeAdvertising} reducedMotion={preferences.reducedMotion} />}
 
       <section className="mt-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">

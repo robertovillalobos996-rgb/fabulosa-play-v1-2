@@ -1,12 +1,12 @@
 import { ChevronLeft, ChevronRight, Pause, Play, Volume2, VolumeX } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { AD_STRIP_RATIO, homeAdSeconds, safeAdDestination, visibleHomeAds } from "../utils/homeAdvertising";
 import useAdvertisingImage from "../hooks/useAdvertisingImage";
 import { loadAdvertisingImage } from "../utils/advertisingImages";
 import "./homeAdvertising.css";
 
-export default function HomeAdvertising({ items = [], reducedMotion = false }) {
+export default function HomeAdvertising({ items = [], reducedMotion = false, singlePass = false, forceMuted = false, onComplete }) {
   const ads = useMemo(() => visibleHomeAds(items), [items]);
   const [index, setIndex] = useState(0);
   const [muted, setMuted] = useState(true);
@@ -16,6 +16,7 @@ export default function HomeAdvertising({ items = [], reducedMotion = false }) {
   const [failed, setFailed] = useState(false);
   const [previous, setPrevious] = useState(null);
   const [visible, setVisible] = useState(true);
+  const completed = useRef(false);
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
   const lastImage = useRef(null);
@@ -23,12 +24,14 @@ export default function HomeAdvertising({ items = [], reducedMotion = false }) {
   const video = ad?.mediaType === "video";
   const destination = safeAdDestination(ad?.actionUrl);
   const { source, error: imageError } = useAdvertisingImage(ad?.source);
-  const stopped = paused || (reducedMotion && !motionOverride);
+  const stopped = paused || (reducedMotion && !motionOverride && !singlePass);
   const running = visible && !stopped;
 
-  function advance(direction = 1) {
+  const advance = useCallback((direction = 1) => {
+    if (completed.current) return;
+    if (singlePass && index >= ads.length - 1) { completed.current = true; onComplete?.(); return; }
     if (ads.length > 1) setIndex((value) => (value + direction + ads.length) % ads.length);
-  }
+  }, [ads.length, index, singlePass, onComplete]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.15 });
@@ -59,10 +62,10 @@ export default function HomeAdvertising({ items = [], reducedMotion = false }) {
   }, [ads, index]);
 
   useEffect(() => {
-    if (!ad || !source || video || ads.length < 2 || !running) return undefined;
-    const timer = window.setTimeout(() => setIndex((value) => (value + 1) % ads.length), homeAdSeconds(ad) * 1000);
+    if (failed || !ad || !source || video || (!singlePass && ads.length < 2) || !running) return undefined;
+    const timer = window.setTimeout(() => advance(), homeAdSeconds(ad) * 1000);
     return () => window.clearTimeout(timer);
-  }, [ad, source, video, ads.length, running]);
+  }, [failed, ad, source, video, ads.length, running, singlePass, advance]);
 
   useEffect(() => {
     const element = videoRef.current;
@@ -75,10 +78,21 @@ export default function HomeAdvertising({ items = [], reducedMotion = false }) {
 
   // A damaged asset never traps the carousel on a black frame.
   useEffect(() => {
-    if (!failed || ads.length < 2 || !running) return undefined;
-    const timer = window.setTimeout(() => setIndex((value) => (value + 1) % ads.length), 3000);
+    if (!failed || (!singlePass && ads.length < 2) || !running) return undefined;
+    const timer = window.setTimeout(() => advance(), 3000);
     return () => window.clearTimeout(timer);
-  }, [failed, ads.length, running]);
+  }, [failed, ads.length, running, singlePass, advance]);
+
+  useEffect(() => {
+    if (!singlePass || !running || !ad) return undefined;
+    let previousTime = -1, stalledAt = Date.now();
+    const timer = setInterval(() => {
+      const element = videoRef.current;
+      if (element && element.currentTime > previousTime) { previousTime = element.currentTime; stalledAt = Date.now(); }
+      if ((!source || video) && Date.now() - stalledAt > 20000) advance();
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [singlePass, running, ad, video, source, advance]);
 
   function togglePlay() {
     if (blocked || (reducedMotion && !motionOverride)) {
@@ -96,12 +110,12 @@ export default function HomeAdvertising({ items = [], reducedMotion = false }) {
         <div className="home-ad-placeholder" aria-hidden="true"><img src="/logo-fabulosa.png" alt="" /><span>Canales · Radios · Películas</span></div>
         {previous?.source && previous.source !== source && <img src={previous.source} alt="" className="home-ad-media home-ad-previous" />}
         {ad && source && !failed && (video ? (
-          <video key={`${ad.id}-${source}`} ref={videoRef} src={source} muted={muted} playsInline preload="metadata" loop={ads.length === 1} onEnded={() => advance()} onError={() => setFailed(true)} onPlaying={() => setBlocked(false)} aria-label={label} className="home-ad-media home-ad-current" />
+          <video key={`${ad.id}-${source}`} ref={videoRef} src={source} muted={forceMuted || muted} playsInline preload="metadata" loop={!singlePass && ads.length === 1} onEnded={() => advance()} onError={() => setFailed(true)} onPlaying={() => setBlocked(false)} aria-label={label} className="home-ad-media home-ad-current" />
         ) : <img key={`${ad.id}-${source}`} src={source} alt={label} onError={() => setFailed(true)} className="home-ad-media home-ad-current" />)}
         {destination && !failed && (/^https?:/i.test(destination)
           ? <a href={destination} target="_blank" rel="noopener noreferrer" className="home-ad-link focus-ring" aria-label={`Abrir ${label}`} />
           : <Link to={destination} className="home-ad-link focus-ring" aria-label={`Abrir ${label}`} />)}
-        {ad && <div className="home-ad-controls">
+        {ad && !singlePass && !forceMuted && <div className="home-ad-controls">
           {ads.length > 1 && <button type="button" onClick={() => advance(-1)} aria-label="Publicidad anterior"><ChevronLeft size={15} /></button>}
           {(video || ads.length > 1) && <button type="button" onClick={togglePlay} aria-label={stopped || blocked ? "Reproducir publicidad" : "Pausar publicidad"}>{stopped || blocked ? <Play size={13} /> : <Pause size={13} />}</button>}
           {video && <button type="button" onClick={() => setMuted((value) => !value)} aria-label={muted ? "Activar sonido de publicidad" : "Silenciar publicidad"}>{muted ? <VolumeX size={15} /> : <Volume2 size={15} />}</button>}
