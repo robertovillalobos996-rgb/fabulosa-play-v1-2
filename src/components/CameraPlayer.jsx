@@ -37,8 +37,7 @@ function SilentYouTube({ videoId, onWatching, fullscreenTarget }) {
     return () => { active = false; clearInterval(timer); player?.destroy?.(); playerRef.current = null; onWatching(false); };
   }, [videoId, onWatching]);
   return <div className="relative h-full w-full bg-black">
-    <div ref={container} className="media-youtube pointer-events-none h-full w-full" inert />
-    <div className="absolute inset-0" aria-hidden="true" />
+    <div ref={container} className="media-youtube h-full w-full" />
     {error && <p className="absolute inset-0 grid place-items-center p-6 text-center text-sm text-white/60">El proveedor no permite mostrar esta cámara en este momento.</p>}
     {blocked && <button type="button" onClick={() => { playerRef.current?.mute(); playerRef.current?.playVideo(); }} className="focus-ring absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white px-4 py-2 text-sm font-bold text-slate-950">Mostrar cámara</button>}
     <FullscreenButton targetRef={fullscreenTarget} />
