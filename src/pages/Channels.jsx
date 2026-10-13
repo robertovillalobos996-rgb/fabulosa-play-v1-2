@@ -11,6 +11,8 @@ import HomeAdvertising from "../components/HomeAdvertising";
 import { prepareChannelPlayback } from "../utils/channelPlayback";
 
 import CameraExperience from "../components/CameraExperience";
+import useCameraChannel from "../hooks/useCameraChannel";
+import { combinedCameraCatalog } from "../utils/cameraChannel";
 import { isCameraChannel } from "../utils/cameraStation";
 
 const FALLBACK = "/logo-fabulosa.png";
@@ -18,7 +20,9 @@ const FALLBACK = "/logo-fabulosa.png";
 export default function Channels() {
   const { preferences } = useOutletContext();
   const { data: homeAdvertising } = useCatalog("homeAdvertising");
-  const { data: channels, loading, remote, error } = useCatalog("channels");
+  const { data: cameraSources, loading, remote, error } = useCatalog("channels");
+  const { config: cameraConfig } = useCameraChannel();
+  const channels = useMemo(() => combinedCameraCatalog(cameraSources, cameraConfig, isCameraChannel), [cameraSources, cameraConfig]);
   const [params] = useSearchParams();
   const requestedSearch = params.get("search") || "";
   const [search, setSearch] = useState(requestedSearch);
@@ -27,7 +31,7 @@ export default function Channels() {
   const [watching, setWatching] = useState(false);
   const fullscreenTarget = useRef(null);
   const { data: banners, loading: bannersLoading } = useCatalog("banners");
-  const cameraSelected = isCameraChannel(selected);
+  const cameraSelected = selected?.combinedCameras === true;
   const scheduled = useChannelCommercials({ banners, watching: watching && !cameraSelected, ready: !bannersLoading });
   const commercial = cameraSelected ? null : scheduled.commercial;
   const finish = scheduled.finish;
@@ -74,7 +78,7 @@ export default function Channels() {
           <div ref={fullscreenTarget} className={`channel-screen relative aspect-video min-h-[230px] bg-black ${cameraSelected ? "min-w-0 w-full" : ""}`}>
             {/* Keep the channel mounted: the commercial only covers the existing player. */}
             <div className="h-full w-full" inert={Boolean(commercial)} aria-hidden={commercial ? true : undefined}>
-              {cameraSelected ? <CameraExperience key="camera-channel" channels={channels} selected={selected} advertising={homeAdvertising} reducedMotion={preferences.reducedMotion} fullscreenTarget={fullscreenTarget} /> : <ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} fullscreenTarget={fullscreenTarget} covered={Boolean(commercial)} />}
+              {cameraSelected ? <CameraExperience key="camera-channel" channels={cameraSources} selected={selected} advertising={homeAdvertising} reducedMotion={preferences.reducedMotion} fullscreenTarget={fullscreenTarget} /> : <ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} fullscreenTarget={fullscreenTarget} covered={Boolean(commercial)} />}
             </div>
             {commercial && <ChannelCommercial key={`${commercial.id}-${commercial.queueIndex}`} commercial={commercial} onFinish={finish} fullscreenTarget={fullscreenTarget} />}
           </div>

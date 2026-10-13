@@ -14,7 +14,7 @@ export default function CameraStationEditor() {
     try {
       if (!validChannelUrl(form.liveAudioUrl)) throw new Error("El audio debe tener una URL HTTPS directa.");
       if (!validChannelUrl(form.channelLogo, true)) throw new Error("Use un enlace HTTPS para el logo.");
-      await setDoc(doc(db, "catalog", "camera-radio-config"), { channelName: form.channelName.trim(), channelLogo: form.channelLogo.trim(), liveAudioUrl: form.liveAudioUrl.trim(), liveAudioEnabled: form.liveAudioEnabled !== false, advertisingEnabled: form.advertisingEnabled !== false, updatedAt: serverTimestamp() }, { merge: true });
+      await setDoc(doc(db, "catalog", "camera-radio-config"), { channelName: form.channelName.trim(), channelCategory: form.channelCategory.trim() || "Cámaras", channelLogo: form.channelLogo.trim(), liveAudioUrl: form.liveAudioUrl.trim(), liveAudioEnabled: form.liveAudioEnabled !== false, advertisingEnabled: form.advertisingEnabled !== false, updatedAt: serverTimestamp() }, { merge: true });
       setMessage("Canal guardado. Audio de RadioBOSS y publicidad aplicados a todas las cámaras.");
     } catch (reason) { setMessage(reason.message); } finally { setBusy(false); }
   }
@@ -23,6 +23,7 @@ export default function CameraStationEditor() {
     <p className="mt-3 text-sm text-white/65">Las cámaras de la categoría Cámaras forman un canal: cambian cada cuatro minutos y permanecen sin sonido. RadioBOSS transmite música, IDs, sellos y comerciales. La franja utiliza los anuncios del Home y permanece visible.</p>
     <form onSubmit={save} className="mt-6 grid gap-5 sm:grid-cols-2">
       <label>Nombre del canal<input required maxLength={100} className={inputClass} value={form.channelName} onChange={(event) => change("channelName", event.target.value)} /></label>
+      <label>Categoría del canal único<input required className={inputClass} value={form.channelCategory} onChange={(event) => change("channelCategory", event.target.value)} /></label>
       <label>Logo: enlace HTTPS o ruta del sitio<input required className={inputClass} value={form.channelLogo} onChange={(event) => change("channelLogo", event.target.value)} /></label>
       <label className="sm:col-span-2">Audio en vivo · enlace HTTPS<input required type="url" className={inputClass} value={form.liveAudioUrl} onChange={(event) => change("liveAudioUrl", event.target.value)} /></label>
       <label><input type="checkbox" checked={form.liveAudioEnabled !== false} onChange={(event) => change("liveAudioEnabled", event.target.checked)} /> Audio de RadioBOSS activo</label>
@@ -30,6 +31,6 @@ export default function CameraStationEditor() {
       <button disabled={busy || Boolean(error)} className="focus-ring rounded-xl bg-fuchsia-600 px-5 py-3 font-bold disabled:opacity-40">{busy ? "Guardando…" : "Guardar canal"}</button>
     </form>
     <p role="status" className="mt-4 text-sm text-cyan-200">{message || error}</p>
-    <p className="mt-4 text-sm text-white/50">Agregue o edite las cámaras por enlace en Canales y asigne la categoría Cámaras. Las nuevas cámaras se incorporan automáticamente. Los audios antiguos permanecen guardados, pero este canal utiliza exclusivamente RadioBOSS.</p>
+    <p className="mt-4 text-sm text-white/50">En Canales, agregue cada video por enlace y asigne la categoría Cámaras. Son fuentes internas: el público verá únicamente el canal combinado. Las fuentes nuevas se incorporan automáticamente. La categoría del canal único se cambia arriba. Los audios antiguos permanecen guardados, pero este canal utiliza exclusivamente RadioBOSS.</p>
   </section>;
 }
