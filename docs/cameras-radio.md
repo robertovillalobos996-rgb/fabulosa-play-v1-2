@@ -26,3 +26,8 @@ La capa transparente cubre todas las fuentes del canal combinado, incluidas YouT
 
 ## Categorías libres y recuperación
 El canal combinado puede aparecer en varias categorías, separadas por coma en Emisora de Cámaras. En Canales la casilla Fuente del canal de cámaras define permanentemente qué videos se mezclan, independientemente de su categoría. Renombrar o mover fuentes conserva esa marca. Se recuperan categorías Cámaras y Cámaras en vivo; guarde Emisora de Cámaras una vez para fijar las fuentes anteriores. No se borran videos ni el audio.
+
+## Franja de noticias
+En Admin > Emisora de Cámaras escriba Texto de noticias, active Mostrar franja de noticias y pulse Guardar canal. Puede separar avisos con •. La velocidad inicial es 40 píxeles por segundo y puede ajustar entre 20 y 80. Texto vacío oculta la franja. Se muestra sobre el banner del Home, debajo de la ubicación, también en pantalla completa. Combina avisos manuales y RSS de Google Noticias.
+
+Google Noticias: endpoint /api/camera-news consulta ediciones NATION (Costa Rica) y WORLD (Mundo) en español. Filtra por fecha de publicación de las últimas 24 horas, deduplica y devuelve hasta 12 titulares. Refresco cada cinco minutos mientras el canal está abierto, y al volver a la pestaña. La consulta no requiere RadioBOSS ni la computadora del estudio; Vercel sirve el endpoint. No garantiza que Google publique nuevos titulares ni acceso continuo al proveedor. Si falla Google, solo se muestran los avisos manuales. La franja se identifica como PSC INFORMA y cita el medio de cada noticia.

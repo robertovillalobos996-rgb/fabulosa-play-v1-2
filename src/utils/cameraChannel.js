@@ -2,6 +2,7 @@ export const CAMERA_CHANNEL_DEFAULTS = {
   channelName: "Fabulosa Cámaras",
   channelCategory: "Cámaras",
   logoScale: 1, clockScale: 1, cameraLabels: {}, cameraLabelsEnabled: true,
+  tickerText: "", tickerEnabled: true, tickerSpeed: 40, tickerGoogleEnabled: true, tickerCostaRica: true, tickerWorld: true,
   channelLogo: "/logo-fabulosa.png",
   liveAudioUrl: "https://ny1.radio.serverroom.net/4437/stream",
   liveAudioEnabled: true,

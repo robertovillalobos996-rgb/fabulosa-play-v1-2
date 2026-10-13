@@ -33,3 +33,12 @@
 .camera-native-glass{touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .camera-video-area iframe,.camera-video-area video{pointer-events:none}
 .camera-video-area button,.camera-video-area select,.camera-video-area input{display:none}
+
+.camera-news-ticker{position:absolute;bottom:22.222222%;left:0;right:0;z-index:36;height:32px;display:flex;align-items:center;background:#081727f5;border-top:1px solid #67e8f944;border-bottom:1px solid #ffffff20;color:#fff;pointer-events:none;overflow:hidden;font-size:15px;line-height:32px}
+.camera-news-badge{flex-shrink:0;padding:0 12px;font-size:10px;font-weight:900;letter-spacing:.1em;background:#075568;height:100%;color:#cffafe}
+.camera-news-viewport{flex:1;position:relative;min-width:0;height:100%;overflow:hidden}
+.camera-news-text{position:absolute;display:block;white-space:pre;left:0;top:0;font-weight:600;animation:camera-news-scroll var(--ticker-duration,30s) linear infinite;will-change:transform}
+@keyframes camera-news-scroll{from{transform:translateX(var(--ticker-start,100vw))}to{transform:translateX(var(--ticker-end,-100%))}}
+.camera-has-ticker .camera-location{bottom:calc(22.222222% + 42px)}
+.camera-ticker-static .camera-news-text{position:relative;animation:none;white-space:normal;line-height:1.4;padding:5px 10px}
+@media(max-width:480px){.camera-news-ticker{height:24px;font-size:12px;line-height:24px}.camera-news-badge{font-size:8px;padding:0 8px}.camera-has-ticker .camera-location{bottom:calc(22.222222% + 32px)}}
