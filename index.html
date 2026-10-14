@@ -21,6 +21,22 @@
     <link rel="manifest" href="/manifest.json" />
     <title>TV en vivo, radio online y películas | Fabulosa Play</title>
   <meta name="google-site-verification" content="_lumHO9Xxa2JgDDZFFRgtd0uuw9iqvr0CU7XDprFlZ8" />
+
+<script id="fabulosa-public-interaction-guard">
+(function () {
+  function isAdmin() {
+    return /^\/admin(?:\/|$)/i.test(window.location.pathname);
+  }
+  function blockContextMenu(event) {
+    if (!isAdmin()) event.preventDefault();
+  }
+  function blockF12(event) {
+    if (!isAdmin() && event.key === 'F12') event.preventDefault();
+  }
+  document.addEventListener('contextmenu', blockContextMenu, true);
+  window.addEventListener('keydown', blockF12, true);
+})();
+</script>
 </head>
   <body>
     <noscript>Necesita activar JavaScript para utilizar Fabulosa Play.</noscript>
