@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
-Sitemap: https://www.fabulosaplay.online/sitemap.xml
+Sitemap: https://fabulosaplay.online/sitemap.xml

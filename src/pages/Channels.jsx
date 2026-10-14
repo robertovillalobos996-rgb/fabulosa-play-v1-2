@@ -1,6 +1,8 @@
 import { AlertTriangle, Play, Search, Tv } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useOutletContext, useSearchParams } from "react-router-dom";
+import usePageSeo from "../hooks/usePageSeo";
+import { contentUrl } from "../utils/seoMetadata";
 import useCatalog from "../hooks/useCatalog";
 import { channelCategory, groupChannels, matchesChannelSearch } from "../utils/channelCategories";
 import useChannelCommercials from "../hooks/useChannelCommercials";
@@ -41,6 +43,7 @@ export default function Channels() {
   const setWatching = useCallback((playing) => setPlayback({ channelId: selected?.id || "", playing }), [selected?.id]);
   const fullscreenTarget = useRef(null);
   const { data: banners, loading: bannersLoading } = useCatalog("banners");
+  usePageSeo("channels", requestedId ? selected : null);
   const cameraSelected = selected?.combinedCameras === true;
   useLiveAudience(selected && !cameraSelected ? { channelId: selected.id, channelName: selected.title, videoPlaying: watching, verified: ["hls", "video"].includes(getChannelSource(selected).type) } : null);
   const scheduled = useChannelCommercials({ banners, watching: watching && !cameraSelected, ready: !bannersLoading });
@@ -127,13 +130,13 @@ export default function Channels() {
         {loading ? <div className="py-20 text-center text-white/45">Cargando canales…</div> : filtered.length ? (
           <div className="mt-7 grid grid-cols-3 gap-x-3 gap-y-7 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10">
             {filtered.map((channel) => (
-              <button type="button" key={channel.id} onPointerEnter={() => prepareChannelPlayback(channel)} onFocus={() => prepareChannelPlayback(channel)} onPointerDown={() => prepareChannelPlayback(channel)} onClick={() => selectChannel(channel)} className="group min-w-0 text-center">
+              <a href={contentUrl("channels", channel)} key={channel.id} onPointerEnter={() => prepareChannelPlayback(channel)} onFocus={() => prepareChannelPlayback(channel)} onPointerDown={() => prepareChannelPlayback(channel)} onClick={(event) => { if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return; event.preventDefault(); selectChannel(channel); }} className="group min-w-0 text-center">
                 <div className={`relative mx-auto aspect-square overflow-hidden rounded-full border bg-white/[0.055] p-2.5 transition duration-300 group-hover:-translate-y-1 ${selected?.id === channel.id ? "border-fuchsia-400 ring-4 ring-fuchsia-500/15" : "border-white/10 group-hover:border-white/30"}`}>
                   <img src={channel.logo || FALLBACK} onError={(e) => { e.currentTarget.src = FALLBACK; }} alt="" loading="lazy" className="h-full w-full rounded-full object-contain" />
                   <span className="absolute inset-0 grid place-items-center rounded-full bg-black/55 opacity-0 transition group-hover:opacity-100"><Play size={22} fill="white" /></span>
                 </div>
                 <p className="mt-2 truncate text-xs font-bold text-white/70 group-hover:text-white">{channel.title}</p>
-              </button>
+              </a>
             ))}
           </div>
         ) : <div className="mt-8 grid min-h-56 place-items-center rounded-3xl border border-dashed border-white/15 text-center text-white/45"><div><Tv className="mx-auto mb-3" /><p>No encontramos canales con esos filtros.</p></div></div>}
