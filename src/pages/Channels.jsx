@@ -10,6 +10,10 @@ import ChannelPlayer from "../components/ChannelPlayer";
 import HomeAdvertising from "../components/HomeAdvertising";
 import { prepareChannelPlayback } from "../utils/channelPlayback";
 
+import ChannelShareControls from "../components/ChannelShareControls";
+import ChannelCastControls from "../components/ChannelCastControls";
+import { resolveSharedChannel } from "../utils/channelSharing";
+import "../components/channelSharing.css";
 import CameraExperience from "../components/CameraExperience";
 import useLiveAudience from "../hooks/useLiveAudience";
 import { getChannelSource } from "../utils/channelMedia";
@@ -25,7 +29,9 @@ export default function Channels() {
   const { data: cameraSources, loading, remote, error } = useCatalog("channels");
   const { config: cameraConfig } = useCameraChannel();
   const channels = useMemo(() => combinedCameraCatalog(cameraSources, cameraConfig, isCameraChannel), [cameraSources, cameraConfig]);
-  const [params] = useSearchParams();
+  const [params, setParams] = useSearchParams();
+  const requestedId = params.get("channel") || "";
+  const tvMode = params.get("tv") === "1";
   const requestedSearch = params.get("search") || "";
   const [search, setSearch] = useState(requestedSearch);
   const [genre, setGenre] = useState(null);
@@ -56,39 +62,51 @@ export default function Channels() {
 
   useEffect(() => {
     setSelected((current) => {
+      if (requestedId) return resolveSharedChannel(channels, requestedId);
       const refreshed = channels.find((item) => item.id === current?.id);
       if (refreshed) return refreshed;
       const request = requestedSearch.trim().toLowerCase();
       return (request && channels.find((item) => item.title?.trim().toLowerCase() === request)) || channels[0] || null;
     });
-  }, [channels, requestedSearch]);
+  }, [channels, requestedSearch, requestedId]);
 
   useEffect(() => {
     setSearch(requestedSearch);
-    if (!requestedSearch) return;
+    if (requestedId || !requestedSearch) return;
     const request = requestedSearch.trim().toLowerCase();
     const match = channels.find((item) => item.title?.trim().toLowerCase() === request);
     if (match) setSelected(match);
-  }, [requestedSearch, channels]);
+  }, [requestedSearch, requestedId, channels]);
 
+  useEffect(() => {
+    if (!tvMode || !selected) return undefined;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = previous; };
+  }, [tvMode, selected]);
+  const selectChannel = (channel) => { setSelected(channel); setParams((previous) => { const next = new URLSearchParams(previous); next.set("channel", channel.id); next.delete("search"); return next; }); window.scrollTo({ top: 0, behavior: "smooth" }); };
   return (
-    <div className="page-shell py-10">
+    <div className={`page-shell py-10 ${tvMode && selected ? "channel-tv-mode" : ""}`}>
+      {requestedId && !loading && !selected && <p role="alert" className="mb-6 rounded-xl bg-amber-500/10 p-4 text-amber-200">El canal de este enlace ya no está disponible. Seleccione otro canal del catálogo.</p>}
+      {tvMode && selected && <button type="button" className="focus-ring channel-action channel-tv-exit" onClick={() => { closePlayerFullscreen(fullscreenTarget.current); setParams((previous) => { const next = new URLSearchParams(previous); next.delete("tv"); return next; }); }}>Salir de Vista TV</button>}
       <header className="flex flex-col gap-5 border-b border-white/10 pb-8 sm:flex-row sm:items-end sm:justify-between">
         <div><p className="text-xs font-black uppercase tracking-[.22em] text-fuchsia-400">Transmisiones disponibles</p><h1 className="mt-2 text-4xl font-black tracking-tight sm:text-5xl">TV en vivo</h1><p className="mt-3 max-w-2xl text-white/55">Explore el catálogo y abra una señal en el reproductor.</p></div>
         <div className="flex items-center gap-2 text-sm text-white/50"><span className={`h-2 w-2 rounded-full ${remote ? "bg-emerald-400" : "bg-amber-400"}`} /> {channels.length} canales</div>
       </header>
 
       {selected && (
-        <section className="mt-8 grid overflow-hidden rounded-3xl border border-white/10 bg-[#0c0f18] shadow-2xl shadow-black/40 lg:grid-cols-[1.55fr_.45fr]">
-          <div ref={fullscreenTarget} className={`channel-screen relative aspect-video min-h-[230px] bg-black ${cameraSelected ? "min-w-0 w-full" : ""}`}>
+        <section className="channel-stage mt-8 grid overflow-hidden rounded-3xl border border-white/10 bg-[#0c0f18] shadow-2xl shadow-black/40 lg:grid-cols-[1.55fr_.45fr]">
+          <div ref={fullscreenTarget} className={`channel-screen relative aspect-video bg-black ${cameraSelected ? "min-w-0 w-full" : ""}`}>
             {/* Keep the channel mounted: the commercial only covers the existing player. */}
             <div className="h-full w-full" inert={Boolean(commercial)} aria-hidden={commercial ? true : undefined}>
               {cameraSelected ? <CameraExperience key="camera-channel" channels={cameraSources} selected={selected} advertising={homeAdvertising} reducedMotion={preferences.reducedMotion} fullscreenTarget={fullscreenTarget} /> : <ChannelPlayer key={selected.id} channel={selected} onWatching={setWatching} fullscreenTarget={fullscreenTarget} covered={Boolean(commercial)} />}
             </div>
             {commercial && <ChannelCommercial key={`${commercial.id}-${commercial.queueIndex}`} commercial={commercial} onFinish={finish} fullscreenTarget={fullscreenTarget} />}
           </div>
-          <div className="flex flex-col justify-between p-6">
+          <div className="channel-details flex flex-col justify-between p-6">
             <div><div className="mb-5 grid h-20 w-20 place-items-center overflow-hidden rounded-full border border-white/10 bg-white p-2"><img src={selected.logo || FALLBACK} onError={(e) => { e.currentTarget.src = FALLBACK; }} alt="" className="h-full w-full rounded-full object-contain" /></div><p className="text-xs font-black uppercase tracking-[.18em] text-fuchsia-400">{selected.genre || "En vivo"}</p><h2 className="mt-2 text-2xl font-black">{selected.title}</h2></div>
+            <ChannelShareControls channel={selected} />
+            <ChannelCastControls channel={selected} targetRef={fullscreenTarget} onTvView={() => setParams((previous) => { const next = new URLSearchParams(previous); next.set("tv", "1"); return next; })} />
             <p className="mt-8 text-xs leading-5 text-white/40">La disponibilidad depende del proveedor de cada señal. Algunas transmisiones pueden tener restricciones regionales.</p>
           </div>
         </section>
@@ -109,7 +127,7 @@ export default function Channels() {
         {loading ? <div className="py-20 text-center text-white/45">Cargando canales…</div> : filtered.length ? (
           <div className="mt-7 grid grid-cols-3 gap-x-3 gap-y-7 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10">
             {filtered.map((channel) => (
-              <button type="button" key={channel.id} onPointerEnter={() => prepareChannelPlayback(channel)} onFocus={() => prepareChannelPlayback(channel)} onPointerDown={() => prepareChannelPlayback(channel)} onClick={() => { setSelected(channel); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="group min-w-0 text-center">
+              <button type="button" key={channel.id} onPointerEnter={() => prepareChannelPlayback(channel)} onFocus={() => prepareChannelPlayback(channel)} onPointerDown={() => prepareChannelPlayback(channel)} onClick={() => selectChannel(channel)} className="group min-w-0 text-center">
                 <div className={`relative mx-auto aspect-square overflow-hidden rounded-full border bg-white/[0.055] p-2.5 transition duration-300 group-hover:-translate-y-1 ${selected?.id === channel.id ? "border-fuchsia-400 ring-4 ring-fuchsia-500/15" : "border-white/10 group-hover:border-white/30"}`}>
                   <img src={channel.logo || FALLBACK} onError={(e) => { e.currentTarget.src = FALLBACK; }} alt="" loading="lazy" className="h-full w-full rounded-full object-contain" />
                   <span className="absolute inset-0 grid place-items-center rounded-full bg-black/55 opacity-0 transition group-hover:opacity-100"><Play size={22} fill="white" /></span>
